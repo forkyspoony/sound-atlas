@@ -262,6 +262,11 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 #acct{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin:6px 0}
 #acct .acct-who{font-size:13px;color:var(--muted)}#acct .acct-btn{font-size:14px;padding:6px 12px;min-height:36px}
 </style>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2b4c7e">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Sound Atlas">
 </head>
 <body>
 <header>
@@ -2379,6 +2384,7 @@ renderVowels();showVowel('vy');renderTones();renderTonePairs();renderMaps();rend
 route();
 initSync();
 </script>
+<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{})</script>
 <script type="module" src="firebase_shim.js"></script>
 </body>
 </html>
