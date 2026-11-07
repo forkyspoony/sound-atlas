@@ -261,6 +261,36 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 .btn.rec{background:var(--bad)}
 .pure{display:flex;gap:12px;align-items:center;background:var(--soft);border-radius:14px;padding:12px 14px;margin:12px 0}
 .pure-t{font-weight:700}.pure-c{font-size:12px;color:var(--muted);margin-top:2px}.pure-c a{color:inherit}
+
+.symlist{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+.symrow{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px}
+.symbig{font-size:40px;min-width:64px;text-align:center;line-height:1.1;color:var(--accent)}
+.symbody{flex:1;min-width:0}.symname{font-weight:600}.symtxt{font-size:15px;margin-top:2px}
+.symex{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.exchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 3px;font-size:15px}
+.exchip .play{width:32px;height:32px}
+.cmplist{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+.cmprow{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px}
+.cmpcell{display:flex;flex-direction:column;gap:4px;align-items:flex-start;min-width:0}
+.cmpw{display:flex;align-items:center;gap:8px;font-size:18px}.cmpi{font-size:18px;color:var(--muted)}
+.cmpvs{color:var(--muted);font-size:13px}.cmpnote{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.tag.t-en{background:var(--soft);color:var(--muted)}
+.feelq{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+.feelq .btn.on{background:var(--accent);color:var(--panel)}
+.feelfb{display:none;margin-top:10px;font-size:15px;padding:10px 12px;border-radius:10px;background:var(--accent-soft)}.feelfb.on{display:block}
+.bslot{font-size:30px;min-height:52px;border:2px dashed var(--line);border-radius:12px;padding:6px 12px;margin:12px 0;text-align:center;word-break:break-all}
+.bslot.right{border-color:var(--good);border-style:solid}.bslot.wrong{border-color:var(--bad);border-style:solid}
+.bcaret{display:inline-block;width:2px;height:28px;background:currentColor;vertical-align:middle;margin-left:2px;animation:blink 1s steps(1) infinite}
+.bslot.right .bcaret,.bslot.wrong .bcaret{display:none}
+@keyframes blink{50%{opacity:0}}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px}
+.tile{font-size:24px;min-width:48px;height:48px;border:1px solid var(--line);border-radius:10px;background:var(--panel);cursor:pointer;padding:0 10px}
+.tile:hover:not(:disabled){border-color:var(--ink,#222)}.tile:disabled{opacity:.5;cursor:default}
+.tile.stress{font-weight:700;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}.tile.stress::after{content:'stress';font-family:var(--sans,system-ui);font-size:10px;font-weight:400;color:var(--muted);margin-top:2px}
+@media(max-width:520px){.cmprow{grid-template-columns:1fr 1fr;column-gap:12px}.cmpvs{display:none}.cmpcell+.cmpvs+.cmpcell{border-left:1px solid var(--line);padding-left:12px}.cmpw{font-size:16px;gap:6px}.cmpi{font-size:16px}}
+.bhint{font-size:14px;color:var(--muted)}
+.opt.ipaopt{font-size:22px}
+.lk.k-intro{background:var(--soft);color:var(--ink)}
 #acct{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin:6px 0}
 #acct .acct-who{font-size:13px;color:var(--muted)}#acct .acct-btn{font-size:14px;padding:6px 12px;min-height:36px}
 </style>
@@ -412,7 +442,7 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
   <div class="maps" id="maps"></div>
   </div>
 </section>
-<p class="footer-note">Recorded audio was generated with ElevenLabs voices. Main voices: Mateo (Latin American Spanish; Leandro for the three Spain-only examples), Alina (Mandarin, Beijing) and zohir damas (Levantine Arabic, Syrian). Vowel reference recordings on the sound cards: Denelson83, Wikimedia Commons, CC BY-SA 3.0. Extra speakers for ear training: Liza and Eduardo (Mexico) and Claudia (Colombia); Yun, Yun and Jerry (mainland China); Yasmine (Lebanon), Ghaidā’ (Syria) and Samir (Jordan). Words without a recording fall back to your device's built-in text-to-speech; if a language is silent there, install its voice in your system settings (on iOS: Settings → Accessibility → Spoken Content → Voices). AI voices are close but not perfect, so check fine detail against native speakers.</p>
+<p class="footer-note">Recorded audio was generated with ElevenLabs voices. Main voices: Mateo (Latin American Spanish; Leandro for the three Spain-only examples), Alina (Mandarin, Beijing) and zohir damas (Levantine Arabic, Syrian). English comparison words in the lessons: David (American English). Vowel reference recordings on the sound cards: Denelson83, Wikimedia Commons, CC BY-SA 3.0. Extra speakers for ear training: Liza and Eduardo (Mexico) and Claudia (Colombia); Yun, Yun and Jerry (mainland China); Yasmine (Lebanon), Ghaidā’ (Syria) and Samir (Jordan). Words without a recording fall back to your device's built-in text-to-speech; if a language is silent there, install its voice in your system settings (on iOS: Settings → Accessibility → Spoken Content → Voices). AI voices are close but not perfect, so check fine detail against native speakers.</p>
 </main>
 
 <div class="scrim" id="scrim"><div class="modal" id="modal"></div></div>
@@ -650,7 +680,7 @@ function wordHTML(e){return e.l==='ar'?`<span class="arabic">${esc(e.w)}</span>`
 let voices=[];
 function loadVoices(){try{voices=speechSynthesis.getVoices()}catch(e){voices=[]}}
 if('speechSynthesis' in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}
-const AUDIO={"妈": "audio/ae3918a99aa.mp3", "麻": "audio/a433ea2216f.mp3", "马": "audio/a7d39044ed6.mp3", "骂": "audio/a6343706870.mp3", "好": "audio/a27e4fe4c3f.mp3", "爸": "audio/aa732e56e22.mp3", "大": "audio/a0889c34972.mp3", "怕": "audio/abc1c58b84b.mp3", "他": "audio/ae31b569a0f.mp3", "开": "audio/ab4217093bc.mp3", "在": "audio/a686b703f41.mp3", "早": "audio/a13a8589339.mp3", "字": "audio/a582c50066c.mp3", "菜": "audio/a7b4bb888fb.mp3", "草": "audio/a6744771609.mp3", "次": "audio/a5e5b8169ee.mp3", "中": "audio/a0869071c92.mp3", "这": "audio/a542523173c.mp3", "知": "audio/ac524682048.mp3", "茶": "audio/a97a08c17dc.mp3", "吃": "audio/aa10d4d5a63.mp3", "车": "audio/a7c852e1d83.mp3", "是": "audio/a30160a21b9.mp3", "书": "audio/afe04274cef.mp3", "十": "audio/aaa107f05b6.mp3", "人": "audio/a4912771a42.mp3", "热": "audio/a1aff05b636.mp3", "日": "audio/a15917f3b32.mp3", "鸡": "audio/a51093a2d58.mp3", "家": "audio/a7de8177ce7.mp3", "九": "audio/a27a2b9f17b.mp3", "七": "audio/a7db1eeb5c3.mp3", "去": "audio/a033fd274f0.mp3", "钱": "audio/adb4be61875.mp3", "西": "audio/a2f64b5a67e.mp3", "谢": "audio/ab27c6fd4c5.mp3", "学": "audio/a7c7a06f0ea.mp3", "一": "audio/ad274eee8a1.mp3", "鱼": "audio/a92468fdf7c.mp3", "女": "audio/a26bc84961c.mp3", "四": "audio/a4f88740b34.mp3", "饿": "audio/abf873d61fd.mp3", "喝": "audio/a9982c5ced1.mp3", "哥": "audio/acdfd26daa2.mp3", "冷": "audio/ae2fc60d070.mp3", "八": "audio/a2142fb62fd.mp3", "拔": "audio/a737c389c6b.mp3", "把": "audio/ab3ba7814f4.mp3", "衣": "audio/acb6d358425.mp3", "姨": "audio/a620e3674e5.mp3", "椅": "audio/a618be2726b.mp3", "意": "audio/a9d197986e0.mp3", "汤": "audio/afc4ef67147.mp3", "糖": "audio/a3d8cd510d0.mp3", "躺": "audio/aa85402d565.mp3", "烫": "audio/a700ef0f34f.mp3", "飞": "audio/a322b8afdf9.mp3", "肥": "audio/ae650f32008.mp3", "匪": "audio/a78c1a1967a.mp3", "费": "audio/af07ab143e8.mp3", "通": "audio/abef21932fe.mp3", "同": "audio/a0b8b919983.mp3", "统": "audio/ab6c938397c.mp3", "痛": "audio/a335a309cd8.mp3", "诗": "audio/a53e00f750c.mp3", "使": "audio/af6901ca318.mp3", "妈，麻，马，骂": "audio/ab1e6e7f670.mp3", "perro": "audio/a6139bdc23a.mp3", "rojo": "audio/aaf6c1a0ca2.mp3", "pero": "audio/a98fc7b3476.mp3", "caro": "audio/a732849d5bc.mp3", "gracias": "audio/aa30b3970f3.mp3", "jamón": "audio/a8d298a01d5.mp3", "lago": "audio/a4e68e95b58.mp3", "agua": "audio/ac1962c232b.mp3", "lobo": "audio/a4a98e66035.mp3", "uva": "audio/a2d2c2a1400.mp3", "Cuba": "audio/ac484b137e2.mp3", "gracias (Spain)": "audio/ab2ab2a377f.mp3", "cielo (Spain)": "audio/a2add742165.mp3", "zapato (Spain)": "audio/afcda3828ca.mp3", "año": "audio/a8470d9e5f7.mp3", "niño": "audio/a36a2baf40d.mp3", "España": "audio/a1ea132ffbd.mp3", "yo": "audio/ac41975d1da.mp3", "calle": "audio/a8f9f97eb45.mp3", "playa": "audio/aabd5cf4ffb.mp3", "papá": "audio/abec5e7268a.mp3", "tomate": "audio/a13f20098aa.mp3", "todo": "audio/a05f20a7178.mp3", "dedo": "audio/a8b9b43e964.mp3", "nada": "audio/aa3fcfe3a3b.mp3", "sí": "audio/a5e06bd15f9.mp3", "tú": "audio/a044e993fbe.mp3", "mesa": "audio/af04cc316d7.mp3", "leche": "audio/a3c60405a25.mp3", "no": "audio/afd12863535.mp3", "ojo": "audio/a2db9e0c624.mp3", "casa": "audio/a81bce1f3bf.mp3", "hola": "audio/a99800b85d3.mp3", "cada": "audio/ad1137b85c2.mp3", "راس": "audio/a1bba3b5397.mp3", "خلص": "audio/ad48f4e3da1.mp3", "غالي": "audio/a35142f13b1.mp3", "كتير": "audio/a0135c2974c.mp3", "أنا": "audio/a941ddf4bb6.mp3", "قلب": "audio/a82f1b4b7d9.mp3", "هلق": "audio/a260319f579.mp3", "مرحبا": "audio/a98d448a1d1.mp3", "حلو": "audio/a1f4de3270e.mp3", "حبيبي": "audio/af804ba4fa0.mp3", "عين": "audio/a675b46a5bc.mp3", "معليش": "audio/a0381bade7c.mp3", "سبعة": "audio/a2aa605ccfe.mp3", "قرآن": "audio/aeb7cd4ad61.mp3", "استقلال": "audio/a671cdcaba3.mp3", "صباح": "audio/af91c9a9f61.mp3", "صغير": "audio/ae476741781.mp3", "طيب": "audio/a42c260f0b0.mp3", "طاولة": "audio/a04df45911d.mp3", "ضروري": "audio/a45d6daa5ca.mp3", "أبيض": "audio/aec42045b5b.mp3", "ظريف": "audio/aba3edadcf1.mp3", "مظبوط": "audio/a6d4f420ce7.mp3", "هيك": "audio/a44de889d60.mp3", "هون": "audio/aae30ca19e6.mp3", "جميل": "audio/a26cb06fead.mp3", "جاي": "audio/acbd194b94b.mp3", "رجّال": "audio/a504a5727a0.mp3", "بِنْت": "audio/a8c9051214c.mp3", "نُور": "audio/a9a1a4a349f.mp3", "بيت": "audio/a2619065a2e.mp3", "يوم": "audio/aefc446efeb.mp3", "باب": "audio/a3b25b51a9c.mp3", "كيفك": "audio/a1bf06360c9.mp3", "شو": "audio/a7f146a7e5a.mp3", "تلاتة": "audio/a2d1560d33c.mp3", "بدي": "audio/a4de55dd4e3.mp3", "منيح": "audio/aac2127cce2.mp3", "carro": "audio/a3959fc6166.mp3", "coro": "audio/a720a9c0557.mp3", "corro": "audio/af73de0af41.mp3", "peso": "audio/ab0c7efa6f3.mp3", "beso": "audio/a6edd8a12b3.mp3", "pala": "audio/a95213d57ff.mp3", "bala": "audio/ad39ff8e69b.mp3", "pata": "audio/a67c38611ca.mp3", "bata": "audio/a191968f1bb.mp3", "tos": "audio/a4f956f26ee.mp3", "dos": "audio/ae67f16d28a.mp3", "tía": "audio/ae66dc9ae8f.mp3", "día": "audio/a743a04a95c.mp3", "gasa": "audio/a695a8d970b.mp3", "coma": "audio/a2609c5afcc.mp3", "goma": "audio/ac19065ff5a.mp3", "una": "audio/a226f391867.mp3", "uña": "audio/a49520ffd61.mp3", "cana": "audio/a06c34d216a.mp3", "caña": "audio/a4677342824.mp3", "piso": "audio/a90d94ae30f.mp3", "misa": "audio/ad4bd1f7dac.mp3", "踏": "audio/a08ce1ddc2e.mp3", "科": "audio/adcedab2c4f.mp3", "找": "audio/a76aac2ff5f.mp3", "志": "audio/a471d1e0ba6.mp3", "路": "audio/ade80bdbd70.mp3", "绿": "audio/a579625d5ac.mp3", "努": "audio/ac530eb5824.mp3", "هال": "audio/ab21b221b15.mp3", "حال": "audio/ac99849f27f.mp3", "خال": "audio/ad186bd9833.mp3", "سيف": "audio/aa20d192b8c.mp3", "صيف": "audio/ad81e09eee8.mp3", "سار": "audio/af957d191ae.mp3", "صار": "audio/a5ff1dd747b.mp3", "تين": "audio/a98ec5b658b.mp3", "طين": "audio/a97e7ab15ca.mp3", "دار": "audio/a4ef552f797.mp3", "ضار": "audio/ae65bde795e.mp3", "كلب": "audio/aec0c56b3b9.mp3", "عمل": "audio/ae9fa898f9b.mp3", "أمل": "audio/a60cd6c3d21.mp3", "خالي": "audio/a6dfd49bc23.mp3", "哪儿": "audio/adce81b4475.mp3", "一点儿": "audio/ab34e4ca734.mp3", "玩儿": "audio/ad5307a7967.mp3", "飞机": "audio/a0cb0206b42.mp3", "中国": "audio/a101806f57c.mp3", "铅笔": "audio/acd52d6c26e.mp3", "商店": "audio/a83eff41a2e.mp3", "明天": "audio/ab76ce230d3.mp3", "学习": "audio/aaa89dd63b3.mp3", "苹果": "audio/ab38d961e70.mp3", "同事": "audio/a92d8d1a505.mp3", "老师": "audio/a494f23d624.mp3", "美国": "audio/a2d10935506.mp3", "你好": "audio/a440ee0853a.mp3", "考试": "audio/ae53aad0f9c.mp3", "汽车": "audio/a70025cb40a.mp3", "大学": "audio/a858bb23650.mp3", "下雨": "audio/ab94ed83e39.mp3", "再见": "audio/a82202bb725.mp3", "妈妈": "audio/a7d3b2b0ebc.mp3", "谢谢": "audio/a3d43bc74a6.mp3", "朋友": "audio/ad490b5fd60.mp3", "东西": "audio/a949fb2e914.mp3", "很好": "audio/a77833b3f8c.mp3", "可以": "audio/a79176103e6.mp3", "水果": "audio/ac4bed30f02.mp3", "我很好": "audio/a212ebf3ba5.mp3", "不是": "audio/ae5d9c6c8a8.mp3", "不对": "audio/a40fe039df0.mp3", "不好": "audio/a46e6fb7ad6.mp3", "不来": "audio/a1d1cbe4928.mp3", "一个": "audio/ad8e3ae229f.mp3", "一天": "audio/ae99c431b70.mp3", "一年": "audio/a3579ba6641.mp3", "一起": "audio/a3a85181e8e.mp3", "第一": "audio/a649c8d4fca.mp3", "盘": "audio/a15c7e8e4f4.mp3", "旁": "audio/ac12a954a3e.mp3", "陈": "audio/a6a5d848e0d.mp3", "成": "audio/abb3578629d.mp3", "金": "audio/ab59df8c44a.mp3", "京": "audio/a812aba4f00.mp3", "对": "audio/a02b83ec7cc.mp3", "春": "audio/a3e45064825.mp3", "六": "audio/a3d72c724e0.mp3", "月": "audio/ad9b59879f3.mp3", "风": "audio/a534418ad36.mp3", "un vaso": "audio/ae12d793b74.mp3", "mi vaso": "audio/a8922dceb2b.mp3", "un gato": "audio/acb0821b10a.mp3", "el gato": "audio/a1085e3cc91.mp3", "un dedo": "audio/a17d98630b1.mp3", "mi dedo": "audio/a379c8a5004.mp3", "el dedo": "audio/a17d89631bb.mp3", "abogado": "audio/a20ece292e6.mp3", "un poco": "audio/ada33d83fba.mp3", "tengo": "audio/afd3d44f63d.mp3", "cinco": "audio/aa097b33b77.mp3", "rosa": "audio/a5efc86ca88.mp3", "Enrique": "audio/a9cdcdaec09.mp3", "alrededor": "audio/a148e9e4686.mp3", "Israel": "audio/a4c197dfd67.mp3", "ciudad": "audio/a7227e71007.mp3", "árbol": "audio/a07cc4c392e.mp3", "café": "audio/af424452a96.mp3", "canción": "audio/ab7b043b04b.mp3", "teléfono": "audio/a9303fb5d29.mp3", "papa": "audio/af722f20fc5.mp3", "término": "audio/a598ae72e75.mp3", "termino": "audio/a18bdc2249c.mp3", "terminó": "audio/a6675a7eb73.mp3", "chocolate": "audio/a891c5feef1.mp3", "animal": "audio/a3199ea0562.mp3", "hospital": "audio/a2b2d005e88.mp3", "bueno": "audio/a28e5793a19.mp3", "tierra": "audio/ac7039f8547.mp3", "baile": "audio/a905793fef5.mp3", "país": "audio/a8b83c17f6e.mp3", "los otros": "audio/a80fc6d8374.mp3", "una amiga": "audio/adc19878c82.mp3", "va a ir": "audio/a780589cf73.mp3", "mis amigos": "audio/af0b561b3d0.mp3", "queso": "audio/a8e5fc65edb.mp3", "guitarra": "audio/a4436a76d1c.mp3", "pingüino": "audio/a67262e67c9.mp3", "México": "audio/ae9d4eca609.mp3", "taxi": "audio/a4d82205a20.mp3", "hielo": "audio/a43cb48d6cd.mp3", "zapato": "audio/ad508dffa96.mp3", "cielo": "audio/ab54cfda898.mp3", "llave": "audio/ab48663d247.mp3", "mano": "audio/aabf1aa4a5e.mp3", "luna": "audio/a4b7fad4f3f.mp3", "sol": "audio/afbb93bb966.mp3", "foto": "audio/a0eb57679c4.mp3", "chico": "audio/a763c189e10.mp3", "huevo": "audio/a12c2d512a3.mp3", "مرة": "audio/aaa2bddee89.mp3", "مرّة": "audio/a3171c128ed.mp3", "علم": "audio/aaa0db0809f.mp3", "علّم": "audio/ae3e64f085b.mp3", "حمام": "audio/a3536631395.mp3", "حمّام": "audio/a26b654fd1a.mp3", "جمل": "audio/a678574ea77.mp3", "جمال": "audio/a05b3897a35.mp3", "كتب": "audio/a908b9e887a.mp3", "كاتب": "audio/a09155a64e4.mp3", "البيت": "audio/a00ca75370f.mp3", "الباب": "audio/ac5a70e6594.mp3", "الكتاب": "audio/abf38825a12.mp3", "الشمس": "audio/a63902b83b5.mp3", "النور": "audio/ae8cae754b8.mp3", "الدار": "audio/a1ed34fe77e.mp3", "دهب": "audio/a76aa4d293a.mp3", "ضهر": "audio/aa76ed4a973.mp3", "ضو": "audio/a9f1ec138af.mp3", "كبير": "audio/a11da4f18dd.mp3", "مدرسة": "audio/a44ee4b4e2e.mp3", "مكتبة": "audio/a4d8b4dc1c5.mp3", "بيروت": "audio/ae53b00b6e8.mp3", "قَلْب": "audio/aab0f753b77.mp3", "ثَلاثة": "audio/ae61781c18f.mp3", "ذَهَب": "audio/a4e1a1acdac.mp3", "ظُهْر": "audio/ad743872e44.mp3", "جَمِيل": "audio/a6e34cf851e.mp3", "عَيْن": "audio/a51e3758284.mp3", "صَيْف": "audio/a2de76673fd.mp3", "ضَوْء": "audio/abc6966522d.mp3", "¿Dónde está el baño?": "audio/aaf76d110de.mp3", "Todo bien, gracias.": "audio/a53919f7e8e.mp3", "Me gusta el agua.": "audio/ae367e91038.mp3", "El perro corre rápido.": "audio/ae2c26fa959.mp3", "¿Qué hora es?": "audio/af9555b50b8.mp3", "Un café, por favor.": "audio/a62673b67bf.mp3", "¿Cómo estás?": "audio/a8ac82e1324.mp3", "Voy a ir a la playa.": "audio/a14589b18b8.mp3", "Mis amigos están aquí.": "audio/a4e05447d69.mp3", "Quiero un vaso de agua.": "audio/a071136cbc0.mp3", "Hoy hace calor.": "audio/a0cf4484f2e.mp3", "你叫什么名字？": "audio/abe97f872b2.mp3", "我是美国人。": "audio/ac40cf52961.mp3", "老板，你好！": "audio/a7209530ba4.mp3", "我也很好。": "audio/a6006a3cff0.mp3", "不客气。": "audio/aef70158e07.mp3", "一共多少钱？": "audio/a5135575b84.mp3", "我不知道。": "audio/a550e7c6937.mp3", "你在哪儿？": "audio/a44a90ef8ec.mp3", "这是我的朋友。": "audio/a4f61605c33.mp3", "صباح الخير": "audio/a5561c3919d.mp3", "الطقس حلو اليوم": "audio/a9bdcf1e28b.mp3", "شو بدّك؟": "audio/a4429f83692.mp3", "يلّا نروح": "audio/a712c77aaa5.mp3", "صباح النور": "audio/ab96d319082.mp3", "الدنيا شوب": "audio/ab445b9a0ac.mp3", "شو اسمك؟": "audio/a2955f45554.mp3", "هلّق مش فاضي": "audio/a8b41bd24b7.mp3", "قدّيش حقّه؟": "audio/a413c585323.mp3", "كتير منيح": "audio/a527a547e6d.mp3", "بدّي كاسة مي": "audio/a0aca8c0a24.mp3", "pure:va": "audio/aa6bf3007e9.mp3", "pure:ve": "audio/a7af0d2e282.mp3", "pure:vi": "audio/aa9f0e6f3c4.mp3", "pure:vo": "audio/a517e02f7b7.mp3", "pure:vschwa": "audio/a78d6cd498a.mp3", "pure:vu": "audio/ac9ad934397.mp3"};
+const AUDIO={"妈": "audio/ae3918a99aa.mp3", "麻": "audio/a433ea2216f.mp3", "马": "audio/a7d39044ed6.mp3", "骂": "audio/a6343706870.mp3", "好": "audio/a27e4fe4c3f.mp3", "爸": "audio/aa732e56e22.mp3", "大": "audio/a0889c34972.mp3", "怕": "audio/abc1c58b84b.mp3", "他": "audio/ae31b569a0f.mp3", "开": "audio/ab4217093bc.mp3", "在": "audio/a686b703f41.mp3", "早": "audio/a13a8589339.mp3", "字": "audio/a582c50066c.mp3", "菜": "audio/a7b4bb888fb.mp3", "草": "audio/a6744771609.mp3", "次": "audio/a5e5b8169ee.mp3", "中": "audio/a0869071c92.mp3", "这": "audio/a542523173c.mp3", "知": "audio/ac524682048.mp3", "茶": "audio/a97a08c17dc.mp3", "吃": "audio/aa10d4d5a63.mp3", "车": "audio/a7c852e1d83.mp3", "是": "audio/a30160a21b9.mp3", "书": "audio/afe04274cef.mp3", "十": "audio/aaa107f05b6.mp3", "人": "audio/a4912771a42.mp3", "热": "audio/a1aff05b636.mp3", "日": "audio/a15917f3b32.mp3", "鸡": "audio/a51093a2d58.mp3", "家": "audio/a7de8177ce7.mp3", "九": "audio/a27a2b9f17b.mp3", "七": "audio/a7db1eeb5c3.mp3", "去": "audio/a033fd274f0.mp3", "钱": "audio/adb4be61875.mp3", "西": "audio/a2f64b5a67e.mp3", "谢": "audio/ab27c6fd4c5.mp3", "学": "audio/a7c7a06f0ea.mp3", "一": "audio/ad274eee8a1.mp3", "鱼": "audio/a92468fdf7c.mp3", "女": "audio/a26bc84961c.mp3", "四": "audio/a4f88740b34.mp3", "饿": "audio/abf873d61fd.mp3", "喝": "audio/a9982c5ced1.mp3", "哥": "audio/acdfd26daa2.mp3", "冷": "audio/ae2fc60d070.mp3", "八": "audio/a2142fb62fd.mp3", "拔": "audio/a737c389c6b.mp3", "把": "audio/ab3ba7814f4.mp3", "衣": "audio/acb6d358425.mp3", "姨": "audio/a620e3674e5.mp3", "椅": "audio/a618be2726b.mp3", "意": "audio/a9d197986e0.mp3", "汤": "audio/afc4ef67147.mp3", "糖": "audio/a3d8cd510d0.mp3", "躺": "audio/aa85402d565.mp3", "烫": "audio/a700ef0f34f.mp3", "飞": "audio/a322b8afdf9.mp3", "肥": "audio/ae650f32008.mp3", "匪": "audio/a78c1a1967a.mp3", "费": "audio/af07ab143e8.mp3", "通": "audio/abef21932fe.mp3", "同": "audio/a0b8b919983.mp3", "统": "audio/ab6c938397c.mp3", "痛": "audio/a335a309cd8.mp3", "诗": "audio/a53e00f750c.mp3", "使": "audio/af6901ca318.mp3", "妈，麻，马，骂": "audio/ab1e6e7f670.mp3", "perro": "audio/a6139bdc23a.mp3", "rojo": "audio/aaf6c1a0ca2.mp3", "pero": "audio/a98fc7b3476.mp3", "caro": "audio/a732849d5bc.mp3", "gracias": "audio/aa30b3970f3.mp3", "jamón": "audio/a8d298a01d5.mp3", "lago": "audio/a4e68e95b58.mp3", "agua": "audio/ac1962c232b.mp3", "lobo": "audio/a4a98e66035.mp3", "uva": "audio/a2d2c2a1400.mp3", "Cuba": "audio/ac484b137e2.mp3", "gracias (Spain)": "audio/ab2ab2a377f.mp3", "cielo (Spain)": "audio/a2add742165.mp3", "zapato (Spain)": "audio/afcda3828ca.mp3", "año": "audio/a8470d9e5f7.mp3", "niño": "audio/a36a2baf40d.mp3", "España": "audio/a1ea132ffbd.mp3", "yo": "audio/ac41975d1da.mp3", "calle": "audio/a8f9f97eb45.mp3", "playa": "audio/aabd5cf4ffb.mp3", "papá": "audio/abec5e7268a.mp3", "tomate": "audio/a13f20098aa.mp3", "todo": "audio/a05f20a7178.mp3", "dedo": "audio/a8b9b43e964.mp3", "nada": "audio/aa3fcfe3a3b.mp3", "sí": "audio/a5e06bd15f9.mp3", "tú": "audio/a044e993fbe.mp3", "mesa": "audio/af04cc316d7.mp3", "leche": "audio/a3c60405a25.mp3", "no": "audio/afd12863535.mp3", "ojo": "audio/a2db9e0c624.mp3", "casa": "audio/a81bce1f3bf.mp3", "hola": "audio/a99800b85d3.mp3", "cada": "audio/ad1137b85c2.mp3", "راس": "audio/a1bba3b5397.mp3", "خلص": "audio/ad48f4e3da1.mp3", "غالي": "audio/a35142f13b1.mp3", "كتير": "audio/a0135c2974c.mp3", "أنا": "audio/a941ddf4bb6.mp3", "قلب": "audio/a82f1b4b7d9.mp3", "هلق": "audio/a260319f579.mp3", "مرحبا": "audio/a98d448a1d1.mp3", "حلو": "audio/a1f4de3270e.mp3", "حبيبي": "audio/af804ba4fa0.mp3", "عين": "audio/a675b46a5bc.mp3", "معليش": "audio/a0381bade7c.mp3", "سبعة": "audio/a2aa605ccfe.mp3", "قرآن": "audio/aeb7cd4ad61.mp3", "استقلال": "audio/a671cdcaba3.mp3", "صباح": "audio/af91c9a9f61.mp3", "صغير": "audio/ae476741781.mp3", "طيب": "audio/a42c260f0b0.mp3", "طاولة": "audio/a04df45911d.mp3", "ضروري": "audio/a45d6daa5ca.mp3", "أبيض": "audio/aec42045b5b.mp3", "ظريف": "audio/aba3edadcf1.mp3", "مظبوط": "audio/a6d4f420ce7.mp3", "هيك": "audio/a44de889d60.mp3", "هون": "audio/aae30ca19e6.mp3", "جميل": "audio/a26cb06fead.mp3", "جاي": "audio/acbd194b94b.mp3", "رجّال": "audio/a504a5727a0.mp3", "بِنْت": "audio/a8c9051214c.mp3", "نُور": "audio/a9a1a4a349f.mp3", "بيت": "audio/a2619065a2e.mp3", "يوم": "audio/aefc446efeb.mp3", "باب": "audio/a3b25b51a9c.mp3", "كيفك": "audio/a1bf06360c9.mp3", "شو": "audio/a7f146a7e5a.mp3", "تلاتة": "audio/a2d1560d33c.mp3", "بدي": "audio/a4de55dd4e3.mp3", "منيح": "audio/aac2127cce2.mp3", "carro": "audio/a3959fc6166.mp3", "coro": "audio/a720a9c0557.mp3", "corro": "audio/af73de0af41.mp3", "peso": "audio/ab0c7efa6f3.mp3", "beso": "audio/a6edd8a12b3.mp3", "pala": "audio/a95213d57ff.mp3", "bala": "audio/ad39ff8e69b.mp3", "pata": "audio/a67c38611ca.mp3", "bata": "audio/a191968f1bb.mp3", "tos": "audio/a4f956f26ee.mp3", "dos": "audio/ae67f16d28a.mp3", "tía": "audio/ae66dc9ae8f.mp3", "día": "audio/a743a04a95c.mp3", "gasa": "audio/a695a8d970b.mp3", "coma": "audio/a2609c5afcc.mp3", "goma": "audio/ac19065ff5a.mp3", "una": "audio/a226f391867.mp3", "uña": "audio/a49520ffd61.mp3", "cana": "audio/a06c34d216a.mp3", "caña": "audio/a4677342824.mp3", "piso": "audio/a90d94ae30f.mp3", "misa": "audio/ad4bd1f7dac.mp3", "踏": "audio/a08ce1ddc2e.mp3", "科": "audio/adcedab2c4f.mp3", "找": "audio/a76aac2ff5f.mp3", "志": "audio/a471d1e0ba6.mp3", "路": "audio/ade80bdbd70.mp3", "绿": "audio/a579625d5ac.mp3", "努": "audio/ac530eb5824.mp3", "هال": "audio/ab21b221b15.mp3", "حال": "audio/ac99849f27f.mp3", "خال": "audio/ad186bd9833.mp3", "سيف": "audio/aa20d192b8c.mp3", "صيف": "audio/ad81e09eee8.mp3", "سار": "audio/af957d191ae.mp3", "صار": "audio/a5ff1dd747b.mp3", "تين": "audio/a98ec5b658b.mp3", "طين": "audio/a97e7ab15ca.mp3", "دار": "audio/a4ef552f797.mp3", "ضار": "audio/ae65bde795e.mp3", "كلب": "audio/aec0c56b3b9.mp3", "عمل": "audio/ae9fa898f9b.mp3", "أمل": "audio/a60cd6c3d21.mp3", "خالي": "audio/a6dfd49bc23.mp3", "哪儿": "audio/adce81b4475.mp3", "一点儿": "audio/ab34e4ca734.mp3", "玩儿": "audio/ad5307a7967.mp3", "飞机": "audio/a0cb0206b42.mp3", "中国": "audio/a101806f57c.mp3", "铅笔": "audio/acd52d6c26e.mp3", "商店": "audio/a83eff41a2e.mp3", "明天": "audio/ab76ce230d3.mp3", "学习": "audio/aaa89dd63b3.mp3", "苹果": "audio/ab38d961e70.mp3", "同事": "audio/a92d8d1a505.mp3", "老师": "audio/a494f23d624.mp3", "美国": "audio/a2d10935506.mp3", "你好": "audio/a440ee0853a.mp3", "考试": "audio/ae53aad0f9c.mp3", "汽车": "audio/a70025cb40a.mp3", "大学": "audio/a858bb23650.mp3", "下雨": "audio/ab94ed83e39.mp3", "再见": "audio/a82202bb725.mp3", "妈妈": "audio/a7d3b2b0ebc.mp3", "谢谢": "audio/a3d43bc74a6.mp3", "朋友": "audio/ad490b5fd60.mp3", "东西": "audio/a949fb2e914.mp3", "很好": "audio/a77833b3f8c.mp3", "可以": "audio/a79176103e6.mp3", "水果": "audio/ac4bed30f02.mp3", "我很好": "audio/a212ebf3ba5.mp3", "不是": "audio/ae5d9c6c8a8.mp3", "不对": "audio/a40fe039df0.mp3", "不好": "audio/a46e6fb7ad6.mp3", "不来": "audio/a1d1cbe4928.mp3", "一个": "audio/ad8e3ae229f.mp3", "一天": "audio/ae99c431b70.mp3", "一年": "audio/a3579ba6641.mp3", "一起": "audio/a3a85181e8e.mp3", "第一": "audio/a649c8d4fca.mp3", "盘": "audio/a15c7e8e4f4.mp3", "旁": "audio/ac12a954a3e.mp3", "陈": "audio/a6a5d848e0d.mp3", "成": "audio/abb3578629d.mp3", "金": "audio/ab59df8c44a.mp3", "京": "audio/a812aba4f00.mp3", "对": "audio/a02b83ec7cc.mp3", "春": "audio/a3e45064825.mp3", "六": "audio/a3d72c724e0.mp3", "月": "audio/ad9b59879f3.mp3", "风": "audio/a534418ad36.mp3", "un vaso": "audio/ae12d793b74.mp3", "mi vaso": "audio/a8922dceb2b.mp3", "un gato": "audio/acb0821b10a.mp3", "el gato": "audio/a1085e3cc91.mp3", "un dedo": "audio/a17d98630b1.mp3", "mi dedo": "audio/a379c8a5004.mp3", "el dedo": "audio/a17d89631bb.mp3", "abogado": "audio/a20ece292e6.mp3", "un poco": "audio/ada33d83fba.mp3", "tengo": "audio/afd3d44f63d.mp3", "cinco": "audio/aa097b33b77.mp3", "rosa": "audio/a5efc86ca88.mp3", "Enrique": "audio/a9cdcdaec09.mp3", "alrededor": "audio/a148e9e4686.mp3", "Israel": "audio/a4c197dfd67.mp3", "ciudad": "audio/a7227e71007.mp3", "árbol": "audio/a07cc4c392e.mp3", "café": "audio/af424452a96.mp3", "canción": "audio/ab7b043b04b.mp3", "teléfono": "audio/a9303fb5d29.mp3", "papa": "audio/af722f20fc5.mp3", "término": "audio/a598ae72e75.mp3", "termino": "audio/a18bdc2249c.mp3", "terminó": "audio/a6675a7eb73.mp3", "chocolate": "audio/a891c5feef1.mp3", "animal": "audio/a3199ea0562.mp3", "hospital": "audio/a2b2d005e88.mp3", "bueno": "audio/a28e5793a19.mp3", "tierra": "audio/ac7039f8547.mp3", "baile": "audio/a905793fef5.mp3", "país": "audio/a8b83c17f6e.mp3", "los otros": "audio/a80fc6d8374.mp3", "una amiga": "audio/adc19878c82.mp3", "va a ir": "audio/a780589cf73.mp3", "mis amigos": "audio/af0b561b3d0.mp3", "queso": "audio/a8e5fc65edb.mp3", "guitarra": "audio/a4436a76d1c.mp3", "pingüino": "audio/a67262e67c9.mp3", "México": "audio/ae9d4eca609.mp3", "taxi": "audio/a4d82205a20.mp3", "hielo": "audio/a43cb48d6cd.mp3", "zapato": "audio/ad508dffa96.mp3", "cielo": "audio/ab54cfda898.mp3", "llave": "audio/ab48663d247.mp3", "mano": "audio/aabf1aa4a5e.mp3", "luna": "audio/a4b7fad4f3f.mp3", "sol": "audio/afbb93bb966.mp3", "foto": "audio/a0eb57679c4.mp3", "chico": "audio/a763c189e10.mp3", "huevo": "audio/a12c2d512a3.mp3", "مرة": "audio/aaa2bddee89.mp3", "مرّة": "audio/a3171c128ed.mp3", "علم": "audio/aaa0db0809f.mp3", "علّم": "audio/ae3e64f085b.mp3", "حمام": "audio/a3536631395.mp3", "حمّام": "audio/a26b654fd1a.mp3", "جمل": "audio/a678574ea77.mp3", "جمال": "audio/a05b3897a35.mp3", "كتب": "audio/a908b9e887a.mp3", "كاتب": "audio/a09155a64e4.mp3", "البيت": "audio/a00ca75370f.mp3", "الباب": "audio/ac5a70e6594.mp3", "الكتاب": "audio/abf38825a12.mp3", "الشمس": "audio/a63902b83b5.mp3", "النور": "audio/ae8cae754b8.mp3", "الدار": "audio/a1ed34fe77e.mp3", "دهب": "audio/a76aa4d293a.mp3", "ضهر": "audio/aa76ed4a973.mp3", "ضو": "audio/a9f1ec138af.mp3", "كبير": "audio/a11da4f18dd.mp3", "مدرسة": "audio/a44ee4b4e2e.mp3", "مكتبة": "audio/a4d8b4dc1c5.mp3", "بيروت": "audio/ae53b00b6e8.mp3", "قَلْب": "audio/aab0f753b77.mp3", "ثَلاثة": "audio/ae61781c18f.mp3", "ذَهَب": "audio/a4e1a1acdac.mp3", "ظُهْر": "audio/ad743872e44.mp3", "جَمِيل": "audio/a6e34cf851e.mp3", "عَيْن": "audio/a51e3758284.mp3", "صَيْف": "audio/a2de76673fd.mp3", "ضَوْء": "audio/abc6966522d.mp3", "¿Dónde está el baño?": "audio/aaf76d110de.mp3", "Todo bien, gracias.": "audio/a53919f7e8e.mp3", "Me gusta el agua.": "audio/ae367e91038.mp3", "El perro corre rápido.": "audio/ae2c26fa959.mp3", "¿Qué hora es?": "audio/af9555b50b8.mp3", "Un café, por favor.": "audio/a62673b67bf.mp3", "¿Cómo estás?": "audio/a8ac82e1324.mp3", "Voy a ir a la playa.": "audio/a14589b18b8.mp3", "Mis amigos están aquí.": "audio/a4e05447d69.mp3", "Quiero un vaso de agua.": "audio/a071136cbc0.mp3", "Hoy hace calor.": "audio/a0cf4484f2e.mp3", "你叫什么名字？": "audio/abe97f872b2.mp3", "我是美国人。": "audio/ac40cf52961.mp3", "老板，你好！": "audio/a7209530ba4.mp3", "我也很好。": "audio/a6006a3cff0.mp3", "不客气。": "audio/aef70158e07.mp3", "一共多少钱？": "audio/a5135575b84.mp3", "我不知道。": "audio/a550e7c6937.mp3", "你在哪儿？": "audio/a44a90ef8ec.mp3", "这是我的朋友。": "audio/a4f61605c33.mp3", "صباح الخير": "audio/a5561c3919d.mp3", "الطقس حلو اليوم": "audio/a9bdcf1e28b.mp3", "شو بدّك؟": "audio/a4429f83692.mp3", "يلّا نروح": "audio/a712c77aaa5.mp3", "صباح النور": "audio/ab96d319082.mp3", "الدنيا شوب": "audio/ab445b9a0ac.mp3", "شو اسمك؟": "audio/a2955f45554.mp3", "هلّق مش فاضي": "audio/a8b41bd24b7.mp3", "قدّيش حقّه؟": "audio/a413c585323.mp3", "كتير منيح": "audio/a527a547e6d.mp3", "بدّي كاسة مي": "audio/a0aca8c0a24.mp3", "pure:va": "audio/aa6bf3007e9.mp3", "pure:ve": "audio/a7af0d2e282.mp3", "pure:vi": "audio/aa9f0e6f3c4.mp3", "pure:vo": "audio/a517e02f7b7.mp3", "pure:vschwa": "audio/a78d6cd498a.mp3", "pure:vu": "audio/ac9ad934397.mp3", "say (EN)": "audio/ac960c65f20.mp3", "may (EN)": "audio/ac935ab1941.mp3", "day (EN)": "audio/a2d9d441a8c.mp3", "see (EN)": "audio/a00544f5416.mp3", "no (EN)": "audio/a9e2131ba9f.mp3", "low (EN)": "audio/a5b5296950a.mp3", "two (EN)": "audio/ad5903d83b1.mp3", "father (EN)": "audio/a0b8bb5a773.mp3", "banana (EN)": "audio/aeed4f8457c.mp3", "chocolate (EN)": "audio/acf455a9086.mp3", "tomato (EN)": "audio/a1d38208655.mp3", "taco (EN)": "audio/a4ad38fa4e9.mp3", "animal (EN)": "audio/a56652135f3.mp3", "hospital (EN)": "audio/a6c48b1342e.mp3", "pin (EN)": "audio/a6bb2915802.mp3", "spin (EN)": "audio/aaca63d292a.mp3", "pan (EN)": "audio/a75be75a90e.mp3", "pasta (EN)": "audio/a776bdeec25.mp3", "tea (EN)": "audio/aba6a90cdab.mp3", "dose (EN)": "audio/a1f4adeecc9.mp3", "kin (EN)": "audio/aac90babd80.mp3", "skin (EN)": "audio/a1a3b9126cc.mp3", "coma (EN)": "audio/a524961cbb6.mp3", "other (EN)": "audio/a7b63bdde9a.mp3", "ladder (EN)": "audio/a7c905e1b64.mp3", "butter (EN)": "audio/a50568c5c8a.mp3", "water (EN)": "audio/a618fd5f68a.mp3", "canyon (EN)": "audio/aeba79d15d7.mp3", "onion (EN)": "audio/a33dd8b3099.mp3", "yes (EN)": "audio/ae2449c1e8d.mp3", "hug (EN)": "audio/abd422d1630.mp3", "feel (EN)": "audio/a32b6a6f2c4.mp3", "sole (EN)": "audio/a464b960cca.mp3", "full (EN)": "audio/aa0bf50ea10.mp3", "sé": "audio/a9bd61a0d49.mp3", "me": "audio/ab1c1d8736f.mp3", "de": "audio/a600ccd1b71.mp3", "lo": "audio/a638e8f0171.mp3", "banana": "audio/a250e77f12a.mp3", "taco": "audio/a9dc4319c27.mp3", "pan": "audio/abd2bd8216b.mp3", "pasta": "audio/a46139b0b16.mp3", "kilo": "audio/a8ff8800a23.mp3", "poco": "audio/a5aa462b02c.mp3", "bebé": "audio/a5bb308acf2.mp3", "vino": "audio/af0e4876639.mp3", "lado": "audio/a0b8bc0c4b4.mp3", "verdad": "audio/a762ba43a5d.mp3", "amigo": "audio/a01f07beb85.mp3", "algo": "audio/aaaec0969b8.mp3", "caldo": "audio/a29a5e542fc.mp3", "gordo": "audio/a2152f5af0a.mp3", "grande": "audio/a35272bf81d.mp3", "para": "audio/ad2f9be8fe2.mp3", "hora": "audio/a623aeb8c53.mp3", "tres": "audio/a0c95987338.mp3", "comer": "audio/a5fb14f826f.mp3", "radio": "audio/ad432c3525b.mp3", "cañón": "audio/a3acb4032d4.mp3", "mañana": "audio/a8727ae6503.mp3", "gente": "audio/ab52e0a7a80.mp3", "jugo": "audio/adffa7ef61c.mp3", "ajo": "audio/a63b963ade1.mp3", "mujer": "audio/ac4034b7d65.mp3", "mil": "audio/ad34e454154.mp3", "papel": "audio/acb030c5eec.mp3", "mismo": "audio/ac859579a7c.mp3", "hablan": "audio/a3b3251448f.mp3", "lápiz": "audio/a5187e8dbb9.mp3", "examen": "audio/aae0de9e32b.mp3", "sábado": "audio/a1e73aa8ef0.mp3", "aire": "audio/a437ec6c121.mp3", "auto": "audio/a0d612c12d2.mp3", "río": "audio/a348f83686b.mp3", "gato": "audio/a8f39c63d50.mp3", "cine": "audio/a2ffb113581.mp3", "guerra": "audio/a5128e013dd.mp3", "mundo": "audio/a5956a2b28d.mp3", "hat (EN)": "audio/a0b3897090e.mp3"};
 let curAudio=null;
 function speak(text,lang,warnEl,v){
   const url=audioUrl(text,v);
@@ -670,7 +700,7 @@ function ttsSpeak(text,lang,warnEl){
     const u=new SpeechSynthesisUtterance(text);
     const pref=TTS[lang];
     const vs=voices.filter(v=>v.lang&&v.lang.toLowerCase().startsWith(pref));
-    const order=lang==='es'?['es-es','es-mx','es-us']:lang==='zh'?['zh-cn','zh-tw','zh-hk']:['ar-sa','ar'];
+    const order=lang==='en'?['en-us','en-gb','en']:lang==='es'?['es-es','es-mx','es-us']:lang==='zh'?['zh-cn','zh-tw','zh-hk']:['ar-sa','ar'];
     let v=null;for(const o of order){v=vs.find(x=>x.lang.toLowerCase().replace('_','-').startsWith(o));if(v)break}
     v=v||vs[0];
     if(v)u.voice=v; else if(warnEl&&voices.length){warnEl.textContent=`No ${LANGS[lang]} voice is installed on this device, so playback may be wrong or silent.`;warnEl.style.display='block'}
@@ -1019,9 +1049,9 @@ function mountQ(el,q,hooks){
     opts=TONES.map((t,i)=>`<button class="opt" data-i="${i}"><b>Tone ${t.n}</b> <span class="ipa" style="font-size:22px">${t.let}</span> <span style="color:var(--muted);font-size:14px">${t.name}</span></button>`).join('');
   } else if(q.type==='custom'){
     const it=q.item,w=it.w?wd(it.w):null;
-    prompt=it.w?'Listen, then answer.':'Answer from the rule.';
+    prompt=it.p||(it.w?'Listen, then answer.':'Answer from the rule.');
     main=`${w?playBtn(w.w,w.l,'the example'):''}<span style="font-weight:500">${it.q}</span>`;
-    opts=it.o.map((o,i)=>`<button class="opt" data-i="${i}">${esc(o)}</button>`).join('');
+    opts=it.o.map((o,i)=>`<button class="opt${it.oi?' ipa ipaopt':''}" data-i="${i}">${esc(o)}</button>`).join('');
   } else if(q.type==='tpair'){
     const w=wd(q.it.w);
     prompt='Listen. Which two tones?';
@@ -1058,7 +1088,7 @@ function answerQ(el,q,i,hooks){
     correctIdx=q.ans;ok=i===q.ans;const t=TONES[q.ans];
     fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div><p>${q.char} is <b>tone ${t.n}</b> <span class="ipa">${t.let}</span> (${t.chao}). ${playBtn(q.char,'zh')}</p>`;
   } else if(q.type==='custom'){
-    correctIdx=q.ans;ok=i===q.ans;const w=q.item.w?wd(q.item.w):null;
+    correctIdx=q.ans;ok=i===q.ans;const fk=q.item.w||q.item.fw,w=fk?wd(fk):null;
     fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div><p>${w?`${playBtn(w.w,w.l)} <b>${lessonWordHTML(w)}</b> <span class="ipa">[${esc(w.ipa)}]</span> “${esc(w.g)}”. `:''}${esc(q.item.why)}</p>`;
   } else if(q.type==='tpair'){
     correctIdx=q.ans;ok=i===q.ans;const w=wd(q.it.w);
@@ -1239,6 +1269,16 @@ lw('ar',[['مرة','mara','woman','mara'],['مرّة','marra','once; a time','ma
  ['دهب','d̪ahab','gold','dahab'],['ضهر','dˤuhr','noon','ḍuhr'],['ضو','dˤoː','light','ḍō'],['كبير','kbiːr','big','kbīr'],['مدرسة','ˈmadrase','school','madrase'],['مكتبة','ˈmaktabe','library','maktabe'],['بيروت','beːˈruːt','Beirut','bēyrūt']]);
 // Standard Arabic recordings (earlier MSA voice) for the comparison lesson
 lw('ar',[['قَلْب','qalb','heart (MSA)','qalb'],['ثَلاثة','θalaːθa','three (MSA)','thalātha'],['ذَهَب','ðahab','gold (MSA)','dhahab'],['ظُهْر','ðˤuhr','noon (MSA)','ẓuhr'],['جَمِيل','dʒamiːl','beautiful (MSA)','jamīl'],['عَيْن','ʕajn','eye (MSA)','ʿayn'],['صَيْف','sˤajf','summer (MSA)','ṣayf'],['ضَوْء','dˤawʔ','light (MSA)','ḍawʾ']]);
+lw('en',[['say (EN)','seɪ','say'],['may (EN)','meɪ','may'],['day (EN)','deɪ','day'],['see (EN)','si','see'],['no (EN)','noʊ','no'],['low (EN)','loʊ','low'],['two (EN)','tʰu','two'],['father (EN)','ˈfɑðɚ','father'],['banana (EN)','bəˈnænə','banana'],
+ ['chocolate (EN)','ˈtʃɑklət','chocolate'],['tomato (EN)','təˈmeɪɾoʊ','tomato'],['taco (EN)','ˈtʰɑkoʊ','taco'],['animal (EN)','ˈænəməɫ','animal'],['hospital (EN)','ˈhɑspɪɾəɫ','hospital'],['pin (EN)','pʰɪn','pin'],['spin (EN)','spɪn','spin'],['pan (EN)','pʰæn','pan'],['pasta (EN)','ˈpʰɑstə','pasta'],
+ ['tea (EN)','tʰi','tea'],['dose (EN)','doʊs','dose'],['kin (EN)','kʰɪn','kin'],['skin (EN)','skɪn','skin'],['coma (EN)','ˈkʰoʊmə','coma'],['other (EN)','ˈʌðɚ','other'],['ladder (EN)','ˈlæɾɚ','ladder'],['butter (EN)','ˈbʌɾɚ','butter'],['water (EN)','ˈwɑɾɚ','water'],
+ ['canyon (EN)','ˈkænjən','canyon'],['onion (EN)','ˈʌnjən','onion'],['yes (EN)','jɛs','yes'],['hat (EN)','hæt','hat'],['hug (EN)','hʌɡ','hug'],['feel (EN)','fiɫ','feel'],['sole (EN)','soʊɫ','sole'],['full (EN)','fʊɫ','full']]);
+lw('es',[['sé','se','I know'],['me','me','me'],['de','d̪e','of, from'],['lo','lo','it, him'],['banana','baˈnana','banana'],['taco','ˈt̪ako','taco'],['pan','pan','bread'],['pasta','ˈpast̪a','pasta'],
+ ['kilo','ˈkilo','kilo'],['poco','ˈpoko','a little'],['bebé','beˈβe','baby'],['vino','ˈbino','wine'],['lado','ˈlaðo','side'],['verdad','beɾˈðað','truth'],['amigo','aˈmiɣo','friend'],['algo','ˈalɣo','something'],
+ ['caldo','ˈkald̪o','broth'],['gordo','ˈɡoɾðo','fat'],['grande','ˈɡɾand̪e','big'],['para','ˈpaɾa','for'],['hora','ˈoɾa','hour'],['tres','t̪ɾes','three'],['comer','koˈmeɾ','to eat'],['radio','ˈraðjo','radio'],
+ ['cañón','kaˈɲon','canyon'],['mañana','maˈɲana','tomorrow'],['ya','ʝa','already'],['gente','ˈxent̪e','people'],['jugo','ˈxuɣo','juice'],['ajo','ˈaxo','garlic'],['mujer','muˈxeɾ','woman'],['mil','mil','thousand'],
+ ['papel','paˈpel','paper'],['mismo','ˈmizmo','same'],['hablan','ˈaβlan','they speak'],['lápiz','ˈlapis','pencil'],['examen','ekˈsamen','exam'],['sábado','ˈsaβaðo','Saturday'],['aire','ˈajɾe','air'],['auto','ˈawt̪o','car'],
+ ['río','ˈrio','river'],['gato','ˈɡat̪o','cat'],['cine','ˈsine','cinema'],['guerra','ˈɡera','war'],['mundo','ˈmund̪o','world'],['ojo','ˈoxo','eye'],['hola','ˈola','hello']]);
 function wd(key){
   if(LW[key])return LW[key];
   for(const c of PAIRS)for(const p of c.pairs)for(const w of p)if(w.w===key)return w;
@@ -1272,101 +1312,388 @@ const tn=n=>({t:'tones',n:n||8});
 const tp=n=>({t:'tpairs',n:n||8});
 const spk=keys=>({t:'speak',keys});
 const Q=(w,q,o,a,why)=>({w,q,o,a,why});
+// ---------- deeper lesson steps: symbols, feel, compare, build ----------
+const sy=(h,intro,items)=>({t:'sym',h,intro,items});
+const fl=(h,html,keys,yes,no,q)=>({t:'feel',h,html,keys,yes,no,q});
+const cm=(h,html,rows,note)=>({t:'cmp',h,html,rows,note});
+const bd=items=>({t:'build',items});
+const RD=(ipa,o,a,fw,why)=>({p:'Read the transcription. Which word is it?',q:`<span class="ipa" style="font-size:30px">[${ipa}]</span>`,o,a,fw,why});
+const HR=(w,o,a,why)=>({w,p:'Listen. Which transcription matches?',q:'Which transcription matches what you hear?',o,a,oi:true,why});
+function dispW(w){return w.l==='ar'?`<span class="arabic">${esc(w.w)}</span>`:esc(w.w.replace(/ \(EN\)$/,''))}
+function exChip(k){const w=wd(k);if(!w)return '';return `<span class="exchip">${playBtn(w.w,w.l)}<span><b>${dispW(w)}</b> <span class="ipa">[${esc(w.ipa)}]</span></span></span>`}
+function symStepHTML(st){
+  return `<h2>${esc(st.h)}</h2>${st.intro?`<div class="lesson-text">${st.intro}</div>`:''}<div class="symlist">${st.items.map(it=>`<div class="symrow"><div class="symbig ipa">${esc(it.s)}</div><div class="symbody">${it.n?`<div class="symname">${it.n}</div>`:''}${it.t?`<div class="symtxt">${it.t}</div>`:''}${(it.k||[]).length?`<div class="symex">${it.k.map(exChip).join('')}</div>`:''}</div></div>`).join('')}</div><div class="voice-warn"></div>`;
+}
+function cmpCell(k){const w=wd(k);if(!w)return '<div></div>';return `<div class="cmpcell"><span class="tag t-${w.l}">${w.l==='en'?'English':LANGS[w.l]}</span><div class="cmpw">${playBtn(w.w,w.l)}<b>${dispW(w)}</b></div><div class="ipa cmpi">[${esc(w.ipa)}]</div></div>`}
+function cmpStepHTML(st){
+  return `<h2>${esc(st.h)}</h2>${st.html?`<div class="lesson-text">${st.html}</div>`:''}<div class="cmplist">${st.rows.map(r=>`<div class="cmprow">${cmpCell(r[0])}<div class="cmpvs">vs</div>${cmpCell(r[1])}${r[2]?`<div class="cmpnote">${r[2]}</div>`:''}</div>`).join('')}</div>${st.note?`<div class="note">${st.note}</div>`:''}<div class="voice-warn"></div>`;
+}
+function feelStepHTML(st){
+  return `<h2>${esc(st.h)}</h2><div class="lesson-text">${st.html}</div>${(st.keys||[]).length?`<div class="symex">${st.keys.map(exChip).join('')}</div>`:''}
+   <div class="feelq"><b>${st.q||'Did you feel it?'}</b><div class="row" style="margin-top:8px"><button class="btn ghost" data-feel="1">Yes</button><button class="btn ghost" data-feel="0">Not really</button></div><div class="feelfb"></div></div><div class="voice-warn"></div>`;
+}
+function bindFeel(st){
+  document.querySelectorAll('[data-feel]').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('[data-feel]').forEach(x=>x.classList.toggle('on',x===b));
+    const f=document.querySelector('.feelfb');f.innerHTML=b.dataset.feel==='1'?st.yes:st.no;f.classList.add('on');
+  });
+}
+function mountBuild(el,q,hooks){
+  const it=q.item,w=wd(it.w),ans=it.a.split(' '),tiles=shuffle([...new Set([...ans,...(it.x?it.x.split(' '):[])])]);
+  const cur=[];
+  el.innerHTML=`<div class="qprompt">Build the transcription: tap the symbols in order.</div>
+   <div class="qmain">${playBtn(w.w,w.l,'the word')}<span class="w">${dispW(w)}</span><span style="font-size:15px;color:var(--muted);font-weight:400">“${esc(w.g)}”</span></div>
+   <div class="bslot ipa">[<span class="bcur"></span><span class="bcaret"></span>]</div>
+   <div class="tiles">${tiles.map(t=>`<button class="tile ipa${t==='ˈ'?' stress':''}" data-t="${esc(t)}" aria-label="${t==='ˈ'?'stress mark':esc(t)}">${esc(t)}</button>`).join('')}</div>
+   <div class="row bctl"><button class="btn ghost" data-b="undo">⌫ Undo</button><button class="btn ghost" data-b="clr">Clear</button><span style="flex:1"></span><button class="btn" data-b="chk" disabled>Check</button></div>
+   ${it.hint?`<p class="bhint">${it.hint}</p>`:''}<div class="voice-warn"></div><div class="feedback"></div>`;
+  const upd=()=>{el.querySelector('.bcur').textContent=cur.join('');el.querySelector('[data-b=chk]').disabled=!cur.length};
+  el.querySelector('.tiles').onclick=e=>{const b=e.target.closest('.tile');if(b&&!b.disabled){cur.push(b.dataset.t);upd()}};
+  el.querySelector('.bctl').onclick=e=>{const b=e.target.closest('[data-b]');if(!b||b.disabled)return;
+    if(b.dataset.b==='undo'){cur.pop();upd()}
+    else if(b.dataset.b==='clr'){cur.length=0;upd()}
+    else{
+      const ok=cur.join('')===ans.join('');
+      el.querySelectorAll('.tile,.bctl .btn').forEach(x=>x.disabled=true);
+      el.querySelector('.bslot').classList.add(ok?'right':'wrong');
+      const f=el.querySelector('.feedback');
+      f.innerHTML=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
+       <p>${playBtn(w.w,w.l)} <b>${dispW(w)}</b> is <span class="ipa" style="font-size:22px">[${esc(w.ipa)}]</span>${ok?'':`. You built <span class="ipa">[${esc(cur.join(''))}]</span>`}.</p>
+       ${it.why?`<p style="color:var(--muted);font-size:14px">${it.why}</p>`:''}
+       <div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button><span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
+      f.classList.add('on');
+      if(hooks.onAnswer)hooks.onAnswer(ok,q,0);
+      const nb=f.querySelector('.next');nb.onclick=()=>hooks.onNext&&hooks.onNext();nb.focus({preventScroll:true});
+    }};
+}
 const ES_ALL=['va','ve','vi','vo','vu','pu','td','beta','eth','gh','tap','r','ny','yy','x'];
 const ZH_ALL=['ph','ts','tsh','tsr','tsrh','sr','rr','tc','tch','xx','vy','vgam','vbuzz','vschwa'];
 const AR_ALL=['jzh','h','gs','q','hh','ain','ems','emt','emd','emz'];
 
 const UNITS=[
-{id:'es',l:'es',title:'Spanish',sub:'Every sound of Latin American Spanish, then the rules that spelling and IPA symbols alone don\'t tell you.',lessons:[
- {id:'es1',title:'Five pure vowels',kind:'sounds',min:6,steps:[
-   txt('Why start with vowels?','Spanish has just five vowels, and they never change. English does two things Spanish never does:<ul><li><b>Gliding:</b> English "say" is really [seɪ] and "go" is [ɡoʊ]. Spanish <i>se</i> and <i>no</i> stop dead on [e] and [o].</li><li><b>Reducing:</b> English turns unstressed vowels into "uh" (b<u>a</u>nan<u>a</u>). Spanish says every vowel fully: <i>chocolate</i> is cho-co-la-te.</li></ul>Fix these two habits and you\'ll lose most of an English accent.'),
-   snd('va'),snd('ve'),snd('vi'),snd('vo'),snd('vu'),
-   lst('Hear every vowel held steady',['casa','mesa','sí','no','tú','chocolate']),
-   prs(['es-ei'],6),qz(['va','ve','vi','vo','vu'],5),spk(['mesa','no','chocolate'])],adds:['s:va','s:ve','s:vi','s:vo','s:vu','p:es-ei']},
- {id:'es2',title:'p, t, k without the puff',kind:'sounds',min:7,steps:[
-   txt('The hidden puff','Say "pin" with your hand in front of your mouth and you\'ll feel a puff of air. That puff (<span class="ipa">[pʰ]</span>) is normal in English, but Spanish p, t, k never have it. Because there\'s no puff, English ears often mistake Spanish <i>peso</i> for <i>beso</i>.<br><br>The difference Spanish actually uses is <b>voicing</b>: b, d, g buzz from the very start, while p, t, k don\'t. Spanish t and d are also made against the teeth, not the gum ridge.'),
-   snd('pu'),snd('td'),
-   lst('No puff, tongue on the teeth',['papá','tomate','casa','peso','beso','tos','dos']),
-   prs(['es-pb','es-td','es-kg'],9),qz(['pu','td'],4),spk(['papá','tomate','peso'])],adds:['s:pu','s:td','p:es-pb','p:es-td','p:es-kg']},
- {id:'es3',title:'Soft b, d, g',kind:'sounds',min:6,steps:[
-   txt('Spanish has two of each','In the middle of words, Spanish b, d and g relax. The lips or tongue come close but don\'t close, so air slides through: <span class="ipa">[β ð ɣ]</span>. Spanish speakers don\'t think of these as separate sounds, but if you use English hard b, d, g everywhere you\'ll sound choppy. The next lesson covers exactly when each version is used.'),
-   snd('beta'),snd('eth'),snd('gh'),
-   lst('Soft between vowels',['lobo','uva','dedo','nada','lago','agua','abogado']),
-   qz(['beta','eth','gh','pu','td'],5),spk(['nada','lago','abogado'])],adds:['s:beta','s:eth','s:gh']},
- {id:'es4',title:'Rule: when b, d, g go soft',kind:'rule',min:7,steps:[
-   txt('The rule','<b>Hard</b> <span class="ipa">[b d ɡ]</span> appears:<ul><li>after a pause, at the start of a phrase</li><li>after m or n</li><li>for d only, also after l</li></ul><b>Soft</b> <span class="ipa">[β ð ɣ]</span> appears everywhere else, <b>including across word boundaries</b>. So <i>dedo</i> alone starts hard, but <i>mi dedo</i> starts soft. Spelling doesn\'t matter here: b and v are the same sound.'),
-   lst('Same word, different neighbours',['un vaso','mi vaso','un gato','el gato','un dedo','mi dedo','el dedo','abogado']),
-   txt('Bonus: n copies the next sound','Before p, b, v or m, n becomes <span class="ipa">[m]</span> (<i>un poco</i> [um ˈpoko]). Before k, g or j it becomes <span class="ipa">[ŋ]</span>, as in English "sing" (<i>tengo</i>, <i>cinco</i>). English does this too, so it comes naturally once you know to allow it.'),
+{id:'es',l:'es',title:'Spanish',sub:'Learn to read IPA while you learn every sound of Latin American Spanish: one sound at a time, felt in your own mouth, compared with English, then read, written and said.',lessons:[
+ {id:'e01',title:'How IPA works',kind:'intro',min:8,steps:[
+   txt('One symbol, one sound',`English spelling is unreliable: the letter <b>c</b> is different in "<u>c</u>at" and "<u>c</u>ity", and <b>ough</b> is different in "th<u>ough</u>", "thr<u>ough</u>" and "t<u>ough</u>".<br><br>The <b>International Phonetic Alphabet</b> (IPA) fixes this. Every symbol stands for exactly one sound, always, in every language. Square brackets mean "this is how it's actually said":<ul><li>"cat" is <span class="ipa">[kæt]</span> and "city" is <span class="ipa">[ˈsɪɾi]</span>: two different symbols for the two c's.</li><li>Spanish <i>casa</i> is <span class="ipa">[ˈkasa]</span>.</li></ul>Learning IPA alongside Spanish gives you two things: you can read the pronunciation of any word in a dictionary, and you'll notice sounds your ear currently skips over.`),
+   txt('Most symbols look like letters',`Many IPA symbols are ordinary letters and mean roughly what an English speaker expects: <span class="ipa">[p b t d k m n f s l]</span>.<br><br>The traps are the symbols that look familiar but mean something else. The most important ones for Spanish:<ul><li><span class="ipa">[i]</span> is the "ee" of "see", never the "i" of "sit". So <span class="ipa">[si]</span> is "see", not "sigh".</li><li><span class="ipa">[e]</span> is "eh", like the start of "say".</li><li><span class="ipa">[a]</span> is "ah"; <span class="ipa">[u]</span> is "oo".</li><li><span class="ipa">[j]</span> is the <b>y</b> of "yes", never the j of "jam".</li><li><span class="ipa">[x]</span> is a scrapy sound at the back of the mouth (the Spanish jota), never "ks".</li></ul>Each of these gets its own lesson. For now, just remember: <b>read IPA symbol by symbol, not like English spelling.</b>`),
+   sy('Marks you\'ll see in transcriptions','These small marks change how you read a transcription. Tap the words to hear them.',[
+     {s:'ˈ',n:'Stress mark',t:'Goes <b>before</b> the syllable that is stressed. <span class="ipa">[ˈpapa]</span> is PA-pa ("potato"); <span class="ipa">[paˈpa]</span> is pa-PÁ ("dad").',k:['papa','papá']},
+     {s:'t̪',n:'Little bridge underneath',t:'"Made against the teeth". Spanish t and d are dental: the tongue touches the back of the upper teeth.',k:['tomate']},
+     {s:'pʰ',n:'Raised h',t:'"A puff of air follows". English "pin" is <span class="ipa">[pʰɪn]</span>. Spanish never has this puff.',k:['pin (EN)']},
+     {s:'‿',n:'Tie below',t:'"No break here": the words run together.',k:['¿Cómo estás?']}]),
+   cm('Same word, different sounds','Each word below is spelled almost the same in both languages. Play them in pairs and compare the transcriptions symbol by symbol.',[
+     ['taco (EN)','taco','English has a puff after t <span class="ipa">[tʰ]</span>, a different a <span class="ipa">[ɑ]</span>, and a gliding o <span class="ipa">[oʊ]</span>.'],
+     ['chocolate (EN)','chocolate','English squeezes it into 2 or 3 syllables with an "uh" <span class="ipa">[ə]</span>. Spanish says all four syllables in full.']]),
+   rq([RD('ˈkasa',['casa','gasa'],0,'casa','[k] is always the k sound, whatever letter spells it.'),
+       RD('paˈpa',['papa (potato)','papá (dad)'],1,'papá','The ˈ comes before the second syllable, so pa-PÁ.'),
+       RD('si',['sí','sé'],0,'sí','IPA [i] is the "ee" of "see".'),
+       Q(null,'What do square brackets [ ] around a word mean?',['How it\'s spelled','How it\'s actually pronounced','What it means'],1,'Brackets hold a pronunciation, not a spelling.'),
+       Q(null,'In IPA, [j] stands for…',['the j in "jam"','the y in "yes"','the h in "hat"'],1,'One of the most common IPA traps for English speakers.'),
+       Q(null,'The mark ˈ in [ˈmesa] tells you…',['the next syllable is stressed','the word is a question','the vowel is long'],0,'ˈ goes in front of the stressed syllable: ME-sa.')])],adds:['r:e01']},
+
+ {id:'e02',title:'Vowels I: a, e, i',kind:'sounds',min:9,steps:[
+   txt('Five vowels, five symbols',`Spanish has only five vowel sounds, and their IPA symbols are the same as the letters: <span class="ipa">[a e i o u]</span>. The catch is that IPA vowels have their "European" values, not their English letter names.<br><br>English speakers carry two habits into Spanish vowels:<ol><li><b>Gliding.</b> English vowels in "say", "see", "no", "two" move while you say them. Spanish vowels hold perfectly still.</li><li><b>Reducing.</b> English turns unstressed vowels into "uh". Spanish never does.</li></ol>This lesson fixes gliding on <span class="ipa">[a]</span>, <span class="ipa">[e]</span> and <span class="ipa">[i]</span>. The next lesson does <span class="ipa">[o]</span>, <span class="ipa">[u]</span> and the "uh" habit.`),
+   snd('va'),
+   snd('ve'),
+   fl('Feel the glide in "say"',`Say English "say" slowly and stretch it: "saaay". Notice that your jaw rises and your tongue moves up toward the end. It isn't one vowel but two: <span class="ipa">[eɪ]</span>.<br><br>Now say just the beginning, "seh", and <b>freeze</b> before anything moves. That frozen vowel is Spanish <span class="ipa">[e]</span>. A mirror helps: during a Spanish vowel your jaw doesn't move at all.`,['say (EN)','sé'],`Good. That movement at the end of "say" is the glide <span class="ipa">[ɪ]</span>. In Spanish, stop before it. Practise "seh, meh, deh" with a still jaw.`,`Put a fingertip lightly under your chin and say "say, day, may" slowly. You should feel your jaw lift a little at the end. Then play the Spanish word and notice it stays put.`,'Did you feel your jaw or tongue move at the end of "say"?'),
+   cm('English glides, Spanish holds still','Listen for the end of each word. The English one drifts upward; the Spanish one stops dead.',[
+     ['say (EN)','sé','<span class="ipa">[eɪ]</span> vs <span class="ipa">[e]</span>'],
+     ['may (EN)','me',''],['day (EN)','de','']]),
+   snd('vi'),
+   cm('"ee" without a tail','English "see" ends with a slight <span class="ipa">[j]</span> glide. Spanish <span class="ipa">[i]</span> is shorter, tenser and steady.',[['see (EN)','sí','']]),
+   sy('Read the symbols','',[
+     {s:'a',n:'"ah"',t:'Mouth open, tongue low and in the middle. Between the vowels of "father" and "cat". Never the "a" of "cake".',k:['casa','papá']},
+     {s:'e',n:'"eh", no glide',t:'Like the start of "say", frozen. Never "ay".',k:['mesa','peso']},
+     {s:'i',n:'"ee", short',t:'Like "see" without the tail. Never the "i" of "sit" (that\'s <span class="ipa">[ɪ]</span>, which Spanish doesn\'t have).',k:['sí','piso']}]),
+   prs(['es-ei'],6),
+   rq([RD('ˈmesa',['mesa','misa'],0,'mesa','[e] is "eh"; [i] would be "ee".'),
+       RD('ˈpiso',['peso','piso'],1,'piso','[i] is "ee": PEE-so.'),
+       HR('sé',['[se]','[seɪ]'],0,'[eɪ] is English "say". Spanish holds [e].'),
+       HR('casa',['[ˈkasa]','[ˈkæsə]'],0,'[æ] is the vowel of "cat" and [ə] is "uh". Spanish has neither.'),
+       Q(null,'Which English word has a glide that Spanish [e] doesn\'t?',['"bed"','"say"','"pet"'],1,'"say" moves from [e] toward [ɪ]. "bed" and "pet" have a single vowel, [ɛ].')]),
+   bd([{w:'mesa',a:'ˈ m e s a',x:'eɪ ə',why:'Stress mark first (ME-sa), then one symbol per sound.'},{w:'sí',a:'s i',x:'ɪ j eɪ',why:'Just two sounds. Spanish [i] has no [j] tail.'},{w:'casa',a:'ˈ k a s a',x:'æ ə c',why:'IPA writes the c of casa as [k], because it\'s a k sound.'}]),
+   spk(['mesa','sí','casa'])],adds:['s:va','s:ve','s:vi','p:es-ei','r:e02']},
+
+ {id:'e03',title:'Vowels II: o, u, and no "uh"',kind:'sounds',min:9,steps:[
+   snd('vo'),
+   cm('English o slides into w','American "no" is really <span class="ipa">[noʊ]</span>: the lips keep rounding at the end. Spanish <span class="ipa">[o]</span> keeps the same lip shape from start to finish.',[['no (EN)','no',''],['low (EN)','lo','']]),
+   snd('vu'),
+   cm('A real "oo"','American English often says "two" with the tongue pushed forward. Spanish <span class="ipa">[u]</span> is fully back, with tightly rounded lips.',[['two (EN)','tú','']]),
+   txt('The second habit: "uh"',`In English, unstressed vowels collapse into a weak "uh" sound. IPA writes it <span class="ipa">[ə]</span>, called <b>schwa</b>. "banana" is <span class="ipa">[bəˈnænə]</span>: only the middle a is a real a.<br><br>Spanish has <b>no schwa at all</b>. Every vowel keeps its full quality whether it's stressed or not. <i>banana</i> is <span class="ipa">[baˈnana]</span>: three real a's. This one habit is responsible for a big part of an English accent in Spanish.`),
+   cm('Full vowels in every syllable','Compare the unstressed syllables. English blurs them; Spanish doesn\'t.',[
+     ['banana (EN)','banana',''],['tomato (EN)','tomate',''],['animal (EN)','animal','']]),
+   fl('Tap the beats',`Tap the table once for every syllable as you say <i>cho-co-la-te</i>. Each tap gets a full vowel: <b>o, o, a, e</b>. Then try <i>a-ni-mal</i> and <i>te-lé-fo-no</i>.<br><br>If any tap came out as "uh", go slower and exaggerate the vowel.`,['chocolate','animal','teléfono'],`That's the Spanish rhythm: every syllable gets a beat and a full vowel.`,`Slow right down: one syllable per second, mouth shape clear for each vowel. Speed comes later.`,'Did every tap get a clear vowel?'),
+   sy('All five vowels','The whole Spanish vowel system. No glides, no schwa.',[
+     {s:'a',t:'"ah"',k:['casa']},{s:'e',t:'"eh", frozen',k:['mesa']},{s:'i',t:'"ee", short',k:['sí']},
+     {s:'o',t:'"oh", no w at the end',k:['no']},{s:'u',t:'"oo", lips round',k:['tú']}]),
+   qz(['va','ve','vi','vo','vu'],5),
+   rq([HR('tomate',['[t̪oˈmat̪e]','[t̪əˈmat̪ə]'],0,'Every vowel is full; Spanish has no [ə].'),
+       HR('no',['[no]','[noʊ]'],0,'[oʊ] is the English glide. Spanish [o] holds still.'),
+       RD('ˈkuβa',['Cuba','coma'],0,'Cuba','[u] is "oo".'),
+       Q(null,'Which symbol is the "uh" sound that Spanish never uses?',['[a]','[ə]','[e]'],1,'[ə] is schwa.'),
+       Q(null,'How many different vowel sounds are in [ʧokoˈlat̪e]?',['2','3','4'],1,'o, a and e: o appears twice.')]),
+   bd([{w:'no',a:'n o',x:'oʊ ə w',why:'Just [o]: no [ʊ] glide.'},{w:'tomate',a:'t̪ o ˈ m a t̪ e',x:'ə eɪ oʊ',why:'Full vowels in all three syllables, stress on the middle one.'}]),
+   spk(['no','tú','chocolate'])],adds:['s:vo','s:vu','r:e03']},
+
+ {id:'e04',title:'The puff: p',kind:'sounds',min:9,steps:[
+   txt('A sound English hides from you',`At the start of a stressed syllable, English p, t and k come with a little burst of breath. Phoneticians call it <b>aspiration</b> and write it with a raised h: "pin" is <span class="ipa">[pʰɪn]</span>.<br><br>After s, the puff disappears: "spin" is <span class="ipa">[spɪn]</span>. English speakers never notice, because the difference never changes a word's meaning.<br><br>Spanish p, t and k <b>never</b> have the puff, anywhere in a word. The p of English "spin" is exactly the Spanish p.`),
+   fl('The tissue test',`Hold a tissue, or the back of your hand, a few centimetres from your lips. Say "pin", then "spin". Play the recordings and copy them.`,['pin (EN)','spin (EN)'],`That puff on "pin" is the <span class="ipa">[ʰ]</span>. Now say "spin" and drop the s, keeping the p exactly as it was: that's Spanish <span class="ipa">[p]</span>.`,`Try a little louder, with the tissue closer. Most people feel a clear puff on "pin" and almost nothing on "spin". You can also try "pot" vs "spot".`,'Did the tissue move for "pin" but not for "spin"?'),
+   cm('English vs Spanish p','In each pair, listen for the breathy "h" right after the English p.',[['pin (EN)','spin (EN)','<span class="ipa">[pʰ]</span> vs <span class="ipa">[p]</span>, inside English'],['pan (EN)','pan',''],['pasta (EN)','pasta','']]),
+   snd('pu'),
+   txt('Why Spanish p can sound like b',`Your ear uses the puff to tell p from b. Without it, a Spanish <span class="ipa">[p]</span> can sound like "b" to you, so <i>peso</i> ("weight") and <i>beso</i> ("kiss") seem to blur.<br><br>What really separates them is <b>voicing</b>. For <span class="ipa">[b]</span> your vocal folds are already buzzing while the lips are closed. For <span class="ipa">[p]</span> they stay silent until the vowel starts.`),
+   fl('Feel voicing',`Put your fingers on your throat. Say "zzzz", then "ssss". The buzz you feel on z is <b>voicing</b>.<br><br>Now close your lips and hum, then open them into "ba": the buzz started before the lips opened. Try "pa" the same way: no buzz until the vowel.`,['beso','peso'],`Voicing is the key to b vs p, d vs t, and g vs k in Spanish.`,`Press a bit more firmly and make the z long and loud. The buzz is easiest to feel just above the Adam's apple.`,'Did you feel the buzz on "zzzz" but not on "ssss"?'),
+   prs(['es-pb'],6),
+   rq([HR('peso',['[ˈpeso]','[ˈpʰeso]'],0,'No puff in Spanish.'),
+       RD('ˈbeso',['peso','beso'],1,'beso','[b] is voiced: the buzz starts before the lips open.'),
+       Q(null,'In English "spin", the p is…',['[pʰ], with a puff','[p], with no puff'],1,'After s, English drops the puff. That p is the Spanish one.'),
+       Q(null,'What does the raised ʰ in [pʰ] mean?',['the sound is voiced','a puff of air follows','the sound is long'],1,'Aspiration.')]),
+   bd([{w:'papá',a:'p a ˈ p a',x:'pʰ ə b',why:'No ʰ anywhere: Spanish p never has a puff.'},{w:'peso',a:'ˈ p e s o',x:'pʰ b oʊ',why:'Stress first, then p, e, s, o.'}]),
+   spk(['papá','peso','poco'])],adds:['s:pu','p:es-pb','r:e04']},
+
+ {id:'e05',title:'t and d on the teeth',kind:'sounds',min:8,steps:[
+   txt('Where your tongue touches',`For English t and d, the tip of your tongue touches the <b>gum ridge</b>, the bump just behind your upper teeth. For Spanish t and d, it touches the <b>back of the upper front teeth</b> themselves. Sounds made against the teeth are called <b>dental</b>, and IPA marks them with a little bridge underneath: <span class="ipa">[t̪ d̪]</span>.<br><br>Spanish t also follows the no-puff rule from the last lesson. So English "tea" is <span class="ipa">[tʰi]</span> while Spanish <i>tía</i> starts with <span class="ipa">[t̪]</span>: further forward, and no breath.`),
+   fl('Find the spot',`Say English "tea" and notice where your tongue tip lands. Now slide it forward until it presses against the back of your top teeth, and say "ta". Hold a tissue in front of your mouth too: it shouldn't move.`,['tea (EN)','tía'],`That forward, puff-free t is Spanish <span class="ipa">[t̪]</span>. Spanish d is made in the same place, with voicing.`,`Say "t" and freeze with the tongue in place. Feel the gum ridge with the tongue tip, then move it a few millimetres forward onto the teeth.`,'Could you feel the difference between the gum ridge and the teeth?'),
+   snd('td'),
+   cm('English vs Spanish t and d','The Spanish t is crisper and "flatter"; the English one has a puff.',[['tea (EN)','tía',''],['taco (EN)','taco',''],['dose (EN)','dos','']]),
+   txt('Reading the bridge',`In this app, Spanish t and d always carry the bridge: <span class="ipa">[t̪]</span>, <span class="ipa">[d̪]</span>. Many dictionaries leave it off and write plain <span class="ipa">[t]</span> for Spanish, because Spanish t is <i>always</i> dental, so the mark adds no information there. When you see a Spanish <span class="ipa">[t]</span> elsewhere, read it as dental anyway.`),
+   prs(['es-td'],6),
+   rq([HR('tú',['[t̪u]','[tʰu]'],0,'Dental, no puff.'),
+       RD('d̪os',['dos','tos'],0,'dos','[d̪] is voiced; [t̪] is not.'),
+       Q(null,'The little bridge under [t̪] means…',['the tongue touches the teeth','the sound is voiced','the sound is long'],0,'̪ = dental.'),
+       Q(null,'Where does the tongue touch for English t?',['The back of the upper teeth','The gum ridge just behind the teeth','The soft palate'],1,'English t is alveolar: on the gum ridge.')]),
+   bd([{w:'taco',a:'ˈ t̪ a k o',x:'tʰ t oʊ',why:'Dental t, no puff, and o with no glide.'},{w:'dos',a:'d̪ o s',x:'d z',why:'Dental d. The s stays [s].'}]),
+   spk(['tomate','tú','dos'])],adds:['s:td','p:es-td','r:e05']},
+
+ {id:'e06',title:'k and g, and voicing',kind:'sounds',min:7,steps:[
+   txt('One sound, three spellings',`Spanish <span class="ipa">[k]</span> is written:<ul><li><b>c</b> before a, o, u: <i>casa, coma, Cuba</i></li><li><b>qu</b> before e, i: <i>queso, quince</i>. The u is silent: it's only there to keep the c hard.</li><li><b>k</b> in a few borrowed words: <i>kilo</i></li></ul>Like p and t, Spanish k has <b>no puff</b>: think of the k in "skin", not "kin".<br><br>Its voiced partner <span class="ipa">[ɡ]</span> is written g before a, o, u (<i>goma, gato</i>) and gu before e, i (<i>guitarra</i>). IPA uses the round, single-loop ɡ.`),
+   cm('No puff on k either','',[['kin (EN)','skin (EN)','<span class="ipa">[kʰ]</span> vs <span class="ipa">[k]</span>, inside English'],['coma (EN)','coma','']]),
+   lst('[k] spelled three ways',['casa','queso','kilo','taco','cinco']),
+   sy('The voicing pairs','Spanish uses the same trick three times: same mouth position, with or without the buzz.',[
+     {s:'p b',t:'lips',k:['peso','beso']},{s:'t̪ d̪',t:'tongue on the teeth',k:['tos','dos']},{s:'k ɡ',t:'back of the tongue on the soft palate',k:['casa','gasa']}]),
+   prs(['es-kg'],6),
+   rq([RD('ˈɡoma',['coma','goma'],1,'goma','[ɡ] is the voiced partner of [k].'),
+       HR('casa',['[ˈkasa]','[ˈkʰasa]'],0,'No puff.'),
+       Q('queso','In <i>queso</i>, the u is…',['said like [w]','silent: qu just spells [k]'],1,'queso is [ˈkeso].'),
+       Q(null,'Which pairs differ only in voicing?',['p/b, t/d, k/g','p/t, t/k, k/p','m/n, n/ñ'],0,'Same place, buzz or no buzz.')]),
+   bd([{w:'queso',a:'ˈ k e s o',x:'kʰ w u',why:'qu = [k]; the u is silent.'},{w:'goma',a:'ˈ ɡ o m a',x:'k ə oʊ',why:'Voiced [ɡ], full vowels.'}]),
+   spk(['queso','casa','goma'])],adds:['p:es-kg','r:e06']},
+
+ {id:'e07',title:'Soft b [β]',kind:'sounds',min:8,steps:[
+   txt('Spanish has two b\'s, and no v',`First, a surprise: Spanish <b>b and v are the same sound</b>. <i>vaso</i> and <i>baso</i> would sound identical. There's no English-style v (teeth on lip) in Spanish at all.<br><br>That one sound comes in two versions:<ul><li><b>Hard</b> <span class="ipa">[b]</span>: the lips close completely, like English b.</li><li><b>Soft</b> <span class="ipa">[β]</span>: the lips come close but <b>never touch</b>, and air keeps flowing between them with a light buzz.</li></ul>The symbol β is the Greek letter beta. Spanish speakers don't think of these as two sounds, so they never mention it, but using a hard [b] between vowels makes your Spanish sound choppy.`),
+   fl('Make a β',`Say "aba" with an English b. Now say it again, but <b>don't let your lips touch</b>: leave a tiny gap and keep your voice on, so the air buzzes softly through. It's a bit like blowing gently on hot soup while humming.`,['lobo','uva'],`That fuzzy, gentle b is <span class="ipa">[β]</span>. It's what you hear in the middle of <i>lobo</i> and <i>uva</i>.`,`Try looking in a mirror: say "aba" and watch your lips meet. Then repeat while keeping a sliver of light between them. It will feel lazy; that's right.`,'Could you make a b where the lips don\'t quite meet?'),
+   snd('beta'),
+   lst('Soft [β] between vowels',['lobo','uva','Cuba','abogado','bebé'],'In <i>bebé</i> [beˈβe] you hear both: hard at the start of the word, soft in the middle.'),
+   txt('When is it hard?','A preview of the full rule in lesson 10: hard <span class="ipa">[b]</span> after a pause and after m or n; soft <span class="ipa">[β]</span> everywhere else. So a word on its own like <i>vino</i> starts with a hard [b], with no v sound.'),
+   lst('b and v: one sound',['beso','vino','un vaso','mi vaso']),
+   rq([HR('lobo',['[ˈloβo]','[ˈlobo]','[ˈlovo]'],0,'Between vowels: soft [β].'),
+       HR('vino',['[ˈbino]','[ˈvino]'],0,'Spanish has no [v]. After a pause, v is a hard [b].'),
+       RD('ˈuβa',['uva','una'],0,'uva','[β] is the soft b.'),
+       Q(null,'For [β], your lips…',['close completely','come close but don\'t touch','touch your teeth, like English v'],1,'Air flows between them.')]),
+   bd([{w:'lobo',a:'ˈ l o β o',x:'b v',why:'Between vowels: [β].'},{w:'bebé',a:'b e ˈ β e',x:'v eɪ',why:'Hard at the start, soft in the middle, stress on the last syllable.'}]),
+   spk(['lobo','uva','bebé'])],adds:['s:beta','r:e07']},
+
+ {id:'e08',title:'Soft d [ð]',kind:'sounds',min:8,steps:[
+   txt('The "th" you already have',`<span class="ipa">[ð]</span> is the sound of English "th" in "the", "this" and "other". Spanish d has a soft version that is very close to it, between vowels and in most other positions: <i>nada</i> is <span class="ipa">[ˈnaða]</span>.<br><br>The Spanish version is <b>lighter</b> than English th: the tongue tip barely touches the edge of the teeth, with less friction.<br><br>Watch out for one trap: American English pronounces the d in "ladder" as a quick tap, <span class="ipa">[ɾ]</span>. That tap is a Spanish <b>r</b>! If you say <i>lado</i> with an American "ladder" d, a Spanish speaker may hear <i>laro</i>.`),
+   cm('English th, American "dd", Spanish soft d','',[['other (EN)','todo','English <span class="ipa">[ð]</span> is close to Spanish <span class="ipa">[ð]</span>'],['ladder (EN)','lado','American <span class="ipa">[ɾ]</span> is <b>not</b> the Spanish soft d']]),
+   snd('eth'),
+   fl('Soft, softer',`Say English "other" and hold the th: the tongue tip is between or just behind the teeth, voice on. Now relax it so it only just touches. Put it into <i>nada</i>: <b>na-ða</b>.<br><br>Then try <i>dedo</i>: the first d is hard (start of the word), the second is soft.`,['nada','dedo'],`That relaxed th-like sound is <span class="ipa">[ð]</span>.`,`Start from a real English "th" in "other" and copy the recording, making it gentler each time.`,'Could you make a soft, th-like d?'),
+   lst('Soft [ð]',['nada','todo','cada','lado','verdad'],'At the end of a word (<i>verdad</i>, <i>ciudad</i>) the d is very weak, and many speakers drop it.'),
+   rq([HR('nada',['[ˈnaða]','[ˈnad̪a]','[ˈnaɾa]'],0,'Between vowels d is [ð]. [ɾ] would be the tap, like American "ladder".'),
+       RD('ˈd̪eðo',['dedo','todo'],0,'dedo','Hard [d̪] then soft [ð].'),
+       Q('dedo','Listen to <i>dedo</i>. Where is the soft [ð]?',['The first d','The second d','Both'],1,'The first d starts the word, so it\'s hard. The second is between vowels.'),
+       Q(null,'English "the" starts with the symbol…',['[d]','[ð]','[θ]'],1,'[θ] is the voiceless th of "think".')]),
+   bd([{w:'nada',a:'ˈ n a ð a',x:'d̪ ɾ',why:'Between vowels: [ð].'},{w:'dedo',a:'ˈ d̪ e ð o',x:'ɾ d',why:'Hard first, soft second.'}]),
+   spk(['nada','todo','dedo'])],adds:['s:eth','r:e08']},
+
+ {id:'e09',title:'Soft g [ɣ]',kind:'sounds',min:8,steps:[
+   txt('A sound English doesn\'t have',`Soft g, <span class="ipa">[ɣ]</span> (the Greek letter gamma), follows the same pattern as <span class="ipa">[β]</span> and <span class="ipa">[ð]</span>. The back of the tongue rises toward the soft palate as if for g, but <b>doesn't close</b>. Air flows through with a soft, voiced friction.<br><br>English has nothing like it, so it takes practice. It's the voiced partner of the jota (lesson 15), and much gentler: almost a gargle with no effort behind it.`),
+   fl('From g to ɣ',`Say "aga" with a normal English g, and notice the back of your tongue sealing against the roof of your mouth. Now do it again but <b>don't let it seal</b>. Keep the voice on and let air slide through: "a-ɣa".`,['lago','agua'],`That's <span class="ipa">[ɣ]</span>. Notice how much smoother <i>lago</i> sounds than "lah-go".`,`Try saying "aga" while yawning slightly: the looser tongue tends to produce [ɣ] on its own. Or start from a gentle "a-ha" and add voice.`,'Could you make a g that doesn\'t fully close?'),
+   snd('gh'),
+   lst('Soft [ɣ]',['lago','agua','amigo','algo','el gato'],'In <i>el gato</i> the g is soft even though it starts a word, because of the l in the word before. Lesson 10 explains.'),
+   sy('The soft trio','Three sounds, one idea: the mouth comes close but doesn\'t close.',[
+     {s:'β',t:'soft b: lips nearly touch',k:['lobo']},{s:'ð',t:'soft d: tongue tip at the teeth, barely touching',k:['nada']},{s:'ɣ',t:'soft g: back of the tongue near the soft palate',k:['lago']}]),
+   rq([HR('lago',['[ˈlaɣo]','[ˈlaɡo]'],0,'Between vowels: [ɣ].'),
+       HR('agua',['[ˈaɣwa]','[ˈaɡwa]','[ˈawa]'],0,'Soft g, then u as a [w] glide.'),
+       RD('aˈmiɣo',['amigo','abogado'],0,'amigo','a-MI-ɣo.'),
+       Q(null,'[β ð ɣ] all have this in common:',['the mouth comes close but doesn\'t close','they are voiceless','they only appear at the start of words'],0,'They are "approximants": air keeps flowing.')]),
+   bd([{w:'lago',a:'ˈ l a ɣ o',x:'ɡ x',why:'Soft g between vowels.'},{w:'amigo',a:'a ˈ m i ɣ o',x:'ɡ ə',why:'Stress on mi, soft g.'}]),
+   spk(['lago','agua','amigo'])],adds:['s:gh','r:e09']},
+
+ {id:'e10',title:'Rule: hard or soft?',kind:'rule',min:9,steps:[
+   txt('The rule','<b>Hard</b> <span class="ipa">[b d ɡ]</span> appears:<ul><li>after a pause, at the start of a phrase</li><li>after m or n</li><li>for d only, also after l</li></ul><b>Soft</b> <span class="ipa">[β ð ɣ]</span> appears everywhere else, <b>including across word boundaries</b>. So <i>dedo</i> alone starts hard, but <i>mi dedo</i> starts soft. Spelling doesn\'t matter: b and v follow the same rule.'),
+   lst('Same word, different neighbours',['un vaso','mi vaso','un gato','el gato','un dedo','mi dedo','el dedo']),
+   txt('Why m, n and l?',`After m or n, your mouth is already closed (m) or the tongue is already sealed (n), so the next b, d or g comes out as a full stop: <i>un dedo</i> [un ˈd̪eðo]. After l, the tongue tip is already touching behind the teeth, which keeps d hard (<i>caldo</i>), but the lips and the back of the tongue are free, so b and g go soft (<i>algo</i>). After r, all three are soft (<i>gordo</i>, <i>verdad</i>).`),
+   lst('After l, r and n',['caldo','algo','gordo','grande','mundo']),
+   txt('Bonus: n copies the next sound','Before p, b, v or m, n becomes <span class="ipa">[m]</span> (<i>un poco</i> [um ˈpoko]). Before k, g or j it becomes <span class="ipa">[ŋ]</span>, as in English "sing" (<i>tengo</i>, <i>cinco</i>). English does this too, so it comes naturally once you allow it.'),
    lst('n changing shape',['un poco','un vaso','tengo','cinco']),
    rq([Q('nada','In <i>nada</i>, is the d hard or soft?',['Hard [d̪]','Soft [ð]'],1,'Between vowels, d is always soft.'),
        Q('un dedo','In <i>un dedo</i>, how is the first d?',['Hard [d̪]','Soft [ð]'],0,'After n, d stays hard.'),
        Q('mi dedo','In <i>mi dedo</i>, how is the first d?',['Hard [d̪]','Soft [ð]'],1,'After a vowel, even in the previous word, d goes soft.'),
        Q('el dedo','In <i>el dedo</i>, how is the first d?',['Hard [d̪]','Soft [ð]'],0,'After l, d stays hard. This exception is only for d.'),
        Q('el gato','In <i>el gato</i>, how is the g?',['Hard [ɡ]','Soft [ɣ]'],1,'After l, g goes soft. Only d stays hard after l.'),
+       Q('gordo','In <i>gordo</i>, how is the d?',['Hard [d̪]','Soft [ð]'],1,'After r, d goes soft.'),
+       RD('ˈkald̪o',['caldo','calvo'],0,'caldo','After l, d is hard.'),
        Q('un vaso','How is <i>un</i> pronounced in <i>un vaso</i>?',['[un]','[um]','[uŋ]'],1,'n becomes [m] before b or v, and the v is then a hard [b].'),
-       Q('tengo','In <i>tengo</i>, the n is pronounced…',['[n], with the tongue tip','[ŋ], like the ng in "sing"'],1,'Before g, k or j, n moves to the back: [ŋ].')])],adds:['r:es4']},
- {id:'es5',title:'The two r\'s',kind:'sounds',min:7,steps:[
-   snd('tap'),snd('r'),
-   txt('Which r is which?','Spanish spelling tells you exactly:<ul><li><b>rr</b> is always the trill <span class="ipa">[r]</span>: <i>perro, carro</i>.</li><li>A single <b>r at the start of a word</b> is also the trill: <i>rosa, rojo</i>.</li><li>A single <b>r after n, l or s</b> is also the trill: <i>Enrique, alrededor, Israel</i>.</li><li>Every other single r is the tap <span class="ipa">[ɾ]</span>: <i>pero, caro, gracias</i>.</li></ul>Can\'t trill yet? Use a strong tap for now. It\'s far better than an English r, and the trill comes with practice (try "butter-butter-butter" fast).'),
-   lst('Tap vs trill',['pero','perro','caro','carro','rosa','Enrique','alrededor','Israel','gracias']),
+       Q('tengo','In <i>tengo</i>, the n is pronounced…',['[n], with the tongue tip','[ŋ], like the ng in "sing"'],1,'Before g, k or j, n moves to the back: [ŋ].')]),
+   bd([{w:'un dedo',a:'u n ˈ d̪ e ð o',x:'ð m',why:'After n: hard [d̪]. Second d between vowels: soft.'},{w:'mi dedo',a:'m i ˈ ð e ð o',x:'d̪',why:'After the vowel of mi, both d\'s are soft.'},{w:'algo',a:'ˈ a l ɣ o',x:'ɡ',why:'After l only d stays hard, so g is soft.'}]),
+   spk(['un dedo','mi dedo','el gato'])],adds:['r:es4']},
+
+ {id:'e11',title:'The tap [ɾ]',kind:'sounds',min:8,steps:[
+   txt('The r you already know how to make',`A single Spanish r between vowels is a <b>tap</b>: one very quick flick of the tongue tip against the gum ridge. IPA writes it <span class="ipa">[ɾ]</span>, which looks like an r with its top cut off.<br><br>Good news: Americans already make this sound every day. The tt in "butter", the dd in "ladder" and the t in "water" are all taps: "butter" is <span class="ipa">[ˈbʌɾɚ]</span>.<br><br>It has nothing to do with the English r of "red", which IPA writes <span class="ipa">[ɹ]</span>: there the tongue bunches or curls back and never touches anything.`),
+   cm('You already have it','Listen to the middle consonant in each English word. That quick flick is the same as Spanish r.',[['butter (EN)','pero',''],['water (EN)','para',''],['ladder (EN)','caro','']]),
+   snd('tap'),
+   fl('Find the tap',`Say "butter" fast, American-style, and notice the tongue flick in the middle. Now say "bu-ɾa", then swap in Spanish words: <i>pe-ɾo</i>, <i>pa-ɾa</i>, <i>ca-ɾo</i>. Keep it light: a single touch, no English r colour.`,['butter (EN)','pero'],`That flick is <span class="ipa">[ɾ]</span>. It's the most common r in Spanish.`,`Say "a lot of" fast: "a-lo-ɾa". Or "got a": "go-ɾa". The middle is a tap. Then replace the first vowel: "pa-ɾa".`,'Could you feel the single tongue flick?'),
+   lst('The tap',['para','pero','caro','hora','gracias','tres','comer'],'After a consonant (<i>gracias, tres</i>) and at the end of a word (<i>comer</i>) the r is also a tap. Don\'t let <i>comer</i> end with an English r.'),
+   rq([HR('pero',['[ˈpeɾo]','[ˈpeɹo]'],0,'[ɹ] is English r: the tongue never touches.'),
+       RD('ˈoɾa',['hora','hola'],0,'hora','[ɾ] is the tap. And the h is silent.'),
+       Q(null,'Which English word has a tap [ɾ] in the middle (American accent)?',['"butter"','"bun"','"burn"'],0,'American tt and dd between vowels are taps.'),
+       HR('tres',['[t̪ɾes]','[t̪ɹes]'],0,'After t, a single r is a tap.')]),
+   bd([{w:'pero',a:'ˈ p e ɾ o',x:'ɹ r',why:'A single r between vowels is [ɾ].'},{w:'para',a:'ˈ p a ɾ a',x:'ɹ d ə',why:'Tap, and full vowels.'}]),
+   spk(['pero','para','gracias'])],adds:['s:tap','r:e11']},
+
+ {id:'e12',title:'The trill [r]',kind:'sounds',min:9,steps:[
+   txt('The rolled r',`The trill is the famous rolled r: the tongue tip rests loosely near the gum ridge and the air stream makes it flap several times in a row. IPA writes it with a plain <span class="ipa">[r]</span>.<br><br>That's confusing for English speakers: in IPA, <span class="ipa">[r]</span> never means the English r (which is <span class="ipa">[ɹ]</span>). Remember: <b>[ɾ] = one tap, [r] = trill.</b><br><br>The difference changes meaning: <i>pero</i> [ˈpeɾo] "but" vs <i>perro</i> [ˈpero] "dog".`),
+   snd('r'),
+   fl('Learning to trill',`The trill is a matter of relaxation and air, not force:<ol><li>Say "butter-butter-butter" fast, then just the taps: "ɾ-ɾ-ɾ".</li><li>Keep the tongue tip loose, right behind the teeth, and blow a strong stream of air past it.</li><li>Another route: say "drrr" with the tongue forward, as in "dream", and let it run on.</li></ol>Many adults need a few weeks of a minute a day. That's normal.`,['perro','rosa'],`Great. Keep it short in words: 2 or 3 flaps is enough.`,`Totally normal at first. Use a strong, slightly longer tap for now: it's far better than an English r, and everyone will understand you. Keep practising a minute a day.`,'Did you get any vibration at all?'),
+   txt('Which r is which?','Spanish spelling tells you exactly:<ul><li><b>rr</b> is always the trill <span class="ipa">[r]</span>: <i>perro, carro</i>.</li><li>A single <b>r at the start of a word</b> is also the trill: <i>rosa, rojo</i>.</li><li>A single <b>r after n, l or s</b> is also the trill: <i>Enrique, alrededor, Israel</i>.</li><li>Every other single r is the tap <span class="ipa">[ɾ]</span>: <i>pero, caro, gracias</i>.</li></ul>'),
+   lst('Tap vs trill',['pero','perro','caro','carro','coro','corro']),
+   lst('Trill without rr',['rosa','rojo','radio','Enrique','alrededor','Israel']),
    prs(['es-r'],8),
    rq([Q('rosa','<i>rosa</i> starts with…',['Tap [ɾ]','Trill [r]'],1,'A single r at the start of a word is trilled.'),
        Q('Enrique','The r in <i>Enrique</i> is…',['Tap [ɾ]','Trill [r]'],1,'After n, l or s, a single r is trilled.'),
        Q('caro','The r in <i>caro</i> is…',['Tap [ɾ]','Trill [r]'],0,'A single r between vowels is a tap.'),
-       Q('Israel','The r in <i>Israel</i> is…',['Tap [ɾ]','Trill [r]'],1,'After s, a single r is trilled.')]),
-   spk(['pero','perro','rosa'])],adds:['s:tap','s:r','p:es-r','r:es5']},
- {id:'es6',title:'ñ, and y / ll',kind:'sounds',min:5,steps:[
-   snd('ny'),snd('yy'),
-   lst('Listen',['año','niño','España','yo','calle','playa','llave']),
+       Q('Israel','The r in <i>Israel</i> is…',['Tap [ɾ]','Trill [r]'],1,'After s, a single r is trilled.'),
+       RD('ˈpero',['pero','perro'],1,'perro','Plain [r] is the trill.'),
+       RD('ˈpeɾo',['pero','perro'],0,'pero','[ɾ] is the tap.'),
+       Q(null,'In IPA, [r] means…',['the English r of "red"','the trill','the tap'],1,'English r is [ɹ].')]),
+   bd([{w:'perro',a:'ˈ p e r o',x:'ɾ ɹ',why:'rr = trill [r].'},{w:'rosa',a:'ˈ r o s a',x:'ɾ ɹ z',why:'Word-initial r = trill. The s stays [s].'}]),
+   spk(['perro','rosa','carro'])],adds:['s:r','p:es-r','r:es5']},
+
+ {id:'e13',title:'ñ [ɲ]',kind:'sounds',min:7,steps:[
+   txt('One sound, not two',`<b>ñ</b> is <span class="ipa">[ɲ]</span>: the <b>middle</b> of the tongue (not the tip) presses flat against the hard palate, and the air goes out through the nose. The symbol is an n with a hook on its left leg.<br><br>English "canyon" and "onion" come close, but they have two sounds in a row, <span class="ipa">[nj]</span>: an n with the tip, then a y. Spanish ñ is a single sound made with the tongue body.`),
+   cm('Close, but not the same','Listen to the n + y in English and the single ñ in Spanish.',[['canyon (EN)','cañón',''],['onion (EN)','año','']]),
+   snd('ny'),
+   fl('Tip down, middle up',`Put your tongue tip behind your <b>lower</b> front teeth and keep it there. Now try to say "na". The tip can't do the work, so the middle of the tongue has to touch the roof of your mouth: that's <span class="ipa">[ɲa]</span>.`,['año','niño'],`That's ñ. Notice it feels like a single, broad contact.`,`Make sure the tip really stays down behind the lower teeth. Say "nya" slowly and then try to merge the n and y into one contact.`,'Could you make an n with the tip of your tongue down?'),
+   lst('ñ',['año','niño','España','mañana','uña']),
    prs(['es-n'],6),
-   txt('Regional note','In most of Latin America, y and ll sound the same: <span class="ipa">[ʝ]</span>. In Argentina and Uruguay both are said like English "sh" or the s in "measure": <i>yo</i> sounds like "sho". You don\'t need to copy that, but it helps to recognise it.'),
-   spk(['año','niño','calle'])],adds:['s:ny','s:yy','p:es-n']},
- {id:'es7',title:'The jota',kind:'sounds',min:5,steps:[
+   rq([RD('ˈuɲa',['una','uña'],1,'uña','[ɲ] is ñ.'),
+       RD('ˈkana',['cana','caña'],0,'cana','Plain [n].'),
+       HR('niño',['[ˈniɲo]','[ˈninjo]'],0,'One sound, not n + y.'),
+       Q(null,'For [ɲ], which part of the tongue touches the roof of the mouth?',['the tip','the middle','the back'],1,'The tongue body, against the hard palate.')]),
+   bd([{w:'niño',a:'ˈ n i ɲ o',x:'j ŋ',why:'n, i, then ñ = [ɲ].'},{w:'año',a:'ˈ a ɲ o',x:'n j',why:'ñ is one symbol, [ɲ].'}]),
+   spk(['año','niño','mañana'])],adds:['s:ny','p:es-n','r:e13']},
+
+ {id:'e14',title:'y and ll [ʝ]',kind:'sounds',min:7,steps:[
+   txt('A stronger y',`In most of Latin America, <b>y</b> and <b>ll</b> are the same sound: <span class="ipa">[ʝ]</span>, a j with a curly tail. It's like English y in "yes" but with the tongue pressed a little closer to the palate, so there's a light buzz of friction.<br><br>Keep the two symbols apart: <span class="ipa">[j]</span> is the plain English y glide (it appears in Spanish too, as in <i>tierra</i> [ˈt̪jera]). <span class="ipa">[ʝ]</span> is the stronger consonant at the start of <i>yo</i> or in <i>calle</i>. After n or l, or when stressed, it can go further, toward the j of "jam".`),
+   cm('English y vs Spanish y','The Spanish one has more contact and a slight buzz.',[['yes (EN)','yo','']]),
+   snd('yy'),
+   lst('y and ll',['yo','playa','calle','llave','hielo'],'<i>hielo</i>: hie- at the start of a word also gives [ʝ].'),
+   txt('Regional variants','In Argentina and Uruguay, y and ll sound like English "sh" or the s in "measure": <i>yo</i> sounds like "sho", <i>calle</i> like "ca-she". In a few parts of Spain and the Andes, ll is still a separate sound, <span class="ipa">[ʎ]</span>. You don\'t need to copy these, but it helps to recognise them.'),
+   rq([Q(null,'The ll in <i>calle</i> is written in IPA as…',['[l]','[ʝ]','[ʎ], everywhere'],1,'In most of Latin America, ll = y = [ʝ].'),
+       Q(null,'IPA [j] (plain j) stands for…',['the j of "jam"','the y of "yes"','the Spanish jota'],1,'[ʝ], with the curly tail, is the stronger Spanish y.'),
+       RD('ʝo',['yo','lo'],0,'yo','[ʝ] is y.'),
+       Q(null,'In Buenos Aires, <i>yo</i> often sounds like…',['"sho"','"jo"','"lo"'],0,'Rioplatense Spanish uses [ʃ] or [ʒ].')]),
+   bd([{w:'calle',a:'ˈ k a ʝ e',x:'l j eɪ',why:'ll = [ʝ].'},{w:'playa',a:'ˈ p l a ʝ a',x:'j ə',why:'pl at the start, y = [ʝ].'}]),
+   spk(['yo','calle','playa'])],adds:['s:yy','r:e14']},
+
+ {id:'e15',title:'The jota [x]',kind:'sounds',min:8,steps:[
+   txt('A scrape at the back',`The jota, <span class="ipa">[x]</span>, is made where you make k: the back of the tongue rises toward the soft palate. But instead of closing, it leaves a narrow gap, and the air scrapes through. It's the sound of Scottish "loch" or German "Bach".<br><br>English h is different: it's just breath, with nothing in the mouth getting in the way. Spanish [x] has real friction.<br><br>And don't read the symbol as English x: IPA <span class="ipa">[x]</span> is never "ks".`),
+   cm('English h vs Spanish jota','',[['hat (EN)','jamón',''],['hug (EN)','jugo','']]),
    snd('x'),
-   txt('How it\'s spelled','<span class="ipa">[x]</span> is written <b>j</b> (<i>jamón</i>), <b>g before e or i</b> (<i>gente</i>), and occasionally <b>x</b> in names (<i>México</i>). In the Caribbean, Central America and Colombia it often softens to an English-like <span class="ipa">[h]</span>. Either one is understood everywhere.'),
-   lst('Listen',['jamón','ojo','México']),
-   qz(['x','gh','beta','r','ny'],5),spk(['jamón','ojo','México'])],adds:['s:x']},
- {id:'es8',title:'The sounds you already have',kind:'sounds',min:4,steps:[
-   txt('Complete the set','Most of the rest of Spanish is already in English, with a few small adjustments:<ul><li><b>m, n, f, ch</b> <span class="ipa">[m n f ʧ]</span> are the same as English.</li><li><b>l</b> is always the light "l" of English "leaf", never the dark "l" of "full". The l in <i>sol</i> and <i>animal</i> stays bright.</li><li><b>s</b> stays <span class="ipa">[s]</span> between vowels (<i>casa</i>, never "caza"). It only buzzes to [z] right before a voiced consonant, as in <i>mismo</i>.</li><li><b>hu-</b> before a vowel is <span class="ipa">[w]</span> (<i>huevo</i>), and <b>i</b> before a vowel is <span class="ipa">[j]</span> (<i>tierra</i>).</li><li><b>h</b> is silent.</li></ul>With these, you now have every sound of Latin American Spanish. In Spain you\'d add <span class="ipa">[θ]</span> for z and c before e or i.'),
-   lst('Familiar sounds, Spanish style',['mano','luna','sol','animal','foto','chico','huevo','casa']),
-   spk(['sol','animal','huevo'])],adds:[]},
- {id:'es9',title:'Rule: stress and accent marks',kind:'rule',min:6,steps:[
-   txt('Where the stress goes','Spanish spelling tells you the stress every time:<ol><li>Word ends in a <b>vowel, n or s</b>: stress the <b>second-to-last</b> syllable (<i>CA-sa, HA-blan</i>).</li><li>Word ends in <b>any other consonant</b>: stress the <b>last</b> syllable (<i>ciu-DAD, a-ni-MAL</i>).</li><li>A <b>written accent</b> overrides both rules (<i>ÁR-bol, ca-FÉ, can-CIÓN, te-LÉ-fo-no</i>).</li></ol>Stress changes meaning: <i>papa</i> (potato) vs <i>papá</i> (dad), and <i>término / termino / terminó</i>.'),
-   lst('Listen for the strong syllable',['casa','ciudad','animal','árbol','café','canción','teléfono']),
+   fl('From k to x',`Say "k" and hold the back of your tongue where it touches the roof. Now lower it a hair, just enough to let air through, and push: "kkkhhh". That scrape is <span class="ipa">[x]</span>. Try <i>a-xo</i> (<i>ajo</i>, garlic).`,['jamón','ajo'],`That's the jota. It can be gentle or strong depending on the speaker and region.`,`Start with a long English h, "hhhh", then slowly raise the back of the tongue until you hear a scrape.`,'Could you make the scrape?'),
+   txt('How it\'s spelled','<span class="ipa">[x]</span> is written <b>j</b> (<i>jamón, ajo</i>), <b>g before e or i</b> (<i>gente</i>), and occasionally <b>x</b> in names (<i>México</i>). In the Caribbean, Central America and Colombia it often softens to an English-like <span class="ipa">[h]</span>. Either is understood everywhere.'),
+   lst('The jota',['jamón','ojo','ajo','jugo','gente','mujer','México','rojo']),
+   rq([Q(null,'IPA [x] stands for…',['the "ks" in "taxi"','the Spanish jota','the English h'],1,'English h is [h].'),
+       RD('ˈxent̪e',['gente','gato'],0,'gente','g before e = [x].'),
+       HR('ojo',['[ˈoxo]','[ˈoho]','[ˈoɣo]'],0,'j = [x], with friction.'),
+       Q(null,'Which word has [x]?',['guitarra','gente','gato'],1,'g before e or i is [x].'),
+       Q('taxi','How is the x in <i>taxi</i> pronounced?',['[x]','[ks]'],1,'Only in a few names like México does x spell [x].')]),
+   bd([{w:'jamón',a:'x a ˈ m o n',x:'h ʝ',why:'j = [x]; the accent puts the stress on the last syllable.'},{w:'ojo',a:'ˈ o x o',x:'h ɣ',why:'[x] between two o\'s.'}]),
+   spk(['jamón','ojo','gente'])],adds:['s:x','r:e15']},
+
+ {id:'e16',title:'The sounds you already have',kind:'sounds',min:7,steps:[
+   txt('Almost the same as English',`The rest of Spanish is already in English, with a few small adjustments. They're small, but they add up.`),
+   sy('Same symbols, same sounds','These work just like English.',[
+     {s:'m',k:['mano']},{s:'n',k:['no']},{s:'f',k:['foto']},{s:'ʧ',n:'ch',t:'One symbol for the sound of "ch". Also written [tʃ].',k:['chico']},{s:'w',t:'Spelled u before a vowel, or hu-.',k:['huevo','bueno']},{s:'j',t:'Spelled i before a vowel.',k:['tierra']}]),
+   txt('Light l, always',`English has two l's. At the start of a word ("leaf") the l is <b>light</b>. At the end ("full", "feel") it's <b>dark</b>: the back of the tongue rises, giving it a hollow "w"-like colour. IPA writes the dark one <span class="ipa">[ɫ]</span>.<br><br>Spanish l is <b>always light</b>, even at the end of a word. <i>sol</i> and <i>mil</i> end with a bright, clear l.`),
+   cm('Dark English l vs light Spanish l','',[['sole (EN)','sol',''],['feel (EN)','mil',''],['animal (EN)','animal','']]),
+   txt('s, z, c and h',`<ul><li><b>s</b> stays <span class="ipa">[s]</span> between vowels: <i>casa</i>, never "caza". It only buzzes to [z] right before a voiced consonant, as in <i>mismo</i> [ˈmizmo].</li><li>In Latin America, <b>z</b> and <b>c before e or i</b> are also <span class="ipa">[s]</span>: <i>zapato, cielo, cine</i>. (Spain uses [θ], the "th" of "think".)</li><li><b>h</b> is silent: <i>hola</i> [ˈola].</li></ul>`),
+   lst('Familiar sounds, Spanish style',['sol','mil','papel','animal','zapato','cine','hola','mismo']),
+   rq([Q(null,'[ɫ] is the dark l of…',['"leaf"','"full"'],1,'Spanish never uses it.'),
+       RD('ˈola',['hola','ola (wave)','both: the h is silent'],2,'hola','h is silent, so they sound the same.'),
+       HR('zapato',['[saˈpat̪o]','[zaˈpat̪o]'],0,'In Latin America, z = [s].'),
+       HR('mismo',['[ˈmizmo]','[ˈmismo]'],0,'Before a voiced consonant like m, s buzzes to [z].'),
+       Q(null,'The symbol [ʧ] stands for…',['English "ch"','English "sh"','English "j"'],0,'"ch" in "church".')]),
+   bd([{w:'sol',a:'s o l',x:'ɫ oʊ z',why:'Light l, no glide on the o.'},{w:'zapato',a:'s a ˈ p a t̪ o',x:'z θ',why:'z = [s] in Latin America.'}]),
+   spk(['sol','mil','animal'])],adds:['r:e16']},
+
+ {id:'e17',title:'Rule: stress and accent marks',kind:'rule',min:8,steps:[
+   txt('Where the stress goes','Spanish spelling tells you the stress every time:<ol><li>Word ends in a <b>vowel, n or s</b>: stress the <b>second-to-last</b> syllable (<i>CA-sa, HA-blan</i>).</li><li>Word ends in <b>any other consonant</b>: stress the <b>last</b> syllable (<i>ciu-DAD, a-ni-MAL</i>).</li><li>A <b>written accent</b> overrides both rules (<i>ÁR-bol, ca-FÉ, can-CIÓN, te-LÉ-fo-no</i>).</li></ol>In IPA, look for the <span class="ipa">ˈ</span> before the stressed syllable.'),
+   lst('Rules 1 and 2',['casa','hablan','examen','ciudad','animal','papel']),
+   lst('Rule 3: the accent mark wins',['árbol','lápiz','café','canción','sábado','teléfono']),
+   cm('English moves the stress','Some words look the same but are stressed differently. Listen for the strong syllable.',[['animal (EN)','animal','English: AN-i-mal. Spanish: a-ni-MAL.'],['hospital (EN)','hospital','English: HOS-pi-tal. Spanish: os-pi-TAL.']]),
    lst('Stress changes the word',['papa','papá','término','termino','terminó']),
    rq([Q('ciudad','Where is the stress in <i>ciudad</i>?',['CIU-dad','ciu-DAD'],1,'It ends in d (not a vowel, n or s), so the last syllable is stressed.'),
        Q('árbol','Where is the stress in <i>árbol</i>?',['ÁR-bol','ar-BOL'],0,'The accent mark overrides the rule.'),
        Q('canción','Where is the stress in <i>canción</i>?',['CAN-ción','can-CIÓN'],1,'Ending in n would mean second-to-last, but the accent mark moves it.'),
        Q('teléfono','Where is the stress in <i>teléfono</i>?',['te-LÉ-fo-no','te-le-FO-no'],0,'The accent mark shows it.'),
        Q('terminó','Which word did you hear?',['término (end)','termino (I finish)','terminó (he finished)'],2,'Stress on the last syllable: ter-mi-NÓ.'),
-       Q('papa','Which word did you hear?',['papa (potato)','papá (dad)'],0,'Stress on the first syllable: PA-pa.')]),
+       Q('papa','Which word did you hear?',['papa (potato)','papá (dad)'],0,'Stress on the first syllable: PA-pa.'),
+       RD('t̪eɾˈmino',['término','termino','terminó'],1,'termino','The ˈ is before mi: ter-MI-no.'),
+       RD('ekˈsamen',['examen','exámenes'],0,'examen','Ends in n, so second-to-last: e-XA-men.')]),
+   bd([{w:'café',a:'k a ˈ f e',x:'eɪ ə',why:'The accent puts the stress on fe.'},{w:'árbol',a:'ˈ a ɾ β o l',x:'b r ɫ',why:'Stress on ár; single r after a vowel is a tap; b after r is soft.'}]),
    spk(['teléfono','canción','árbol'])],adds:['r:es9']},
- {id:'es10',title:'Rule: diphthongs, linking and rhythm',kind:'rule',min:7,steps:[
-   txt('Diphthongs','<b>i</b> and <b>u</b> next to another vowel turn into glides, <span class="ipa">[j]</span> and <span class="ipa">[w]</span>, and the two vowels share a syllable: <i>bue-no, tie-rra, bai-le, ciu-dad</i>. A written accent on the i or u breaks them apart into two syllables: <i>pa-ís, dí-a</i>.'),
-   lst('Glide or two syllables?',['bueno','tierra','baile','ciudad','país','día']),
-   txt('Linking','Spanish speakers don\'t pause between words. A final consonant joins the next word\'s vowel (<i>los otros</i> is said lo-so-tros), and vowels at a word boundary blend (<i>una amiga</i> is u-na-mi-ga). This is why fast Spanish sounds like one long word.'),
-   lst('Words running together',['los otros','mis amigos','una amiga','va a ir']),
-   txt('Rhythm','English stretches stressed syllables and squashes the rest. Spanish gives every syllable roughly the same time. Say <i>chocolate</i> as four even beats: cho-co-la-te.'),
-   lst('Even beats, full vowels',['chocolate','animal','hospital']),
+
+ {id:'e18',title:'Diphthongs: vowels that glide',kind:'sounds',min:7,steps:[
+   txt('When i and u become glides',`Spanish vowels don't glide on their own, but two vowels can share a syllable. When <b>i</b> or <b>u</b> sits next to another vowel, it shrinks into a quick glide, <span class="ipa">[j]</span> or <span class="ipa">[w]</span>:<ul><li><i>bueno</i> [ˈbweno], <i>tierra</i> [ˈt̪jera], <i>ciudad</i> [sjuˈðað]</li><li><i>baile</i> [ˈbajle], <i>aire</i> [ˈajɾe], <i>auto</i> [ˈawt̪o]</li></ul>That's the only place Spanish has glides, and spelling always shows it.`),
+   sy('The glide symbols','',[
+     {s:'j',n:'i as a glide',t:'English "y" in "yes".',k:['tierra','baile']},{s:'w',n:'u as a glide',t:'English "w".',k:['bueno','auto']}]),
+   lst('Glides',['bueno','tierra','baile','aire','auto','ciudad']),
+   txt('An accent mark breaks them up','A written accent on the i or u keeps it a full vowel, in its own syllable: <i>país</i> [paˈis] is pa-ÍS, <i>día</i> [ˈd̪ia] is DÍ-a, <i>río</i> is RÍ-o.'),
+   lst('Two syllables',['país','día','río','tía']),
    rq([Q('país','How many syllables does <i>país</i> have?',['1','2'],1,'The accent on í breaks the diphthong: pa-ís.'),
        Q('bueno','How many syllables does <i>bueno</i> have?',['2','3'],0,'u before a vowel becomes [w]: bue-no.'),
-       Q('los otros','How are <i>los otros</i> joined?',['los · otros, with a small pause','lo-so-tros, the s slides onto the next vowel'],1,'A final consonant links to the next vowel.'),
+       HR('baile',['[ˈbajle]','[baˈile]'],0,'ai is one syllable: BAI-le.'),
+       Q(null,'In [ˈbweno], the [w] comes from the letter…',['b','u','o'],1,'u before a vowel becomes [w].')]),
+   bd([{w:'bueno',a:'ˈ b w e n o',x:'u β',why:'b at the start is hard; u becomes [w].'},{w:'auto',a:'ˈ a w t̪ o',x:'u oʊ',why:'au is one syllable: [aw].'}]),
+   spk(['bueno','baile','país'])],adds:['r:e18']},
+
+ {id:'e19',title:'Rule: linking and rhythm',kind:'rule',min:7,steps:[
+   txt('Linking','Spanish speakers don\'t pause between words. A final consonant joins the next word\'s vowel (<i>los otros</i> is said lo-so-tros), and vowels at a word boundary blend (<i>una amiga</i> is u-na-mi-ga). IPA can mark this with a tie, <span class="ipa">‿</span>. This is why fast Spanish sounds like one long word.'),
+   lst('Words running together',['los otros','mis amigos','una amiga','va a ir','¿Cómo estás?']),
+   txt('Rhythm','English stretches stressed syllables and squashes the rest (remember the schwa). Spanish gives every syllable roughly the same time, so it sounds even, almost like a machine gun to English ears. Say <i>chocolate</i> as four even beats: cho-co-la-te.'),
+   cm('Uneven vs even beats','',[['banana (EN)','banana',''],['chocolate (EN)','chocolate','']]),
+   lst('Even beats, full vowels',['chocolate','animal','hospital','sábado']),
+   rq([Q('los otros','How are <i>los otros</i> joined?',['los · otros, with a small pause','lo-so-tros, the s slides onto the next vowel'],1,'A final consonant links to the next vowel.'),
        Q('chocolate','What happens to the unstressed vowels in <i>chocolate</i>?',['They weaken to "uh"','They stay full: cho-co-la-te'],1,'Spanish never reduces vowels.'),
-       Q('una amiga','In <i>una amiga</i>, the two a\'s…',['are said separately with a catch','blend into one: u-na-mi-ga'],1,'Vowels blend across words.')]),
-   spk(['los otros','chocolate','bueno'])],adds:['r:es10']},
- {id:'es11',title:'Rule: spelling to sound',kind:'rule',min:6,steps:[
-   txt('The traps','Spanish spelling is very regular once you know these:<ul><li><b>c</b> before e/i, <b>z</b> and <b>s</b> are all <span class="ipa">[s]</span> in Latin America (<i>cielo, zapato</i>).</li><li><b>qu</b> and <b>gu</b> before e/i: the u is silent (<i>queso, guitarra</i>). Write <b>ü</b> to pronounce it (<i>pingüino</i>).</li><li><b>h</b> is always silent (<i>hola, hielo</i>).</li><li><b>x</b> is usually <span class="ipa">[ks]</span> (<i>taxi</i>), but <span class="ipa">[x]</span> in <i>México</i> and some other names.</li><li><b>ll</b> and <b>y</b> sound the same.</li></ul>'),
-   lst('Listen',['cielo','zapato','queso','guitarra','pingüino','hola','hielo','taxi','México','llave']),
+       Q('una amiga','In <i>una amiga</i>, the two a\'s…',['are said separately with a catch','blend into one: u-na-mi-ga'],1,'Vowels blend across words.'),
+       Q(null,'In [ˈkomo‿esˈt̪as], the mark ‿ means…',['pause here','run the words together','stress'],1,'‿ ties the words: como-estás.')]),
+   spk(['los otros','chocolate','mis amigos'])],adds:['r:es10']},
+
+ {id:'e20',title:'Rule: spelling to sound',kind:'rule',min:7,steps:[
+   txt('The whole system on one page','Spanish spelling is very regular once you know these:<ul><li><b>c</b> before e/i, <b>z</b> and <b>s</b> are all <span class="ipa">[s]</span> in Latin America (<i>cielo, zapato, cine</i>).</li><li><b>c</b> before a/o/u, <b>qu</b> before e/i and <b>k</b> are <span class="ipa">[k]</span>. In qu and gu before e/i, the u is silent (<i>queso, guitarra, guerra</i>). Write <b>ü</b> to pronounce it (<i>pingüino</i>).</li><li><b>g</b> before a/o/u is <span class="ipa">[ɡ]</span>/<span class="ipa">[ɣ]</span>; before e/i it\'s <span class="ipa">[x]</span> (<i>gato</i> vs <i>gente</i>).</li><li><b>h</b> is always silent (<i>hola, hielo</i>).</li><li><b>x</b> is usually <span class="ipa">[ks]</span> (<i>taxi</i>), but <span class="ipa">[x]</span> in <i>México</i> and some other names.</li><li><b>ll</b> and <b>y</b> sound the same.</li></ul>'),
+   lst('Listen',['cielo','zapato','cine','queso','guitarra','guerra','pingüino','gato','gente','hielo','taxi','México']),
    txt('Dialect note','In the Caribbean, coastal areas and much of South America, an s before a consonant or at the end of a word often weakens to a breathy <span class="ipa">[h]</span> or disappears: <i>los amigos</i> → "loh amigoh". Recognise it, but you don\'t need to copy it.'),
    rq([Q('zapato','In Latin America, the z in <i>zapato</i> is…',['[s]','[θ], like "think"','[z], like "zoo"'],0,'Latin America uses [s] for z and soft c.'),
        Q('hielo','The h in <i>hielo</i> is…',['Silent','Like English h','Like the jota'],0,'Spanish h is always silent.'),
        Q('queso','The u in <i>queso</i> is…',['Silent','Pronounced [w]'],0,'In qu and gu before e/i, the u is silent.'),
        Q('pingüino','The ü in <i>pingüino</i> is…',['Silent','Pronounced [w]'],1,'The two dots mean "say this u".'),
        Q('México','The x in <i>México</i> is…',['[ks]','[x], the jota'],1,'An old spelling kept for the country\'s name.'),
-       Q('taxi','The x in <i>taxi</i> is…',['[ks]','[x], the jota'],0,'Elsewhere x is usually [ks].')])],adds:['r:es11']},
- {id:'es12',title:'Spanish checkpoint',kind:'review',min:8,steps:[
-   txt('Putting it together','A mixed review of every Spanish sound and contrast. Anything you miss goes into your daily review.'),
+       Q('taxi','The x in <i>taxi</i> is…',['[ks]','[x], the jota'],0,'Elsewhere x is usually [ks].'),
+       RD('ˈɡera',['guerra','jarra'],0,'guerra','gu before e = [ɡ]; rr = trill.')]),
+   bd([{w:'guitarra',a:'ɡ i ˈ t̪ a r a',x:'w ɾ x',why:'gu before i = [ɡ] (silent u); rr = trill.'},{w:'cine',a:'ˈ s i n e',x:'k θ',why:'c before i = [s] in Latin America.'}]),
+   spk(['guitarra','gente','queso'])],adds:['r:es11']},
+
+ {id:'e21',title:'Spanish checkpoint',kind:'review',min:10,steps:[
+   txt('Putting it together','A mixed review of every Spanish sound, contrast and symbol. Anything you miss goes into your daily review.'),
    qz(ES_ALL,10),prs(['es-r','es-pb','es-td','es-kg','es-n','es-ei'],8),
+   rq([RD('ˈlaɣo',['lago','lado'],0,'lago','[ɣ] is soft g; [ð] would be soft d.'),
+       RD('ˈlaðo',['lago','lado'],1,'lado','[ð] is soft d.'),
+       RD('ˈkaro',['caro','carro'],1,'carro','[r] is the trill.'),
+       RD('ˈaɲo',['año','ajo'],0,'año','[ɲ] is ñ; [x] would be the jota.'),
+       RD('ˈaxo',['año','ajo'],1,'ajo','[x] is the jota.'),
+       HR('amigo',['[aˈmiɣo]','[ˈamiɡo]','[əˈmiɡoʊ]'],0,'Stress on mi, soft g, full vowels.'),
+       HR('perro',['[ˈpero]','[ˈpeɾo]','[ˈpʰeɹoʊ]'],0,'Trill, no puff, no glide.')]),
+   bd([{w:'abogado',a:'a β o ˈ ɣ a ð o',x:'b ɡ d̪',why:'All three soft consonants in one word.'},{w:'gracias',a:'ˈ ɡ ɾ a s j a s',x:'r θ i',why:'Hard g after a pause, tap after g, i as a [j] glide.'},{w:'ciudad',a:'s j u ˈ ð a ð',x:'θ d̪ i',why:'c = [s], i glides, both d\'s soft, stress on the end.'}]),
    spk(['perro','abogado','ciudad','gracias'])],adds:[]},
 ]},
 {id:'zh',l:'zh',title:'Mandarin',sub:'The sounds Mandarin has that Spanish doesn\'t, the tones, and the rules for how tones change in real speech.',lessons:[
@@ -1530,6 +1857,9 @@ const UNITS=[
 ];
 const LBYID={};UNITS.forEach(u=>u.lessons.forEach((L,i)=>{L.unit=u;L.n=i+1;LBYID[L.id]=L}));
 const ALL_LESSONS=UNITS.flatMap(u=>u.lessons);
+// earlier Spanish rule lessons now live in the rebuilt unit; keep their review items and phrases working
+const LESSON_ALIAS={es4:'e10',es5:'e12',es9:'e17',es10:'e19',es11:'e20'};
+for(const k in LESSON_ALIAS)if(!LBYID[k])LBYID[k]=LBYID[LESSON_ALIAS[k]];
 
 // ---------- SPACED REPETITION (Today) ----------
 const BOX_DAYS=[0,1,2,4,8,16,32,64];
@@ -1707,7 +2037,7 @@ let lp=null; // active lesson player state
 if(!srs.lessons)srs.lessons={};
 function lessonDone(id){return !!(srs.lessons&&srs.lessons[id])}
 function nextLesson(){return ALL_LESSONS.find(L=>!lessonDone(L.id))||null}
-const KIND={sounds:'Sounds',rule:'Rule',review:'Checkpoint'};
+const KIND={intro:'Basics',sounds:'Sounds',rule:'Rule',review:'Checkpoint'};
 function renderLessons(){
   if(lp){renderStep();return}
   $('#v-lessons').classList.remove('playing');
@@ -1736,13 +2066,14 @@ function stepHTMLSound(s){
 function listenRows(keys){
   return keys.map(k=>{const w=wd(k);if(!w)return '';return `<div class="ex">${playBtn(w.w,w.l)}<div><div class="w">${lessonWordHTML(w)} ${w.r?`<span class="meta">${esc(w.r)}</span>`:''}</div><div class="meta">“${esc(w.g)}”</div></div><div class="tr ipa">[${esc(w.ipa)}]</div></div>`}).join('');
 }
-function qCount(st){return st.t==='ruleq'?st.qs.length:st.n}
+function qCount(st){return st.t==='ruleq'?st.qs.length:st.t==='build'?st.items.length:st.n}
 function makeStepQ(st){
   const L=lp.L,lang=L.unit.l;
   if(st.t==='pairs')return pairQ(PBYID[pick(st.ids)]);
   if(st.t==='tones')return toneQ();
   if(st.t==='tpairs')return tpairQ();
   if(st.t==='ruleq')return customQ(st.qs[lp.q.k],lang);
+  if(st.t==='build')return {type:'build',item:st.items[lp.q.k]};
   // quiz: the lesson's sounds plus earlier sounds from this unit (interleaving)
   const unitIds=L.unit.lessons.slice(0,L.n).flatMap(x=>x.steps.filter(s=>s.t==='sound').map(s=>s.id));
   const poolIds=[...new Set([...st.ids,...unitIds])];
@@ -1753,15 +2084,18 @@ function makeStepQ(st){
 function renderStep(){
   $('#v-lessons').classList.add('playing');
   const {L,i}=lp,st=L.steps[i],total=L.steps.length;
-  const isQ=['pairs','quiz','ruleq','tones','tpairs'].includes(st.t);
+  const isQ=['pairs','quiz','ruleq','tones','tpairs','build'].includes(st.t);
   let body='';
   if(st.t==='text')body=`<h2>${esc(st.h)}</h2><div class="lesson-text">${st.html}</div>`;
   else if(st.t==='sound')body=stepHTMLSound(BYID[st.id]);
   else if(st.t==='listen')body=`<h2>${esc(st.h)}</h2>${listenRows(st.keys)}${st.note?`<div class="note">${st.note}</div>`:''}<div class="voice-warn"></div>`;
   else if(st.t==='shadow')body=shadowStepHTML(st);
+  else if(st.t==='sym')body=symStepHTML(st);
+  else if(st.t==='cmp')body=cmpStepHTML(st);
+  else if(st.t==='feel')body=feelStepHTML(st);
   else if(st.t==='speak')body=`<h2>Say it yourself</h2><p class="lesson-text">Record yourself on any of these and compare with the native recording. This is optional, but it's the best way to catch habits you can't hear while you're speaking.</p>${st.keys.map(k=>{const w=wd(k);return w?`<div class="ex">${playBtn(w.w,w.l)}<div><div class="w">${lessonWordHTML(w)} ${w.r?`<span class="meta">${esc(w.r)}</span>`:''}</div><div class="meta">[${esc(w.ipa)}] “${esc(w.g)}”</div></div><button class="btn ghost" data-speak="${w.l}|${esc(w.w)}">🎙 Record</button></div>`:''}).join('')}<p style="font-size:13px;color:var(--muted)">Recording opens the Speak tab. Come back to Lessons to pick up where you left off.</p>`;
   else if(isQ){
-    const head={pairs:'Ear training: which word?',quiz:'Check: sounds and symbols',ruleq:'Check the rule',tones:'Ear training: which tone?',tpairs:'Ear training: which tones?'}[st.t];
+    const head=st.h||{pairs:'Ear training: which word?',quiz:'Check: sounds and symbols',ruleq:L.kind==='rule'?'Check the rule':'Check: hear it, read it',tones:'Ear training: which tone?',tpairs:'Ear training: which tones?',build:'Write it in IPA'}[st.t];
     body=`<h2>${head}</h2><div class="qcount" id="lq-count"></div><div class="qbox" id="lq"></div>`;
   }
   $('#lessons').innerHTML=`
@@ -1773,6 +2107,7 @@ function renderStep(){
   $('#lp-exit').onclick=()=>{lp=null;renderLessons();window.scrollTo(0,0)};
   $('#lp-back').onclick=()=>{lp.i--;lp.q=null;renderStep();window.scrollTo(0,0)};
   $('#lp-next').onclick=()=>{if(i===total-1)finishLesson();else{lp.i++;lp.q=null;renderStep();window.scrollTo(0,0)}};
+  if(st.t==='feel')bindFeel(st);
   if(isQ){$('#lp-skip').onclick=()=>$('#lp-next').click();if(!lp.q)lp.q={k:0,c:0};nextStepQ()}
 }
 function nextStepQ(){
@@ -1784,7 +2119,7 @@ function nextStepQ(){
   }
   $('#lq-count').textContent=`Question ${lp.q.k+1} of ${n}`;
   const q=makeStepQ(st);
-  mountQ($('#lq'),q,{onAnswer:(ok,qq,i)=>{
+  (q.type==='build'?mountBuild:mountQ)($('#lq'),q,{onAnswer:(ok,qq,i)=>{
       lp.q.k++;if(ok)lp.q.c++;lp.results.n++;if(ok)lp.results.c++;
       if(qq.s){record(qq.s.id,ok);if(!ok)record(qq.opts[i].id,false)}
       if(qq.type==='pair')record('p:'+qq.c.id,ok);
@@ -2141,7 +2476,7 @@ document.addEventListener('click',e=>{const u=e.target.closest('[data-unflag]');
 const PHRASES=[{"id": "es4a", "l": "es", "lesson": "es4", "w": "¿Dónde está el baño?", "ipa": "ˈd̪onde esˈt̪a el ˈβaɲo", "g": "Where is the bathroom?", "note": "d̪ after n stays hard; b after l goes soft [β]."}, {"id": "es4b", "l": "es", "lesson": "es4", "w": "Todo bien, gracias.", "ipa": "ˈt̪oðo ˈβjen ˈɡɾasjas", "g": "All good, thanks.", "note": "Both d and b go soft between vowels; g after the pause is hard."}, {"id": "es4c", "l": "es", "lesson": "es4", "w": "Me gusta el agua.", "ipa": "me ˈɣust̪a el ˈaɣwa", "g": "I like water.", "note": "Both g's are soft: one after a vowel, one between vowels."}, {"id": "es5a", "l": "es", "lesson": "es5", "w": "El perro corre rápido.", "ipa": "el ˈpero ˈkore ˈrapiðo", "g": "The dog runs fast.", "note": "Three trills: rr twice, and r at the start of a word."}, {"id": "es9a", "l": "es", "lesson": "es9", "w": "¿Qué hora es?", "ipa": "ke ˈoɾa ˈes", "g": "What time is it?", "note": "h is silent; hora is stressed on the first syllable."}, {"id": "es9b", "l": "es", "lesson": "es9", "w": "Un café, por favor.", "ipa": "uŋ kaˈfe poɾ faˈβoɾ", "g": "A coffee, please.", "note": "café: the accent mark puts stress on the last syllable. favor ends in r, so it is stressed at the end too."}, {"id": "es10a", "l": "es", "lesson": "es10", "w": "¿Cómo estás?", "ipa": "ˈkomo‿esˈt̪as", "g": "How are you?", "note": "The two words run together with no break between o and e."}, {"id": "es10b", "l": "es", "lesson": "es10", "w": "Voy a ir a la playa.", "ipa": "ˈboj‿a‿ˈiɾ‿a la ˈplaʝa", "g": "I'm going to go to the beach.", "note": "Five words, one smooth stream. Each syllable gets about the same time."}, {"id": "es10c", "l": "es", "lesson": "es10", "w": "Mis amigos están aquí.", "ipa": "mi.saˈmi.ɣo.sesˈt̪a.na.ˈki", "g": "My friends are here.", "note": "Final consonants jump onto the next vowel: mi-sa-mi-go-ses-ta-na-quí."}, {"id": "es11a", "l": "es", "lesson": "es11", "w": "Quiero un vaso de agua.", "ipa": "ˈkjeɾo um ˈbaso ðe ˈaɣwa", "g": "I'd like a glass of water.", "note": "qu = [k]; v = [b] after m; n becomes [m] before b."}, {"id": "es11b", "l": "es", "lesson": "es11", "w": "Hoy hace calor.", "ipa": "oj ˈase kaˈloɾ", "g": "It's hot today.", "note": "Both h's are silent and c before e is [s]."}, {"id": "zh7a", "l": "zh", "lesson": "zh7", "w": "你叫什么名字？", "r": "nǐ jiào shénme míngzi", "ipa": "ni˨˩ tɕjaʊ˥˩ ʂən˧˥ mə miŋ˧˥ tsɨ", "g": "What's your name?", "note": "shén ends in -n, míng in -ng. 么 and 字 are light and toneless here."}, {"id": "zh7b", "l": "zh", "lesson": "zh7", "w": "我是美国人。", "r": "wǒ shì Měiguó rén", "ipa": "wo˨˩ ʂɨ˥˩ meɪ˨˩ kwo˧˥ ɻən˧˥", "g": "I'm American.", "note": "Before a non-third tone, a third tone just stays low: wǒ and Měi never rise."}, {"id": "zh9a", "l": "zh", "lesson": "zh9", "w": "老板，你好！", "r": "lǎobǎn, nǐ hǎo", "ipa": "laʊ˧˥ pan˨˩˦ ni˧˥ xaʊ˨˩˦", "g": "Hello, boss!", "note": "Two third-tone pairs: lǎo and nǐ both rise like second tones."}, {"id": "zh9b", "l": "zh", "lesson": "zh9", "w": "我也很好。", "r": "wǒ yě hěn hǎo", "ipa": "wo˧˥ jɛ˨˩ xən˧˥ xaʊ˨˩˦", "g": "I'm fine too.", "note": "Four third tones in a row. Speakers split them into pairs (wǒ yě | hěn hǎo), so you commonly hear wó yě hén hǎo."}, {"id": "zh10a", "l": "zh", "lesson": "zh10", "w": "不客气。", "r": "bú kèqi", "ipa": "pu˧˥ kʰɤ˥˩ tɕʰi", "g": "You're welcome.", "note": "不 rises before the fourth tone kè."}, {"id": "zh10b", "l": "zh", "lesson": "zh10", "w": "一共多少钱？", "r": "yígòng duōshao qián", "ipa": "i˧˥ kʊŋ˥˩ two˥ ʂaʊ tɕʰjɛn˧˥", "g": "How much altogether?", "note": "一 rises before the fourth tone gòng."}, {"id": "zh10c", "l": "zh", "lesson": "zh10", "w": "我不知道。", "r": "wǒ bù zhīdào", "ipa": "wo˨˩ pu˥˩ ʈʂɨ˥ taʊ˥˩", "g": "I don't know.", "note": "不 keeps its fourth tone before the first tone zhī."}, {"id": "zh11a", "l": "zh", "lesson": "zh11", "w": "你在哪儿？", "r": "nǐ zài nǎr", "ipa": "ni˨˩ tsaɪ˥˩ nɑɻ˨˩˦", "g": "Where are you?", "note": "哪儿 is one syllable: the -r curls the tongue at the end of nǎ."}, {"id": "zh11b", "l": "zh", "lesson": "zh11", "w": "这是我的朋友。", "r": "zhè shì wǒ de péngyou", "ipa": "ʈʂɤ˥˩ ʂɨ˥˩ wo˨˩ tə pʰəŋ˧˥ joʊ", "g": "This is my friend.", "note": "的 and 友 are neutral: short, light and toneless."}, {"id": "ar6a", "l": "ar", "lesson": "ar6", "w": "صباح الخير", "r": "ṣabāḥ il-xēr", "ipa": "sˤɑˈbɑːħ ilˈxeːr", "g": "Good morning", "note": "The emphatic ṣ darkens both a's in ṣabāḥ."}, {"id": "ar6b", "l": "ar", "lesson": "ar6", "w": "الطقس حلو اليوم", "r": "iṭ-ṭaʾs ḥilu l-yōm", "ipa": "itˤˈtˤɑʔs ˈħilu lˈjoːm", "g": "The weather is nice today", "note": "ṭ darkens the vowel after it; ق is a glottal stop."}, {"id": "ar8a", "l": "ar", "lesson": "ar8", "w": "شو بدّك؟", "r": "šū biddak", "ipa": "ʃuː ˈbiddak", "g": "What do you want?", "note": "Hold the dd a beat longer."}, {"id": "ar8b", "l": "ar", "lesson": "ar8", "w": "يلّا نروح", "r": "yalla nrūḥ", "ipa": "ˈjalla nruːħ", "g": "Let's go", "note": "Doubled ll in yalla; nr starts a cluster with no vowel between."}, {"id": "ar9a", "l": "ar", "lesson": "ar9", "w": "صباح النور", "r": "ṣabāḥ in-nūr", "ipa": "sˤɑˈbɑːħ inˈnuːr", "g": "Good morning (reply)", "note": "ن is a sun letter, so il- becomes in-nūr."}, {"id": "ar9b", "l": "ar", "lesson": "ar9", "w": "الدنيا شوب", "r": "id-dinya šōb", "ipa": "idˈdinja ʃoːb", "g": "It's hot (lit. the world is hot)", "note": "د is a sun letter: id-dinya, not il-dinya."}, {"id": "ar10a", "l": "ar", "lesson": "ar10", "w": "شو اسمك؟", "r": "šū ismak", "ipa": "ʃuː ˈismak", "g": "What's your name? (to a man)", "note": "شو is Levantine for MSA ماذا."}, {"id": "ar10b", "l": "ar", "lesson": "ar10", "w": "هلّق مش فاضي", "r": "hallaʾ miš fāḍi", "ipa": "ˈhallaʔ miʃ ˈfaːdˤi", "g": "I'm busy right now", "note": "ق at the end of hallaʾ is a glottal stop."}, {"id": "ar10c", "l": "ar", "lesson": "ar10", "w": "قدّيش حقّه؟", "r": "ʾaddēš ḥaʾʾo", "ipa": "ʔadˈdeːʃ ˈħaʔʔo", "g": "How much is it?", "note": "Both ق's are glottal stops, and the doubled one is held."}, {"id": "ar11a", "l": "ar", "lesson": "ar11", "w": "كتير منيح", "r": "ktīr mnīḥ", "ipa": "ktiːr mniːħ", "g": "Very good", "note": "Both words start with two consonants and no vowel between them."}, {"id": "ar11b", "l": "ar", "lesson": "ar11", "w": "بدّي كاسة مي", "r": "biddi kāset mayy", "ipa": "ˈbiddi ˈkaːset majj", "g": "I want a glass of water", "note": "Stress falls on the long vowel in kāset."}];
 const PHBY={};PHRASES.forEach(p=>{PHBY[p.id]=p;LW[p.w]={l:p.l,w:p.w,ipa:p.ipa,g:p.g,r:p.r||'',ph:p}});
 (function addShadowSteps(){
-  const byL={};PHRASES.forEach(p=>(byL[p.lesson]=byL[p.lesson]||[]).push(p.id));
+  const byL={};PHRASES.forEach(p=>{const id=LESSON_ALIAS[p.lesson]||p.lesson;(byL[id]=byL[id]||[]).push(p.id)});
   for(const L of ALL_LESSONS){
     const ids=byL[L.id];
     if(ids){const at=L.steps.findIndex(s=>s.t==='ruleq');const st={t:'shadow',ids};if(at>=0)L.steps.splice(at,0,st);else{const sp=L.steps.findIndex(s=>s.t==='speak');if(sp>=0)L.steps.splice(sp,0,st);else L.steps.push(st)}}
