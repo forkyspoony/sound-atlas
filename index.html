@@ -1079,7 +1079,7 @@ function mountQ(el,q,hooks){
   PB_V=null;
   el.innerHTML=`<div class="qprompt">${prompt}</div><div class="qmain">${main}</div><div class="opts${q.type==='pair'?' two':''}">${opts}</div><div class="voice-warn"></div><div class="feedback"></div>`;
   el.querySelector('.opts').onclick=e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)answerQ(el,q,+b.dataset.i,hooks)};
-  if(['tone','word2sym','pair','tpair'].includes(q.type)||(q.type==='custom'&&q.item.w&&/hear/i.test(q.item.q))){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
+  if(['tone','word2sym','pair','tpair'].includes(q.type)||(q.type==='custom'&&q.item.w)){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
 }
 function answerQ(el,q,i,hooks){
   const btns=[...el.querySelectorAll('.opt')];btns.forEach(b=>b.disabled=true);
