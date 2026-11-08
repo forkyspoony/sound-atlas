@@ -265,7 +265,7 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 .symlist{display:flex;flex-direction:column;gap:10px;margin:12px 0}
 .symrow{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px}
 .symbig{font-size:40px;min-width:64px;text-align:center;line-height:1.1;color:var(--accent)}
-.symbody{flex:1;min-width:0}.symname{font-weight:600}.symtxt{font-size:15px;margin-top:2px}
+.symbody{flex:1;min-width:0}.symbig.long{font-size:24px;max-width:96px;min-width:72px;padding-top:6px}.symname{font-weight:600}.symtxt{font-size:15px;margin-top:2px}
 .symex{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .exchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 3px;font-size:15px}
 .exchip .play{width:32px;height:32px}
@@ -291,6 +291,28 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 .bhint{font-size:14px;color:var(--muted)}
 .opt.ipaopt{font-size:22px}
 .lk.k-intro{background:var(--soft);color:var(--ink)}
+
+#coursebar{display:flex;gap:6px;margin:14px 0 2px;flex-wrap:wrap}
+#coursebar button{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+#coursebar button.on{color:var(--panel);border-color:transparent}
+#coursebar button.on[data-course=es]{background:var(--es)}#coursebar button.on[data-course=zh]{background:var(--zh)}#coursebar button.on[data-course=ar]{background:var(--ar)}
+.course-sub{color:var(--muted);font-size:14px;margin-bottom:6px}
+#learn-filter,#quiz-filter,#tr-filter,#pairs-filter,#speak-filter{display:none!important}
+.acr{display:flex;gap:14px;border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+.acsym{font-size:40px;min-width:60px;text-align:center;color:var(--accent)}
+.acbody{flex:1;min-width:0}.acl{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:6px 0}
+.acn{font-size:14px;color:var(--muted);margin:6px 0 0}
+
+.readintro li{margin:4px 0}
+bdi.arabic{font-size:1.15em;padding:0 2px}
+.lettergrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.lcard{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--panel)}
+.lhead{display:flex;gap:12px;align-items:flex-start}.lbig{font-size:52px;line-height:1.2;min-width:56px;text-align:center}
+.lname{display:flex;align-items:center;gap:6px;font-weight:600}.lnote{font-size:14px;color:var(--muted);margin-top:4px}
+.lforms{display:flex;flex-direction:row-reverse;justify-content:space-between;margin:10px 0 4px;border-top:1px dashed var(--line);padding-top:8px}
+.lforms div{display:flex;flex-direction:column;align-items:center}.lforms .arabic{font-size:30px;line-height:1.4}.lforms small{color:var(--muted);font-size:11px}
+table.marks{border-collapse:collapse;margin:8px 0}table.marks td,table.marks th{border-bottom:1px solid var(--line);padding:6px 14px;text-align:left}
+table.marks td.arabic{font-size:30px}
 #acct{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin:6px 0}
 #acct .acct-who{font-size:13px;color:var(--muted)}#acct .acct-btn{font-size:14px;padding:6px 12px;min-height:36px}
 </style>
@@ -303,7 +325,9 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 <body>
 <header>
   <h1><span class="slash">/</span>Sound Atlas<span class="slash">/</span></h1>
-  <div class="tagline">The International Phonetic Alphabet for an English speaker learning Spanish, Mandarin and Arabic.</div>
+  <div class="tagline">Pronunciation courses built on the International Phonetic Alphabet, for English speakers.</div>
+  <div id="coursebar" role="tablist" aria-label="Course"><button data-course="es">Spanish</button><button data-course="zh">Mandarin</button><button data-course="ar">Arabic</button></div>
+  <div id="course-sub" class="course-sub"></div>
   <nav id="nav">
     <a href="#today" data-v="today">Today</a>
     <a href="#lessons" data-v="lessons">Lessons</a>
@@ -311,10 +335,12 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
     <a href="#pairs" data-v="pairs">Pairs</a>
     <a href="#speak" data-v="speak">Speak</a>
     <a href="#vowels" data-v="vowels">Vowels</a>
-    <a href="#tones" data-v="tones">Mandarin tones</a>
+    <a href="#tones" data-v="tones" data-only="zh">Tones</a>
+    <a href="#read" data-v="read" data-only="ar">Read Arabic</a>
     <a href="#quiz" data-v="quiz">Quiz</a>
     <a href="#transcribe" data-v="transcribe">Transcribe</a>
     <a href="#basics" data-v="basics">IPA basics</a>
+    <a href="#across" data-v="across">Across languages</a>
   </nav>
 </header>
 
@@ -329,7 +355,7 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 <!-- LESSONS -->
 <section class="view" id="v-lessons">
   <h2>Guided path</h2>
-  <p class="lead">36 short lessons. First every sound of Spanish, then the sounds only Mandarin has, then the sounds only Arabic has, each followed by rule lessons on what the symbols alone don't tell you. Every lesson goes listen → hear the difference → check → say it, and what you learn feeds your daily review.</p>
+  <p class="lead" id="lessons-lead"></p>
   <div id="lessons"></div>
 </section>
 
@@ -405,6 +431,19 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
   <p class="lead">Listen to the word, then build its IPA from the keys. Stress marks and tones are left out, so this practises the sounds only. Spaces don't matter.</p>
   <div class="chips" id="tr-filter"></div>
   <div class="quiz-box" id="tr"></div>
+</section>
+
+<!-- ACROSS -->
+<section class="view" id="v-across">
+  <h2>Across your languages</h2>
+  <p class="lead">The same IPA symbol means the same sound in every language. These sounds appear in more than one of your courses, so once you can make one, you can make it everywhere. Below them: letters that look the same but are pronounced differently.</p>
+  <div id="across"></div>
+</section>
+
+<!-- READ ARABIC -->
+<section class="view" id="v-read">
+  <h2>Read Arabic</h2>
+  <div id="read"></div>
 </section>
 
 <!-- BASICS -->
@@ -680,7 +719,7 @@ function wordHTML(e){return e.l==='ar'?`<span class="arabic">${esc(e.w)}</span>`
 let voices=[];
 function loadVoices(){try{voices=speechSynthesis.getVoices()}catch(e){voices=[]}}
 if('speechSynthesis' in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}
-const AUDIO={"妈": "audio/ae3918a99aa.mp3", "麻": "audio/a433ea2216f.mp3", "马": "audio/a7d39044ed6.mp3", "骂": "audio/a6343706870.mp3", "好": "audio/a27e4fe4c3f.mp3", "爸": "audio/aa732e56e22.mp3", "大": "audio/a0889c34972.mp3", "怕": "audio/abc1c58b84b.mp3", "他": "audio/ae31b569a0f.mp3", "开": "audio/ab4217093bc.mp3", "在": "audio/a686b703f41.mp3", "早": "audio/a13a8589339.mp3", "字": "audio/a582c50066c.mp3", "菜": "audio/a7b4bb888fb.mp3", "草": "audio/a6744771609.mp3", "次": "audio/a5e5b8169ee.mp3", "中": "audio/a0869071c92.mp3", "这": "audio/a542523173c.mp3", "知": "audio/ac524682048.mp3", "茶": "audio/a97a08c17dc.mp3", "吃": "audio/aa10d4d5a63.mp3", "车": "audio/a7c852e1d83.mp3", "是": "audio/a30160a21b9.mp3", "书": "audio/afe04274cef.mp3", "十": "audio/aaa107f05b6.mp3", "人": "audio/a4912771a42.mp3", "热": "audio/a1aff05b636.mp3", "日": "audio/a15917f3b32.mp3", "鸡": "audio/a51093a2d58.mp3", "家": "audio/a7de8177ce7.mp3", "九": "audio/a27a2b9f17b.mp3", "七": "audio/a7db1eeb5c3.mp3", "去": "audio/a033fd274f0.mp3", "钱": "audio/adb4be61875.mp3", "西": "audio/a2f64b5a67e.mp3", "谢": "audio/ab27c6fd4c5.mp3", "学": "audio/a7c7a06f0ea.mp3", "一": "audio/ad274eee8a1.mp3", "鱼": "audio/a92468fdf7c.mp3", "女": "audio/a26bc84961c.mp3", "四": "audio/a4f88740b34.mp3", "饿": "audio/abf873d61fd.mp3", "喝": "audio/a9982c5ced1.mp3", "哥": "audio/acdfd26daa2.mp3", "冷": "audio/ae2fc60d070.mp3", "八": "audio/a2142fb62fd.mp3", "拔": "audio/a737c389c6b.mp3", "把": "audio/ab3ba7814f4.mp3", "衣": "audio/acb6d358425.mp3", "姨": "audio/a620e3674e5.mp3", "椅": "audio/a618be2726b.mp3", "意": "audio/a9d197986e0.mp3", "汤": "audio/afc4ef67147.mp3", "糖": "audio/a3d8cd510d0.mp3", "躺": "audio/aa85402d565.mp3", "烫": "audio/a700ef0f34f.mp3", "飞": "audio/a322b8afdf9.mp3", "肥": "audio/ae650f32008.mp3", "匪": "audio/a78c1a1967a.mp3", "费": "audio/af07ab143e8.mp3", "通": "audio/abef21932fe.mp3", "同": "audio/a0b8b919983.mp3", "统": "audio/ab6c938397c.mp3", "痛": "audio/a335a309cd8.mp3", "诗": "audio/a53e00f750c.mp3", "使": "audio/af6901ca318.mp3", "妈，麻，马，骂": "audio/ab1e6e7f670.mp3", "perro": "audio/a6139bdc23a.mp3", "rojo": "audio/aaf6c1a0ca2.mp3", "pero": "audio/a98fc7b3476.mp3", "caro": "audio/a732849d5bc.mp3", "gracias": "audio/aa30b3970f3.mp3", "jamón": "audio/a8d298a01d5.mp3", "lago": "audio/a4e68e95b58.mp3", "agua": "audio/ac1962c232b.mp3", "lobo": "audio/a4a98e66035.mp3", "uva": "audio/a2d2c2a1400.mp3", "Cuba": "audio/ac484b137e2.mp3", "gracias (Spain)": "audio/ab2ab2a377f.mp3", "cielo (Spain)": "audio/a2add742165.mp3", "zapato (Spain)": "audio/afcda3828ca.mp3", "año": "audio/a8470d9e5f7.mp3", "niño": "audio/a36a2baf40d.mp3", "España": "audio/a1ea132ffbd.mp3", "yo": "audio/ac41975d1da.mp3", "calle": "audio/a8f9f97eb45.mp3", "playa": "audio/aabd5cf4ffb.mp3", "papá": "audio/abec5e7268a.mp3", "tomate": "audio/a13f20098aa.mp3", "todo": "audio/a05f20a7178.mp3", "dedo": "audio/a8b9b43e964.mp3", "nada": "audio/aa3fcfe3a3b.mp3", "sí": "audio/a5e06bd15f9.mp3", "tú": "audio/a044e993fbe.mp3", "mesa": "audio/af04cc316d7.mp3", "leche": "audio/a3c60405a25.mp3", "no": "audio/afd12863535.mp3", "ojo": "audio/a2db9e0c624.mp3", "casa": "audio/a81bce1f3bf.mp3", "hola": "audio/a99800b85d3.mp3", "cada": "audio/ad1137b85c2.mp3", "راس": "audio/a1bba3b5397.mp3", "خلص": "audio/ad48f4e3da1.mp3", "غالي": "audio/a35142f13b1.mp3", "كتير": "audio/a0135c2974c.mp3", "أنا": "audio/a941ddf4bb6.mp3", "قلب": "audio/a82f1b4b7d9.mp3", "هلق": "audio/a260319f579.mp3", "مرحبا": "audio/a98d448a1d1.mp3", "حلو": "audio/a1f4de3270e.mp3", "حبيبي": "audio/af804ba4fa0.mp3", "عين": "audio/a675b46a5bc.mp3", "معليش": "audio/a0381bade7c.mp3", "سبعة": "audio/a2aa605ccfe.mp3", "قرآن": "audio/aeb7cd4ad61.mp3", "استقلال": "audio/a671cdcaba3.mp3", "صباح": "audio/af91c9a9f61.mp3", "صغير": "audio/ae476741781.mp3", "طيب": "audio/a42c260f0b0.mp3", "طاولة": "audio/a04df45911d.mp3", "ضروري": "audio/a45d6daa5ca.mp3", "أبيض": "audio/aec42045b5b.mp3", "ظريف": "audio/aba3edadcf1.mp3", "مظبوط": "audio/a6d4f420ce7.mp3", "هيك": "audio/a44de889d60.mp3", "هون": "audio/aae30ca19e6.mp3", "جميل": "audio/a26cb06fead.mp3", "جاي": "audio/acbd194b94b.mp3", "رجّال": "audio/a504a5727a0.mp3", "بِنْت": "audio/a8c9051214c.mp3", "نُور": "audio/a9a1a4a349f.mp3", "بيت": "audio/a2619065a2e.mp3", "يوم": "audio/aefc446efeb.mp3", "باب": "audio/a3b25b51a9c.mp3", "كيفك": "audio/a1bf06360c9.mp3", "شو": "audio/a7f146a7e5a.mp3", "تلاتة": "audio/a2d1560d33c.mp3", "بدي": "audio/a4de55dd4e3.mp3", "منيح": "audio/aac2127cce2.mp3", "carro": "audio/a3959fc6166.mp3", "coro": "audio/a720a9c0557.mp3", "corro": "audio/af73de0af41.mp3", "peso": "audio/ab0c7efa6f3.mp3", "beso": "audio/a6edd8a12b3.mp3", "pala": "audio/a95213d57ff.mp3", "bala": "audio/ad39ff8e69b.mp3", "pata": "audio/a67c38611ca.mp3", "bata": "audio/a191968f1bb.mp3", "tos": "audio/a4f956f26ee.mp3", "dos": "audio/ae67f16d28a.mp3", "tía": "audio/ae66dc9ae8f.mp3", "día": "audio/a743a04a95c.mp3", "gasa": "audio/a695a8d970b.mp3", "coma": "audio/a2609c5afcc.mp3", "goma": "audio/ac19065ff5a.mp3", "una": "audio/a226f391867.mp3", "uña": "audio/a49520ffd61.mp3", "cana": "audio/a06c34d216a.mp3", "caña": "audio/a4677342824.mp3", "piso": "audio/a90d94ae30f.mp3", "misa": "audio/ad4bd1f7dac.mp3", "踏": "audio/a08ce1ddc2e.mp3", "科": "audio/adcedab2c4f.mp3", "找": "audio/a76aac2ff5f.mp3", "志": "audio/a471d1e0ba6.mp3", "路": "audio/ade80bdbd70.mp3", "绿": "audio/a579625d5ac.mp3", "努": "audio/ac530eb5824.mp3", "هال": "audio/ab21b221b15.mp3", "حال": "audio/ac99849f27f.mp3", "خال": "audio/ad186bd9833.mp3", "سيف": "audio/aa20d192b8c.mp3", "صيف": "audio/ad81e09eee8.mp3", "سار": "audio/af957d191ae.mp3", "صار": "audio/a5ff1dd747b.mp3", "تين": "audio/a98ec5b658b.mp3", "طين": "audio/a97e7ab15ca.mp3", "دار": "audio/a4ef552f797.mp3", "ضار": "audio/ae65bde795e.mp3", "كلب": "audio/aec0c56b3b9.mp3", "عمل": "audio/ae9fa898f9b.mp3", "أمل": "audio/a60cd6c3d21.mp3", "خالي": "audio/a6dfd49bc23.mp3", "哪儿": "audio/adce81b4475.mp3", "一点儿": "audio/ab34e4ca734.mp3", "玩儿": "audio/ad5307a7967.mp3", "飞机": "audio/a0cb0206b42.mp3", "中国": "audio/a101806f57c.mp3", "铅笔": "audio/acd52d6c26e.mp3", "商店": "audio/a83eff41a2e.mp3", "明天": "audio/ab76ce230d3.mp3", "学习": "audio/aaa89dd63b3.mp3", "苹果": "audio/ab38d961e70.mp3", "同事": "audio/a92d8d1a505.mp3", "老师": "audio/a494f23d624.mp3", "美国": "audio/a2d10935506.mp3", "你好": "audio/a440ee0853a.mp3", "考试": "audio/ae53aad0f9c.mp3", "汽车": "audio/a70025cb40a.mp3", "大学": "audio/a858bb23650.mp3", "下雨": "audio/ab94ed83e39.mp3", "再见": "audio/a82202bb725.mp3", "妈妈": "audio/a7d3b2b0ebc.mp3", "谢谢": "audio/a3d43bc74a6.mp3", "朋友": "audio/ad490b5fd60.mp3", "东西": "audio/a949fb2e914.mp3", "很好": "audio/a77833b3f8c.mp3", "可以": "audio/a79176103e6.mp3", "水果": "audio/ac4bed30f02.mp3", "我很好": "audio/a212ebf3ba5.mp3", "不是": "audio/ae5d9c6c8a8.mp3", "不对": "audio/a40fe039df0.mp3", "不好": "audio/a46e6fb7ad6.mp3", "不来": "audio/a1d1cbe4928.mp3", "一个": "audio/ad8e3ae229f.mp3", "一天": "audio/ae99c431b70.mp3", "一年": "audio/a3579ba6641.mp3", "一起": "audio/a3a85181e8e.mp3", "第一": "audio/a649c8d4fca.mp3", "盘": "audio/a15c7e8e4f4.mp3", "旁": "audio/ac12a954a3e.mp3", "陈": "audio/a6a5d848e0d.mp3", "成": "audio/abb3578629d.mp3", "金": "audio/ab59df8c44a.mp3", "京": "audio/a812aba4f00.mp3", "对": "audio/a02b83ec7cc.mp3", "春": "audio/a3e45064825.mp3", "六": "audio/a3d72c724e0.mp3", "月": "audio/ad9b59879f3.mp3", "风": "audio/a534418ad36.mp3", "un vaso": "audio/ae12d793b74.mp3", "mi vaso": "audio/a8922dceb2b.mp3", "un gato": "audio/acb0821b10a.mp3", "el gato": "audio/a1085e3cc91.mp3", "un dedo": "audio/a17d98630b1.mp3", "mi dedo": "audio/a379c8a5004.mp3", "el dedo": "audio/a17d89631bb.mp3", "abogado": "audio/a20ece292e6.mp3", "un poco": "audio/ada33d83fba.mp3", "tengo": "audio/afd3d44f63d.mp3", "cinco": "audio/aa097b33b77.mp3", "rosa": "audio/a5efc86ca88.mp3", "Enrique": "audio/a9cdcdaec09.mp3", "alrededor": "audio/a148e9e4686.mp3", "Israel": "audio/a4c197dfd67.mp3", "ciudad": "audio/a7227e71007.mp3", "árbol": "audio/a07cc4c392e.mp3", "café": "audio/af424452a96.mp3", "canción": "audio/ab7b043b04b.mp3", "teléfono": "audio/a9303fb5d29.mp3", "papa": "audio/af722f20fc5.mp3", "término": "audio/a598ae72e75.mp3", "termino": "audio/a18bdc2249c.mp3", "terminó": "audio/a6675a7eb73.mp3", "chocolate": "audio/a891c5feef1.mp3", "animal": "audio/a3199ea0562.mp3", "hospital": "audio/a2b2d005e88.mp3", "bueno": "audio/a28e5793a19.mp3", "tierra": "audio/ac7039f8547.mp3", "baile": "audio/a905793fef5.mp3", "país": "audio/a8b83c17f6e.mp3", "los otros": "audio/a80fc6d8374.mp3", "una amiga": "audio/adc19878c82.mp3", "va a ir": "audio/a780589cf73.mp3", "mis amigos": "audio/af0b561b3d0.mp3", "queso": "audio/a8e5fc65edb.mp3", "guitarra": "audio/a4436a76d1c.mp3", "pingüino": "audio/a67262e67c9.mp3", "México": "audio/ae9d4eca609.mp3", "taxi": "audio/a4d82205a20.mp3", "hielo": "audio/a43cb48d6cd.mp3", "zapato": "audio/ad508dffa96.mp3", "cielo": "audio/ab54cfda898.mp3", "llave": "audio/ab48663d247.mp3", "mano": "audio/aabf1aa4a5e.mp3", "luna": "audio/a4b7fad4f3f.mp3", "sol": "audio/afbb93bb966.mp3", "foto": "audio/a0eb57679c4.mp3", "chico": "audio/a763c189e10.mp3", "huevo": "audio/a12c2d512a3.mp3", "مرة": "audio/aaa2bddee89.mp3", "مرّة": "audio/a3171c128ed.mp3", "علم": "audio/aaa0db0809f.mp3", "علّم": "audio/ae3e64f085b.mp3", "حمام": "audio/a3536631395.mp3", "حمّام": "audio/a26b654fd1a.mp3", "جمل": "audio/a678574ea77.mp3", "جمال": "audio/a05b3897a35.mp3", "كتب": "audio/a908b9e887a.mp3", "كاتب": "audio/a09155a64e4.mp3", "البيت": "audio/a00ca75370f.mp3", "الباب": "audio/ac5a70e6594.mp3", "الكتاب": "audio/abf38825a12.mp3", "الشمس": "audio/a63902b83b5.mp3", "النور": "audio/ae8cae754b8.mp3", "الدار": "audio/a1ed34fe77e.mp3", "دهب": "audio/a76aa4d293a.mp3", "ضهر": "audio/aa76ed4a973.mp3", "ضو": "audio/a9f1ec138af.mp3", "كبير": "audio/a11da4f18dd.mp3", "مدرسة": "audio/a44ee4b4e2e.mp3", "مكتبة": "audio/a4d8b4dc1c5.mp3", "بيروت": "audio/ae53b00b6e8.mp3", "قَلْب": "audio/aab0f753b77.mp3", "ثَلاثة": "audio/ae61781c18f.mp3", "ذَهَب": "audio/a4e1a1acdac.mp3", "ظُهْر": "audio/ad743872e44.mp3", "جَمِيل": "audio/a6e34cf851e.mp3", "عَيْن": "audio/a51e3758284.mp3", "صَيْف": "audio/a2de76673fd.mp3", "ضَوْء": "audio/abc6966522d.mp3", "¿Dónde está el baño?": "audio/aaf76d110de.mp3", "Todo bien, gracias.": "audio/a53919f7e8e.mp3", "Me gusta el agua.": "audio/ae367e91038.mp3", "El perro corre rápido.": "audio/ae2c26fa959.mp3", "¿Qué hora es?": "audio/af9555b50b8.mp3", "Un café, por favor.": "audio/a62673b67bf.mp3", "¿Cómo estás?": "audio/a8ac82e1324.mp3", "Voy a ir a la playa.": "audio/a14589b18b8.mp3", "Mis amigos están aquí.": "audio/a4e05447d69.mp3", "Quiero un vaso de agua.": "audio/a071136cbc0.mp3", "Hoy hace calor.": "audio/a0cf4484f2e.mp3", "你叫什么名字？": "audio/abe97f872b2.mp3", "我是美国人。": "audio/ac40cf52961.mp3", "老板，你好！": "audio/a7209530ba4.mp3", "我也很好。": "audio/a6006a3cff0.mp3", "不客气。": "audio/aef70158e07.mp3", "一共多少钱？": "audio/a5135575b84.mp3", "我不知道。": "audio/a550e7c6937.mp3", "你在哪儿？": "audio/a44a90ef8ec.mp3", "这是我的朋友。": "audio/a4f61605c33.mp3", "صباح الخير": "audio/a5561c3919d.mp3", "الطقس حلو اليوم": "audio/a9bdcf1e28b.mp3", "شو بدّك؟": "audio/a4429f83692.mp3", "يلّا نروح": "audio/a712c77aaa5.mp3", "صباح النور": "audio/ab96d319082.mp3", "الدنيا شوب": "audio/ab445b9a0ac.mp3", "شو اسمك؟": "audio/a2955f45554.mp3", "هلّق مش فاضي": "audio/a8b41bd24b7.mp3", "قدّيش حقّه؟": "audio/a413c585323.mp3", "كتير منيح": "audio/a527a547e6d.mp3", "بدّي كاسة مي": "audio/a0aca8c0a24.mp3", "pure:va": "audio/aa6bf3007e9.mp3", "pure:ve": "audio/a7af0d2e282.mp3", "pure:vi": "audio/aa9f0e6f3c4.mp3", "pure:vo": "audio/a517e02f7b7.mp3", "pure:vschwa": "audio/a78d6cd498a.mp3", "pure:vu": "audio/ac9ad934397.mp3", "say (EN)": "audio/ac960c65f20.mp3", "may (EN)": "audio/ac935ab1941.mp3", "day (EN)": "audio/a2d9d441a8c.mp3", "see (EN)": "audio/a00544f5416.mp3", "no (EN)": "audio/a9e2131ba9f.mp3", "low (EN)": "audio/a5b5296950a.mp3", "two (EN)": "audio/ad5903d83b1.mp3", "father (EN)": "audio/a0b8bb5a773.mp3", "banana (EN)": "audio/aeed4f8457c.mp3", "chocolate (EN)": "audio/acf455a9086.mp3", "tomato (EN)": "audio/a1d38208655.mp3", "taco (EN)": "audio/a4ad38fa4e9.mp3", "animal (EN)": "audio/a56652135f3.mp3", "hospital (EN)": "audio/a6c48b1342e.mp3", "pin (EN)": "audio/a6bb2915802.mp3", "spin (EN)": "audio/aaca63d292a.mp3", "pan (EN)": "audio/a75be75a90e.mp3", "pasta (EN)": "audio/a776bdeec25.mp3", "tea (EN)": "audio/aba6a90cdab.mp3", "dose (EN)": "audio/a1f4adeecc9.mp3", "kin (EN)": "audio/aac90babd80.mp3", "skin (EN)": "audio/a1a3b9126cc.mp3", "coma (EN)": "audio/a524961cbb6.mp3", "other (EN)": "audio/a7b63bdde9a.mp3", "ladder (EN)": "audio/a7c905e1b64.mp3", "butter (EN)": "audio/a50568c5c8a.mp3", "water (EN)": "audio/a618fd5f68a.mp3", "canyon (EN)": "audio/aeba79d15d7.mp3", "onion (EN)": "audio/a33dd8b3099.mp3", "yes (EN)": "audio/ae2449c1e8d.mp3", "hug (EN)": "audio/abd422d1630.mp3", "feel (EN)": "audio/a32b6a6f2c4.mp3", "sole (EN)": "audio/a464b960cca.mp3", "full (EN)": "audio/aa0bf50ea10.mp3", "sé": "audio/a9bd61a0d49.mp3", "me": "audio/ab1c1d8736f.mp3", "de": "audio/a600ccd1b71.mp3", "lo": "audio/a638e8f0171.mp3", "banana": "audio/a250e77f12a.mp3", "taco": "audio/a9dc4319c27.mp3", "pan": "audio/abd2bd8216b.mp3", "pasta": "audio/a46139b0b16.mp3", "kilo": "audio/a8ff8800a23.mp3", "poco": "audio/a5aa462b02c.mp3", "bebé": "audio/a5bb308acf2.mp3", "vino": "audio/af0e4876639.mp3", "lado": "audio/a0b8bc0c4b4.mp3", "verdad": "audio/a762ba43a5d.mp3", "amigo": "audio/a01f07beb85.mp3", "algo": "audio/aaaec0969b8.mp3", "caldo": "audio/a29a5e542fc.mp3", "gordo": "audio/a2152f5af0a.mp3", "grande": "audio/a35272bf81d.mp3", "para": "audio/ad2f9be8fe2.mp3", "hora": "audio/a623aeb8c53.mp3", "tres": "audio/a0c95987338.mp3", "comer": "audio/a5fb14f826f.mp3", "radio": "audio/ad432c3525b.mp3", "cañón": "audio/a3acb4032d4.mp3", "mañana": "audio/a8727ae6503.mp3", "gente": "audio/ab52e0a7a80.mp3", "jugo": "audio/adffa7ef61c.mp3", "ajo": "audio/a63b963ade1.mp3", "mujer": "audio/ac4034b7d65.mp3", "mil": "audio/ad34e454154.mp3", "papel": "audio/acb030c5eec.mp3", "mismo": "audio/ac859579a7c.mp3", "hablan": "audio/a3b3251448f.mp3", "lápiz": "audio/a5187e8dbb9.mp3", "examen": "audio/aae0de9e32b.mp3", "sábado": "audio/a1e73aa8ef0.mp3", "aire": "audio/a437ec6c121.mp3", "auto": "audio/a0d612c12d2.mp3", "río": "audio/a348f83686b.mp3", "gato": "audio/a8f39c63d50.mp3", "cine": "audio/a2ffb113581.mp3", "guerra": "audio/a5128e013dd.mp3", "mundo": "audio/a5956a2b28d.mp3", "hat (EN)": "audio/a0b3897090e.mp3"};
+const AUDIO={"妈": "audio/ae3918a99aa.mp3", "麻": "audio/a433ea2216f.mp3", "马": "audio/a7d39044ed6.mp3", "骂": "audio/a6343706870.mp3", "好": "audio/a27e4fe4c3f.mp3", "爸": "audio/aa732e56e22.mp3", "大": "audio/a0889c34972.mp3", "怕": "audio/abc1c58b84b.mp3", "他": "audio/ae31b569a0f.mp3", "开": "audio/ab4217093bc.mp3", "在": "audio/a686b703f41.mp3", "早": "audio/a13a8589339.mp3", "字": "audio/a582c50066c.mp3", "菜": "audio/a7b4bb888fb.mp3", "草": "audio/a6744771609.mp3", "次": "audio/a5e5b8169ee.mp3", "中": "audio/a0869071c92.mp3", "这": "audio/a542523173c.mp3", "知": "audio/ac524682048.mp3", "茶": "audio/a97a08c17dc.mp3", "吃": "audio/aa10d4d5a63.mp3", "车": "audio/a7c852e1d83.mp3", "是": "audio/a30160a21b9.mp3", "书": "audio/afe04274cef.mp3", "十": "audio/aaa107f05b6.mp3", "人": "audio/a4912771a42.mp3", "热": "audio/a1aff05b636.mp3", "日": "audio/a15917f3b32.mp3", "鸡": "audio/a51093a2d58.mp3", "家": "audio/a7de8177ce7.mp3", "九": "audio/a27a2b9f17b.mp3", "七": "audio/a7db1eeb5c3.mp3", "去": "audio/a033fd274f0.mp3", "钱": "audio/adb4be61875.mp3", "西": "audio/a2f64b5a67e.mp3", "谢": "audio/ab27c6fd4c5.mp3", "学": "audio/a7c7a06f0ea.mp3", "一": "audio/ad274eee8a1.mp3", "鱼": "audio/a92468fdf7c.mp3", "女": "audio/a26bc84961c.mp3", "四": "audio/a4f88740b34.mp3", "饿": "audio/abf873d61fd.mp3", "喝": "audio/a9982c5ced1.mp3", "哥": "audio/acdfd26daa2.mp3", "冷": "audio/ae2fc60d070.mp3", "八": "audio/a2142fb62fd.mp3", "拔": "audio/a737c389c6b.mp3", "把": "audio/ab3ba7814f4.mp3", "衣": "audio/acb6d358425.mp3", "姨": "audio/a620e3674e5.mp3", "椅": "audio/a618be2726b.mp3", "意": "audio/a9d197986e0.mp3", "汤": "audio/afc4ef67147.mp3", "糖": "audio/a3d8cd510d0.mp3", "躺": "audio/aa85402d565.mp3", "烫": "audio/a700ef0f34f.mp3", "飞": "audio/a322b8afdf9.mp3", "肥": "audio/ae650f32008.mp3", "匪": "audio/a78c1a1967a.mp3", "费": "audio/af07ab143e8.mp3", "通": "audio/abef21932fe.mp3", "同": "audio/a0b8b919983.mp3", "统": "audio/ab6c938397c.mp3", "痛": "audio/a335a309cd8.mp3", "诗": "audio/a53e00f750c.mp3", "使": "audio/af6901ca318.mp3", "妈，麻，马，骂": "audio/ab1e6e7f670.mp3", "perro": "audio/a6139bdc23a.mp3", "rojo": "audio/aaf6c1a0ca2.mp3", "pero": "audio/a98fc7b3476.mp3", "caro": "audio/a732849d5bc.mp3", "gracias": "audio/aa30b3970f3.mp3", "jamón": "audio/a8d298a01d5.mp3", "lago": "audio/a4e68e95b58.mp3", "agua": "audio/ac1962c232b.mp3", "lobo": "audio/a4a98e66035.mp3", "uva": "audio/a2d2c2a1400.mp3", "Cuba": "audio/ac484b137e2.mp3", "gracias (Spain)": "audio/ab2ab2a377f.mp3", "cielo (Spain)": "audio/a2add742165.mp3", "zapato (Spain)": "audio/afcda3828ca.mp3", "año": "audio/a8470d9e5f7.mp3", "niño": "audio/a36a2baf40d.mp3", "España": "audio/a1ea132ffbd.mp3", "yo": "audio/ac41975d1da.mp3", "calle": "audio/a8f9f97eb45.mp3", "playa": "audio/aabd5cf4ffb.mp3", "papá": "audio/abec5e7268a.mp3", "tomate": "audio/a13f20098aa.mp3", "todo": "audio/a05f20a7178.mp3", "dedo": "audio/a8b9b43e964.mp3", "nada": "audio/aa3fcfe3a3b.mp3", "sí": "audio/a5e06bd15f9.mp3", "tú": "audio/a044e993fbe.mp3", "mesa": "audio/af04cc316d7.mp3", "leche": "audio/a3c60405a25.mp3", "no": "audio/afd12863535.mp3", "ojo": "audio/a2db9e0c624.mp3", "casa": "audio/a81bce1f3bf.mp3", "hola": "audio/a99800b85d3.mp3", "cada": "audio/ad1137b85c2.mp3", "راس": "audio/a1bba3b5397.mp3", "خلص": "audio/ad48f4e3da1.mp3", "غالي": "audio/a35142f13b1.mp3", "كتير": "audio/a0135c2974c.mp3", "أنا": "audio/a941ddf4bb6.mp3", "قلب": "audio/a82f1b4b7d9.mp3", "هلق": "audio/a260319f579.mp3", "مرحبا": "audio/a98d448a1d1.mp3", "حلو": "audio/a1f4de3270e.mp3", "حبيبي": "audio/af804ba4fa0.mp3", "عين": "audio/a675b46a5bc.mp3", "معليش": "audio/a0381bade7c.mp3", "سبعة": "audio/a2aa605ccfe.mp3", "قرآن": "audio/aeb7cd4ad61.mp3", "استقلال": "audio/a671cdcaba3.mp3", "صباح": "audio/af91c9a9f61.mp3", "صغير": "audio/ae476741781.mp3", "طيب": "audio/a42c260f0b0.mp3", "طاولة": "audio/a04df45911d.mp3", "ضروري": "audio/a45d6daa5ca.mp3", "أبيض": "audio/aec42045b5b.mp3", "ظريف": "audio/aba3edadcf1.mp3", "مظبوط": "audio/a6d4f420ce7.mp3", "هيك": "audio/a44de889d60.mp3", "هون": "audio/aae30ca19e6.mp3", "جميل": "audio/a26cb06fead.mp3", "جاي": "audio/acbd194b94b.mp3", "رجّال": "audio/a504a5727a0.mp3", "بِنْت": "audio/a8c9051214c.mp3", "نُور": "audio/a9a1a4a349f.mp3", "بيت": "audio/a2619065a2e.mp3", "يوم": "audio/aefc446efeb.mp3", "باب": "audio/a3b25b51a9c.mp3", "كيفك": "audio/a1bf06360c9.mp3", "شو": "audio/a7f146a7e5a.mp3", "تلاتة": "audio/a2d1560d33c.mp3", "بدي": "audio/a4de55dd4e3.mp3", "منيح": "audio/aac2127cce2.mp3", "carro": "audio/a3959fc6166.mp3", "coro": "audio/a720a9c0557.mp3", "corro": "audio/af73de0af41.mp3", "peso": "audio/ab0c7efa6f3.mp3", "beso": "audio/a6edd8a12b3.mp3", "pala": "audio/a95213d57ff.mp3", "bala": "audio/ad39ff8e69b.mp3", "pata": "audio/a67c38611ca.mp3", "bata": "audio/a191968f1bb.mp3", "tos": "audio/a4f956f26ee.mp3", "dos": "audio/ae67f16d28a.mp3", "tía": "audio/ae66dc9ae8f.mp3", "día": "audio/a743a04a95c.mp3", "gasa": "audio/a695a8d970b.mp3", "coma": "audio/a2609c5afcc.mp3", "goma": "audio/ac19065ff5a.mp3", "una": "audio/a226f391867.mp3", "uña": "audio/a49520ffd61.mp3", "cana": "audio/a06c34d216a.mp3", "caña": "audio/a4677342824.mp3", "piso": "audio/a90d94ae30f.mp3", "misa": "audio/ad4bd1f7dac.mp3", "踏": "audio/a08ce1ddc2e.mp3", "科": "audio/adcedab2c4f.mp3", "找": "audio/a76aac2ff5f.mp3", "志": "audio/a471d1e0ba6.mp3", "路": "audio/ade80bdbd70.mp3", "绿": "audio/a579625d5ac.mp3", "努": "audio/ac530eb5824.mp3", "هال": "audio/ab21b221b15.mp3", "حال": "audio/ac99849f27f.mp3", "خال": "audio/ad186bd9833.mp3", "سيف": "audio/aa20d192b8c.mp3", "صيف": "audio/ad81e09eee8.mp3", "سار": "audio/af957d191ae.mp3", "صار": "audio/a5ff1dd747b.mp3", "تين": "audio/a98ec5b658b.mp3", "طين": "audio/a97e7ab15ca.mp3", "دار": "audio/a4ef552f797.mp3", "ضار": "audio/ae65bde795e.mp3", "كلب": "audio/aec0c56b3b9.mp3", "عمل": "audio/ae9fa898f9b.mp3", "أمل": "audio/a60cd6c3d21.mp3", "خالي": "audio/a6dfd49bc23.mp3", "哪儿": "audio/adce81b4475.mp3", "一点儿": "audio/ab34e4ca734.mp3", "玩儿": "audio/ad5307a7967.mp3", "飞机": "audio/a0cb0206b42.mp3", "中国": "audio/a101806f57c.mp3", "铅笔": "audio/acd52d6c26e.mp3", "商店": "audio/a83eff41a2e.mp3", "明天": "audio/ab76ce230d3.mp3", "学习": "audio/aaa89dd63b3.mp3", "苹果": "audio/ab38d961e70.mp3", "同事": "audio/a92d8d1a505.mp3", "老师": "audio/a494f23d624.mp3", "美国": "audio/a2d10935506.mp3", "你好": "audio/a440ee0853a.mp3", "考试": "audio/ae53aad0f9c.mp3", "汽车": "audio/a70025cb40a.mp3", "大学": "audio/a858bb23650.mp3", "下雨": "audio/ab94ed83e39.mp3", "再见": "audio/a82202bb725.mp3", "妈妈": "audio/a7d3b2b0ebc.mp3", "谢谢": "audio/a3d43bc74a6.mp3", "朋友": "audio/ad490b5fd60.mp3", "东西": "audio/a949fb2e914.mp3", "很好": "audio/a77833b3f8c.mp3", "可以": "audio/a79176103e6.mp3", "水果": "audio/ac4bed30f02.mp3", "我很好": "audio/a212ebf3ba5.mp3", "不是": "audio/ae5d9c6c8a8.mp3", "不对": "audio/a40fe039df0.mp3", "不好": "audio/a46e6fb7ad6.mp3", "不来": "audio/a1d1cbe4928.mp3", "一个": "audio/ad8e3ae229f.mp3", "一天": "audio/ae99c431b70.mp3", "一年": "audio/a3579ba6641.mp3", "一起": "audio/a3a85181e8e.mp3", "第一": "audio/a649c8d4fca.mp3", "盘": "audio/a15c7e8e4f4.mp3", "旁": "audio/ac12a954a3e.mp3", "陈": "audio/a6a5d848e0d.mp3", "成": "audio/abb3578629d.mp3", "金": "audio/ab59df8c44a.mp3", "京": "audio/a812aba4f00.mp3", "对": "audio/a02b83ec7cc.mp3", "春": "audio/a3e45064825.mp3", "六": "audio/a3d72c724e0.mp3", "月": "audio/ad9b59879f3.mp3", "风": "audio/a534418ad36.mp3", "un vaso": "audio/ae12d793b74.mp3", "mi vaso": "audio/a8922dceb2b.mp3", "un gato": "audio/acb0821b10a.mp3", "el gato": "audio/a1085e3cc91.mp3", "un dedo": "audio/a17d98630b1.mp3", "mi dedo": "audio/a379c8a5004.mp3", "el dedo": "audio/a17d89631bb.mp3", "abogado": "audio/a20ece292e6.mp3", "un poco": "audio/ada33d83fba.mp3", "tengo": "audio/afd3d44f63d.mp3", "cinco": "audio/aa097b33b77.mp3", "rosa": "audio/a5efc86ca88.mp3", "Enrique": "audio/a9cdcdaec09.mp3", "alrededor": "audio/a148e9e4686.mp3", "Israel": "audio/a4c197dfd67.mp3", "ciudad": "audio/a7227e71007.mp3", "árbol": "audio/a07cc4c392e.mp3", "café": "audio/af424452a96.mp3", "canción": "audio/ab7b043b04b.mp3", "teléfono": "audio/a9303fb5d29.mp3", "papa": "audio/af722f20fc5.mp3", "término": "audio/a598ae72e75.mp3", "termino": "audio/a18bdc2249c.mp3", "terminó": "audio/a6675a7eb73.mp3", "chocolate": "audio/a891c5feef1.mp3", "animal": "audio/a3199ea0562.mp3", "hospital": "audio/a2b2d005e88.mp3", "bueno": "audio/a28e5793a19.mp3", "tierra": "audio/ac7039f8547.mp3", "baile": "audio/a905793fef5.mp3", "país": "audio/a8b83c17f6e.mp3", "los otros": "audio/a80fc6d8374.mp3", "una amiga": "audio/adc19878c82.mp3", "va a ir": "audio/a780589cf73.mp3", "mis amigos": "audio/af0b561b3d0.mp3", "queso": "audio/a8e5fc65edb.mp3", "guitarra": "audio/a4436a76d1c.mp3", "pingüino": "audio/a67262e67c9.mp3", "México": "audio/ae9d4eca609.mp3", "taxi": "audio/a4d82205a20.mp3", "hielo": "audio/a43cb48d6cd.mp3", "zapato": "audio/ad508dffa96.mp3", "cielo": "audio/ab54cfda898.mp3", "llave": "audio/ab48663d247.mp3", "mano": "audio/aabf1aa4a5e.mp3", "luna": "audio/a4b7fad4f3f.mp3", "sol": "audio/afbb93bb966.mp3", "foto": "audio/a0eb57679c4.mp3", "chico": "audio/a763c189e10.mp3", "huevo": "audio/a12c2d512a3.mp3", "مرة": "audio/aaa2bddee89.mp3", "مرّة": "audio/a3171c128ed.mp3", "علم": "audio/aaa0db0809f.mp3", "علّم": "audio/ae3e64f085b.mp3", "حمام": "audio/a3536631395.mp3", "حمّام": "audio/a26b654fd1a.mp3", "جمل": "audio/a678574ea77.mp3", "جمال": "audio/a05b3897a35.mp3", "كتب": "audio/a908b9e887a.mp3", "كاتب": "audio/a09155a64e4.mp3", "البيت": "audio/a00ca75370f.mp3", "الباب": "audio/ac5a70e6594.mp3", "الكتاب": "audio/abf38825a12.mp3", "الشمس": "audio/a63902b83b5.mp3", "النور": "audio/ae8cae754b8.mp3", "الدار": "audio/a1ed34fe77e.mp3", "دهب": "audio/a76aa4d293a.mp3", "ضهر": "audio/aa76ed4a973.mp3", "ضو": "audio/a9f1ec138af.mp3", "كبير": "audio/a11da4f18dd.mp3", "مدرسة": "audio/a44ee4b4e2e.mp3", "مكتبة": "audio/a4d8b4dc1c5.mp3", "بيروت": "audio/ae53b00b6e8.mp3", "قَلْب": "audio/aab0f753b77.mp3", "ثَلاثة": "audio/ae61781c18f.mp3", "ذَهَب": "audio/a4e1a1acdac.mp3", "ظُهْر": "audio/ad743872e44.mp3", "جَمِيل": "audio/a6e34cf851e.mp3", "عَيْن": "audio/a51e3758284.mp3", "صَيْف": "audio/a2de76673fd.mp3", "ضَوْء": "audio/abc6966522d.mp3", "¿Dónde está el baño?": "audio/aaf76d110de.mp3", "Todo bien, gracias.": "audio/a53919f7e8e.mp3", "Me gusta el agua.": "audio/ae367e91038.mp3", "El perro corre rápido.": "audio/ae2c26fa959.mp3", "¿Qué hora es?": "audio/af9555b50b8.mp3", "Un café, por favor.": "audio/a62673b67bf.mp3", "¿Cómo estás?": "audio/a8ac82e1324.mp3", "Voy a ir a la playa.": "audio/a14589b18b8.mp3", "Mis amigos están aquí.": "audio/a4e05447d69.mp3", "Quiero un vaso de agua.": "audio/a071136cbc0.mp3", "Hoy hace calor.": "audio/a0cf4484f2e.mp3", "你叫什么名字？": "audio/abe97f872b2.mp3", "我是美国人。": "audio/ac40cf52961.mp3", "老板，你好！": "audio/a7209530ba4.mp3", "我也很好。": "audio/a6006a3cff0.mp3", "不客气。": "audio/aef70158e07.mp3", "一共多少钱？": "audio/a5135575b84.mp3", "我不知道。": "audio/a550e7c6937.mp3", "你在哪儿？": "audio/a44a90ef8ec.mp3", "这是我的朋友。": "audio/a4f61605c33.mp3", "صباح الخير": "audio/a5561c3919d.mp3", "الطقس حلو اليوم": "audio/a9bdcf1e28b.mp3", "شو بدّك؟": "audio/a4429f83692.mp3", "يلّا نروح": "audio/a712c77aaa5.mp3", "صباح النور": "audio/ab96d319082.mp3", "الدنيا شوب": "audio/ab445b9a0ac.mp3", "شو اسمك؟": "audio/a2955f45554.mp3", "هلّق مش فاضي": "audio/a8b41bd24b7.mp3", "قدّيش حقّه؟": "audio/a413c585323.mp3", "كتير منيح": "audio/a527a547e6d.mp3", "بدّي كاسة مي": "audio/a0aca8c0a24.mp3", "pure:va": "audio/aa6bf3007e9.mp3", "pure:ve": "audio/a7af0d2e282.mp3", "pure:vi": "audio/aa9f0e6f3c4.mp3", "pure:vo": "audio/a517e02f7b7.mp3", "pure:vschwa": "audio/a78d6cd498a.mp3", "pure:vu": "audio/ac9ad934397.mp3", "say (EN)": "audio/ac960c65f20.mp3", "may (EN)": "audio/ac935ab1941.mp3", "day (EN)": "audio/a2d9d441a8c.mp3", "see (EN)": "audio/a00544f5416.mp3", "no (EN)": "audio/a9e2131ba9f.mp3", "low (EN)": "audio/a5b5296950a.mp3", "two (EN)": "audio/ad5903d83b1.mp3", "father (EN)": "audio/a0b8bb5a773.mp3", "banana (EN)": "audio/aeed4f8457c.mp3", "chocolate (EN)": "audio/acf455a9086.mp3", "tomato (EN)": "audio/a1d38208655.mp3", "taco (EN)": "audio/a4ad38fa4e9.mp3", "animal (EN)": "audio/a56652135f3.mp3", "hospital (EN)": "audio/a6c48b1342e.mp3", "pin (EN)": "audio/a6bb2915802.mp3", "spin (EN)": "audio/aaca63d292a.mp3", "pan (EN)": "audio/a75be75a90e.mp3", "pasta (EN)": "audio/a776bdeec25.mp3", "tea (EN)": "audio/aba6a90cdab.mp3", "dose (EN)": "audio/a1f4adeecc9.mp3", "kin (EN)": "audio/aac90babd80.mp3", "skin (EN)": "audio/a1a3b9126cc.mp3", "coma (EN)": "audio/a524961cbb6.mp3", "other (EN)": "audio/a7b63bdde9a.mp3", "ladder (EN)": "audio/a7c905e1b64.mp3", "butter (EN)": "audio/a50568c5c8a.mp3", "water (EN)": "audio/a618fd5f68a.mp3", "canyon (EN)": "audio/aeba79d15d7.mp3", "onion (EN)": "audio/a33dd8b3099.mp3", "yes (EN)": "audio/ae2449c1e8d.mp3", "hug (EN)": "audio/abd422d1630.mp3", "feel (EN)": "audio/a32b6a6f2c4.mp3", "sole (EN)": "audio/a464b960cca.mp3", "full (EN)": "audio/aa0bf50ea10.mp3", "sé": "audio/a9bd61a0d49.mp3", "me": "audio/ab1c1d8736f.mp3", "de": "audio/a600ccd1b71.mp3", "lo": "audio/a638e8f0171.mp3", "banana": "audio/a250e77f12a.mp3", "taco": "audio/a9dc4319c27.mp3", "pan": "audio/abd2bd8216b.mp3", "pasta": "audio/a46139b0b16.mp3", "kilo": "audio/a8ff8800a23.mp3", "poco": "audio/a5aa462b02c.mp3", "bebé": "audio/a5bb308acf2.mp3", "vino": "audio/af0e4876639.mp3", "lado": "audio/a0b8bc0c4b4.mp3", "verdad": "audio/a762ba43a5d.mp3", "amigo": "audio/a01f07beb85.mp3", "algo": "audio/aaaec0969b8.mp3", "caldo": "audio/a29a5e542fc.mp3", "gordo": "audio/a2152f5af0a.mp3", "grande": "audio/a35272bf81d.mp3", "para": "audio/ad2f9be8fe2.mp3", "hora": "audio/a623aeb8c53.mp3", "tres": "audio/a0c95987338.mp3", "comer": "audio/a5fb14f826f.mp3", "radio": "audio/ad432c3525b.mp3", "cañón": "audio/a3acb4032d4.mp3", "mañana": "audio/a8727ae6503.mp3", "gente": "audio/ab52e0a7a80.mp3", "jugo": "audio/adffa7ef61c.mp3", "ajo": "audio/a63b963ade1.mp3", "mujer": "audio/ac4034b7d65.mp3", "mil": "audio/ad34e454154.mp3", "papel": "audio/acb030c5eec.mp3", "mismo": "audio/ac859579a7c.mp3", "hablan": "audio/a3b3251448f.mp3", "lápiz": "audio/a5187e8dbb9.mp3", "examen": "audio/aae0de9e32b.mp3", "sábado": "audio/a1e73aa8ef0.mp3", "aire": "audio/a437ec6c121.mp3", "auto": "audio/a0d612c12d2.mp3", "río": "audio/a348f83686b.mp3", "gato": "audio/a8f39c63d50.mp3", "cine": "audio/a2ffb113581.mp3", "guerra": "audio/a5128e013dd.mp3", "mundo": "audio/a5956a2b28d.mp3", "hat (EN)": "audio/a0b3897090e.mp3", "how (EN)": "audio/af3055e418d.mp3", "she (EN)": "audio/ae4b7946b3c.mp3", "cats (EN)": "audio/a211825ee43.mp3", "sure (EN)": "audio/aad55e06d90.mp3", "shirt (EN)": "audio/ae3739afce5.mp3", "run (EN)": "audio/a6dcab89e06.mp3", "cheap (EN)": "audio/ab4d23e91ae.mp3", "jeep (EN)": "audio/a71adde4f3e.mp3", "sin (EN)": "audio/a9d999ccf10.mp3", "sing (EN)": "audio/a82206b7e2d.mp3", "measure (EN)": "audio/ac5179a61d7.mp3", "uh-oh (EN)": "audio/a670b450ebf.mp3", "think (EN)": "audio/a54329439ee.mp3", "this (EN)": "audio/aa2fcc903c8.mp3", "problema": "audio/ac98484f0d2.mp3", "tren": "audio/a15047c92a2.mp3", "otro": "audio/aa1da106dfc.mp3", "cuatro": "audio/aa37e3bea6f.mp3", "libro": "audio/a7d664b804e.mp3", "plato": "audio/ad4a4de4fb9.mp3", "blanco": "audio/a062c2aa8b2.mp3", "你是老师。": "audio/ab220d21a17.mp3", "你是老师吗？": "audio/a20506bb191.mp3", "你好吗？": "audio/a45ae215118.mp3", "حرف ا": "audio/a0c46e0d50c.mp3", "حرف ب": "audio/a355b746a7f.mp3", "حرف ت": "audio/a4f75dae363.mp3", "حرف ث": "audio/a4ec246d476.mp3", "حرف ج": "audio/ae71922a9bb.mp3", "حرف ح": "audio/a837d65493f.mp3", "حرف خ": "audio/ad5de066bd3.mp3", "حرف د": "audio/af1a627c794.mp3", "حرف ذ": "audio/a38c2457a58.mp3", "حرف ر": "audio/a33c9c96335.mp3", "حرف ز": "audio/a3f92b1e712.mp3", "حرف س": "audio/a642962bf7c.mp3", "حرف ش": "audio/a6dde59c12e.mp3", "حرف ص": "audio/abb168c285f.mp3", "حرف ض": "audio/a4e34b1c189.mp3", "حرف ط": "audio/ae05f603095.mp3", "حرف ظ": "audio/a5bdfb60f80.mp3", "حرف ع": "audio/abc26e8221c.mp3", "حرف غ": "audio/ae374fc3614.mp3", "حرف ف": "audio/a609ef06545.mp3", "حرف ق": "audio/a54b731c007.mp3", "حرف ك": "audio/af69a56b894.mp3", "حرف ل": "audio/afd2eeac164.mp3", "حرف م": "audio/a69f710723c.mp3", "حرف ن": "audio/a96602b5f20.mp3", "حرف ه": "audio/a6d2d54373a.mp3", "حرف و": "audio/aee4fb36f4e.mp3", "حرف ي": "audio/a00a4ad5419.mp3", "حرف ء": "audio/aa3cb9ba3b6.mp3", "no! (EN)": "audio/a5736374700.mp3", "huh? (EN)": "audio/a3620097da3.mp3", "¿Hablas español?": "audio/a12fab587e2.mp3", "Es tu casa.": "audio/ae91f1e3719.mp3", "¿Es tu casa?": "audio/af34b568f0b.mp3", "¿Dónde vives?": "audio/a1cee229754.mp3", "إنت تعبان.": "audio/a0e69c4c7b6.mp3", "إنت تعبان؟": "audio/a4a097f0134.mp3", "زيت": "audio/a231fcd69c4.mp3", "لا": "audio/a5c528d9fa3.mp3"};
 let curAudio=null;
 function speak(text,lang,warnEl,v){
   const url=audioUrl(text,v);
@@ -1279,6 +1318,10 @@ lw('es',[['sé','se','I know'],['me','me','me'],['de','d̪e','of, from'],['lo','
  ['cañón','kaˈɲon','canyon'],['mañana','maˈɲana','tomorrow'],['ya','ʝa','already'],['gente','ˈxent̪e','people'],['jugo','ˈxuɣo','juice'],['ajo','ˈaxo','garlic'],['mujer','muˈxeɾ','woman'],['mil','mil','thousand'],
  ['papel','paˈpel','paper'],['mismo','ˈmizmo','same'],['hablan','ˈaβlan','they speak'],['lápiz','ˈlapis','pencil'],['examen','ekˈsamen','exam'],['sábado','ˈsaβaðo','Saturday'],['aire','ˈajɾe','air'],['auto','ˈawt̪o','car'],
  ['río','ˈrio','river'],['gato','ˈɡat̪o','cat'],['cine','ˈsine','cinema'],['guerra','ˈɡera','war'],['mundo','ˈmund̪o','world'],['ojo','ˈoxo','eye'],['hola','ˈola','hello']]);
+lw('en',[['how (EN)','haʊ','how'],['she (EN)','ʃi','she'],['no! (EN)','noʊ','No!'],['huh? (EN)','hʌ','Huh?'],['cats (EN)','kʰæts','cats'],['sure (EN)','ʃʊɹ','sure'],['shirt (EN)','ʃɝt','shirt'],['run (EN)','ɹʌn','run'],['cheap (EN)','tʃʰip','cheap'],['jeep (EN)','dʒip','jeep'],['sin (EN)','sɪn','sin'],['sing (EN)','sɪŋ','sing'],['measure (EN)','ˈmɛʒɚ','measure'],['uh-oh (EN)','ˈʌʔoʊ','uh-oh'],['think (EN)','θɪŋk','think'],['this (EN)','ðɪs','this']]);
+lw('es',[['problema','pɾoˈβlema','problem'],['tren','t̪ɾen','train'],['otro','ˈot̪ɾo','other'],['cuatro','ˈkwat̪ɾo','four'],['libro','ˈliβɾo','book'],['plato','ˈplat̪o','plate'],['blanco','ˈblaŋko','white'],['¿Hablas español?','ˈaβlas espaˈɲol','Do you speak Spanish?'],['Es tu casa.','es t̪u ˈkasa','It\'s your house.'],['¿Es tu casa?','es t̪u ˈkasa','Is it your house?'],['¿Dónde vives?','ˈd̪onde ˈβiβes','Where do you live?']]);
+lw('zh',[['你是老师。','ni˨˩ ʂɨ˥˩ laʊ˨˩ ʂɨ˥','You\'re a teacher.','nǐ shì lǎoshī'],['你是老师吗？','ni˨˩ ʂɨ˥˩ laʊ˨˩ ʂɨ˥ ma','Are you a teacher?','nǐ shì lǎoshī ma'],['你好吗？','ni˧˥ xaʊ˨˩ ma','How are you?','nǐ hǎo ma']]);
+lw('ar',[['إنت تعبان.','ˈʔinta taʕˈbaːn','You\'re tired.','inta taʿbān'],['إنت تعبان؟','ˈʔinta taʕˈbaːn','Are you tired?','inta taʿbān?'],['زيت','zeːt','oil','zēt'],['لا','laː','no','lā']]);
 function wd(key){
   if(LW[key])return LW[key];
   for(const c of PAIRS)for(const p of c.pairs)for(const w of p)if(w.w===key)return w;
@@ -1322,7 +1365,7 @@ const HR=(w,o,a,why)=>({w,p:'Listen. Which transcription matches?',q:'Which tran
 function dispW(w){return w.l==='ar'?`<span class="arabic">${esc(w.w)}</span>`:esc(w.w.replace(/ \(EN\)$/,''))}
 function exChip(k){const w=wd(k);if(!w)return '';return `<span class="exchip">${playBtn(w.w,w.l)}<span><b>${dispW(w)}</b> <span class="ipa">[${esc(w.ipa)}]</span></span></span>`}
 function symStepHTML(st){
-  return `<h2>${esc(st.h)}</h2>${st.intro?`<div class="lesson-text">${st.intro}</div>`:''}<div class="symlist">${st.items.map(it=>`<div class="symrow"><div class="symbig ipa">${esc(it.s)}</div><div class="symbody">${it.n?`<div class="symname">${it.n}</div>`:''}${it.t?`<div class="symtxt">${it.t}</div>`:''}${(it.k||[]).length?`<div class="symex">${it.k.map(exChip).join('')}</div>`:''}</div></div>`).join('')}</div><div class="voice-warn"></div>`;
+  return `<h2>${esc(st.h)}</h2>${st.intro?`<div class="lesson-text">${st.intro}</div>`:''}<div class="symlist">${st.items.map(it=>`<div class="symrow"><div class="symbig ipa${[...it.s].length>4?' long':''}">${esc(it.s)}</div><div class="symbody">${it.n?`<div class="symname">${it.n}</div>`:''}${it.t?`<div class="symtxt">${it.t}</div>`:''}${(it.k||[]).length?`<div class="symex">${it.k.map(exChip).join('')}</div>`:''}</div></div>`).join('')}</div><div class="voice-warn"></div>`;
 }
 function cmpCell(k){const w=wd(k);if(!w)return '<div></div>';return `<div class="cmpcell"><span class="tag t-${w.l}">${w.l==='en'?'English':LANGS[w.l]}</span><div class="cmpw">${playBtn(w.w,w.l)}<b>${dispW(w)}</b></div><div class="ipa cmpi">[${esc(w.ipa)}]</div></div>`}
 function cmpStepHTML(st){
@@ -1371,7 +1414,7 @@ const ZH_ALL=['ph','ts','tsh','tsr','tsrh','sr','rr','tc','tch','xx','vy','vgam'
 const AR_ALL=['jzh','h','gs','q','hh','ain','ems','emt','emd','emz'];
 
 const UNITS=[
-{id:'es',l:'es',title:'Spanish',sub:'Learn to read IPA while you learn every sound of Latin American Spanish: one sound at a time, felt in your own mouth, compared with English, then read, written and said.',lessons:[
+{id:'es',l:'es',title:'Reading IPA and the five vowels',sub:'How IPA works, and the five pure vowels that are the foundation of a good Spanish accent.',lessons:[
  {id:'e01',title:'How IPA works',kind:'intro',min:8,steps:[
    txt('One symbol, one sound',`English spelling is unreliable: the letter <b>c</b> is different in "<u>c</u>at" and "<u>c</u>ity", and <b>ough</b> is different in "th<u>ough</u>", "thr<u>ough</u>" and "t<u>ough</u>".<br><br>The <b>International Phonetic Alphabet</b> (IPA) fixes this. Every symbol stands for exactly one sound, always, in every language. Square brackets mean "this is how it's actually said":<ul><li>"cat" is <span class="ipa">[kæt]</span> and "city" is <span class="ipa">[ˈsɪɾi]</span>: two different symbols for the two c's.</li><li>Spanish <i>casa</i> is <span class="ipa">[ˈkasa]</span>.</li></ul>Learning IPA alongside Spanish gives you two things: you can read the pronunciation of any word in a dictionary, and you'll notice sounds your ear currently skips over.`),
    txt('Most symbols look like letters',`Many IPA symbols are ordinary letters and mean roughly what an English speaker expects: <span class="ipa">[p b t d k m n f s l]</span>.<br><br>The traps are the symbols that look familiar but mean something else. The most important ones for Spanish:<ul><li><span class="ipa">[i]</span> is the "ee" of "see", never the "i" of "sit". So <span class="ipa">[si]</span> is "see", not "sigh".</li><li><span class="ipa">[e]</span> is "eh", like the start of "say".</li><li><span class="ipa">[a]</span> is "ah"; <span class="ipa">[u]</span> is "oo".</li><li><span class="ipa">[j]</span> is the <b>y</b> of "yes", never the j of "jam".</li><li><span class="ipa">[x]</span> is a scrapy sound at the back of the mouth (the Spanish jota), never "ks".</li></ul>Each of these gets its own lesson. For now, just remember: <b>read IPA symbol by symbol, not like English spelling.</b>`),
@@ -1434,6 +1477,8 @@ const UNITS=[
    bd([{w:'no',a:'n o',x:'oʊ ə w',why:'Just [o]: no [ʊ] glide.'},{w:'tomate',a:'t̪ o ˈ m a t̪ e',x:'ə eɪ oʊ',why:'Full vowels in all three syllables, stress on the middle one.'}]),
    spk(['no','tú','chocolate'])],adds:['s:vo','s:vu','r:e03']},
 
+ ]},
+{id:'es-c',l:'es',title:'Consonants',sub:'Every Spanish consonant, one at a time: the ones without a puff, the soft ones, the r\'s, and the ones you already have.',lessons:[
  {id:'e04',title:'The puff: p',kind:'sounds',min:9,steps:[
    txt('A sound English hides from you',`At the start of a stressed syllable, English p, t and k come with a little burst of breath. Phoneticians call it <b>aspiration</b> and write it with a raised h: "pin" is <span class="ipa">[pʰɪn]</span>.<br><br>After s, the puff disappears: "spin" is <span class="ipa">[spɪn]</span>. English speakers never notice, because the difference never changes a word's meaning.<br><br>Spanish p, t and k <b>never</b> have the puff, anywhere in a word. The p of English "spin" is exactly the Spanish p.`),
    fl('The tissue test',`Hold a tissue, or the back of your hand, a few centimetres from your lips. Say "pin", then "spin". Play the recordings and copy them.`,['pin (EN)','spin (EN)'],`That puff on "pin" is the <span class="ipa">[ʰ]</span>. Now say "spin" and drop the s, keeping the p exactly as it was: that's Spanish <span class="ipa">[p]</span>.`,`Try a little louder, with the tissue closer. Most people feel a clear puff on "pin" and almost nothing on "spin". You can also try "pot" vs "spot".`,'Did the tissue move for "pin" but not for "spin"?'),
@@ -1626,6 +1671,8 @@ const UNITS=[
    bd([{w:'sol',a:'s o l',x:'ɫ oʊ z',why:'Light l, no glide on the o.'},{w:'zapato',a:'s a ˈ p a t̪ o',x:'z θ',why:'z = [s] in Latin America.'}]),
    spk(['sol','mil','animal'])],adds:['r:e16']},
 
+ ]},
+{id:'es-w',l:'es',title:'Words and sentences',sub:'Stress, glides, linking, clusters, intonation and spelling: putting sounds together into real speech.',lessons:[
  {id:'e17',title:'Rule: stress and accent marks',kind:'rule',min:8,steps:[
    txt('Where the stress goes','Spanish spelling tells you the stress every time:<ol><li>Word ends in a <b>vowel, n or s</b>: stress the <b>second-to-last</b> syllable (<i>CA-sa, HA-blan</i>).</li><li>Word ends in <b>any other consonant</b>: stress the <b>last</b> syllable (<i>ciu-DAD, a-ni-MAL</i>).</li><li>A <b>written accent</b> overrides both rules (<i>ÁR-bol, ca-FÉ, can-CIÓN, te-LÉ-fo-no</i>).</li></ol>In IPA, look for the <span class="ipa">ˈ</span> before the stressed syllable.'),
    lst('Rules 1 and 2',['casa','hablan','examen','ciudad','animal','papel']),
@@ -1669,6 +1716,27 @@ const UNITS=[
        Q(null,'In [ˈkomo‿esˈt̪as], the mark ‿ means…',['pause here','run the words together','stress'],1,'‿ ties the words: como-estás.')]),
    spk(['los otros','chocolate','mis amigos'])],adds:['r:es10']},
 
+ {id:'e22',title:'Consonant clusters: pr, tr, bl, gr…',kind:'rule',min:7,steps:[
+   txt('Two consonants, one beat',`Spanish lets a syllable start with two consonants: <b>p, b, t, d, k, g or f</b> followed by <b>r or l</b>: <i>plato, blanco, tren, gracias, libro, otro</i>.<br><br>Three things to keep:<ul><li>The r in a cluster is always the <b>tap</b> <span class="ipa">[ɾ]</span>, never an English r.</li><li><b>No extra vowel.</b> <i>tren</i> is one syllable, <span class="ipa">[t̪ɾen]</span>, not "te-ren".</li><li>Everything you've learned still applies: t is dental with no puff, and b, d, g go soft between vowels (<i>libro</i> <span class="ipa">[ˈliβɾo]</span>).</li></ul>`),
+   fl('One quick movement',`Say <i>pa-ra</i> (two syllables, with a tap). Now say it faster and faster until the first a disappears: <i>pra</i>. That's the cluster: the tap comes straight off the p. Try <i>tra</i>, <i>gra</i>, <i>bla</i>.`,['tres','gracias','problema'],`Good. Clusters should feel like a single beat.`,`Go slowly: p, tap, a. Then speed up. The tongue flick happens while the lips are still opening.`,'Could you get the tap straight after the consonant?'),
+   lst('r clusters',['tres','tren','gracias','grande','otro','cuatro','libro']),
+   lst('l clusters',['plato','blanco','problema']),
+   rq([HR('tren',['[t̪ɾen]','[t̪ʰɹen]','[t̪eˈɾen]'],0,'Dental t, tap, no extra vowel.'),
+       HR('libro',['[ˈliβɾo]','[ˈlibɹo]'],0,'Soft b between vowels, then a tap.'),
+       RD('ˈplat̪o',['plato','pato'],0,'plato','pl cluster.'),
+       Q('otro','In <i>otro</i>, the r is…',['a tap [ɾ]','a trill [r]','an English r'],0,'r after a consonant (other than n, l, s) is a tap.')]),
+   bd([{w:'tren',a:'t̪ ɾ e n',x:'ɹ r tʰ',why:'One syllable.'},{w:'libro',a:'ˈ l i β ɾ o',x:'b ɹ',why:'Soft b, tap.'},{w:'cuatro',a:'ˈ k w a t̪ ɾ o',x:'ɹ tʰ',why:'u before a is [w]; tr cluster.'}]),
+   spk(['tres','plato','problema'])],adds:['r:e22']},
+
+ {id:'e23',title:'Intonation: statements and questions',kind:'rule',min:7,steps:[
+   txt('The melody of a sentence',`Spanish sentence melody is close to English:<ul><li><b>Statements</b> fall at the end: <i>Es tu casa.</i> "It's your house."</li><li><b>Yes/no questions</b> rise at the end, and that rise is often the only thing that makes them questions: <i>¿Hablas español?</i></li><li><b>Question-word questions</b> (¿Dónde…? ¿Qué…? ¿Cómo…?) usually fall: <i>¿Dónde vives?</i></li></ul>Written Spanish warns you a question is coming with an upside-down <b>¿</b> at the start.<br><br>One difference from English: Spanish doesn't stretch stressed syllables much and keeps the even rhythm from lesson 19, so the melody is smoother and less bouncy.`),
+   lst('Statement vs question',['Es tu casa.','¿Es tu casa?','¿Hablas español?']),
+   lst('Question words: falling',['¿Dónde vives?','¿Cómo estás?']),
+   rq([Q('¿Hablas español?','Statement or question?',['Statement','Question'],1,'The rise at the end makes it a question.'),
+       Q('Es tu casa.','Statement or question?',['Statement','Question'],0,'It falls at the end.'),
+       Q('¿Dónde vives?','How does this question end?',['Rising','Falling'],1,'Question-word questions usually fall.'),
+       Q(null,'What does ¿ at the start of a sentence tell you?',['It\'s a question','It\'s an exclamation','It\'s a quotation'],0,'')]),
+   spk(['¿Hablas español?','Es tu casa.','¿Dónde vives?'])],adds:['r:e23']},
  {id:'e20',title:'Rule: spelling to sound',kind:'rule',min:7,steps:[
    txt('The whole system on one page','Spanish spelling is very regular once you know these:<ul><li><b>c</b> before e/i, <b>z</b> and <b>s</b> are all <span class="ipa">[s]</span> in Latin America (<i>cielo, zapato, cine</i>).</li><li><b>c</b> before a/o/u, <b>qu</b> before e/i and <b>k</b> are <span class="ipa">[k]</span>. In qu and gu before e/i, the u is silent (<i>queso, guitarra, guerra</i>). Write <b>ü</b> to pronounce it (<i>pingüino</i>).</li><li><b>g</b> before a/o/u is <span class="ipa">[ɡ]</span>/<span class="ipa">[ɣ]</span>; before e/i it\'s <span class="ipa">[x]</span> (<i>gato</i> vs <i>gente</i>).</li><li><b>h</b> is always silent (<i>hola, hielo</i>).</li><li><b>x</b> is usually <span class="ipa">[ks]</span> (<i>taxi</i>), but <span class="ipa">[x]</span> in <i>México</i> and some other names.</li><li><b>ll</b> and <b>y</b> sound the same.</li></ul>'),
    lst('Listen',['cielo','zapato','cine','queso','guitarra','guerra','pingüino','gato','gente','hielo','taxi','México']),
@@ -1696,51 +1764,257 @@ const UNITS=[
    bd([{w:'abogado',a:'a β o ˈ ɣ a ð o',x:'b ɡ d̪',why:'All three soft consonants in one word.'},{w:'gracias',a:'ˈ ɡ ɾ a s j a s',x:'r θ i',why:'Hard g after a pause, tap after g, i as a [j] glide.'},{w:'ciudad',a:'s j u ˈ ð a ð',x:'θ d̪ i',why:'c = [s], i glides, both d\'s soft, stress on the end.'}]),
    spk(['perro','abogado','ciudad','gracias'])],adds:[]},
 ]},
-{id:'zh',l:'zh',title:'Mandarin',sub:'The sounds Mandarin has that Spanish doesn\'t, the tones, and the rules for how tones change in real speech.',lessons:[
- {id:'zh1',title:'Tones, part 1',kind:'sounds',min:7,steps:[
-   txt('Pitch is part of the word','In Mandarin every syllable has a pitch shape, and changing the shape changes the word: <i>mā</i> (mom), <i>má</i> (hemp), <i>mǎ</i> (horse), <i>mà</i> (to scold). IPA writes the shapes with tone letters on a scale of 1 (your lowest) to 5 (your highest):<ul><li>Tone 1 <span class="ipa">˥</span> 55: high and level</li><li>Tone 2 <span class="ipa">˧˥</span> 35: rising, like "huh?"</li><li>Tone 3 <span class="ipa">˨˩˦</span> 214: low, dipping</li><li>Tone 4 <span class="ipa">˥˩</span> 51: a sharp fall</li></ul><a href="#tones">See the tone shapes drawn out</a>.'),
-   lst('Same syllable, four words',['妈','麻','马','骂']),lst('Another set',['汤','糖','躺','烫']),
-   tn(10),spk(['妈','麻','马','骂'])],adds:['t:tones']},
- {id:'zh2',title:'The puff: aspiration',kind:'sounds',min:6,steps:[
-   txt('You already have half of this','Spanish taught you p, t, k with <b>no puff</b>. That\'s exactly Mandarin <b>b, d, g</b>. Pinyin <b>p, t, k</b> are the same sounds with a <b>strong puff</b>, even stronger than English. Neither set is voiced: pinyin b is not English b.<br><br>The same split runs through the whole system: z/c, zh/ch and j/q differ only by the puff.'),
-   snd('ph'),
-   lst('No puff vs puff',['爸','怕','大','踏','哥','科']),
-   prs(['zh-asp'],10),spk(['爸','怕','他'])],adds:['s:ph','p:zh-asp']},
- {id:'zh3',title:'z and c',kind:'sounds',min:5,steps:[
-   txt('ts at the start of a word','Pinyin <b>z</b> is <span class="ipa">[ts]</span>, the "ts" at the end of "cats", and <b>c</b> is the same with a puff. Pinyin <b>s</b> is a plain [s].<br><br>Pinyin <b>h</b> is your Spanish jota <span class="ipa">[x]</span>, just a little softer.'),
+{id:'zh',l:'zh',title:'Tones and the IPA',sub:'How IPA writes Mandarin, and the four tones: the one thing every Mandarin word has that English words don\'t.',lessons:[
+ {id:'m01',title:'How IPA works for Mandarin',kind:'intro',min:8,steps:[
+   txt('Pinyin is not English',`Pinyin is the official way to write Mandarin in Latin letters. It's consistent, but it was designed for Chinese readers, so many letters don't mean what an English speaker expects: <b>q</b> in <i>qī</i> (seven) is nothing like English q, <b>x</b> in <i>xī</i> (west) isn't "ks", and <b>c</b> in <i>cài</i> (dish) is "ts" with a puff.<br><br>IPA shows what is actually said. Square brackets mean "pronounced like this": 七 <i>qī</i> is <span class="ipa">[tɕʰi˥]</span>. Throughout this course you'll see pinyin and IPA side by side, so you learn to read both.`),
+   txt('A Mandarin syllable',`Every Mandarin syllable has three parts:<ol><li>an <b>initial</b> consonant (optional): the <i>m</i> of <i>mā</i></li><li>a <b>final</b>: a vowel, possibly with a glide before it or -n / -ng after it: the <i>a</i> of <i>mā</i>, the <i>iang</i> of <i>jiāng</i></li><li>a <b>tone</b>: the pitch shape over the whole syllable.</li></ol>There are only about 400 initial + final combinations. Tones multiply them, and they're as much part of the word as the consonants: <i>mā</i> "mom" and <i>mà</i> "scold" are as different as "cat" and "bat".`),
+   sy('Marks you\'ll see in Mandarin IPA','Tap the words to hear each one.',[
+     {s:'pʰ',n:'Raised h',t:'A strong puff of air. In Mandarin the puff is what separates pinyin <b>p</b> from <b>b</b>.',k:['怕','爸']},
+     {s:'˥ ˧˥ ˨˩˦ ˥˩',n:'Tone letters',t:'A tiny graph of pitch, drawn after the syllable. The vertical line is your voice range; the stroke shows where the pitch goes.',k:['妈','麻','马','骂']},
+     {s:'ɕ',n:'Curly c',t:'The pinyin <b>x</b>: like "sh" but with the tongue tip down and the lips smiling.',k:['西']},
+     {s:'ɨ',n:'Barred i',t:'The buzzing vowel of <i>zì</i>, <i>shì</i>: not "ee" at all.',k:['字','是']}]),
+   cm('Close, but not the same','Each English word is the nearest English sound. Listen for what is different.',[
+     ['how (EN)','好','English h is just breath. Mandarin h <span class="ipa">[x]</span> scrapes at the back of the mouth.'],
+     ['she (EN)','西','English sh rounds the lips. Mandarin x <span class="ipa">[ɕ]</span> smiles, tongue tip down.']]),
+   rq([RD('pʰa˥˩',['爸 bà','怕 pà'],1,'怕','ʰ means a puff, and pinyin p has the puff.'),
+       RD('ma˨˩˦',['妈 mā','马 mǎ'],1,'马','˨˩˦ dips low and comes back up: tone 3.'),
+       Q(null,'Pinyin q in 七 qī is pronounced…',['like English q, "kw"','[tɕʰ]: a "ch" with the tongue tip down, plus a puff'],1,'Pinyin letters have their own values. IPA shows them.'),
+       Q(null,'What do the tone letters ˥ ˧˥ ˨˩˦ ˥˩ show?',['How long the syllable is','The shape of the pitch','Which syllable is stressed'],1,'They are tiny pitch graphs.'),
+       Q(null,'Which part of 妈 mā makes it different from 骂 mà?',['The consonant','The vowel','The tone'],2,'Same consonant and vowel; only the pitch shape differs.')])],adds:['r:m01']},
+
+ {id:'m02',title:'Tones 1 and 4: high and falling',kind:'sounds',min:8,steps:[
+   txt('Drawing pitch',`IPA writes tones with <b>Chao tone letters</b>. Picture your comfortable voice range as a scale from 1 (lowest) to 5 (highest). A tone letter is a little graph of where your pitch starts and ends:<ul><li><b>Tone 1</b> <span class="ipa">˥</span> is 55: start high, stay high, perfectly level.</li><li><b>Tone 4</b> <span class="ipa">˥˩</span> is 51: start high and drop all the way to the bottom, quickly.</li></ul>Pinyin marks them with a flat line <i>ā</i> and a falling line <i>à</i>, which look the same as the IPA.`),
+   fl('Find your tone 1',`Hum a comfortable note near the top of your speaking range and hold it like a singer: "mmmmm". Don't let it sag at the end. Now open it into <b>mā</b>. That flat, sustained high pitch is tone 1.<br><br>Then say a firm, annoyed English "No!" The pitch drops sharply from high to low. Put that drop on <b>mà</b>.`,['妈','no! (EN)','骂'],`That's the pair. Tone 1 should feel almost sung; tone 4 almost commanding.`,`Try recording yourself saying mā. If it falls at the end, start a little lower and keep it flat. For tone 4, exaggerate: it's a big fall, not a small dip.`,'Could you hold a flat high note, and then drop sharply?'),
+   cm('English already has a tone 4','English uses falling pitch for emphasis. Mandarin builds it into the word.',[['no! (EN)','骂','Both fall from high to low. In Mandarin the fall is part of the word.']]),
+   lst('Tone 1: high and level',['妈','他','书','吃','西','喝','汤','风']),
+   lst('Tone 4: high falling',['骂','爸','大','怕','是','字','去','六']),
+   rq([HR('妈',['[ma˥]','[ma˥˩]'],0,'Level and high: ˥.'),
+       HR('大',['[ta˥]','[ta˥˩]'],1,'Falling: ˥˩.'),
+       RD('tʰɑŋ˥˩',['汤 tāng (soup)','烫 tàng (scalding)'],1,'烫','˥˩ is the fall of tone 4.'),
+       RD('ʂu˥',['书 shū (book)','树 shù (tree)'],0,'书','˥ is level: tone 1.'),
+       Q(null,'Tone 1 is…',['high and flat','rising','low'],0,'Hold it like a sung note.')]),
+   bd([{w:'妈',a:'m a ˥',x:'˥˩ ˧˥',why:'Consonant, vowel, then the tone letter.'},{w:'大',a:'t a ˥˩',x:'tʰ d ˥',why:'Pinyin d is an unaspirated [t]. The tone falls: ˥˩.'}]),
+   spk(['妈','骂','书'])],adds:['r:m02']},
+
+ {id:'m03',title:'Tones 2 and 3: rising and low',kind:'sounds',min:9,steps:[
+   txt('Rising and dipping',`<ul><li><b>Tone 2</b> <span class="ipa">˧˥</span> (35) starts in the middle and rises to the top, like a surprised English "Huh?" or "What?"</li><li><b>Tone 3</b> <span class="ipa">˨˩˦</span> (214) starts low, sinks to the very bottom, then comes back up. The low part is what matters: it often sounds slightly creaky.</li></ul>`),
+   cm('English already has a tone 2','',[['huh? (EN)','麻','A questioning rise. In Mandarin it\'s simply the word for "hemp".']]),
+   fl('Find the bottom of your voice',`Say "uh-huh" as if mildly agreeing, and let the "uh" sink low. Go even lower, until your voice gets a little gravelly. That's the core of tone 3. Now say <b>mǎ</b>: go down to the bottom, then let it come back up at the end.`,['马','好','冷'],`Good. Most learners make tone 3 too high. Low is the key.`,`Put a hand on your chest: you should feel more vibration as your voice goes down. Don't worry about the rise yet; get the low part first.`,'Could you reach a low, slightly creaky pitch?'),
+   lst('Tone 2: rising',['麻','茶','十','人','学','钱','鱼','糖']),
+   lst('Tone 3: low dipping',['马','好','早','草','九','女','冷','躺']),
+   txt('The half third tone',`In real speech, tone 3 only rises when it's at the end of a phrase or said alone. Before another syllable, it just goes <b>low and stays low</b>: <span class="ipa">˨˩</span> (21). This "half third tone" is the most common form of tone 3. In 老师 <i>lǎoshī</i> (teacher), <i>lǎo</i> is <span class="ipa">[laʊ˨˩]</span>.`),
+   lst('Half third tone: low, no rise',['老师','美国','考试']),
+   rq([HR('麻',['[ma˧˥]','[ma˨˩˦]'],0,'Rising: ˧˥.'),
+       HR('马',['[ma˧˥]','[ma˨˩˦]'],1,'Low and dipping: ˨˩˦.'),
+       RD('tʰɑŋ˧˥',['糖 táng (sugar)','躺 tǎng (lie down)'],0,'糖','˧˥ rises.'),
+       Q('老师','In 老师 lǎoshī, the first syllable is…',['the full dip ˨˩˦','just low ˨˩'],1,'Before another syllable, tone 3 stays low.'),
+       Q(null,'The most important part of tone 3 is…',['the rise at the end','reaching low pitch'],1,'The rise often disappears.')]),
+   bd([{w:'麻',a:'m a ˧˥',x:'˨˩˦ ˥',why:'Rising tone.'},{w:'马',a:'m a ˨˩˦',x:'˧˥ ˥˩',why:'Low dipping tone.'}]),
+   spk(['麻','马','老师'])],adds:['r:m03']},
+
+ {id:'m04',title:'Telling the four tones apart',kind:'sounds',min:8,steps:[
+   sy('The four tones','Same syllable, four words. Play each and trace the shape in the air with your hand as you listen.',[
+     {s:'˥',n:'Tone 1 · 55 · ā',t:'high, level',k:['妈','汤']},{s:'˧˥',n:'Tone 2 · 35 · á',t:'rising',k:['麻','糖']},
+     {s:'˨˩˦',n:'Tone 3 · 214 · ǎ',t:'low, dipping',k:['马','躺']},{s:'˥˩',n:'Tone 4 · 51 · à',t:'falling',k:['骂','烫']}]),
+   fl('Use your hand',`Move your hand while you speak: flat and high for tone 1, up for tone 2, down low and back up for tone 3, a chop down for tone 4. It feels silly, but linking tones to movement is one of the fastest ways to learn them. Try it with <b>tāng, táng, tǎng, tàng</b>.`,['汤','糖','躺','烫'],`Keep using your hand until the tones feel automatic.`,`Play each recording and move your hand along with the pitch first, before you speak.`,'Did your voice follow your hand?'),
+   txt('The neutral tone',`Some syllables have no tone of their own. They're short and light, and their pitch depends on the syllable before. IPA simply leaves off the tone letter: 妈妈 <i>māma</i> is <span class="ipa">[ma˥ ma]</span>. You'll practise this in part 4.`),
+   lst('Neutral tone',['妈妈','谢谢','朋友']),
+   tn(12),
+   rq([HR('躺',['[tʰɑŋ˥]','[tʰɑŋ˧˥]','[tʰɑŋ˨˩˦]','[tʰɑŋ˥˩]'],2,'Low and dipping.'),
+       HR('糖',['[tʰɑŋ˥]','[tʰɑŋ˧˥]','[tʰɑŋ˨˩˦]','[tʰɑŋ˥˩]'],1,'Rising.'),
+       RD('ma˥˩',['妈','麻','马','骂'],3,'骂','˥˩ is tone 4.'),
+       RD('ma˧˥',['妈','麻','马','骂'],1,'麻','˧˥ is tone 2.')]),
+   bd([{w:'汤',a:'tʰ ɑŋ ˥',x:'t ˥˩ an',why:'Pinyin t has a puff. ang is [ɑŋ].'},{w:'糖',a:'tʰ ɑŋ ˧˥',x:'t ˨˩˦ an',why:'Rising tone.'}]),
+   spk(['汤','糖','躺','烫'])],adds:['t:tones','r:m04']},
+]},
+{id:'zh-c',l:'zh',title:'Consonants',sub:'The puff that replaces voicing, and three families of hissing sounds that English lumps together.',lessons:[
+ {id:'m05',title:'b, d, g vs p, t, k: the puff',kind:'sounds',min:9,steps:[
+   txt('Mandarin uses breath, not voice',`In English, b/p, d/t and g/k differ mainly in <b>voicing</b> (buzz). Mandarin doesn't use voicing at all. Instead, the pairs differ in <b>aspiration</b>, the puff of air:<ul><li>pinyin <b>b d g</b> = <span class="ipa">[p t k]</span>: no voice and no puff. Exactly the p of "spin", the t of "stop", the k of "skin".</li><li>pinyin <b>p t k</b> = <span class="ipa">[pʰ tʰ kʰ]</span>: a strong puff, stronger than in English.</li></ul>So 爸 <i>bà</i> is <span class="ipa">[pa˥˩]</span>, not an English b. If you voice it, people will still understand; if you skip the puff on p, t, k, they may hear the wrong word.`),
+   fl('The tissue test',`Hold a tissue in front of your lips. Say "pin" (it should move) and "spin" (it shouldn't). The p in "spin" is pinyin <b>b</b>. Now say 怕 <i>pà</i> with an even bigger puff than "pin".`,['spin (EN)','爸','pin (EN)','怕'],`That's the whole contrast. The puff carries the meaning.`,`Try louder and closer. If "pin" doesn't move the tissue, put your palm right in front of your mouth instead and feel the air.`,'Did the tissue move for 怕 but not for 爸?'),
+   cm('Find them in English','English has both versions; it just doesn\'t use the difference to tell words apart.',[['spin (EN)','爸','<span class="ipa">[p]</span> = pinyin b'],['pin (EN)','怕','<span class="ipa">[pʰ]</span> = pinyin p'],['skin (EN)','哥','<span class="ipa">[k]</span> = pinyin g'],['kin (EN)','科','<span class="ipa">[kʰ]</span> = pinyin k']]),
+   snd('pu'),snd('ph'),
+   lst('Unaspirated: b d g',['爸','大','哥','对']),lst('Aspirated: p t k',['怕','他','科','开']),
+   prs(['zh-asp'],8),
+   rq([HR('怕',['[pʰa˥˩]','[pa˥˩]'],0,'Pinyin p has a puff.'),
+       RD('ta˥˩',['大 dà (big)','踏 tà (step on)'],0,'大','No ʰ means no puff: pinyin d.'),
+       HR('他',['[tʰa˥]','[ta˥]'],0,'Pinyin t has the puff.'),
+       Q(null,'Pinyin b, d, g are…',['voiced, like English b, d, g','voiceless with no puff, like the p in "spin"'],1,'Mandarin doesn\'t use voicing.'),
+       Q(null,'Which pinyin letter is [kʰ]?',['g','k','h'],1,'k has the puff.')]),
+   bd([{w:'他',a:'tʰ a ˥',x:'t d ˥˩',why:'Pinyin t = [tʰ].'},{w:'哥',a:'k ɤ ˥',x:'kʰ ɡ ə',why:'Pinyin g = [k]; e alone = [ɤ].'}]),
+   spk(['爸','怕','他'])],adds:['s:pu','s:ph','p:zh-asp','r:m05']},
+
+ {id:'m06',title:'f, m, n, l, and h',kind:'sounds',min:6,steps:[
+   txt('Mostly familiar',`<b>f m n l</b> are as in English, with one difference: Mandarin l is always light, never the dark l of "full".<br><br><b>h</b> is the one to watch. It's <span class="ipa">[x]</span>: the back of the tongue comes close to the soft palate and the air scrapes through, like Spanish <i>j</i> or Scottish "loch". It's usually a bit softer than the Spanish jota, but it's never just breath like English h.`),
+   cm('English h vs Mandarin h','',[['how (EN)','好','English <span class="ipa">[h]</span> vs Mandarin <span class="ipa">[x]</span>']]),
+   snd('x'),
+   fl('From k to h',`Say "k" and hold the tongue where it touches the roof of your mouth. Lower it slightly and blow: you get a gentle scrape. Put it in front of "ao": <b>hǎo</b>.`,['好','喝'],`That light scrape is Mandarin h.`,`Start from an English h and slowly raise the back of your tongue until you hear friction.`,'Could you add a light scrape to h?'),
+   lst('Familiar sounds',['风','妈','女','路','冷','好','喝']),
+   rq([HR('好',['[xaʊ˨˩˦]','[haʊ˨˩˦]'],0,'Mandarin h is [x].'),
+       RD('fəŋ˥',['风 fēng (wind)','冷 lěng (cold)'],0,'风','[f] and tone 1.'),
+       Q(null,'The IPA for pinyin h is…',['[h]','[x]','[ʃ]'],1,'A scrape at the back.')]),
+   bd([{w:'喝',a:'x ɤ ˥',x:'h ə ˥˩',why:'h = [x], e alone = [ɤ].'},{w:'冷',a:'l əŋ ˨˩˦',x:'ɫ ən ˧˥',why:'Light l; eng = [əŋ].'}]),
+   spk(['好','喝','风'])],adds:['s:x','r:m06']},
+
+ {id:'m07',title:'z, c, s',kind:'sounds',min:8,steps:[
+   txt('ts at the start of a word',`English has <span class="ipa">[ts]</span>, but only at the end of words: "ca<b>ts</b>", "i<b>t's</b>". Mandarin puts it at the start:<ul><li><b>z</b> = <span class="ipa">[ts]</span>, no puff: 在 <i>zài</i></li><li><b>c</b> = <span class="ipa">[tsʰ]</span>, with a puff: 菜 <i>cài</i></li><li><b>s</b> = <span class="ipa">[s]</span>: 四 <i>sì</i></li></ul>The tongue tip is just behind the upper teeth for all three.`),
+   cm('Move "ts" to the front','',[['cats (EN)','字','The end of "cats" is the start of 字 zì.']]),
+   fl('Start with ts',`Say "cats" slowly and hold the end: "ca-ts". Now drop the "ca" and say only "ts", then add a vowel: "tsai", 在 <b>zài</b>. For 菜 <b>cài</b>, add a puff after the ts.`,['在','菜'],`You've got both. c is the same as z with an extra burst of air.`,`Whisper "it's" a few times, then just "ts". Don't let it turn into "z" or "s".`,'Could you start a syllable with ts?'),
    snd('ts'),snd('tsh'),
-   lst('Listen',['在','早','字','菜','草','次','四','好']),
-   qz(['ts','tsh','ph','x'],5),spk(['在','菜','字'])],adds:['s:ts','s:tsh']},
- {id:'zh4',title:'Retroflex zh, ch, sh, r',kind:'sounds',min:8,steps:[
-   txt('Curl the tongue back','This group is made with the tongue tip curled up behind the gum ridge. It gives a darker, hollower sound than z, c, s. Pinyin <b>r</b> is in this group too: it\'s much closer to the s in "measure" than to an English r.'),
-   snd('tsr'),snd('tsrh'),snd('sr'),snd('rr'),
-   prs(['zh-ssh'],10),spk(['中','茶','是','人'])],adds:['s:tsr','s:tsrh','s:sr','s:rr','p:zh-ssh']},
- {id:'zh5',title:'j, q, x',kind:'sounds',min:7,steps:[
-   txt('Tongue tip down, smile','For j, q, x the tip stays down behind your lower teeth while the middle of the tongue rises to the palate. They sound bright and "smiley", the opposite of the retroflexes.<br><br>A useful fact: j, q and x only ever appear before an i or ü sound. That\'s how pinyin can write ü as plain u after them (<i>qù</i> = [tɕʰy]).'),
+   lst('z, c, s',['在','早','字','菜','草','次','四']),
+   rq([HR('菜',['[tsʰaɪ˥˩]','[tsaɪ˥˩]'],0,'c has the puff.'),
+       RD('tsaʊ˨˩˦',['早 zǎo (early)','草 cǎo (grass)'],0,'早','No ʰ: pinyin z.'),
+       Q(null,'Pinyin c is pronounced…',['[k]','[s]','[tsʰ]'],2,'c = ts + puff.'),
+       Q(null,'Pinyin z is pronounced…',['[z], like "zoo"','[ts], like the end of "cats"'],1,'Mandarin has no [z].')]),
+   bd([{w:'草',a:'tsʰ aʊ ˨˩˦',x:'ts k ˧˥',why:'c = [tsʰ]; ao = [aʊ].'},{w:'在',a:'ts aɪ ˥˩',x:'tsʰ z ˥',why:'z = [ts]; ai = [aɪ].'}]),
+   spk(['在','菜','四'])],adds:['s:ts','s:tsh','r:m07']},
+
+ {id:'m08',title:'zh, ch, sh: the curled tongue',kind:'sounds',min:9,steps:[
+   txt('Retroflex',`For zh, ch and sh, the tongue tip <b>curls up and back</b> toward the roof of the mouth, behind the gum ridge. Sounds made this way are called <b>retroflex</b>, and IPA marks them with a hook to the right: <span class="ipa">[ʈʂ ʈʂʰ ʂ]</span>.<ul><li><b>zh</b> = <span class="ipa">[ʈʂ]</span>, no puff: 中 <i>zhōng</i></li><li><b>ch</b> = <span class="ipa">[ʈʂʰ]</span>, with a puff: 茶 <i>chá</i></li><li><b>sh</b> = <span class="ipa">[ʂ]</span>: 是 <i>shì</i></li></ul>English "j, ch, sh" (<span class="ipa">[dʒ tʃ ʃ]</span>) are close, but made with a flatter tongue and rounded lips. Mandarin's are deeper and hollower.`),
+   fl('Curl the tip',`Say a long English "shhh". Now slowly slide your tongue tip backward along the roof of your mouth, past the gum ridge, until it points up at the hard palate. The sound gets deeper and hollower: that's <span class="ipa">[ʂ]</span>. Keep your lips relaxed, not rounded.`,['是','书'],`That hollow sh is Mandarin sh. zh and ch use the same tongue position.`,`Use a mirror: if your lips push forward, relax them. Try saying "shr" quickly, as in "shrub"; the tongue position is close.`,'Did the sound get deeper as your tongue moved back?'),
+   cm('English sh vs Mandarin sh','',[['sure (EN)','书','English <span class="ipa">[ʃ]</span> vs Mandarin <span class="ipa">[ʂ]</span>'],['shirt (EN)','是','The vowel in "shirt" is close to the buzzing vowel of 是 shì.']]),
+   snd('tsr'),snd('tsrh'),snd('sr'),
+   lst('zh, ch, sh',['中','这','知','茶','吃','车','是','书','十']),
+   rq([HR('是',['[ʂɨ˥˩]','[sɨ˥˩]'],0,'sh is retroflex [ʂ].'),
+       HR('知',['[ʈʂɨ˥]','[tsɨ˥]'],0,'zh is [ʈʂ].'),
+       RD('ʈʂʰa˧˥',['茶 chá (tea)','擦 cā (wipe)'],0,'茶','ʈʂʰ = ch.'),
+       Q(null,'The hook on [ʂ] means…',['the tongue tip curls back','the lips round','the sound is voiced'],0,'Retroflex.')]),
+   bd([{w:'书',a:'ʂ u ˥',x:'ʃ s ˥˩',why:'sh = [ʂ].'},{w:'茶',a:'ʈʂʰ a ˧˥',x:'tʃ ʈʂ ˥',why:'ch = [ʈʂʰ], rising tone.'}]),
+   spk(['是','书','茶'])],adds:['s:tsr','s:tsrh','s:sr','r:m08']},
+
+ {id:'m09',title:'Mandarin r',kind:'sounds',min:6,steps:[
+   txt('A buzzing r',`Pinyin r is made like sh, with the tongue curled back, but with <b>voice</b> and less friction: <span class="ipa">[ɻ]</span> (some books write <span class="ipa">[ʐ]</span>). It's close to English r in "run", but the tongue tip is higher and the lips aren't rounded.`),
+   cm('English r vs Mandarin r','',[['run (EN)','人','English r rounds the lips; Mandarin r doesn\'t.']]),
+   snd('rr'),
+   fl('From sh to r',`Say Mandarin sh <span class="ipa">[ʂ]</span>, tongue curled back. Keep the tongue exactly there and turn your voice on. The hiss becomes a buzz: <span class="ipa">[ɻ]</span>. Say 人 <b>rén</b>.`,['人','热','日'],`That's it. Keep the lips flat.`,`Alternate "shhh-rrr-shhh-rrr" without moving your tongue; only your voice switches on and off.`,'Could you turn sh into a buzzing r?'),
+   lst('r',['人','热','日']),
+   rq([HR('热',['[ɻɤ˥˩]','[lɤ˥˩]'],0,'Mandarin r [ɻ].'),
+       Q(null,'Mandarin r is made…',['like English r, with rounded lips','with the tongue curled back like sh, plus voice'],1,''),
+       RD('ɻən˧˥',['人 rén (person)','冷 lěng (cold)'],0,'人','[ɻ] = r.')]),
+   bd([{w:'人',a:'ɻ ən ˧˥',x:'ɹ ʒ ˥',why:'r = [ɻ]; en = [ən].'},{w:'热',a:'ɻ ɤ ˥˩',x:'ɹ ə ˥',why:'e alone = [ɤ].'}]),
+   spk(['人','热','日'])],adds:['s:rr','r:m09']},
+
+ {id:'m10',title:'j, q, x: tongue down, smile',kind:'sounds',min:9,steps:[
+   txt('A third family',`j, q and x are made with the <b>tongue tip down</b> behind the lower front teeth and the front of the tongue pressed up against the hard palate. The lips are spread, as in a smile. IPA uses a curl: <span class="ipa">[tɕ tɕʰ ɕ]</span>.<ul><li><b>j</b> = <span class="ipa">[tɕ]</span>, no puff: 鸡 <i>jī</i></li><li><b>q</b> = <span class="ipa">[tɕʰ]</span>, with a puff: 七 <i>qī</i></li><li><b>x</b> = <span class="ipa">[ɕ]</span>: 西 <i>xī</i></li></ul>They are <b>only ever followed by i or ü</b>, which is a handy check.`),
+   fl('Tip down, smile',`Put the tip of your tongue behind your lower front teeth and smile. Say "see", then keep the tongue tip down and slide the hiss a little further back, toward "she". Stop halfway: that bright, thin hiss is <span class="ipa">[ɕ]</span>. Say 西 <b>xī</b>.`,['西','谢'],`That's x. j and q start with the tongue in the same place.`,`Keep a fingertip on your lower teeth to remind your tongue to stay down, and keep smiling.`,'Did you get a sound between "s" and "sh"?'),
+   cm('English vs Mandarin','',[['she (EN)','西','English sh rounds the lips; x smiles.'],['cheap (EN)','七','q has a strong puff and the tongue tip down.'],['jeep (EN)','鸡','English j is voiced; pinyin j isn\'t.']]),
    snd('tc'),snd('tch'),snd('xx'),
-   prs(['zh-jzh'],10),spk(['鸡','七','西'])],adds:['s:tc','s:tch','s:xx','p:zh-jzh']},
- {id:'zh6',title:'Vowels Spanish doesn\'t have',kind:'sounds',min:8,steps:[
-   txt('Four new vowels','Spanish gave you a, e, i, o, u. Mandarin adds:<ul><li><b>ü</b> <span class="ipa">[y]</span>: "ee" with rounded lips</li><li><b>e</b> <span class="ipa">[ɤ]</span>: an unrounded "o", far back</li><li>the <b>buzzy i</b> after z, c, s, zh, ch, sh, r</li><li><b>schwa</b> <span class="ipa">[ə]</span> in -en and -eng</li></ul>'),
-   snd('vy'),snd('vgam'),snd('vbuzz'),snd('vschwa'),
-   prs(['zh-uy'],6),qz(['vy','vgam','vbuzz','vschwa','vu','vi'],6),spk(['鱼','饿','是'])],adds:['s:vy','s:vgam','s:vbuzz','s:vschwa','p:zh-uy']},
- {id:'zh7',title:'Rule: pinyin spelling traps, -n vs -ng',kind:'rule',min:8,steps:[
-   txt('Pinyin is not English spelling','Pinyin is consistent, but some spellings are shortened:<ul><li><b>u after j, q, x, y is really ü</b>: <i>qù, yú</i>.</li><li><b>-i after z, c, s, zh, ch, sh, r</b> is the buzzy vowel, not "ee": <i>shì, zì</i>.</li><li><b>iu</b> = i+ou <span class="ipa">[joʊ]</span> (<i>liù</i>), <b>ui</b> = u+ei <span class="ipa">[weɪ]</span> (<i>duì</i>), <b>un</b> = u+en <span class="ipa">[wən]</span> (<i>chūn</i>).</li><li><b>e</b> has three values: <span class="ipa">[ɤ]</span> alone (<i>è</i>), <span class="ipa">[ɛ]</span> after i or ü (<i>xiè, yuè</i>), <span class="ipa">[ə]</span> in -en and -eng (<i>fēng</i>).</li></ul>'),
-   lst('Hear the hidden sounds',['去','鱼','是','六','对','春','谢','月','风']),
-   txt('-n vs -ng','A syllable can end in <b>-n</b> (tongue tip up) or <b>-ng</b> (back of tongue up, as in "sing"). They\'re different words, and the vowel shifts too: -ang sounds deeper than -an.'),
+   lst('j, q, x',['鸡','家','九','七','去','钱','西','谢','学']),
+   rq([HR('西',['[ɕi˥]','[ʂɨ˥]','[si˥]'],0,'x = [ɕ].'),
+       RD('tɕʰi˥',['七 qī (seven)','鸡 jī (chicken)'],0,'七','tɕʰ has the puff: q.'),
+       Q(null,'j, q and x are always followed by…',['i or ü','a or o'],0,'That\'s why ü loses its dots after them.'),
+       Q(null,'Pinyin j sounds like…',['English j in "jam"','[tɕ]: voiceless, no puff, tongue tip down'],1,'')]),
+   bd([{w:'七',a:'tɕʰ i ˥',x:'tʃ tɕ ˥˩',why:'q = [tɕʰ].'},{w:'谢',a:'ɕ j ɛ ˥˩',x:'ʃ e i',why:'x = [ɕ]; ie = [jɛ].'}]),
+   spk(['七','西','谢'])],adds:['s:tc','s:tch','s:xx','r:m10']},
+
+ {id:'m11',title:'Sorting the hissing sounds',kind:'rule',min:8,steps:[
+   sy('Three families','Each row has the same tongue position; each column has the same manner.',[
+     {s:'ts tsʰ s',n:'z c s',t:'tongue tip behind the upper teeth',k:['在','菜','四']},
+     {s:'ʈʂ ʈʂʰ ʂ',n:'zh ch sh',t:'tongue tip curled back',k:['中','茶','是']},
+     {s:'tɕ tɕʰ ɕ',n:'j q x',t:'tongue tip down, front of the tongue up, smile',k:['鸡','七','西']}]),
+   txt('Spelling clues',`<ul><li><b>j q x</b> only appear before <b>i</b> or <b>ü</b>.</li><li><b>z c s</b> and <b>zh ch sh r</b> never appear before a real <span class="ipa">[i]</span>: when pinyin writes zi, ci, si, zhi, chi, shi, ri, the i is the buzzing vowel you'll meet in part 3.</li></ul>So 西 <i>xī</i> <span class="ipa">[ɕi]</span> and 四 <i>sì</i> <span class="ipa">[sɨ]</span> differ in both consonant and vowel.`),
+   prs(['zh-ssh','zh-jzh'],10),
+   rq([HR('四',['[sɨ˥˩]','[ʂɨ˥˩]','[ɕi˥˩]'],0,'s + buzzing vowel.'),
+       HR('十',['[sɨ˧˥]','[ʂɨ˧˥]','[ɕi˧˥]'],1,'sh + buzzing vowel.'),
+       RD('ʈʂʰɨ˥',['吃 chī','七 qī','次 cì'],0,'吃','ʈʂʰ = ch.'),
+       RD('tsʰɨ˥˩',['吃 chī','七 qī','次 cì'],2,'次','tsʰ = c.'),
+       RD('tɕʰi˥',['吃 chī','七 qī','次 cì'],1,'七','tɕʰ = q.'),
+       Q(null,'Which can be followed by ü?',['zh','j','s'],1,'Only j q x (and n, l).')]),
+   bd([{w:'四',a:'s ɨ ˥˩',x:'ʂ ɕ i',why:'s + buzzing [ɨ].'},{w:'吃',a:'ʈʂʰ ɨ ˥',x:'tɕʰ tsʰ i',why:'ch + buzzing [ɨ].'},{w:'去',a:'tɕʰ y ˥˩',x:'ʈʂʰ u',why:'q + ü, written u.'}]),
+   spk(['四','十','西'])],adds:['p:zh-ssh','p:zh-jzh','r:m11']},
+]},
+{id:'zh-v',l:'zh',title:'Vowels and finals',sub:'Five simple vowels, two that English doesn\'t have, and the finals built from them.',lessons:[
+ {id:'m12',title:'The simple vowels',kind:'sounds',min:8,steps:[
+   txt('a, o, e, i, u',`<ul><li><b>a</b> <span class="ipa">[a]</span>: "ah". Before -ng it's further back, <span class="ipa">[ɑ]</span>.</li><li><b>o</b>: after b, p, m, f it's really <span class="ipa">[wo]</span>: 波 <i>bō</i> is <span class="ipa">[pwo]</span>.</li><li><b>e</b> on its own is <span class="ipa">[ɤ]</span>, a vowel English doesn't have (below).</li><li><b>i</b> <span class="ipa">[i]</span>: "ee", no glide.</li><li><b>u</b> <span class="ipa">[u]</span>: "oo", lips well rounded.</li></ul>`),
+   snd('vgam'),
+   fl('Make [ɤ]',`Say "oo" and hold it. Now keep your tongue exactly where it is and <b>unround your lips</b> into a relaxed smile. The sound that comes out is <span class="ipa">[ɤ]</span>: a bit like the "uh" in "duh", but further back. That's 饿 <b>è</b>, "hungry".`,['饿','喝','哥'],`That's the Mandarin e. It has nothing to do with English "e".`,`Use a mirror. Say "oo", then pull your lips sideways without moving anything else.`,'Could you make "oo" with spread lips?'),
+   lst('a',['马','大','茶']),lst('e = [ɤ]',['饿','喝','车','热']),lst('i and u',['七','西','书','路','努']),
+   rq([HR('饿',['[ɤ˥˩]','[ə˥˩]','[e˥˩]'],0,'e alone is [ɤ].'),
+       HR('路',['[lu˥˩]','[ly˥˩]'],0,'u = [u].'),
+       Q(null,'Pinyin e in 喝 hē is…',['like the e in "bed"','[ɤ]: an "uh" made far back, with spread lips'],1,''),
+       Q(null,'How do you make [ɤ]?',['Say "ee" and round your lips','Say "oo" and unround your lips'],1,'')]),
+   bd([{w:'车',a:'ʈʂʰ ɤ ˥',x:'ə e tʃ',why:'ch = [ʈʂʰ]; e = [ɤ].'},{w:'路',a:'l u ˥˩',x:'y ʊ ˥',why:'u = [u].'}]),
+   spk(['饿','车','路'])],adds:['s:vgam','r:m12']},
+
+ {id:'m13',title:'ü: "ee" with rounded lips',kind:'sounds',min:7,steps:[
+   txt('A rounded ee',`ü is <span class="ipa">[y]</span> (in IPA, y is a vowel!): the tongue is in the "ee" position, but the lips are tightly rounded as for "oo". French <i>tu</i> and German <i>über</i> have the same vowel.<br><br>Spelling: pinyin drops the dots after <b>j, q, x</b> and <b>y</b>, because u can't follow them anyway: 去 <i>qù</i> <span class="ipa">[tɕʰy]</span>, 鱼 <i>yú</i> <span class="ipa">[y]</span>. The dots stay only after n and l: 女 <i>nǚ</i>, 绿 <i>lǜ</i>.`),
+   fl('Ee, then round',`Say a long "eeee". Without moving your tongue at all, slowly push your lips forward into a tight "oo" circle. The sound changes to <span class="ipa">[y]</span>. If it slides toward "oo", your tongue moved back: keep it forward.`,['鱼','女','绿'],`That's ü. It should feel like "ee" with your lips doing something different.`,`Hold your tongue tip against your lower teeth while rounding, so it can't pull back.`,'Did you get a rounded "ee"?'),
+   snd('vy'),
+   lst('ü',['鱼','女','绿','去','学','月']),
+   prs(['zh-uy'],8),
+   rq([HR('绿',['[ly˥˩]','[lu˥˩]'],0,'lǜ has ü.'),
+       RD('ny˨˩˦',['女 nǚ (woman)','努 nǔ (strive)'],0,'女','[y] = ü.'),
+       Q('去','In 去 qù, the u is…',['[u]','[y]: ü written without dots'],1,'After j q x y, u is ü.'),
+       Q(null,'IPA [y] stands for…',['the y in "yes"','ü, a rounded "ee"'],1,'The y of "yes" is [j].')]),
+   bd([{w:'鱼',a:'y ˧˥',x:'u j',why:'Just the vowel [y], rising.'},{w:'女',a:'n y ˨˩˦',x:'u ˧˥',why:'nǚ: [y].'}]),
+   spk(['鱼','女','去'])],adds:['s:vy','p:zh-uy','r:m13']},
+
+ {id:'m14',title:'The buzzing vowel of zi and shi',kind:'sounds',min:7,steps:[
+   txt('Not "ee" at all',`After <b>z, c, s</b> and <b>zh, ch, sh, r</b>, pinyin <i>i</i> doesn't mean <span class="ipa">[i]</span>. The tongue stays almost where the consonant left it and the voice simply continues, giving a buzzing vowel.<ul><li>After z c s, it sounds like a voiced "zzz": 四 <i>sì</i></li><li>After zh ch sh r, it's r-coloured, like the "ir" of "shirt": 是 <i>shì</i></li></ul>This app writes both as <span class="ipa">[ɨ]</span>. Other books use <span class="ipa">[ɹ̩]</span> and <span class="ipa">[ɻ̩]</span>, or the Chinese-tradition symbols <span class="ipa">ɿ</span> and <span class="ipa">ʅ</span>.`),
+   snd('vbuzz'),
+   fl('Just keep going',`Say a long "sss". Keep your tongue where it is and switch your voice on: "zzzz". Now make it a little more open and vowel-like: that's the vowel of 四 <b>sì</b>. For 是 <b>shì</b>, do the same from a curled sh.`,['四','字','是'],`Good. The vowel is basically the consonant, continued.`,`Don't move your tongue toward "ee". Record yourself saying sì and xī; they should sound clearly different.`,'Could you turn the hiss into a buzzing vowel?'),
+   lst('After z c s',['字','次','四']),lst('After zh ch sh r',['知','吃','是','十','日']),
+   rq([HR('四',['[sɨ˥˩]','[si˥˩]'],0,'After s, i is [ɨ].'),
+       HR('是',['[ʂɨ˥˩]','[ʂi˥˩]'],0,'After sh, i is [ɨ].'),
+       Q(null,'Is the i of 西 xī the same as the i of 四 sì?',['Yes','No: [i] after x, buzzing [ɨ] after s'],1,'')]),
+   bd([{w:'字',a:'ts ɨ ˥˩',x:'i dz',why:'z + buzzing vowel.'},{w:'十',a:'ʂ ɨ ˧˥',x:'i ʃ',why:'sh + buzzing vowel, rising tone.'}]),
+   spk(['字','四','是'])],adds:['s:vbuzz','r:m14']},
+
+ {id:'m15',title:'Diphthongs and the schwa',kind:'sounds',min:8,steps:[
+   txt('Gliding finals',`Mandarin has four finals that glide, much like English:<ul><li><b>ai</b> <span class="ipa">[aɪ]</span> like "eye": 开 <i>kāi</i></li><li><b>ei</b> <span class="ipa">[eɪ]</span> like "ay": 美 <i>měi</i></li><li><b>ao</b> <span class="ipa">[aʊ]</span> like "ow" (never "oh"!): 好 <i>hǎo</i></li><li><b>ou</b> <span class="ipa">[oʊ]</span> like "oh": 九 <i>jiǔ</i>, 朋友 <i>péngyou</i></li></ul>And <b>e</b> before -n and -ng becomes a schwa <span class="ipa">[ə]</span>: <b>en</b> <span class="ipa">[ən]</span>, <b>eng</b> <span class="ipa">[əŋ]</span>.`),
+   lst('ai, ei, ao, ou',['开','在','美国','好','早','九','朋友']),
+   cm('ao is "ow"','A common mistake is reading ao as "oh".',[['how (EN)','好','Same vowel glide, different h.']]),
+   snd('vschwa'),
+   lst('en and eng',['人','陈','冷','风','成']),
+   rq([HR('好',['[xaʊ˨˩˦]','[xoʊ˨˩˦]'],0,'ao = [aʊ], "ow".'),
+       HR('风',['[fəŋ˥]','[fɤŋ˥]'],0,'eng = [əŋ].'),
+       Q(null,'Pinyin ao sounds like…',['"oh"','"ow" as in "how"'],1,''),
+       Q(null,'In 人 rén, the e is…',['[ɤ]','[ə]','[e]'],1,'e before n or ng is a schwa.')]),
+   bd([{w:'开',a:'kʰ aɪ ˥',x:'k eɪ',why:'k = [kʰ]; ai = [aɪ].'},{w:'早',a:'ts aʊ ˨˩˦',x:'oʊ z',why:'ao = [aʊ].'}]),
+   spk(['好','开','风'])],adds:['s:vschwa','r:m15']},
+
+ {id:'m16',title:'Glides: i-, u- and ü- finals',kind:'sounds',min:8,steps:[
+   txt('A glide before the vowel',`Many finals start with a short glide:<ul><li><b>i-</b> becomes <span class="ipa">[j]</span>: <b>ia</b> <span class="ipa">[ja]</span> 家 <i>jiā</i>, <b>ie</b> <span class="ipa">[jɛ]</span> 谢 <i>xiè</i>, <b>iu</b> <span class="ipa">[joʊ]</span> 六 <i>liù</i>, <b>ian</b> <span class="ipa">[jɛn]</span> 钱 <i>qián</i></li><li><b>u-</b> becomes <span class="ipa">[w]</span>: <b>uo</b> <span class="ipa">[wo]</span> 国 <i>guó</i>, <b>ui</b> <span class="ipa">[weɪ]</span> 对 <i>duì</i>, <b>un</b> <span class="ipa">[wən]</span> 春 <i>chūn</i></li><li><b>ü-</b> becomes <span class="ipa">[ɥ]</span>, a rounded y: <b>üe</b> <span class="ipa">[ɥɛ]</span> 月 <i>yuè</i>, 学 <i>xué</i></li></ul>Watch <b>ian</b>: the a is raised to <span class="ipa">[ɛ]</span>, so 钱 <i>qián</i> sounds like "chyen", not "chyan".`),
+   sy('The glide symbols','',[{s:'j',t:'i before a vowel, like "y" in "yes"',k:['家','谢']},{s:'w',t:'u before a vowel',k:['中国','对']},{s:'ɥ',t:'ü before a vowel: a "y" with rounded lips',k:['月','学']}]),
+   lst('Glides',['家','谢','六','钱','中国','对','春','月','学']),
+   rq([HR('钱',['[tɕʰjɛn˧˥]','[tɕʰjan˧˥]'],0,'ian = [jɛn].'),
+       HR('月',['[ɥɛ˥˩]','[jɛ˥˩]'],0,'yue = [ɥɛ], rounded.'),
+       RD('tweɪ˥˩',['对 duì','多 duō'],0,'对','ui = [weɪ].'),
+       Q(null,'IPA [ɥ] is…',['a rounded "y" glide','a kind of h'],0,'')]),
+   bd([{w:'家',a:'tɕ j a ˥',x:'dʒ i',why:'j = [tɕ]; ia = [ja].'},{w:'月',a:'ɥ ɛ ˥˩',x:'j e',why:'yue = [ɥɛ].'}]),
+   spk(['钱','对','学'])],adds:['r:m16']},
+
+ {id:'m17',title:'-n vs -ng',kind:'sounds',min:7,steps:[
+   txt('Two different endings',`Syllables can end in <b>-n</b> or <b>-ng</b>, and they're different words: 盘 <i>pán</i> "plate" vs 旁 <i>páng</i> "side".<ul><li><b>-n</b> <span class="ipa">[n]</span>: tongue tip up behind the teeth.</li><li><b>-ng</b> <span class="ipa">[ŋ]</span>: back of the tongue up, as in "sing". The tip stays down.</li></ul>The vowel shifts too: <b>-an</b> is a bright <span class="ipa">[an]</span>, <b>-ang</b> a deep <span class="ipa">[ɑŋ]</span>. Often the vowel is the easier clue to hear.`),
+   cm('English has both','',[['sin (EN)','金','-n'],['sing (EN)','京','-ng']]),
    lst('-n vs -ng',['盘','旁','陈','成','金','京']),
-   prs(['zh-nng'],6),
+   prs(['zh-nng'],8),
+   rq([RD('pʰɑŋ˧˥',['盘 pán','旁 páng'],1,'旁','[ɑŋ] ends in -ng.'),
+       HR('金',['[tɕin˥]','[tɕiŋ˥]'],0,'-n.'),
+       HR('成',['[ʈʂʰən˧˥]','[ʈʂʰəŋ˧˥]'],1,'-ng.'),
+       Q(null,'For -ng, the tongue tip…',['touches behind the upper teeth','stays down; the back of the tongue rises'],1,'')]),
+   bd([{w:'旁',a:'pʰ ɑŋ ˧˥',x:'an p',why:'-ang = [ɑŋ].'},{w:'盘',a:'pʰ a n ˧˥',x:'ŋ ɑ',why:'-an = [an].'}]),
+   spk(['盘','旁','京'])],adds:['p:zh-nng','r:m17']},
+
+ {id:'m18',title:'Rule: pinyin spelling traps',kind:'rule',min:8,steps:[
+   txt('Abbreviations to unpack',`Pinyin shortens some finals. Learn to "unpack" them:<ul><li><b>iu</b> = i + ou <span class="ipa">[joʊ]</span>: 六 <i>liù</i></li><li><b>ui</b> = u + ei <span class="ipa">[weɪ]</span>: 对 <i>duì</i></li><li><b>un</b> = u + en <span class="ipa">[wən]</span>: 春 <i>chūn</i> (but after j q x y, un is <span class="ipa">[yn]</span>)</li><li><b>u after j q x y</b> is ü: 去 <i>qù</i>, 鱼 <i>yú</i></li><li><b>y- and w-</b> just spell the glide or the vowel: <i>yī</i> <span class="ipa">[i]</span>, <i>wǔ</i> <span class="ipa">[u]</span>, <i>yuè</i> <span class="ipa">[ɥɛ]</span></li></ul>`),
+   txt('One letter e, four sounds',`<ul><li>alone or after a consonant: <span class="ipa">[ɤ]</span> 饿 <i>è</i></li><li>after i or ü: <span class="ipa">[ɛ]</span> 谢 <i>xiè</i>, 月 <i>yuè</i></li><li>before n, ng: <span class="ipa">[ə]</span> 风 <i>fēng</i></li><li>in ei: <span class="ipa">[e]</span> 美 <i>měi</i></li></ul>`),
+   lst('Hear the hidden sounds',['去','鱼','是','六','对','春','谢','月','风']),
    rq([Q('去','In 去 qù, the vowel is…',['[u], as in "food"','[y], ü'],1,'After j, q, x and y, written u is ü.'),
        Q('是','In 是 shì, the vowel is…',['[i], "ee"','the buzzy [ɨ]'],1,'-i after sh is the buzzy vowel.'),
        Q('对','对 duì sounds like…',['[tuɪ]','[tweɪ], du-ei'],1,'ui is short for uei.'),
        Q('六','六 liù sounds like…',['[liu]','[ljoʊ], li-ou'],1,'iu is short for iou.'),
        Q('月','In 月 yuè, the e is…',['[ɤ], as in 饿','[ɛ], as in "bet"'],1,'e after i or ü is [ɛ].'),
-       Q('风','In 风 fēng, the e is…',['[ə], schwa','[ɛ], as in "bet"'],0,'In -en and -eng, e is a schwa.')])],adds:['p:zh-nng','r:zh7']},
- {id:'zh8',title:'Tones, part 2: tone pairs',kind:'sounds',min:8,steps:[
-   txt('Tones in real words','Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don\'t let it sag before the next syllable.'),
+       Q('风','In 风 fēng, the e is…',['[ə], schwa','[ɛ], as in "bet"'],0,'In -en and -eng, e is a schwa.'),
+       RD('ljoʊ˥˩',['六 liù','流 liú'],0,'六','iu = [joʊ]; ˥˩ = tone 4.')]),
+   bd([{w:'六',a:'l j oʊ ˥˩',x:'i u',why:'iu = i + ou.'},{w:'对',a:'t w eɪ ˥˩',x:'u i d',why:'ui = u + ei.'},{w:'春',a:'ʈʂʰ w ə n ˥',x:'u tʃ',why:'un = u + en.'}]),
+   spk(['六','对','春'])],adds:['r:zh7']},
+]},
+{id:'zh-s',l:'zh',title:'Tones in real speech',sub:'Tone pairs, the tone-change rules, and whole phrases.',lessons:[
+ {id:'m19',title:'Tone pairs',kind:'sounds',min:9,steps:[txt('Tones in real words','Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don\'t let it sag before the next syllable.'),
    lst('Tone 1 first',['飞机','中国','铅笔','商店']),lst('Tone 2 first',['明天','学习','苹果','同事']),lst('Tone 3 first',['老师','美国','你好','考试']),lst('Tone 4 first',['汽车','大学','下雨','再见']),
-   tp(10),spk(['中国','老师','再见'])],adds:['t:tpairs']},
- {id:'zh9',title:'Rule: third-tone changes',kind:'rule',min:6,steps:[
-   txt('Two third tones in a row','When two third tones meet, the <b>first becomes a second tone</b>: 你好 is written <i>nǐ hǎo</i> but said <i>ní hǎo</i>. Pinyin keeps writing the original tone, so you have to apply this yourself.'),
+   tp(10),spk(['中国','老师','再见']),
+   bd([{w:'中国',a:'ʈʂ ʊŋ ˥ k w o ˧˥',x:'˥˩ ɡ',why:'Tone 1 + tone 2.'},{w:'再见',a:'ts aɪ ˥˩ tɕ j ɛ n ˥˩',x:'˥ a',why:'Two falling tones.'}])],adds:['t:tpairs','b:m19']},
+ {id:'m20',title:'Rule: third-tone changes',kind:'rule',min:7,steps:[txt('Two third tones in a row','When two third tones meet, the <b>first becomes a second tone</b>: 你好 is written <i>nǐ hǎo</i> but said <i>ní hǎo</i>. Pinyin keeps writing the original tone, so you have to apply this yourself.'),
    lst('3 + 3 → 2 + 3',['你好','很好','可以','水果']),
    txt('The half third tone','Before tones 1, 2 or 4 (or a neutral tone), a third tone only <b>dips low and stays low</b> (21). It doesn\'t rise. This low version is actually the most common form of tone 3.'),
    lst('Low, no rise',['老师','美国','考试']),
@@ -1751,9 +2025,9 @@ const UNITS=[
        Q('老师','In 老师 lǎoshī, the first syllable…',['dips and rises fully (214)','stays low (21), the half third tone','rises (35)'],1,'Before tone 1, tone 3 stays low.'),
        Q('水果','水果 shuǐguǒ is said…',['shuí guǒ','shuǐ guó'],0,'The first of two third tones changes.'),
        Q('我很好','我很好 is most commonly said…',['wǒ hén hǎo','wó hěn hǎo','wǒ hěn hǎo'],0,'Group as 我 + 很好. 很 becomes tone 2, and 我 stays low.')]),
-   spk(['你好','老师','水果'])],adds:['r:zh9']},
- {id:'zh10',title:'Rule: 一 and 不',kind:'rule',min:6,steps:[
-   txt('不 bù','不 is tone 4, except <b>before another tone 4</b>, where it becomes tone 2: 不是 <i>bú shì</i>, 不对 <i>bú duì</i>. Before tones 1, 2 and 3 it stays <i>bù</i>.'),
+   spk(['你好','老师','水果']),
+   bd([{w:'你好',a:'n i ˧˥ x aʊ ˨˩˦',x:'˨˩˦ h',why:'Written nǐ hǎo, said ní hǎo: the IPA shows what you say.'},{w:'老师',a:'l aʊ ˨˩ ʂ ɨ ˥',x:'˨˩˦ i',why:'Half third tone: low, no rise.'}])],adds:['r:zh9']},
+ {id:'m21',title:'Rule: 一 and 不',kind:'rule',min:7,steps:[txt('不 bù','不 is tone 4, except <b>before another tone 4</b>, where it becomes tone 2: 不是 <i>bú shì</i>, 不对 <i>bú duì</i>. Before tones 1, 2 and 3 it stays <i>bù</i>.'),
    lst('不',['不是','不对','不好','不来']),
    txt('一 yī','一 is tone 1 when counting, at the end of a word, or in ordinals (第一 <i>dì yī</i>). Before another syllable it changes: <b>before tone 4 it becomes yí</b> (一个 <i>yí ge</i>, since 个 is originally tone 4), and <b>before tones 1, 2 and 3 it becomes yì</b> (一天, 一年, 一起).'),
    lst('一',['一个','一天','一年','一起','第一']),
@@ -1762,9 +2036,9 @@ const UNITS=[
        Q('一个','In 一个, 一 is said…',['yī','yí','yì'],1,'个 is originally tone 4, so 一 becomes yí.'),
        Q('一天','In 一天, 一 is said…',['yī','yí','yì'],2,'Before tone 1, 一 becomes yì.'),
        Q('第一','In 第一, 一 is said…',['yī','yí','yì'],0,'As an ordinal, at the end, 一 keeps tone 1.'),
-       Q('一起','In 一起, 一 is said…',['yī','yí','yì'],2,'Before tone 3, 一 becomes yì.')])],adds:['r:zh10']},
- {id:'zh11',title:'Rule: neutral tone and erhua',kind:'rule',min:6,steps:[
-   txt('The neutral tone','Many second syllables lose their tone: they\'re <b>short and light</b>, and their pitch simply follows the syllable before. Pinyin writes them with no tone mark: <i>māma, xièxie, péngyou</i>. Grammar particles like 吗, 了 and 的 are always neutral.<br><br>It can change meaning: <i>dōngxi</i> means "thing", while <i>dōngxī</i> means "east and west".'),
+       Q('一起','In 一起, 一 is said…',['yī','yí','yì'],2,'Before tone 3, 一 becomes yì.')]),
+   bd([{w:'不是',a:'p u ˧˥ ʂ ɨ ˥˩',x:'˥˩ b',why:'不 before tone 4 becomes tone 2.'},{w:'一天',a:'i ˥˩ tʰ j ɛ n ˥',x:'˥ t',why:'一 before tone 1 becomes tone 4.'}])],adds:['r:zh10']},
+ {id:'m22',title:'Rule: neutral tone and erhua',kind:'rule',min:7,steps:[txt('The neutral tone','Many second syllables lose their tone: they\'re <b>short and light</b>, and their pitch simply follows the syllable before. Pinyin writes them with no tone mark: <i>māma, xièxie, péngyou</i>. Grammar particles like 吗, 了 and 的 are always neutral.<br><br>It can change meaning: <i>dōngxi</i> means "thing", while <i>dōngxī</i> means "east and west".'),
    lst('Short and light second syllables',['妈妈','谢谢','朋友','东西']),
    txt('Erhua (儿化)','In Beijing and much of the north, 儿 merges into the previous syllable as an r-colouring: 哪儿 <i>nǎr</i>, 一点儿 <i>yìdiǎnr</i>. A final -n or -i usually drops when it does. Southern and Taiwanese speakers use it much less, so learn to recognise it before deciding whether to use it.'),
    lst('Erhua',['哪儿','一点儿','玩儿']),
@@ -1772,76 +2046,181 @@ const UNITS=[
        Q('东西','东西 dōngxi, with a neutral second syllable, means…',['east and west','thing, stuff'],1,'With a full tone 1, dōngxī means east and west.'),
        Q('妈妈','In 妈妈, the second syllable is…',['high and level like the first','short, light and a little lower'],1,'Neutral tones are short and follow the pitch of the syllable before.'),
        Q('哪儿','In 哪儿 nǎr, the 儿…',['is a separate syllable, ér','merges in as r-colouring on the vowel'],1,'That\'s erhua.')]),
-   spk(['谢谢','朋友','哪儿'])],adds:['r:zh11']},
- {id:'zh12',title:'Mandarin checkpoint',kind:'review',min:9,steps:[
-   txt('Putting it together','Mixed review: Mandarin sounds, contrasts, single tones and tone pairs.'),
-   qz(ZH_ALL,8),prs(['zh-asp','zh-ssh','zh-jzh','zh-uy','zh-nng'],8),tn(5),tp(5),spk(['学习','汽车','一起','朋友'])],adds:[]},
+   spk(['谢谢','朋友','哪儿']),
+   bd([{w:'谢谢',a:'ɕ j ɛ ˥˩ ɕ j ɛ',x:'˥˩ ˥',why:'The second 谢 is neutral: no tone letter.'}])],adds:['r:zh11']},
+ {id:'m23',title:'Phrases: tones in a sentence',kind:'rule',min:8,steps:[
+   txt('Tones don\'t go away in sentences',`In English, pitch carries emotion and questions. In Mandarin, pitch is mostly busy carrying tones, so:<ul><li><b>Questions</b> are made with words, not pitch. 吗 <i>ma</i> at the end turns a statement into a yes/no question, and it's said in a light neutral tone. Don't let your voice swoop up on it like English.</li><li><b>Emotion</b> changes the overall range (higher, wider, faster), but the tone shapes stay.</li><li>In a sentence, tones are smaller and quicker than in single words. Keep tone 1 high, and keep tone 3 low.</li></ul>`),
+   lst('Statement and question',['你是老师。','你是老师吗？']),
+   txt('Rhythm','Every syllable gets its own beat, except neutral-tone syllables, which are short and light. Listen to the phrases below, then shadow them: play, and speak along with the recording at the same time.'),
+   lst('Everyday phrases',['你好吗？','我很好','你叫什么名字？','我是美国人。','一共多少钱？','我不知道。']),
+   rq([Q('你是老师吗？','How does 吗 sound at the end of a question?',['A big English-style rise','Light and short, a neutral tone'],1,'The question is in the word, not the pitch.'),
+       Q(null,'What makes 你是老师吗？ a question?',['Rising intonation','The particle 吗'],1,''),
+       Q('我很好','我很好 wǒ hěn hǎo is usually said…',['wǒ hěn hǎo','wó hén hǎo or wǒ hén hǎo'],1,'Third-tone changes apply inside the phrase.')]),
+   spk(['你好吗？','我很好','你是老师吗？'])],adds:['r:m23']},
+ {id:'m24',title:'Mandarin checkpoint',kind:'review',min:10,steps:[txt('Putting it together','Mixed review: Mandarin sounds, contrasts, single tones and tone pairs.'),
+   qz(ZH_ALL,8),prs(['zh-asp','zh-ssh','zh-jzh','zh-uy','zh-nng'],8),tn(5),tp(5),spk(['学习','汽车','一起','朋友']),
+   rq([RD('ʈʂʰa˧˥',['茶','擦','查'],0,'茶','ch, rising.'),RD('ɕjɛ˥˩',['谢','写','鞋'],0,'谢','x + ie, falling.'),
+       HR('学',['[ɕɥɛ˧˥]','[ʂwɛ˧˥]','[sjɛ˧˥]'],0,'x + üe.'),HR('是',['[ʂɨ˥˩]','[sɨ˥˩]','[ɕi˥˩]'],0,'sh + buzzing vowel.'),
+       HR('去',['[tɕʰy˥˩]','[tɕʰu˥˩]','[ʈʂʰu˥˩]'],0,'q + ü.')]),
+   bd([{w:'学习',a:'ɕ ɥ ɛ ˧˥ ɕ i ˧˥',x:'ʃ s ˥',why:'x + üe, x + i, both rising.'},{w:'汽车',a:'tɕʰ i ˥˩ ʈʂʰ ɤ ˥',x:'tʃ ə',why:'q + i falling, ch + e high.'}])],adds:['b:m24']},
 ]},
-{id:'ar',l:'ar',title:'Levantine Arabic',sub:'The sounds you haven\'t met in Spanish or Mandarin, plus what makes Levantine speech sound Levantine.',lessons:[
- {id:'ar1',title:'Letters you already know',kind:'sounds',min:6,steps:[
-   txt('A head start','You already have a lot of Arabic:<ul><li><b>From Spanish:</b> ر is your tap or trill, خ is the jota <span class="ipa">[x]</span> (often scrapier), and غ is the soft gargled g <span class="ipa">[ɣ]</span>, said a little further back.</li><li><b>From English:</b> ه [h], ش [ʃ], ز [z], plus b, f, m, n, l, w, y.</li><li><b>Levantine ج</b> is the s in "measure" <span class="ipa">[ʒ]</span>.</li></ul>Arabic has no p or v: Arabic speakers often say "b" and "f" for them in foreign words.'),
+{id:'ar',l:'ar',title:'The IPA, vowels and familiar sounds',sub:'How IPA writes Levantine Arabic, the vowel system, and the consonants you can already make.',lessons:[
+ {id:'a01',title:'How IPA works for Arabic',kind:'intro',min:8,steps:[
+   txt('Three ways to write a word',`You'll meet Arabic words in three forms:<ol><li><b>Arabic script</b>, the real spelling (see the Read Arabic page). It usually leaves out short vowels.</li><li><b>Transliteration</b> into Latin letters, like <i>ḥabībi</i> or <i>ʿēn</i>. Every book uses a different system.</li><li><b>IPA</b>, which shows exactly what's said: حبيبي is <span class="ipa">[ħabiːbi]</span>.</li></ol>This course teaches <b>Levantine Arabic</b>, the spoken Arabic of Syria, Lebanon, Jordan and Palestine. It differs from Modern Standard Arabic (the written language) in some sounds, and you'll learn both forms where they differ.`),
+   sy('Marks you\'ll see in Arabic IPA','Arabic uses a few IPA marks constantly. Tap the words to hear them.',[
+     {s:'ː',n:'Length mark',t:'The vowel is held about twice as long. Length changes meaning in Arabic.',k:['جمل','جمال']},
+     {s:'ˤ',n:'Raised reversed glottal stop',t:'"Emphatic": the root of the tongue pulls back toward the throat while you make the consonant.',k:['سيف','صيف']},
+     {s:'ʔ',n:'Glottal stop',t:'The catch in "uh-oh". A full consonant in Arabic.',k:['أنا']},
+     {s:'ʕ',n:'Voiced pharyngeal',t:'The famous ʿayn, made by squeezing the throat.',k:['عين']},
+     {s:'ħ',n:'Barred h',t:'A breathy h squeezed in the throat.',k:['حال']}]),
+   txt('Sounds English doesn\'t have',`Arabic's hardest sounds are made further back than anything in English: in the throat (<span class="ipa">ħ ʕ</span>), at the very back of the mouth (<span class="ipa">x ɣ q</span>), and with the tongue root pulled back (the emphatics <span class="ipa">sˤ tˤ dˤ zˤ</span>). Each gets its own lesson, with exercises to find it in your own throat.`),
+   rq([RD('ʒamaːl',['جمل jamal (camel)','جمال jamāl (beauty)'],1,'جمال','ː makes the second a long.'),
+       RD('sˤeːf',['سيف sēf (sword)','صيف ṣēf (summer)'],1,'صيف','ˤ marks the emphatic ص.'),
+       Q(null,'What does ː after a vowel mean?',['The vowel is stressed','The vowel is held longer','The vowel is nasal'],1,'Length changes meaning in Arabic.'),
+       Q(null,'Which is most reliable for pronunciation?',['Arabic script without vowel marks','A transliteration like "ḥabībi"','IPA'],2,'Script often omits vowels, and transliterations vary.'),
+       Q(null,'[ʔ] is…',['the catch in "uh-oh"','a kind of r','a long a'],0,'')])],adds:['r:a01']},
+
+ {id:'a02',title:'Vowels: short, long, ē and ō',kind:'sounds',min:9,steps:[
+   txt('Six vowels, plus two',`Arabic has three short vowels <span class="ipa">[a i u]</span> and three long ones <span class="ipa">[aː iː uː]</span>. Levantine adds two long vowels of its own, <span class="ipa">[eː]</span> and <span class="ipa">[oː]</span>: بيت <i>bēt</i> "house" and يوم <i>yōm</i> "day" (Standard Arabic has <i>bayt</i>, <i>yawm</i>).<br><br>Two habits to fix:<ul><li><b>Length matters.</b> كتب <i>katab</i> "he wrote" vs كاتب <i>kāteb</i> "writer". Hold long vowels about twice as long.</li><li><b>No glides.</b> Like Spanish, <span class="ipa">[eː]</span> and <span class="ipa">[oː]</span> hold still. English "say" and "no" glide.</li></ul>The vowel a also changes colour: bright, near "cat", next to most consonants, but deep, near "father", next to emphatics and q.`),
+   cm('English glides, Arabic holds','',[['say (EN)','بيت','<span class="ipa">[eɪ]</span> vs <span class="ipa">[eː]</span>'],['no (EN)','يوم','<span class="ipa">[oʊ]</span> vs <span class="ipa">[oː]</span>'],['father (EN)','باب','A long, open a.']]),
+   lst('Long vowels',['باب','نُور','تين','بيت','يوم']),
+   lst('Short vs long',['جمل','جمال','كتب','كاتب']),
+   fl('Count the length',`Tap your finger once for a short vowel and twice for a long one as you say <i>ja-mal</i> (camel) and <i>ja-māal</i> (beauty). The second a in <i>jamāl</i> gets two taps. Then try <i>katab / kāteb</i>.`,['جمل','جمال'],`Good: length is a real difference, not emphasis.`,`Exaggerate at first: make long vowels three times as long. You can shorten them later.`,'Could you hear and make the difference in length?'),
+   prs(['ar-len'],8),
+   rq([HR('جمال',['[ʒamaːl]','[ʒamal]'],0,'Long second vowel.'),
+       RD('kaːteb',['كتب katab (he wrote)','كاتب kāteb (writer)'],1,'كاتب','ː on the first a.'),
+       HR('بيت',['[beːt]','[beɪt]'],0,'Levantine ē holds still.'),
+       Q(null,'Levantine يوم yōm corresponds to Standard Arabic…',['yawm','yum'],0,'aw → ō, ay → ē.')]),
+   bd([{w:'باب',a:'b aː b',x:'a æ',why:'Long a.'},{w:'نُور',a:'n uː r',x:'u ʊ ɹ',why:'Long u, and r is a tap or trill.'},{w:'بيت',a:'b eː t',x:'eɪ e',why:'Long ē, no glide.'}]),
+   spk(['جمال','بيت','يوم'])],adds:['p:ar-len','r:a02']},
+
+ {id:'a03',title:'The consonants you already have',kind:'sounds',min:7,steps:[
+   txt('A head start',`Much of Arabic is familiar:<ul><li><b>From English:</b> b, f, m, n, l, w, y, s, z, k, h, and ش <span class="ipa">[ʃ]</span> (sh).</li><li><b>Levantine ج</b> is <span class="ipa">[ʒ]</span>, the s in "measure". Standard Arabic and some regions say <span class="ipa">[dʒ]</span>, as in "jam".</li><li><b>ت and د</b> are dental, like Spanish: the tongue touches the back of the teeth, and t has little puff.</li><li><b>No p or v.</b> Arabic speakers often say "b" and "f" for them in foreign words.</li></ul>`),
+   cm('Familiar sounds','',[['measure (EN)','جميل','The s of "measure" = Levantine ج <span class="ipa">[ʒ]</span>'],['she (EN)','شو','ش = <span class="ipa">[ʃ]</span>']]),
    snd('jzh'),snd('h'),
-   lst('Familiar sounds, Arabic words',['راس','خلص','غالي','هيك','شو','جميل','جاي']),
-   prs(['ar-xg'],6),spk(['خلص','غالي','جميل'])],adds:['s:jzh','s:h','p:ar-xg']},
- {id:'ar2',title:'The glottal stop, and Levantine ق',kind:'sounds',min:6,steps:[
-   txt('A catch in the throat','<span class="ipa">[ʔ]</span> is the catch in "uh-oh". In Arabic it\'s a full consonant, written with hamza (ء أ). And in Levantine, <b>most ق letters are also said [ʔ]</b>: قلب "heart" is <i>ʾalb</i>, هلق "now" is <i>hallaʾ</i>. The deep <span class="ipa">[q]</span> survives mostly in formal and religious words.'),
-   snd('gs'),snd('q'),
-   lst('Listen',['أنا','قلب','هلق','قرآن']),
-   prs(['ar-kq'],6),spk(['قلب','هلق','أنا'])],adds:['s:gs','s:q','p:ar-kq']},
- {id:'ar3',title:'ḥ: the squeezed h',kind:'sounds',min:6,steps:[
-   txt('Three different h sounds','Arabic has three sounds English hears as "h", and they\'re all different letters: ه <span class="ipa">[h]</span> (plain), ح <span class="ipa">[ħ]</span> (squeezed in the throat), and خ <span class="ipa">[x]</span> (scraped, your jota). Getting ح right is one of the most noticeable things in an English speaker\'s Arabic.'),
+   lst('Familiar sounds, Arabic words',['جميل','جاي','شو','هيك','هون','بِنْت','كلب']),
+   rq([HR('جميل',['[ʒamiːl]','[dʒamiːl]'],0,'Levantine ج is [ʒ]. [dʒ] is the Standard form.'),
+       Q(null,'Which sound does Arabic not have?',['[b]','[p]','[f]'],1,'No p or v.'),
+       RD('heːk',['هيك hēk (like this)','هون hōn (here)'],0,'هيك','[eː] = ē.')]),
+   bd([{w:'شو',a:'ʃ uː',x:'s u',why:'ش = [ʃ]; long u.'},{w:'جاي',a:'ʒ aː j',x:'dʒ i',why:'ج = [ʒ]; final ي = [j].'}]),
+   spk(['جميل','شو','هيك'])],adds:['s:jzh','s:h','r:a03']},
+
+ {id:'a04',title:'ر: tapped and trilled r',kind:'sounds',min:6,steps:[
+   txt('Your Spanish r',`Arabic ر is made with the tip of the tongue against the gum ridge, like Spanish r. Between vowels it's often a single tap <span class="ipa">[ɾ]</span>; at the start of a word or doubled it's a trill <span class="ipa">[r]</span>. Transcriptions usually just write <span class="ipa">[r]</span> for both. What matters: it's never the English <span class="ipa">[ɹ]</span>.`),
+   cm('You already have the tap','American English "butter" has a tap in the middle.',[['butter (EN)','مرة','A single tap.']]),
+   snd('r'),
+   lst('ر',['راس','نُور','كبير','مرة','مرّة','ضروري']),
+   rq([HR('راس',['[raːs]','[ɹaːs]'],0,'Arabic r is tapped or trilled.'),
+       Q(null,'Arabic ر is…',['like English r','like Spanish r'],1,'')]),
+   bd([{w:'راس',a:'r aː s',x:'ɹ a',why:'Trilled r, long a.'},{w:'كبير',a:'k b iː r',x:'ɹ i',why:'Two consonants in a row at the start, long i.'}]),
+   spk(['راس','نُور','كبير'])],adds:['s:r','r:a04']},
+]},
+{id:'ar-t',l:'ar',title:'Sounds at the back and in the throat',sub:'Six sounds made further back than anything in English, one lesson each.',lessons:[
+ {id:'a05',title:'خ and غ: the back of the mouth',kind:'sounds',min:8,steps:[
+   txt('Scrape and gargle',`<ul><li>خ <span class="ipa">[x]</span> is the Spanish jota, but usually stronger and further back, near the uvula: a real scrape. خلص <i>xalaṣ</i> "enough".</li><li>غ <span class="ipa">[ɣ]</span> is its voiced partner: the same place, with the voice on, like a gentle gargle. It's much stronger than Spanish soft g. غالي <i>ghāli</i> "expensive".</li></ul>`),
+   fl('Gargle without water',`Pretend to gargle with no water, very lightly, and listen to the sound: that's close to <span class="ipa">[ɣ]</span>. Now whisper it, with the voice off: you get <span class="ipa">[x]</span>. Alternate "xxxx-ɣɣɣɣ".`,['خلص','غالي'],`That's the pair. Only voicing separates them.`,`Start from Spanish j (<i>jamón</i>) and move it further back, toward where you'd clear your throat.`,'Could you make both sounds?'),
+   snd('x'),snd('gh'),
+   lst('خ and غ',['خلص','خال','خالي','غالي','صغير']),
+   prs(['ar-xg'],8),
+   rq([HR('خال',['[xaːl]','[haːl]','[ħaːl]'],0,'خ = [x].'),
+       HR('غالي',['[ɣaːli]','[ɡaːli]'],0,'غ = [ɣ], not a hard g.'),
+       RD('xaːli',['خالي xāli (empty)','غالي ghāli (expensive)'],0,'خالي','[x] is voiceless.')]),
+   bd([{w:'خال',a:'x aː l',x:'h ħ',why:'خ = [x].'},{w:'غالي',a:'ɣ aː l i',x:'ɡ x',why:'غ = [ɣ].'}]),
+   spk(['خلص','غالي','صغير'])],adds:['s:x','s:gh','p:ar-xg','r:a05']},
+
+ {id:'a06',title:'ح: the squeezed h',kind:'sounds',min:8,steps:[
+   txt('h from the throat',`ح <span class="ipa">[ħ]</span> is a breathy h made by <b>squeezing the throat</b> (the pharynx), so the air rushes through a narrow gap. It sounds like a loud, raspy whisper. It's different from both ه <span class="ipa">[h]</span> (plain breath) and خ <span class="ipa">[x]</span> (scraped with the tongue).`),
+   fl('Fog a mirror, then squeeze',`Breathe out as if fogging up glasses: "haaa". Now tighten the muscles in your throat, as if you'd just tasted something very spicy or were whispering loudly in a library: "ħaaa". The tongue doesn't move; the sound comes from the throat.`,['حال','حلو','حبيبي'],`That raspy breath is ħ. Make sure there's no scraping at the back of the tongue; that would be خ.`,`Try a stage whisper of "ha!" as if you're out of breath after running. Put your hand on your throat and feel it tighten.`,'Could you make a squeezed, raspy h?'),
+   cm('Three different h-like sounds','',[['hat (EN)','هال','English h = ه [h]']]),
    snd('hh'),
-   lst('Listen',['مرحبا','حلو','حبيبي']),
-   prs(['ar-h','ar-hx'],8),spk(['مرحبا','حلو','حبيبي'])],adds:['s:hh','p:ar-h','p:ar-hx']},
- {id:'ar4',title:'ʿayn',kind:'sounds',min:6,steps:[
-   txt('The famous one','ع is the voiced partner of ح: the same throat squeeze, but with your voice on. It often sounds less like a consonant and more like the vowel next to it going tight and reedy. Many learners start by just making that vowel "strangled".'),
+   lst('h, ḥ and x',['هال','حال','خال']),
+   lst('ح in words',['حلو','حبيبي','مرحبا','منيح','صباح']),
+   prs(['ar-h','ar-hx'],8),
+   rq([HR('حال',['[ħaːl]','[haːl]','[xaːl]'],0,'Squeezed: [ħ].'),
+       RD('haːl',['هال hāl (cardamom)','حال ḥāl (state)'],0,'هال','Plain [h].'),
+       Q(null,'Where is [ħ] made?',['with the back of the tongue','in the throat, by squeezing it','with the lips'],1,'')]),
+   bd([{w:'حلو',a:'ħ i l u',x:'h x',why:'ح = [ħ].'},{w:'مرحبا',a:'m a r ħ a b a',x:'h x',why:'The ħ is in the middle.'}]),
+   spk(['حلو','مرحبا','صباح'])],adds:['s:hh','p:ar-h','p:ar-hx','r:a06']},
+
+ {id:'a07',title:'ع: ʿayn',kind:'sounds',min:9,steps:[
+   txt('The voiced partner of ḥ',`ع <span class="ipa">[ʕ]</span> is made in the same place as ح: squeeze the throat. But this time the <b>voice is on</b>, so it sounds like a tight, strangled "a". Many learners just drop it, which makes words unrecognisable: عين <i>ʿēn</i> "eye" is not <i>ēn</i>.`),
+   fl('Squeeze and voice',`Make the squeezed ح from the last lesson: "ħaaa". Now turn your voice on without relaxing the throat: "ʕaaa". It may sound like a slight gag or a creaky groan. That's right. Now say عين <b>ʕēn</b>.`,['عين','سبعة','معليش'],`That's ʿayn. Your voice should sound pressed and tight on it.`,`Try swallowing slowly and notice the muscles that tighten: ʿayn uses those. Or say a long "aaa" while pushing the back of your tongue down toward your throat.`,'Could you make a tight, voiced throat sound?'),
    snd('ain'),
-   lst('Listen',['عين','معليش','سبعة']),
-   prs(['ar-ain'],6),spk(['عين','معليش','سبعة'])],adds:['s:ain','p:ar-ain']},
- {id:'ar5',title:'Emphatics, part 1: ṣ and ṭ',kind:'sounds',min:7,steps:[
-   txt('A second articulation','Emphatic consonants are made like plain s, t, d, z, but with the back of the tongue pulled toward the throat at the same time. The easiest thing to hear isn\'t the consonant itself but <b>the vowels next to it</b>, which turn dark and deep.'),
+   lst('ʿayn in words',['عين','معليش','سبعة','عمل','علم']),
+   lst('ʾ vs ʿ',['أمل','عمل']),
+   prs(['ar-ain'],8),
+   rq([HR('عين',['[ʕeːn]','[ʔeːn]','[eːn]'],0,'[ʕ] is a real consonant.'),
+       RD('ʔamal',['عمل ʿamal (work)','أمل ʾamal (hope)'],1,'أمل','[ʔ] is the glottal stop.'),
+       Q(null,'[ʕ] and [ħ] differ in…',['place','voicing'],1,'Same place, ʕ is voiced.')]),
+   bd([{w:'عين',a:'ʕ eː n',x:'ʔ a ħ',why:'ع = [ʕ]; ē is long.'},{w:'سبعة',a:'s a b ʕ a',x:'ʔ h',why:'[ʕ] in the middle.'}]),
+   spk(['عين','سبعة','معليش'])],adds:['s:ain','p:ar-ain','r:a07']},
+
+ {id:'a08',title:'The glottal stop, and Levantine ق',kind:'sounds',min:8,steps:[
+   txt('A catch in the throat',`<span class="ipa">[ʔ]</span> is the catch in "uh-oh": the vocal folds close and release. In Arabic it's a full consonant, written with hamza (ء أ إ).<br><br>And in Levantine, <b>most ق letters are also said [ʔ]</b>: قلب "heart" is <i>ʾalb</i>, هلق "now" is <i>hallaʾ</i>. The deep Standard <span class="ipa">[q]</span>, made with the back of the tongue against the uvula, survives in formal and religious words like قرآن.`),
+   cm('English has it too','',[['uh-oh (EN)','أنا','The catch in "uh-oh" is [ʔ].']]),
+   snd('gs'),snd('q'),
+   fl('Find the catch',`Say "uh-oh" and freeze in the middle: you can feel your throat close. That closure is <span class="ipa">[ʔ]</span>. Now say قلب as <b>ʔalb</b>, starting with that catch. For <span class="ipa">[q]</span>, say "k" but much further back, so the back of your tongue touches your uvula.`,['قلب','هلق','قرآن'],`Good. In Levantine you'll mostly use the catch.`,`Cough very gently: the start of a cough is a glottal stop.`,'Could you feel the catch in your throat?'),
+   lst('Listen',['أنا','قلب','هلق','قرآن','استقلال']),
+   prs(['ar-kq'],8),
+   rq([HR('قلب',['[ʔalb]','[kalb]','[qalb]'],0,'Levantine ق is [ʔ].'),
+       RD('kalb',['كلب kalb (dog)','قلب ʾalb (heart)'],0,'كلب','[k] is ك.'),
+       Q(null,'In Levantine, ق is usually said as…',['[k]','[ʔ]','[ɡ]'],1,'The [q] survives in formal words.')]),
+   bd([{w:'قلب',a:'ʔ a l b',x:'q k',why:'Levantine ق = [ʔ].'},{w:'هلق',a:'h a l l a ʔ',x:'q ħ',why:'Doubled l, final [ʔ].'}]),
+   spk(['قلب','هلق','أنا'])],adds:['s:gs','s:q','p:ar-kq','r:a08']},
+]},
+{id:'ar-e',l:'ar',title:'The emphatic consonants',sub:'Four consonants made with the tongue root pulled back, and how they colour everything around them.',lessons:[
+ {id:'a09',title:'Emphatics: ṣ and ṭ',kind:'sounds',min:9,steps:[
+   txt('A second, darker s and t',`Arabic has "emphatic" versions of s, t, d and z. You make the normal consonant while <b>pulling the root of your tongue back toward your throat</b> (and lowering the middle of the tongue). IPA marks this with <span class="ipa">ˤ</span>: ص <span class="ipa">[sˤ]</span>, ط <span class="ipa">[tˤ]</span>.<br><br>The consonant itself only changes a little. The bigger clue is the vowels next to it: they become deeper and darker. سار <i>sār</i> has a bright a, near "cat"; صار <i>ṣār</i> has a deep a, near "father".`),
+   fl('Pull back',`Say "sss". Now, while still hissing, pull your tongue back and down as if you were about to say a deep "aw" (or as if someone pressed on your tongue with a spoon). The hiss gets lower and duller: <span class="ipa">[sˤ]</span>. Add a deep a: <b>ṣār</b>. Compare with a bright <b>sār</b>.`,['سار','صار'],`The difference is in the whole syllable, not just the s.`,`Say "sad" and "sod" in English: the vowel in "sod" is close to the vowel after an emphatic. Then make the s match the dark vowel.`,'Could you hear the vowel get darker?'),
    snd('ems'),snd('emt'),
-   lst('Plain vs emphatic',['سيف','صيف','تين','طين','سار','صار']),
-   prs(['ar-emph'],10),spk(['صباح','طيب','صيف'])],adds:['s:ems','s:emt','p:ar-emph']},
- {id:'ar6',title:'Emphatics, part 2: ḍ, ẓ and emphasis spreading',kind:'rule',min:7,steps:[
-   snd('emd'),snd('emz'),
+   lst('Plain vs emphatic',['سار','صار','سيف','صيف','تين','طين']),
+   lst('Emphatics in words',['صباح','صغير','طيب','طاولة']),
+   prs(['ar-emph'],8),
+   rq([HR('صيف',['[sˤeːf]','[seːf]'],0,'Emphatic: the whole syllable is darker.'),
+       RD('saːr',['سار sār','صار ṣār'],0,'سار','No ˤ: plain s.'),
+       RD('tˤiːn',['تين tīn (figs)','طين ṭīn (mud)'],1,'طين','ˤ marks the emphatic.'),
+       Q(null,'The easiest clue to an emphatic consonant is…',['a louder consonant','darker vowels next to it'],1,'')]),
+   bd([{w:'صار',a:'sˤ aː r',x:'s ʃ',why:'ص = [sˤ].'},{w:'طين',a:'tˤ iː n',x:'t̪ t',why:'ط = [tˤ].'}]),
+   spk(['صار','صيف','طيب'])],adds:['s:ems','s:emt','p:ar-emph','r:a09']},
+
+ {id:'a10',title:'Emphatics: ḍ, ẓ and emphasis spreading',kind:'rule',min:9,steps:[snd('emd'),snd('emz'),
    txt('Emphasis spreads','The dark colour doesn\'t stay on one consonant. It spreads across the vowels next to it and often across the whole word: in صغير <i>ṣɣīr</i> even the ī sounds lower. So when you see ص ط ض ظ (and often ق, خ, غ and ر), darken the whole syllable, not just one letter.'),
    lst('Dark whole words',['ضروري','أبيض','ظريف','مظبوط','صغير','طاولة']),
    rq([Q('صغير','In صغير ṣɣīr, the ī sounds…',['bright, like "ee"','darker and lower, coloured by ṣ'],1,'Emphasis spreads across the word.'),
        Q('طاولة','In طاولة, the ā after ṭ sounds…',['like "cat"','like "father" or even "aw"'],1,'Emphatics darken a toward "aw".'),
        Q('صيف','Which word did you hear?',['سيف sēf (sword)','صيف ṣēf (summer)'],1,'Listen for the darker vowel.'),
        Q('ظريف','In Levantine, ظ in ظريف is usually…',['[ðˤ], an emphatic "th"','[zˤ], an emphatic z'],1,'MSA has [ðˤ]; Levantine usually says [zˤ].')]),
-   spk(['ضروري','ظريف','صغير'])],adds:['s:emd','s:emz','r:ar6']},
- {id:'ar7',title:'Vowels: long, short, ē and ō',kind:'sounds',min:7,steps:[
-   txt('The Levantine vowel system','Arabic writes three short vowels (a, i, u, usually unwritten) and three long ones (ا و ي). <b>Length changes meaning</b>: <i>jamal</i> (camel) vs <i>jamāl</i> (beauty).<br><br>Levantine also has long <b>ē</b> and <b>ō</b> where Standard Arabic has "ay" and "aw": بيت <i>bēt</i>, يوم <i>yōm</i>. And word-final ة is usually said <b>-e</b> (طاولة <i>ṭāwle</i>, تلاتة <i>tlāte</i>), or <b>-a</b> after emphatic and throat sounds (سبعة <i>sabʿa</i>).'),
-   snd('va'),snd('ve'),snd('vo'),
-   lst('Listen',['باب','نُور','بيت','يوم','جمل','جمال','تلاتة','سبعة']),
-   prs(['ar-len'],6),spk(['بيت','يوم','جمال'])],adds:['p:ar-len']},
- {id:'ar8',title:'Rule: doubled consonants (shadda)',kind:'rule',min:6,steps:[
-   txt('Hold it','A consonant marked with shadda ( ّ ) is doubled: held for about twice as long. It\'s a real difference: مرة <i>mara</i> (woman) vs مرّة <i>marra</i> (once). For stops like t, k or b, "holding" means a short silent pause before the release. Shadda is often left unwritten, so learn doubled words by ear.'),
+   spk(['ضروري','ظريف','صغير']),
+   bd([{w:'ضار',a:'dˤ aː r',x:'d̪ d',why:'ض = [dˤ].'},{w:'ظريف',a:'zˤ a r iː f',x:'z ð',why:'Levantine ظ = [zˤ].'}])],adds:['s:emd','s:emz','r:ar6']},
+
+ {id:'a11',title:'Sorting the hard contrasts',kind:'rule',min:9,steps:[
+   sy('The contrasts that matter','Each row is a pair of words that differ by one hard sound. Play them until you can hear the difference.',[
+     {s:'h ħ',k:['هال','حال']},{s:'ħ x',k:['حال','خال']},{s:'ʔ ʕ',k:['أمل','عمل']},{s:'k ʔ',k:['كلب','قلب']},{s:'s sˤ',k:['سيف','صيف']},{s:'t tˤ',k:['تين','طين']},{s:'d dˤ',k:['دار','ضار']}]),
+   prs(['ar-h','ar-hx','ar-ain','ar-kq','ar-emph','ar-xg'],12),
+   rq([RD('ħaːl',['هال','حال','خال'],1,'حال','[ħ] = ح.'),
+       RD('xaːl',['هال','حال','خال'],2,'خال','[x] = خ.'),
+       RD('ʕamal',['أمل','عمل'],1,'عمل','[ʕ] = ع.'),
+       RD('dˤaːr',['دار','ضار'],1,'ضار','[dˤ] = ض.'),
+       HR('صيف',['[sˤeːf]','[seːf]'],0,''),HR('قلب',['[ʔalb]','[kalb]'],0,'')]),
+   spk(['حال','عمل','صيف','ضار'])],adds:['r:a11']},
+]},
+{id:'ar-w',l:'ar',title:'Words, rules and phrases',sub:'Doubled consonants, the article, consonant clusters, stress, Standard vs Levantine, and real phrases.',lessons:[
+ {id:'a12',title:'Rule: doubled consonants (shadda)',kind:'rule',min:7,steps:[txt('Hold it','A consonant marked with shadda ( ّ ) is doubled: held for about twice as long. It\'s a real difference: مرة <i>mara</i> (woman) vs مرّة <i>marra</i> (once). For stops like t, k or b, "holding" means a short silent pause before the release. Shadda is often left unwritten, so learn doubled words by ear.'),
    lst('Single vs double',['مرة','مرّة','علم','علّم','حمام','حمّام','حبيبي','طيب']),
    prs(['ar-gem'],8),
    rq([Q('مرّة','Which word did you hear?',['مرة mara (woman)','مرّة marra (once)'],1,'The r is held: mar-ra.'),
        Q('علم','Which word did you hear?',['علم ʿalam (flag)','علّم ʿallam (he taught)'],0,'A single, quick l.'),
-       Q('حمّام','Which word did you hear?',['حمام ḥamām (pigeons)','حمّام ḥammām (bathroom)'],1,'The m is held: ḥam-mām.')])],adds:['p:ar-gem','r:ar8']},
- {id:'ar9',title:'Rule: the article il- and sun letters',kind:'rule',min:6,steps:[
-   txt('il-, and when the l disappears','Levantine "the" is <b>il-</b> (or l- before a vowel or a consonant cluster). Before letters made with the tongue tip, called <b>sun letters</b> (ت ث د ذ ر ز س ش ص ض ط ظ ل ن, and in Levantine often ج), the l merges into the next consonant, which doubles: الشمس is <i>iš-šams</i>, not "il-shams". Before the other letters, the <b>moon letters</b>, the l stays: الباب <i>il-bāb</i>.<br><br>Spelling always shows ال, so you have to apply this yourself.'),
+       Q('حمّام','Which word did you hear?',['حمام ḥamām (pigeons)','حمّام ḥammām (bathroom)'],1,'The m is held: ḥam-mām.')]),
+   bd([{w:'مرّة',a:'m a r r a',x:'ɾ',why:'Doubled r: hold it twice as long (a trill).'},{w:'علّم',a:'ʕ a l l a m',x:'ʔ',why:'Doubled l.'}])],adds:['p:ar-gem','r:ar8']},
+ {id:'a13',title:'Rule: the article il- and sun letters',kind:'rule',min:7,steps:[txt('il-, and when the l disappears','Levantine "the" is <b>il-</b> (or l- before a vowel or a consonant cluster). Before letters made with the tongue tip, called <b>sun letters</b> (ت ث د ذ ر ز س ش ص ض ط ظ ل ن, and in Levantine often ج), the l merges into the next consonant, which doubles: الشمس is <i>iš-šams</i>, not "il-shams". Before the other letters, the <b>moon letters</b>, the l stays: الباب <i>il-bāb</i>.<br><br>Spelling always shows ال, so you have to apply this yourself.'),
    lst('Moon letters: l stays',['البيت','الباب','الكتاب']),
    lst('Sun letters: l merges',['الشمس','النور','الدار']),
    rq([Q('الشمس','الشمس is said…',['il-šams','iš-šams'],1,'ش is a sun letter, so the l merges.'),
        Q('الباب','الباب is said…',['il-bāb','ib-bāb'],0,'ب is a moon letter, so the l stays.'),
        Q('النور','النور is said…',['il-nūr','in-nūr'],1,'ن is a sun letter.'),
-       Q(null,'Which of these is a sun letter?',['ب','ك','ت','م'],2,'ت is made with the tongue tip.')])],adds:['r:ar9']},
- {id:'ar10',title:'Rule: Levantine vs Standard Arabic',kind:'rule',min:7,steps:[
-   txt('Same words, different sounds','Books, news and signs use Modern Standard Arabic (MSA). People in Damascus, Beirut, Amman and Jerusalem speak Levantine, which changes some sounds in regular ways:<ul><li>ق [q] → <b>[ʔ]</b></li><li>ث [θ] → <b>[t]</b> (or [s] in learned words)</li><li>ذ [ð] → <b>[d]</b> (or [z])</li><li>ظ [ðˤ] → <b>[zˤ]</b> or [dˤ]</li><li>ج [dʒ] → <b>[ʒ]</b> in Syria and Lebanon</li><li>ay → <b>ē</b>, aw → <b>ō</b></li><li>final -a → often <b>-e</b></li></ul>Below, each pair is the MSA recording first, then the Levantine one.'),
-   lst('MSA → Levantine',['قَلْب','قلب','ثَلاثة','تلاتة','ذَهَب','دهب','ظُهْر','ضهر','جَمِيل','جميل','عَيْن','عين','صَيْف','صيف','ضَوْء','ضو']),
-   rq([Q(null,'MSA ثلاثة θalāθa ("three") in Levantine is…',['θalāθa','tlāte','salāse'],1,'ث → t, the vowels shorten, and final -a → -e.'),
-       Q('قلب','This Levantine قلب starts with…',['[q]','[ʔ]','[k]'],1,'ق → ʔ.'),
-       Q('جميل','In Damascus or Beirut, the ج in جميل is…',['[dʒ], like "jam"','[ʒ], like "measure"','[ɡ]'],1,'Egyptian uses [ɡ]; MSA and Jordan use [dʒ].'),
-       Q('عين','MSA ʿayn becomes Levantine…',['ʿēn','ʿīn','ʿān'],0,'ay → ē.'),
-       Q('دهب','MSA ذهب ðahab becomes…',['dahab','zahab','θahab'],0,'In everyday words ذ → d.')])],adds:['r:ar10']},
- {id:'ar11',title:'Rule: consonant clusters and stress',kind:'rule',min:6,steps:[
-   txt('Clusters','Levantine often drops short vowels, so words can start with two consonants: كتير <i>ktīr</i>, منيح <i>mnīḥ</i>, صغير <i>ṣɣīr</i>, كبير <i>kbīr</i>. English speakers tend to slip a vowel in ("kitīr"), so practise going straight from one consonant to the next.'),
+       Q(null,'Which of these is a sun letter?',['ب','ك','ت','م'],2,'ت is made with the tongue tip.')]),
+   bd([{w:'الشمس',a:'i ʃ ʃ a m s',x:'l',why:'ش is a sun letter: l becomes ʃ.'},{w:'البيت',a:'i l b eː t',x:'b',why:'ب is a moon letter: l stays.'}])],adds:['r:ar9']},
+ {id:'a14',title:'Rule: consonant clusters and stress',kind:'rule',min:7,steps:[txt('Clusters','Levantine often drops short vowels, so words can start with two consonants: كتير <i>ktīr</i>, منيح <i>mnīḥ</i>, صغير <i>ṣɣīr</i>, كبير <i>kbīr</i>. English speakers tend to slip a vowel in ("kitīr"), so practise going straight from one consonant to the next.'),
    lst('Clusters',['كتير','منيح','صغير','كبير','تلاتة']),
    txt('Where the stress goes','Count syllables from the end:<ol><li>If the <b>last</b> syllable has a long vowel plus a consonant, or ends in two consonants, stress it: <i>bē-RŪT</i>.</li><li>Otherwise, if the <b>second-to-last</b> has a long vowel or ends in a consonant, stress that: <i>ḥa-BĪ-bi</i>.</li><li>Otherwise stress the <b>third-to-last</b>: <i>MAD-ra-se</i>, <i>MAK-ta-be</i>.</li></ol>'),
    lst('Stress',['بيروت','كبير','حبيبي','مدرسة','مكتبة']),
@@ -1849,16 +2228,37 @@ const UNITS=[
        Q('مدرسة','Where is the stress in مدرسة?',['MAD-ra-se','mad-RA-se','mad-ra-SE'],0,'ra is light (short vowel, no final consonant), so the stress moves back.'),
        Q('بيروت','Where is the stress in بيروت?',['BĒ-rūt','bē-RŪT'],1,'A last syllable with a long vowel plus a consonant takes the stress.'),
        Q('حبيبي','Where is the stress in حبيبي?',['ḤA-bī-bi','ḥa-BĪ-bi','ḥa-bī-BI'],1,'bī has a long vowel, so it takes the stress.')]),
-   spk(['كتير','منيح','مدرسة'])],adds:['r:ar11']},
- {id:'ar12',title:'Arabic checkpoint',kind:'review',min:9,steps:[
-   txt('Putting it together','Mixed review of the Arabic sounds and contrasts.'),
-   qz(AR_ALL,8),prs(['ar-h','ar-hx','ar-emph','ar-kq','ar-ain','ar-xg','ar-len','ar-gem'],10),spk(['مرحبا','صباح','عين','قلب'])],adds:[]},
-]}
+   spk(['كتير','منيح','مدرسة']),
+   bd([{w:'كتير',a:'k t̪ iː r',x:'i ə',why:'Levantine drops the first vowel: k-t-ī-r.'}])],adds:['r:ar11']},
+ {id:'a15',title:'Rule: Levantine vs Standard Arabic',kind:'rule',min:7,steps:[txt('Same words, different sounds','Books, news and signs use Modern Standard Arabic (MSA). People in Damascus, Beirut, Amman and Jerusalem speak Levantine, which changes some sounds in regular ways:<ul><li>ق [q] → <b>[ʔ]</b></li><li>ث [θ] → <b>[t]</b> (or [s] in learned words)</li><li>ذ [ð] → <b>[d]</b> (or [z])</li><li>ظ [ðˤ] → <b>[zˤ]</b> or [dˤ]</li><li>ج [dʒ] → <b>[ʒ]</b> in Syria and Lebanon</li><li>ay → <b>ē</b>, aw → <b>ō</b></li><li>final -a → often <b>-e</b></li></ul>Below, each pair is the MSA recording first, then the Levantine one.'),
+   lst('MSA → Levantine',['قَلْب','قلب','ثَلاثة','تلاتة','ذَهَب','دهب','ظُهْر','ضهر','جَمِيل','جميل','عَيْن','عين','صَيْف','صيف','ضَوْء','ضو']),
+   rq([Q(null,'MSA ثلاثة θalāθa ("three") in Levantine is…',['θalāθa','tlāte','salāse'],1,'ث → t, the vowels shorten, and final -a → -e.'),
+       Q('قلب','This Levantine قلب starts with…',['[q]','[ʔ]','[k]'],1,'ق → ʔ.'),
+       Q('جميل','In Damascus or Beirut, the ج in جميل is…',['[dʒ], like "jam"','[ʒ], like "measure"','[ɡ]'],1,'Egyptian uses [ɡ]; MSA and Jordan use [dʒ].'),
+       Q('عين','MSA ʿayn becomes Levantine…',['ʿēn','ʿīn','ʿān'],0,'ay → ē.'),
+       Q('دهب','MSA ذهب ðahab becomes…',['dahab','zahab','θahab'],0,'In everyday words ذ → d.')]),
+   cm('Standard Arabic\'s th sounds','Standard Arabic keeps two sounds English has. Levantine usually replaces them with t/s and d/z.',[['think (EN)','ثَلاثة','ث = [θ]'],['this (EN)','ذَهَب','ذ = [ð]']])],adds:['r:ar10']},
+ {id:'a16',title:'Phrases: greetings and intonation',kind:'rule',min:8,steps:[
+   txt('Questions by intonation',`Unlike Mandarin, Levantine (like English) can turn a statement into a yes/no question just with <b>rising intonation</b>: إنت تعبان. "You're tired." vs إنت تعبان؟ "Are you tired?"<br><br>Question-word questions (شو "what", وين "where", كيف "how") usually fall at the end, as in English.`),
+   lst('Statement and question',['إنت تعبان.','إنت تعبان؟']),
+   txt('Greetings come in pairs','Many greetings have a fixed reply. صباح الخير "morning of goodness" is answered with صباح النور "morning of light". Shadow these until they come out smoothly: play, and speak along at the same time.'),
+   lst('Everyday phrases',['مرحبا','صباح الخير','صباح النور','كيفك','كتير منيح','شو اسمك؟','يلّا نروح']),
+   rq([Q('إنت تعبان؟','Is this a statement or a question?',['Statement','Question'],1,'The rise at the end makes it a question.'),
+       Q('إنت تعبان.','Is this a statement or a question?',['Statement','Question'],0,'It falls at the end.'),
+       Q(null,'The reply to صباح الخير is…',['صباح النور','مرحبا'],0,'')]),
+   spk(['صباح الخير','كيفك','إنت تعبان؟'])],adds:['r:a16']},
+ {id:'a17',title:'Arabic checkpoint',kind:'review',min:10,steps:[txt('Putting it together','Mixed review of the Arabic sounds and contrasts.'),
+   qz(AR_ALL,8),prs(['ar-h','ar-hx','ar-emph','ar-kq','ar-ain','ar-xg','ar-len','ar-gem'],10),spk(['مرحبا','صباح','عين','قلب']),
+   rq([RD('ħabiːbi',['حبيبي','هبيبي'],0,'حبيبي','[ħ].'),RD('ʕeːn',['عين','أين'],0,'عين','[ʕ].'),
+       HR('صباح',['[sˤabaːħ]','[sabaːh]','[sˤabaːx]'],0,'Emphatic ṣ, final ḥ.'),
+       HR('خلص',['[xalasˤ]','[ħalas]','[kalas]'],0,'خ and a final ṣ.')]),
+   bd([{w:'صباح',a:'sˤ a b aː ħ',x:'s h x',why:'Emphatic s, long a, final ħ.'},{w:'معليش',a:'m a ʕ l eː ʃ',x:'ʔ s',why:'ʿayn, then a long ē.'}])],adds:[]},
+]},
 ];
 const LBYID={};UNITS.forEach(u=>u.lessons.forEach((L,i)=>{L.unit=u;L.n=i+1;LBYID[L.id]=L}));
 const ALL_LESSONS=UNITS.flatMap(u=>u.lessons);
 // earlier Spanish rule lessons now live in the rebuilt unit; keep their review items and phrases working
-const LESSON_ALIAS={es4:'e10',es5:'e12',es9:'e17',es10:'e19',es11:'e20'};
+const LESSON_ALIAS={es4:'e10',es5:'e12',es9:'e17',es10:'e19',es11:'e20',zh7:'m18',zh8:'m19',zh9:'m20',zh10:'m21',zh11:'m22',zh12:'m24',ar6:'a10',ar7:'a02',ar8:'a12',ar9:'a13',ar10:'a15',ar11:'a14',ar12:'a17'};
 for(const k in LESSON_ALIAS)if(!LBYID[k])LBYID[k]=LBYID[LESSON_ALIAS[k]];
 
 // ---------- SPACED REPETITION (Today) ----------
@@ -1889,10 +2289,13 @@ function newQueue(){
 }
 function dueKeys(){const t=dayStr();return Object.entries(srs.items).filter(([k,v])=>v.due<=t&&itemLangOK(k)).sort((a,b)=>a[1].due<b[1].due?-1:1).map(([k])=>k)}
 function itemLangOK(k){
-  if(k==='t:tones'||k==='t:tpairs')return true;
-  if(k.startsWith('p:'))return !!PBYID[k.slice(2)];
-  if(k.startsWith('r:'))return !!LBYID[k.slice(2)];
-  return !!BYID[k.slice(2)];
+  let ok;
+  if(k==='t:tones'||k==='t:tpairs')ok=true;
+  else if(k.startsWith('p:'))ok=!!PBYID[k.slice(2)];
+  else if(k.startsWith('r:')||k.startsWith('b:'))ok=!!LBYID[k.slice(2)];
+  else if(k.startsWith('a:'))ok=k==='a:words'||!!(typeof ALBY!=='undefined'&&ALBY[k.slice(2)]);
+  else ok=!!BYID[sid(k)];
+  return ok&&klang(k)===COURSE;
 }
 function newToday(){const d=srs.days[dayStr()];return d?d.new||0:0}
 let tSess=null;
@@ -1902,13 +2305,13 @@ function renderToday(){
   const due=dueKeys(),nx=nextLesson();
   const st=srs.streak,today=dayStr();
   const alive=st.last===today||st.last===addDays(-1);
-  const nDone=ALL_LESSONS.filter(L=>lessonDone(L.id)).length,nItems=Object.keys(srs.items).filter(itemLangOK).length;
+  const CLs=courseLessons(),nDone=CLs.filter(L=>lessonDone(L.id)).length,nItems=Object.keys(srs.items).filter(itemLangOK).length;
   const doneToday=srs.days[today]&&srs.days[today].done;
   $('#today').innerHTML=`
    <div class="tstats">
      <div class="tstat"><b>${alive?st.count:0}</b><span>day streak</span></div>
      <div class="tstat"><b>${due.length}</b><span>reviews due</span></div>
-     <div class="tstat"><b>${nDone}/${ALL_LESSONS.length}</b><span>lessons done</span></div>
+     <div class="tstat"><b>${nDone}/${CLs.length}</b><span>lessons done</span></div>
      <div class="tstat"><b>${nItems}</b><span>items in review</span></div>
    </div>
    <div class="quiz-box">${due.length?`<h2 style="font-size:22px">${due.length} review${due.length===1?'':'s'} due · about ${Math.max(1,Math.round(due.length*0.25))} min</h2><p style="color:var(--muted)">Do these first: reviewing just before you'd forget is what makes things stick.</p><button class="btn" id="t-start">Start review</button>`
@@ -1926,19 +2329,21 @@ function startSession(due,news,extra){
   stepSession();
 }
 function itemQ(k){
-  const langs=['es','zh','ar'];
+  const langs=[klang(k)];
   if(k==='t:tones')return toneQ();
   if(k==='t:tpairs')return tpairQ();
+  if(k.startsWith('a:'))return readItemQ(k);
+  if(k.startsWith('b:')){const L=LBYID[k.slice(2)];return {type:'build',item:pick(L.steps.filter(s=>s.t==='build').flatMap(s=>s.items))}}
   if(k.startsWith('r:')){const L=LBYID[k.slice(2)];const qs=L.steps.filter(s=>s.t==='ruleq').flatMap(s=>s.qs);return customQ(pick(qs),L.unit.l)}
   if(k.startsWith('p:'))return pairQ(PBYID[k.slice(2)]);
-  const s=BYID[k.slice(2)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
+  const s=BYID[sid(k)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
   const it=srs.items[k];const box=it?it.box:0;
   return soundQ(s,pool,langs,box<=1?['word2sym','sym2name']:null);
 }
 function introHTML(k){
   if(k==='t:tones')return `<div class="tag t-zh">New: Mandarin tones</div><h2 style="margin-top:8px">Four pitch shapes</h2><p>High and level <span class="ipa">˥</span>, rising <span class="ipa">˧˥</span>, low dipping <span class="ipa">˨˩˦</span>, falling <span class="ipa">˥˩</span>. Listen: ${playBtn('妈，麻，马，骂','zh','all four tones')} 妈 麻 马 骂</p><p><a href="#tones">See the tone shapes</a></p>`;
   if(k.startsWith('p:')){const c=PBYID[k.slice(2)];return `<div class="tag t-${c.l}">New contrast · ${LANGS[c.l]}</div><h2 class="ipa" style="margin-top:8px">${esc(c.label)}</h2><p style="color:var(--muted)">${esc(c.tip)}</p>${c.pairs.map(p=>`<div class="pex">${p.map(w=>`<span class="pw2">${playBtn(w.w,w.l)} ${w.l==='ar'?`<span class="arabic">${esc(w.w)}</span>`:esc(w.w)} <span class="ipa" style="color:var(--muted)">[${esc(w.ipa)}]</span> <span style="color:var(--muted);font-size:13px">${esc(w.g)}</span></span>`).join('<span class="vs">vs</span>')}</div>`).join('')}`}
-  const s=BYID[k.slice(2)];const e=s.ex.find(x=>srs.settings.langs.includes(x.l))||s.ex[0];
+  const s=BYID[sid(k)];const e=s.ex.find(x=>x.l===klang(k))||s.ex[0];
   return `<div class="tag ${s.st==='new'?'t-new':'t-tricky'}">New sound</div>
    <div class="dhead" style="margin-top:10px"><div class="bigsym ipa" style="font-size:64px;min-width:90px">${esc(s.sym)}</div><div><h2>${esc(s.name)}</h2><div class="desc">${termify(s.desc)}</div></div></div>
    <p style="margin-top:12px">${esc(s.how[0])}</p>
@@ -1957,7 +2362,7 @@ function stepSession(){
   }
   $('#today').innerHTML=head+`<div class="quiz-box qbox" id="tq"></div>`;
   $('#t-quit').onclick=finishSession;
-  mountQ($('#tq'),itemQ(item.k),{onAnswer:(ok,q,i)=>{
+  const tq=itemQ(item.k);(tq.type==='build'?mountBuild:mountQ)($('#tq'),tq,{onAnswer:(ok,q,i)=>{
     S_.n++;if(ok)S_.c++;
     if(q.s){record(q.s.id,ok);if(!ok)record(q.opts[i].id,false)}
     if(q.type==='pair')record('p:'+q.c.id,ok);
@@ -1973,7 +2378,7 @@ function finishSession(){
   markActivity(S_.n);
   persist();
   $('#today').innerHTML=`<div class="quiz-box"><h2 style="font-size:22px">Session done: ${S_.c}/${S_.n} right</h2>
-   <p style="color:var(--muted)">${S_.missed.size?`Missed today: ${[...S_.missed].map(k=>k.startsWith('s:')?`<span class="ipa">${esc(BYID[k.slice(2)].sym)}</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?esc(LBYID[k.slice(2)].title):'tones').join(', ')}. They'll come back tomorrow.`:'Clean run. Those items will come back later.'}</p>
+   <p style="color:var(--muted)">${S_.missed.size?`Missed today: ${[...S_.missed].map(k=>k.startsWith('s:')?`<span class="ipa">${esc(BYID[sid(k)].sym)}</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?esc(LBYID[k.slice(2)].title):k.startsWith('b:')?'writing: '+esc(LBYID[k.slice(2)].title):k==='a:words'?'reading words':k.startsWith('a:')?`<span class="arabic">${esc(k.slice(2))}</span>`:'tones').join(', ')}. They'll come back tomorrow.`:'Clean run. Those items will come back later.'}</p>
    <div class="row"><button class="btn" id="t-home">Back to Today</button><a class="btn ghost" href="#pairs" style="text-decoration:none">Drill pairs</a></div></div>`;
   $('#t-home').onclick=renderToday;
 }
@@ -2036,19 +2441,19 @@ function lessonWordHTML(w){return w.l==='ar'?`<span class="arabic">${esc(w.w)}</
 let lp=null; // active lesson player state
 if(!srs.lessons)srs.lessons={};
 function lessonDone(id){return !!(srs.lessons&&srs.lessons[id])}
-function nextLesson(){return ALL_LESSONS.find(L=>!lessonDone(L.id))||null}
+function nextLesson(){return courseLessons().find(L=>!lessonDone(L.id))||null}
 const KIND={intro:'Basics',sounds:'Sounds',rule:'Rule',review:'Checkpoint'};
 function renderLessons(){
   if(lp){renderStep();return}
   $('#v-lessons').classList.remove('playing');
   const nx=nextLesson();
-  $('#lessons').innerHTML=(nx?`<div class="quiz-box nextbox"><div class="tag t-${nx.unit.l}">${esc(nx.unit.title)} · lesson ${nx.n}</div><h2 style="margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">${Object.keys(srs.lessons).length?'Continue':'Start the path'} →</button></div>`:`<div class="quiz-box"><h2>Path complete 🎉</h2><p style="color:var(--muted)">Every lesson is done. Keep up the daily review and revisit any lesson below.</p></div>`)+
-  UNITS.map((u,ui)=>{const done=u.lessons.filter(L=>lessonDone(L.id)).length;
-    return `<div class="unit"><div class="unit-h"><div><div class="unit-n">Unit ${ui+1}</div><h3 class="unit-t"><span class="tag t-${u.l}">${esc(u.title)}</span></h3><p class="unit-s">${esc(u.sub)}</p></div><div class="unit-p">${done}/${u.lessons.length}</div></div>
+  $('#lessons').innerHTML=(nx?`<div class="quiz-box nextbox"><div class="tag t-${nx.unit.l}">${esc(nx.unit.title)} · lesson ${nx.n}</div><h2 style="margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">${Object.keys(srs.lessons).length?'Continue':'Start the path'} →</button></div>`:`<div class="quiz-box"><h2>Path complete 🎉</h2><p style="color:var(--muted)">Every lesson in this course is done. Keep up the daily review, and revisit any lesson below.</p></div>`)+
+  courseUnits().map((u,ui)=>{const done=u.lessons.filter(L=>lessonDone(L.id)).length;
+    return `<div class="unit"><div class="unit-h"><div><div class="unit-n">${esc(COURSE_INFO[u.l].name)} · part ${ui+1}</div><h3 class="unit-t">${esc(u.title)}</h3><p class="unit-s">${esc(u.sub)}</p></div><div class="unit-p">${done}/${u.lessons.length}</div></div>
     <div class="bar" style="margin-bottom:10px"><i style="width:${100*done/u.lessons.length}%;background:var(--${u.l})"></i></div>
     <ol class="lesson-list">${u.lessons.map(L=>`<li class="lrow ${lessonDone(L.id)?'done':''} ${nx&&nx.id===L.id?'next':''}"><button data-lesson="${L.id}"><span class="ln">${lessonDone(L.id)?'✓':L.n}</span><span class="lt">${esc(L.title)}</span><span class="lk k-${L.kind}">${KIND[L.kind]}</span><span class="lm">${L.min} min</span></button></li>`).join('')}</ol></div>`}).join('');
 }
-function openLesson(id){lp={L:LBYID[id],i:0,q:null,results:{n:0,c:0}};location.hash='lessons';renderStep();window.scrollTo(0,0)}
+function openLesson(id){const L0=LBYID[id];if(L0&&L0.unit.l!==COURSE&&typeof applyCourseChrome==='function'){COURSE=L0.unit.l;store.set('course',COURSE);langF=qLang=pLang=trLang=spLang=COURSE;applyCourseChrome()}lp={L:LBYID[id],i:0,q:null,results:{n:0,c:0}};location.hash='lessons';renderStep();window.scrollTo(0,0)}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lesson]');if(b){e.preventDefault();openLesson(b.dataset.lesson)}});
 
 // ---------- LESSONS: step player ----------
@@ -2133,10 +2538,11 @@ function finishLesson(){
   $('#v-lessons').classList.remove('playing');
   const L=lp.L,res=lp.results;
   const added=[];
-  for(const k of L.adds)if(!srs.items[k]){srs.items[k]={box:1,due:addDays(1),added:dayStr()};added.push(k)}
+  const addKeys=L.adds.slice();if(L.steps.some(s=>s.t==='build'))addKeys.push('b:'+L.id);
+  for(const k0 of addKeys){const k=courseKey(k0,L.unit.l);if(srs.items[k])continue;srs.items[k]={box:1,due:addDays(1),added:dayStr()};added.push(k)}
   srs.lessons[L.id]=dayStr();markActivity(Math.max(1,res.n));persist();
   const nx=nextLesson();lp=null;
-  const label=k=>k.startsWith('s:')?`<span class="ipa">[${esc(BYID[k.slice(2)].sym)}]</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?'rule: '+esc(LBYID[k.slice(2)].title.replace(/^Rule: /,'')):k==='t:tones'?'tones':'tone pairs';
+  const label=k=>k.startsWith('s:')?`<span class="ipa">[${esc(BYID[sid(k)].sym)}]</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?'rule: '+esc(LBYID[k.slice(2)].title.replace(/^Rule: /,'')):k.startsWith('b:')?'writing in IPA':k==='t:tones'?'tones':'tone pairs';
   $('#lessons').innerHTML=`<div class="quiz-box"><div class="tag t-${L.unit.l}">${esc(L.unit.title)} · lesson ${L.n} complete</div><h2 style="margin-top:8px">${esc(L.title)} ✓</h2>
    ${res.n?`<p>${res.c} of ${res.n} questions right.</p>`:''}
    ${added.length?`<p>Added to your daily review: ${added.map(label).join(', ')}. They'll come back tomorrow, then at growing intervals.</p>`:'<p style="color:var(--muted)">Nothing new to add to your review from this lesson.</p>'}
@@ -2285,7 +2691,7 @@ function renderMaps(){
 }
 
 // ---------- ROUTER ----------
-const VIEWS=['today','lessons','learn','pairs','speak','vowels','tones','quiz','transcribe','basics'];
+const VIEWS=['today','lessons','learn','pairs','speak','vowels','tones','quiz','transcribe','basics','across','read'];
 function route(){
   const h=(location.hash||'#today').slice(1);const v=VIEWS.includes(h)?h:'today';
   VIEWS.forEach(x=>document.getElementById('v-'+x).classList.toggle('on',x===v));
@@ -2295,12 +2701,228 @@ function route(){
   if(v==='learn')renderLearn();
   if(v==='today')renderToday();
   if(v==='lessons')renderLessons();
+  if(v==='across')renderAcross();
+  if(v==='read'&&typeof renderRead==='function')renderRead();
   if(v==='pairs'&&!pSess)renderPairs();
   if(v==='speak')renderSpeak();else{try{stopLive();if(vcLive)vcLive.stop()}catch(e){}}
   try{speechSynthesis.cancel()}catch(e){}
   if(route.last&&route.last!==v)window.scrollTo(0,0);route.last=v;
 }
 window.addEventListener('hashchange',route);
+
+// =====================================================================
+// Separate courses: one language at a time
+// =====================================================================
+let COURSE=store.get('course','es');if(!['es','zh','ar'].includes(COURSE))COURSE='es';
+const COURSE_INFO={
+  es:{name:'Spanish',sub:'Latin American Spanish'},
+  zh:{name:'Mandarin',sub:'Mainland Mandarin (Beijing standard)'},
+  ar:{name:'Arabic',sub:'Levantine Arabic (Syria, Lebanon, Jordan, Palestine)'}};
+// review item keys: s:<sound>[@lang], p:<pair>, r:<lesson>, b:<lesson>, t:tones|tpairs
+const sid=k=>k.slice(2).split('@')[0];
+function klang(k){
+  if(k.startsWith('t:'))return 'zh';
+  if(k.startsWith('a:'))return 'ar';
+  if(k.startsWith('p:')){const c=PBYID[k.slice(2)];return c?c.l:null}
+  if(k.startsWith('r:')||k.startsWith('b:')){const L=LBYID[k.slice(2)];return L?L.unit.l:null}
+  const at=k.indexOf('@');if(at>0)return k.slice(at+1);
+  const s=BYID[sid(k)];if(!s)return null;return s.langs.includes('es')?'es':s.langs[0];
+}
+function courseKey(k,l){return k.startsWith('s:')&&!k.includes('@')&&l!=='es'?k+'@'+l:k}
+const courseUnits=()=>UNITS.filter(u=>u.l===COURSE);
+const courseLessons=()=>courseUnits().flatMap(u=>u.lessons);
+function setCourse(l){
+  COURSE=l;store.set('course',l);
+  langF=qLang=pLang=l;trLang=l;spLang=l;
+  store.set('langF',l);store.set('qLang',l);store.set('pLang',l);store.set('trLang',l);store.set('spLang',l);
+  pSess=null;curQ=null;trCur=null;spWord=null;spMine=null;
+  if(typeof tSess!=='undefined'&&tSess)tSess=null;
+  if(lp)lp=null;
+  applyCourseChrome();
+  const h=(location.hash||'#today').slice(1);
+  if((h==='tones'&&l!=='zh')||(h==='read'&&l!=='ar'))location.hash='today';
+  route();
+}
+function applyCourseChrome(){
+  document.body.dataset.course=COURSE;
+  document.querySelectorAll('#coursebar button').forEach(b=>b.classList.toggle('on',b.dataset.course===COURSE));
+  const sub=$('#course-sub');if(sub)sub.textContent=COURSE_INFO[COURSE].sub;
+  document.querySelectorAll('[data-only]').forEach(e=>e.style.display=e.dataset.only===COURSE?'':'none');
+  const n=courseLessons().length;
+  const lead=$('#lessons-lead');if(lead)lead.innerHTML=`${n} lessons that take you through every sound of ${COURSE_INFO[COURSE].sub}, from reading the IPA symbols to saying whole phrases. Each lesson teaches a symbol, lets you feel the sound in your own mouth, compares it with English, then has you hear it, read it, write it and say it. Everything you learn goes into your daily review.`;
+  const qt=$('#q-tones');if(qt){qt.closest('label').style.display=COURSE==='zh'?'':'none'}
+}
+// ---------- Across your languages ----------
+function renderAcross(){
+  const el=$('#across');if(!el)return;
+  const shared=S.filter(s=>['es','zh','ar'].filter(l=>s.langs.includes(l)).length>1&&s.st!=='familiar');
+  const row=s=>{const ls=['es','zh','ar'].filter(l=>s.langs.includes(l));
+    return `<div class="acr"><div class="acsym ipa">${esc(s.sym)}</div><div class="acbody"><div class="symname">${esc(s.name)}</div>
+     <div class="acex">${ls.map(l=>{const e=s.ex.find(x=>x.l===l);if(!e)return '';return `<div class="acl"><span class="tag t-${l}">${LANGS[l]}</span> ${playBtn(e.w,e.l)} <b>${wordHTML(e)}</b>${e.r?` <span style="color:var(--muted)">${esc(e.r)}</span>`:''} <span class="ipa" style="color:var(--muted)">[${esc(e.ipa)}]</span></div>`}).join('')}</div>
+     ${ACROSS_NOTES[s.id]?`<p class="acn">${ACROSS_NOTES[s.id]}</p>`:''}<button class="btn ghost" data-sound="${s.id}" style="margin-top:6px">Sound card</button></div></div>`};
+  el.innerHTML=shared.map(row).join('')+`<h3>Same letter, different sound</h3><div class="acnote">${ACROSS_LETTERS}</div>`;
+}
+const ACROSS_NOTES={
+  x:'Spanish <i>j</i>, pinyin <i>h</i> and Arabic خ are all [x]. Arabic خ is usually the strongest and scrapiest; Mandarin h is often lighter.',
+  r:'Spanish rr and Levantine ر are both trills. Arabic ر is often a tap between vowels, like Spanish single r.',
+  gh:'Spanish soft g is a gentle [ɣ]; Arabic غ is the same symbol but much stronger, almost a gargle.',
+  pu:'Spanish p and Mandarin b are the same sound: no puff. Mandarin p is the puffed [pʰ].',
+  td:'Spanish t/d and Arabic ت/د are dental, with the tongue on the teeth.',
+  vi:'A steady "ee" in all three languages, with no English glide.',
+  vu:'A real "oo" with rounded lips in all three.',ve:'Spanish e and Levantine ē (as in بيت bēt) are close; neither glides like English "ay".',
+  vo:'Spanish o and Levantine ō (as in يوم yōm) are close; neither glides like English "oh".'};
+
+// =====================================================================
+// Read Arabic: the script, letter by letter, with practice and review
+// =====================================================================
+const TATWEEL='ـ';
+const NONJOIN='اأإآدذرزو';
+// c, transliterated name, IPA (Levantine), note, example word
+const AR_LETTERS=[
+ ['ا','alif','aː','A long a. It also carries hamza (أ إ) at the start of words that begin with a vowel.','باب'],
+ ['ب','bāʾ','b','One dot below.','بيت'],
+ ['ت','tāʾ','t','Two dots above. Dental, like Spanish t.','تين'],
+ ['ث','thāʾ','θ','Three dots above. [θ] as in "think" in Standard Arabic; Levantine usually says [t] or [s].','ثَلاثة'],
+ ['ن','nūn','n','One dot above, with a deeper bowl at the end of a word.','نُور'],
+ ['ي','yāʾ','j','Two dots below. A consonant [j], or the long vowels [iː] and [eː].','جاي'],
+ ['ج','jīm','ʒ','One dot inside. Levantine [ʒ] as in "measure"; Standard [dʒ].','جميل'],
+ ['ح','ḥāʾ','ħ','No dot. The squeezed throat h.','حلو'],
+ ['خ','khāʾ','x','One dot above. The scraped [x].','خال'],
+ ['د','dāl','d','Doesn\'t join to the next letter.','دار'],
+ ['ذ','dhāl','ð','Like د with a dot. [ð] as in "this" in Standard Arabic; Levantine [d] or [z].','ذَهَب'],
+ ['ر','rāʾ','r','Doesn\'t join to the next letter. Tapped or trilled.','راس'],
+ ['ز','zāy','z','Like ر with a dot. Doesn\'t join to the next letter.','زيت'],
+ ['و','wāw','w','Doesn\'t join to the next letter. A consonant [w], or the long vowels [uː] and [oː].','يوم'],
+ ['س','sīn','s','Three little teeth.','سيف'],
+ ['ش','shīn','ʃ','Like س with three dots.','شو'],
+ ['ص','ṣād','sˤ','The emphatic s: a loop then a tooth.','صيف'],
+ ['ض','ḍād','dˤ','Like ص with a dot.','ضار'],
+ ['ط','ṭāʾ','tˤ','The emphatic t: a loop with an upright stroke.','طين'],
+ ['ظ','ẓāʾ','zˤ','Like ط with a dot. Levantine [zˤ]; Standard [ðˤ].','ظريف'],
+ ['ع','ʿayn','ʕ','An open hook. Its shape changes a lot between positions.','عين'],
+ ['غ','ghayn','ɣ','Like ع with a dot.','غالي'],
+ ['ف','fāʾ','f','One dot above.','سيف'],
+ ['ق','qāf','ʔ','Two dots above, deeper tail than ف. Levantine [ʔ] in most words; Standard [q].','قلب'],
+ ['ك','kāf','k','Has a small hamza-like mark inside when isolated or final.','كلب'],
+ ['ل','lām','l','A tall stroke with a hook. ل + ا is written as one ligature: لا.','لا'],
+ ['م','mīm','m','A small loop.','مرة'],
+ ['ه','hāʾ','h','Changes shape a lot: ه هـ ـهـ ـه.','هون'],
+ ['ء','hamza','ʔ','The glottal stop. Sits on its own or on a "seat": أ إ ؤ ئ.','أنا']];
+const READ_GROUPS=[
+ {t:'One shape, different dots',d:'ب ت ث ن ي share the same body. Count the dots and look where they are. ا is the long a.',c:'ابتثني'},
+ {t:'The ج family',d:'One shape, three letters: dot inside, no dot, dot above.',c:'جحخ'},
+ {t:'The letters that don\'t join forward',d:'د ذ ر ز و (and ا) never connect to the letter after them, so the next letter starts fresh.',c:'دذرزو'},
+ {t:'Teeth and loops',d:'س ش have teeth; ص ض have a loop.',c:'سشصض'},
+ {t:'Emphatics and the ʿayn pair',d:'ط ظ have an upright stroke; ع غ change shape the most.',c:'طظعغ'},
+ {t:'The rest',d:'ف ق ك ل م ه, and the hamza ء.',c:'فقكلمهء'}];
+const ALBY=Object.fromEntries(AR_LETTERS.map(x=>[x[0],x]));
+function arForms(c){
+  if(c==='ء')return [c,c,c,c];
+  const nj=NONJOIN.includes(c);
+  return [c, c+(nj?'':TATWEEL), TATWEEL+c+(nj?'':TATWEEL), TATWEEL+c];
+}
+const letterLabel=c=>{const x=ALBY[c];return `[${x[2]}] ${x[1]}`};
+lw('ar',AR_LETTERS.map(x=>['حرف '+x[0],x[2],'the letter '+x[1],x[1]]));
+const READ_WORDS=['باب','بيت','تين','جميل','حلو','خال','دار','راس','زيت','سيف','شو','صيف','ضار','طين','ظريف','عين','غالي','قلب','كلب','لا','مرة','هون','يوم','أنا','كبير','منيح','خلص','حبيبي','مرحبا','جاي','هيك','كتير','صباح','طيب'];
+let readG=store.get('readG',0),readQ=null;
+const arWrap=t=>t.replace(/([\u0600-\u06FF](?:[\u0600-\u06FF\s]*[\u0600-\u06FF])?)/g,'<bdi class="arabic">$1</bdi>');
+function letterQ(c){
+  const forms=arForms(c),fi=Math.floor(Math.random()*4),f=forms[fi];
+  const others=shuffle(AR_LETTERS.filter(x=>x[0]!==c&&x[2]!==ALBY[c][2])).slice(0,3).map(x=>x[0]);
+  const opts=shuffle([c,...others]);
+  return customQ({p:'Which sound does this letter stand for?',q:`<span class="arabic" style="font-size:68px;line-height:1.3">${f}</span><span style="color:var(--muted);font-size:14px;display:block">${['on its own','at the start of a word','in the middle of a word','at the end of a word'][fi]}</span>`,o:opts.map(letterLabel),a:opts.indexOf(c),fw:'حرف '+c,why:ALBY[c][3]},'ar');
+}
+function wordReadQ(){
+  const pool=READ_WORDS.filter(k=>wd(k)&&AUDIO[k]);const k=pick(pool),w=wd(k);
+  const others=shuffle(pool.filter(x=>x!==k&&wd(x).r!==w.r)).slice(0,3);
+  const opts=shuffle([k,...others]);
+  return customQ({p:'Read the word. How is it pronounced?',q:`<span class="arabic" style="font-size:52px;line-height:1.4">${esc(k)}</span>`,o:opts.map(x=>wd(x).r),a:opts.indexOf(k),fw:k,why:`“${esc(w.g)}”`},'ar');
+}
+function readItemQ(k){return k==='a:words'?wordReadQ():letterQ(k.slice(2))}
+function renderRead(){
+  const el=$('#read');if(!el)return;
+  const g=READ_GROUPS[readG];
+  const learned=AR_LETTERS.filter(x=>srs.items['a:'+x[0]]).length;
+  el.innerHTML=`
+  <p class="lead">Arabic script is a real alphabet: 28 letters, each standing for a consonant or a long vowel. Learn it a group at a time. Each group you practise goes into your daily review, so the letters keep coming back until you know them by sight.</p>
+  <div class="quiz-box" style="margin-bottom:14px"><h3 style="margin-top:0">How the script works</h3><ul class="readintro">${arWrap(`
+   <li><b>Right to left.</b> Words and lines start on the right.</li>
+   <li><b>Joined writing.</b> Letters connect inside a word, so most letters have four forms: on their own, at the start, in the middle and at the end. The core shape stays the same; the joining strokes change.</li>
+   <li><b>Dots matter.</b> Several letters share one shape and differ only in their dots: ب ت ث ن ي.</li>
+   <li><b>Short vowels are usually not written.</b> Only long vowels get letters (ا و ي). Textbooks and the Quran add small vowel marks; everyday writing leaves them out, so you learn words by sight.</li>
+   <li><b>Six letters don't join forward:</b> ا د ذ ر ز و. The letter after them starts a new chunk, which is why words often look split.</li>`)}</ul>
+   <p style="color:var(--muted);margin-bottom:0">${learned} of ${AR_LETTERS.length} letters in your review.</p></div>
+  <div class="chips" id="read-groups">${READ_GROUPS.map((x,i)=>`<button class="chip ${i===readG?'on':''}" data-rg="${i}">${i+1}. ${esc(x.t)}</button>`).join('')}<button class="chip ${readG===6?'on':''}" data-rg="6">Vowel marks</button><button class="chip ${readG===7?'on':''}" data-rg="7">Special letters</button></div>
+  <div id="read-body" style="margin-top:12px"></div>`;
+  el.querySelector('#read-groups').onclick=e=>{const b=e.target.closest('[data-rg]');if(!b)return;readG=+b.dataset.rg;store.set('readG',readG);readQ=null;renderRead()};
+  const body=$('#read-body');
+  if(readG<6){
+    body.innerHTML=`<p>${arWrap(esc(g.d))}</p><div class="lettergrid">${[...g.c].map(c=>{const x=ALBY[c],f=arForms(c);
+      return `<div class="lcard"><div class="lhead"><span class="arabic lbig">${c}</span><div><div class="lname">${playBtn('حرف '+c,'ar')} ${esc(x[1])} <span class="ipa">[${esc(x[2])}]</span></div><div class="lnote">${arWrap(x[3])}</div></div></div>
+       <div class="lforms">${f.map((ff,i)=>`<div><span class="arabic">${ff}</span><small>${['alone','start','middle','end'][i]}</small></div>`).join('')}</div>
+       <div class="symex">${exChip(x[4])}</div></div>`}).join('')}</div>
+     <div class="row" style="margin-top:12px"><button class="btn" id="read-go">Practise this group</button>${readG>0?'<button class="btn ghost" id="read-mix">Practise all groups so far</button>':''}</div>
+     <div class="quiz-box qbox" id="read-q" style="display:none;margin-top:12px"></div>`;
+    $('#read-go').onclick=()=>startReadPractice([...g.c]);
+    const mx=$('#read-mix');if(mx)mx.onclick=()=>startReadPractice(READ_GROUPS.slice(0,readG+1).flatMap(x=>[...x.c]));
+  } else if(readG===6){
+    body.innerHTML=`<p>Short vowels are small marks written above or below a letter. You'll see them in textbooks, children's books and on tricky words. Here they are on ب:</p>
+     <table class="marks"><tr><th>Mark</th><th>Name</th><th>Sound</th></tr>
+      <tr><td class="arabic">بَ</td><td>fatḥa</td><td><span class="ipa">[ba]</span></td></tr>
+      <tr><td class="arabic">بِ</td><td>kasra</td><td><span class="ipa">[bi]</span></td></tr>
+      <tr><td class="arabic">بُ</td><td>ḍamma</td><td><span class="ipa">[bu]</span></td></tr>
+      <tr><td class="arabic">بْ</td><td>sukūn</td><td>no vowel: <span class="ipa">[b]</span></td></tr>
+      <tr><td class="arabic">بّ</td><td>shadda</td><td>doubled: <span class="ipa">[bb]</span></td></tr>
+      <tr><td class="arabic">با</td><td>+ alif</td><td><span class="ipa">[baː]</span></td></tr>
+      <tr><td class="arabic">بي</td><td>+ yāʾ</td><td><span class="ipa">[biː]</span> or <span class="ipa">[beː]</span></td></tr>
+      <tr><td class="arabic">بو</td><td>+ wāw</td><td><span class="ipa">[buː]</span> or <span class="ipa">[boː]</span></td></tr></table>
+     <p>Words with their vowels written in:</p><div class="symex">${['قَلْب','بِنْت','نُور','ذَهَب','جَمِيل'].map(exChip).join('')}</div>
+     <p>The same words as you'd normally see them, without marks: <span class="arabic" style="font-size:22px">قلب · بنت · نور · ذهب · جميل</span>. You fill in the short vowels from knowing the word, which is why listening matters so much.</p>`;
+  } else {
+    body.innerHTML=`<div class="lettergrid">
+     <div class="lcard"><div class="lhead"><span class="arabic lbig">ة</span><div><div class="lname">tāʾ marbūṭa</div><div class="lnote">Only at the end of a word, after a short a. In Levantine it's said <span class="ipa">[a]</span> or <span class="ipa">[e]</span>; before another word in a phrase it becomes <span class="ipa">[t]</span>.</div></div></div><div class="symex">${exChip('سبعة')}${exChip('مدرسة')}</div></div>
+     <div class="lcard"><div class="lhead"><span class="arabic lbig">ى</span><div><div class="lname">alif maqṣūra</div><div class="lnote">Looks like ي without dots. At the end of a word it's just a long or short a, as in على "on".</div></div></div></div>
+     <div class="lcard"><div class="lhead"><span class="arabic lbig">لا</span><div><div class="lname">lām-alif</div><div class="lnote">ل followed by ا is always written as this single ligature. On its own it means "no".</div></div></div><div class="symex">${exChip('لا')}</div></div>
+     <div class="lcard"><div class="lhead"><span class="arabic lbig">أ إ ؤ ئ</span><div><div class="lname">hamza on a seat</div><div class="lnote">The glottal stop usually sits on alif, wāw or a dotless yāʾ. The seat isn't pronounced; only <span class="ipa">[ʔ]</span> is. In Levantine speech, many hamzas are dropped.</div></div></div><div class="symex">${exChip('أنا')}${exChip('أمل')}</div></div>
+     <div class="lcard"><div class="lhead"><span class="arabic lbig">ال</span><div><div class="lname">the article</div><div class="lnote">"the", written ال and joined to the word. Before "sun letters" the l is swallowed and the next letter doubles (see the lesson on sun letters).</div></div></div><div class="symex">${exChip('البيت')}${exChip('الشمس')}</div></div>
+     <div class="lcard"><div class="lhead"><span class="arabic lbig">آ</span><div><div class="lname">alif madda</div><div class="lnote">ʾā: a glottal stop followed by a long a, as in قرآن.</div></div></div><div class="symex">${exChip('قرآن')}</div></div></div>
+     <div class="row" style="margin-top:12px"><button class="btn" id="read-words">Practise reading words</button></div><div class="quiz-box qbox" id="read-q" style="display:none;margin-top:12px"></div>`;
+    $('#read-words').onclick=()=>startReadPractice(null);
+  }
+  bidiFix(body);
+}
+function bidiFix(root){
+  const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/[\u0600-\u06FF]/.test(n.nodeValue)&&/[A-Za-z]/.test(n.nodeValue)&&!n.parentElement.closest('.arabic,bdi,button,.opt')?1:2});
+  const ns=[];while(tw.nextNode())ns.push(tw.currentNode);
+  for(const n of ns){const sp=document.createElement('span');sp.innerHTML=arWrap(esc(n.nodeValue));n.replaceWith(...sp.childNodes)}
+}
+function startReadPractice(letters){
+  const box=$('#read-q');box.style.display='';
+  const total=8;let n=0,c=0;
+  const next=()=>{
+    if(n>=total){
+      const added=[];
+      if(letters){for(const ch of new Set(letters)){const k='a:'+ch;if(!srs.items[k]){srs.items[k]={box:1,due:addDays(1),added:dayStr()};added.push(ch)}}}
+      else if(!srs.items['a:words']){srs.items['a:words']={box:1,due:addDays(1),added:dayStr()};added.push('word reading')}
+      markActivity(total);persist();
+      box.innerHTML=`<h3 style="margin-top:0">${c} of ${total} right</h3><p>${added.length?`Added to your daily review: <span class="arabic">${added.map(esc).join(' ')}</span>.`:'These are already in your daily review.'}</p><button class="btn" id="read-again">Again</button>`;
+      $('#read-again').onclick=()=>startReadPractice(letters);return;
+    }
+    const q=letters?letterQ(pick(letters)):wordReadQ();
+    mountQ(box,q,{onAnswer:ok=>{n++;if(ok)c++},onNext:next,nextLabel:n+1>=total?'Finish →':'Next →'});
+  };
+  next();box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+const ACROSS_LETTERS=`<ul>
+ <li><b>j</b>: Spanish [x] (<i>jamón</i>), pinyin [tɕ] (<i>jī</i>), English [dʒ]. IPA [j] is the y of "yes".</li>
+ <li><b>x</b>: Spanish [ks] or [x], pinyin [ɕ] (<i>xiè</i>). IPA [x] is the throaty jota.</li>
+ <li><b>q</b>: pinyin [tɕʰ] (<i>qī</i>). In transcriptions of Arabic, IPA [q] is ق, made at the uvula; in Levantine it is usually said as a glottal stop [ʔ].</li>
+ <li><b>h</b>: silent in Spanish, [x] in pinyin, [h] in Arabic ه.</li>
+ <li><b>r</b>: a tap or trill in Spanish and Arabic, [ɻ] in pinyin. IPA [r] is always the trill.</li>
+ <li><b>z / c</b>: Spanish [s], pinyin [ts] and [tsʰ].</li>
+ <li><b>e</b>: Spanish [e], pinyin [ɤ] (<i>hē</i>) or [ə].</li></ul>`;
+
 
 // ---------- FORMANT TRACKING (LPC) ----------
 // Pure functions so they can be checked offline against Praat.
@@ -2723,6 +3345,8 @@ document.addEventListener('click',async e=>{
 });
 
 // ---------- INIT ----------
+document.querySelectorAll('#coursebar button').forEach(b=>b.onclick=()=>setCourse(b.dataset.course));
+langF=qLang=pLang=trLang=spLang=COURSE;
 langChips($('#learn-filter'),langF,l=>{langF=l;store.set('langF',l);renderLearn()});
 langChips($('#quiz-filter'),qLang,l=>{qLang=l;store.set('qLang',l);newQ()});
 langChips($('#tr-filter'),trLang,l=>{trLang=l;store.set('trLang',l);newTr()},false);
@@ -2730,6 +3354,7 @@ langChips($('#pairs-filter'),pLang,l=>{pLang=l;store.set('pLang',l);pSess=null;r
 langChips($('#speak-filter'),spLang,l=>{spLang=l;store.set('spLang',l);spWord=null;spMine=null;renderSpeak()},false);
 $('#q-tones').onchange=newQ;$('#q-familiar').onchange=newQ;
 renderVowels();showVowel('vy');renderTones();renderTonePairs();renderMaps();renderFlags();
+applyCourseChrome();
 route();
 initSync();
 </script>
