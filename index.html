@@ -313,6 +313,7 @@ bdi.arabic{font-size:1.15em;padding:0 2px}
 .lforms div{display:flex;flex-direction:column;align-items:center}.lforms .arabic{font-size:30px;line-height:1.4}.lforms small{color:var(--muted);font-size:11px}
 table.marks{border-collapse:collapse;margin:8px 0}table.marks td,table.marks th{border-bottom:1px solid var(--line);padding:6px 14px;text-align:left}
 table.marks td.arabic{font-size:30px}
+.refbtn{font-size:14px}
 #acct{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin:6px 0}
 #acct .acct-who{font-size:13px;color:var(--muted)}#acct .acct-btn{font-size:14px;padding:6px 12px;min-height:36px}
 </style>
@@ -1147,7 +1148,7 @@ function answerQ(el,q,i,hooks){
   if(q.vn&&q.vn!=='main'&&qAudioKeys(q).length){const l=q.type==='pair'?q.c.l:'zh';fb+=`<p class="spk-note">Speaker: ${esc(voiceLabel(q.vn,l))}</p>`}
   btns[correctIdx].classList.add('right');if(!ok)btns[i].classList.add('wrong');
   if(hooks.onAnswer)hooks.onAnswer(ok,q,i);
-  fb+=`<div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button>${q.s?`<button class="btn ghost" data-sound="${q.s.id}">Open card</button>`:''}<span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
+  fb+=`<div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button>${q.s?`<button class="btn ghost" data-sound="${q.s.id}">Open card</button>`:''}${hooks.extra?hooks.extra():''}<span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
   const f=el.querySelector('.feedback');f.innerHTML=fb;f.classList.add('on');
   const n=f.querySelector('.next');n.onclick=hooks.onNext;n.focus({preventScroll:true});
 }
@@ -1414,7 +1415,7 @@ function mountBuild(el,q,hooks){
       f.innerHTML=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
        <p>${playBtn(w.w,w.l)} <b>${dispW(w)}</b> is <span class="ipa" style="font-size:22px">[${esc(w.ipa)}]</span>${ok?'':`. You built <span class="ipa">[${esc(cur.join(''))}]</span>`}.</p>
        ${it.why?`<p style="color:var(--muted);font-size:14px">${it.why}</p>`:''}
-       <div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button><span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
+       <div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button>${hooks.extra?hooks.extra():''}<span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
       f.classList.add('on');
       if(hooks.onAnswer)hooks.onAnswer(ok,q,0);
       const nb=f.querySelector('.next');nb.onclick=()=>hooks.onNext&&hooks.onNext();nb.focus({preventScroll:true});
@@ -2488,7 +2489,7 @@ function stepSession(){
     else if(!S_.extra&&!S_.missed.has(k))srsTouch(k,ok);
     if(!ok&&!S_.missed.has(k)){S_.missed.add(k);S_.q.push({k,isNew:false,retry:true})} // see it again before the session ends
     persist();
-  },onNext:()=>{S_.i++;stepSession()}});
+  },onNext:()=>{S_.i++;stepSession()},extra:()=>refHTML(item.k)});
 }
 function finishSession(){
   const S_=tSess;tSess=null;
@@ -2571,6 +2572,28 @@ function renderLessons(){
     <ol class="lesson-list">${u.lessons.map(L=>`<li class="lrow ${lessonDone(L.id)?'done':''} ${nx&&nx.id===L.id?'next':''}"><button data-lesson="${L.id}"><span class="ln">${lessonDone(L.id)?'✓':L.n}</span><span class="lt">${esc(L.title)}</span><span class="lk k-${L.kind}">${KIND[L.kind]}</span><span class="lm">${L.min} min</span></button></li>`).join('')}</ol></div>`}).join('');
 }
 function openLesson(id){const L0=LBYID[id];if(L0&&L0.unit.l!==COURSE&&typeof applyCourseChrome==='function'){COURSE=L0.unit.l;store.set('course',COURSE);langF=qLang=pLang=trLang=spLang=COURSE;applyCourseChrome()}lp={L:LBYID[id],i:0,q:null,results:{n:0,c:0}};location.hash='lessons';renderStep();window.scrollTo(0,0)}
+
+// ---------- links from review cards back to the lesson that teaches the item ----------
+let REF_IDX=null;
+function refFor(k){
+  if(k.startsWith('a:')){const c=k.slice(2);const g=c==='words'?7:READ_GROUPS.findIndex(x=>x.c.includes(c));return {read:g<0?0:g,label:c==='words'?'Read Arabic: special letters':'Read Arabic: '+READ_GROUPS[g<0?0:g].t}}
+  if(!REF_IDX){REF_IDX={};for(const L of ALL_LESSONS){const ks=L.adds.map(x=>courseKey(x,L.unit.l));ks.push('b:'+L.id);for(const x of ks)if(!REF_IDX[x])REF_IDX[x]=L}}
+  let L=(k.startsWith('r:')||k.startsWith('b:'))?LBYID[k.slice(2)]:REF_IDX[k];
+  if(!L&&k.startsWith('s:'))L=REF_IDX['s:'+sid(k)];
+  if(!L)return null;
+  let step=0;
+  if(k.startsWith('s:')){const i=L.steps.findIndex(st=>st.t==='sound'&&st.id===sid(k));if(i>=0)step=i}
+  return {id:L.id,step,label:L.title};
+}
+function refHTML(k){const r=refFor(k);if(!r)return '';
+  return r.read!==undefined?`<button class="btn ghost refbtn" data-refread="${r.read}">📖 ${esc(r.label)}</button>`:`<button class="btn ghost refbtn" data-ref="${r.id}" data-refstep="${r.step}">📖 Revisit: ${esc(r.label)}</button>`}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-ref]');
+  if(b){e.preventDefault();openLesson(b.dataset.ref);lp.ref=true;lp.i=Math.min(+b.dataset.refstep||0,lp.L.steps.length-1);renderStep();window.scrollTo(0,0);return}
+  const r=e.target.closest('[data-refread]');
+  if(r){e.preventDefault();readG=+r.dataset.refread;store.set('readG',readG);readRef=true;location.hash='read'}
+});
+let readRef=false;
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lesson]');if(b){e.preventDefault();openLesson(b.dataset.lesson)}});
 
 // ---------- LESSONS: step player ----------
@@ -2621,12 +2644,12 @@ function renderStep(){
     body=`<h2>${head}</h2><div class="qcount" id="lq-count"></div><div class="qbox" id="lq"></div>`;
   }
   $('#lessons').innerHTML=`
-   <div class="row" style="justify-content:space-between;margin-bottom:8px"><button class="btn ghost" id="lp-exit">← All lessons</button><span style="color:var(--muted);font-size:14px">${esc(L.unit.title)} · lesson ${L.n}</span></div>
+   <div class="row" style="justify-content:space-between;margin-bottom:8px"><button class="btn ghost" id="lp-exit">${lp.ref?'← Back to review':'← All lessons'}</button><span style="color:var(--muted);font-size:14px">${esc(L.unit.title)} · lesson ${L.n}</span></div>
    <div class="lp-title">${esc(L.title)}</div>
    <div class="steps">${L.steps.map((s,k)=>`<i class="${k<i?'d':k===i?'c':''}"></i>`).join('')}</div>
    <div class="quiz-box lesson-body">${body}</div>
    <div class="row lp-nav"><button class="btn ghost" id="lp-back" ${i===0?'disabled':''}>Back</button><span style="flex:1"></span>${isQ?`<button class="btn ghost" id="lp-skip">Skip</button>`:''}<button class="btn" id="lp-next" ${isQ?'disabled':''}>${i===total-1?'Finish lesson ✓':'Continue →'}</button></div>`;
-  $('#lp-exit').onclick=()=>{lp=null;renderLessons();window.scrollTo(0,0)};
+  $('#lp-exit').onclick=()=>{const back=lp.ref;lp=null;if(back){location.hash='today';return}renderLessons();window.scrollTo(0,0)};
   $('#lp-back').onclick=()=>{lp.i--;lp.q=null;renderStep();window.scrollTo(0,0)};
   $('#lp-next').onclick=()=>{if(i===total-1)finishLesson();else{lp.i++;lp.q=null;renderStep();window.scrollTo(0,0)}};
   if(st.t==='feel')bindFeel(st);
@@ -2652,6 +2675,7 @@ function markActivity(n){
   if(n>0&&srs.streak.last!==t){srs.streak.count=srs.streak.last===addDays(-1)?srs.streak.count+1:1;srs.streak.last=t}
 }
 function finishLesson(){
+  if(lp&&lp.ref&&tSess){lp=null;location.hash='today';return}
   $('#v-lessons').classList.remove('playing');
   const L=lp.L,res=lp.results;
   const added=[];
@@ -2960,7 +2984,7 @@ function renderRead(){
   const el=$('#read');if(!el)return;
   const g=READ_GROUPS[readG];
   const learned=AR_LETTERS.filter(x=>srs.items['a:'+x[0]]).length;
-  el.innerHTML=`
+  el.innerHTML=`${readRef&&tSess?'<button class="btn ghost" id="read-back" style="margin-bottom:10px">← Back to review</button>':''}
   <p class="lead">Arabic script is a real alphabet: 28 letters, each standing for a consonant or a long vowel. Learn it a group at a time. Each group you practise goes into your daily review, so the letters keep coming back until you know them by sight.</p>
   <div class="quiz-box" style="margin-bottom:14px"><h3 style="margin-top:0">How the script works</h3><ul class="readintro">${arWrap(`
    <li><b>Right to left.</b> Words and lines start on the right.</li>
@@ -2971,6 +2995,7 @@ function renderRead(){
    <p style="color:var(--muted);margin-bottom:0">${learned} of ${AR_LETTERS.length} letters in your review.</p></div>
   <div class="chips" id="read-groups">${READ_GROUPS.map((x,i)=>`<button class="chip ${i===readG?'on':''}" data-rg="${i}">${i+1}. ${esc(x.t)}</button>`).join('')}<button class="chip ${readG===6?'on':''}" data-rg="6">Vowel marks</button><button class="chip ${readG===7?'on':''}" data-rg="7">Special letters</button></div>
   <div id="read-body" style="margin-top:12px"></div>`;
+  const rb=$('#read-back');if(rb)rb.onclick=()=>{readRef=false;location.hash='today'};
   el.querySelector('#read-groups').onclick=e=>{const b=e.target.closest('[data-rg]');if(!b)return;readG=+b.dataset.rg;store.set('readG',readG);readQ=null;renderRead()};
   const body=$('#read-body');
   if(readG<6){
