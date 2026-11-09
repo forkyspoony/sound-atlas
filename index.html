@@ -113,6 +113,14 @@ select{font:inherit;color:var(--ink);background:var(--panel);border:1px solid va
 .mouthrow{display:grid;grid-template-columns:minmax(160px,230px) 1fr;gap:16px;align-items:center;margin-top:14px}
 @media(max-width:520px){.mouthrow{grid-template-columns:1fr}.mouthrow .mouth{max-width:240px;margin:0 auto}}
 .mouth{width:100%;height:auto;display:block;background:var(--soft);border-radius:14px}
+.vtabs{display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap}
+.vtabs button{font:inherit;font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);cursor:pointer}
+.vtabs button.on{background:var(--ink,#222);color:var(--panel);border-color:transparent}
+.vtabs button:disabled{opacity:.35;cursor:default}
+.vpane video{width:100%;display:block;border-radius:14px;background:#000}
+.mouthrow.vid{grid-template-columns:minmax(200px,340px) 1fr}
+.vcred{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.35}.vcred a{color:inherit}
+@media(max-width:520px){.mouthrow.vid{grid-template-columns:1fr}.mouthrow .vbox{max-width:340px;width:100%;margin:0 auto}}
 .mouth path{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .m-face{stroke:var(--muted);stroke-width:1.5;opacity:.55}
 .m-cav{stroke:var(--line);stroke-width:1.5;stroke-dasharray:3 3}
@@ -482,7 +490,7 @@ table.marks td.arabic{font-size:30px}
   <div class="maps" id="maps"></div>
   </div>
 </section>
-<p class="footer-note">Recorded audio was generated with ElevenLabs voices. Main voices: Mateo (Latin American Spanish; Leandro for the three Spain-only examples), Alina (Mandarin, Beijing) and zohir damas (Levantine Arabic, Syrian). English comparison words in the lessons: David (American English). Vowel reference recordings on the sound cards: Denelson83, Wikimedia Commons, CC BY-SA 3.0. Extra speakers for ear training: Liza and Eduardo (Mexico) and Claudia (Colombia); Yun, Yun and Jerry (mainland China); Yasmine (Lebanon), Ghaidā’ (Syria) and Samir (Jordan). Words without a recording fall back to your device's built-in text-to-speech; if a language is silent there, install its voice in your system settings (on iOS: Settings → Accessibility → Spoken Content → Voices). AI voices are close but not perfect, so check fine detail against native speakers.</p>
+<p class="footer-note">Recorded audio was generated with ElevenLabs voices. Main voices: Mateo (Latin American Spanish; Leandro for the three Spain-only examples), Alina (Mandarin, Beijing) and zohir damas (Levantine Arabic, Syrian). English comparison words in the lessons: David (American English). Vowel reference recordings on the sound cards: Denelson83, Wikimedia Commons, CC BY-SA 3.0. Animation and MRI videos on the sound cards: <a href="https://www.seeingspeech.ac.uk/" target="_blank" rel="noopener">Seeing Speech</a> (University of Glasgow, Queen Margaret University and partners), streamed from their site. Extra speakers for ear training: Liza and Eduardo (Mexico) and Claudia (Colombia); Yun, Yun and Jerry (mainland China); Yasmine (Lebanon), Ghaidā’ (Syria) and Samir (Jordan). Words without a recording fall back to your device's built-in text-to-speech; if a language is silent there, install its voice in your system settings (on iOS: Settings → Accessibility → Spoken Content → Voices). AI voices are close but not perfect, so check fine detail against native speakers.</p>
 </main>
 
 <div class="scrim" id="scrim"><div class="modal" id="modal"></div></div>
@@ -973,13 +981,82 @@ function trackHTML(s){
   const p=s.place;
   return `<div class="track"><div class="track-line">${PLACES.map((_,i)=>`<span class="${i===p[0]?'on':p.slice(1).includes(i)?'on2':''}"></span>`).join('')}</div><div class="track-labels">${PLACES.map((n,i)=>`<span class="${p.includes(i)?'on':''}">${n}</span>`).join('')}</div></div>`;
 }
+// ---------- Seeing Speech videos (animation + MRI 2) ----------
+// Videos from Seeing Speech (seeingspeech.ac.uk), University of Glasgow & partners; speaker Janet Beck.
+// a = animation, m = MRI 2 recording, n = note when the video is a close stand-in rather than the exact sound.
+const SS_BASE='https://www.seeingspeech.ac.uk/recording/';
+const SS_VID={
+ r:{a:'vd_alveolar_trill',m:'MRI2_vd_alveolar_trill'},
+ tap:{a:'vd_alveolar_tap',m:'MRI2_vd_alveolar_tap_overdubbed'},
+ x:{a:'vl_velar_fricative',m:'MRI2_vl_velar_fricative'},
+ gh:{a:'vd_velar_fricative',m:'MRI2_vd_velar_fricative'},
+ beta:{a:'vd_bilabial_fricative',m:'MRI2_vd_bilabial_fricative'},
+ ny:{a:'vd_palatal_nasal',m:'MRI2_vd_palatal_nasal'},
+ yy:{a:'vd_palatal_fricative',m:'MRI2_vd_palatal_fricative'},
+ pu:{a:'vl_bilabial_plosive',m:'MRI2_vl_bilabial_plosive_overdubbed'},
+ ph:{a:'vl_bilabial_plosive',m:'MRI2_vl_bilabial_plosive_overdubbed',n:'Shows plain [p]: the lips are the same, just add the puff of air.'},
+ td:{a:'vl_alveolar_plosive',m:'MRI2_vl_alveolar_plosive_overdubbed',n:'Shows [t] on the gum ridge; for [t̪] put the tongue tip against the back of the teeth instead.'},
+ eth:{a:'vd_dental_fricative',m:'MRI2_vd_dental_fricative'},
+ th:{a:'vl_dental_fricative',m:'MRI2_vl_dental_fricative'},
+ ts:{a:'vl_alveolar_fricative',m:'MRI2_vl_alveolar_fricative_overdubbed',n:'Shows [s], the hiss that [ts] releases into.'},
+ tsh:{a:'vl_alveolar_fricative',m:'MRI2_vl_alveolar_fricative_overdubbed',n:'Shows [s], the hiss that [tsʰ] releases into.'},
+ tsr:{a:'vl_retroflex_fricative',m:'MRI2_vl_retroflex_fricative',n:'Shows [ʂ], the hiss that [ʈʂ] releases into.'},
+ tsrh:{a:'vl_retroflex_fricative',m:'MRI2_vl_retroflex_fricative',n:'Shows [ʂ], the hiss that [ʈʂʰ] releases into.'},
+ sr:{a:'vl_retroflex_fricative',m:'MRI2_vl_retroflex_fricative'},
+ rr:{a:'vd_retroflex_approximant',m:'MRI2_vd_retroflex_approximant'},
+ tc:{m:'MRI2_vl_alveolo-palatal_fricative',n:'Shows [ɕ], the hiss that [tɕ] releases into.'},
+ tch:{m:'MRI2_vl_alveolo-palatal_fricative',n:'Shows [ɕ], the hiss that [tɕʰ] releases into.'},
+ xx:{m:'MRI2_vl_alveolo-palatal_fricative'},
+ gs:{a:'vl_glottal_plosive',m:'MRI2_vl_glottal_plosive'},
+ hh:{a:'vl_pharyngeal_fricative',m:'MRI2_vl_pharyngeal_fricative'},
+ ain:{a:'vd_pharyngeal_fricative',m:'MRI2_vd_pharyngeal_fricative'},
+ q:{a:'vl_uvular_plosive',m:'MRI2_vl_uvular_plosive'},
+ ems:{a:'vl_alveolar_fricative',m:'MRI2_vl_alveolar_fricative_overdubbed',n:'Shows plain [s]. For [sˤ], also pull the tongue root back toward the throat.'},
+ emt:{a:'vl_alveolar_plosive',m:'MRI2_vl_alveolar_plosive_overdubbed',n:'Shows plain [t]. For [tˤ], also pull the tongue root back toward the throat.'},
+ emd:{a:'vd_alveolar_plosive',m:'MRI2_vd_alveolar_plosive',n:'Shows plain [d]. For [dˤ], also pull the tongue root back toward the throat.'},
+ emz:{a:'vd_alveolar_fricative',m:'MRI2_vd_alveolar_fricative',n:'Shows plain [z]. For [zˤ], also pull the tongue root back toward the throat.'},
+ h:{a:'vl_glottal_fricative',m:'MRI2_vl_glottal_fricative'},
+ jzh:{a:'vd_postalveolar_fricative',m:'MRI2_vd_postalveolar_fricative'},
+ vi:{m:'MRI2_cardinal_1_vowel_overdubbed'},
+ vy:{m:'MRI2_cardinal_9_vowel'},
+ vbuzz:{m:'MRI2_cardinal_17_vowel'},
+ vu:{m:'MRI2_cardinal_8_vowel_overdubbed'},
+ ve:{m:'MRI2_cardinal_2_vowel'},
+ vgam:{m:'MRI2_cardinal_15_vowel'},
+ vo:{m:'MRI2_cardinal_7_vowel'},
+ vschwa:{m:'MRI2_central_schwa_float_vowel'},
+ va:{m:'MRI2_cardinal_4_vowel_overdubbed'}
+};
+const VTABS=[['d','Diagram'],['a','Animation'],['m','MRI']];
+let vTab=store.get('vtab','d');
+function visualHTML(s,diagram){
+  const v=SS_VID[s.id]||{};
+  const cur=(vTab!=='d'&&v[vTab])?vTab:'d';
+  return `<div class="vbox" data-vs="${s.id}"><div class="vtabs" role="tablist">${VTABS.map(([k,t])=>`<button role="tab" data-vt="${k}" class="${k===cur?'on':''}"${k!=='d'&&!v[k]?' disabled title="No '+t.toLowerCase()+' for this sound"':''}>${t}</button>`).join('')}</div><div class="vpane">${vPane(s,cur,diagram)}</div></div>`;
+}
+function vPane(s,k,diagram){
+  if(k==='d')return diagram!==undefined?diagram:mouthSVG(s);
+  const v=SS_VID[s.id];const ref=v[k];
+  return `<video src="${SS_BASE}${ref}.mp4" poster="${SS_BASE}${ref}.png" controls loop playsinline preload="metadata"></video>
+   <div class="vcred">${k==='a'?'Animation':'Real-time MRI'} from <a href="https://www.seeingspeech.ac.uk/ipa-charts/" target="_blank" rel="noopener">Seeing Speech</a> (Univ. of Glasgow et al.)${k==='m'?', speaker Janet Beck':''}.${k==='m'?' Face is to the left; watch the tongue and soft palate.':''}${v.n?`<br><b>Note:</b> ${esc(v.n)}`:''}</div>`;
+}
+function syncVRow(box){const row=box.closest('.mouthrow');if(row)row.classList.toggle('vid',vTab!=='d'&&!!box.querySelector('video'))}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.vtabs [data-vt]');if(!b||b.disabled)return;
+  const box=b.closest('.vbox');const s=BYID[box.dataset.vs];if(!s)return;
+  vTab=b.dataset.vt;store.set('vtab',vTab);
+  box.querySelectorAll('[data-vt]').forEach(x=>x.classList.toggle('on',x===b));
+  box.querySelector('.vpane').innerHTML=vPane(s,vTab,box.dataset.nodiag?'':undefined);
+  syncVRow(box);
+  const vid=box.querySelector('video');if(vid){const p=vid.play();if(p&&p.catch)p.catch(()=>{})}
+});
 function openSound(id){
   const s=BYID[id];if(!s)return;
   const st={new:'New to English speakers',tricky:'Exists in English, used differently',familiar:'Already in English'}[s.st];
   $('#modal').innerHTML=`<button class="close" aria-label="Close">×</button>
   <div class="dhead"><div class="bigsym ipa">${esc(s.sym)}</div><div><h2>${esc(s.name)}</h2><div class="desc">${termify(s.desc)}</div>
   <div class="tags">${s.langs.map(l=>`<span class="tag t-${l}">${LANGS[l]}</span>`).join('')}<span class="tag ${s.st==='new'?'t-new':'t-tricky'}">${st}</span></div></div></div>
-  <div class="mouthrow">${mouthSVG(s)}<div>${trackHTML(s)}<div style="font-size:13px;color:var(--muted)">${mouthCaption(s)}</div></div></div>
+  <div class="mouthrow${vTab!=='d'&&(SS_VID[s.id]||{})[vTab]?' vid':''}">${visualHTML(s)}<div>${trackHTML(s)}<div style="font-size:13px;color:var(--muted)">${mouthCaption(s)}</div></div></div>
   ${pureHTML(s)}
   ${s.place&&s.place.length>1&&s.place.includes(9)?'<div style="font-size:12px;color:var(--muted)">Striped area: the tongue also pulls back toward the throat at the same time.</div>':''}
   <div class="anchor"><b>Closest thing in English</b>${esc(s.anchor)}</div>
@@ -1034,6 +1111,7 @@ function renderVowels(){
 function showVowel(id){
   const s=BYID[id];
   $('#vowel-side').innerHTML=`<div class="dhead"><div class="bigsym ipa" style="font-size:60px;min-width:80px">${esc(s.sym)}</div><div><h2 style="font-size:22px">${esc(s.name)}</h2><div class="desc">${termify(s.desc)}</div><div class="tags">${s.langs.map(l=>`<span class="tag t-${l}">${LANGS[l]}</span>`).join('')}</div></div></div>
+  ${SS_VID[s.id]&&SS_VID[s.id].m?`<div style="max-width:300px;margin:10px 0">${vPane(s,'m')}</div>`:''}
   ${pureHTML(s)}
   <div class="anchor"><b>Closest thing in English</b>${esc(s.anchor)}</div>
   ${s.ex.map(e=>`<div class="ex">${playBtn(e.w,e.l)}<div><div class="w">${wordHTML(e)} ${e.r?`<span class="meta">${esc(e.r)}</span>`:''}</div><div class="meta">“${esc(e.g)}”</div></div><div class="tr ipa">[${esc(e.ipa)}]</div></div>`).join('')}
@@ -2601,7 +2679,7 @@ function stepHTMLSound(s){
   const ul=lp?lp.L.unit.l:null;
   const ex=s.ex.filter(e=>!/\(Spain\)/.test(e.w)).sort((a,b)=>(b.l===ul)-(a.l===ul)).slice(0,3);
   return `<div class="dhead"><div class="bigsym ipa" style="font-size:66px;min-width:96px">${esc(s.sym)}</div><div><h2>${esc(s.name)}</h2><div class="desc">${termify(s.desc)}</div></div></div>
-   <div class="mouthrow">${mouthSVG(s)}<div>${s.cat==='c'?trackHTML(s):''}<div style="font-size:13px;color:var(--muted)">${mouthCaption(s)}</div></div></div>
+   <div class="mouthrow${vTab!=='d'&&(SS_VID[s.id]||{})[vTab]?' vid':''}">${visualHTML(s)}<div>${s.cat==='c'?trackHTML(s):''}<div style="font-size:13px;color:var(--muted)">${mouthCaption(s)}</div></div></div>
    ${pureHTML(s)}
    <div class="anchor"><b>Closest thing in English</b>${esc(s.anchor)}</div>
    <h3 style="margin-top:14px">How to make it</h3><ol class="how">${s.how.map(h=>`<li>${esc(h)}</li>`).join('')}</ol>
