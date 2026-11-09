@@ -490,7 +490,7 @@ table.marks td.arabic{font-size:30px}
   <div class="maps" id="maps"></div>
   </div>
 </section>
-<p class="footer-note">Recorded audio was generated with ElevenLabs voices. Main voices: Mateo (Latin American Spanish; Leandro for the three Spain-only examples), Alina (Mandarin, Beijing) and zohir damas (Levantine Arabic, Syrian). English comparison words in the lessons: David (American English). Vowel reference recordings on the sound cards: Denelson83, Wikimedia Commons, CC BY-SA 3.0. Animation and MRI videos on the sound cards: <a href="https://www.seeingspeech.ac.uk/" target="_blank" rel="noopener">Seeing Speech</a> (University of Glasgow, Queen Margaret University and partners), streamed from their site. Extra speakers for ear training: Liza and Eduardo (Mexico) and Claudia (Colombia); Yun, Yun and Jerry (mainland China); Yasmine (Lebanon), Ghaidā’ (Syria) and Samir (Jordan). Words without a recording fall back to your device's built-in text-to-speech; if a language is silent there, install its voice in your system settings (on iOS: Settings → Accessibility → Spoken Content → Voices). AI voices are close but not perfect, so check fine detail against native speakers.</p>
+<p class="footer-note">Recorded audio was generated with ElevenLabs voices. Main voices: Mateo (Latin American Spanish; Leandro for the three Spain-only examples), Alina (Mandarin, Beijing) and zohir damas (Levantine Arabic, Syrian). English comparison words in the lessons: David (American English). Vowel reference recordings on the sound cards: Denelson83, Wikimedia Commons, CC BY-SA 3.0. Animation and MRI videos on the sound cards: <a href="https://www.seeingspeech.ac.uk/" target="_blank" rel="noopener">Seeing Speech</a> (University of Glasgow, University of Strathclyde and partners), streamed from their site. Extra speakers for ear training: Liza and Eduardo (Mexico) and Claudia (Colombia); Yun, Yun and Jerry (mainland China); Yasmine (Lebanon), Ghaidā’ (Syria) and Samir (Jordan). Words without a recording fall back to your device's built-in text-to-speech; if a language is silent there, install its voice in your system settings (on iOS: Settings → Accessibility → Spoken Content → Voices). AI voices are close but not perfect, so check fine detail against native speakers.</p>
 </main>
 
 <div class="scrim" id="scrim"><div class="modal" id="modal"></div></div>
@@ -1038,7 +1038,7 @@ function vPane(s,k,diagram){
   if(k==='d')return diagram!==undefined?diagram:mouthSVG(s);
   const v=SS_VID[s.id];const ref=v[k];
   return `<video src="${SS_BASE}${ref}.mp4" poster="${SS_BASE}${ref}.png" controls loop playsinline preload="metadata"></video>
-   <div class="vcred">${k==='a'?'Animation':'Real-time MRI'} from <a href="https://www.seeingspeech.ac.uk/ipa-charts/" target="_blank" rel="noopener">Seeing Speech</a> (Univ. of Glasgow et al.)${k==='m'?', speaker Janet Beck':''}.${k==='m'?' Face is to the left; watch the tongue and soft palate.':''}${v.n?`<br><b>Note:</b> ${esc(v.n)}`:''}</div>`;
+   <div class="vcred">${k==='a'?'Animation':'Real-time MRI'} from <a href="https://www.seeingspeech.ac.uk/ipa-charts/" target="_blank" rel="noopener">Seeing Speech</a> (Glasgow, Strathclyde &amp; partners)${k==='m'?', speaker Janet Beck':''}.${k==='m'?' Face is to the right; watch the tongue and soft palate.':''}${v.n?`<br><b>Note:</b> ${esc(v.n)}`:''}</div>`;
 }
 function syncVRow(box){const row=box.closest('.mouthrow');if(row)row.classList.toggle('vid',vTab!=='d'&&!!box.querySelector('video'))}
 document.addEventListener('click',e=>{
