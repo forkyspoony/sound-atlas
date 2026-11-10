@@ -11,9 +11,8 @@ Read `HANDOFF.md` first. It covers the brief, status, decisions and a line map o
   expect the app to change.
 - Deploy = push to `main`. GitHub Pages serves the repo root, usually about a minute after
   the push. The service worker caches nothing.
-- Never commit `*.jks` or key passwords. The Android signing key lives only with the owner.
-- Never hand-edit `android/sound-atlas.apk` or `android/version.json`. Produce them with
-  `android-src/build.sh`, and always raise the versionCode.
+- The Android app was retired on 2026-11-09 (see HANDOFF.md, Decisions). Don't rebuild it;
+  the installable site (PWA) is the only app. Never commit `*.jks` or key passwords.
 - The owner is a language learner, not a developer. Explain changes in plain words.
 
 ## Testing

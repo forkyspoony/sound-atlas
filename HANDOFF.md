@@ -4,8 +4,11 @@ Snapshot taken 2026-11-09 from GitHub `forkyspoony/sound-atlas`, branch `main`, 
 `b0afd27` ("New /sæ/ logo and Android app with self-update"). That commit is the latest
 version of every file. Nothing newer exists anywhere else.
 
+**Updates since the snapshot (2026-11-09):** sync now merges progress instead of overwriting
+(see Decisions), and the **Android app was retired** (see Decisions). Where this document
+still mentions the APK elsewhere, treat it as history.
+
 - **Live site:** https://forkyspoony.github.io/sound-atlas
-- **Android APK:** https://forkyspoony.github.io/sound-atlas/android/sound-atlas.apk
 - **Old claude.ai copy:** https://claude.ai/artifact/1VwidV6YpmPm8GtADRXQU3 (stale, see Decisions)
 
 ---
@@ -54,7 +57,8 @@ Cross-cutting features:
   audio** button with reasons.
 - Optional Google sign-in syncs progress through Firebase. Without sign-in, progress
   lives in `localStorage` under keys prefixed `ipa:`.
-- Installable as a PWA (manifest plus a no-op service worker), and as an Android app.
+- Installable as a PWA (manifest plus a no-op service worker). This is the only
+  install route; the separate Android app was retired.
 - Light and dark themes through `prefers-color-scheme`.
 
 **Tech stack.**
@@ -69,9 +73,6 @@ Cross-cutting features:
   inside `index.html`.
 - **Videos:** hotlinked from Seeing Speech (`https://www.seeingspeech.ac.uk/recording/…`).
   They aren't stored in the repo.
-- **Android:** a hand-written WebView wrapper (`android-src/`), built with raw SDK tools
-  (aapt2, javac, d8, zipalign, apksigner). No Gradle. Package `app.soundatlas`,
-  minSdk 24, targetSdk 34.
 
 ---
 
@@ -89,13 +90,10 @@ Cross-cutting features:
   that tab is greyed out on those. Some sounds show stand-ins with a note: the Arabic
   emphatics show plain s/t/d/z, the Mandarin affricates show their fricative, pʰ shows p,
   and t̪ shows t.
-- The /sæ/ logo is used for the favicon, PWA icons and Android launcher icon.
+- The /sæ/ logo is used for the favicon, and PWA icons.
 - Installing as a PWA on Windows, Android and iPhone ("Add to Home Screen").
 
 ### Half-done or untested
-- **Android APK (v1.0, versionCode 1):** it was built and published but **has never run on a
-  real device**. The self-update flow (reads `android/version.json` on launch and on resume,
-  at most every 6 hours) is untested.
 - **Google sign-in inside the iPhone home-screen app:** untested.
 - **IPA terminology section with its own SRS deck:** started on 2026-11-09, then **scrapped at
   the owner's request**. Nothing from it is in the repo. About 60 term pronunciations were
@@ -104,25 +102,13 @@ Cross-cutting features:
   (37 terms, shown as tooltips through `termify()`) is still in place.
 
 ### Known or likely bugs
-The first two come from reading the Android source and are **not confirmed on a device**:
-1. **Android: Google sign-in almost certainly fails.** `shouldOverrideUrlLoading` sends every
-   non-site URL to the external browser. The Firebase popup and redirect flows go to
-   `sound-atlas-40f39.firebaseapp.com` and `accounts.google.com`, so sign-in would leave the
-   app and never come back. Google also blocks OAuth inside WebViews. As a result, progress
-   in the APK stays on the phone.
-2. **Android: the microphone and "📁 Use a recording" don't work.** The manifest has no
-   `RECORD_AUDIO` permission, and `WebChromeClient` overrides neither `onPermissionRequest`
-   nor `onShowFileChooser`. The Speak tab and the vowel coach can't record in the APK.
-3. **Seeing Speech videos are hotlinked.** They will break if Seeing Speech moves or blocks
+1. **Seeing Speech videos are hotlinked.** They will break if Seeing Speech moves or blocks
    them.
-4. **ElevenLabs audio can slip** on hard sounds such as ع or the Mandarin tones. That's why
+2. **ElevenLabs audio can slip** on hard sounds such as ع or the Mandarin tones. That's why
    the flag-audio feature exists. Flags are saved in progress (`flags`), and nobody has
    reviewed them yet.
 
 ### Planned next (what the owner was heading toward)
-- Install the APK on a phone and confirm that it runs and updates. Then fix bugs 1 and 2,
-  either in the wrapper (Custom Tabs for sign-in, mic permission, file chooser) or by
-  telling users to use the PWA for Speak.
 - Revisit the IPA terminology and jargon section (velar, alveolar and so on) when ready. The
   owner found the terms hard to learn and wanted SRS cards and pronunciations for them.
 - Keep sharing the site with the friend. Updates reach them automatically.
@@ -156,12 +142,16 @@ The first two come from reading the Android source and are **not confirmed on a 
 - **Moved from claude.ai to GitHub Pages** because claude.ai artifacts can't use the
   microphone, which the Speak features need. The claude.ai artifact was then left behind.
   Its last update was "Review cards link to the lesson that teaches them" (2026-11-08), so
-  it lacks the MRI tabs, the new logo and the APK. **Don't treat it as current.**
+  it lacks the MRI tabs and the new logo. **Don't treat it as current.**
 - **Firebase (Google sign-in plus Firestore) for sync.** It was picked over saving to a
   private GitHub gist with a pasted token, because signing in once is smoother across a phone
   and a computer. `firebase_shim.js` mimics the `claude.use('db'|'user')` API the app
-  originally used on claude.ai, so the app code didn't change. Conflict rule: the newer
-  `updated` timestamp wins, and flags are merged.
+  originally used on claude.ai, so the app code didn't change. Conflict rule (changed
+  2026-11-09): the two copies are **merged**, never replaced (`mergeProgress` in `index.html`).
+  Lessons done are unioned, stats and daily counts take the higher number, and for each
+  review item the copy reviewed most recently wins (items carry a `u` timestamp set on
+  review). Flags are unioned. Pasted progress codes merge the same way, with an Undo.
+  A safety copy is kept in `localStorage` under `ipa:backup:sync` and `ipa:backup:import`.
 - **The Firebase web config is public on purpose.** Security comes from the Firestore rules
   below, which live only in the Firebase console and are not in this repo:
   ```
@@ -184,13 +174,12 @@ The first two come from reading the Android source and are **not confirmed on a 
   per-voice sprites, and `p_*.mp3` are pair or English sprites.
 - **Seeing Speech videos are hotlinked, not copied,** to keep the repo small. Each video is
   credited in a caption and in the footer. The MRI shows the face on the **right**.
-- **Android app = thin WebView wrapper around the live site,** so site changes need no app
-  release. A new APK is only needed for wrapper changes. It updates itself through
-  `android/version.json` and Android's PackageInstaller. It's built without Gradle so it can
-  be built in a bare sandbox.
-- **The signing key (`sound-atlas.jks` plus its password) is NOT in the repo** (`*.jks` is
-  gitignored). Only the owner has it. **If it's lost, updates are impossible** and everyone
-  would have to uninstall and reinstall.
+- **Android app retired (2026-11-09).** It was a thin WebView wrapper around the live site,
+  but Google sign-in and the microphone could not work inside it, and the installable site
+  (PWA) already does everything on Android. `android/` and `android-src/` were deleted; they
+  remain in git history up to commit `43c13d7`. The site shows a notice to anyone still
+  opening the old app (it detects `SoundAtlasApp/` in the user agent). The signing key is no
+  longer needed.
 
 **Design and naming**
 - **Name:** "Sound Atlas". Subtitle: "IPA for Spanish, Mandarin & Arabic". Wordmark gloss:
@@ -215,21 +204,10 @@ sound-atlas/
 ├── sw.js                    # No-op service worker (installability only)
 ├── manifest.webmanifest     # PWA manifest
 ├── .nojekyll                # Tells GitHub Pages to serve files as-is
-├── .gitignore               # android-src/build/, *.jks, *.idsig
+├── .gitignore               # *.jks, *.idsig
 ├── icons/                   # /sæ/ logo: favicon.svg/.png, apple-touch-icon, 192/512 + maskable
 ├── audio/                   # 440 MP3s (ElevenLabs): a<sha1-10>.mp3, s_<voice>.mp3, p_*.mp3
-├── android/                 # Published build output, served by GitHub Pages
-│   ├── sound-atlas.apk
-│   └── version.json         # {versionCode, versionName, apk, notes}; the app polls this
-├── android-src/             # Android wrapper source
-│   ├── README.md
-│   ├── build.sh             # KEYSTORE=… KS_PASS=… ./build.sh <code> <name> "notes"
-│   ├── AndroidManifest.xml
-│   ├── src/app/soundatlas/MainActivity.java
-│   ├── src/app/soundatlas/InstallReceiver.java
-│   └── res/                 # values/styles.xml, adaptive icon, mipmaps, drawable-nodpi/ic_fg.png
-│
-│   ── added by this handoff (not yet on GitHub) ──
+├── .claude/launch.json      # Local preview server setting
 ├── HANDOFF.md               # This file
 ├── CLAUDE.md                # Working notes for Claude Code
 ├── content/                 # JSON export of every content table in index.html (read-only snapshot)
@@ -264,9 +242,8 @@ sound-atlas/
 
 ## 5. Files
 
-Every file is in this folder exactly as it is on GitHub at commit `b0afd27`. Getting the
-same thing with `git clone https://github.com/forkyspoony/sound-atlas.git` and then copying
-in `HANDOFF.md`, `CLAUDE.md`, `content/` and `tools/` gives an identical result.
+Everything, including this file, is on GitHub: `git clone
+https://github.com/forkyspoony/sound-atlas.git` gives an identical folder.
 
 ## 6. Content
 

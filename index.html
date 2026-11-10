@@ -3631,6 +3631,13 @@ langChips($('#speak-filter'),spLang,l=>{spLang=l;store.set('spLang',l);spWord=nu
 $('#q-tones').onchange=newQ;$('#q-familiar').onchange=newQ;
 renderVowels();showVowel('vy');renderTones();renderTonePairs();renderMaps();renderFlags();
 applyCourseChrome();
+// The Android app (a wrapper around this site) was retired on 2026-11-09: it couldn't sign in or use the mic.
+// Anyone still opening it is pointed to the installable site instead.
+if(/SoundAtlasApp\//.test(navigator.userAgent)){
+  const n=document.createElement('div');n.className='quiz-box';n.id='apk-retired';n.style.margin='12px 0';
+  n.innerHTML='<b>This Android app has been retired.</b> It can\'t sync your progress or use the microphone. To switch: open <b>forkyspoony.github.io/sound-atlas</b> in Chrome, tap ⋮ and choose <b>Add to Home screen</b>, then sign in with Google there. To bring progress across from this app, go to <a href="#basics" style="color:inherit">IPA basics → Move your progress</a>, copy the code, and paste it into the Chrome version. After that you can uninstall this app.';
+  $('#nav').before(n);
+}
 route();
 initSync();
 </script>
