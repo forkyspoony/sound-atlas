@@ -1,0 +1,2898 @@
+{
+ "un vaso": {
+  "l": "es",
+  "w": "un vaso",
+  "ipa": "um ˈbaso",
+  "g": "a glass",
+  "r": ""
+ },
+ "mi vaso": {
+  "l": "es",
+  "w": "mi vaso",
+  "ipa": "mi ˈβaso",
+  "g": "my glass",
+  "r": ""
+ },
+ "un gato": {
+  "l": "es",
+  "w": "un gato",
+  "ipa": "uŋ ˈɡat̪o",
+  "g": "a cat",
+  "r": ""
+ },
+ "el gato": {
+  "l": "es",
+  "w": "el gato",
+  "ipa": "el ˈɣat̪o",
+  "g": "the cat",
+  "r": ""
+ },
+ "un dedo": {
+  "l": "es",
+  "w": "un dedo",
+  "ipa": "un ˈd̪eðo",
+  "g": "a finger",
+  "r": ""
+ },
+ "mi dedo": {
+  "l": "es",
+  "w": "mi dedo",
+  "ipa": "mi ˈðeðo",
+  "g": "my finger",
+  "r": ""
+ },
+ "el dedo": {
+  "l": "es",
+  "w": "el dedo",
+  "ipa": "el ˈd̪eðo",
+  "g": "the finger",
+  "r": ""
+ },
+ "abogado": {
+  "l": "es",
+  "w": "abogado",
+  "ipa": "aβoˈɣaðo",
+  "g": "lawyer",
+  "r": ""
+ },
+ "un poco": {
+  "l": "es",
+  "w": "un poco",
+  "ipa": "um ˈpoko",
+  "g": "a little",
+  "r": ""
+ },
+ "tengo": {
+  "l": "es",
+  "w": "tengo",
+  "ipa": "ˈt̪eŋɡo",
+  "g": "I have",
+  "r": ""
+ },
+ "cinco": {
+  "l": "es",
+  "w": "cinco",
+  "ipa": "ˈsiŋko",
+  "g": "five",
+  "r": ""
+ },
+ "rosa": {
+  "l": "es",
+  "w": "rosa",
+  "ipa": "ˈrosa",
+  "g": "rose",
+  "r": ""
+ },
+ "Enrique": {
+  "l": "es",
+  "w": "Enrique",
+  "ipa": "enˈrike",
+  "g": "Enrique (name)",
+  "r": ""
+ },
+ "alrededor": {
+  "l": "es",
+  "w": "alrededor",
+  "ipa": "alreðeˈðoɾ",
+  "g": "around",
+  "r": ""
+ },
+ "Israel": {
+  "l": "es",
+  "w": "Israel",
+  "ipa": "israˈel",
+  "g": "Israel",
+  "r": ""
+ },
+ "ciudad": {
+  "l": "es",
+  "w": "ciudad",
+  "ipa": "sjuˈðað",
+  "g": "city",
+  "r": ""
+ },
+ "árbol": {
+  "l": "es",
+  "w": "árbol",
+  "ipa": "ˈaɾβol",
+  "g": "tree",
+  "r": ""
+ },
+ "café": {
+  "l": "es",
+  "w": "café",
+  "ipa": "kaˈfe",
+  "g": "coffee",
+  "r": ""
+ },
+ "canción": {
+  "l": "es",
+  "w": "canción",
+  "ipa": "kanˈsjon",
+  "g": "song",
+  "r": ""
+ },
+ "teléfono": {
+  "l": "es",
+  "w": "teléfono",
+  "ipa": "t̪eˈlefono",
+  "g": "telephone",
+  "r": ""
+ },
+ "papa": {
+  "l": "es",
+  "w": "papa",
+  "ipa": "ˈpapa",
+  "g": "potato",
+  "r": ""
+ },
+ "término": {
+  "l": "es",
+  "w": "término",
+  "ipa": "ˈt̪eɾmino",
+  "g": "end; term",
+  "r": ""
+ },
+ "termino": {
+  "l": "es",
+  "w": "termino",
+  "ipa": "t̪eɾˈmino",
+  "g": "I finish",
+  "r": ""
+ },
+ "terminó": {
+  "l": "es",
+  "w": "terminó",
+  "ipa": "t̪eɾmiˈno",
+  "g": "he/she finished",
+  "r": ""
+ },
+ "chocolate": {
+  "l": "es",
+  "w": "chocolate",
+  "ipa": "ʧokoˈlat̪e",
+  "g": "chocolate",
+  "r": ""
+ },
+ "animal": {
+  "l": "es",
+  "w": "animal",
+  "ipa": "aniˈmal",
+  "g": "animal",
+  "r": ""
+ },
+ "hospital": {
+  "l": "es",
+  "w": "hospital",
+  "ipa": "ospiˈt̪al",
+  "g": "hospital",
+  "r": ""
+ },
+ "bueno": {
+  "l": "es",
+  "w": "bueno",
+  "ipa": "ˈbweno",
+  "g": "good",
+  "r": ""
+ },
+ "tierra": {
+  "l": "es",
+  "w": "tierra",
+  "ipa": "ˈt̪jera",
+  "g": "earth",
+  "r": ""
+ },
+ "baile": {
+  "l": "es",
+  "w": "baile",
+  "ipa": "ˈbajle",
+  "g": "dance",
+  "r": ""
+ },
+ "país": {
+  "l": "es",
+  "w": "país",
+  "ipa": "paˈis",
+  "g": "country",
+  "r": ""
+ },
+ "los otros": {
+  "l": "es",
+  "w": "los otros",
+  "ipa": "loˈsot̪ɾos",
+  "g": "the others",
+  "r": ""
+ },
+ "una amiga": {
+  "l": "es",
+  "w": "una amiga",
+  "ipa": "unaˈmiɣa",
+  "g": "a friend",
+  "r": ""
+ },
+ "va a ir": {
+  "l": "es",
+  "w": "va a ir",
+  "ipa": "baˈiɾ",
+  "g": "is going to go",
+  "r": ""
+ },
+ "mis amigos": {
+  "l": "es",
+  "w": "mis amigos",
+  "ipa": "misaˈmiɣos",
+  "g": "my friends",
+  "r": ""
+ },
+ "queso": {
+  "l": "es",
+  "w": "queso",
+  "ipa": "ˈkeso",
+  "g": "cheese",
+  "r": ""
+ },
+ "guitarra": {
+  "l": "es",
+  "w": "guitarra",
+  "ipa": "ɡiˈt̪ara",
+  "g": "guitar",
+  "r": ""
+ },
+ "pingüino": {
+  "l": "es",
+  "w": "pingüino",
+  "ipa": "piŋˈɡwino",
+  "g": "penguin",
+  "r": ""
+ },
+ "México": {
+  "l": "es",
+  "w": "México",
+  "ipa": "ˈmexiko",
+  "g": "Mexico",
+  "r": ""
+ },
+ "taxi": {
+  "l": "es",
+  "w": "taxi",
+  "ipa": "ˈt̪aksi",
+  "g": "taxi",
+  "r": ""
+ },
+ "hielo": {
+  "l": "es",
+  "w": "hielo",
+  "ipa": "ˈʝelo",
+  "g": "ice",
+  "r": ""
+ },
+ "zapato": {
+  "l": "es",
+  "w": "zapato",
+  "ipa": "saˈpat̪o",
+  "g": "shoe",
+  "r": ""
+ },
+ "cielo": {
+  "l": "es",
+  "w": "cielo",
+  "ipa": "ˈsjelo",
+  "g": "sky",
+  "r": ""
+ },
+ "llave": {
+  "l": "es",
+  "w": "llave",
+  "ipa": "ˈʝaβe",
+  "g": "key",
+  "r": ""
+ },
+ "mano": {
+  "l": "es",
+  "w": "mano",
+  "ipa": "ˈmano",
+  "g": "hand",
+  "r": ""
+ },
+ "luna": {
+  "l": "es",
+  "w": "luna",
+  "ipa": "ˈluna",
+  "g": "moon",
+  "r": ""
+ },
+ "sol": {
+  "l": "es",
+  "w": "sol",
+  "ipa": "sol",
+  "g": "sun",
+  "r": ""
+ },
+ "foto": {
+  "l": "es",
+  "w": "foto",
+  "ipa": "ˈfot̪o",
+  "g": "photo",
+  "r": ""
+ },
+ "chico": {
+  "l": "es",
+  "w": "chico",
+  "ipa": "ˈʧiko",
+  "g": "boy",
+  "r": ""
+ },
+ "huevo": {
+  "l": "es",
+  "w": "huevo",
+  "ipa": "ˈweβo",
+  "g": "egg",
+  "r": ""
+ },
+ "妈": {
+  "l": "zh",
+  "w": "妈",
+  "ipa": "ma˥",
+  "g": "mom",
+  "r": "mā"
+ },
+ "麻": {
+  "l": "zh",
+  "w": "麻",
+  "ipa": "ma˧˥",
+  "g": "hemp",
+  "r": "má"
+ },
+ "马": {
+  "l": "zh",
+  "w": "马",
+  "ipa": "ma˨˩˦",
+  "g": "horse",
+  "r": "mǎ"
+ },
+ "骂": {
+  "l": "zh",
+  "w": "骂",
+  "ipa": "ma˥˩",
+  "g": "to scold",
+  "r": "mà"
+ },
+ "汤": {
+  "l": "zh",
+  "w": "汤",
+  "ipa": "tʰɑŋ˥",
+  "g": "soup",
+  "r": "tāng"
+ },
+ "糖": {
+  "l": "zh",
+  "w": "糖",
+  "ipa": "tʰɑŋ˧˥",
+  "g": "sugar",
+  "r": "táng"
+ },
+ "躺": {
+  "l": "zh",
+  "w": "躺",
+  "ipa": "tʰɑŋ˨˩˦",
+  "g": "to lie down",
+  "r": "tǎng"
+ },
+ "烫": {
+  "l": "zh",
+  "w": "烫",
+  "ipa": "tʰɑŋ˥˩",
+  "g": "scalding hot",
+  "r": "tàng"
+ },
+ "飞机": {
+  "l": "zh",
+  "w": "飞机",
+  "ipa": "feɪ˥ tɕi˥",
+  "g": "plane",
+  "r": "fēijī"
+ },
+ "中国": {
+  "l": "zh",
+  "w": "中国",
+  "ipa": "ʈʂʊŋ˥ kwo˧˥",
+  "g": "China",
+  "r": "Zhōngguó"
+ },
+ "铅笔": {
+  "l": "zh",
+  "w": "铅笔",
+  "ipa": "tɕʰjɛn˥ pi˨˩˦",
+  "g": "pencil",
+  "r": "qiānbǐ"
+ },
+ "商店": {
+  "l": "zh",
+  "w": "商店",
+  "ipa": "ʂɑŋ˥ tjɛn˥˩",
+  "g": "shop",
+  "r": "shāngdiàn"
+ },
+ "明天": {
+  "l": "zh",
+  "w": "明天",
+  "ipa": "miŋ˧˥ tʰjɛn˥",
+  "g": "tomorrow",
+  "r": "míngtiān"
+ },
+ "学习": {
+  "l": "zh",
+  "w": "学习",
+  "ipa": "ɕɥɛ˧˥ ɕi˧˥",
+  "g": "to study",
+  "r": "xuéxí"
+ },
+ "苹果": {
+  "l": "zh",
+  "w": "苹果",
+  "ipa": "pʰiŋ˧˥ kwo˨˩˦",
+  "g": "apple",
+  "r": "píngguǒ"
+ },
+ "同事": {
+  "l": "zh",
+  "w": "同事",
+  "ipa": "tʰʊŋ˧˥ ʂɨ˥˩",
+  "g": "colleague",
+  "r": "tóngshì"
+ },
+ "老师": {
+  "l": "zh",
+  "w": "老师",
+  "ipa": "laʊ˨˩ ʂɨ˥",
+  "g": "teacher",
+  "r": "lǎoshī"
+ },
+ "美国": {
+  "l": "zh",
+  "w": "美国",
+  "ipa": "meɪ˨˩ kwo˧˥",
+  "g": "USA",
+  "r": "Měiguó"
+ },
+ "你好": {
+  "l": "zh",
+  "w": "你好",
+  "ipa": "ni˧˥ xaʊ˨˩˦",
+  "g": "hello",
+  "r": "nǐhǎo"
+ },
+ "考试": {
+  "l": "zh",
+  "w": "考试",
+  "ipa": "kʰaʊ˨˩ ʂɨ˥˩",
+  "g": "exam",
+  "r": "kǎoshì"
+ },
+ "汽车": {
+  "l": "zh",
+  "w": "汽车",
+  "ipa": "tɕʰi˥˩ ʈʂʰɤ˥",
+  "g": "car",
+  "r": "qìchē"
+ },
+ "大学": {
+  "l": "zh",
+  "w": "大学",
+  "ipa": "ta˥˩ ɕɥɛ˧˥",
+  "g": "university",
+  "r": "dàxué"
+ },
+ "下雨": {
+  "l": "zh",
+  "w": "下雨",
+  "ipa": "ɕja˥˩ y˨˩˦",
+  "g": "to rain",
+  "r": "xiàyǔ"
+ },
+ "再见": {
+  "l": "zh",
+  "w": "再见",
+  "ipa": "tsaɪ˥˩ tɕjɛn˥˩",
+  "g": "goodbye",
+  "r": "zàijiàn"
+ },
+ "妈妈": {
+  "l": "zh",
+  "w": "妈妈",
+  "ipa": "ma˥ ma",
+  "g": "mom",
+  "r": "māma"
+ },
+ "谢谢": {
+  "l": "zh",
+  "w": "谢谢",
+  "ipa": "ɕjɛ˥˩ ɕjɛ",
+  "g": "thank you",
+  "r": "xièxie"
+ },
+ "朋友": {
+  "l": "zh",
+  "w": "朋友",
+  "ipa": "pʰəŋ˧˥ joʊ",
+  "g": "friend",
+  "r": "péngyou"
+ },
+ "东西": {
+  "l": "zh",
+  "w": "东西",
+  "ipa": "tʊŋ˥ ɕi",
+  "g": "thing, stuff",
+  "r": "dōngxi"
+ },
+ "很好": {
+  "l": "zh",
+  "w": "很好",
+  "ipa": "xən˧˥ xaʊ˨˩˦",
+  "g": "very good",
+  "r": "hěn hǎo"
+ },
+ "可以": {
+  "l": "zh",
+  "w": "可以",
+  "ipa": "kʰɤ˧˥ i˨˩˦",
+  "g": "can, may",
+  "r": "kěyǐ"
+ },
+ "水果": {
+  "l": "zh",
+  "w": "水果",
+  "ipa": "ʂweɪ˧˥ kwo˨˩˦",
+  "g": "fruit",
+  "r": "shuǐguǒ"
+ },
+ "我很好": {
+  "l": "zh",
+  "w": "我很好",
+  "ipa": "wo˨˩ xən˧˥ xaʊ˨˩˦",
+  "g": "I'm fine",
+  "r": "wǒ hěn hǎo"
+ },
+ "不是": {
+  "l": "zh",
+  "w": "不是",
+  "ipa": "pu˧˥ ʂɨ˥˩",
+  "g": "is not",
+  "r": "bú shì"
+ },
+ "不对": {
+  "l": "zh",
+  "w": "不对",
+  "ipa": "pu˧˥ tweɪ˥˩",
+  "g": "not right",
+  "r": "bú duì"
+ },
+ "不好": {
+  "l": "zh",
+  "w": "不好",
+  "ipa": "pu˥˩ xaʊ˨˩˦",
+  "g": "not good",
+  "r": "bù hǎo"
+ },
+ "不来": {
+  "l": "zh",
+  "w": "不来",
+  "ipa": "pu˥˩ laɪ˧˥",
+  "g": "not coming",
+  "r": "bù lái"
+ },
+ "一个": {
+  "l": "zh",
+  "w": "一个",
+  "ipa": "i˧˥ kɤ",
+  "g": "one (of something)",
+  "r": "yí ge"
+ },
+ "一天": {
+  "l": "zh",
+  "w": "一天",
+  "ipa": "i˥˩ tʰjɛn˥",
+  "g": "one day",
+  "r": "yì tiān"
+ },
+ "一年": {
+  "l": "zh",
+  "w": "一年",
+  "ipa": "i˥˩ njɛn˧˥",
+  "g": "one year",
+  "r": "yì nián"
+ },
+ "一起": {
+  "l": "zh",
+  "w": "一起",
+  "ipa": "i˥˩ tɕʰi˨˩˦",
+  "g": "together",
+  "r": "yìqǐ"
+ },
+ "第一": {
+  "l": "zh",
+  "w": "第一",
+  "ipa": "ti˥˩ i˥",
+  "g": "first",
+  "r": "dì yī"
+ },
+ "盘": {
+  "l": "zh",
+  "w": "盘",
+  "ipa": "pʰan˧˥",
+  "g": "plate",
+  "r": "pán"
+ },
+ "旁": {
+  "l": "zh",
+  "w": "旁",
+  "ipa": "pʰɑŋ˧˥",
+  "g": "side",
+  "r": "páng"
+ },
+ "陈": {
+  "l": "zh",
+  "w": "陈",
+  "ipa": "ʈʂʰən˧˥",
+  "g": "Chen (surname)",
+  "r": "chén"
+ },
+ "成": {
+  "l": "zh",
+  "w": "成",
+  "ipa": "ʈʂʰəŋ˧˥",
+  "g": "to become",
+  "r": "chéng"
+ },
+ "金": {
+  "l": "zh",
+  "w": "金",
+  "ipa": "tɕin˥",
+  "g": "gold",
+  "r": "jīn"
+ },
+ "京": {
+  "l": "zh",
+  "w": "京",
+  "ipa": "tɕiŋ˥",
+  "g": "capital",
+  "r": "jīng"
+ },
+ "对": {
+  "l": "zh",
+  "w": "对",
+  "ipa": "tweɪ˥˩",
+  "g": "correct",
+  "r": "duì"
+ },
+ "春": {
+  "l": "zh",
+  "w": "春",
+  "ipa": "ʈʂʰwən˥",
+  "g": "spring",
+  "r": "chūn"
+ },
+ "六": {
+  "l": "zh",
+  "w": "六",
+  "ipa": "ljoʊ˥˩",
+  "g": "six",
+  "r": "liù"
+ },
+ "月": {
+  "l": "zh",
+  "w": "月",
+  "ipa": "ɥɛ˥˩",
+  "g": "moon; month",
+  "r": "yuè"
+ },
+ "风": {
+  "l": "zh",
+  "w": "风",
+  "ipa": "fəŋ˥",
+  "g": "wind",
+  "r": "fēng"
+ },
+ "哪儿": {
+  "l": "zh",
+  "w": "哪儿",
+  "ipa": "nɑɻ˨˩˦",
+  "g": "where",
+  "r": "nǎr"
+ },
+ "一点儿": {
+  "l": "zh",
+  "w": "一点儿",
+  "ipa": "i˥˩ tjɑɻ˨˩˦",
+  "g": "a little",
+  "r": "yìdiǎnr"
+ },
+ "玩儿": {
+  "l": "zh",
+  "w": "玩儿",
+  "ipa": "wɑɻ˧˥",
+  "g": "to play",
+  "r": "wánr"
+ },
+ "مرة": {
+  "l": "ar",
+  "w": "مرة",
+  "ipa": "mara",
+  "g": "woman",
+  "r": "mara"
+ },
+ "مرّة": {
+  "l": "ar",
+  "w": "مرّة",
+  "ipa": "marra",
+  "g": "once; a time",
+  "r": "marra"
+ },
+ "علم": {
+  "l": "ar",
+  "w": "علم",
+  "ipa": "ʕalam",
+  "g": "flag",
+  "r": "ʿalam"
+ },
+ "علّم": {
+  "l": "ar",
+  "w": "علّم",
+  "ipa": "ʕallam",
+  "g": "he taught",
+  "r": "ʿallam"
+ },
+ "حمام": {
+  "l": "ar",
+  "w": "حمام",
+  "ipa": "ħamaːm",
+  "g": "pigeons",
+  "r": "ḥamām"
+ },
+ "حمّام": {
+  "l": "ar",
+  "w": "حمّام",
+  "ipa": "ħammaːm",
+  "g": "bathroom",
+  "r": "ḥammām"
+ },
+ "جمل": {
+  "l": "ar",
+  "w": "جمل",
+  "ipa": "ʒamal",
+  "g": "camel",
+  "r": "jamal"
+ },
+ "جمال": {
+  "l": "ar",
+  "w": "جمال",
+  "ipa": "ʒamaːl",
+  "g": "beauty",
+  "r": "jamāl"
+ },
+ "كتب": {
+  "l": "ar",
+  "w": "كتب",
+  "ipa": "katab",
+  "g": "he wrote",
+  "r": "katab"
+ },
+ "كاتب": {
+  "l": "ar",
+  "w": "كاتب",
+  "ipa": "kaːteb",
+  "g": "writer",
+  "r": "kāteb"
+ },
+ "البيت": {
+  "l": "ar",
+  "w": "البيت",
+  "ipa": "ilbeːt",
+  "g": "the house",
+  "r": "il-bēt"
+ },
+ "الباب": {
+  "l": "ar",
+  "w": "الباب",
+  "ipa": "ilbaːb",
+  "g": "the door",
+  "r": "il-bāb"
+ },
+ "الكتاب": {
+  "l": "ar",
+  "w": "الكتاب",
+  "ipa": "liktaːb",
+  "g": "the book",
+  "r": "li-ktāb"
+ },
+ "الشمس": {
+  "l": "ar",
+  "w": "الشمس",
+  "ipa": "iʃʃams",
+  "g": "the sun",
+  "r": "iš-šams"
+ },
+ "النور": {
+  "l": "ar",
+  "w": "النور",
+  "ipa": "innuːr",
+  "g": "the light",
+  "r": "in-nūr"
+ },
+ "الدار": {
+  "l": "ar",
+  "w": "الدار",
+  "ipa": "id̪d̪aːr",
+  "g": "the home",
+  "r": "id-dār"
+ },
+ "دهب": {
+  "l": "ar",
+  "w": "دهب",
+  "ipa": "d̪ahab",
+  "g": "gold",
+  "r": "dahab"
+ },
+ "ضهر": {
+  "l": "ar",
+  "w": "ضهر",
+  "ipa": "dˤuhr",
+  "g": "noon",
+  "r": "ḍuhr"
+ },
+ "ضو": {
+  "l": "ar",
+  "w": "ضو",
+  "ipa": "dˤoː",
+  "g": "light",
+  "r": "ḍō"
+ },
+ "كبير": {
+  "l": "ar",
+  "w": "كبير",
+  "ipa": "kbiːr",
+  "g": "big",
+  "r": "kbīr"
+ },
+ "مدرسة": {
+  "l": "ar",
+  "w": "مدرسة",
+  "ipa": "ˈmadrase",
+  "g": "school",
+  "r": "madrase"
+ },
+ "مكتبة": {
+  "l": "ar",
+  "w": "مكتبة",
+  "ipa": "ˈmaktabe",
+  "g": "library",
+  "r": "maktabe"
+ },
+ "بيروت": {
+  "l": "ar",
+  "w": "بيروت",
+  "ipa": "beːˈruːt",
+  "g": "Beirut",
+  "r": "bēyrūt"
+ },
+ "قَلْب": {
+  "l": "ar",
+  "w": "قَلْب",
+  "ipa": "qalb",
+  "g": "heart (MSA)",
+  "r": "qalb"
+ },
+ "ثَلاثة": {
+  "l": "ar",
+  "w": "ثَلاثة",
+  "ipa": "θalaːθa",
+  "g": "three (MSA)",
+  "r": "thalātha"
+ },
+ "ذَهَب": {
+  "l": "ar",
+  "w": "ذَهَب",
+  "ipa": "ðahab",
+  "g": "gold (MSA)",
+  "r": "dhahab"
+ },
+ "ظُهْر": {
+  "l": "ar",
+  "w": "ظُهْر",
+  "ipa": "ðˤuhr",
+  "g": "noon (MSA)",
+  "r": "ẓuhr"
+ },
+ "جَمِيل": {
+  "l": "ar",
+  "w": "جَمِيل",
+  "ipa": "dʒamiːl",
+  "g": "beautiful (MSA)",
+  "r": "jamīl"
+ },
+ "عَيْن": {
+  "l": "ar",
+  "w": "عَيْن",
+  "ipa": "ʕajn",
+  "g": "eye (MSA)",
+  "r": "ʿayn"
+ },
+ "صَيْف": {
+  "l": "ar",
+  "w": "صَيْف",
+  "ipa": "sˤajf",
+  "g": "summer (MSA)",
+  "r": "ṣayf"
+ },
+ "ضَوْء": {
+  "l": "ar",
+  "w": "ضَوْء",
+  "ipa": "dˤawʔ",
+  "g": "light (MSA)",
+  "r": "ḍawʾ"
+ },
+ "say (EN)": {
+  "l": "en",
+  "w": "say (EN)",
+  "ipa": "seɪ",
+  "g": "say",
+  "r": ""
+ },
+ "may (EN)": {
+  "l": "en",
+  "w": "may (EN)",
+  "ipa": "meɪ",
+  "g": "may",
+  "r": ""
+ },
+ "day (EN)": {
+  "l": "en",
+  "w": "day (EN)",
+  "ipa": "deɪ",
+  "g": "day",
+  "r": ""
+ },
+ "see (EN)": {
+  "l": "en",
+  "w": "see (EN)",
+  "ipa": "si",
+  "g": "see",
+  "r": ""
+ },
+ "no (EN)": {
+  "l": "en",
+  "w": "no (EN)",
+  "ipa": "noʊ",
+  "g": "no",
+  "r": ""
+ },
+ "low (EN)": {
+  "l": "en",
+  "w": "low (EN)",
+  "ipa": "loʊ",
+  "g": "low",
+  "r": ""
+ },
+ "two (EN)": {
+  "l": "en",
+  "w": "two (EN)",
+  "ipa": "tʰu",
+  "g": "two",
+  "r": ""
+ },
+ "father (EN)": {
+  "l": "en",
+  "w": "father (EN)",
+  "ipa": "ˈfɑðɚ",
+  "g": "father",
+  "r": ""
+ },
+ "banana (EN)": {
+  "l": "en",
+  "w": "banana (EN)",
+  "ipa": "bəˈnænə",
+  "g": "banana",
+  "r": ""
+ },
+ "chocolate (EN)": {
+  "l": "en",
+  "w": "chocolate (EN)",
+  "ipa": "ˈtʃɑklət",
+  "g": "chocolate",
+  "r": ""
+ },
+ "tomato (EN)": {
+  "l": "en",
+  "w": "tomato (EN)",
+  "ipa": "təˈmeɪɾoʊ",
+  "g": "tomato",
+  "r": ""
+ },
+ "taco (EN)": {
+  "l": "en",
+  "w": "taco (EN)",
+  "ipa": "ˈtʰɑkoʊ",
+  "g": "taco",
+  "r": ""
+ },
+ "animal (EN)": {
+  "l": "en",
+  "w": "animal (EN)",
+  "ipa": "ˈænəməɫ",
+  "g": "animal",
+  "r": ""
+ },
+ "hospital (EN)": {
+  "l": "en",
+  "w": "hospital (EN)",
+  "ipa": "ˈhɑspɪɾəɫ",
+  "g": "hospital",
+  "r": ""
+ },
+ "pin (EN)": {
+  "l": "en",
+  "w": "pin (EN)",
+  "ipa": "pʰɪn",
+  "g": "pin",
+  "r": ""
+ },
+ "spin (EN)": {
+  "l": "en",
+  "w": "spin (EN)",
+  "ipa": "spɪn",
+  "g": "spin",
+  "r": ""
+ },
+ "pan (EN)": {
+  "l": "en",
+  "w": "pan (EN)",
+  "ipa": "pʰæn",
+  "g": "pan",
+  "r": ""
+ },
+ "pasta (EN)": {
+  "l": "en",
+  "w": "pasta (EN)",
+  "ipa": "ˈpʰɑstə",
+  "g": "pasta",
+  "r": ""
+ },
+ "tea (EN)": {
+  "l": "en",
+  "w": "tea (EN)",
+  "ipa": "tʰi",
+  "g": "tea",
+  "r": ""
+ },
+ "dose (EN)": {
+  "l": "en",
+  "w": "dose (EN)",
+  "ipa": "doʊs",
+  "g": "dose",
+  "r": ""
+ },
+ "kin (EN)": {
+  "l": "en",
+  "w": "kin (EN)",
+  "ipa": "kʰɪn",
+  "g": "kin",
+  "r": ""
+ },
+ "skin (EN)": {
+  "l": "en",
+  "w": "skin (EN)",
+  "ipa": "skɪn",
+  "g": "skin",
+  "r": ""
+ },
+ "coma (EN)": {
+  "l": "en",
+  "w": "coma (EN)",
+  "ipa": "ˈkʰoʊmə",
+  "g": "coma",
+  "r": ""
+ },
+ "other (EN)": {
+  "l": "en",
+  "w": "other (EN)",
+  "ipa": "ˈʌðɚ",
+  "g": "other",
+  "r": ""
+ },
+ "ladder (EN)": {
+  "l": "en",
+  "w": "ladder (EN)",
+  "ipa": "ˈlæɾɚ",
+  "g": "ladder",
+  "r": ""
+ },
+ "butter (EN)": {
+  "l": "en",
+  "w": "butter (EN)",
+  "ipa": "ˈbʌɾɚ",
+  "g": "butter",
+  "r": ""
+ },
+ "water (EN)": {
+  "l": "en",
+  "w": "water (EN)",
+  "ipa": "ˈwɑɾɚ",
+  "g": "water",
+  "r": ""
+ },
+ "canyon (EN)": {
+  "l": "en",
+  "w": "canyon (EN)",
+  "ipa": "ˈkænjən",
+  "g": "canyon",
+  "r": ""
+ },
+ "onion (EN)": {
+  "l": "en",
+  "w": "onion (EN)",
+  "ipa": "ˈʌnjən",
+  "g": "onion",
+  "r": ""
+ },
+ "yes (EN)": {
+  "l": "en",
+  "w": "yes (EN)",
+  "ipa": "jɛs",
+  "g": "yes",
+  "r": ""
+ },
+ "hat (EN)": {
+  "l": "en",
+  "w": "hat (EN)",
+  "ipa": "hæt",
+  "g": "hat",
+  "r": ""
+ },
+ "hug (EN)": {
+  "l": "en",
+  "w": "hug (EN)",
+  "ipa": "hʌɡ",
+  "g": "hug",
+  "r": ""
+ },
+ "feel (EN)": {
+  "l": "en",
+  "w": "feel (EN)",
+  "ipa": "fiɫ",
+  "g": "feel",
+  "r": ""
+ },
+ "sole (EN)": {
+  "l": "en",
+  "w": "sole (EN)",
+  "ipa": "soʊɫ",
+  "g": "sole",
+  "r": ""
+ },
+ "full (EN)": {
+  "l": "en",
+  "w": "full (EN)",
+  "ipa": "fʊɫ",
+  "g": "full",
+  "r": ""
+ },
+ "sé": {
+  "l": "es",
+  "w": "sé",
+  "ipa": "se",
+  "g": "I know",
+  "r": ""
+ },
+ "me": {
+  "l": "es",
+  "w": "me",
+  "ipa": "me",
+  "g": "me",
+  "r": ""
+ },
+ "de": {
+  "l": "es",
+  "w": "de",
+  "ipa": "d̪e",
+  "g": "of, from",
+  "r": ""
+ },
+ "lo": {
+  "l": "es",
+  "w": "lo",
+  "ipa": "lo",
+  "g": "it, him",
+  "r": ""
+ },
+ "banana": {
+  "l": "es",
+  "w": "banana",
+  "ipa": "baˈnana",
+  "g": "banana",
+  "r": ""
+ },
+ "taco": {
+  "l": "es",
+  "w": "taco",
+  "ipa": "ˈt̪ako",
+  "g": "taco",
+  "r": ""
+ },
+ "pan": {
+  "l": "es",
+  "w": "pan",
+  "ipa": "pan",
+  "g": "bread",
+  "r": ""
+ },
+ "pasta": {
+  "l": "es",
+  "w": "pasta",
+  "ipa": "ˈpast̪a",
+  "g": "pasta",
+  "r": ""
+ },
+ "kilo": {
+  "l": "es",
+  "w": "kilo",
+  "ipa": "ˈkilo",
+  "g": "kilo",
+  "r": ""
+ },
+ "poco": {
+  "l": "es",
+  "w": "poco",
+  "ipa": "ˈpoko",
+  "g": "a little",
+  "r": ""
+ },
+ "bebé": {
+  "l": "es",
+  "w": "bebé",
+  "ipa": "beˈβe",
+  "g": "baby",
+  "r": ""
+ },
+ "vino": {
+  "l": "es",
+  "w": "vino",
+  "ipa": "ˈbino",
+  "g": "wine",
+  "r": ""
+ },
+ "lado": {
+  "l": "es",
+  "w": "lado",
+  "ipa": "ˈlaðo",
+  "g": "side",
+  "r": ""
+ },
+ "verdad": {
+  "l": "es",
+  "w": "verdad",
+  "ipa": "beɾˈðað",
+  "g": "truth",
+  "r": ""
+ },
+ "amigo": {
+  "l": "es",
+  "w": "amigo",
+  "ipa": "aˈmiɣo",
+  "g": "friend",
+  "r": ""
+ },
+ "algo": {
+  "l": "es",
+  "w": "algo",
+  "ipa": "ˈalɣo",
+  "g": "something",
+  "r": ""
+ },
+ "caldo": {
+  "l": "es",
+  "w": "caldo",
+  "ipa": "ˈkald̪o",
+  "g": "broth",
+  "r": ""
+ },
+ "gordo": {
+  "l": "es",
+  "w": "gordo",
+  "ipa": "ˈɡoɾðo",
+  "g": "fat",
+  "r": ""
+ },
+ "grande": {
+  "l": "es",
+  "w": "grande",
+  "ipa": "ˈɡɾand̪e",
+  "g": "big",
+  "r": ""
+ },
+ "para": {
+  "l": "es",
+  "w": "para",
+  "ipa": "ˈpaɾa",
+  "g": "for",
+  "r": ""
+ },
+ "hora": {
+  "l": "es",
+  "w": "hora",
+  "ipa": "ˈoɾa",
+  "g": "hour",
+  "r": ""
+ },
+ "tres": {
+  "l": "es",
+  "w": "tres",
+  "ipa": "t̪ɾes",
+  "g": "three",
+  "r": ""
+ },
+ "comer": {
+  "l": "es",
+  "w": "comer",
+  "ipa": "koˈmeɾ",
+  "g": "to eat",
+  "r": ""
+ },
+ "radio": {
+  "l": "es",
+  "w": "radio",
+  "ipa": "ˈraðjo",
+  "g": "radio",
+  "r": ""
+ },
+ "cañón": {
+  "l": "es",
+  "w": "cañón",
+  "ipa": "kaˈɲon",
+  "g": "canyon",
+  "r": ""
+ },
+ "mañana": {
+  "l": "es",
+  "w": "mañana",
+  "ipa": "maˈɲana",
+  "g": "tomorrow",
+  "r": ""
+ },
+ "ya": {
+  "l": "es",
+  "w": "ya",
+  "ipa": "ʝa",
+  "g": "already",
+  "r": ""
+ },
+ "gente": {
+  "l": "es",
+  "w": "gente",
+  "ipa": "ˈxent̪e",
+  "g": "people",
+  "r": ""
+ },
+ "jugo": {
+  "l": "es",
+  "w": "jugo",
+  "ipa": "ˈxuɣo",
+  "g": "juice",
+  "r": ""
+ },
+ "ajo": {
+  "l": "es",
+  "w": "ajo",
+  "ipa": "ˈaxo",
+  "g": "garlic",
+  "r": ""
+ },
+ "mujer": {
+  "l": "es",
+  "w": "mujer",
+  "ipa": "muˈxeɾ",
+  "g": "woman",
+  "r": ""
+ },
+ "mil": {
+  "l": "es",
+  "w": "mil",
+  "ipa": "mil",
+  "g": "thousand",
+  "r": ""
+ },
+ "papel": {
+  "l": "es",
+  "w": "papel",
+  "ipa": "paˈpel",
+  "g": "paper",
+  "r": ""
+ },
+ "mismo": {
+  "l": "es",
+  "w": "mismo",
+  "ipa": "ˈmizmo",
+  "g": "same",
+  "r": ""
+ },
+ "hablan": {
+  "l": "es",
+  "w": "hablan",
+  "ipa": "ˈaβlan",
+  "g": "they speak",
+  "r": ""
+ },
+ "lápiz": {
+  "l": "es",
+  "w": "lápiz",
+  "ipa": "ˈlapis",
+  "g": "pencil",
+  "r": ""
+ },
+ "examen": {
+  "l": "es",
+  "w": "examen",
+  "ipa": "ekˈsamen",
+  "g": "exam",
+  "r": ""
+ },
+ "sábado": {
+  "l": "es",
+  "w": "sábado",
+  "ipa": "ˈsaβaðo",
+  "g": "Saturday",
+  "r": ""
+ },
+ "aire": {
+  "l": "es",
+  "w": "aire",
+  "ipa": "ˈajɾe",
+  "g": "air",
+  "r": ""
+ },
+ "auto": {
+  "l": "es",
+  "w": "auto",
+  "ipa": "ˈawt̪o",
+  "g": "car",
+  "r": ""
+ },
+ "río": {
+  "l": "es",
+  "w": "río",
+  "ipa": "ˈrio",
+  "g": "river",
+  "r": ""
+ },
+ "gato": {
+  "l": "es",
+  "w": "gato",
+  "ipa": "ˈɡat̪o",
+  "g": "cat",
+  "r": ""
+ },
+ "cine": {
+  "l": "es",
+  "w": "cine",
+  "ipa": "ˈsine",
+  "g": "cinema",
+  "r": ""
+ },
+ "guerra": {
+  "l": "es",
+  "w": "guerra",
+  "ipa": "ˈɡera",
+  "g": "war",
+  "r": ""
+ },
+ "mundo": {
+  "l": "es",
+  "w": "mundo",
+  "ipa": "ˈmund̪o",
+  "g": "world",
+  "r": ""
+ },
+ "ojo": {
+  "l": "es",
+  "w": "ojo",
+  "ipa": "ˈoxo",
+  "g": "eye",
+  "r": ""
+ },
+ "hola": {
+  "l": "es",
+  "w": "hola",
+  "ipa": "ˈola",
+  "g": "hello",
+  "r": ""
+ },
+ "how (EN)": {
+  "l": "en",
+  "w": "how (EN)",
+  "ipa": "haʊ",
+  "g": "how",
+  "r": ""
+ },
+ "she (EN)": {
+  "l": "en",
+  "w": "she (EN)",
+  "ipa": "ʃi",
+  "g": "she",
+  "r": ""
+ },
+ "no! (EN)": {
+  "l": "en",
+  "w": "no! (EN)",
+  "ipa": "noʊ",
+  "g": "No!",
+  "r": ""
+ },
+ "huh? (EN)": {
+  "l": "en",
+  "w": "huh? (EN)",
+  "ipa": "hʌ",
+  "g": "Huh?",
+  "r": ""
+ },
+ "cats (EN)": {
+  "l": "en",
+  "w": "cats (EN)",
+  "ipa": "kʰæts",
+  "g": "cats",
+  "r": ""
+ },
+ "sure (EN)": {
+  "l": "en",
+  "w": "sure (EN)",
+  "ipa": "ʃʊɹ",
+  "g": "sure",
+  "r": ""
+ },
+ "shirt (EN)": {
+  "l": "en",
+  "w": "shirt (EN)",
+  "ipa": "ʃɝt",
+  "g": "shirt",
+  "r": ""
+ },
+ "run (EN)": {
+  "l": "en",
+  "w": "run (EN)",
+  "ipa": "ɹʌn",
+  "g": "run",
+  "r": ""
+ },
+ "cheap (EN)": {
+  "l": "en",
+  "w": "cheap (EN)",
+  "ipa": "tʃʰip",
+  "g": "cheap",
+  "r": ""
+ },
+ "jeep (EN)": {
+  "l": "en",
+  "w": "jeep (EN)",
+  "ipa": "dʒip",
+  "g": "jeep",
+  "r": ""
+ },
+ "sin (EN)": {
+  "l": "en",
+  "w": "sin (EN)",
+  "ipa": "sɪn",
+  "g": "sin",
+  "r": ""
+ },
+ "sing (EN)": {
+  "l": "en",
+  "w": "sing (EN)",
+  "ipa": "sɪŋ",
+  "g": "sing",
+  "r": ""
+ },
+ "measure (EN)": {
+  "l": "en",
+  "w": "measure (EN)",
+  "ipa": "ˈmɛʒɚ",
+  "g": "measure",
+  "r": ""
+ },
+ "uh-oh (EN)": {
+  "l": "en",
+  "w": "uh-oh (EN)",
+  "ipa": "ˈʌʔoʊ",
+  "g": "uh-oh",
+  "r": ""
+ },
+ "think (EN)": {
+  "l": "en",
+  "w": "think (EN)",
+  "ipa": "θɪŋk",
+  "g": "think",
+  "r": ""
+ },
+ "this (EN)": {
+  "l": "en",
+  "w": "this (EN)",
+  "ipa": "ðɪs",
+  "g": "this",
+  "r": ""
+ },
+ "problema": {
+  "l": "es",
+  "w": "problema",
+  "ipa": "pɾoˈβlema",
+  "g": "problem",
+  "r": ""
+ },
+ "tren": {
+  "l": "es",
+  "w": "tren",
+  "ipa": "t̪ɾen",
+  "g": "train",
+  "r": ""
+ },
+ "otro": {
+  "l": "es",
+  "w": "otro",
+  "ipa": "ˈot̪ɾo",
+  "g": "other",
+  "r": ""
+ },
+ "cuatro": {
+  "l": "es",
+  "w": "cuatro",
+  "ipa": "ˈkwat̪ɾo",
+  "g": "four",
+  "r": ""
+ },
+ "libro": {
+  "l": "es",
+  "w": "libro",
+  "ipa": "ˈliβɾo",
+  "g": "book",
+  "r": ""
+ },
+ "plato": {
+  "l": "es",
+  "w": "plato",
+  "ipa": "ˈplat̪o",
+  "g": "plate",
+  "r": ""
+ },
+ "blanco": {
+  "l": "es",
+  "w": "blanco",
+  "ipa": "ˈblaŋko",
+  "g": "white",
+  "r": ""
+ },
+ "¿Hablas español?": {
+  "l": "es",
+  "w": "¿Hablas español?",
+  "ipa": "ˈaβlas espaˈɲol",
+  "g": "Do you speak Spanish?",
+  "r": ""
+ },
+ "Es tu casa.": {
+  "l": "es",
+  "w": "Es tu casa.",
+  "ipa": "es t̪u ˈkasa",
+  "g": "It's your house.",
+  "r": ""
+ },
+ "¿Es tu casa?": {
+  "l": "es",
+  "w": "¿Es tu casa?",
+  "ipa": "es t̪u ˈkasa",
+  "g": "Is it your house?",
+  "r": ""
+ },
+ "¿Dónde vives?": {
+  "l": "es",
+  "w": "¿Dónde vives?",
+  "ipa": "ˈd̪onde ˈβiβes",
+  "g": "Where do you live?",
+  "r": ""
+ },
+ "你是老师。": {
+  "l": "zh",
+  "w": "你是老师。",
+  "ipa": "ni˨˩ ʂɨ˥˩ laʊ˨˩ ʂɨ˥",
+  "g": "You're a teacher.",
+  "r": "nǐ shì lǎoshī"
+ },
+ "你是老师吗？": {
+  "l": "zh",
+  "w": "你是老师吗？",
+  "ipa": "ni˨˩ ʂɨ˥˩ laʊ˨˩ ʂɨ˥ ma",
+  "g": "Are you a teacher?",
+  "r": "nǐ shì lǎoshī ma"
+ },
+ "你好吗？": {
+  "l": "zh",
+  "w": "你好吗？",
+  "ipa": "ni˧˥ xaʊ˨˩ ma",
+  "g": "How are you?",
+  "r": "nǐ hǎo ma"
+ },
+ "إنت تعبان.": {
+  "l": "ar",
+  "w": "إنت تعبان.",
+  "ipa": "ˈʔinta taʕˈbaːn",
+  "g": "You're tired.",
+  "r": "inta taʿbān"
+ },
+ "إنت تعبان؟": {
+  "l": "ar",
+  "w": "إنت تعبان؟",
+  "ipa": "ˈʔinta taʕˈbaːn",
+  "g": "Are you tired?",
+  "r": "inta taʿbān?"
+ },
+ "زيت": {
+  "l": "ar",
+  "w": "زيت",
+  "ipa": "zeːt",
+  "g": "oil",
+  "r": "zēt"
+ },
+ "لا": {
+  "l": "ar",
+  "w": "لا",
+  "ipa": "laː",
+  "g": "no",
+  "r": "lā"
+ },
+ "هرم": {
+  "l": "ar",
+  "w": "هرم",
+  "ipa": "haram",
+  "g": "pyramid",
+  "r": "haram"
+ },
+ "حرم": {
+  "l": "ar",
+  "w": "حرم",
+  "ipa": "ħaram",
+  "g": "sanctuary",
+  "r": "ḥaram"
+ },
+ "ألم": {
+  "l": "ar",
+  "w": "ألم",
+  "ipa": "ʔalam",
+  "g": "pain",
+  "r": "ʾalam"
+ },
+ "حمل": {
+  "l": "ar",
+  "w": "حمل",
+  "ipa": "ħamal",
+  "g": "lamb",
+  "r": "ḥamal"
+ },
+ "خيمة": {
+  "l": "ar",
+  "w": "خيمة",
+  "ipa": "xeːme",
+  "g": "tent",
+  "r": "khēme"
+ },
+ "غيمة": {
+  "l": "ar",
+  "w": "غيمة",
+  "ipa": "ɣeːme",
+  "g": "cloud",
+  "r": "ghēme"
+ },
+ "تاب": {
+  "l": "ar",
+  "w": "تاب",
+  "ipa": "taːb",
+  "g": "repented",
+  "r": "tāb"
+ },
+ "طاب": {
+  "l": "ar",
+  "w": "طاب",
+  "ipa": "tˤaːb",
+  "g": "became pleasant",
+  "r": "ṭāb"
+ },
+ "توب": {
+  "l": "ar",
+  "w": "توب",
+  "ipa": "toːb",
+  "g": "garment",
+  "r": "tōb"
+ },
+ "طوب": {
+  "l": "ar",
+  "w": "طوب",
+  "ipa": "tˤoːb",
+  "g": "bricks",
+  "r": "ṭōb"
+ },
+ "سدّ": {
+  "l": "ar",
+  "w": "سدّ",
+  "ipa": "sadd",
+  "g": "dam",
+  "r": "sadd"
+ },
+ "صدّ": {
+  "l": "ar",
+  "w": "صدّ",
+  "ipa": "sˤadd",
+  "g": "pushed back",
+  "r": "ṣadd"
+ },
+ "دلّ": {
+  "l": "ar",
+  "w": "دلّ",
+  "ipa": "dall",
+  "g": "pointed out",
+  "r": "dall"
+ },
+ "ضلّ": {
+  "l": "ar",
+  "w": "ضلّ",
+  "ipa": "dˤall",
+  "g": "kept on",
+  "r": "ḍall"
+ },
+ "عامل": {
+  "l": "ar",
+  "w": "عامل",
+  "ipa": "ʕaːmel",
+  "g": "worker",
+  "r": "ʿāmel"
+ },
+ "خبز": {
+  "l": "ar",
+  "w": "خبز",
+  "ipa": "xebez",
+  "g": "bread",
+  "r": "khebez"
+ },
+ "مطبخ": {
+  "l": "ar",
+  "w": "مطبخ",
+  "ipa": "matˤbax",
+  "g": "kitchen",
+  "r": "maṭbakh"
+ },
+ "شغل": {
+  "l": "ar",
+  "w": "شغل",
+  "ipa": "ʃeɣel",
+  "g": "work",
+  "r": "sheghel"
+ },
+ "مشغول": {
+  "l": "ar",
+  "w": "مشغول",
+  "ipa": "maʃˈɣuːl",
+  "g": "busy",
+  "r": "mashghūl"
+ },
+ "ولد": {
+  "l": "ar",
+  "w": "ولد",
+  "ipa": "walad",
+  "g": "boy",
+  "r": "walad"
+ },
+ "ورد": {
+  "l": "ar",
+  "w": "ورد",
+  "ipa": "ward",
+  "g": "roses",
+  "r": "ward"
+ },
+ "جوّا": {
+  "l": "ar",
+  "w": "جوّا",
+  "ipa": "ʒuwwa",
+  "g": "inside",
+  "r": "juwwa"
+ },
+ "سيّارة": {
+  "l": "ar",
+  "w": "سيّارة",
+  "ipa": "sajjaːra",
+  "g": "car",
+  "r": "sayyāra"
+ },
+ "قهوة": {
+  "l": "ar",
+  "w": "قهوة",
+  "ipa": "ʔahwe",
+  "g": "coffee",
+  "r": "ʾahwe"
+ },
+ "قال": {
+  "l": "ar",
+  "w": "قال",
+  "ipa": "ʔaːl",
+  "g": "he said",
+  "r": "ʾāl"
+ },
+ "دقيقة": {
+  "l": "ar",
+  "w": "دقيقة",
+  "ipa": "dʔiːʔa",
+  "g": "minute",
+  "r": "dʾīʾa"
+ },
+ "القدس": {
+  "l": "ar",
+  "w": "القدس",
+  "ipa": "ilʔuds",
+  "g": "Jerusalem",
+  "r": "il-ʾuds"
+ },
+ "قمر": {
+  "l": "ar",
+  "w": "قمر",
+  "ipa": "ʔamar",
+  "g": "moon",
+  "r": "ʾamar"
+ },
+ "كبيرة": {
+  "l": "ar",
+  "w": "كبيرة",
+  "ipa": "kbiːre",
+  "g": "big (f.)",
+  "r": "kbīre"
+ },
+ "بيضة": {
+  "l": "ar",
+  "w": "بيضة",
+  "ipa": "beːdˤa",
+  "g": "egg",
+  "r": "bēḍa"
+ },
+ "ساعة": {
+  "l": "ar",
+  "w": "ساعة",
+  "ipa": "saːʕa",
+  "g": "hour; watch",
+  "r": "sāʿa"
+ },
+ "شجرة": {
+  "l": "ar",
+  "w": "شجرة",
+  "ipa": "ʃaʒara",
+  "g": "tree",
+  "r": "shajara"
+ },
+ "ذكي": {
+  "l": "ar",
+  "w": "ذكي",
+  "ipa": "zaki",
+  "g": "smart",
+  "r": "zaki"
+ },
+ "ثقافة": {
+  "l": "ar",
+  "w": "ثقافة",
+  "ipa": "saʔaːfe",
+  "g": "culture",
+  "r": "saʾāfe"
+ },
+ "كتاب": {
+  "l": "ar",
+  "w": "كتاب",
+  "ipa": "ktaːb",
+  "g": "book",
+  "r": "ktāb"
+ },
+ "مكتب": {
+  "l": "ar",
+  "w": "مكتب",
+  "ipa": "ˈmaktab",
+  "g": "office",
+  "r": "maktab"
+ },
+ "بالبيت": {
+  "l": "ar",
+  "w": "بالبيت",
+  "ipa": "bilbeːt",
+  "g": "at home",
+  "r": "bil-bēt"
+ },
+ "بنت كبيرة": {
+  "l": "ar",
+  "w": "بنت كبيرة",
+  "ipa": "bint ikbiːre",
+  "g": "a big girl",
+  "r": "bint ikbīre"
+ },
+ "من بيروت": {
+  "l": "ar",
+  "w": "من بيروت",
+  "ipa": "mim beːruːt",
+  "g": "from Beirut",
+  "r": "mim bērūt"
+ },
+ "شو عم تعمل؟": {
+  "l": "ar",
+  "w": "شو عم تعمل؟",
+  "ipa": "ʃuː ʕam taʕmel",
+  "g": "What are you doing?",
+  "r": "shū ʿam taʿmel?"
+ },
+ "وين رايح؟": {
+  "l": "ar",
+  "w": "وين رايح؟",
+  "ipa": "weːn raːjeħ",
+  "g": "Where are you going?",
+  "r": "wēn rāyeḥ?"
+ },
+ "بدّي قهوة": {
+  "l": "ar",
+  "w": "بدّي قهوة",
+  "ipa": "biddi ʔahwe",
+  "g": "I want coffee",
+  "r": "biddi ʾahwe"
+ },
+ "ما بعرف": {
+  "l": "ar",
+  "w": "ما بعرف",
+  "ipa": "ma baʕref",
+  "g": "I don't know",
+  "r": "ma baʿref"
+ },
+ "الحمد لله": {
+  "l": "ar",
+  "w": "الحمد لله",
+  "ipa": "ilħamdilla",
+  "g": "thank God",
+  "r": "il-ḥamdilla"
+ },
+ "إن شاء الله": {
+  "l": "ar",
+  "w": "إن شاء الله",
+  "ipa": "inʃaˈlla",
+  "g": "God willing",
+  "r": "inshalla"
+ },
+ "تشرّفنا": {
+  "l": "ar",
+  "w": "تشرّفنا",
+  "ipa": "tʃarrafna",
+  "g": "nice to meet you",
+  "r": "tsharrafna"
+ },
+ "كيف حالك؟": {
+  "l": "ar",
+  "w": "كيف حالك؟",
+  "ipa": "keːf ħaːlak",
+  "g": "How are you?",
+  "r": "kēf ḥālak?"
+ },
+ "让": {
+  "l": "zh",
+  "w": "让",
+  "ipa": "ɻɑŋ˥˩",
+  "g": "let; allow",
+  "r": "ràng"
+ },
+ "肉": {
+  "l": "zh",
+  "w": "肉",
+  "ipa": "ɻoʊ˥˩",
+  "g": "meat",
+  "r": "ròu"
+ },
+ "认识": {
+  "l": "zh",
+  "w": "认识",
+  "ipa": "ɻən˥˩ ʂɨ",
+  "g": "to know (someone)",
+  "r": "rènshi"
+ },
+ "容易": {
+  "l": "zh",
+  "w": "容易",
+  "ipa": "ɻʊŋ˧˥ i˥˩",
+  "g": "easy",
+  "r": "róngyì"
+ },
+ "词": {
+  "l": "zh",
+  "w": "词",
+  "ipa": "tsʰɨ˧˥",
+  "g": "word",
+  "r": "cí"
+ },
+ "红": {
+  "l": "zh",
+  "w": "红",
+  "ipa": "xʊŋ˧˥",
+  "g": "red",
+  "r": "hóng"
+ },
+ "熊": {
+  "l": "zh",
+  "w": "熊",
+  "ipa": "ɕjʊŋ˧˥",
+  "g": "bear",
+  "r": "xióng"
+ },
+ "用": {
+  "l": "zh",
+  "w": "用",
+  "ipa": "jʊŋ˥˩",
+  "g": "to use",
+  "r": "yòng"
+ },
+ "mayo": {
+  "l": "es",
+  "w": "mayo",
+  "ipa": "ˈmaʝo",
+  "g": "May",
+  "r": ""
+ },
+ "pollo": {
+  "l": "es",
+  "w": "pollo",
+  "ipa": "ˈpoʝo",
+  "g": "chicken",
+  "r": ""
+ },
+ "me llamo": {
+  "l": "es",
+  "w": "me llamo",
+  "ipa": "me ˈʝamo",
+  "g": "my name is",
+  "r": ""
+ },
+ "lluvia": {
+  "l": "es",
+  "w": "lluvia",
+  "ipa": "ˈʝuβja",
+  "g": "rain",
+  "r": ""
+ },
+ "حرف ا": {
+  "l": "ar",
+  "w": "حرف ا",
+  "ipa": "aː",
+  "g": "the letter alif",
+  "r": "alif"
+ },
+ "حرف ب": {
+  "l": "ar",
+  "w": "حرف ب",
+  "ipa": "b",
+  "g": "the letter bāʾ",
+  "r": "bāʾ"
+ },
+ "حرف ت": {
+  "l": "ar",
+  "w": "حرف ت",
+  "ipa": "t",
+  "g": "the letter tāʾ",
+  "r": "tāʾ"
+ },
+ "حرف ث": {
+  "l": "ar",
+  "w": "حرف ث",
+  "ipa": "θ",
+  "g": "the letter thāʾ",
+  "r": "thāʾ"
+ },
+ "حرف ن": {
+  "l": "ar",
+  "w": "حرف ن",
+  "ipa": "n",
+  "g": "the letter nūn",
+  "r": "nūn"
+ },
+ "حرف ي": {
+  "l": "ar",
+  "w": "حرف ي",
+  "ipa": "j",
+  "g": "the letter yāʾ",
+  "r": "yāʾ"
+ },
+ "حرف ج": {
+  "l": "ar",
+  "w": "حرف ج",
+  "ipa": "ʒ",
+  "g": "the letter jīm",
+  "r": "jīm"
+ },
+ "حرف ح": {
+  "l": "ar",
+  "w": "حرف ح",
+  "ipa": "ħ",
+  "g": "the letter ḥāʾ",
+  "r": "ḥāʾ"
+ },
+ "حرف خ": {
+  "l": "ar",
+  "w": "حرف خ",
+  "ipa": "x",
+  "g": "the letter khāʾ",
+  "r": "khāʾ"
+ },
+ "حرف د": {
+  "l": "ar",
+  "w": "حرف د",
+  "ipa": "d",
+  "g": "the letter dāl",
+  "r": "dāl"
+ },
+ "حرف ذ": {
+  "l": "ar",
+  "w": "حرف ذ",
+  "ipa": "ð",
+  "g": "the letter dhāl",
+  "r": "dhāl"
+ },
+ "حرف ر": {
+  "l": "ar",
+  "w": "حرف ر",
+  "ipa": "r",
+  "g": "the letter rāʾ",
+  "r": "rāʾ"
+ },
+ "حرف ز": {
+  "l": "ar",
+  "w": "حرف ز",
+  "ipa": "z",
+  "g": "the letter zāy",
+  "r": "zāy"
+ },
+ "حرف و": {
+  "l": "ar",
+  "w": "حرف و",
+  "ipa": "w",
+  "g": "the letter wāw",
+  "r": "wāw"
+ },
+ "حرف س": {
+  "l": "ar",
+  "w": "حرف س",
+  "ipa": "s",
+  "g": "the letter sīn",
+  "r": "sīn"
+ },
+ "حرف ش": {
+  "l": "ar",
+  "w": "حرف ش",
+  "ipa": "ʃ",
+  "g": "the letter shīn",
+  "r": "shīn"
+ },
+ "حرف ص": {
+  "l": "ar",
+  "w": "حرف ص",
+  "ipa": "sˤ",
+  "g": "the letter ṣād",
+  "r": "ṣād"
+ },
+ "حرف ض": {
+  "l": "ar",
+  "w": "حرف ض",
+  "ipa": "dˤ",
+  "g": "the letter ḍād",
+  "r": "ḍād"
+ },
+ "حرف ط": {
+  "l": "ar",
+  "w": "حرف ط",
+  "ipa": "tˤ",
+  "g": "the letter ṭāʾ",
+  "r": "ṭāʾ"
+ },
+ "حرف ظ": {
+  "l": "ar",
+  "w": "حرف ظ",
+  "ipa": "zˤ",
+  "g": "the letter ẓāʾ",
+  "r": "ẓāʾ"
+ },
+ "حرف ع": {
+  "l": "ar",
+  "w": "حرف ع",
+  "ipa": "ʕ",
+  "g": "the letter ʿayn",
+  "r": "ʿayn"
+ },
+ "حرف غ": {
+  "l": "ar",
+  "w": "حرف غ",
+  "ipa": "ɣ",
+  "g": "the letter ghayn",
+  "r": "ghayn"
+ },
+ "حرف ف": {
+  "l": "ar",
+  "w": "حرف ف",
+  "ipa": "f",
+  "g": "the letter fāʾ",
+  "r": "fāʾ"
+ },
+ "حرف ق": {
+  "l": "ar",
+  "w": "حرف ق",
+  "ipa": "ʔ",
+  "g": "the letter qāf",
+  "r": "qāf"
+ },
+ "حرف ك": {
+  "l": "ar",
+  "w": "حرف ك",
+  "ipa": "k",
+  "g": "the letter kāf",
+  "r": "kāf"
+ },
+ "حرف ل": {
+  "l": "ar",
+  "w": "حرف ل",
+  "ipa": "l",
+  "g": "the letter lām",
+  "r": "lām"
+ },
+ "حرف م": {
+  "l": "ar",
+  "w": "حرف م",
+  "ipa": "m",
+  "g": "the letter mīm",
+  "r": "mīm"
+ },
+ "حرف ه": {
+  "l": "ar",
+  "w": "حرف ه",
+  "ipa": "h",
+  "g": "the letter hāʾ",
+  "r": "hāʾ"
+ },
+ "حرف ء": {
+  "l": "ar",
+  "w": "حرف ء",
+  "ipa": "ʔ",
+  "g": "the letter hamza",
+  "r": "hamza"
+ },
+ "¿Dónde está el baño?": {
+  "l": "es",
+  "w": "¿Dónde está el baño?",
+  "ipa": "ˈd̪onde esˈt̪a el ˈβaɲo",
+  "g": "Where is the bathroom?",
+  "r": "",
+  "ph": {
+   "id": "es4a",
+   "l": "es",
+   "lesson": "es4",
+   "w": "¿Dónde está el baño?",
+   "ipa": "ˈd̪onde esˈt̪a el ˈβaɲo",
+   "g": "Where is the bathroom?",
+   "note": "d̪ after n stays hard; b after l goes soft [β]."
+  }
+ },
+ "Todo bien, gracias.": {
+  "l": "es",
+  "w": "Todo bien, gracias.",
+  "ipa": "ˈt̪oðo ˈβjen ˈɡɾasjas",
+  "g": "All good, thanks.",
+  "r": "",
+  "ph": {
+   "id": "es4b",
+   "l": "es",
+   "lesson": "es4",
+   "w": "Todo bien, gracias.",
+   "ipa": "ˈt̪oðo ˈβjen ˈɡɾasjas",
+   "g": "All good, thanks.",
+   "note": "Both d and b go soft between vowels; g after the pause is hard."
+  }
+ },
+ "Me gusta el agua.": {
+  "l": "es",
+  "w": "Me gusta el agua.",
+  "ipa": "me ˈɣust̪a el ˈaɣwa",
+  "g": "I like water.",
+  "r": "",
+  "ph": {
+   "id": "es4c",
+   "l": "es",
+   "lesson": "es4",
+   "w": "Me gusta el agua.",
+   "ipa": "me ˈɣust̪a el ˈaɣwa",
+   "g": "I like water.",
+   "note": "Both g's are soft: one after a vowel, one between vowels."
+  }
+ },
+ "El perro corre rápido.": {
+  "l": "es",
+  "w": "El perro corre rápido.",
+  "ipa": "el ˈpero ˈkore ˈrapiðo",
+  "g": "The dog runs fast.",
+  "r": "",
+  "ph": {
+   "id": "es5a",
+   "l": "es",
+   "lesson": "es5",
+   "w": "El perro corre rápido.",
+   "ipa": "el ˈpero ˈkore ˈrapiðo",
+   "g": "The dog runs fast.",
+   "note": "Three trills: rr twice, and r at the start of a word."
+  }
+ },
+ "¿Qué hora es?": {
+  "l": "es",
+  "w": "¿Qué hora es?",
+  "ipa": "ke ˈoɾa ˈes",
+  "g": "What time is it?",
+  "r": "",
+  "ph": {
+   "id": "es9a",
+   "l": "es",
+   "lesson": "es9",
+   "w": "¿Qué hora es?",
+   "ipa": "ke ˈoɾa ˈes",
+   "g": "What time is it?",
+   "note": "h is silent; hora is stressed on the first syllable."
+  }
+ },
+ "Un café, por favor.": {
+  "l": "es",
+  "w": "Un café, por favor.",
+  "ipa": "uŋ kaˈfe poɾ faˈβoɾ",
+  "g": "A coffee, please.",
+  "r": "",
+  "ph": {
+   "id": "es9b",
+   "l": "es",
+   "lesson": "es9",
+   "w": "Un café, por favor.",
+   "ipa": "uŋ kaˈfe poɾ faˈβoɾ",
+   "g": "A coffee, please.",
+   "note": "café: the accent mark puts stress on the last syllable. favor ends in r, so it is stressed at the end too."
+  }
+ },
+ "¿Cómo estás?": {
+  "l": "es",
+  "w": "¿Cómo estás?",
+  "ipa": "ˈkomo‿esˈt̪as",
+  "g": "How are you?",
+  "r": "",
+  "ph": {
+   "id": "es10a",
+   "l": "es",
+   "lesson": "es10",
+   "w": "¿Cómo estás?",
+   "ipa": "ˈkomo‿esˈt̪as",
+   "g": "How are you?",
+   "note": "The two words run together with no break between o and e."
+  }
+ },
+ "Voy a ir a la playa.": {
+  "l": "es",
+  "w": "Voy a ir a la playa.",
+  "ipa": "ˈboj‿a‿ˈiɾ‿a la ˈplaʝa",
+  "g": "I'm going to go to the beach.",
+  "r": "",
+  "ph": {
+   "id": "es10b",
+   "l": "es",
+   "lesson": "es10",
+   "w": "Voy a ir a la playa.",
+   "ipa": "ˈboj‿a‿ˈiɾ‿a la ˈplaʝa",
+   "g": "I'm going to go to the beach.",
+   "note": "Five words, one smooth stream. Each syllable gets about the same time."
+  }
+ },
+ "Mis amigos están aquí.": {
+  "l": "es",
+  "w": "Mis amigos están aquí.",
+  "ipa": "mi.saˈmi.ɣo.sesˈt̪a.na.ˈki",
+  "g": "My friends are here.",
+  "r": "",
+  "ph": {
+   "id": "es10c",
+   "l": "es",
+   "lesson": "es10",
+   "w": "Mis amigos están aquí.",
+   "ipa": "mi.saˈmi.ɣo.sesˈt̪a.na.ˈki",
+   "g": "My friends are here.",
+   "note": "Final consonants jump onto the next vowel: mi-sa-mi-go-ses-ta-na-quí."
+  }
+ },
+ "Quiero un vaso de agua.": {
+  "l": "es",
+  "w": "Quiero un vaso de agua.",
+  "ipa": "ˈkjeɾo um ˈbaso ðe ˈaɣwa",
+  "g": "I'd like a glass of water.",
+  "r": "",
+  "ph": {
+   "id": "es11a",
+   "l": "es",
+   "lesson": "es11",
+   "w": "Quiero un vaso de agua.",
+   "ipa": "ˈkjeɾo um ˈbaso ðe ˈaɣwa",
+   "g": "I'd like a glass of water.",
+   "note": "qu = [k]; v = [b] after m; n becomes [m] before b."
+  }
+ },
+ "Hoy hace calor.": {
+  "l": "es",
+  "w": "Hoy hace calor.",
+  "ipa": "oj ˈase kaˈloɾ",
+  "g": "It's hot today.",
+  "r": "",
+  "ph": {
+   "id": "es11b",
+   "l": "es",
+   "lesson": "es11",
+   "w": "Hoy hace calor.",
+   "ipa": "oj ˈase kaˈloɾ",
+   "g": "It's hot today.",
+   "note": "Both h's are silent and c before e is [s]."
+  }
+ },
+ "你叫什么名字？": {
+  "l": "zh",
+  "w": "你叫什么名字？",
+  "ipa": "ni˨˩ tɕjaʊ˥˩ ʂən˧˥ mə miŋ˧˥ tsɨ",
+  "g": "What's your name?",
+  "r": "nǐ jiào shénme míngzi",
+  "ph": {
+   "id": "zh7a",
+   "l": "zh",
+   "lesson": "zh7",
+   "w": "你叫什么名字？",
+   "r": "nǐ jiào shénme míngzi",
+   "ipa": "ni˨˩ tɕjaʊ˥˩ ʂən˧˥ mə miŋ˧˥ tsɨ",
+   "g": "What's your name?",
+   "note": "shén ends in -n, míng in -ng. 么 and 字 are light and toneless here."
+  }
+ },
+ "我是美国人。": {
+  "l": "zh",
+  "w": "我是美国人。",
+  "ipa": "wo˨˩ ʂɨ˥˩ meɪ˨˩ kwo˧˥ ɻən˧˥",
+  "g": "I'm American.",
+  "r": "wǒ shì Měiguó rén",
+  "ph": {
+   "id": "zh7b",
+   "l": "zh",
+   "lesson": "zh7",
+   "w": "我是美国人。",
+   "r": "wǒ shì Měiguó rén",
+   "ipa": "wo˨˩ ʂɨ˥˩ meɪ˨˩ kwo˧˥ ɻən˧˥",
+   "g": "I'm American.",
+   "note": "Before a non-third tone, a third tone just stays low: wǒ and Měi never rise."
+  }
+ },
+ "老板，你好！": {
+  "l": "zh",
+  "w": "老板，你好！",
+  "ipa": "laʊ˧˥ pan˨˩˦ ni˧˥ xaʊ˨˩˦",
+  "g": "Hello, boss!",
+  "r": "lǎobǎn, nǐ hǎo",
+  "ph": {
+   "id": "zh9a",
+   "l": "zh",
+   "lesson": "zh9",
+   "w": "老板，你好！",
+   "r": "lǎobǎn, nǐ hǎo",
+   "ipa": "laʊ˧˥ pan˨˩˦ ni˧˥ xaʊ˨˩˦",
+   "g": "Hello, boss!",
+   "note": "Two third-tone pairs: lǎo and nǐ both rise like second tones."
+  }
+ },
+ "我也很好。": {
+  "l": "zh",
+  "w": "我也很好。",
+  "ipa": "wo˧˥ jɛ˨˩ xən˧˥ xaʊ˨˩˦",
+  "g": "I'm fine too.",
+  "r": "wǒ yě hěn hǎo",
+  "ph": {
+   "id": "zh9b",
+   "l": "zh",
+   "lesson": "zh9",
+   "w": "我也很好。",
+   "r": "wǒ yě hěn hǎo",
+   "ipa": "wo˧˥ jɛ˨˩ xən˧˥ xaʊ˨˩˦",
+   "g": "I'm fine too.",
+   "note": "Four third tones in a row. Speakers split them into pairs (wǒ yě | hěn hǎo), so you commonly hear wó yě hén hǎo."
+  }
+ },
+ "不客气。": {
+  "l": "zh",
+  "w": "不客气。",
+  "ipa": "pu˧˥ kʰɤ˥˩ tɕʰi",
+  "g": "You're welcome.",
+  "r": "bú kèqi",
+  "ph": {
+   "id": "zh10a",
+   "l": "zh",
+   "lesson": "zh10",
+   "w": "不客气。",
+   "r": "bú kèqi",
+   "ipa": "pu˧˥ kʰɤ˥˩ tɕʰi",
+   "g": "You're welcome.",
+   "note": "不 rises before the fourth tone kè."
+  }
+ },
+ "一共多少钱？": {
+  "l": "zh",
+  "w": "一共多少钱？",
+  "ipa": "i˧˥ kʊŋ˥˩ two˥ ʂaʊ tɕʰjɛn˧˥",
+  "g": "How much altogether?",
+  "r": "yígòng duōshao qián",
+  "ph": {
+   "id": "zh10b",
+   "l": "zh",
+   "lesson": "zh10",
+   "w": "一共多少钱？",
+   "r": "yígòng duōshao qián",
+   "ipa": "i˧˥ kʊŋ˥˩ two˥ ʂaʊ tɕʰjɛn˧˥",
+   "g": "How much altogether?",
+   "note": "一 rises before the fourth tone gòng."
+  }
+ },
+ "我不知道。": {
+  "l": "zh",
+  "w": "我不知道。",
+  "ipa": "wo˨˩ pu˥˩ ʈʂɨ˥ taʊ˥˩",
+  "g": "I don't know.",
+  "r": "wǒ bù zhīdào",
+  "ph": {
+   "id": "zh10c",
+   "l": "zh",
+   "lesson": "zh10",
+   "w": "我不知道。",
+   "r": "wǒ bù zhīdào",
+   "ipa": "wo˨˩ pu˥˩ ʈʂɨ˥ taʊ˥˩",
+   "g": "I don't know.",
+   "note": "不 keeps its fourth tone before the first tone zhī."
+  }
+ },
+ "你在哪儿？": {
+  "l": "zh",
+  "w": "你在哪儿？",
+  "ipa": "ni˨˩ tsaɪ˥˩ nɑɻ˨˩˦",
+  "g": "Where are you?",
+  "r": "nǐ zài nǎr",
+  "ph": {
+   "id": "zh11a",
+   "l": "zh",
+   "lesson": "zh11",
+   "w": "你在哪儿？",
+   "r": "nǐ zài nǎr",
+   "ipa": "ni˨˩ tsaɪ˥˩ nɑɻ˨˩˦",
+   "g": "Where are you?",
+   "note": "哪儿 is one syllable: the -r curls the tongue at the end of nǎ."
+  }
+ },
+ "这是我的朋友。": {
+  "l": "zh",
+  "w": "这是我的朋友。",
+  "ipa": "ʈʂɤ˥˩ ʂɨ˥˩ wo˨˩ tə pʰəŋ˧˥ joʊ",
+  "g": "This is my friend.",
+  "r": "zhè shì wǒ de péngyou",
+  "ph": {
+   "id": "zh11b",
+   "l": "zh",
+   "lesson": "zh11",
+   "w": "这是我的朋友。",
+   "r": "zhè shì wǒ de péngyou",
+   "ipa": "ʈʂɤ˥˩ ʂɨ˥˩ wo˨˩ tə pʰəŋ˧˥ joʊ",
+   "g": "This is my friend.",
+   "note": "的 and 友 are neutral: short, light and toneless."
+  }
+ },
+ "صباح الخير": {
+  "l": "ar",
+  "w": "صباح الخير",
+  "ipa": "sˤɑˈbɑːħ ilˈxeːr",
+  "g": "Good morning",
+  "r": "ṣabāḥ il-xēr",
+  "ph": {
+   "id": "ar6a",
+   "l": "ar",
+   "lesson": "ar6",
+   "w": "صباح الخير",
+   "r": "ṣabāḥ il-xēr",
+   "ipa": "sˤɑˈbɑːħ ilˈxeːr",
+   "g": "Good morning",
+   "note": "The emphatic ṣ darkens both a's in ṣabāḥ."
+  }
+ },
+ "الطقس حلو اليوم": {
+  "l": "ar",
+  "w": "الطقس حلو اليوم",
+  "ipa": "itˤˈtˤɑʔs ˈħilu lˈjoːm",
+  "g": "The weather is nice today",
+  "r": "iṭ-ṭaʾs ḥilu l-yōm",
+  "ph": {
+   "id": "ar6b",
+   "l": "ar",
+   "lesson": "ar6",
+   "w": "الطقس حلو اليوم",
+   "r": "iṭ-ṭaʾs ḥilu l-yōm",
+   "ipa": "itˤˈtˤɑʔs ˈħilu lˈjoːm",
+   "g": "The weather is nice today",
+   "note": "ṭ darkens the vowel after it; ق is a glottal stop."
+  }
+ },
+ "شو بدّك؟": {
+  "l": "ar",
+  "w": "شو بدّك؟",
+  "ipa": "ʃuː ˈbiddak",
+  "g": "What do you want?",
+  "r": "šū biddak",
+  "ph": {
+   "id": "ar8a",
+   "l": "ar",
+   "lesson": "ar8",
+   "w": "شو بدّك؟",
+   "r": "šū biddak",
+   "ipa": "ʃuː ˈbiddak",
+   "g": "What do you want?",
+   "note": "Hold the dd a beat longer."
+  }
+ },
+ "يلّا نروح": {
+  "l": "ar",
+  "w": "يلّا نروح",
+  "ipa": "ˈjalla nruːħ",
+  "g": "Let's go",
+  "r": "yalla nrūḥ",
+  "ph": {
+   "id": "ar8b",
+   "l": "ar",
+   "lesson": "ar8",
+   "w": "يلّا نروح",
+   "r": "yalla nrūḥ",
+   "ipa": "ˈjalla nruːħ",
+   "g": "Let's go",
+   "note": "Doubled ll in yalla; nr starts a cluster with no vowel between."
+  }
+ },
+ "صباح النور": {
+  "l": "ar",
+  "w": "صباح النور",
+  "ipa": "sˤɑˈbɑːħ inˈnuːr",
+  "g": "Good morning (reply)",
+  "r": "ṣabāḥ in-nūr",
+  "ph": {
+   "id": "ar9a",
+   "l": "ar",
+   "lesson": "ar9",
+   "w": "صباح النور",
+   "r": "ṣabāḥ in-nūr",
+   "ipa": "sˤɑˈbɑːħ inˈnuːr",
+   "g": "Good morning (reply)",
+   "note": "ن is a sun letter, so il- becomes in-nūr."
+  }
+ },
+ "الدنيا شوب": {
+  "l": "ar",
+  "w": "الدنيا شوب",
+  "ipa": "idˈdinja ʃoːb",
+  "g": "It's hot (lit. the world is hot)",
+  "r": "id-dinya šōb",
+  "ph": {
+   "id": "ar9b",
+   "l": "ar",
+   "lesson": "ar9",
+   "w": "الدنيا شوب",
+   "r": "id-dinya šōb",
+   "ipa": "idˈdinja ʃoːb",
+   "g": "It's hot (lit. the world is hot)",
+   "note": "د is a sun letter: id-dinya, not il-dinya."
+  }
+ },
+ "شو اسمك؟": {
+  "l": "ar",
+  "w": "شو اسمك؟",
+  "ipa": "ʃuː ˈismak",
+  "g": "What's your name? (to a man)",
+  "r": "šū ismak",
+  "ph": {
+   "id": "ar10a",
+   "l": "ar",
+   "lesson": "ar10",
+   "w": "شو اسمك؟",
+   "r": "šū ismak",
+   "ipa": "ʃuː ˈismak",
+   "g": "What's your name? (to a man)",
+   "note": "شو is Levantine for MSA ماذا."
+  }
+ },
+ "هلّق مش فاضي": {
+  "l": "ar",
+  "w": "هلّق مش فاضي",
+  "ipa": "ˈhallaʔ miʃ ˈfaːdˤi",
+  "g": "I'm busy right now",
+  "r": "hallaʾ miš fāḍi",
+  "ph": {
+   "id": "ar10b",
+   "l": "ar",
+   "lesson": "ar10",
+   "w": "هلّق مش فاضي",
+   "r": "hallaʾ miš fāḍi",
+   "ipa": "ˈhallaʔ miʃ ˈfaːdˤi",
+   "g": "I'm busy right now",
+   "note": "ق at the end of hallaʾ is a glottal stop."
+  }
+ },
+ "قدّيش حقّه؟": {
+  "l": "ar",
+  "w": "قدّيش حقّه؟",
+  "ipa": "ʔadˈdeːʃ ˈħaʔʔo",
+  "g": "How much is it?",
+  "r": "ʾaddēš ḥaʾʾo",
+  "ph": {
+   "id": "ar10c",
+   "l": "ar",
+   "lesson": "ar10",
+   "w": "قدّيش حقّه؟",
+   "r": "ʾaddēš ḥaʾʾo",
+   "ipa": "ʔadˈdeːʃ ˈħaʔʔo",
+   "g": "How much is it?",
+   "note": "Both ق's are glottal stops, and the doubled one is held."
+  }
+ },
+ "كتير منيح": {
+  "l": "ar",
+  "w": "كتير منيح",
+  "ipa": "ktiːr mniːħ",
+  "g": "Very good",
+  "r": "ktīr mnīḥ",
+  "ph": {
+   "id": "ar11a",
+   "l": "ar",
+   "lesson": "ar11",
+   "w": "كتير منيح",
+   "r": "ktīr mnīḥ",
+   "ipa": "ktiːr mniːħ",
+   "g": "Very good",
+   "note": "Both words start with two consonants and no vowel between them."
+  }
+ },
+ "بدّي كاسة مي": {
+  "l": "ar",
+  "w": "بدّي كاسة مي",
+  "ipa": "ˈbiddi ˈkaːset majj",
+  "g": "I want a glass of water",
+  "r": "biddi kāset mayy",
+  "ph": {
+   "id": "ar11b",
+   "l": "ar",
+   "lesson": "ar11",
+   "w": "بدّي كاسة مي",
+   "r": "biddi kāset mayy",
+   "ipa": "ˈbiddi ˈkaːset majj",
+   "g": "I want a glass of water",
+   "note": "Stress falls on the long vowel in kāset."
+  }
+ }
+}

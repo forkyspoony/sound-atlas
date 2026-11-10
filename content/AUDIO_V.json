@@ -1,0 +1,2092 @@
+{
+ "pero": {
+  "liza": [
+   "audio/s_liza.mp3",
+   0.35,
+   1.015
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   0.35,
+   1.153
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   0.35,
+   1.061
+  ]
+ },
+ "perro": {
+  "liza": [
+   "audio/s_liza.mp3",
+   1.365,
+   1.947
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   1.503,
+   2.149
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   1.411,
+   2.143
+  ]
+ },
+ "caro": {
+  "liza": [
+   "audio/s_liza.mp3",
+   2.297,
+   2.816
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   2.499,
+   3.087
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   2.493,
+   3.04
+  ]
+ },
+ "carro": {
+  "liza": [
+   "audio/s_liza.mp3",
+   3.166,
+   3.731
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   3.437,
+   4.088
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   3.39,
+   3.999
+  ]
+ },
+ "coro": {
+  "liza": [
+   "audio/s_liza.mp3",
+   4.081,
+   4.613
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   4.438,
+   5.046
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   4.349,
+   4.922
+  ]
+ },
+ "corro": {
+  "liza": [
+   "audio/s_liza.mp3",
+   4.963,
+   5.519
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   5.396,
+   6.037
+  ]
+ },
+ "peso": {
+  "liza": [
+   "audio/s_liza.mp3",
+   5.869,
+   6.449
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   6.387,
+   7.053
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   5.272,
+   5.884
+  ]
+ },
+ "beso": {
+  "liza": [
+   "audio/s_liza.mp3",
+   6.799,
+   7.491
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   7.403,
+   8.204
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   6.234,
+   6.972
+  ]
+ },
+ "pala": {
+  "liza": [
+   "audio/s_liza.mp3",
+   7.841,
+   8.317
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   8.554,
+   9.137
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   7.322,
+   7.861
+  ]
+ },
+ "bala": {
+  "liza": [
+   "audio/s_liza.mp3",
+   8.667,
+   9.305
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   9.487,
+   10.2
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   8.211,
+   8.912
+  ]
+ },
+ "pata": {
+  "liza": [
+   "audio/s_liza.mp3",
+   9.655,
+   10.201
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   10.55,
+   11.169
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   9.262,
+   9.862
+  ]
+ },
+ "bata": {
+  "liza": [
+   "audio/s_liza.mp3",
+   10.551,
+   11.176
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   11.519,
+   12.246
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   10.212,
+   10.92
+  ]
+ },
+ "tos": {
+  "liza": [
+   "audio/s_liza.mp3",
+   11.526,
+   12.124
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   12.596,
+   13.295
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   11.27,
+   11.947
+  ]
+ },
+ "dos": {
+  "liza": [
+   "audio/s_liza.mp3",
+   12.474,
+   13.183
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   13.645,
+   14.42
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   12.297,
+   13.052
+  ]
+ },
+ "tía": {
+  "liza": [
+   "audio/s_liza.mp3",
+   13.533,
+   14.048
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   14.77,
+   15.369
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   13.402,
+   13.959
+  ]
+ },
+ "día": {
+  "liza": [
+   "audio/s_liza.mp3",
+   14.398,
+   14.993
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   15.719,
+   16.434
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   14.309,
+   14.97
+  ]
+ },
+ "casa": {
+  "liza": [
+   "audio/s_liza.mp3",
+   15.343,
+   15.879
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   16.784,
+   17.448
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   15.32,
+   15.95
+  ]
+ },
+ "gasa": {
+  "liza": [
+   "audio/s_liza.mp3",
+   16.229,
+   16.9
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   17.798,
+   18.565
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   16.3,
+   17.012
+  ]
+ },
+ "coma": {
+  "liza": [
+   "audio/s_liza.mp3",
+   17.25,
+   17.862
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   18.915,
+   19.559
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   17.362,
+   18.088
+  ]
+ },
+ "goma": {
+  "liza": [
+   "audio/s_liza.mp3",
+   18.212,
+   18.945
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   19.909,
+   20.638
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   18.438,
+   19.252
+  ]
+ },
+ "una": {
+  "liza": [
+   "audio/s_liza.mp3",
+   19.295,
+   19.991
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   20.988,
+   21.616
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   19.602,
+   20.276
+  ]
+ },
+ "uña": {
+  "liza": [
+   "audio/s_liza.mp3",
+   20.341,
+   20.94
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   21.966,
+   22.614
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   20.626,
+   21.266
+  ]
+ },
+ "cana": {
+  "liza": [
+   "audio/s_liza.mp3",
+   21.29,
+   21.857
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   22.964,
+   23.602
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   21.616,
+   22.19
+  ]
+ },
+ "caña": {
+  "liza": [
+   "audio/s_liza.mp3",
+   22.207,
+   22.793
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   23.951,
+   24.621
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   22.54,
+   23.107
+  ]
+ },
+ "piso": {
+  "liza": [
+   "audio/s_liza.mp3",
+   23.143,
+   23.668
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   24.971,
+   25.616
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   23.457,
+   23.999
+  ]
+ },
+ "mesa": {
+  "liza": [
+   "audio/s_liza.mp3",
+   24.018,
+   24.692
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   25.966,
+   26.764
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   24.349,
+   25.033
+  ]
+ },
+ "misa": {
+  "liza": [
+   "audio/s_liza.mp3",
+   25.041,
+   25.69
+  ],
+  "claudia": [
+   "audio/s_claudia.mp3",
+   27.114,
+   27.882
+  ],
+  "eduardo": [
+   "audio/s_eduardo.mp3",
+   25.383,
+   26.056
+  ]
+ },
+ "爸": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   0.35,
+   0.958
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   0.35,
+   0.93
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   0.35,
+   0.927
+  ]
+ },
+ "怕": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   1.308,
+   2.023
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   1.28,
+   1.961
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   1.277,
+   1.939
+  ]
+ },
+ "大": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   2.373,
+   2.923
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   2.311,
+   2.882
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   2.289,
+   2.847
+  ]
+ },
+ "踏": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   3.273,
+   3.855
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   3.232,
+   3.758
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   3.197,
+   3.742
+  ]
+ },
+ "哥": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   4.205,
+   4.802
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   4.108,
+   4.622
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   4.092,
+   4.72
+  ]
+ },
+ "科": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   5.152,
+   5.772
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   4.972,
+   5.529
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   5.07,
+   5.735
+  ]
+ },
+ "在": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   6.122,
+   6.724
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   5.879,
+   6.417
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   6.085,
+   6.638
+  ]
+ },
+ "菜": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   7.074,
+   7.694
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   6.767,
+   7.359
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   6.988,
+   7.557
+  ]
+ },
+ "知": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   8.044,
+   8.783
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   7.709,
+   8.385
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   7.907,
+   8.606
+  ]
+ },
+ "吃": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   9.133,
+   9.944
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   8.735,
+   9.481
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   8.956,
+   9.711
+  ]
+ },
+ "鸡": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   10.294,
+   10.905
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   9.831,
+   10.415
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   10.061,
+   10.707
+  ]
+ },
+ "七": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   11.255,
+   11.883
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   10.765,
+   11.431
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   11.057,
+   11.756
+  ]
+ },
+ "四": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   12.233,
+   12.884
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   11.781,
+   12.436
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   12.106,
+   12.772
+  ]
+ },
+ "是": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   13.234,
+   13.949
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   12.786,
+   13.477
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   13.122,
+   13.828
+  ]
+ },
+ "早": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   14.299,
+   14.953
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   13.827,
+   14.49
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   14.178,
+   14.842
+  ]
+ },
+ "找": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   15.303,
+   15.894
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   14.84,
+   15.43
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   15.192,
+   15.795
+  ]
+ },
+ "字": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   16.244,
+   16.894
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   15.78,
+   16.346
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   16.145,
+   16.766
+  ]
+ },
+ "志": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   17.244,
+   17.77
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   16.696,
+   17.273
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   17.116,
+   17.735
+  ]
+ },
+ "西": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   18.12,
+   18.778
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   17.623,
+   18.293
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   18.085,
+   18.803
+  ]
+ },
+ "诗": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   19.128,
+   19.791
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   18.643,
+   19.366
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   19.153,
+   19.9
+  ]
+ },
+ "路": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   20.141,
+   20.649
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   19.716,
+   20.303
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   20.25,
+   20.858
+  ]
+ },
+ "绿": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   20.999,
+   21.546
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   20.653,
+   21.184
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   21.208,
+   21.814
+  ]
+ },
+ "努": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   21.896,
+   22.554
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   21.534,
+   22.209
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   22.164,
+   22.924
+  ]
+ },
+ "女": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   22.903,
+   23.529
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   22.559,
+   23.199
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   23.274,
+   24.017
+  ]
+ },
+ "盘": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   23.878,
+   24.586
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   23.548,
+   24.253
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   24.367,
+   25.116
+  ]
+ },
+ "旁": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   24.936,
+   25.61
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   24.603,
+   25.264
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   25.466,
+   26.186
+  ]
+ },
+ "陈": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   25.96,
+   26.598
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   25.614,
+   26.303
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   26.536,
+   27.314
+  ]
+ },
+ "成": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   26.948,
+   27.584
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   26.653,
+   27.318
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   27.664,
+   28.42
+  ]
+ },
+ "金": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   27.934,
+   28.49
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   27.668,
+   28.221
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   28.77,
+   29.393
+  ]
+ },
+ "京": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   28.84,
+   29.387
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   28.571,
+   29.096
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   29.743,
+   30.397
+  ]
+ },
+ "妈": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   29.737,
+   30.313
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   29.446,
+   29.982
+  ]
+ },
+ "马": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   30.663,
+   31.399
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   30.332,
+   30.985
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   30.747,
+   31.525
+  ]
+ },
+ "骂": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   31.749,
+   32.384
+  ]
+ },
+ "八": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   32.734,
+   33.258
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   31.335,
+   31.811
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   31.875,
+   32.426
+  ]
+ },
+ "拔": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   33.608,
+   34.166
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   32.161,
+   32.745
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   32.776,
+   33.455
+  ]
+ },
+ "把": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   34.516,
+   35.092
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   33.095,
+   33.667
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   33.805,
+   34.446
+  ]
+ },
+ "衣": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   35.442,
+   35.972
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   34.796,
+   35.458
+  ]
+ },
+ "姨": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   36.322,
+   36.898
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   34.017,
+   34.619
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   35.808,
+   36.483
+  ]
+ },
+ "椅": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   37.248,
+   37.832
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   34.969,
+   35.635
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   36.833,
+   37.523
+  ]
+ },
+ "意": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   38.182,
+   38.663
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   35.985,
+   36.47
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   37.873,
+   38.449
+  ]
+ },
+ "汤": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   39.013,
+   39.649
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   36.82,
+   37.422
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   38.799,
+   39.538
+  ]
+ },
+ "糖": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   39.999,
+   40.66
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   37.772,
+   38.436
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   39.888,
+   40.657
+  ]
+ },
+ "躺": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   41.01,
+   41.694
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   38.786,
+   39.444
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   41.007,
+   41.654
+  ]
+ },
+ "烫": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   42.044,
+   42.601
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   39.794,
+   40.284
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   42.004,
+   42.592
+  ]
+ },
+ "飞": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   42.951,
+   43.567
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   40.634,
+   41.278
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   42.942,
+   43.671
+  ]
+ },
+ "肥": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   43.917,
+   44.628
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   41.628,
+   42.306
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   44.021,
+   44.812
+  ]
+ },
+ "匪": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   44.978,
+   45.691
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   42.656,
+   43.334
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   45.162,
+   45.922
+  ]
+ },
+ "费": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   46.041,
+   46.824
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   43.684,
+   44.32
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   46.272,
+   46.931
+  ]
+ },
+ "通": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   47.173,
+   47.82
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   44.67,
+   45.342
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   47.281,
+   48
+  ]
+ },
+ "同": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   48.17,
+   48.823
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   45.692,
+   46.296
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   48.35,
+   49.097
+  ]
+ },
+ "统": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   49.173,
+   49.773
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   46.646,
+   47.237
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   49.447,
+   50.155
+  ]
+ },
+ "痛": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   50.123,
+   50.643
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   47.587,
+   48.09
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   50.504,
+   51.132
+  ]
+ },
+ "十": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   50.993,
+   51.696
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   48.44,
+   49.13
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   51.482,
+   52.282
+  ]
+ },
+ "使": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   52.046,
+   52.708
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   49.48,
+   50.151
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   52.632,
+   53.311
+  ]
+ },
+ "飞机": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   53.058,
+   53.767
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   50.501,
+   51.249
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   53.661,
+   54.498
+  ]
+ },
+ "中国": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   54.117,
+   54.888
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   51.599,
+   52.313
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   54.848,
+   55.635
+  ]
+ },
+ "铅笔": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   55.238,
+   55.964
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   52.663,
+   53.434
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   55.985,
+   56.803
+  ]
+ },
+ "商店": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   56.314,
+   57.053
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   53.784,
+   54.552
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   57.153,
+   57.987
+  ]
+ },
+ "明天": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   57.403,
+   58.162
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   54.902,
+   55.642
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   58.337,
+   59.14
+  ]
+ },
+ "学习": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   58.512,
+   59.351
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   55.992,
+   56.824
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   59.49,
+   60.463
+  ]
+ },
+ "苹果": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   59.701,
+   60.406
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   57.174,
+   57.892
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   60.813,
+   61.552
+  ]
+ },
+ "同事": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   60.756,
+   61.476
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   58.242,
+   58.925
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   61.902,
+   62.711
+  ]
+ },
+ "老师": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   61.826,
+   62.537
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   59.275,
+   59.963
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   63.061,
+   63.815
+  ]
+ },
+ "美国": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   62.887,
+   63.706
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   60.313,
+   61.128
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   64.165,
+   64.951
+  ]
+ },
+ "你好": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   64.056,
+   64.644
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   61.478,
+   62.038
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   65.301,
+   65.88
+  ]
+ },
+ "考试": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   64.994,
+   65.721
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   62.388,
+   63.078
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   66.23,
+   67.013
+  ]
+ },
+ "汽车": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   66.071,
+   66.798
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   63.428,
+   64.134
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   67.363,
+   68.16
+  ]
+ },
+ "大学": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   67.148,
+   67.882
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   64.484,
+   65.227
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   68.51,
+   69.318
+  ]
+ },
+ "下雨": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   68.232,
+   68.916
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   65.577,
+   66.342
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   69.668,
+   70.433
+  ]
+ },
+ "再见": {
+  "yunf": [
+   "audio/s_yunf.mp3",
+   69.266,
+   69.823
+  ],
+  "yunm": [
+   "audio/s_yunm.mp3",
+   66.692,
+   67.25
+  ],
+  "jerry": [
+   "audio/s_jerry.mp3",
+   70.783,
+   71.425
+  ]
+ },
+ "麻": {
+  "jerry": [
+   "audio/s_jerry.mp3",
+   71.775,
+   72.434
+  ]
+ },
+ "هال": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   0.35,
+   1.011
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   0.35,
+   1.075
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   0.35,
+   1.14
+  ]
+ },
+ "حال": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   1.361,
+   2.172
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   1.425,
+   2.252
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   1.49,
+   2.48
+  ]
+ },
+ "خال": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   2.522,
+   3.26
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   2.602,
+   3.403
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   2.83,
+   3.7
+  ]
+ },
+ "سيف": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   3.61,
+   4.183
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   3.753,
+   4.431
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   4.05,
+   4.88
+  ]
+ },
+ "صيف": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   4.533,
+   5.09
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   4.781,
+   5.343
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   5.23,
+   6.02
+  ]
+ },
+ "سار": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   5.44,
+   6.085
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   5.693,
+   6.354
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   6.37,
+   7.12
+  ]
+ },
+ "صار": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   6.435,
+   7.066
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   6.704,
+   7.353
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   7.47,
+   8.17
+  ]
+ },
+ "تين": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   7.416,
+   8.015
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   7.703,
+   8.345
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   8.52,
+   9.24
+  ]
+ },
+ "طين": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   8.365,
+   8.909
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   8.695,
+   9.264
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   9.59,
+   10.28
+  ]
+ },
+ "دار": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   9.259,
+   9.883
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   9.614,
+   10.4
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   10.63,
+   11.378
+  ]
+ },
+ "ضار": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   10.233,
+   10.954
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   10.75,
+   11.558
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   11.728,
+   12.563
+  ]
+ },
+ "كلب": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   11.304,
+   11.808
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   11.908,
+   12.53
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   12.913,
+   13.568
+  ]
+ },
+ "قلب": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   12.158,
+   12.6
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   12.88,
+   13.467
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   13.918,
+   14.542
+  ]
+ },
+ "أمل": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   12.95,
+   13.516
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   13.817,
+   14.461
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   14.892,
+   15.525
+  ]
+ },
+ "عمل": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   13.866,
+   14.524
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   14.811,
+   15.52
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   15.875,
+   16.591
+  ]
+ },
+ "خالي": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   14.874,
+   15.624
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   15.87,
+   16.701
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   16.941,
+   17.66
+  ]
+ },
+ "غالي": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   15.974,
+   16.719
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   17.051,
+   17.841
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   18.01,
+   18.735
+  ]
+ },
+ "جمل": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   17.069,
+   17.713
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   18.191,
+   18.989
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   19.085,
+   19.807
+  ]
+ },
+ "جمال": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   18.063,
+   18.932
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   19.339,
+   20.246
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   20.157,
+   21.017
+  ]
+ },
+ "كتب": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   19.282,
+   19.961
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   20.596,
+   21.295
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   21.367,
+   22.134
+  ]
+ },
+ "كاتب": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   20.311,
+   21.093
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   21.645,
+   22.43
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   22.484,
+   23.38
+  ]
+ },
+ "مرة": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   21.442,
+   22.1
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   22.78,
+   23.455
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   23.73,
+   24.422
+  ]
+ },
+ "مرّة": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   22.45,
+   23.103
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   23.805,
+   24.481
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   24.772,
+   25.437
+  ]
+ },
+ "علم": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   23.453,
+   24.17
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   24.831,
+   25.639
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   25.787,
+   26.555
+  ]
+ },
+ "علّم": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   24.52,
+   25.27
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   25.989,
+   26.766
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   26.904,
+   27.792
+  ]
+ },
+ "حمام": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   25.62,
+   26.433
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   27.115,
+   27.999
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   28.142,
+   28.96
+  ]
+ },
+ "حمّام": {
+  "yasmine": [
+   "audio/s_yasmine.mp3",
+   26.783,
+   27.634
+  ],
+  "ghaida": [
+   "audio/s_ghaida.mp3",
+   28.349,
+   29.359
+  ],
+  "samir": [
+   "audio/s_samir.mp3",
+   29.31,
+   30.245
+  ]
+ }
+}

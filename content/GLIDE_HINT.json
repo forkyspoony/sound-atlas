@@ -1,0 +1,17 @@
+{
+ "es": {
+  "e": "Spanish e is pure: don't let it drift toward [i] like English \"say\".",
+  "o": "Spanish o is pure: don't let it drift toward [u] like English \"go\".",
+  "i": "Keep i tight and steady, like a held \"ee\".",
+  "u": "Round your lips firmly and keep the tongue back.",
+  "a": "Open wide and hold it still."
+ },
+ "zh": {
+  "y": "Say [i], then round your lips without moving your tongue.",
+  "ɤ": "Start from [o] and unround your lips; keep the tongue back."
+ },
+ "ar": {
+  "eː": "Levantine ē is a pure [eː], not \"ay\".",
+  "oː": "Levantine ō is a pure [oː], not \"oh-oo\"."
+ }
+}

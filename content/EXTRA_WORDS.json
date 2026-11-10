@@ -1,0 +1,306 @@
+{
+ "es": [
+  {
+   "w": "hola",
+   "ipa": "ola",
+   "g": "hello"
+  },
+  {
+   "w": "gracias",
+   "ipa": "ɡɾasjas",
+   "g": "thank you"
+  },
+  {
+   "w": "agua",
+   "ipa": "aɣwa",
+   "g": "water"
+  },
+  {
+   "w": "perro",
+   "ipa": "pero",
+   "g": "dog"
+  },
+  {
+   "w": "pero",
+   "ipa": "peɾo",
+   "g": "but"
+  },
+  {
+   "w": "lobo",
+   "ipa": "loβo",
+   "g": "wolf"
+  },
+  {
+   "w": "dedo",
+   "ipa": "d̪eðo",
+   "g": "finger"
+  },
+  {
+   "w": "lago",
+   "ipa": "laɣo",
+   "g": "lake"
+  },
+  {
+   "w": "jamón",
+   "ipa": "xamon",
+   "g": "ham"
+  },
+  {
+   "w": "año",
+   "ipa": "aɲo",
+   "g": "year"
+  },
+  {
+   "w": "yo",
+   "ipa": "ʝo",
+   "g": "I"
+  },
+  {
+   "w": "casa",
+   "ipa": "kasa",
+   "g": "house"
+  },
+  {
+   "w": "nada",
+   "ipa": "naða",
+   "g": "nothing"
+  },
+  {
+   "w": "ojo",
+   "ipa": "oxo",
+   "g": "eye"
+  },
+  {
+   "w": "mesa",
+   "ipa": "mesa",
+   "g": "table"
+  },
+  {
+   "w": "caro",
+   "ipa": "kaɾo",
+   "g": "expensive"
+  }
+ ],
+ "zh": [
+  {
+   "w": "茶",
+   "r": "chá",
+   "ipa": "ʈʂʰa",
+   "g": "tea"
+  },
+  {
+   "w": "七",
+   "r": "qī",
+   "ipa": "tɕʰi",
+   "g": "seven"
+  },
+  {
+   "w": "西",
+   "r": "xī",
+   "ipa": "ɕi",
+   "g": "west"
+  },
+  {
+   "w": "鱼",
+   "r": "yú",
+   "ipa": "y",
+   "g": "fish"
+  },
+  {
+   "w": "饿",
+   "r": "è",
+   "ipa": "ɤ",
+   "g": "hungry"
+  },
+  {
+   "w": "他",
+   "r": "tā",
+   "ipa": "tʰa",
+   "g": "he"
+  },
+  {
+   "w": "爸",
+   "r": "bà",
+   "ipa": "pa",
+   "g": "dad"
+  },
+  {
+   "w": "怕",
+   "r": "pà",
+   "ipa": "pʰa",
+   "g": "to fear"
+  },
+  {
+   "w": "是",
+   "r": "shì",
+   "ipa": "ʂɨ",
+   "g": "to be"
+  },
+  {
+   "w": "人",
+   "r": "rén",
+   "ipa": "ɻən",
+   "g": "person"
+  },
+  {
+   "w": "在",
+   "r": "zài",
+   "ipa": "tsaɪ",
+   "g": "at"
+  },
+  {
+   "w": "菜",
+   "r": "cài",
+   "ipa": "tsʰaɪ",
+   "g": "dish"
+  },
+  {
+   "w": "好",
+   "r": "hǎo",
+   "ipa": "xaʊ",
+   "g": "good"
+  },
+  {
+   "w": "鸡",
+   "r": "jī",
+   "ipa": "tɕi",
+   "g": "chicken"
+  },
+  {
+   "w": "书",
+   "r": "shū",
+   "ipa": "ʂu",
+   "g": "book"
+  },
+  {
+   "w": "喝",
+   "r": "hē",
+   "ipa": "xɤ",
+   "g": "to drink"
+  },
+  {
+   "w": "字",
+   "r": "zì",
+   "ipa": "tsɨ",
+   "g": "character"
+  },
+  {
+   "w": "女",
+   "r": "nǚ",
+   "ipa": "ny",
+   "g": "woman"
+  }
+ ],
+ "ar": [
+  {
+   "w": "مرحبا",
+   "r": "marḥaba",
+   "ipa": "marħaba",
+   "g": "hello"
+  },
+  {
+   "w": "كيفك",
+   "r": "kīfak",
+   "ipa": "kiːfak",
+   "g": "how are you? (to a man)"
+  },
+  {
+   "w": "شو",
+   "r": "shū",
+   "ipa": "ʃuː",
+   "g": "what"
+  },
+  {
+   "w": "هلق",
+   "r": "hallaʾ",
+   "ipa": "hallaʔ",
+   "g": "now",
+   "t": "هلّأ"
+  },
+  {
+   "w": "كتير",
+   "r": "ktīr",
+   "ipa": "kt̪iːr",
+   "g": "a lot"
+  },
+  {
+   "w": "حلو",
+   "r": "ḥilu",
+   "ipa": "ħilu",
+   "g": "nice"
+  },
+  {
+   "w": "خلص",
+   "r": "xalaṣ",
+   "ipa": "xalasˤ",
+   "g": "enough"
+  },
+  {
+   "w": "قلب",
+   "r": "ʾalb",
+   "ipa": "ʔalb",
+   "g": "heart",
+   "t": "ألب"
+  },
+  {
+   "w": "عين",
+   "r": "ʿēn",
+   "ipa": "ʕeːn",
+   "g": "eye"
+  },
+  {
+   "w": "بيت",
+   "r": "bēt",
+   "ipa": "beːt",
+   "g": "house"
+  },
+  {
+   "w": "يوم",
+   "r": "yōm",
+   "ipa": "joːm",
+   "g": "day"
+  },
+  {
+   "w": "طيب",
+   "r": "ṭayyeb",
+   "ipa": "tˤajjeb",
+   "g": "OK"
+  },
+  {
+   "w": "جميل",
+   "r": "jamīl",
+   "ipa": "ʒamiːl",
+   "g": "beautiful"
+  },
+  {
+   "w": "تلاتة",
+   "r": "tlāte",
+   "ipa": "tlaːte",
+   "g": "three"
+  },
+  {
+   "w": "بدي",
+   "r": "biddi",
+   "ipa": "biddi",
+   "g": "I want"
+  },
+  {
+   "w": "منيح",
+   "r": "mnīḥ",
+   "ipa": "mniːħ",
+   "g": "good"
+  },
+  {
+   "w": "صغير",
+   "r": "ṣghīr",
+   "ipa": "sˤɣiːr",
+   "g": "small"
+  },
+  {
+   "w": "ظريف",
+   "r": "ẓarīf",
+   "ipa": "zˤariːf",
+   "g": "charming"
+  }
+ ]
+}

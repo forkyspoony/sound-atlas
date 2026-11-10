@@ -1,0 +1,205 @@
+[
+ [
+  "ا",
+  "alif",
+  "aː",
+  "A long a. It also carries hamza (أ إ) at the start of words that begin with a vowel.",
+  "باب"
+ ],
+ [
+  "ب",
+  "bāʾ",
+  "b",
+  "One dot below.",
+  "بيت"
+ ],
+ [
+  "ت",
+  "tāʾ",
+  "t",
+  "Two dots above. Dental, like Spanish t.",
+  "تين"
+ ],
+ [
+  "ث",
+  "thāʾ",
+  "θ",
+  "Three dots above. [θ] as in \"think\" in Standard Arabic; Levantine usually says [t] or [s].",
+  "ثَلاثة"
+ ],
+ [
+  "ن",
+  "nūn",
+  "n",
+  "One dot above, with a deeper bowl at the end of a word.",
+  "نُور"
+ ],
+ [
+  "ي",
+  "yāʾ",
+  "j",
+  "Two dots below. A consonant [j], or the long vowels [iː] and [eː].",
+  "جاي"
+ ],
+ [
+  "ج",
+  "jīm",
+  "ʒ",
+  "One dot inside. Levantine [ʒ] as in \"measure\"; Standard [dʒ].",
+  "جميل"
+ ],
+ [
+  "ح",
+  "ḥāʾ",
+  "ħ",
+  "No dot. The squeezed throat h.",
+  "حلو"
+ ],
+ [
+  "خ",
+  "khāʾ",
+  "x",
+  "One dot above. The scraped [x].",
+  "خال"
+ ],
+ [
+  "د",
+  "dāl",
+  "d",
+  "Doesn't join to the next letter.",
+  "دار"
+ ],
+ [
+  "ذ",
+  "dhāl",
+  "ð",
+  "Like د with a dot. [ð] as in \"this\" in Standard Arabic; Levantine [d] or [z].",
+  "ذَهَب"
+ ],
+ [
+  "ر",
+  "rāʾ",
+  "r",
+  "Doesn't join to the next letter. Tapped or trilled.",
+  "راس"
+ ],
+ [
+  "ز",
+  "zāy",
+  "z",
+  "Like ر with a dot. Doesn't join to the next letter.",
+  "زيت"
+ ],
+ [
+  "و",
+  "wāw",
+  "w",
+  "Doesn't join to the next letter. A consonant [w], or the long vowels [uː] and [oː].",
+  "يوم"
+ ],
+ [
+  "س",
+  "sīn",
+  "s",
+  "Three little teeth.",
+  "سيف"
+ ],
+ [
+  "ش",
+  "shīn",
+  "ʃ",
+  "Like س with three dots.",
+  "شو"
+ ],
+ [
+  "ص",
+  "ṣād",
+  "sˤ",
+  "The emphatic s: a loop then a tooth.",
+  "صيف"
+ ],
+ [
+  "ض",
+  "ḍād",
+  "dˤ",
+  "Like ص with a dot.",
+  "ضار"
+ ],
+ [
+  "ط",
+  "ṭāʾ",
+  "tˤ",
+  "The emphatic t: a loop with an upright stroke.",
+  "طين"
+ ],
+ [
+  "ظ",
+  "ẓāʾ",
+  "zˤ",
+  "Like ط with a dot. Levantine [zˤ]; Standard [ðˤ].",
+  "ظريف"
+ ],
+ [
+  "ع",
+  "ʿayn",
+  "ʕ",
+  "An open hook. Its shape changes a lot between positions.",
+  "عين"
+ ],
+ [
+  "غ",
+  "ghayn",
+  "ɣ",
+  "Like ع with a dot.",
+  "غالي"
+ ],
+ [
+  "ف",
+  "fāʾ",
+  "f",
+  "One dot above.",
+  "سيف"
+ ],
+ [
+  "ق",
+  "qāf",
+  "ʔ",
+  "Two dots above, deeper tail than ف. Levantine [ʔ] in most words; Standard [q].",
+  "قلب"
+ ],
+ [
+  "ك",
+  "kāf",
+  "k",
+  "Has a small hamza-like mark inside when isolated or final.",
+  "كلب"
+ ],
+ [
+  "ل",
+  "lām",
+  "l",
+  "A tall stroke with a hook. ل + ا is written as one ligature: لا.",
+  "لا"
+ ],
+ [
+  "م",
+  "mīm",
+  "m",
+  "A small loop.",
+  "مرة"
+ ],
+ [
+  "ه",
+  "hāʾ",
+  "h",
+  "Changes shape a lot: ه هـ ـهـ ـه.",
+  "هون"
+ ],
+ [
+  "ء",
+  "hamza",
+  "ʔ",
+  "The glottal stop. Sits on its own or on a \"seat\": أ إ ؤ ئ.",
+  "أنا"
+ ]
+]

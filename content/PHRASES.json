@@ -1,0 +1,301 @@
+[
+ {
+  "id": "es4a",
+  "l": "es",
+  "lesson": "es4",
+  "w": "¿Dónde está el baño?",
+  "ipa": "ˈd̪onde esˈt̪a el ˈβaɲo",
+  "g": "Where is the bathroom?",
+  "note": "d̪ after n stays hard; b after l goes soft [β]."
+ },
+ {
+  "id": "es4b",
+  "l": "es",
+  "lesson": "es4",
+  "w": "Todo bien, gracias.",
+  "ipa": "ˈt̪oðo ˈβjen ˈɡɾasjas",
+  "g": "All good, thanks.",
+  "note": "Both d and b go soft between vowels; g after the pause is hard."
+ },
+ {
+  "id": "es4c",
+  "l": "es",
+  "lesson": "es4",
+  "w": "Me gusta el agua.",
+  "ipa": "me ˈɣust̪a el ˈaɣwa",
+  "g": "I like water.",
+  "note": "Both g's are soft: one after a vowel, one between vowels."
+ },
+ {
+  "id": "es5a",
+  "l": "es",
+  "lesson": "es5",
+  "w": "El perro corre rápido.",
+  "ipa": "el ˈpero ˈkore ˈrapiðo",
+  "g": "The dog runs fast.",
+  "note": "Three trills: rr twice, and r at the start of a word."
+ },
+ {
+  "id": "es9a",
+  "l": "es",
+  "lesson": "es9",
+  "w": "¿Qué hora es?",
+  "ipa": "ke ˈoɾa ˈes",
+  "g": "What time is it?",
+  "note": "h is silent; hora is stressed on the first syllable."
+ },
+ {
+  "id": "es9b",
+  "l": "es",
+  "lesson": "es9",
+  "w": "Un café, por favor.",
+  "ipa": "uŋ kaˈfe poɾ faˈβoɾ",
+  "g": "A coffee, please.",
+  "note": "café: the accent mark puts stress on the last syllable. favor ends in r, so it is stressed at the end too."
+ },
+ {
+  "id": "es10a",
+  "l": "es",
+  "lesson": "es10",
+  "w": "¿Cómo estás?",
+  "ipa": "ˈkomo‿esˈt̪as",
+  "g": "How are you?",
+  "note": "The two words run together with no break between o and e."
+ },
+ {
+  "id": "es10b",
+  "l": "es",
+  "lesson": "es10",
+  "w": "Voy a ir a la playa.",
+  "ipa": "ˈboj‿a‿ˈiɾ‿a la ˈplaʝa",
+  "g": "I'm going to go to the beach.",
+  "note": "Five words, one smooth stream. Each syllable gets about the same time."
+ },
+ {
+  "id": "es10c",
+  "l": "es",
+  "lesson": "es10",
+  "w": "Mis amigos están aquí.",
+  "ipa": "mi.saˈmi.ɣo.sesˈt̪a.na.ˈki",
+  "g": "My friends are here.",
+  "note": "Final consonants jump onto the next vowel: mi-sa-mi-go-ses-ta-na-quí."
+ },
+ {
+  "id": "es11a",
+  "l": "es",
+  "lesson": "es11",
+  "w": "Quiero un vaso de agua.",
+  "ipa": "ˈkjeɾo um ˈbaso ðe ˈaɣwa",
+  "g": "I'd like a glass of water.",
+  "note": "qu = [k]; v = [b] after m; n becomes [m] before b."
+ },
+ {
+  "id": "es11b",
+  "l": "es",
+  "lesson": "es11",
+  "w": "Hoy hace calor.",
+  "ipa": "oj ˈase kaˈloɾ",
+  "g": "It's hot today.",
+  "note": "Both h's are silent and c before e is [s]."
+ },
+ {
+  "id": "zh7a",
+  "l": "zh",
+  "lesson": "zh7",
+  "w": "你叫什么名字？",
+  "r": "nǐ jiào shénme míngzi",
+  "ipa": "ni˨˩ tɕjaʊ˥˩ ʂən˧˥ mə miŋ˧˥ tsɨ",
+  "g": "What's your name?",
+  "note": "shén ends in -n, míng in -ng. 么 and 字 are light and toneless here."
+ },
+ {
+  "id": "zh7b",
+  "l": "zh",
+  "lesson": "zh7",
+  "w": "我是美国人。",
+  "r": "wǒ shì Měiguó rén",
+  "ipa": "wo˨˩ ʂɨ˥˩ meɪ˨˩ kwo˧˥ ɻən˧˥",
+  "g": "I'm American.",
+  "note": "Before a non-third tone, a third tone just stays low: wǒ and Měi never rise."
+ },
+ {
+  "id": "zh9a",
+  "l": "zh",
+  "lesson": "zh9",
+  "w": "老板，你好！",
+  "r": "lǎobǎn, nǐ hǎo",
+  "ipa": "laʊ˧˥ pan˨˩˦ ni˧˥ xaʊ˨˩˦",
+  "g": "Hello, boss!",
+  "note": "Two third-tone pairs: lǎo and nǐ both rise like second tones."
+ },
+ {
+  "id": "zh9b",
+  "l": "zh",
+  "lesson": "zh9",
+  "w": "我也很好。",
+  "r": "wǒ yě hěn hǎo",
+  "ipa": "wo˧˥ jɛ˨˩ xən˧˥ xaʊ˨˩˦",
+  "g": "I'm fine too.",
+  "note": "Four third tones in a row. Speakers split them into pairs (wǒ yě | hěn hǎo), so you commonly hear wó yě hén hǎo."
+ },
+ {
+  "id": "zh10a",
+  "l": "zh",
+  "lesson": "zh10",
+  "w": "不客气。",
+  "r": "bú kèqi",
+  "ipa": "pu˧˥ kʰɤ˥˩ tɕʰi",
+  "g": "You're welcome.",
+  "note": "不 rises before the fourth tone kè."
+ },
+ {
+  "id": "zh10b",
+  "l": "zh",
+  "lesson": "zh10",
+  "w": "一共多少钱？",
+  "r": "yígòng duōshao qián",
+  "ipa": "i˧˥ kʊŋ˥˩ two˥ ʂaʊ tɕʰjɛn˧˥",
+  "g": "How much altogether?",
+  "note": "一 rises before the fourth tone gòng."
+ },
+ {
+  "id": "zh10c",
+  "l": "zh",
+  "lesson": "zh10",
+  "w": "我不知道。",
+  "r": "wǒ bù zhīdào",
+  "ipa": "wo˨˩ pu˥˩ ʈʂɨ˥ taʊ˥˩",
+  "g": "I don't know.",
+  "note": "不 keeps its fourth tone before the first tone zhī."
+ },
+ {
+  "id": "zh11a",
+  "l": "zh",
+  "lesson": "zh11",
+  "w": "你在哪儿？",
+  "r": "nǐ zài nǎr",
+  "ipa": "ni˨˩ tsaɪ˥˩ nɑɻ˨˩˦",
+  "g": "Where are you?",
+  "note": "哪儿 is one syllable: the -r curls the tongue at the end of nǎ."
+ },
+ {
+  "id": "zh11b",
+  "l": "zh",
+  "lesson": "zh11",
+  "w": "这是我的朋友。",
+  "r": "zhè shì wǒ de péngyou",
+  "ipa": "ʈʂɤ˥˩ ʂɨ˥˩ wo˨˩ tə pʰəŋ˧˥ joʊ",
+  "g": "This is my friend.",
+  "note": "的 and 友 are neutral: short, light and toneless."
+ },
+ {
+  "id": "ar6a",
+  "l": "ar",
+  "lesson": "ar6",
+  "w": "صباح الخير",
+  "r": "ṣabāḥ il-xēr",
+  "ipa": "sˤɑˈbɑːħ ilˈxeːr",
+  "g": "Good morning",
+  "note": "The emphatic ṣ darkens both a's in ṣabāḥ."
+ },
+ {
+  "id": "ar6b",
+  "l": "ar",
+  "lesson": "ar6",
+  "w": "الطقس حلو اليوم",
+  "r": "iṭ-ṭaʾs ḥilu l-yōm",
+  "ipa": "itˤˈtˤɑʔs ˈħilu lˈjoːm",
+  "g": "The weather is nice today",
+  "note": "ṭ darkens the vowel after it; ق is a glottal stop."
+ },
+ {
+  "id": "ar8a",
+  "l": "ar",
+  "lesson": "ar8",
+  "w": "شو بدّك؟",
+  "r": "šū biddak",
+  "ipa": "ʃuː ˈbiddak",
+  "g": "What do you want?",
+  "note": "Hold the dd a beat longer."
+ },
+ {
+  "id": "ar8b",
+  "l": "ar",
+  "lesson": "ar8",
+  "w": "يلّا نروح",
+  "r": "yalla nrūḥ",
+  "ipa": "ˈjalla nruːħ",
+  "g": "Let's go",
+  "note": "Doubled ll in yalla; nr starts a cluster with no vowel between."
+ },
+ {
+  "id": "ar9a",
+  "l": "ar",
+  "lesson": "ar9",
+  "w": "صباح النور",
+  "r": "ṣabāḥ in-nūr",
+  "ipa": "sˤɑˈbɑːħ inˈnuːr",
+  "g": "Good morning (reply)",
+  "note": "ن is a sun letter, so il- becomes in-nūr."
+ },
+ {
+  "id": "ar9b",
+  "l": "ar",
+  "lesson": "ar9",
+  "w": "الدنيا شوب",
+  "r": "id-dinya šōb",
+  "ipa": "idˈdinja ʃoːb",
+  "g": "It's hot (lit. the world is hot)",
+  "note": "د is a sun letter: id-dinya, not il-dinya."
+ },
+ {
+  "id": "ar10a",
+  "l": "ar",
+  "lesson": "ar10",
+  "w": "شو اسمك؟",
+  "r": "šū ismak",
+  "ipa": "ʃuː ˈismak",
+  "g": "What's your name? (to a man)",
+  "note": "شو is Levantine for MSA ماذا."
+ },
+ {
+  "id": "ar10b",
+  "l": "ar",
+  "lesson": "ar10",
+  "w": "هلّق مش فاضي",
+  "r": "hallaʾ miš fāḍi",
+  "ipa": "ˈhallaʔ miʃ ˈfaːdˤi",
+  "g": "I'm busy right now",
+  "note": "ق at the end of hallaʾ is a glottal stop."
+ },
+ {
+  "id": "ar10c",
+  "l": "ar",
+  "lesson": "ar10",
+  "w": "قدّيش حقّه؟",
+  "r": "ʾaddēš ḥaʾʾo",
+  "ipa": "ʔadˈdeːʃ ˈħaʔʔo",
+  "g": "How much is it?",
+  "note": "Both ق's are glottal stops, and the doubled one is held."
+ },
+ {
+  "id": "ar11a",
+  "l": "ar",
+  "lesson": "ar11",
+  "w": "كتير منيح",
+  "r": "ktīr mnīḥ",
+  "ipa": "ktiːr mniːħ",
+  "g": "Very good",
+  "note": "Both words start with two consonants and no vowel between them."
+ },
+ {
+  "id": "ar11b",
+  "l": "ar",
+  "lesson": "ar11",
+  "w": "بدّي كاسة مي",
+  "r": "biddi kāset mayy",
+  "ipa": "ˈbiddi ˈkaːset majj",
+  "g": "I want a glass of water",
+  "note": "Stress falls on the long vowel in kāset."
+ }
+]

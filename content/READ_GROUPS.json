@@ -1,0 +1,32 @@
+[
+ {
+  "t": "One shape, different dots",
+  "d": "ب ت ث ن ي share the same body. Count the dots and look where they are. ا is the long a.",
+  "c": "ابتثني"
+ },
+ {
+  "t": "The ج family",
+  "d": "One shape, three letters: dot inside, no dot, dot above.",
+  "c": "جحخ"
+ },
+ {
+  "t": "The letters that don't join forward",
+  "d": "د ذ ر ز و (and ا) never connect to the letter after them, so the next letter starts fresh.",
+  "c": "دذرزو"
+ },
+ {
+  "t": "Teeth and loops",
+  "d": "س ش have teeth; ص ض have a loop.",
+  "c": "سشصض"
+ },
+ {
+  "t": "Emphatics and the ʿayn pair",
+  "d": "ط ظ have an upright stroke; ع غ change shape the most.",
+  "c": "طظعغ"
+ },
+ {
+  "t": "The rest",
+  "d": "ف ق ك ل م ه, and the hamza ء.",
+  "c": "فقكلمهء"
+ }
+]

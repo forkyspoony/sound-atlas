@@ -1,0 +1,1102 @@
+[
+ {
+  "id": "es-r",
+  "l": "es",
+  "label": "ɾ vs r",
+  "ids": [
+   "tap",
+   "r"
+  ],
+  "tip": "One quick flick of the tongue vs a rolled trill. The trill is longer and buzzier.",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "pero",
+     "ipa": "ˈpeɾo",
+     "g": "but",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "perro",
+     "ipa": "ˈpero",
+     "g": "dog",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "caro",
+     "ipa": "ˈkaɾo",
+     "g": "expensive",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "carro",
+     "ipa": "ˈkaro",
+     "g": "car",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "coro",
+     "ipa": "ˈkoɾo",
+     "g": "choir",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "corro",
+     "ipa": "ˈkoro",
+     "g": "I run",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "es-pb",
+  "l": "es",
+  "label": "p vs b",
+  "ids": [
+   "pu",
+   "beta"
+  ],
+  "tip": "Spanish p has no puff of air, so English ears often hear it as b. Listen for the voice: b starts buzzing before the lips open.",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "peso",
+     "ipa": "ˈpeso",
+     "g": "weight",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "beso",
+     "ipa": "ˈbeso",
+     "g": "kiss",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "pala",
+     "ipa": "ˈpala",
+     "g": "shovel",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "bala",
+     "ipa": "ˈbala",
+     "g": "bullet",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "pata",
+     "ipa": "ˈpat̪a",
+     "g": "paw",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "bata",
+     "ipa": "ˈbat̪a",
+     "g": "robe",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "es-td",
+  "l": "es",
+  "label": "t vs d",
+  "ids": [
+   "td",
+   "eth"
+  ],
+  "tip": "Both are made on the teeth. t is voiceless with no puff; d buzzes.",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "tos",
+     "ipa": "t̪os",
+     "g": "cough",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "dos",
+     "ipa": "d̪os",
+     "g": "two",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "tía",
+     "ipa": "ˈt̪ia",
+     "g": "aunt",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "día",
+     "ipa": "ˈd̪ia",
+     "g": "day",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "es-kg",
+  "l": "es",
+  "label": "k vs g",
+  "ids": [
+   "pu",
+   "gh"
+  ],
+  "tip": "Spanish k has no puff of air. g buzzes from the start.",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "casa",
+     "ipa": "ˈkasa",
+     "g": "house",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "gasa",
+     "ipa": "ˈɡasa",
+     "g": "gauze",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "coma",
+     "ipa": "ˈkoma",
+     "g": "comma",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "goma",
+     "ipa": "ˈɡoma",
+     "g": "rubber",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "es-n",
+  "l": "es",
+  "label": "n vs ɲ",
+  "ids": [
+   "ny"
+  ],
+  "tip": "ɲ is made with the middle of the tongue on the palate. It sounds like n with a y glued to it.",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "una",
+     "ipa": "ˈuna",
+     "g": "one",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "uña",
+     "ipa": "ˈuɲa",
+     "g": "fingernail",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "cana",
+     "ipa": "ˈkana",
+     "g": "grey hair",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "caña",
+     "ipa": "ˈkaɲa",
+     "g": "cane",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "es-ei",
+  "l": "es",
+  "label": "e vs i",
+  "ids": [
+   "ve",
+   "vi"
+  ],
+  "tip": "Spanish vowels never glide or relax. e is halfway between English \"eh\" and \"ay\"; i is a tight \"ee\".",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "peso",
+     "ipa": "ˈpeso",
+     "g": "weight",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "piso",
+     "ipa": "ˈpiso",
+     "g": "floor",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "mesa",
+     "ipa": "ˈmesa",
+     "g": "table",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "misa",
+     "ipa": "ˈmisa",
+     "g": "mass",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-asp",
+  "l": "zh",
+  "label": "no puff vs puff",
+  "ids": [
+   "pu",
+   "ph"
+  ],
+  "tip": "Pinyin b d g z zh j have no puff of air; p t k c ch q have a strong one. Neither set buzzes like English b or d.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "爸",
+     "ipa": "pa˥˩",
+     "g": "dad",
+     "r": "bà"
+    },
+    {
+     "l": "zh",
+     "w": "怕",
+     "ipa": "pʰa˥˩",
+     "g": "to fear",
+     "r": "pà"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "大",
+     "ipa": "ta˥˩",
+     "g": "big",
+     "r": "dà"
+    },
+    {
+     "l": "zh",
+     "w": "踏",
+     "ipa": "tʰa˥˩",
+     "g": "to step on",
+     "r": "tà"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "哥",
+     "ipa": "kɤ˥",
+     "g": "older brother",
+     "r": "gē"
+    },
+    {
+     "l": "zh",
+     "w": "科",
+     "ipa": "kʰɤ˥",
+     "g": "subject",
+     "r": "kē"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "在",
+     "ipa": "tsaɪ˥˩",
+     "g": "at",
+     "r": "zài"
+    },
+    {
+     "l": "zh",
+     "w": "菜",
+     "ipa": "tsʰaɪ˥˩",
+     "g": "dish",
+     "r": "cài"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "知",
+     "ipa": "ʈʂɨ˥",
+     "g": "to know",
+     "r": "zhī"
+    },
+    {
+     "l": "zh",
+     "w": "吃",
+     "ipa": "ʈʂʰɨ˥",
+     "g": "to eat",
+     "r": "chī"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "鸡",
+     "ipa": "tɕi˥",
+     "g": "chicken",
+     "r": "jī"
+    },
+    {
+     "l": "zh",
+     "w": "七",
+     "ipa": "tɕʰi˥",
+     "g": "seven",
+     "r": "qī"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-ssh",
+  "l": "zh",
+  "label": "z c s vs zh ch sh",
+  "ids": [
+   "ts",
+   "tsr",
+   "sr"
+  ],
+  "tip": "z c s are made with the tongue tip forward behind the teeth. zh ch sh curl the tongue back and sound hollower.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "四",
+     "ipa": "sɨ˥˩",
+     "g": "four",
+     "r": "sì"
+    },
+    {
+     "l": "zh",
+     "w": "是",
+     "ipa": "ʂɨ˥˩",
+     "g": "to be",
+     "r": "shì"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "早",
+     "ipa": "tsaʊ˨˩˦",
+     "g": "early",
+     "r": "zǎo"
+    },
+    {
+     "l": "zh",
+     "w": "找",
+     "ipa": "ʈʂaʊ˨˩˦",
+     "g": "to look for",
+     "r": "zhǎo"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "字",
+     "ipa": "tsɨ˥˩",
+     "g": "character",
+     "r": "zì"
+    },
+    {
+     "l": "zh",
+     "w": "志",
+     "ipa": "ʈʂɨ˥˩",
+     "g": "will",
+     "r": "zhì"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-jzh",
+  "l": "zh",
+  "label": "j q x vs zh ch sh",
+  "ids": [
+   "tc",
+   "xx",
+   "tsr",
+   "sr"
+  ],
+  "tip": "j q x are made with the tongue tip down and sound bright, like a smile. zh ch sh curl the tongue back and sound dark.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "鸡",
+     "ipa": "tɕi˥",
+     "g": "chicken",
+     "r": "jī"
+    },
+    {
+     "l": "zh",
+     "w": "知",
+     "ipa": "ʈʂɨ˥",
+     "g": "to know",
+     "r": "zhī"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "七",
+     "ipa": "tɕʰi˥",
+     "g": "seven",
+     "r": "qī"
+    },
+    {
+     "l": "zh",
+     "w": "吃",
+     "ipa": "ʈʂʰɨ˥",
+     "g": "to eat",
+     "r": "chī"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "西",
+     "ipa": "ɕi˥",
+     "g": "west",
+     "r": "xī"
+    },
+    {
+     "l": "zh",
+     "w": "诗",
+     "ipa": "ʂɨ˥",
+     "g": "poem",
+     "r": "shī"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-uy",
+  "l": "zh",
+  "label": "u vs ü",
+  "ids": [
+   "vu",
+   "vy"
+  ],
+  "tip": "u has the tongue back; ü keeps the tongue forward like \"ee\" with rounded lips. ü sounds brighter.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "路",
+     "ipa": "lu˥˩",
+     "g": "road",
+     "r": "lù"
+    },
+    {
+     "l": "zh",
+     "w": "绿",
+     "ipa": "ly˥˩",
+     "g": "green",
+     "r": "lǜ"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "努",
+     "ipa": "nu˨˩˦",
+     "g": "to strive",
+     "r": "nǔ"
+    },
+    {
+     "l": "zh",
+     "w": "女",
+     "ipa": "ny˨˩˦",
+     "g": "woman",
+     "r": "nǚ"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-h",
+  "l": "ar",
+  "label": "h vs ħ",
+  "ids": [
+   "h",
+   "hh"
+  ],
+  "tip": "ه is a plain English h. ح is squeezed from the throat and sounds raspier and stronger.",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "هرم",
+     "ipa": "haram",
+     "g": "pyramid",
+     "r": "haram"
+    },
+    {
+     "l": "ar",
+     "w": "حرم",
+     "ipa": "ħaram",
+     "g": "sanctuary",
+     "r": "ḥaram"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "هال",
+     "ipa": "haːl",
+     "g": "cardamom",
+     "r": "hāl"
+    },
+    {
+     "l": "ar",
+     "w": "حال",
+     "ipa": "ħaːl",
+     "g": "state; condition",
+     "r": "ḥāl"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-hain",
+  "l": "ar",
+  "label": "ħ vs ʕ",
+  "ids": [
+   "hh",
+   "ain"
+  ],
+  "tip": "Both are squeezed in the throat. ح is voiceless breath; ع has the voice on and sounds tight.",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "حمل",
+     "ipa": "ħamal",
+     "g": "lamb",
+     "r": "ḥamal"
+    },
+    {
+     "l": "ar",
+     "w": "عمل",
+     "ipa": "ʕamal",
+     "g": "work",
+     "r": "ʿamal"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-hx",
+  "l": "ar",
+  "label": "ħ vs x",
+  "ids": [
+   "hh",
+   "x"
+  ],
+  "tip": "ح is a smooth squeeze in the throat. خ scrapes at the back of the mouth, like German \"Bach\".",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "حال",
+     "ipa": "ħaːl",
+     "g": "state; condition",
+     "r": "ḥāl"
+    },
+    {
+     "l": "ar",
+     "w": "خال",
+     "ipa": "xaːl",
+     "g": "maternal uncle",
+     "r": "xāl"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-emph",
+  "l": "ar",
+  "label": "plain vs emphatic",
+  "ids": [
+   "ems",
+   "emt",
+   "emd"
+  ],
+  "tip": "Listen to the vowel: after an emphatic consonant it sounds darker and deeper, closer to \"aw\".",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "تاب",
+     "ipa": "taːb",
+     "g": "repented",
+     "r": "tāb"
+    },
+    {
+     "l": "ar",
+     "w": "طاب",
+     "ipa": "tˤaːb",
+     "g": "became pleasant",
+     "r": "ṭāb"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "توب",
+     "ipa": "toːb",
+     "g": "garment",
+     "r": "tōb"
+    },
+    {
+     "l": "ar",
+     "w": "طوب",
+     "ipa": "tˤoːb",
+     "g": "bricks",
+     "r": "ṭōb"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "سدّ",
+     "ipa": "sadd",
+     "g": "dam",
+     "r": "sadd"
+    },
+    {
+     "l": "ar",
+     "w": "صدّ",
+     "ipa": "sˤadd",
+     "g": "pushed back",
+     "r": "ṣadd"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "دلّ",
+     "ipa": "dall",
+     "g": "pointed out",
+     "r": "dall"
+    },
+    {
+     "l": "ar",
+     "w": "ضلّ",
+     "ipa": "dˤall",
+     "g": "kept on",
+     "r": "ḍall"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "سيف",
+     "ipa": "seːf",
+     "g": "sword",
+     "r": "sēf"
+    },
+    {
+     "l": "ar",
+     "w": "صيف",
+     "ipa": "sˤeːf",
+     "g": "summer",
+     "r": "ṣēf"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "سار",
+     "ipa": "saːr",
+     "g": "he walked",
+     "r": "sār"
+    },
+    {
+     "l": "ar",
+     "w": "صار",
+     "ipa": "sˤaːr",
+     "g": "it became",
+     "r": "ṣār"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "تين",
+     "ipa": "t̪iːn",
+     "g": "figs",
+     "r": "tīn"
+    },
+    {
+     "l": "ar",
+     "w": "طين",
+     "ipa": "tˤiːn",
+     "g": "mud",
+     "r": "ṭīn"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "دار",
+     "ipa": "d̪aːr",
+     "g": "house",
+     "r": "dār"
+    },
+    {
+     "l": "ar",
+     "w": "ضار",
+     "ipa": "dˤaːr",
+     "g": "harmful",
+     "r": "ḍār"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-kq",
+  "l": "ar",
+  "label": "k vs ق [ʔ]",
+  "ids": [
+   "gs",
+   "q"
+  ],
+  "tip": "In Levantine, ق is usually a glottal stop. كلب has a k; قلب starts with a catch in the throat and no k at all.",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "كلب",
+     "ipa": "kalb",
+     "g": "dog",
+     "r": "kalb"
+    },
+    {
+     "l": "ar",
+     "w": "قلب",
+     "ipa": "ʔalb",
+     "g": "heart",
+     "r": "ʾalb"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-ain",
+  "l": "ar",
+  "label": "ʔ vs ʕ",
+  "ids": [
+   "gs",
+   "ain"
+  ],
+  "tip": "ء is a clean catch. ع squeezes the throat and colours the vowel with a strained, reedy sound.",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "ألم",
+     "ipa": "ʔalam",
+     "g": "pain",
+     "r": "ʾalam"
+    },
+    {
+     "l": "ar",
+     "w": "علم",
+     "ipa": "ʕalam",
+     "g": "flag",
+     "r": "ʿalam"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "أمل",
+     "ipa": "ʔamal",
+     "g": "hope",
+     "r": "ʾamal"
+    },
+    {
+     "l": "ar",
+     "w": "عمل",
+     "ipa": "ʕamal",
+     "g": "work",
+     "r": "ʿamal"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-xg",
+  "l": "ar",
+  "label": "x vs ɣ",
+  "ids": [
+   "x",
+   "gh"
+  ],
+  "tip": "Same place at the back of the mouth. خ is voiceless; غ buzzes like a gargle.",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "خيمة",
+     "ipa": "xeːme",
+     "g": "tent",
+     "r": "khēme"
+    },
+    {
+     "l": "ar",
+     "w": "غيمة",
+     "ipa": "ɣeːme",
+     "g": "cloud",
+     "r": "ghēme"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "خالي",
+     "ipa": "xaːli",
+     "g": "empty",
+     "r": "xāli"
+    },
+    {
+     "l": "ar",
+     "w": "غالي",
+     "ipa": "ɣaːli",
+     "g": "expensive",
+     "r": "ghāli"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-nng",
+  "l": "zh",
+  "label": "-n vs -ng",
+  "ids": [],
+  "tip": "-n ends with the tongue tip on the gum ridge; -ng ends with the back of the tongue up, like English \"sing\". The vowel before -ng also sounds further back.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "盘",
+     "ipa": "pʰan˧˥",
+     "g": "plate",
+     "r": "pán"
+    },
+    {
+     "l": "zh",
+     "w": "旁",
+     "ipa": "pʰɑŋ˧˥",
+     "g": "side",
+     "r": "páng"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "陈",
+     "ipa": "ʈʂʰən˧˥",
+     "g": "Chen (surname)",
+     "r": "chén"
+    },
+    {
+     "l": "zh",
+     "w": "成",
+     "ipa": "ʈʂʰəŋ˧˥",
+     "g": "to become",
+     "r": "chéng"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "金",
+     "ipa": "tɕin˥",
+     "g": "gold",
+     "r": "jīn"
+    },
+    {
+     "l": "zh",
+     "w": "京",
+     "ipa": "tɕiŋ˥",
+     "g": "capital",
+     "r": "jīng"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-len",
+  "l": "ar",
+  "label": "short vs long vowel",
+  "ids": [
+   "va"
+  ],
+  "tip": "A long vowel is held about twice as long. The length alone changes the word.",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "عمل",
+     "ipa": "ʕamal",
+     "g": "work",
+     "r": "ʿamal"
+    },
+    {
+     "l": "ar",
+     "w": "عامل",
+     "ipa": "ʕaːmel",
+     "g": "worker",
+     "r": "ʿāmel"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "جمل",
+     "ipa": "ʒamal",
+     "g": "camel",
+     "r": "jamal"
+    },
+    {
+     "l": "ar",
+     "w": "جمال",
+     "ipa": "ʒamaːl",
+     "g": "beauty",
+     "r": "jamāl"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "كتب",
+     "ipa": "katab",
+     "g": "he wrote",
+     "r": "katab"
+    },
+    {
+     "l": "ar",
+     "w": "كاتب",
+     "ipa": "kaːteb",
+     "g": "writer",
+     "r": "kāteb"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "ar-gem",
+  "l": "ar",
+  "label": "single vs double consonant",
+  "ids": [],
+  "tip": "A doubled consonant (shadda) is held longer: you can hear a tiny hold before it releases.",
+  "pairs": [
+   [
+    {
+     "l": "ar",
+     "w": "مرة",
+     "ipa": "mara",
+     "g": "woman",
+     "r": "mara"
+    },
+    {
+     "l": "ar",
+     "w": "مرّة",
+     "ipa": "marra",
+     "g": "once",
+     "r": "marra"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "علم",
+     "ipa": "ʕalam",
+     "g": "flag",
+     "r": "ʿalam"
+    },
+    {
+     "l": "ar",
+     "w": "علّم",
+     "ipa": "ʕallam",
+     "g": "he taught",
+     "r": "ʿallam"
+    }
+   ],
+   [
+    {
+     "l": "ar",
+     "w": "حمام",
+     "ipa": "ħamaːm",
+     "g": "pigeons",
+     "r": "ḥamām"
+    },
+    {
+     "l": "ar",
+     "w": "حمّام",
+     "ipa": "ħammaːm",
+     "g": "bathroom",
+     "r": "ḥammām"
+    }
+   ]
+  ]
+ }
+]

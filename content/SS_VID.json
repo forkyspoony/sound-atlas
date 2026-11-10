@@ -1,0 +1,162 @@
+{
+ "r": {
+  "a": "vd_alveolar_trill",
+  "m": "MRI2_vd_alveolar_trill"
+ },
+ "tap": {
+  "a": "vd_alveolar_tap",
+  "m": "MRI2_vd_alveolar_tap_overdubbed"
+ },
+ "x": {
+  "a": "vl_velar_fricative",
+  "m": "MRI2_vl_velar_fricative"
+ },
+ "gh": {
+  "a": "vd_velar_fricative",
+  "m": "MRI2_vd_velar_fricative"
+ },
+ "beta": {
+  "a": "vd_bilabial_fricative",
+  "m": "MRI2_vd_bilabial_fricative"
+ },
+ "ny": {
+  "a": "vd_palatal_nasal",
+  "m": "MRI2_vd_palatal_nasal"
+ },
+ "yy": {
+  "a": "vd_palatal_fricative",
+  "m": "MRI2_vd_palatal_fricative"
+ },
+ "pu": {
+  "a": "vl_bilabial_plosive",
+  "m": "MRI2_vl_bilabial_plosive_overdubbed"
+ },
+ "ph": {
+  "a": "vl_bilabial_plosive",
+  "m": "MRI2_vl_bilabial_plosive_overdubbed",
+  "n": "Shows plain [p]: the lips are the same, just add the puff of air."
+ },
+ "td": {
+  "a": "vl_alveolar_plosive",
+  "m": "MRI2_vl_alveolar_plosive_overdubbed",
+  "n": "Shows [t] on the gum ridge; for [t̪] put the tongue tip against the back of the teeth instead."
+ },
+ "eth": {
+  "a": "vd_dental_fricative",
+  "m": "MRI2_vd_dental_fricative"
+ },
+ "th": {
+  "a": "vl_dental_fricative",
+  "m": "MRI2_vl_dental_fricative"
+ },
+ "ts": {
+  "a": "vl_alveolar_fricative",
+  "m": "MRI2_vl_alveolar_fricative_overdubbed",
+  "n": "Shows [s], the hiss that [ts] releases into."
+ },
+ "tsh": {
+  "a": "vl_alveolar_fricative",
+  "m": "MRI2_vl_alveolar_fricative_overdubbed",
+  "n": "Shows [s], the hiss that [tsʰ] releases into."
+ },
+ "tsr": {
+  "a": "vl_retroflex_fricative",
+  "m": "MRI2_vl_retroflex_fricative",
+  "n": "Shows [ʂ], the hiss that [ʈʂ] releases into."
+ },
+ "tsrh": {
+  "a": "vl_retroflex_fricative",
+  "m": "MRI2_vl_retroflex_fricative",
+  "n": "Shows [ʂ], the hiss that [ʈʂʰ] releases into."
+ },
+ "sr": {
+  "a": "vl_retroflex_fricative",
+  "m": "MRI2_vl_retroflex_fricative"
+ },
+ "rr": {
+  "a": "vd_retroflex_approximant",
+  "m": "MRI2_vd_retroflex_approximant"
+ },
+ "tc": {
+  "m": "MRI2_vl_alveolo-palatal_fricative",
+  "n": "Shows [ɕ], the hiss that [tɕ] releases into."
+ },
+ "tch": {
+  "m": "MRI2_vl_alveolo-palatal_fricative",
+  "n": "Shows [ɕ], the hiss that [tɕʰ] releases into."
+ },
+ "xx": {
+  "m": "MRI2_vl_alveolo-palatal_fricative"
+ },
+ "gs": {
+  "a": "vl_glottal_plosive",
+  "m": "MRI2_vl_glottal_plosive"
+ },
+ "hh": {
+  "a": "vl_pharyngeal_fricative",
+  "m": "MRI2_vl_pharyngeal_fricative"
+ },
+ "ain": {
+  "a": "vd_pharyngeal_fricative",
+  "m": "MRI2_vd_pharyngeal_fricative"
+ },
+ "q": {
+  "a": "vl_uvular_plosive",
+  "m": "MRI2_vl_uvular_plosive"
+ },
+ "ems": {
+  "a": "vl_alveolar_fricative",
+  "m": "MRI2_vl_alveolar_fricative_overdubbed",
+  "n": "Shows plain [s]. For [sˤ], also pull the tongue root back toward the throat."
+ },
+ "emt": {
+  "a": "vl_alveolar_plosive",
+  "m": "MRI2_vl_alveolar_plosive_overdubbed",
+  "n": "Shows plain [t]. For [tˤ], also pull the tongue root back toward the throat."
+ },
+ "emd": {
+  "a": "vd_alveolar_plosive",
+  "m": "MRI2_vd_alveolar_plosive",
+  "n": "Shows plain [d]. For [dˤ], also pull the tongue root back toward the throat."
+ },
+ "emz": {
+  "a": "vd_alveolar_fricative",
+  "m": "MRI2_vd_alveolar_fricative",
+  "n": "Shows plain [z]. For [zˤ], also pull the tongue root back toward the throat."
+ },
+ "h": {
+  "a": "vl_glottal_fricative",
+  "m": "MRI2_vl_glottal_fricative"
+ },
+ "jzh": {
+  "a": "vd_postalveolar_fricative",
+  "m": "MRI2_vd_postalveolar_fricative"
+ },
+ "vi": {
+  "m": "MRI2_cardinal_1_vowel_overdubbed"
+ },
+ "vy": {
+  "m": "MRI2_cardinal_9_vowel"
+ },
+ "vbuzz": {
+  "m": "MRI2_cardinal_17_vowel"
+ },
+ "vu": {
+  "m": "MRI2_cardinal_8_vowel_overdubbed"
+ },
+ "ve": {
+  "m": "MRI2_cardinal_2_vowel"
+ },
+ "vgam": {
+  "m": "MRI2_cardinal_15_vowel"
+ },
+ "vo": {
+  "m": "MRI2_cardinal_7_vowel"
+ },
+ "vschwa": {
+  "m": "MRI2_central_schwa_float_vowel"
+ },
+ "va": {
+  "m": "MRI2_cardinal_4_vowel_overdubbed"
+ }
+}

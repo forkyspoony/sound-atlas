@@ -1,0 +1,14 @@
+{
+ "es": {
+  "name": "Spanish",
+  "sub": "Latin American Spanish"
+ },
+ "zh": {
+  "name": "Mandarin",
+  "sub": "Mainland Mandarin (Beijing standard)"
+ },
+ "ar": {
+  "name": "Arabic",
+  "sub": "Levantine Arabic (Syria, Lebanon, Jordan, Palestine)"
+ }
+}

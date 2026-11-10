@@ -1,0 +1,11 @@
+{
+ "x": "Spanish <i>j</i>, pinyin <i>h</i> and Arabic خ are all [x]. Arabic خ is usually the strongest and scrapiest; Mandarin h is often lighter.",
+ "r": "Spanish rr and Levantine ر are both trills. Arabic ر is often a tap between vowels, like Spanish single r.",
+ "gh": "Spanish soft g is a gentle [ɣ]; Arabic غ is the same symbol but much stronger, almost a gargle.",
+ "pu": "Spanish p and Mandarin b are the same sound: no puff. Mandarin p is the puffed [pʰ].",
+ "td": "Spanish t/d and Arabic ت/د are dental, with the tongue on the teeth.",
+ "vi": "A steady \"ee\" in all three languages, with no English glide.",
+ "vu": "A real \"oo\" with rounded lips in all three.",
+ "ve": "Spanish e and Levantine ē (as in بيت bēt) are close; neither glides like English \"ay\".",
+ "vo": "Spanish o and Levantine ō (as in يوم yōm) are close; neither glides like English \"oh\"."
+}

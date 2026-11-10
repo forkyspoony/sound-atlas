@@ -1,0 +1,202 @@
+{
+ "es": {
+  "title": "Spanish letters",
+  "rows": [
+   [
+    "b, v",
+    "[b] after a pause or m/n; [β] elsewhere",
+    "pu|beta"
+   ],
+   [
+    "d",
+    "[d̪] after a pause or n/l; [ð] elsewhere",
+    "td|eth"
+   ],
+   [
+    "g (+a,o,u)",
+    "[ɡ] after a pause or n; [ɣ] elsewhere",
+    "gh"
+   ],
+   [
+    "j, g (+e,i)",
+    "[x]",
+    "x"
+   ],
+   [
+    "ñ",
+    "[ɲ]",
+    "ny"
+   ],
+   [
+    "r / rr",
+    "[ɾ] tap / [r] trill (word-initial r is trilled)",
+    "tap|r"
+   ],
+   [
+    "ll, y",
+    "[ʝ] (Argentina: [ʃ])",
+    "yy"
+   ],
+   [
+    "c (+e,i), z",
+    "[s] in Latin America / [θ] in Spain",
+    "th"
+   ],
+   [
+    "p, t, k",
+    "unaspirated, t dental",
+    "pu|td"
+   ],
+   [
+    "h",
+    "silent",
+    ""
+   ],
+   [
+    "a e i o u",
+    "pure vowels, no glides",
+    "va|ve|vi|vo|vu"
+   ]
+  ]
+ },
+ "zh": {
+  "title": "Pinyin",
+  "rows": [
+   [
+    "b / p",
+    "[p] / [pʰ]",
+    "pu|ph"
+   ],
+   [
+    "d / t",
+    "[t] / [tʰ]",
+    "pu|ph"
+   ],
+   [
+    "g / k",
+    "[k] / [kʰ]",
+    "pu|ph"
+   ],
+   [
+    "z / c",
+    "[ts] / [tsʰ]",
+    "ts|tsh"
+   ],
+   [
+    "zh / ch",
+    "[ʈʂ] / [ʈʂʰ]",
+    "tsr|tsrh"
+   ],
+   [
+    "sh / r",
+    "[ʂ] / [ɻ]",
+    "sr|rr"
+   ],
+   [
+    "j / q / x",
+    "[tɕ] / [tɕʰ] / [ɕ]",
+    "tc|tch|xx"
+   ],
+   [
+    "h",
+    "[x]",
+    "x"
+   ],
+   [
+    "ü (and u after j q x y)",
+    "[y]",
+    "vy"
+   ],
+   [
+    "e",
+    "[ɤ] alone; [ə] in -en, -eng",
+    "vgam|vschwa"
+   ],
+   [
+    "-i after z c s zh ch sh r",
+    "[ɨ] buzzy vowel",
+    "vbuzz"
+   ]
+  ]
+ },
+ "ar": {
+  "title": "Arabic letters (Levantine)",
+  "rows": [
+   [
+    "ء أ",
+    "[ʔ]",
+    "gs"
+   ],
+   [
+    "ق",
+    "[ʔ] in everyday speech; [q] in formal words",
+    "gs|q"
+   ],
+   [
+    "ت / ط",
+    "[t̪] / [tˤ]",
+    "td|emt"
+   ],
+   [
+    "د / ض",
+    "[d̪] / [dˤ]",
+    "td|emd"
+   ],
+   [
+    "س / ص",
+    "[s] / [sˤ]",
+    "ems"
+   ],
+   [
+    "ث",
+    "[t] or [s] (MSA [θ])",
+    "th"
+   ],
+   [
+    "ذ",
+    "[d] or [z] (MSA [ð])",
+    "eth"
+   ],
+   [
+    "ظ",
+    "[zˤ] (MSA [ðˤ])",
+    "emz"
+   ],
+   [
+    "ج",
+    "[ʒ] in Syria and Lebanon; [dʒ] in Jordan and Palestine",
+    "jzh"
+   ],
+   [
+    "ه / ح / خ",
+    "[h] / [ħ] / [x]",
+    "h|hh|x"
+   ],
+   [
+    "ع",
+    "[ʕ]",
+    "ain"
+   ],
+   [
+    "غ",
+    "[ɣ] (often [ʁ])",
+    "gh"
+   ],
+   [
+    "ر",
+    "[r] or [ɾ]",
+    "r"
+   ],
+   [
+    "ي و (in the middle)",
+    "often [eː] [oː]",
+    "ve|vo"
+   ],
+   [
+    "ا و ي (long)",
+    "[aː] [uː] [iː]",
+    "va|vu|vi"
+   ]
+  ]
+ }
+}

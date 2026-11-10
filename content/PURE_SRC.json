@@ -1,0 +1,32 @@
+{
+ "vo": {
+  "page": "https://commons.wikimedia.org/wiki/File:Close-mid_back_rounded_vowel.ogg"
+ },
+ "vgam": {
+  "page": "https://commons.wikimedia.org/wiki/File:Close-mid_back_unrounded_vowel.ogg"
+ },
+ "ve": {
+  "page": "https://commons.wikimedia.org/wiki/File:Close-mid_front_unrounded_vowel.ogg"
+ },
+ "vu": {
+  "page": "https://commons.wikimedia.org/wiki/File:Close_back_rounded_vowel.ogg"
+ },
+ "vbuzz": {
+  "page": "https://commons.wikimedia.org/wiki/File:Close_central_unrounded_vowel.ogg"
+ },
+ "vy": {
+  "page": "https://commons.wikimedia.org/wiki/File:Close_front_rounded_vowel.ogg"
+ },
+ "vi": {
+  "page": "https://commons.wikimedia.org/wiki/File:Close_front_unrounded_vowel.ogg"
+ },
+ "vschwa": {
+  "page": "https://commons.wikimedia.org/wiki/File:Mid-central_vowel.ogg"
+ },
+ "va": {
+  "page": "https://commons.wikimedia.org/wiki/File:Open_central_unrounded_vowel.ogg"
+ },
+ "va2": {
+  "page": "https://commons.wikimedia.org/wiki/File:Open_front_unrounded_vowel.ogg"
+ }
+}

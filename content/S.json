@@ -1,0 +1,1946 @@
+[
+ {
+  "id": "r",
+  "sym": "r",
+  "name": "Rolled R",
+  "desc": "voiced alveolar trill",
+  "cat": "c",
+  "place": [
+   3
+  ],
+  "langs": [
+   "es",
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "Most English has no equivalent. It's like a cat purring with the tip of your tongue, or a Scottish rolled r.",
+  "how": [
+   "Rest your tongue tip loosely on the gum ridge just behind your top teeth.",
+   "Keep the tip relaxed, not pressed, and push a steady stream of air over it so it flaps several times.",
+   "To warm up, say \"butter-butter-butter\" quickly, or start with \"tr\" as in Spanish tres and try to keep the flutter going."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "perro",
+    "ipa": "ˈpero",
+    "g": "dog",
+    "f": "rr"
+   },
+   {
+    "l": "es",
+    "w": "rojo",
+    "ipa": "ˈroxo",
+    "g": "red",
+    "f": "r"
+   },
+   {
+    "l": "ar",
+    "w": "راس",
+    "r": "rās",
+    "ipa": "raːs",
+    "g": "head",
+    "f": "ر"
+   }
+  ],
+  "note": "Spanish uses the trill for \"rr\" and for \"r\" at the start of a word. Levantine ر is a trill or a tap.",
+  "rel": [
+   "tap"
+  ]
+ },
+ {
+  "id": "tap",
+  "sym": "ɾ",
+  "name": "Tapped R",
+  "desc": "voiced alveolar tap",
+  "cat": "c",
+  "place": [
+   3
+  ],
+  "langs": [
+   "es"
+  ],
+  "st": "tricky",
+  "anchor": "American English already has this sound: the \"tt\" in \"butter\" and the \"d\" in \"ladder\" said quickly.",
+  "how": [
+   "Flick your tongue tip once against the gum ridge, very quickly.",
+   "Don't round your lips or bunch your tongue the way you would for an English r.",
+   "Practice by saying \"pot-o\" quickly (\"potto\") to get Spanish pero."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "pero",
+    "ipa": "ˈpeɾo",
+    "g": "but",
+    "f": "r"
+   },
+   {
+    "l": "es",
+    "w": "caro",
+    "ipa": "ˈkaɾo",
+    "g": "expensive",
+    "f": "r"
+   },
+   {
+    "l": "es",
+    "w": "gracias",
+    "ipa": "ˈɡɾasjas",
+    "g": "thank you",
+    "f": "r"
+   }
+  ],
+  "note": "pero (but) and perro (dog) differ only in tap vs trill.",
+  "rel": [
+   "r"
+  ]
+ },
+ {
+  "id": "x",
+  "sym": "x",
+  "name": "Back-of-throat H",
+  "desc": "voiceless velar fricative",
+  "cat": "c",
+  "place": [
+   7
+  ],
+  "langs": [
+   "es",
+   "zh",
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "The \"ch\" in Scottish \"loch\" or German \"Bach\". All three of your languages use it.",
+  "how": [
+   "Get into position for \"k\": the back of your tongue rises to the soft palate.",
+   "Don't let it touch. Leave a small gap and push air through so it hisses.",
+   "Mandarin h is gentle, Spanish j is stronger, and Arabic خ is the scrapiest of the three."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "jamón",
+    "ipa": "xaˈmon",
+    "g": "ham",
+    "f": "j"
+   },
+   {
+    "l": "zh",
+    "w": "好",
+    "r": "hǎo",
+    "ipa": "xaʊ˨˩˦",
+    "g": "good",
+    "f": "h"
+   },
+   {
+    "l": "ar",
+    "w": "خلص",
+    "r": "xalaṣ",
+    "ipa": "xalasˤ",
+    "g": "enough; done",
+    "f": "خ"
+   }
+  ],
+  "note": "Arabic خ is often made even further back, at the uvula [χ], which gives it a rougher scrape. Many Latin American Spanish speakers soften j toward [h].",
+  "rel": [
+   "gh",
+   "h"
+  ]
+ },
+ {
+  "id": "gh",
+  "sym": "ɣ",
+  "name": "Soft gargle G",
+  "desc": "voiced velar fricative",
+  "cat": "c",
+  "place": [
+   7
+  ],
+  "langs": [
+   "es",
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's the voiced version of [x], like a very light gargle.",
+  "how": [
+   "Start saying \"g\" but don't let the back of your tongue touch the roof of your mouth.",
+   "Keep your voice buzzing while air passes through the gap.",
+   "In Spanish it's soft, almost a glide. Arabic غ is stronger and is often made at the uvula, like a French r."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "lago",
+    "ipa": "ˈlaɣo",
+    "g": "lake",
+    "f": "g"
+   },
+   {
+    "l": "es",
+    "w": "agua",
+    "ipa": "ˈaɣwa",
+    "g": "water",
+    "f": "g"
+   },
+   {
+    "l": "ar",
+    "w": "غالي",
+    "r": "ghāli",
+    "ipa": "ɣaːli",
+    "g": "expensive",
+    "f": "غ"
+   }
+  ],
+  "note": "Spanish g becomes [ɣ] between vowels and after most consonants. It stays a hard [ɡ] at the start of a phrase and after n.",
+  "rel": [
+   "x",
+   "beta",
+   "eth"
+  ]
+ },
+ {
+  "id": "beta",
+  "sym": "β",
+  "name": "Soft B",
+  "desc": "voiced bilabial approximant",
+  "cat": "c",
+  "place": [
+   0
+  ],
+  "langs": [
+   "es"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's a \"b\" where the lips almost touch but don't close.",
+  "how": [
+   "Get ready to say \"b\".",
+   "Bring your lips close, leaving a thin slit, and let the air pass through softly while your voice buzzes.",
+   "Don't press your bottom lip to your teeth. That would be English \"v\", which Spanish doesn't use."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "lobo",
+    "ipa": "ˈloβo",
+    "g": "wolf",
+    "f": "b"
+   },
+   {
+    "l": "es",
+    "w": "uva",
+    "ipa": "ˈuβa",
+    "g": "grape",
+    "f": "v"
+   },
+   {
+    "l": "es",
+    "w": "Cuba",
+    "ipa": "ˈkuβa",
+    "g": "Cuba",
+    "f": "b"
+   }
+  ],
+  "note": "Spanish b and v are the same sound: a hard [b] after a pause or m/n, and a soft [β] everywhere else.",
+  "rel": [
+   "eth",
+   "gh"
+  ]
+ },
+ {
+  "id": "ny",
+  "sym": "ɲ",
+  "name": "Palatal N (ñ)",
+  "desc": "voiced palatal nasal",
+  "cat": "c",
+  "place": [
+   6
+  ],
+  "langs": [
+   "es"
+  ],
+  "st": "new",
+  "anchor": "Close to \"ny\" in \"canyon\", but it's a single sound rather than n followed by y.",
+  "how": [
+   "Rest the tip of your tongue behind your lower teeth.",
+   "Press the middle of your tongue flat against the hard palate and hum through your nose.",
+   "Release straight into the vowel."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "año",
+    "ipa": "ˈaɲo",
+    "g": "year",
+    "f": "ñ"
+   },
+   {
+    "l": "es",
+    "w": "niño",
+    "ipa": "ˈniɲo",
+    "g": "child",
+    "f": "ñ"
+   },
+   {
+    "l": "es",
+    "w": "España",
+    "ipa": "esˈpaɲa",
+    "g": "Spain",
+    "f": "ñ"
+   }
+  ],
+  "rel": [
+   "yy"
+  ]
+ },
+ {
+  "id": "yy",
+  "sym": "ʝ",
+  "name": "Buzzy Y",
+  "desc": "voiced palatal fricative",
+  "cat": "c",
+  "place": [
+   6
+  ],
+  "langs": [
+   "es"
+  ],
+  "st": "tricky",
+  "anchor": "Like the \"y\" in \"yes\" with the tongue a bit closer to the roof of the mouth, so you hear a light buzz.",
+  "how": [
+   "Say \"yes\" and lift the middle of your tongue a little higher.",
+   "You should feel slight friction. This is the default sound for y and ll in most of the Spanish-speaking world."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "yo",
+    "ipa": "ʝo",
+    "g": "I",
+    "f": "y"
+   },
+   {
+    "l": "es",
+    "w": "calle",
+    "ipa": "ˈkaʝe",
+    "g": "street",
+    "f": "ll"
+   },
+   {
+    "l": "es",
+    "w": "playa",
+    "ipa": "ˈplaʝa",
+    "g": "beach",
+    "f": "y"
+   }
+  ],
+  "note": "In Argentina and Uruguay this is pronounced like English \"sh\" or \"zh\" [ʃ ʒ]: \"sho\" for yo.",
+  "rel": [
+   "ny"
+  ]
+ },
+ {
+  "id": "pu",
+  "sym": "p",
+  "name": "Unaspirated P (no puff)",
+  "desc": "voiceless bilabial stop, no aspiration",
+  "cat": "c",
+  "place": [
+   0
+  ],
+  "langs": [
+   "es",
+   "zh"
+  ],
+  "st": "tricky",
+  "anchor": "English has it, but only after s: the \"p\" in \"spin\" has no puff, while \"pin\" does. Hold a tissue in front of your mouth to check.",
+  "how": [
+   "Say \"spin\", then remove the s and keep the p exactly the same.",
+   "The tissue shouldn't move.",
+   "The same goes for t and k: Spanish tomate and casa, and Mandarin d and g (大 dà, 哥 gē)."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "papá",
+    "ipa": "paˈpa",
+    "g": "dad",
+    "f": "p"
+   },
+   {
+    "l": "zh",
+    "w": "爸",
+    "r": "bà",
+    "ipa": "pa˥˩",
+    "g": "dad",
+    "f": "b"
+   },
+   {
+    "l": "zh",
+    "w": "大",
+    "r": "dà",
+    "ipa": "ta˥˩",
+    "g": "big",
+    "f": "d"
+   }
+  ],
+  "note": "Pinyin b, d, g are unaspirated [p t k]. They're voiceless, not voiced like English b, d, g. Pinyin p, t, k are the aspirated ones.",
+  "rel": [
+   "ph",
+   "td"
+  ]
+ },
+ {
+  "id": "ph",
+  "sym": "pʰ",
+  "name": "Aspirated P (puff)",
+  "desc": "voiceless bilabial stop, aspirated",
+  "cat": "c",
+  "place": [
+   0
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "familiar",
+  "anchor": "The English \"p\" in \"pin\". Mandarin uses a strong puff, even stronger than English.",
+  "how": [
+   "Say \"pin\" with an extra-strong burst of air.",
+   "In Mandarin this puff is what separates pinyin p from b, t from d, and k from g."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "怕",
+    "r": "pà",
+    "ipa": "pʰa˥˩",
+    "g": "to fear",
+    "f": "p"
+   },
+   {
+    "l": "zh",
+    "w": "他",
+    "r": "tā",
+    "ipa": "tʰa˥",
+    "g": "he",
+    "f": "t"
+   },
+   {
+    "l": "zh",
+    "w": "开",
+    "r": "kāi",
+    "ipa": "kʰaɪ˥",
+    "g": "to open",
+    "f": "k"
+   }
+  ],
+  "note": "爸 bà [pa] \"dad\" vs 怕 pà [pʰa] \"fear\": the only difference is the puff of air.",
+  "rel": [
+   "pu"
+  ]
+ },
+ {
+  "id": "td",
+  "sym": "t̪",
+  "name": "Dental T",
+  "desc": "voiceless dental stop, unaspirated",
+  "cat": "c",
+  "place": [
+   2
+  ],
+  "langs": [
+   "es",
+   "ar"
+  ],
+  "st": "tricky",
+  "anchor": "Like English t, but with the tongue touching the back of the top teeth and no puff of air.",
+  "how": [
+   "Touch your tongue tip to the back of your top front teeth, not to the gum ridge.",
+   "Release it without a puff, as in \"stop\".",
+   "Spanish and Arabic d [d̪] uses the same tongue position."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "tomate",
+    "ipa": "t̪oˈmat̪e",
+    "g": "tomato",
+    "f": "t"
+   },
+   {
+    "l": "es",
+    "w": "todo",
+    "ipa": "ˈt̪oðo",
+    "g": "all",
+    "f": "t"
+   },
+   {
+    "l": "ar",
+    "w": "كتير",
+    "r": "ktīr",
+    "ipa": "kt̪iːr",
+    "g": "a lot; very",
+    "f": "ت"
+   }
+  ],
+  "rel": [
+   "pu",
+   "emt"
+  ]
+ },
+ {
+  "id": "eth",
+  "sym": "ð",
+  "name": "Soft D",
+  "desc": "voiced dental approximant/fricative",
+  "cat": "c",
+  "place": [
+   2
+  ],
+  "langs": [
+   "es"
+  ],
+  "st": "tricky",
+  "anchor": "English has this sound: the \"th\" in \"this\". In Spanish, though, it's spelled d.",
+  "how": [
+   "Say \"this\" and hold the \"th\".",
+   "In Spanish, make it softer: the tongue barely touches the teeth.",
+   "Use it for any d between vowels: dedo is [ˈd̪eðo], not \"deh-doh\"."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "dedo",
+    "ipa": "ˈd̪eðo",
+    "g": "finger",
+    "f": "d (2nd)"
+   },
+   {
+    "l": "es",
+    "w": "nada",
+    "ipa": "ˈnaða",
+    "g": "nothing",
+    "f": "d"
+   },
+   {
+    "l": "es",
+    "w": "cada",
+    "ipa": "ˈkaða",
+    "g": "each",
+    "f": "d"
+   }
+  ],
+  "note": "Levantine Arabic usually says ذ as [d] or [z]: ذهب dahab \"gold\", so this sound is mostly Spanish for you.",
+  "rel": [
+   "th",
+   "beta"
+  ]
+ },
+ {
+  "id": "th",
+  "sym": "θ",
+  "name": "TH (as in think)",
+  "desc": "voiceless dental fricative",
+  "cat": "c",
+  "place": [
+   2
+  ],
+  "langs": [
+   "es"
+  ],
+  "st": "familiar",
+  "anchor": "The English \"th\" in \"think\".",
+  "how": [
+   "Put your tongue lightly between or behind your teeth and blow.",
+   "In Spain, z and c (before e or i) are pronounced this way. Latin America uses [s]."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "gracias (Spain)",
+    "ipa": "ˈɡɾaθjas",
+    "g": "thank you",
+    "f": "c"
+   },
+   {
+    "l": "es",
+    "w": "cielo (Spain)",
+    "ipa": "ˈθjelo",
+    "g": "sky",
+    "f": "c"
+   },
+   {
+    "l": "es",
+    "w": "zapato (Spain)",
+    "ipa": "θaˈpat̪o",
+    "g": "shoe",
+    "f": "z"
+   }
+  ],
+  "note": "You only need this for Spain. Latin American Spanish says [s] here (gracias [ˈɡɾasjas]), and Levantine Arabic says ث as [t] or [s]: تلاتة tlāte \"three\".",
+  "rel": [
+   "eth"
+  ]
+ },
+ {
+  "id": "ts",
+  "sym": "ts",
+  "name": "Pinyin z",
+  "desc": "voiceless alveolar affricate, unaspirated",
+  "cat": "c",
+  "place": [
+   3
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "The \"ts\" at the end of \"cats\", but at the start of a syllable and without a puff.",
+  "how": [
+   "Say \"cats\" and notice the \"ts\" at the end.",
+   "Now start a syllable with it: \"tsai\".",
+   "Keep it soft and puff-free. Pinyin z is never a buzzy English z."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "在",
+    "r": "zài",
+    "ipa": "tsaɪ˥˩",
+    "g": "at; to be at",
+    "f": "z"
+   },
+   {
+    "l": "zh",
+    "w": "早",
+    "r": "zǎo",
+    "ipa": "tsaʊ˨˩˦",
+    "g": "early",
+    "f": "z"
+   },
+   {
+    "l": "zh",
+    "w": "字",
+    "r": "zì",
+    "ipa": "tsɨ˥˩",
+    "g": "character",
+    "f": "z"
+   }
+  ],
+  "rel": [
+   "tsh",
+   "tsr"
+  ]
+ },
+ {
+  "id": "tsh",
+  "sym": "tsʰ",
+  "name": "Pinyin c",
+  "desc": "voiceless alveolar affricate, aspirated",
+  "cat": "c",
+  "place": [
+   3
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "\"ts\" plus a strong puff of air, like \"cats hop\" with the boundary removed.",
+  "how": [
+   "Make the \"ts\" sound, then let a burst of air follow before the vowel.",
+   "Pinyin c is never \"k\" or \"s\"."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "菜",
+    "r": "cài",
+    "ipa": "tsʰaɪ˥˩",
+    "g": "dish; vegetable",
+    "f": "c"
+   },
+   {
+    "l": "zh",
+    "w": "草",
+    "r": "cǎo",
+    "ipa": "tsʰaʊ˨˩˦",
+    "g": "grass",
+    "f": "c"
+   },
+   {
+    "l": "zh",
+    "w": "次",
+    "r": "cì",
+    "ipa": "tsʰɨ˥˩",
+    "g": "time (occurrence)",
+    "f": "c"
+   }
+  ],
+  "rel": [
+   "ts"
+  ]
+ },
+ {
+  "id": "tsr",
+  "sym": "ʈʂ",
+  "name": "Pinyin zh",
+  "desc": "voiceless retroflex affricate, unaspirated",
+  "cat": "c",
+  "place": [
+   5
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "Like the \"j\" in \"jar\", but voiceless, with no puff, and with the tongue tip curled back.",
+  "how": [
+   "Curl your tongue tip up and back so it touches just behind the gum ridge.",
+   "From there, say a crisp \"j\" or \"ch\" with no puff of air.",
+   "Your lips aren't rounded the way they are for English \"j\"."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "中",
+    "r": "zhōng",
+    "ipa": "ʈʂʊŋ˥",
+    "g": "middle",
+    "f": "zh"
+   },
+   {
+    "l": "zh",
+    "w": "这",
+    "r": "zhè",
+    "ipa": "ʈʂɤ˥˩",
+    "g": "this",
+    "f": "zh"
+   },
+   {
+    "l": "zh",
+    "w": "知",
+    "r": "zhī",
+    "ipa": "ʈʂɨ˥",
+    "g": "to know",
+    "f": "zh"
+   }
+  ],
+  "rel": [
+   "tsrh",
+   "sr",
+   "ts",
+   "tc"
+  ]
+ },
+ {
+  "id": "tsrh",
+  "sym": "ʈʂʰ",
+  "name": "Pinyin ch",
+  "desc": "voiceless retroflex affricate, aspirated",
+  "cat": "c",
+  "place": [
+   5
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "English \"ch\" with the tongue curled back and a stronger puff.",
+  "how": [
+   "Use the same curled-back tongue as zh.",
+   "Release it with a strong burst of air."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "茶",
+    "r": "chá",
+    "ipa": "ʈʂʰa˧˥",
+    "g": "tea",
+    "f": "ch"
+   },
+   {
+    "l": "zh",
+    "w": "吃",
+    "r": "chī",
+    "ipa": "ʈʂʰɨ˥",
+    "g": "to eat",
+    "f": "ch"
+   },
+   {
+    "l": "zh",
+    "w": "车",
+    "r": "chē",
+    "ipa": "ʈʂʰɤ˥",
+    "g": "vehicle",
+    "f": "ch"
+   }
+  ],
+  "rel": [
+   "tsr",
+   "tch"
+  ]
+ },
+ {
+  "id": "sr",
+  "sym": "ʂ",
+  "name": "Pinyin sh",
+  "desc": "voiceless retroflex fricative",
+  "cat": "c",
+  "place": [
+   5
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "English \"sh\" with the tongue tip curled up and back, and lips not rounded. It sounds darker and hollower.",
+  "how": [
+   "Say \"sh\", then curl your tongue tip up toward the roof of your mouth.",
+   "Keep your lips relaxed and flat, not rounded."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "是",
+    "r": "shì",
+    "ipa": "ʂɨ˥˩",
+    "g": "to be",
+    "f": "sh"
+   },
+   {
+    "l": "zh",
+    "w": "书",
+    "r": "shū",
+    "ipa": "ʂu˥",
+    "g": "book",
+    "f": "sh"
+   },
+   {
+    "l": "zh",
+    "w": "十",
+    "r": "shí",
+    "ipa": "ʂɨ˧˥",
+    "g": "ten",
+    "f": "sh"
+   }
+  ],
+  "rel": [
+   "xx",
+   "tsr",
+   "rr"
+  ]
+ },
+ {
+  "id": "rr",
+  "sym": "ɻ",
+  "name": "Pinyin r",
+  "desc": "voiced retroflex approximant",
+  "cat": "c",
+  "place": [
+   5
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "Somewhere between English \"r\" and the \"s\" in \"measure\" [ʒ], with the tongue curled back.",
+  "how": [
+   "Put your tongue in the position for pinyin sh (curled back).",
+   "Turn your voice on and let a light buzz through.",
+   "Don't round your lips."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "人",
+    "r": "rén",
+    "ipa": "ɻən˧˥",
+    "g": "person",
+    "f": "r"
+   },
+   {
+    "l": "zh",
+    "w": "热",
+    "r": "rè",
+    "ipa": "ɻɤ˥˩",
+    "g": "hot",
+    "f": "r"
+   },
+   {
+    "l": "zh",
+    "w": "日",
+    "r": "rì",
+    "ipa": "ɻɨ˥˩",
+    "g": "sun; day",
+    "f": "r"
+   }
+  ],
+  "rel": [
+   "sr"
+  ]
+ },
+ {
+  "id": "tc",
+  "sym": "tɕ",
+  "name": "Pinyin j",
+  "desc": "voiceless alveolo-palatal affricate, unaspirated",
+  "cat": "c",
+  "place": [
+   4,
+   6
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "Like \"j\" in \"jeep\" said with a smile, the tongue tip down, and no buzz or puff.",
+  "how": [
+   "Put your tongue tip behind your lower front teeth.",
+   "Raise the middle of your tongue against the hard palate and release it into the vowel.",
+   "Spread your lips as if smiling. j, q and x only ever come before i or ü sounds."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "鸡",
+    "r": "jī",
+    "ipa": "tɕi˥",
+    "g": "chicken",
+    "f": "j"
+   },
+   {
+    "l": "zh",
+    "w": "家",
+    "r": "jiā",
+    "ipa": "tɕja˥",
+    "g": "home",
+    "f": "j"
+   },
+   {
+    "l": "zh",
+    "w": "九",
+    "r": "jiǔ",
+    "ipa": "tɕjoʊ˨˩˦",
+    "g": "nine",
+    "f": "j"
+   }
+  ],
+  "rel": [
+   "tch",
+   "xx",
+   "tsr"
+  ]
+ },
+ {
+  "id": "tch",
+  "sym": "tɕʰ",
+  "name": "Pinyin q",
+  "desc": "voiceless alveolo-palatal affricate, aspirated",
+  "cat": "c",
+  "place": [
+   4,
+   6
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "\"ch\" in \"cheese\" with the tongue tip down and a strong puff. Pinyin q has nothing to do with \"k\".",
+  "how": [
+   "Use the same tongue position as pinyin j (tip down, middle up).",
+   "Add a strong burst of air."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "七",
+    "r": "qī",
+    "ipa": "tɕʰi˥",
+    "g": "seven",
+    "f": "q"
+   },
+   {
+    "l": "zh",
+    "w": "去",
+    "r": "qù",
+    "ipa": "tɕʰy˥˩",
+    "g": "to go",
+    "f": "q"
+   },
+   {
+    "l": "zh",
+    "w": "钱",
+    "r": "qián",
+    "ipa": "tɕʰjɛn˧˥",
+    "g": "money",
+    "f": "q"
+   }
+  ],
+  "rel": [
+   "tc",
+   "tsrh"
+  ]
+ },
+ {
+  "id": "xx",
+  "sym": "ɕ",
+  "name": "Pinyin x",
+  "desc": "voiceless alveolo-palatal fricative",
+  "cat": "c",
+  "place": [
+   4,
+   6
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "Between English \"s\" and \"sh\": a \"sh\" made with a smile and the tongue tip down.",
+  "how": [
+   "Put your tongue tip behind your lower teeth and raise the middle of your tongue toward the palate.",
+   "Smile and blow. It should sound thinner and brighter than English \"sh\"."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "西",
+    "r": "xī",
+    "ipa": "ɕi˥",
+    "g": "west",
+    "f": "x"
+   },
+   {
+    "l": "zh",
+    "w": "谢",
+    "r": "xiè",
+    "ipa": "ɕjɛ˥˩",
+    "g": "thank",
+    "f": "x"
+   },
+   {
+    "l": "zh",
+    "w": "学",
+    "r": "xué",
+    "ipa": "ɕɥɛ˧˥",
+    "g": "to study",
+    "f": "x"
+   }
+  ],
+  "rel": [
+   "sr",
+   "tc"
+  ]
+ },
+ {
+  "id": "gs",
+  "sym": "ʔ",
+  "name": "Glottal stop (hamza, and ق)",
+  "desc": "glottal stop",
+  "cat": "c",
+  "place": [
+   10
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "tricky",
+  "anchor": "English has it as the catch in the middle of \"uh-oh\", and in some accents' \"bu'er\" for \"butter\".",
+  "how": [
+   "Say \"uh-oh\" and notice the moment your throat closes.",
+   "Use that catch as a full consonant, even in the middle or at the end of a word."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "أنا",
+    "r": "ana",
+    "ipa": "ʔana",
+    "g": "I",
+    "f": "أ"
+   },
+   {
+    "l": "ar",
+    "w": "قلب",
+    "r": "ʾalb",
+    "ipa": "ʔalb",
+    "g": "heart",
+    "f": "ق",
+    "t": "ألب"
+   },
+   {
+    "l": "ar",
+    "w": "هلق",
+    "r": "hallaʾ",
+    "ipa": "hallaʔ",
+    "g": "now",
+    "f": "ق (end)",
+    "t": "هلّأ"
+   }
+  ],
+  "note": "This sound matters a lot in Levantine: most ق letters are said as [ʔ], so قلب \"heart\" is ʾalb.",
+  "rel": [
+   "ain",
+   "hh",
+   "q"
+  ]
+ },
+ {
+  "id": "hh",
+  "sym": "ħ",
+  "name": "Breathy throat H (ḥā')",
+  "desc": "voiceless pharyngeal fricative",
+  "cat": "c",
+  "place": [
+   9
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "Like a strong, whispered \"ha!\" with your throat squeezed, or the sound of fogging up a mirror very hard. It doesn't scrape.",
+  "how": [
+   "Tighten the muscles in the middle of your throat, as if lifting something heavy.",
+   "Push air through so you hear a smooth, raspy hiss deep in the throat.",
+   "Don't let the back of your tongue rise. That would turn it into خ [x]."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "مرحبا",
+    "r": "marḥaba",
+    "ipa": "marħaba",
+    "g": "hello",
+    "f": "ح"
+   },
+   {
+    "l": "ar",
+    "w": "حلو",
+    "r": "ḥilu",
+    "ipa": "ħilu",
+    "g": "sweet; nice",
+    "f": "ح"
+   },
+   {
+    "l": "ar",
+    "w": "حبيبي",
+    "r": "ḥabībi",
+    "ipa": "ħabiːbi",
+    "g": "my dear",
+    "f": "ح"
+   }
+  ],
+  "note": "Arabic has three \"h\" sounds: ه [h] (English h), ح [ħ] (squeezed throat) and خ [x] (scrape).",
+  "rel": [
+   "ain",
+   "x",
+   "h"
+  ]
+ },
+ {
+  "id": "ain",
+  "sym": "ʕ",
+  "name": "ʿAyn",
+  "desc": "voiced pharyngeal fricative/approximant",
+  "cat": "c",
+  "place": [
+   9
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's the voiced partner of ħ, a little like the throat squeeze you make just before gagging.",
+  "how": [
+   "Squeeze your throat as for ħ.",
+   "Now hum or say \"a\" through that squeeze. It should sound strangled and reedy.",
+   "Start with \"aaa\" and tighten the throat partway through until the quality changes."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "عين",
+    "r": "ʿēn",
+    "ipa": "ʕeːn",
+    "g": "eye",
+    "f": "ع"
+   },
+   {
+    "l": "ar",
+    "w": "معليش",
+    "r": "maʿlēsh",
+    "ipa": "maʕleːʃ",
+    "g": "never mind",
+    "f": "ع"
+   },
+   {
+    "l": "ar",
+    "w": "سبعة",
+    "r": "sabʿa",
+    "ipa": "sabʕa",
+    "g": "seven",
+    "f": "ع"
+   }
+  ],
+  "rel": [
+   "hh",
+   "gs"
+  ]
+ },
+ {
+  "id": "q",
+  "sym": "q",
+  "name": "Deep K (formal qāf)",
+  "desc": "voiceless uvular stop",
+  "cat": "c",
+  "place": [
+   8
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "A \"k\" made much further back, where the uvula hangs. It sounds hollow, like a drop of water.",
+  "how": [
+   "Say \"k\", then move the contact point back as far as you can, toward the uvula.",
+   "Your throat should feel the closure, not the roof of your mouth.",
+   "In everyday Levantine most ق becomes a glottal stop [ʔ] instead. You'll still hear [q] in formal and religious words."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "قرآن",
+    "r": "qurʾān",
+    "ipa": "qurʔaːn",
+    "g": "Quran",
+    "f": "ق"
+   },
+   {
+    "l": "ar",
+    "w": "استقلال",
+    "r": "istiqlāl",
+    "ipa": "ʔist̪iqlaːl",
+    "g": "independence",
+    "f": "ق"
+   }
+  ],
+  "note": "Spoken Levantine: قلب ʾalb (heart), قال ʾāl (he said). Formal Arabic and Druze speakers keep [q]: qalb.",
+  "rel": [
+   "gs",
+   "x"
+  ]
+ },
+ {
+  "id": "ems",
+  "sym": "sˤ",
+  "name": "Emphatic S (ṣād)",
+  "desc": "voiceless pharyngealised alveolar fricative",
+  "cat": "c",
+  "place": [
+   3,
+   9
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's an \"s\" with a \"dark\", throaty colour.",
+  "how": [
+   "Put your tongue tip in the same spot as for the plain English sound.",
+   "At the same time, pull the back of your tongue down and back toward your throat, as if you were starting to say \"aw\", and tighten the throat a little.",
+   "Listen to the vowels next to it. They darken, so the \"a\" in صباح sounds closer to the \"a\" in \"father\" or even \"aw\". That darkening is often the easiest clue to hear."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "صباح",
+    "r": "ṣabāḥ",
+    "ipa": "sˤabaːħ",
+    "g": "morning",
+    "f": "ص"
+   },
+   {
+    "l": "ar",
+    "w": "صغير",
+    "r": "ṣghīr",
+    "ipa": "sˤɣiːr",
+    "g": "small",
+    "f": "ص"
+   }
+  ],
+  "note": "سيف sēf (sword) vs صيف ṣēf (summer).",
+  "rel": [
+   "emt",
+   "emd",
+   "emz"
+  ]
+ },
+ {
+  "id": "emt",
+  "sym": "tˤ",
+  "name": "Emphatic T (ṭā')",
+  "desc": "voiceless pharyngealised alveolar stop",
+  "cat": "c",
+  "place": [
+   3,
+   9
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's a \"t\" with a hollow, dark colour.",
+  "how": [
+   "Put your tongue tip in the same spot as for the plain English sound.",
+   "At the same time, pull the back of your tongue down and back toward your throat, as if you were starting to say \"aw\", and tighten the throat a little.",
+   "Listen to the vowels next to it. They darken, so the \"a\" in صباح sounds closer to the \"a\" in \"father\" or even \"aw\". That darkening is often the easiest clue to hear."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "طيب",
+    "r": "ṭayyeb",
+    "ipa": "tˤajjeb",
+    "g": "OK; good",
+    "f": "ط"
+   },
+   {
+    "l": "ar",
+    "w": "طاولة",
+    "r": "ṭāwle",
+    "ipa": "tˤaːwle",
+    "g": "table",
+    "f": "ط"
+   }
+  ],
+  "note": "تين tīn (figs) vs طين ṭīn (mud).",
+  "rel": [
+   "ems",
+   "emd",
+   "td"
+  ]
+ },
+ {
+  "id": "emd",
+  "sym": "dˤ",
+  "name": "Emphatic D (ḍād)",
+  "desc": "voiced pharyngealised alveolar stop",
+  "cat": "c",
+  "place": [
+   3,
+   9
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's a \"d\" with a heavy, throaty colour. Arabic is called \"the language of the ḍād\".",
+  "how": [
+   "Put your tongue tip in the same spot as for the plain English sound.",
+   "At the same time, pull the back of your tongue down and back toward your throat, as if you were starting to say \"aw\", and tighten the throat a little.",
+   "Listen to the vowels next to it. They darken, so the \"a\" in صباح sounds closer to the \"a\" in \"father\" or even \"aw\". That darkening is often the easiest clue to hear."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "ضروري",
+    "r": "ḍarūri",
+    "ipa": "dˤaruːri",
+    "g": "necessary",
+    "f": "ض"
+   },
+   {
+    "l": "ar",
+    "w": "أبيض",
+    "r": "abyaḍ",
+    "ipa": "ʔabjadˤ",
+    "g": "white",
+    "f": "ض"
+   }
+  ],
+  "rel": [
+   "ems",
+   "emt",
+   "emz"
+  ]
+ },
+ {
+  "id": "emz",
+  "sym": "zˤ",
+  "name": "Emphatic Z (ẓā')",
+  "desc": "voiced pharyngealised alveolar fricative",
+  "cat": "c",
+  "place": [
+   3,
+   9
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's a \"z\" with the dark emphatic colour.",
+  "how": [
+   "Put your tongue tip in the same spot as for the plain English sound.",
+   "At the same time, pull the back of your tongue down and back toward your throat, as if you were starting to say \"aw\", and tighten the throat a little.",
+   "Listen to the vowels next to it. They darken, so the \"a\" in صباح sounds closer to the \"a\" in \"father\" or even \"aw\". That darkening is often the easiest clue to hear."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "ظريف",
+    "r": "ẓarīf",
+    "ipa": "zˤariːf",
+    "g": "charming; funny",
+    "f": "ظ"
+   },
+   {
+    "l": "ar",
+    "w": "مظبوط",
+    "r": "maẓbūṭ",
+    "ipa": "mazˤbuːtˤ",
+    "g": "correct; exactly",
+    "f": "ظ"
+   }
+  ],
+  "note": "In Modern Standard Arabic ظ is [ðˤ], an emphatic \"th\" as in \"this\". Levantine speakers usually say [zˤ], and sometimes [dˤ].",
+  "rel": [
+   "emd",
+   "ems"
+  ]
+ },
+ {
+  "id": "h",
+  "sym": "h",
+  "name": "Plain H",
+  "desc": "voiceless glottal fricative",
+  "cat": "c",
+  "place": [
+   10
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "familiar",
+  "anchor": "English \"h\" in \"hat\".",
+  "how": [
+   "The same as English h. Arabic also uses it at the end of words and next to consonants, where English never does, so keep it audible."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "هيك",
+    "r": "hēk",
+    "ipa": "heːk",
+    "g": "like this",
+    "f": "ه"
+   },
+   {
+    "l": "ar",
+    "w": "هون",
+    "r": "hōn",
+    "ipa": "hoːn",
+    "g": "here",
+    "f": "ه"
+   }
+  ],
+  "rel": [
+   "hh",
+   "x"
+  ]
+ },
+ {
+  "id": "jzh",
+  "sym": "ʒ",
+  "name": "Levantine J (jīm)",
+  "desc": "voiced postalveolar fricative",
+  "cat": "c",
+  "place": [
+   4
+  ],
+  "langs": [
+   "ar"
+  ],
+  "st": "tricky",
+  "anchor": "English has it as the \"s\" in \"measure\" or \"vision\", but never at the start of a word.",
+  "how": [
+   "Say \"measure\" and hold the middle sound.",
+   "Now start words with it: جميل ʒamīl.",
+   "Don't add a \"d\" in front. That would be [dʒ], like English \"j\", which is what MSA and many Jordanians and Palestinians use."
+  ],
+  "ex": [
+   {
+    "l": "ar",
+    "w": "جميل",
+    "r": "jamīl",
+    "ipa": "ʒamiːl",
+    "g": "beautiful",
+    "f": "ج"
+   },
+   {
+    "l": "ar",
+    "w": "جاي",
+    "r": "jāy",
+    "ipa": "ʒaːj",
+    "g": "coming",
+    "f": "ج"
+   },
+   {
+    "l": "ar",
+    "w": "رجّال",
+    "r": "rijjāl",
+    "ipa": "riʒʒaːl",
+    "g": "man",
+    "f": "ج"
+   }
+  ],
+  "note": "Syrian and Lebanese speakers say ج as [ʒ]. Many Palestinians and Jordanians say [dʒ], and Egyptians say [ɡ].",
+  "rel": [
+   "h"
+  ]
+ },
+ {
+  "id": "vi",
+  "sym": "i",
+  "name": "Pure \"ee\"",
+  "desc": "close front unrounded vowel",
+  "cat": "v",
+  "vx": [
+   0,
+   0
+  ],
+  "langs": [
+   "es",
+   "zh",
+   "ar"
+  ],
+  "st": "tricky",
+  "anchor": "English \"ee\" in \"see\", but shorter and without gliding into a y.",
+  "how": [
+   "Spread your lips, put your tongue high and forward, and hold it still."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "sí",
+    "ipa": "si",
+    "g": "yes",
+    "f": "í"
+   },
+   {
+    "l": "zh",
+    "w": "一",
+    "r": "yī",
+    "ipa": "i˥",
+    "g": "one",
+    "f": "i"
+   },
+   {
+    "l": "ar",
+    "w": "بِنْت",
+    "r": "bint",
+    "ipa": "bint",
+    "g": "girl",
+    "f": "ِ"
+   }
+  ],
+  "rel": [
+   "vy",
+   "ve"
+  ]
+ },
+ {
+  "id": "vy",
+  "sym": "y",
+  "name": "Pinyin ü",
+  "desc": "close front rounded vowel",
+  "cat": "v",
+  "vx": [
+   0,
+   0
+  ],
+  "round": true,
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's like French \"tu\" or German \"über\".",
+  "how": [
+   "Say \"ee\" and hold your tongue exactly where it is.",
+   "Now round your lips tightly, as if for \"oo\". Don't move your tongue."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "鱼",
+    "r": "yú",
+    "ipa": "y˧˥",
+    "g": "fish",
+    "f": "ü (yu)"
+   },
+   {
+    "l": "zh",
+    "w": "女",
+    "r": "nǚ",
+    "ipa": "ny˨˩˦",
+    "g": "woman",
+    "f": "ü"
+   },
+   {
+    "l": "zh",
+    "w": "去",
+    "r": "qù",
+    "ipa": "tɕʰy˥˩",
+    "g": "to go",
+    "f": "u (=ü)"
+   }
+  ],
+  "note": "After j, q, x and y, pinyin writes ü as plain \"u\". So qù is [tɕʰy], not \"choo\".",
+  "rel": [
+   "vi",
+   "vu"
+  ]
+ },
+ {
+  "id": "vbuzz",
+  "sym": "ɨ",
+  "name": "Buzzy \"i\" (zi, shi)",
+  "desc": "syllabic sibilant vowel",
+  "cat": "v",
+  "vx": [
+   0.5,
+   0
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's like holding the \"z\" or \"r\" sound as a vowel.",
+  "how": [
+   "After z, c or s, keep your tongue where it was and voice through it: \"zzz\" turns into a vowel.",
+   "After zh, ch, sh or r, keep the curled-back tongue and voice: it sounds like a short, flat \"rr\".",
+   "Never say \"ee\" here. 是 shì is not \"shee\"."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "是",
+    "r": "shì",
+    "ipa": "ʂɨ˥˩",
+    "g": "to be",
+    "f": "i"
+   },
+   {
+    "l": "zh",
+    "w": "字",
+    "r": "zì",
+    "ipa": "tsɨ˥˩",
+    "g": "character",
+    "f": "i"
+   },
+   {
+    "l": "zh",
+    "w": "四",
+    "r": "sì",
+    "ipa": "sɨ˥˩",
+    "g": "four",
+    "f": "i"
+   }
+  ],
+  "note": "Linguists transcribe this vowel in different ways ([ɹ̩], [ɻ̩], [ɨ], [z̩]). This app uses [ɨ] for simplicity.",
+  "rel": [
+   "vi"
+  ]
+ },
+ {
+  "id": "vu",
+  "sym": "u",
+  "name": "Pure \"oo\"",
+  "desc": "close back rounded vowel",
+  "cat": "v",
+  "vx": [
+   1,
+   0
+  ],
+  "round": true,
+  "langs": [
+   "es",
+   "zh",
+   "ar"
+  ],
+  "st": "tricky",
+  "anchor": "\"oo\" in \"food\", with the tongue further back and the lips more tightly rounded. Don't glide.",
+  "how": [
+   "Round and push your lips forward, pull your tongue back, and hold it still."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "tú",
+    "ipa": "t̪u",
+    "g": "you",
+    "f": "ú"
+   },
+   {
+    "l": "zh",
+    "w": "书",
+    "r": "shū",
+    "ipa": "ʂu˥",
+    "g": "book",
+    "f": "u"
+   },
+   {
+    "l": "ar",
+    "w": "نُور",
+    "r": "nūr",
+    "ipa": "nuːr",
+    "g": "light",
+    "f": "و"
+   }
+  ],
+  "rel": [
+   "vy",
+   "vo"
+  ]
+ },
+ {
+  "id": "ve",
+  "sym": "e",
+  "name": "Pure \"e\"",
+  "desc": "close-mid front unrounded vowel",
+  "cat": "v",
+  "vx": [
+   0,
+   0.33
+  ],
+  "langs": [
+   "es",
+   "ar"
+  ],
+  "st": "tricky",
+  "anchor": "English \"ay\" in \"say\" without the y glide at the end. Stop halfway.",
+  "how": [
+   "Start to say \"say\", then freeze your tongue before it rises into the y.",
+   "Keep it short and still. Spanish has no \"eɪ\" glide."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "mesa",
+    "ipa": "ˈmesa",
+    "g": "table",
+    "f": "e"
+   },
+   {
+    "l": "es",
+    "w": "leche",
+    "ipa": "ˈletʃe",
+    "g": "milk",
+    "f": "e"
+   },
+   {
+    "l": "ar",
+    "w": "بيت",
+    "r": "bēt",
+    "ipa": "beːt",
+    "g": "house",
+    "f": "ي"
+   }
+  ],
+  "note": "Levantine Arabic has long [eː] and [oː] where MSA has \"ay\" and \"aw\": بيت bēt (MSA bayt), يوم yōm (MSA yawm). Word-final ة is often [e] too: طاولة ṭāwle.",
+  "rel": [
+   "vi",
+   "vo"
+  ]
+ },
+ {
+  "id": "vgam",
+  "sym": "ɤ",
+  "name": "Pinyin e",
+  "desc": "close-mid back unrounded vowel",
+  "cat": "v",
+  "vx": [
+   1,
+   0.33
+  ],
+  "unr": true,
+  "langs": [
+   "zh"
+  ],
+  "st": "new",
+  "anchor": "English has no equivalent. It's like \"uh\" with the tongue pulled back and the lips spread.",
+  "how": [
+   "Say \"oh\" and hold your tongue there.",
+   "Now unround your lips, spreading them slightly as if smiling.",
+   "You can also start from \"uh\" and slide your tongue backward. Many speakers add a slight glide: [ɯɤ]."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "饿",
+    "r": "è",
+    "ipa": "ɤ˥˩",
+    "g": "hungry",
+    "f": "e"
+   },
+   {
+    "l": "zh",
+    "w": "喝",
+    "r": "hē",
+    "ipa": "xɤ˥",
+    "g": "to drink",
+    "f": "e"
+   },
+   {
+    "l": "zh",
+    "w": "哥",
+    "r": "gē",
+    "ipa": "kɤ˥",
+    "g": "older brother",
+    "f": "e"
+   }
+  ],
+  "rel": [
+   "vo",
+   "vschwa"
+  ]
+ },
+ {
+  "id": "vo",
+  "sym": "o",
+  "name": "Pure \"o\"",
+  "desc": "close-mid back rounded vowel",
+  "cat": "v",
+  "vx": [
+   1,
+   0.33
+  ],
+  "round": true,
+  "langs": [
+   "es",
+   "ar"
+  ],
+  "st": "tricky",
+  "anchor": "English \"oh\" without the w glide at the end. Don't let your lips close in.",
+  "how": [
+   "Round your lips into an \"O\" and hold them there. Don't tighten into \"oo\".",
+   "Spanish no is [no], not \"noʊ\"."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "no",
+    "ipa": "no",
+    "g": "no",
+    "f": "o"
+   },
+   {
+    "l": "es",
+    "w": "todo",
+    "ipa": "ˈt̪oðo",
+    "g": "all",
+    "f": "o"
+   },
+   {
+    "l": "ar",
+    "w": "يوم",
+    "r": "yōm",
+    "ipa": "joːm",
+    "g": "day",
+    "f": "و"
+   }
+  ],
+  "rel": [
+   "vu",
+   "ve"
+  ]
+ },
+ {
+  "id": "vschwa",
+  "sym": "ə",
+  "name": "Schwa",
+  "desc": "mid central vowel",
+  "cat": "v",
+  "vx": [
+   0.5,
+   0.5
+  ],
+  "langs": [
+   "zh"
+  ],
+  "st": "familiar",
+  "anchor": "The relaxed \"uh\" in \"about\" and \"sofa\".",
+  "how": [
+   "Relax everything. In Mandarin it appears in -en and -eng: 人 rén [ɻən], 冷 lěng [ləŋ]."
+  ],
+  "ex": [
+   {
+    "l": "zh",
+    "w": "人",
+    "r": "rén",
+    "ipa": "ɻən˧˥",
+    "g": "person",
+    "f": "e"
+   },
+   {
+    "l": "zh",
+    "w": "冷",
+    "r": "lěng",
+    "ipa": "ləŋ˨˩˦",
+    "g": "cold",
+    "f": "e"
+   }
+  ],
+  "rel": [
+   "vgam"
+  ]
+ },
+ {
+  "id": "va",
+  "sym": "a",
+  "name": "Open \"ah\"",
+  "desc": "open central unrounded vowel",
+  "cat": "v",
+  "vx": [
+   0.5,
+   1
+  ],
+  "langs": [
+   "es",
+   "zh",
+   "ar"
+  ],
+  "st": "familiar",
+  "anchor": "The \"a\" in \"father\", kept short and bright.",
+  "how": [
+   "Open your jaw and keep your tongue low and central.",
+   "In Arabic it gets brighter (near \"cat\") next to plain consonants and darker (near \"father\" or \"aw\") next to emphatics. Arabic also has a long [aː]."
+  ],
+  "ex": [
+   {
+    "l": "es",
+    "w": "casa",
+    "ipa": "ˈkasa",
+    "g": "house",
+    "f": "a"
+   },
+   {
+    "l": "zh",
+    "w": "妈",
+    "r": "mā",
+    "ipa": "ma˥",
+    "g": "mom",
+    "f": "a"
+   },
+   {
+    "l": "ar",
+    "w": "باب",
+    "r": "bāb",
+    "ipa": "baːb",
+    "g": "door",
+    "f": "ا"
+   }
+  ],
+  "rel": [
+   "vschwa"
+  ]
+ }
+]
