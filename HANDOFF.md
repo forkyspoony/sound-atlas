@@ -150,10 +150,8 @@ asked (2026-11-10) to keep building from the roadmap anyway. The things most lik
 adjusting:
 
 - **Tone pairs (item 15).** The match score was checked only by playing each native speaker
-  against the other three. Ask how it behaves with the owner's own voice. The main-voice
-  clip of `中国` disagrees with the other three speakers (it scores 1% against them), so it
-  is a candidate for re-recording. `考试` often gives no reading (two short syllables, one
-  creaky).
+  against the other three. Ask how it behaves with the owner's own voice. `考试` often gives
+  no reading (two short syllables, one creaky).
 - **The 15 newest phrases (item 16).** Same caveat as the 24 before them: nobody has
   listened yet, and the IPA is Claude's.
 
@@ -281,6 +279,12 @@ signal to measure).
   `cleanPitch` was written for single syllables and throws away the second syllable when the
   pitch leaps between them; two-syllable work must use `tpClean`. Pitch still jumps an
   octave on some creaky third tones, which is why no per-syllable verdict is given.
+- **`中国` re-recorded (2026-11-10)** as a sprite in `audio/p_c7_zg.mp3` (Alina, `eleven_v4`,
+  ElevenLabs flow `wnI3VLzaXS38Blj9WZeC`, 48 credits, eight takes). The old main clip scored
+  1% against the other three speakers in Tone pairs and its 国 did not rise; all eight new
+  takes scored 88–98%, and the one kept scores 95% with a clear rise on 国. The four
+  speakers now score 95–98% against each other. The old whole-file clip is still in
+  `audio/` but unused. Not yet heard by a person.
 - **15 rule-lesson phrases (2026-11-10).** Five per language: `es4d`, `es4e`, `es5b`,
   `es5c`, `es10d`; `zh9c`, `zh9d`, `zh10d`, `zh10e`, `zh11c`; `ar8c`, `ar8d`, `ar9c`,
   `ar9d`, `ar11c`. Unlike the `x` phrases they carry a `lesson`, so they join that lesson's
