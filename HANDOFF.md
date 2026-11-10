@@ -10,8 +10,8 @@ still mentions the APK elsewhere, treat it as history.
 
 **Picking this up in a new chat? Start at "Roadmap: where we are" in section 2.** It lists
 what is built, what is waiting on the owner's testing, and what comes next. As of
-2026-11-10 the latest commit on `main` is `0badc1d`. Roadmap items 15 and 16 (Tone pairs and
-15 more phrases) are built in the working folder but **not yet committed or pushed**.
+2026-11-10 the latest feature commit on `main` is `032155f` (roadmap items 15 and 16: Tone
+pairs and 15 more phrases), and everything built so far is pushed.
 
 - **Live site:** https://forkyspoony.github.io/sound-atlas
 - **Old claude.ai copy:** https://claude.ai/artifact/1VwidV6YpmPm8GtADRXQU3 (stale, see Decisions)
@@ -138,12 +138,11 @@ and 74 lessons, using the app's native clips in place of a microphone):
 | 12 | Today's focus box | Today | `0e7c7a9` |
 | 13 | 24 extra shadowing phrases with recordings | Speak → Phrases | `c9fd5b6` |
 | 14 | `carro` and `guerra` re-recorded with a real trill | Trill check, Pairs | `c9fd5b6` |
-| 15 | Tone pairs: say a two-syllable word, melody match against four native speakers | Speak → Tone pairs (also a button on Tones) | not committed yet |
-| 16 | 15 more phrases tied to the rule lessons, with recordings | Rule lessons' shadowing step, Speak → Phrases | not committed yet |
+| 15 | Tone pairs: say a two-syllable word, melody match against four native speakers | Speak → Tone pairs (also a button on Tones) | `032155f` |
+| 16 | 15 more phrases tied to the rule lessons, with recordings | Rule lessons' shadowing step, Speak → Phrases | `032155f` |
 
 Items 15 and 16 were built on 2026-11-10 and passed the local regression (12 views, every
-Speak mode, 74 lessons / 582 steps, no errors). **They are in the working folder but not
-committed or pushed**: the owner had not asked for a push when the session ended.
+Speak mode, 74 lessons / 582 steps, no errors). They were pushed the same day.
 
 **➡ YOU ARE HERE: waiting on the owner's testing.** None of items 1–16 has been tried with
 a real microphone or listened to by a person. The owner said they would test later, then
