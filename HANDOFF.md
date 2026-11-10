@@ -10,7 +10,8 @@ still mentions the APK elsewhere, treat it as history.
 
 **Picking this up in a new chat? Start at "Roadmap: where we are" in section 2.** It lists
 what is built, what is waiting on the owner's testing, and what comes next. As of
-2026-11-10 the latest commit on `main` is `c9fd5b6`, and everything built so far is pushed.
+2026-11-10 the latest commit on `main` is `0badc1d`. Roadmap items 15 and 16 (Tone pairs and
+15 more phrases) are built in the working folder but **not yet committed or pushed**.
 
 - **Live site:** https://forkyspoony.github.io/sound-atlas
 - **Old claude.ai copy:** https://claude.ai/artifact/1VwidV6YpmPm8GtADRXQU3 (stale, see Decisions)
@@ -137,10 +138,25 @@ and 74 lessons, using the app's native clips in place of a microphone):
 | 12 | Today's focus box | Today | `0e7c7a9` |
 | 13 | 24 extra shadowing phrases with recordings | Speak → Phrases | `c9fd5b6` |
 | 14 | `carro` and `guerra` re-recorded with a real trill | Trill check, Pairs | `c9fd5b6` |
+| 15 | Tone pairs: say a two-syllable word, melody match against four native speakers | Speak → Tone pairs (also a button on Tones) | not committed yet |
+| 16 | 15 more phrases tied to the rule lessons, with recordings | Rule lessons' shadowing step, Speak → Phrases | not committed yet |
 
-**➡ YOU ARE HERE: waiting on the owner's testing.** None of items 1–14 has been tried with
-a real microphone or listened to by a person. The owner said they would test later. Before
-building more, ask what they found. The things most likely to need adjusting:
+Items 15 and 16 were built on 2026-11-10 and passed the local regression (12 views, every
+Speak mode, 74 lessons / 582 steps, no errors). **They are in the working folder but not
+committed or pushed**: the owner had not asked for a push when the session ended.
+
+**➡ YOU ARE HERE: waiting on the owner's testing.** None of items 1–16 has been tried with
+a real microphone or listened to by a person. The owner said they would test later, then
+asked (2026-11-10) to keep building from the roadmap anyway. The things most likely to need
+adjusting:
+
+- **Tone pairs (item 15).** The match score was checked only by playing each native speaker
+  against the other three. Ask how it behaves with the owner's own voice. The main-voice
+  clip of `中国` disagrees with the other three speakers (it scores 1% against them), so it
+  is a candidate for re-recording. `考试` often gives no reading (two short syllables, one
+  creaky).
+- **The 15 newest phrases (item 16).** Same caveat as the 24 before them: nobody has
+  listened yet, and the IPA is Claude's.
 
 - **Thresholds in the measuring tools** (tone coach, puff meter, trill check). They were
   tuned on ElevenLabs clips, not on a learner's voice through a phone microphone. If a
@@ -158,11 +174,9 @@ building more, ask what they found. The things most likely to need adjusting:
 1. **Fix whatever the owner's testing turns up** (see above).
 2. **Review flagged audio.** Nobody has gone through the flags yet. Re-record flagged clips
    the way `carro` was done: generate several takes, measure or check them, keep the best.
-3. **More connected-speech practice.** The rule lessons already cover Spanish soft b/d/g,
-   Mandarin tone changes and Arabic doubling, so this means more example phrases per rule,
-   not new lessons. Needs recordings.
-4. **Two-syllable tone practice with feedback.** Listening drills for tone pairs exist
-   (`TPAIRS`); saying them only has the general pitch compare in Speak → Words.
+3. ~~More connected-speech practice~~ **Done 2026-11-10** (item 16). More can be added the
+   same way if the owner wants a rule covered further.
+4. ~~Two-syllable tone practice with feedback~~ **Done 2026-11-10** (item 15).
 5. **Terminology in the daily review.** Jargon practice (item 9) is free practice only. The
    owner once wanted SRS cards for terms, then scrapped that deck, so **ask before adding
    terms to the review queue**. About 60 term pronunciations already exist in ElevenLabs
@@ -253,6 +267,30 @@ signal to measure).
   `vjc9fvq5PAfWGifkmj6k` (about 780 credits).
 - **`content/` is stale for `PHRASES` and `AUDIO`** since this batch: the export tool needs
   Playwright, which isn't installed on this machine.
+- **Tone pairs (2026-11-10, `renderTonePairSay`, Speak mode `tpairs`).** Pick one of the 16
+  `TPAIRS` words, record it, and see your pitch line over every native speaker's (main voice
+  plus the `AUDIO_V` voices), each syllable in its own half of the chart, with the textbook
+  shape behind (adjusted for the tone changes: 3+3, low third tone, short first fall in 4+4).
+  The score is `pitchMatch` on the whole word against the **closest** native speaker.
+  Measured by playing each speaker against the others: the right word reaches 85% in 56 of
+  61 tries; a word with a different tone pattern averages 49% and reaches 85% about one time
+  in seven. So the wording stays "guide, not grade". Under 85% it names the syllable where
+  your line is furthest from that speaker's. The best score per word is kept in
+  `localStorage['ipa:tpBest']` (a ✓ at 85%); it is not synced.
+  **Tried and dropped:** grading each syllable on its own (native speakers differ too much
+  syllable by syllable, and short or creaky syllables give no reading). **Trap found:**
+  `cleanPitch` was written for single syllables and throws away the second syllable when the
+  pitch leaps between them; two-syllable work must use `tpClean`. Pitch still jumps an
+  octave on some creaky third tones, which is why no per-syllable verdict is given.
+- **15 rule-lesson phrases (2026-11-10).** Five per language: `es4d`, `es4e`, `es5b`,
+  `es5c`, `es10d`; `zh9c`, `zh9d`, `zh10d`, `zh10e`, `zh11c`; `ar8c`, `ar8d`, `ar9c`,
+  `ar9d`, `ar11c`. Unlike the `x` phrases they carry a `lesson`, so they join that lesson's
+  shadowing step as well as Speak → Phrases. One recording per language
+  (`audio/p_c6_<lang>.mp3`, `eleven_v4`, two takes each, 462 credits; ElevenLabs flows
+  `KyPkSPkz949cmKBcc0hp` es, `GeHgZSQAJlBzpYh1MbLo` zh, `mirI1HsMiiWfGDjCteUm` ar). The
+  Spanish take was chosen because the trill check finds three flicks in both `carro rojo`
+  and `Enrique`; the Mandarin take shows the expected rises and falls on 你, 很, 不 and 一.
+  Arabic could not be measured. IPA unreviewed, audio not yet heard by a person.
 - **Own recordings stay on the device** in IndexedDB (`sa-rec`): the first take of each word
   plus the latest from each month. They are not synced (too big for the Firestore document).
 

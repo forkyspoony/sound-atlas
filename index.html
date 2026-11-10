@@ -3006,7 +3006,8 @@ function renderTonePairs(){
   const el=$('#tpairs');if(!el)return;
   let grid='<table class="tpgrid"><tr><th></th>'+[1,2,3,4].map(b=>`<th>+ tone ${b}</th>`).join('')+'</tr>';
   for(let a=1;a<=4;a++){grid+=`<tr><th>tone ${a}</th>`;for(let b=1;b<=4;b++){const it=TPAIRS.find(x=>x.t[0]===a&&x.t[1]===b),w=wd(it.w);grid+=`<td>${playBtn(w.w,'zh')}<div class="tpw">${esc(w.w)}</div><div class="tpr">${esc(w.r)}</div></td>`}grid+='</tr>'}
-  el.innerHTML=grid+'</table><div class="row" style="margin-top:12px"><button class="btn" id="tp-go">Drill tone pairs</button></div>'+voiceToggleHTML()+'<div class="quiz-box qbox" id="tp-q" style="display:none;margin-top:12px"></div>';
+  el.innerHTML=grid+'</table><div class="row" style="margin-top:12px"><button class="btn" id="tp-go">Drill tone pairs</button><button class="btn ghost" id="tp-say">🎙 Say them, with feedback</button></div>'+voiceToggleHTML()+'<div class="quiz-box qbox" id="tp-q" style="display:none;margin-top:12px"></div>';
+  $('#tp-say').onclick=()=>{spLang='zh';spMode='tpairs';store.set('spMode',spMode);location.hash='speak'};
   const go=()=>{$('#tp-q').style.display='block';mountQ($('#tp-q'),tpairQ(),{onAnswer:(ok)=>{},onNext:go})};
   $('#tp-go').onclick=go;
 }
@@ -3591,6 +3592,30 @@ PHRASES.push(
   // carro and guerra re-recorded 2026-11-10: the earlier clips had only a single tongue flick, these have a clear trill
   AUDIO['carro']=['audio/p_c5_rr.mp3',0.04,0.47];AUDIO['guerra']=['audio/p_c5_rr.mp3',1.00,1.53];
 })();
+// 15 more phrases for the rule lessons (2026-11-10). They carry a `lesson`, so they also join that lesson's shadowing step.
+PHRASES.push(
+ {id:'es4d',l:'es',lesson:'es4',w:'Nada de nada.',ipa:'ˈnaða ðe ˈnaða',g:'Nothing at all.',note:'Three d\'s between vowels, so all three are soft [ð]. Only the n\'s touch firmly.'},
+ {id:'es4e',l:'es',lesson:'es4',w:'Sábado y domingo.',ipa:'ˈsaβaðo i ðoˈmiŋɡo',g:'Saturday and Sunday.',note:'b and both d\'s are soft between vowels, but g stays hard after n (and that n becomes [ŋ]).'},
+ {id:'es5b',l:'es',lesson:'es5',w:'Roberto compra un carro rojo.',ipa:'roˈβeɾt̪o ˈkompɾa uŋ ˈkaro ˈroxo',g:'Roberto buys a red car.',note:'Trills at the start of Roberto and rojo and in carro; single taps in Robe-r-to and comp-r-a.'},
+ {id:'es5c',l:'es',lesson:'es5',w:'Enrique sonríe.',ipa:'enˈrike sonˈri.e',g:'Enrique smiles.',note:'After n, a single written r is trilled, just like rr.'},
+ {id:'es10d',l:'es',lesson:'es10',w:'¿Qué vas a hacer hoy?',ipa:'ke ˈβa.sa.ˈse.ɾoj',g:'What are you going to do today?',note:'h is silent, so a and the a of hacer merge into one vowel, and the r of hacer jumps onto hoy: va-sa-ce-roy.'},
+ {id:'zh9c',l:'zh',lesson:'zh9',w:'你好吗？',ipa:'ni˧˥ xaʊ˨˩ ma',g:'How are you?',r:'nǐ hǎo ma',note:'nǐ rises before hǎo. hǎo then stays low before the neutral 吗.'},
+ {id:'zh9d',l:'zh',lesson:'zh9',w:'很好吃。',ipa:'xən˧˥ xaʊ˨˩ ʈʂʰɨ˥',g:'It\'s delicious.',r:'hěn hǎochī',note:'Both third-tone changes in one phrase: hěn rises before hǎo, and hǎo stays low before the first tone chī.'},
+ {id:'zh10d',l:'zh',lesson:'zh10',w:'我不是老师。',ipa:'wo˨˩ pu˧˥ ʂɨ˥˩ laʊ˨˩ ʂɨ˥',g:'I\'m not a teacher.',r:'wǒ bú shì lǎoshī',note:'不 rises before the fourth tone shì. wǒ and lǎo stay low.'},
+ {id:'zh10e',l:'zh',lesson:'zh10',w:'一起去吧。',ipa:'i˥˩ tɕʰi˨˩ tɕʰy˥˩ pa',g:'Let\'s go together.',r:'yìqǐ qù ba',note:'一 falls (fourth tone) before the third tone qǐ. It only rises before a fourth tone.'},
+ {id:'zh11c',l:'zh',lesson:'zh11',w:'他们是我的学生。',ipa:'tʰa˥ mən ʂɨ˥˩ wo˨˩ tə ɕɥɛ˧˥ ʂəŋ',g:'They are my students.',r:'tāmen shì wǒ de xuésheng',note:'Three neutral syllables: 们, 的 and 生 are short, light and toneless.'},
+ {id:'ar8c',l:'ar',lesson:'ar8',w:'بحبّك كتير.',ipa:'baˈħibbak ktiːr',g:'I love you very much (to a man).',r:'baḥibbak ktīr',note:'Hold the bb a beat longer; ktīr starts with two consonants.'},
+ {id:'ar8d',l:'ar',lesson:'ar8',w:'كلّ شي تمام.',ipa:'kill ʃi taˈmaːm',g:'Everything is fine.',r:'kill ši tamām',note:'Hold the ll of kill before moving on to š.'},
+ {id:'ar9c',l:'ar',lesson:'ar9',w:'وين الشنطة؟',ipa:'weːn iʃˈʃantˤɑ',g:'Where is the bag?',r:'wēn iš-šanṭa',note:'ش is a sun letter: iš-šanṭa, not il-šanṭa. ṭ darkens the last a.'},
+ {id:'ar9d',l:'ar',lesson:'ar9',w:'السلام عليكم.',ipa:'issaˈlaːmu ʕaˈlajkum',g:'Peace be upon you (a greeting).',r:'is-salāmu ʿalaykum',note:'س is a sun letter: is-salām, not il-salām. In relaxed speech ʿalaykum often becomes ʿalēkum.'},
+ {id:'ar11c',l:'ar',lesson:'ar11',w:'بتحكي إنكليزي؟',ipa:'ˈbtiħki ʔinɡˈliːzi',g:'Do you speak English?',r:'btiḥki inglīzi',note:'btiḥki starts with two consonants, bt, with no vowel between them.'}
+);
+(function(){
+  const cut=(file,ids,times)=>ids.forEach((id,i)=>{AUDIO[PHRASES.find(p=>p.id===id).w]=[file,times[i][0],times[i][1]]});
+  cut('audio/p_c6_es.mp3',['es4d','es4e','es5b','es5c','es10d'],[[0.03,1.01],[1.46,2.40],[2.93,4.59],[5.13,6.04],[6.61,7.60]]);
+  cut('audio/p_c6_zh.mp3',['zh9c','zh9d','zh10d','zh10e','zh11c'],[[0.04,0.59],[1.25,1.96],[2.58,3.62],[4.15,4.81],[5.40,6.72]]);
+  cut('audio/p_c6_ar.mp3',['ar8c','ar8d','ar9c','ar9d','ar11c'],[[0.03,1.05],[1.60,2.28],[2.77,3.49],[3.97,4.82],[5.37,6.21]]);
+})();
 const PHBY={};PHRASES.forEach(p=>{PHBY[p.id]=p;LW[p.w]={l:p.l,w:p.w,ipa:p.ipa,g:p.g,r:p.r||'',ph:p}});
 (function addShadowSteps(){
   const byL={};PHRASES.forEach(p=>{if(!p.lesson)return;const id=LESSON_ALIAS[p.lesson]||p.lesson;(byL[id]=byL[id]||[]).push(p.id)});
@@ -3639,7 +3664,7 @@ let spRec=null; // active MediaRecorder session
 const _renderSpeakWords=renderSpeak;
 renderSpeak=function(){
   const modes=[['words','Words'],['phrases','Phrases'],['vowels','Vowel coach']];
-  if(spLang==='zh')modes.push(['tones','Tone coach']);
+  if(spLang==='zh')modes.push(['tones','Tone coach'],['tpairs','Tone pairs']);
   if(spLang!=='ar')modes.push(['puff','Puff meter']);
   if(spLang==='es')modes.push(['trill','Trill check']);
   if(!modes.some(m=>m[0]===spMode))spMode='words';
@@ -4296,7 +4321,133 @@ function trVerdict(res,w){
     :'<b>No flutter found.</b> Rest the tongue tip loosely on the ridge behind your top teeth and blow air over it until it vibrates. Practise with “Just trill: rrrr”, then put it back in the word.';
   return `<p>${msg}</p>`;
 }
-const LAB_MODES={tones:renderToneCoach,puff:renderPuff,trill:renderTrill};
+// ---------- TONE PAIRS (Mandarin two-syllable words) ----------
+// Grading each syllable on its own was tried and dropped: native speakers differ from each other too much, syllable by
+// syllable. What holds up is the melody of the whole word, compared with every native speaker we have, taking the closest.
+// Checked on the app's own clips (each speaker against the others): the right word scores 85+ nine times in ten; a word with
+// a different tone pattern scores 49 on average and reaches 85 about one time in seven. So it is a guide, not a grade.
+function tpClean(fr,ref){ // like cleanPitch, but keeps both syllables: the pitch may leap between them, so only short stray fragments are dropped
+  const th=Math.max(...fr.map(f=>f.rms),1e-9)*0.08;
+  let st=fr.map(f=>f.f0&&f.per>0.55&&f.rms>th?12*Math.log2(f.f0/ref):null);
+  const med5=st.map((v,i)=>{if(v===null)return null;const w=st.slice(Math.max(0,i-2),i+3).filter(q=>q!==null);return median(w)});
+  st=st.map((v,i)=>v===null||Math.abs(v-med5[i])>4?null:med5[i]);
+  const mid=median(st.filter(v=>v!==null));st=st.map(v=>v===null||Math.abs(v-mid)>13?null:v);
+  const runs=[];let cur=null;st.forEach((v,i)=>{if(v===null){cur=null;return}if(cur&&i===cur.b+1&&Math.abs(v-st[cur.b])<=3.5)cur.b=i;else runs.push(cur={a:i,b:i})});
+  for(const r of runs)if(r.b-r.a<3)for(let j=r.a;j<=r.b;j++)st[j]=null;
+  return st;
+}
+let tpWord=null,tpLast=null,tpUrl=null;const tpNat={},tpBest=store.get('tpBest',{});
+const TP_FIRST=(a,b)=>a===1?[5,5]:a===2?[3,5]:a===3?(b===3?[3,5]:[2,1,1]):(b===4?[5,2.6]:[5,1]);   // tones change shape before another tone
+const TP_SECOND={1:[5,5],2:[3,5],3:[2,1,1,2.6],4:[5,1]};
+function tpTip(a,b){
+  const one=a===1?'Start high and hold the note level':a===2?'Start in the middle of your voice and rise':a===3?(b===3?'Two third tones can\'t sit together, so the first one turns into a rise, like tone 2':'Start low and stay low, with no rise at all (tone 3 only rises at the end of a phrase)'):(b===4?'Start high and fall only part of the way':'Start high and fall');
+  const two=b===1?'then go straight to a high, level note':b===2?'then start again from the middle and rise to the top':b===3?'then drop to the bottom of your voice and stay there; the lift at the end is small or missing in normal speech':'then start high again and fall all the way down';
+  return one+', '+two+'.';
+}
+function tpAnalyse(x,fs){ // pitch line of a two-syllable word, each syllable stretched onto 20 points (40 in all), centred on the word's middle pitch
+  const fr=pitchFrames(x,fs),f0s=fr.filter(f=>f.f0&&f.per>0.6).map(f=>f.f0);if(f0s.length<12)return null;
+  const st=tpClean(fr,median(f0s)),idx=[];st.forEach((v,i)=>{if(v!==null)idx.push(i)});if(idx.length<12)return null;
+  const mx=Math.max(...fr.map(f=>f.rms));let a=fr.findIndex(f=>f.rms>mx*0.1),b=fr.length-1;while(b>a&&fr[b].rms<=mx*0.1)b--;
+  const va=idx[0],vb=idx[idx.length-1];a=Math.min(a,va);b=Math.max(b,vb);
+  // the break between the syllables: the longest voiceless stretch near the middle (a consonant such as t, sh, x), else the quietest moment there
+  let gap=null,run=null;
+  for(let i=va;i<=vb;i++){if(st[i]===null){if(run)run.b=i;else run={a:i,b:i}}else if(run){const m=(run.a+run.b)/2;if(m>=a+(b-a)*0.25&&m<=a+(b-a)*0.75&&(!gap||run.b-run.a>gap.b-gap.a))gap=run;run=null}}
+  let cut;
+  if(gap&&gap.b-gap.a>=2)cut=Math.round((gap.a+gap.b)/2);
+  else{let mv=1e9;cut=Math.round((a+b)/2);for(let i=Math.round(a+(b-a)*0.3);i<=a+(b-a)*0.7;i++)if(fr[i].rms<mv){mv=fr[i].rms;cut=i}}
+  const mid=median(idx.map(i=>st[i]));
+  const rs=(p,q)=>{const o=[];for(let k=0;k<20;k++){const v=st[Math.round(p+(q-p)*k/19)];o.push(v===null||v===undefined?null:v-mid)}return o};
+  return {syl:rs(a,cut).concat(rs(cut,b)),dur:(b-a)*0.01};
+}
+const tpMatch=(A,B)=>pitchMatch(A.map(st=>({st})),B.map(st=>({st})));
+async function tpNative(word){ // every recorded speaker of this word
+  if(tpNat[word])return tpNat[word];
+  const out=[];
+  for(const v of ['main',...Object.keys(AUDIO_V[word]||{})]){
+    try{const u=v==='main'?AUDIO[word]:AUDIO_V[word][v];if(!u)continue;const ab=await decode(await (await fetch(Array.isArray(u)?await spriteClip(u):u)).arrayBuffer());
+      const r=tpAnalyse(ab.getChannelData(0),ab.sampleRate);if(r){r.v=v;out.push(r)}}catch(e){}
+  }
+  return tpNat[word]=out;
+}
+function tpVerdict(me,nats,it){
+  if(!me)return {s:null,html:'<p>I couldn\'t find a clear pitch there. Say the word a little louder, close to the microphone, in a quiet spot.</p>'};
+  let best=null;for(const n of nats){const s=tpMatch(n.syl,me.syl);if(s!==null&&(!best||s>best.s))best={s,n}}
+  if(!best)return {s:null,html:'<p>There wasn\'t enough of a pitch line to compare. Try again, a little louder and not too fast.</p>'};
+  const s=best.s;let hint='';
+  if(s<85){ // point at the syllable where your line is furthest from that speaker's, and say how
+    let worst=null;
+    for(const k of [0,1]){const m=[],n=[];for(let i=k*20;i<k*20+20;i++)if(me.syl[i]!==null&&best.n.syl[i]!==null){m.push(me.syl[i]);n.push(best.n.syl[i])}
+      if(m.length<5)continue;const d=m.map((v,i)=>v-n[i]),dev=avg(d.map(Math.abs)),t=Math.max(1,Math.round(m.length/3)),sl=q=>avg(q.slice(-t))-avg(q.slice(0,t));
+      if(!worst||dev>worst.dev)worst={k,dev,off:avg(d),ms:sl(m),ns:sl(n)}}
+    if(worst&&worst.dev>=1.5){const w=worst,ds=w.ms-w.ns;
+      const how=ds>2?(w.ns<-1.5?'yours doesn\'t fall as far as the native speaker\'s':'yours rises more than the native speaker\'s'):ds<-2?(w.ns>1.5?'yours doesn\'t rise as far as the native speaker\'s':'yours falls more than the native speaker\'s'):w.off>1.5?'yours sits higher than the native speaker\'s, compared with the rest of the word':w.off<-1.5?'yours sits lower than the native speaker\'s, compared with the rest of the word':'';
+      if(how)hint=` The biggest gap is in the <b>${w.k?'second':'first'} syllable</b> (${esc([...it.w][w.k])}, tone ${it.t[w.k]}): ${how}.`}
+  }
+  const msg=s>=85?'Your melody matches a native speaker\'s well. 👍':s>=70?'Close. Compare your line with the bold native line below.':'The melody differs. Listen again, then compare your line with the bold native line.';
+  return {s,n:best.n,html:`<p><b>Melody match: ${s}%.</b> ${msg}${hint}</p>`};
+}
+function renderTonePairSay(){
+  if(!tpWord||!TPAIRS.includes(tpWord))tpWord=TPAIRS[0];
+  const it=tpWord,w=wd(it.w),[a,b]=it.t;
+  $('#lab').innerHTML=`<div class="quiz-box">
+   <p class="lesson-text" style="margin-top:0">Tones change when they sit next to each other. Pick a two-syllable word, say it, and compare the melody of your voice with native speakers saying the same word.</p>
+   <div class="chips" id="t2-words">${TPAIRS.map((x,i)=>`<button class="chip ${x===it?'on':''}" data-t2w="${i}">${esc(x.w)} · ${x.t[0]}+${x.t[1]}${tpBest[x.w]>=85?' ✓':''}</button>`).join('')}</div>
+   <div class="row" style="margin-top:12px">${playBtn(it.w,'zh')}<span><b style="font-size:24px">${esc(it.w)}</b> <span style="color:var(--muted)">${esc(w.r||'')}</span> ${w.ipa?`<span class="ipa">[${esc(w.ipa)}]</span>`:''} ${w.g?`<span style="color:var(--muted)">“${esc(w.g)}”</span>`:''}</span></div>
+   <p style="margin:8px 0"><b>Tone ${a} + tone ${b}:</b> ${tpTip(a,b)}</p>
+   <div class="row"><button class="btn" id="t2-rec">🎙 Say it</button><span id="t2-play"></span></div>
+   <div id="t2-note" style="font-size:13px;color:var(--muted);margin-top:6px">Listen first, then say the whole word at a normal pace.</div>
+   <canvas id="t2-cv" class="lab-cv" style="height:260px"></canvas>
+   <div class="legend"><span><i style="background:var(--zh);opacity:.35"></i>Textbook shape</span><span><i style="background:var(--accent)"></i>Native speakers (closest to you in bold)</span><span><i style="background:var(--es)"></i>You</span></div>
+   <div id="t2-out" class="sp-notes"></div>
+   <p style="font-size:12px;color:var(--muted)">Each line is drawn around the middle of that speaker's own voice, so a higher or lower voice doesn't matter. The native speakers don't agree with each other exactly, and that spread is the room you have. This is a guide from the sound wave, not a grade: tone 3 often goes creaky, which breaks the line, and your ear has the final say. A ✓ marks words where you have reached 85%.</p></div>`;
+  $('#t2-words').onclick=e=>{const c=e.target.closest('[data-t2w]');if(c){tpWord=TPAIRS[+c.dataset.t2w];tpLast=null;renderTonePairSay()}};
+  $('#t2-rec').onclick=tpRecord;
+  tpDraw();tpNative(it.w).then(()=>{if(tpWord===it)tpDraw()});
+}
+function tpDraw(){
+  const c=labCanvas('#t2-cv',260);if(!c)return;const {g,W,H}=c,pad=34,it=tpWord;
+  const Y=st=>H/2-Math.max(-11,Math.min(11,st))*(H/2-26)/11,X=(k,u)=>pad+(W-pad-14)*(k?0.53+0.47*u:0.47*u);
+  g.strokeStyle=cssv('--line');g.lineWidth=1;g.beginPath();g.moveTo(pad-8,Y(0));g.lineTo(W-8,Y(0));g.stroke();
+  g.fillStyle=cssv('--muted');g.fillText('high',4,Y(8)+4);g.fillText('low',4,Y(-8)+4);
+  g.textAlign='center';[0,1].forEach(k=>g.fillText([...it.w][k]+' · tone '+it.t[k],X(k,0.5),H-8));g.textAlign='left';
+  // textbook shapes for the two syllables, centred the same way as the voices
+  const tp=[TP_FIRST(it.t[0],it.t[1]),TP_SECOND[it.t[1]]],all=[];for(const t of tp)for(let k=0;k<=20;k++)all.push(lvl(tplAt(t,k/20)));const mid=median(all);
+  g.strokeStyle=cssv('--zh');g.globalAlpha=.25;g.lineWidth=18;g.lineCap=g.lineJoin='round';
+  tp.forEach((t,k)=>{g.beginPath();for(let j=0;j<=20;j++){const u=j/20,y=Y(lvl(tplAt(t,u))-mid);j?g.lineTo(X(k,0.08+0.84*u),y):g.moveTo(X(k,0.08+0.84*u),y)}g.stroke()});g.globalAlpha=1;
+  const line=(syl,col,w,al)=>{g.strokeStyle=col;g.lineWidth=w;g.globalAlpha=al;g.beginPath();let on=false;
+    syl.forEach((v,i)=>{if(i===20)on=false;if(v===null){on=false;return}const x=X(i<20?0:1,(i%20)/19),y=Y(v);on?g.lineTo(x,y):g.moveTo(x,y);on=true});g.stroke();g.globalAlpha=1};
+  const nats=tpNat[it.w]||[],bold=tpLast&&tpLast.n?tpLast.n:nats[0];
+  for(const n of nats)if(n!==bold)line(n.syl,cssv('--accent'),1.5,.35);
+  if(bold)line(bold.syl,cssv('--accent'),2.5,1);
+  if(tpLast&&tpLast.me)line(tpLast.me.syl,cssv('--es'),4,1);
+}
+async function tpRecord(){
+  const btn=$('#t2-rec'),note=$('#t2-note'),it=tpWord;
+  if(labLive){labStop();return}
+  try{if(curAudio)curAudio.pause()}catch(e){}
+  let r;
+  try{r=await labRecord({maxMs:4000,quietMs:700,onStart:()=>{btn.textContent='■ Stop';btn.classList.add('rec');note.textContent='Recording… say '+it.w+' now.'}})}
+  catch(e){note.innerHTML=micMsg(e,'yourself').replace(/ For now.*$/,'');return}
+  if(!document.body.contains(btn)||tpWord!==it)return;
+  btn.textContent='🎙 Say it again';btn.classList.remove('rec');note.textContent='';
+  await tpShow(r.x,r.fs);
+}
+async function tpShow(x,fs){ // analyse one take of the current word and show the result
+  const it=tpWord,me=tpAnalyse(x,fs),v=tpVerdict(me,await tpNative(it.w),it);
+  if(tpWord!==it)return v;
+  tpLast={me,n:v.n,s:v.s};tpDraw();
+  const out=$('#t2-out');if(out)out.innerHTML=v.html;
+  if(v.s!==null&&v.s>(tpBest[it.w]||0)){tpBest[it.w]=v.s;store.set('tpBest',tpBest);const chip=document.querySelector(`[data-t2w="${TPAIRS.indexOf(it)}"]`);if(chip&&v.s>=85&&!/✓/.test(chip.textContent))chip.textContent+=' ✓'}
+  const cut=trimQuiet(x,fs),pl=$('#t2-play');
+  if(cut.length&&pl){const blob=wavBlob(cut,fs);if(tpUrl)URL.revokeObjectURL(tpUrl);tpUrl=URL.createObjectURL(blob);
+    pl.innerHTML='<button class="btn ghost" id="t2-pm">▶ You</button> <button class="btn ghost" id="t2-pb">▶ Native, then you</button>';
+    const play=(src,cb)=>{try{if(curAudio)curAudio.pause();curAudio=new Audio(src);curAudio.onended=cb||null;curAudio.play().catch(()=>{})}catch(e){}};
+    $('#t2-pm').onclick=()=>play(tpUrl);
+    $('#t2-pb').onclick=()=>audioSrc(it.w).then(u=>play(u,()=>setTimeout(()=>play(tpUrl),350)));
+    recSave('zh',it.w,blob).catch(()=>{})}
+  return v;
+}
+const LAB_MODES={tones:renderToneCoach,tpairs:renderTonePairSay,puff:renderPuff,trill:renderTrill};
 
 // ---------- JARGON PRACTICE (Basics): tap the place on a mouth map, or match a term to its meaning ----------
 const MM_SPOTS={bilabial:[34,114],labiodental:[44,117],dental:[55,106],alveolar:[64,93],postalveolar:[82,81],palatal:[112,73],velar:[152,76],uvular:[183,93],pharyngeal:[191,140],glottal:[187,205]};
