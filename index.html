@@ -267,6 +267,10 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 .spk-note{font-size:13px;color:var(--muted);margin:4px 0}
 .sp-modes{margin-bottom:12px}
 .btn.rec{background:var(--bad)}
+.say-rate{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.saytog{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);margin-top:12px;cursor:pointer}
+.lab-cv{width:100%;display:block;margin-top:10px;border-radius:12px;background:var(--bg)}
+.weakbox{margin-bottom:14px}
 .pure{display:flex;gap:12px;align-items:center;background:var(--soft);border-radius:14px;padding:12px 14px;margin:12px 0}
 .pure-t{font-weight:700}.pure-c{font-size:12px;color:var(--muted);margin-top:2px}.pure-c a{color:inherit}
 
@@ -1159,7 +1163,18 @@ function soundQ(s,pool,langs,types){
   return {type:pick(t),s,opts:shuffle([s,...distractors(s,pool)]),ex:exs.length?pick(exs):null};
 }
 function toneQ(){const set=pick(TONESETS),n=Math.floor(Math.random()*4);return {type:'tone',char:set[n],syl:set[4],ans:n,opts:[0,1,2,3]}}
-function pairQ(c){const p=pick(c.pairs),ans=Math.random()<.5?0:1;return {type:'pair',c,p,ans,opts:[0,1]}}
+// Adaptive listening: remember, word by word, how often you miss it when it's the one played,
+// and bring the pairs and words you miss back more often.
+const pwKey=w=>'pw:'+w.l+':'+w.w;
+function pwMiss(w){const s=stat(pwKey(w));return (s.w+1)/(s.c+s.w+3)}            // smoothed share of misses
+function wPick(arr,wt){const ws=arr.map(wt);let r=Math.random()*ws.reduce((a,b)=>a+b,0);for(let i=0;i<arr.length;i++){r-=ws[i];if(r<=0)return arr[i]}return arr[arr.length-1]}
+function pairWeak(c){const s=stat('p:'+c.id),m=(s.w+1)/(s.c+s.w+3);return 0.1+m*m}  // weight of a whole contrast
+function pairQ(c){
+  const p=wPick(c.pairs,p=>Math.max(pwMiss(p[0]),pwMiss(p[1])));
+  // play the harder word a bit more often, but never so often that guessing it pays off
+  const share=Math.max(0.35,Math.min(0.65,pwMiss(p[1])/(pwMiss(p[0])+pwMiss(p[1]))));
+  return {type:'pair',c,p,ans:Math.random()<share?1:0,opts:[0,1]};
+}
 function pairBtnHTML(w,i){return `<button class="opt pairopt" data-i="${i}"><span class="pw">${w.l==='ar'?`<span class="arabic">${esc(w.w)}</span>`:esc(w.w)}</span>${w.r?`<span class="pr">${esc(w.r)}</span>`:''}<span class="pi ipa">[${esc(w.ipa)}]</span><span class="pg">${esc(w.g)}</span></button>`}
 
 // Render a question into el. hooks: onAnswer(ok,q,i), onNext()
@@ -1230,6 +1245,7 @@ function answerQ(el,q,i,hooks){
   PB_V=null;
   if(q.vn&&q.vn!=='main'&&qAudioKeys(q).length){const l=q.type==='pair'?q.c.l:'zh';fb+=`<p class="spk-note">Speaker: ${esc(voiceLabel(q.vn,l))}</p>`}
   btns[correctIdx].classList.add('right');if(!ok)btns[i].classList.add('wrong');
+  if(q.type==='pair')record(pwKey(q.p[q.ans]),ok);
   if(hooks.onAnswer)hooks.onAnswer(ok,q,i);
   fb+=`<div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button>${q.s?`<button class="btn ghost" data-sound="${q.s.id}">Open card</button>`:''}${hooks.extra?hooks.extra():''}<span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
   const f=el.querySelector('.feedback');f.innerHTML=fb;f.classList.add('on');
@@ -1349,7 +1365,11 @@ function pairAcc(id){const s=stat('p:'+id);return s.c+s.w?Math.round(100*s.c/(s.
 function renderPairs(){
   pCur=null;
   const list=PAIRS.filter(c=>pLang==='all'||c.l===pLang);
-  $('#pairs').innerHTML=`<div class="pgrid">${list.map(c=>{const a=pairAcc(c.id);const ex=c.pairs[0];
+  const weak=list.map(c=>({c,a:pairAcc(c.id),n:stat('p:'+c.id).c+stat('p:'+c.id).w})).filter(x=>x.n>=4&&x.a<85).sort((x,y)=>x.a-y.a).slice(0,3);
+  $('#pairs').innerHTML=`<div class="quiz-box weakbox"><h3 style="margin:0 0 6px">Train your weak spots</h3>
+    <p style="color:var(--muted);margin:0 0 10px">${weak.length?`Your ear needs the most work on ${weak.map(x=>`<b class="ipa">${esc(x.c.label)}</b> (${x.a}%)`).join(', ')}. `:''}This drill picks the contrasts and the exact words you miss most, with a different speaker each time. It adapts as you improve.</p>
+    <button class="btn" data-drill="weak">Start adaptive drill</button></div>
+   <div class="pgrid">${list.map(c=>{const a=pairAcc(c.id);const ex=c.pairs[0];
     return `<div class="pcard"><div class="row" style="justify-content:space-between"><span class="tag t-${c.l}">${LANGS[c.l]}</span>${a===null?'':`<span class="acc ${a>=85?'good':''}">${a}%</span>`}</div>
     <div class="plabel ipa">${esc(c.label)}</div>
     <div class="pex">${ex.map(w=>`<span class="pw2">${playBtn(w.w,w.l)} ${w.l==='ar'?`<span class="arabic">${esc(w.w)}</span>`:esc(w.w)}</span>`).join('<span class="vs">vs</span>')}</div>
@@ -1358,18 +1378,18 @@ function renderPairs(){
     <div class="row" style="margin-top:14px"><button class="btn ghost" data-drill="mix">Mixed drill (all shown)</button></div>${voiceToggleHTML()}`;
 }
 function startDrill(id){
-  const set=id==='mix'?PAIRS.filter(c=>pLang==='all'||c.l===pLang):[PBYID[id]];
+  const set=id==='mix'||id==='weak'?PAIRS.filter(c=>pLang==='all'||c.l===pLang):[PBYID[id]];
   pSess={set,n:0,c:0,total:10,id};
   nextDrill();
 }
 function nextDrill(){
   if(pSess.n>=pSess.total){
-    $('#pairs').innerHTML=`<div class="quiz-box"><h2 style="font-size:22px">Done: ${pSess.c}/${pSess.total}</h2><p style="color:var(--muted)">${pSess.c>=9?'Your ear has this contrast. It will come back less often in your daily review.':pSess.c>=6?'Getting there. Contrasts like this usually take a few days of short sessions to click.':'This contrast is hard for English speakers, which is exactly why drilling it helps. Try a few rounds over the next days.'}</p><div class="row"><button class="btn" data-drill="${pSess.id}">Again</button><button class="btn ghost" id="pback">All contrasts</button></div></div>`;
+    $('#pairs').innerHTML=`<div class="quiz-box"><h2 style="font-size:22px">Done: ${pSess.c}/${pSess.total}</h2><p style="color:var(--muted)">${pSess.set.length>1?(pSess.c>=9?'Strong round. The drill will keep leaning toward whatever you still miss.':'The words you missed will come up more often next time, until they stick.'):pSess.c>=9?'Your ear has this contrast. It will come back less often in your daily review.':pSess.c>=6?'Getting there. Contrasts like this usually take a few days of short sessions to click.':'This contrast is hard for English speakers, which is exactly why drilling it helps. Try a few rounds over the next days.'}</p><div class="row"><button class="btn" data-drill="${pSess.id}">Again</button><button class="btn ghost" id="pback">All contrasts</button></div></div>`;
     $('#pback').onclick=renderPairs;return;
   }
   $('#pairs').innerHTML=`<div class="row" style="margin-bottom:10px"><button class="btn ghost" id="pback">← All contrasts</button><span style="color:var(--muted)">${pSess.n+1} / ${pSess.total} · ${pSess.c} correct</span></div><div class="quiz-box qbox" id="pq"></div>`;
   $('#pback').onclick=renderPairs;
-  const c=pick(pSess.set);
+  const c=pSess.id==='weak'?wPick(pSess.set,pairWeak):pick(pSess.set);
   mountQ($('#pq'),pairQ(c),{onAnswer:(ok,q)=>{pSess.n++;if(ok)pSess.c++;record('p:'+q.c.id,ok);srsTouch('p:'+q.c.id,ok)},onNext:nextDrill,nextLabel:pSess.n+1>=pSess.total?'See result →':'Next →'});
 }
 document.addEventListener('click',e=>{const d=e.target.closest('[data-drill]');if(d){startDrill(d.dataset.drill)}});
@@ -2489,8 +2509,22 @@ function newQueue(){
   return out;
 }
 function dueKeys(){const t=dayStr();return Object.entries(srs.items).filter(([k,v])=>v.due<=t&&itemLangOK(k)).sort((a,b)=>a[1].due<b[1].due?-1:1).map(([k])=>k)}
+// Speaking cards: every sound in review (s:<sound>) gets a partner k:<sound> where you say a word out loud
+// and rate yourself against the native recording.
+function sayWords(k){const s=BYID[sid(k)],l=klang(k);return s?s.ex.filter(e=>e.l===l&&AUDIO[e.w]&&!/\(Spain\)/.test(e.w)):[]}
+function ensureSayItems(){
+  let i=0;
+  for(const k of Object.keys(srs.items)){
+    if(!k.startsWith('s:'))continue;const sk='k:'+k.slice(2);
+    if(srs.items[sk]||!sayWords(sk).length)continue;
+    srs.items[sk]={box:1,due:addDays(Math.floor(i/3)),added:dayStr()};i++;   // three a day, so old progress isn't hit with a pile at once
+  }
+  if(i)persist();
+}
+function srsHold(key){const it=srs.items[key];if(!it)return;it.due=addDays(Math.max(1,BOX_DAYS[it.box]));it.u=Date.now();persist()} // "close": same interval again
 function itemLangOK(k){
   let ok;
+  if(k.startsWith('k:')&&srs.settings.say===false)return false;
   if(k==='t:tones'||k==='t:tpairs')ok=true;
   else if(k.startsWith('p:'))ok=!!PBYID[k.slice(2)];
   else if(k.startsWith('r:')||k.startsWith('b:'))ok=!!LBYID[k.slice(2)];
@@ -2503,6 +2537,7 @@ let tSess=null;
 function renderToday(){
   if(tSess)return;
   if(!srs.lessons)srs.lessons={};
+  ensureSayItems();
   const due=dueKeys(),nx=nextLesson();
   const st=srs.streak,today=dayStr();
   const alive=st.last===today||st.last===addDays(-1);
@@ -2518,7 +2553,9 @@ function renderToday(){
    <div class="quiz-box">${due.length?`<h2 style="font-size:22px">${due.length} review${due.length===1?'':'s'} due · about ${Math.max(1,Math.round(due.length*0.25))} min</h2><p style="color:var(--muted)">Do these first: reviewing just before you'd forget is what makes things stick.</p><button class="btn" id="t-start">Start review</button>`
      :`<h2 style="font-size:22px">${doneToday?'Reviews done for today ✓':'No reviews due'}</h2><p style="color:var(--muted)">${nItems?'Items come back on a schedule: tomorrow, then 2, 4, 8, 16 days… Anything you miss starts over.':'Finish a lesson and its sounds, contrasts and rules will start appearing here.'}</p>${nItems?'<button class="btn ghost" id="t-extra">Practise a few anyway</button>':''}`}</div>
    ${nx?`<div class="quiz-box nextbox" style="margin-top:12px"><div class="tag t-${nx.unit.l}">Next lesson · ${esc(nx.unit.title)} ${nx.n}/${nx.unit.lessons.length}</div><h2 style="font-size:22px;margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">Start lesson →</button> <a href="#lessons" style="margin-left:10px;color:var(--muted)">See the whole path</a></div>`:''}
+   <label class="saytog"><input type="checkbox" id="t-say" ${srs.settings.say===false?'':'checked'}> Include speaking cards (say a word, compare with the native speaker, rate yourself)</label>
    <p class="syncnote" id="syncnote">${syncMsg}</p>`;
+  $('#t-say').onchange=e=>{srs.settings.say=e.target.checked;persist();renderToday()};
   const s=$('#t-start');if(s)s.onclick=()=>startSession(due,[]);
   const x=$('#t-extra');if(x)x.onclick=()=>{const ks=Object.keys(srs.items).filter(itemLangOK);startSession(shuffle(ks).slice(0,8),[],true)};
 }
@@ -2563,23 +2600,72 @@ function stepSession(){
   }
   $('#today').innerHTML=head+`<div class="quiz-box qbox" id="tq"></div>`;
   $('#t-quit').onclick=finishSession;
-  const tq=itemQ(item.k);(tq.type==='build'?mountBuild:mountQ)($('#tq'),tq,{onAnswer:(ok,q,i)=>{
+  const onAns=(ok,q,i,hold)=>{
     S_.n++;if(ok)S_.c++;
     if(q.s){record(q.s.id,ok);if(!ok)record(q.opts[i].id,false)}
     if(q.type==='pair')record('p:'+q.c.id,ok);
     const k=item.k;
     if(item.isNew&&!srs.items[k]){srs.items[k]={box:ok?1:0,due:addDays(ok?1:0),added:dayStr()};const d=srs.days[dayStr()]||(srs.days[dayStr()]={done:0,new:0});d.new++;}
-    else if(!S_.extra&&!S_.missed.has(k))srsTouch(k,ok);
+    else if(!S_.extra&&!S_.missed.has(k)){hold?srsHold(k):srsTouch(k,ok)}
     if(!ok&&!S_.missed.has(k)){S_.missed.add(k);S_.q.push({k,isNew:false,retry:true})} // see it again before the session ends
     persist();
-  },onNext:()=>{S_.i++;stepSession()},extra:()=>refHTML(item.k)});
+  };
+  if(item.k.startsWith('k:')){
+    sayCard($('#tq'),item.k,{extra:()=>refHTML(item.k),
+      onRate:g=>{record(item.k,g>0);onAns(g>0,{},0,g===1);S_.i++;stepSession()},
+      // not somewhere you can talk: drop the speaking cards from this session; they stay due
+      onSkip:()=>{S_.q=S_.q.filter((x,j)=>j<S_.i||!x.k.startsWith('k:'));stepSession()}});
+    return;
+  }
+  const tq=itemQ(item.k);(tq.type==='build'?mountBuild:mountQ)($('#tq'),tq,{onAnswer:onAns,onNext:()=>{S_.i++;stepSession()},extra:()=>refHTML(item.k)});
+}
+function sayCard(el,k,hooks){
+  const s=BYID[sid(k)],w=pick(sayWords(k)),l=w.l;let url=null,firstUrl=null;
+  el.innerHTML=`<div class="qprompt">Say it out loud. <span class="tag t-${l}">Speaking</span></div>
+   <div class="qmain" style="flex-wrap:wrap">${playBtn(w.w,l)}<span class="w">${wordHTML(w)}</span>${w.r?`<span style="color:var(--muted)">${esc(w.r)}</span>`:''}<span class="ipa">[${esc(w.ipa)}]</span><span style="font-size:15px;color:var(--muted);font-weight:400">“${esc(w.g)}”</span></div>
+   <p style="margin:8px 0 12px">The sound to get right: <button class="slink ipa" data-sound="${s.id}">${esc(s.sym)}</button> <span style="color:var(--muted)">${esc(s.name)}. ${esc(s.how[0])}</span></p>
+   <div class="row"><button class="btn" id="say-rec">🎙 Record</button><button class="btn ghost" id="say-both" style="display:none">▶ Native, then you</button><button class="btn ghost" id="say-first" style="display:none"></button></div>
+   <div id="say-note" style="font-size:13px;color:var(--muted);margin-top:6px">Listen, then record yourself. Recording stops by itself when you go quiet, and stays on this device.</div>
+   <div class="say-rate"><div style="font-weight:600;margin-bottom:6px">How close were you?</div>
+    <div class="row"><button class="btn ghost" data-rate="0">Off</button><button class="btn ghost" data-rate="1">Close</button><button class="btn ghost" data-rate="2">Matched</button></div>
+    <div style="font-size:13px;color:var(--muted);margin-top:6px">Be strict: “Matched” means you couldn't tell your key sound from the native one. “Off” brings the card back tomorrow, “Close” repeats it at the same gap. No microphone? Say it aloud and rate what you heard.</div></div>
+   <div class="row" style="margin-top:12px">${hooks.extra?hooks.extra():''}<button class="btn ghost" id="say-skip">Can't speak right now</button></div>`;
+  setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250);
+  const play=(src,cb)=>{try{if(curAudio)curAudio.pause();curAudio=new Audio(src);curAudio.onended=cb||null;curAudio.play().catch(()=>{})}catch(e){}};
+  const both=()=>audioSrc(w.w).then(u=>play(u,()=>setTimeout(()=>play(url),300)));
+  const rec=el.querySelector('#say-rec'),note=el.querySelector('#say-note');
+  rec.onclick=async()=>{
+    if(labLive){labStop();return}
+    try{if(curAudio)curAudio.pause()}catch(e){}
+    let r;
+    try{r=await labRecord({maxMs:4000,quietMs:900,onStart:()=>{rec.textContent='■ Stop';rec.classList.add('rec');note.textContent='Recording… say the word.'}})}
+    catch(e){note.textContent='The microphone isn\'t available here. Say the word aloud right after the recording and rate what you heard.';return}
+    if(!document.body.contains(rec))return;
+    rec.textContent='🎙 Record again';rec.classList.remove('rec');
+    const x=trimQuiet(r.x,r.fs);
+    if(!r.heard||x.length<r.fs*0.1){note.textContent='I didn\'t hear anything. Try again, closer to the microphone.';return}
+    const blob=wavBlob(x,r.fs);if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(blob);
+    el.querySelector('#say-both').style.display='';note.textContent='Listen to the two back to back, then rate yourself.';
+    both();
+    try{
+      const old=(await recList(l,w.w))[0];
+      if(old&&dayStr(new Date(old.t))!==dayStr()&&document.body.contains(rec)){
+        firstUrl=URL.createObjectURL(old.blob);const fb=el.querySelector('#say-first');
+        fb.textContent='▶ Your first try ('+new Date(old.t).toLocaleDateString(undefined,{day:'numeric',month:'short'})+')';fb.style.display='';fb.onclick=()=>play(firstUrl);
+      }
+      await recSave(l,w.w,blob);
+    }catch(e){}
+  };
+  el.querySelector('#say-both').onclick=both;
+  el.querySelector('.say-rate').onclick=e=>{const b=e.target.closest('[data-rate]');if(!b)return;labStop();try{if(curAudio)curAudio.pause()}catch(_){}hooks.onRate(+b.dataset.rate)};
+  el.querySelector('#say-skip').onclick=()=>{labStop();hooks.onSkip()};
 }
 function finishSession(){
   const S_=tSess;tSess=null;
   markActivity(S_.n);
   persist();
   $('#today').innerHTML=`<div class="quiz-box"><h2 style="font-size:22px">Session done: ${S_.c}/${S_.n} right</h2>
-   <p style="color:var(--muted)">${S_.missed.size?`Missed today: ${[...S_.missed].map(k=>k.startsWith('s:')?`<span class="ipa">${esc(BYID[sid(k)].sym)}</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?esc(LBYID[k.slice(2)].title):k.startsWith('b:')?'writing: '+esc(LBYID[k.slice(2)].title):k==='a:words'?'reading words':k.startsWith('a:')?`<span class="arabic">${esc(k.slice(2))}</span>`:'tones').join(', ')}. They'll come back tomorrow.`:'Clean run. Those items will come back later.'}</p>
+   <p style="color:var(--muted)">${S_.missed.size?`Missed today: ${[...S_.missed].map(k=>k.startsWith('s:')?`<span class="ipa">${esc(BYID[sid(k)].sym)}</span>`:k.startsWith('k:')?`saying <span class="ipa">${esc(BYID[sid(k)].sym)}</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?esc(LBYID[k.slice(2)].title):k.startsWith('b:')?'writing: '+esc(LBYID[k.slice(2)].title):k==='a:words'?'reading words':k.startsWith('a:')?`<span class="arabic">${esc(k.slice(2))}</span>`:'tones').join(', ')}. They'll come back tomorrow.`:'Clean run. Those items will come back later.'}</p>
    <div class="row"><button class="btn" id="t-home">Back to Today</button><a class="btn ghost" href="#pairs" style="text-decoration:none">Drill pairs</a></div></div>`;
   $('#t-home').onclick=renderToday;
 }
@@ -2706,6 +2792,7 @@ function openLesson(id){const L0=LBYID[id];if(L0&&L0.unit.l!==COURSE&&typeof app
 // ---------- links from review cards back to the lesson that teaches the item ----------
 let REF_IDX=null;
 function refFor(k){
+  if(k.startsWith('k:'))k='s:'+k.slice(2);
   if(k.startsWith('a:')){const c=k.slice(2);const g=c==='words'?7:READ_GROUPS.findIndex(x=>x.c.includes(c));return {read:g<0?0:g,label:c==='words'?'Read Arabic: special letters':'Read Arabic: '+READ_GROUPS[g<0?0:g].t}}
   if(!REF_IDX){REF_IDX={};for(const L of ALL_LESSONS){const ks=L.adds.map(x=>courseKey(x,L.unit.l));ks.push('b:'+L.id);for(const x of ks)if(!REF_IDX[x])REF_IDX[x]=L}}
   let L=(k.startsWith('r:')||k.startsWith('b:'))?LBYID[k.slice(2)]:REF_IDX[k];
@@ -2810,13 +2897,15 @@ function finishLesson(){
   const L=lp.L,res=lp.results;
   const added=[];
   const addKeys=L.adds.slice();if(L.steps.some(s=>s.t==='build'))addKeys.push('b:'+L.id);
-  for(const k0 of addKeys){const k=courseKey(k0,L.unit.l);if(srs.items[k])continue;srs.items[k]={box:1,due:addDays(1),added:dayStr()};added.push(k)}
+  for(const k0 of addKeys){const k=courseKey(k0,L.unit.l);if(srs.items[k])continue;srs.items[k]={box:1,due:addDays(1),added:dayStr()};added.push(k);
+    const sk='k:'+k.slice(2);if(k.startsWith('s:')&&!srs.items[sk]&&sayWords(sk).length)srs.items[sk]={box:1,due:addDays(1),added:dayStr()}}
+  const nSay=added.filter(k=>srs.items['k:'+k.slice(2)]&&k.startsWith('s:')).length;
   srs.lessons[L.id]=dayStr();markActivity(Math.max(1,res.n));persist();
   const nx=nextLesson();lp=null;
   const label=k=>k.startsWith('s:')?`<span class="ipa">[${esc(BYID[sid(k)].sym)}]</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?'rule: '+esc(LBYID[k.slice(2)].title.replace(/^Rule: /,'')):k.startsWith('b:')?'writing in IPA':k==='t:tones'?'tones':'tone pairs';
   $('#lessons').innerHTML=`<div class="quiz-box"><div class="tag t-${L.unit.l}">${esc(L.unit.title)} · lesson ${L.n} complete</div><h2 style="margin-top:8px">${esc(L.title)} ✓</h2>
    ${res.n?`<p>${res.c} of ${res.n} questions right.</p>`:''}
-   ${added.length?`<p>Added to your daily review: ${added.map(label).join(', ')}. They'll come back tomorrow, then at growing intervals.</p>`:'<p style="color:var(--muted)">Nothing new to add to your review from this lesson.</p>'}
+   ${added.length?`<p>Added to your daily review: ${added.map(label).join(', ')}. They'll come back tomorrow, then at growing intervals.${nSay?' Each new sound also gets a speaking card, where you say a word and compare yourself with the native speaker.':''}</p>`:'<p style="color:var(--muted)">Nothing new to add to your review from this lesson.</p>'}
    <div class="row">${nx?`<button class="btn" data-lesson="${nx.id}">Next: ${esc(nx.title)} →</button>`:''}<button class="btn ghost" id="lp-path">All lessons</button></div></div>`;
   $('#lp-path').onclick=renderLessons;window.scrollTo(0,0);
 }
@@ -2901,6 +2990,7 @@ async function analyseMine(file){
     const mine=analyse(await decode(await file.arrayBuffer()));
     if(spMineUrl)URL.revokeObjectURL(spMineUrl);spMineUrl=URL.createObjectURL(file);
     spMine={res:mine};if($('#sp-out'))drawCompare();
+    recHistory(spWord.l,spWord.w,file);
   }catch(e){$('#sp-out').innerHTML='<p style="color:var(--bad)">Couldn\'t read that recording. Try a different file format (m4a, mp3, wav or ogg all work in Chrome).</p>'}
 }
 function toneOf(w){if([...w.w].length>1)return 0;const m=(w.r||'').normalize('NFD').match(/[̄́̌̀]/);return m?{'̄':1,'́':2,'̌':3,'̀':4}[m[0]]:0}
@@ -2928,6 +3018,7 @@ function drawCompare(){
    <div class="sp-notes">
     <p><b>Length:</b> ${dr>1.35?`you took ${dr.toFixed(1)}× as long. ${LW[spWord.w]&&LW[spWord.w].ph?'Try to keep up with the native rhythm; shadowing along with the recording helps.':'Native speakers say single words briskly, so try it a bit quicker.'}`:dr<0.7?`you were quicker than the native speaker (${dr.toFixed(1)}×). Don't clip the vowels.`:`close to the native speaker (${dr.toFixed(1)}×).`}</p>
     ${pm!==null?`<p><b>Pitch shape match:</b> ${pm}% ${pm>=75?'(the tone shape matches well)':pm>=50?'(roughly right; compare where your line rises or falls)':'(the shape differs; check the target tone line)'}.</p>`:''}
+    <div id="sp-hist"></div>
     ${tone?'<p style="font-size:13px;color:var(--muted)">The faint red line is the textbook tone shape. Words said on their own, including these recordings, often drop in pitch at the very end, so focus on the main movement.</p>':''}<p style="font-size:13px;color:var(--muted)">These are rough guides from the sound wave, not a pronunciation grade. Your ear, comparing the two back to back, is the real test. Pitch is shown relative to each voice's own middle, so a higher or lower voice doesn't count against you.</p>
    </div>`;
   const play=(src,cb)=>{try{if(curAudio)curAudio.pause();curAudio=new Audio(src);curAudio.onended=cb||null;curAudio.play().catch(()=>{})}catch(e){}};
@@ -2976,6 +3067,7 @@ function route(){
   if(v==='read'&&typeof renderRead==='function')renderRead();
   if(v==='pairs'&&!pSess)renderPairs();
   if(v==='speak')renderSpeak();else{try{stopLive();if(vcLive)vcLive.stop()}catch(e){}}
+  if(v!=='speak'&&v!=='today'){try{labStop()}catch(e){}}
   try{speechSynthesis.cancel()}catch(e){}
   if(route.last&&route.last!==v)window.scrollTo(0,0);route.last=v;
 }
@@ -3326,7 +3418,9 @@ function qAudioKeys(q){
 function pickVoice(keys){
   if(!voiceMix||!keys.length)return 'main';
   let set=null;for(const k of keys){const vs=Object.keys(AUDIO_V[k]||{});set=set?set.filter(x=>vs.includes(x)):vs}
-  return pick(['main',...(set||[])]);
+  // a different speaker from last time whenever there's a choice
+  const all=['main',...(set||[])],fresh=all.filter(v=>v!==pickVoice.last);
+  return pickVoice.last=pick(fresh.length?fresh:all);
 }
 
 // ---------- mini player bar: speaker, slow, replay, flag ----------
@@ -3405,9 +3499,9 @@ function micMsg(e,what){
   if(e&&e.name==='NotAllowedError')return 'Microphone permission was blocked. Allow the microphone for this site in your browser settings (tap the icon left of the address bar) and try again.'+alt;
   return 'The microphone couldn\'t be started ('+esc(e&&e.name||'unknown error')+').'+alt;
 }
-async function getMic(){
+async function getMic(raw){ // raw: no automatic volume either, for the tools that measure the sound wave
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error('nomic');
-  return await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:true}});
+  return await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:!raw}});
 }
 function recPicker(id){return `<label class="btn ghost" style="display:inline-block;cursor:pointer">📁 Use a recording<input type="file" id="${id}" accept="audio/*" capture style="display:none"></label>`}
 
@@ -3417,8 +3511,14 @@ let spRec=null; // active MediaRecorder session
 const _renderSpeakWords=renderSpeak;
 renderSpeak=function(){
   const modes=[['words','Words'],['phrases','Phrases'],['vowels','Vowel coach']];
+  if(spLang==='zh')modes.push(['tones','Tone coach']);
+  if(spLang!=='ar')modes.push(['puff','Puff meter']);
+  if(spLang==='es')modes.push(['trill','Trill check']);
+  if(!modes.some(m=>m[0]===spMode))spMode='words';
+  labStop();
   const head=`<div class="chips sp-modes" role="tablist">${modes.map(([k,v])=>`<button class="chip ${spMode===k?'on':''}" data-spmode="${k}" role="tab" aria-selected="${spMode===k}">${v}</button>`).join('')}</div>`;
   if(spMode==='vowels'){$('#speak').innerHTML=head+'<div id="vc"></div>';renderVowelCoach();return}
+  if(LAB_MODES[spMode]){$('#speak').innerHTML=head+'<div id="lab"></div>';LAB_MODES[spMode]();return}
   if(spMode==='phrases'){
     const list=PHRASES.filter(p=>p.l===spLang);
     if(!spWord||!LW[spWord.w]||!LW[spWord.w].ph||spWord.l!==spLang){const p=list[0];spWord=p?{l:p.l,w:p.w,r:p.r||'',ipa:p.ipa,g:p.g}:null;spMine=null}
@@ -3658,6 +3758,399 @@ document.addEventListener('click',e=>{if(e.target.id==='off-go')saveOffline(fals
 if(store.get('offline',false)){const m=$('#off-msg');if(m)m.textContent='Offline use is on for this device. ✓';if(navigator.onLine!==false)setTimeout(()=>saveOffline(true),3000)}
 // back online after working offline: sync what was done
 window.addEventListener('online',()=>{if(!syncRef)initSync()});
+
+// =====================================================================
+// Speaking tools: shared recorder, saved recordings, tone coach, puff meter, trill check
+// =====================================================================
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const avg=a=>a.reduce((p,q)=>p+q,0)/(a.length||1);
+const median=a=>{const s=a.slice().sort((p,q)=>p-q);return s.length?s[Math.floor(s.length/2)]:0};
+function labCanvas(sel,H){const cv=$(sel);if(!cv)return null;const dpr=window.devicePixelRatio||1,W_=cv.clientWidth||600;cv.width=W_*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);g.font='12px Instrument Sans, sans-serif';return {g,W:W_,H}}
+function to16k(x,fs){const step=Math.max(1,Math.round(fs/16000));if(step===1)return {y:x,fs};const y=new Float32Array(Math.floor(x.length/step));for(let i=0;i<y.length;i++){let s=0;for(let j=0;j<step;j++)s+=x[i*step+j];y[i]=s/step}return {y,fs:fs/step}}
+// Pitch every 10 ms (same method as the word compare): [{t, rms, f0 (0 = no clear pitch), per (how periodic, 0-1)}]
+function pitchFrames(x0,fs0){
+  const {y:x,fs}=to16k(x0,fs0);
+  const hop=Math.round(fs*0.01),win=Math.round(fs*0.03),tmin=Math.floor(fs/450),tmax=Math.ceil(fs/70);
+  const r=new Float32Array(tmax+2),out=[];
+  for(let s=0;s+win+tmax<x.length;s+=hop){
+    let e0=0;for(let j=0;j<win;j++)e0+=x[s+j]*x[s+j];
+    let mx=0;
+    for(let t=tmin;t<=tmax;t++){let num=0,e1=0;for(let j=0;j<win;j++){const b=x[s+t+j];num+=x[s+j]*b;e1+=b*b}const v=num/(Math.sqrt(e0*e1)+1e-12);r[t]=v;if(v>mx)mx=v}
+    let f0=0;
+    if(mx>=0.5)for(let t=tmin+1;t<tmax;t++){if(r[t]>=0.9*mx&&r[t]>=r[t-1]&&r[t]>=r[t+1]){const a=r[t-1],b=r[t],c=r[t+1],den=a-2*b+c;f0=fs/(t+(den?0.5*(a-c)/den:0));break}}
+    out.push({t:s/fs,rms:Math.sqrt(e0/win),f0,per:mx});
+  }
+  return out;
+}
+// One recorder for all the speaking tools. Resolves with the raw samples once you go quiet (or hit the time limit).
+let labLive=null;
+function labStop(){if(labLive)labLive.stop()}
+async function labRecord(o){
+  labStop();
+  const stream=await getMic(o.raw);
+  const ac=ctx();if(ac.state==='suspended')await ac.resume();
+  const src=ac.createMediaStreamSource(stream),proc=ac.createScriptProcessor(2048,1,1);
+  const chunks=[];let total=0,heard=false,quiet=0,done=false;const fs=ac.sampleRate,t0=performance.now();
+  return await new Promise(res=>{
+    const finish=()=>{if(done)return;done=true;try{proc.disconnect();src.disconnect()}catch(_){}stream.getTracks().forEach(t=>t.stop());labLive=null;
+      const x=new Float32Array(total);let p=0;for(const c of chunks){x.set(c,p);p+=c.length}res({x,fs,heard})};
+    proc.onaudioprocess=e=>{if(done)return;const d=new Float32Array(e.inputBuffer.getChannelData(0));chunks.push(d);total+=d.length;
+      let s=0;for(const v of d)s+=v*v;const rms=Math.sqrt(s/d.length),now=performance.now();
+      if(rms>0.015){heard=true;quiet=now}
+      if(o.onLive){try{o.onLive(d,fs,rms)}catch(_){}}
+      if((heard&&now-quiet>(o.quietMs||800))||now-t0>(o.maxMs||4000))finish()};
+    src.connect(proc);proc.connect(ac.destination);
+    labLive={stop:finish};
+    if(o.onStart)o.onStart();
+  });
+}
+function trimQuiet(x,fs){
+  const n=Math.round(fs*0.01),rms=[];let peak=0;
+  for(let s=0;s+n<=x.length;s+=n){let e=0;for(let j=0;j<n;j++)e+=x[s+j]*x[s+j];const v=Math.sqrt(e/n);rms.push(v);if(v>peak)peak=v}
+  const th=Math.max(0.006,peak*0.08);let a=rms.findIndex(v=>v>th),b=rms.length-1;while(b>a&&rms[b]<=th)b--;
+  if(a<0)return new Float32Array(0);
+  return x.subarray(Math.max(0,(a-12)*n),Math.min(x.length,(b+13)*n));
+}
+function wavBlob(x0,fs0){ // small 16-bit WAV; halves the sample rate of 44/48 kHz input to keep saved recordings light
+  const half=fs0>=44100,fs=half?fs0/2:fs0,n=half?Math.floor(x0.length/2):x0.length;
+  const wav=new DataView(new ArrayBuffer(44+n*2));const W=(o,str)=>{for(let i=0;i<str.length;i++)wav.setUint8(o+i,str.charCodeAt(i))};
+  W(0,'RIFF');wav.setUint32(4,36+n*2,true);W(8,'WAVE');W(12,'fmt ');wav.setUint32(16,16,true);wav.setUint16(20,1,true);wav.setUint16(22,1,true);
+  wav.setUint32(24,fs,true);wav.setUint32(28,fs*2,true);wav.setUint16(32,2,true);wav.setUint16(34,16,true);W(36,'data');wav.setUint32(40,n*2,true);
+  for(let i=0;i<n;i++){const v=half?(x0[2*i]+x0[2*i+1])/2:x0[i];wav.setInt16(44+i*2,Math.max(-1,Math.min(1,v))*32767,true)}
+  return new Blob([wav],{type:'audio/wav'});
+}
+
+// ---------- your own recordings over time (kept on this device only) ----------
+// Per word we keep the very first recording and the latest one from each month, so you can hear yourself improve.
+function recDB(){return recDB.p||(recDB.p=new Promise((res,rej)=>{const r=indexedDB.open('sa-rec',1);r.onupgradeneeded=()=>{r.result.createObjectStore('r',{keyPath:'id',autoIncrement:true}).createIndex('w','w')};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}))}
+async function recList(l,w){const db=await recDB();return await new Promise((res,rej)=>{const q=db.transaction('r').objectStore('r').index('w').getAll(l+'|'+w);q.onsuccess=()=>res(q.result.sort((a,b)=>a.t-b.t));q.onerror=()=>rej(q.error)})}
+async function recSave(l,w,blob){
+  const all=await recList(l,w),db=await recDB(),m=dayStr().slice(0,7);
+  await new Promise((res,rej)=>{const tx=db.transaction('r','readwrite'),st=tx.objectStore('r');
+    all.forEach((r,i)=>{if(i>0&&dayStr(new Date(r.t)).slice(0,7)===m)st.delete(r.id)});
+    st.add({w:l+'|'+w,t:Date.now(),blob});tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});
+}
+async function recHistory(l,w,blob){ // Speak tab: save this take, then list the older ones under the comparison
+  try{
+    if(blob)await recSave(l,w,blob);
+    const list=(await recList(l,w)).slice(0,-1),el=$('#sp-hist');if(!el||!list.length||!spWord||spWord.w!==w)return;
+    el.innerHTML=`<p><b>Hear your progress:</b> ${list.map(r=>`<button class="btn ghost" data-recid="${r.id}">▶ ${new Date(r.t).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'2-digit'})}</button>`).join(' ')} <span style="font-size:13px;color:var(--muted)">Earlier recordings of this word, kept on this device: your first try and the latest from each month.</span></p>`;
+    el.onclick=e=>{const b=e.target.closest('[data-recid]');const r=b&&list.find(x=>x.id===+b.dataset.recid);if(!r)return;try{if(curAudio)curAudio.pause();curAudio=new Audio(URL.createObjectURL(r.blob));curAudio.play().catch(()=>{})}catch(_){}};
+  }catch(e){}
+}
+
+// ---------- TONE COACH (Mandarin) ----------
+// Tones are drawn on the usual 1-5 scale; one level is about TC_SPAN semitones, with level 3 at the middle of your voice.
+const TC_SPAN=2.6;
+const TC_TPL={1:[5,5,5],2:[3,3.4,5],3:[2.2,1,1,3.4],4:[5,3.4,1]};          // shapes drawn as the target band
+const tplAt=(tp,u)=>{const p=Math.max(0,Math.min(1,u))*(tp.length-1),i=Math.min(tp.length-2,Math.floor(p));return tp[i]+(tp[i+1]-tp[i])*(p-i)};
+const lvl=L=>(L-3)*TC_SPAN;
+let tcSet=0,tcTone=0,tcMid=store.get('f0mid',null),tcLast=null;const tcNatCache={};
+function cleanPitch(fr,ref){ // semitones above/below ref, with quiet frames, blips and octave jumps removed
+  const th=Math.max(...fr.map(f=>f.rms),1e-9)*0.08;
+  let st=fr.map(f=>f.f0&&f.rms>th?12*Math.log2(f.f0/ref):null);
+  const med5=st.map((v,i)=>{if(v===null)return null;const w=st.slice(Math.max(0,i-2),i+3).filter(q=>q!==null);return median(w)});
+  st=st.map((v,i)=>v===null||Math.abs(v-med5[i])>4?null:med5[i]);
+  const mid=median(st.filter(v=>v!==null));
+  st=st.map(v=>v===null||Math.abs(v-mid)>13?null:v);
+  // A creaky voice makes the tracker leap by several semitones from one frame to the next, which a real voice can't do.
+  // Split the line at such leaps, trust the longest unbroken stretch, and keep only neighbours that join up with it.
+  const runs=[];let cur=null;
+  st.forEach((v,i)=>{if(v===null){cur=null;return}if(cur&&i===cur.b+1&&Math.abs(v-st[cur.b])<=3.5)cur.b=i;else runs.push(cur={a:i,b:i})});
+  if(runs.length<2)return st;
+  let k=0;runs.forEach((r,i)=>{if(r.b-r.a>runs[k].b-runs[k].a)k=i});
+  const keep=new Set([k]),fits=(x,y)=>Math.abs(st[x]-st[y])<=Math.min(8,3.5+0.5*(Math.abs(x-y)-1));
+  for(let i=k-1,e=runs[k].a;i>=0;i--)if(fits(runs[i].b,e)){keep.add(i);e=runs[i].a}
+  for(let i=k+1,e=runs[k].b;i<runs.length;i++)if(fits(runs[i].a,e)){keep.add(i);e=runs[i].b}
+  const out=st.map(()=>null);runs.forEach((r,i)=>{if(keep.has(i))for(let j=r.a;j<=r.b;j++)out[j]=st[j]});
+  return out;
+}
+function tcContour(st){ // the voiced stretch, stretched onto 24 evenly spaced points
+  const idx=[];st.forEach((v,i)=>{if(v!==null)idx.push(i)});if(idx.length<10)return null;
+  const a=idx[0],b=idx[idx.length-1],N=24,pts=[];
+  for(let k=0;k<N;k++){const p=a+(b-a)*k/(N-1);let i0=Math.floor(p),i1=Math.ceil(p);while(i0>a&&st[i0]===null)i0--;while(i1<b&&st[i1]===null)i1++;
+    pts.push(i0===i1?st[i0]:st[i0]+(st[i1]-st[i0])*(p-i0)/(i1-i0))}
+  return {pts,dur:(b-a)*0.01,gap:1-idx.length/(b-a+1)};
+}
+async function tcNative(i){ // the native speaker's four tones for this syllable, placed on the same 1-5 scale
+  if(tcNatCache[i])return tcNatCache[i];
+  const frs=[];
+  for(let n=0;n<4;n++){const ab=await decode(await (await fetch(await audioSrc(TONESETS[i][n]))).arrayBuffer());frs.push(pitchFrames(ab.getChannelData(0),ab.sampleRate))}
+  // anchor the scale on the speaker's tone 1, the steadiest of the four: put it between levels 4 and 5
+  const mx=Math.max(...frs[0].map(f=>f.rms));
+  const ref=median(frs[0].filter(f=>f.f0&&f.rms>mx*0.15).map(f=>f.f0))/Math.pow(2,lvl(4.5)/12);
+  return tcNatCache[i]={ref,con:frs.map(fr=>tcContour(cleanPitch(fr,ref)))};
+}
+function renderToneCoach(){
+  const set=TONESETS[tcSet],ch=set[tcTone],T=TONES[tcTone];
+  $('#lab').innerHTML=`<div class="quiz-box">
+   <p class="lesson-text" style="margin-top:0">Say a syllable and watch your pitch draw itself against the target tone. The numbers 1 to 5 are the usual tone scale: 1 is the bottom of your speaking voice and 5 is the top.</p>
+   <div class="chips" id="tc-sets">${TONESETS.map((s,i)=>`<button class="chip ${i===tcSet?'on':''}" data-tcs="${i}">${esc(s[4])}</button>`).join('')}</div>
+   <div class="chips" id="tc-tones" style="margin-top:8px">${[0,1,2,3].map(i=>`<button class="chip ${i===tcTone?'on':''}" data-tct="${i}">${esc(set[i])} · tone ${i+1} <span class="ipa">${TONES[i].let}</span></button>`).join('')}</div>
+   <div class="row" style="margin-top:12px">${playBtn(ch,'zh')}<span><b style="font-size:24px">${esc(ch)}</b> <span style="color:var(--muted)">tone ${T.n}: ${T.name.toLowerCase()}</span></span></div>
+   <div class="row" style="margin-top:10px"><button class="btn" id="tc-rec">🎙 Say it</button><button class="btn ghost" id="tc-cal">${tcMid?'Reset my voice level':'Set my voice level'}</button></div>
+   <div id="tc-note" style="font-size:13px;color:var(--muted);margin-top:6px">${tcMid?'Your voice level is set, so the coach checks both the shape and the height of each tone.':'Until you set your voice level, the coach can only judge the shape of a tone, not whether it is high or low enough. It takes five seconds.'}</div>
+   <canvas id="tc-cv" class="lab-cv" style="height:260px"></canvas>
+   <div class="legend"><span><i style="background:var(--zh);opacity:.35"></i>Target shape</span><span><i style="background:var(--accent)"></i>Native speaker</span><span><i style="background:var(--es)"></i>You</span></div>
+   <div id="tc-out" class="sp-notes"></div>
+   <p style="font-size:12px;color:var(--muted)">This reads pitch from the sound wave. It's a guide, not a grade: noise, a very quiet voice or a creaky voice can break the line. Native speakers also bend the textbook shapes, which is why their line doesn't sit exactly on the band.</p></div>`;
+  $('#tc-sets').onclick=e=>{const b=e.target.closest('[data-tcs]');if(b){tcSet=+b.dataset.tcs;tcLast=null;renderToneCoach()}};
+  $('#tc-tones').onclick=e=>{const b=e.target.closest('[data-tct]');if(b){tcTone=+b.dataset.tct;tcLast=null;renderToneCoach()}};
+  $('#tc-rec').onclick=tcRecord;$('#tc-cal').onclick=tcCalibrate;
+  tcDraw();const i=tcSet;tcNative(i).then(()=>{if(i===tcSet)tcDraw()}).catch(()=>{});
+}
+function tcDraw(live){
+  const c=labCanvas('#tc-cv',260);if(!c)return;const {g,W,H}=c,pad=34;
+  const Y=st=>H/2-Math.max(-10,Math.min(10,st))*(H/2-16)/10,X=u=>pad+(W-pad-14)*u;
+  for(let L=1;L<=5;L++){const y=Y(lvl(L));g.strokeStyle=cssv('--line');g.lineWidth=1;g.beginPath();g.moveTo(pad-8,y);g.lineTo(W-8,y);g.stroke();g.fillStyle=cssv('--muted');g.fillText(L,10,y+4)}
+  const tp=TC_TPL[tcTone+1];g.strokeStyle=cssv('--zh');g.globalAlpha=.25;g.lineWidth=18;g.lineCap=g.lineJoin='round';g.beginPath();
+  for(let k=0;k<=40;k++){const u=k/40,y=Y(lvl(tplAt(tp,u)));k?g.lineTo(X(u),y):g.moveTo(X(u),y)}g.stroke();g.globalAlpha=1;
+  const line=(pts,col,w)=>{g.strokeStyle=col;g.lineWidth=w;g.beginPath();pts.forEach((v,i)=>{const x=X(i/(pts.length-1)),y=Y(v);i?g.lineTo(x,y):g.moveTo(x,y)});g.stroke()};
+  const nat=tcNatCache[tcSet];if(nat&&nat.con[tcTone])line(nat.con[tcTone].pts,cssv('--accent'),2);
+  if(live&&live.length){ // while recording: dots as they arrive
+    const ref=tcMid||median(live.map(p=>p.f0)),t0=live[0].t;g.fillStyle=cssv('--es');
+    for(const p of live){g.beginPath();g.arc(X(Math.min(1,(p.t-t0)/1.1)),Y(12*Math.log2(p.f0/ref)),4,0,2*Math.PI);g.fill()}
+  } else if(tcLast)line(tcLast.pts,cssv('--es'),4);
+}
+async function tcRecord(){
+  const btn=$('#tc-rec'),note=$('#tc-note'),ch=TONESETS[tcSet][tcTone];
+  if(labLive){labStop();return}
+  try{if(curAudio)curAudio.pause()}catch(e){}
+  const live=[];let prev=new Float32Array(0),t0=0,r;
+  try{r=await labRecord({maxMs:3200,quietMs:600,
+    onStart:()=>{btn.textContent='■ Stop';btn.classList.add('rec');note.textContent='Recording… say '+ch+' now.';t0=performance.now()},
+    onLive:(d,fs,rms)=>{const x=new Float32Array(prev.length+d.length);x.set(prev);x.set(d,prev.length);prev=d;
+      if(rms<0.015)return;const fr=pitchFrames(x,fs).filter(f=>f.f0&&f.per>0.6);if(!fr.length)return;
+      live.push({t:(performance.now()-t0)/1000,f0:fr[Math.floor(fr.length/2)].f0});tcDraw(live)}})}
+  catch(e){note.innerHTML=micMsg(e,'yourself').replace(/ For now.*$/,'');return}
+  if(!document.body.contains(btn))return;
+  btn.textContent='🎙 Say it';btn.classList.remove('rec');note.textContent='';
+  tcAnalyse(r.x,r.fs);
+}
+function tcAnalyse(x,fs){
+  const fr=pitchFrames(x,fs),f0s=fr.filter(f=>f.f0&&f.per>0.6).map(f=>f.f0),out=$('#tc-out');
+  const con=f0s.length>=10?tcContour(cleanPitch(fr,tcMid||median(f0s))):null;
+  if(!con){tcLast=null;tcDraw();if(out)out.innerHTML='<p>I couldn\'t find a clear pitch there. Say the syllable a little louder and longer, close to the microphone, in a quiet spot.</p>';return null}
+  const cal=!!tcMid,tp=TC_TPL[tcTone+1];
+  // without a voice level, slide the line onto the target's height so only the shape is compared
+  if(!cal){const m=avg(con.pts),tm=avg(con.pts.map((_,i)=>lvl(tplAt(tp,i/23))));con.pts=con.pts.map(v=>v-m+tm)}
+  tcLast=con;tcDraw();
+  const res=tcVerdict(con,tcTone+1,cal);if(out)out.innerHTML=res.html;return res;
+}
+function tcVerdict(con,tone,cal){
+  // the first and last few points are left out: pitch jumps around as the consonant lets go and as the voice dies away
+  const p=con.pts,seg=(a,b)=>avg(p.slice(a,b)),start=seg(3,7),end=seg(18,22),body=p.slice(3,22);
+  const mn=Math.min(...body),mx=Math.max(...body),minPos=body.indexOf(mn)/(body.length-1),mean=avg(body),range=mx-mn;
+  const f=v=>Math.abs(v).toFixed(0);let ok=false,msg='';
+  if(tone===1){
+    ok=range<=3.5;msg=ok?`Level: it moved only ${range.toFixed(1)} semitones. 👍`:end<start-2?`It sagged about ${f(start-end)} semitones. Hold it flat, like one sung note.`:end>start+2?`It climbed about ${f(end-start)} semitones. Keep it flat, like one sung note.`:`It wobbled across ${f(range)} semitones. Aim for one steady note.`;
+    if(cal&&mean<1){ok=false;msg+=' It is also too low: tone 1 sits near the top of your voice (level 5).'}
+  } else if(tone===2){
+    const rise=end-mn;ok=rise>=3.5&&end>start+1.5;
+    msg=ok?`It rose about ${f(rise)} semitones. 👍`:rise>=2?`It rose only about ${f(rise)} semitones. Push higher at the end, like asking “What?”`:end<start-2?'It fell instead of rising.':'It stayed almost flat. It needs a clear climb to the top of your voice.';
+    if(ok&&minPos>0.55)msg+=' The climb started late, though, which begins to sound like tone 3. Start rising sooner.';
+  } else if(tone===3){
+    const dip=start-mn,up=end-mn,creak=con.gap>0.35&&!(cal&&start>2);
+    // with a voice level set, "low all the way" is what counts; without one, only the dip shape can be checked
+    ok=creak||(cal?mean<=0.5&&end<=3:minPos>=0.2&&(dip>=1||up>=2)&&!(dip>=5&&up<1.5));
+    msg=creak?'Your voice went creaky, which is exactly what native speakers do at the bottom of tone 3. 👍 The line can\'t be drawn through a creak, so judge this one by ear against the recording.'
+      :ok?`Low${dip>=1?' with a dip':''}${up>=3?`, and a rise of about ${f(up)} semitones at the end`:''}. 👍 In running speech, staying low matters more than the final rise.`
+      :cal&&mean>0.5?'Too high. Tone 3 lives at the very bottom of your voice: start low and sink lower.'
+      :cal?'Low enough, but it ended high, which starts to sound like tone 2. Keep the final lift small.'
+      :minPos<0.2&&up>=3?'It rose almost from the start, which sounds like tone 2. Drop down first and stay low before any rise.'
+      :dip>=5&&up<1.5?'It fell a long way and never levelled out, which sounds like tone 4. Start low rather than high.'
+      :'I couldn\'t see a clear low dip. Start low, sink to the bottom of your voice, then let it lift a little.';
+  } else {
+    // the drop from the highest point to the lowest point after it (the very end often breaks up)
+    const after=body.slice(body.indexOf(mx)),fall=mx-Math.min(...after);ok=fall>=5;
+    msg=ok?`It fell about ${f(fall)} semitones. 👍`:fall>=3?`It fell only about ${f(fall)} semitones. Native speakers drop further: start higher and fall hard, like a firm “No!”`:'It barely fell. Start at the top of your voice and drop sharply to the bottom.';
+    if(cal&&mx<1.5){ok=false;msg+=' Start higher: tone 4 begins at the top of your voice (level 5).'}
+  }
+  if(tone!==3&&con.gap>0.4)msg+=' The line is patchy here (a quiet or creaky voice), so take this reading with a pinch of salt.';
+  return {ok,html:`<p><b>Tone ${tone}:</b> ${msg}${cal?'':' <span style="color:var(--muted)">Height wasn\'t judged: set your voice level for that.</span>'}</p>`};
+}
+async function tcCalibrate(){
+  const note=$('#tc-note'),btn=$('#tc-cal');
+  if(tcMid){tcMid=null;store.set('f0mid',null);tcLast=null;renderToneCoach();return}
+  if(labLive){labStop();return}
+  let r;
+  try{r=await labRecord({maxMs:6000,quietMs:1500,onStart:()=>{btn.textContent='■ Stop';btn.classList.add('rec');note.textContent='Recording… count slowly from one to five in your normal, relaxed speaking voice (in English is fine).'}})}
+  catch(e){note.innerHTML=micMsg(e,'yourself').replace(/ For now.*$/,'');return}
+  if(!document.body.contains(btn))return;
+  const fr=pitchFrames(r.x,r.fs),mx=Math.max(...fr.map(f=>f.rms),1e-9),f0s=fr.filter(f=>f.f0&&f.per>0.6&&f.rms>mx*0.15).map(f=>f.f0);
+  if(f0s.length<40){btn.textContent='Set my voice level';btn.classList.remove('rec');note.textContent='I didn\'t get enough speech to go on. Try again and keep talking for three or four seconds.';return}
+  tcMid=Math.round(median(f0s));store.set('f0mid',tcMid);tcLast=null;renderToneCoach();
+}
+
+// ---------- PUFF METER (aspiration) ----------
+// Measures the gap between the pop of p/t/k and the moment the voice starts (voice onset time, in ms).
+const PUFF={zh:[['爸',0,0],['怕',1,0],['大',0,0],['踏',1,0],['哥',0,1],['科',1,1]],
+  es:[['papá',0,0],['pala',0,0],['peso',0,0],['tos',0,0],['tía',0,0],['taco',0,0],['casa',0,1],['coma',0,1],['queso',0,1]]}; // [word, has a puff?, made at the back of the mouth (k)?]
+let pfWord=null,pfLast=null;const pfNat={};
+function votMeasure(x0,fs){
+  const n=x0.length,hop=Math.round(fs*0.001),win=Math.round(fs*0.004),nf=Math.floor((n-win)/hop);if(nf<80)return null;
+  // loudness every millisecond; "hi" boosts the high frequencies so the pop and hiss stand out from low rumble
+  const hi=new Float32Array(nf),amp=new Float32Array(nf);let peak=0;
+  for(let f=0;f<nf;f++){let e=0,a=0;const s=f*hop;for(let j=1;j<win;j++){const d=x0[s+j]-0.95*x0[s+j-1];e+=d*d;a+=x0[s+j]*x0[s+j]}hi[f]=Math.sqrt(e/win);amp[f]=Math.sqrt(a/win);if(hi[f]>peak)peak=hi[f]}
+  const floor=Array.from(hi).sort((a,b)=>a-b)[Math.floor(nf*0.1)],thr=Math.max(floor*4,peak*0.03);
+  // where does steady voicing start? (a repeating wave for 24 ms or more, at a healthy loudness)
+  const {y,fs:f2}=to16k(x0,fs),w=Math.round(f2*0.015),tmin=Math.floor(f2/400),tmax=Math.ceil(f2/75),h2=Math.round(f2*0.002);
+  const per=[],lo=[];let loMax=0;
+  for(let s=0;s+w+tmax<y.length;s+=h2){let e0=0;for(let j=0;j<w;j++)e0+=y[s+j]*y[s+j];let mx=0;
+    if(e0>1e-8*w)for(let t=tmin;t<=tmax;t++){let num=0,e1=0;for(let j=0;j<w;j++){const b=y[s+t+j];num+=y[s+j]*b;e1+=b*b}const v=num/(Math.sqrt(e0*e1)+1e-12);if(v>mx)mx=v}
+    per.push(mx);const l=Math.sqrt(e0/w);lo.push(l);if(l>loMax)loMax=l}
+  let run=0,vOn=-1;
+  for(let i=0;i<per.length;i++){if(per[i]>0.7&&lo[i]>loMax*0.1){if(++run>=12){vOn=(i-11)*2;break}}else run=0}
+  if(vOn<0)return null;
+  // walk back from the voice to the silence before the consonant; the pop is the first sound after that silence
+  let burst=-1,gap=0;
+  for(let i=Math.min(nf-1,vOn+5);i>=0&&vOn-i<300;i--){if(hi[i]>thr){burst=i;gap=0}else if(++gap>=25)break;if(i===0)gap=25}
+  if(burst<0||gap<25)return null;
+  return {vot:Math.max(0,vOn-burst),burst,vOn,amp};
+}
+function pfTarget(w){const [word,asp,back]=w;return asp?{lo:60,hi:200,txt:'60 ms or more'}:{lo:0,hi:back?50:30,txt:`under ${back?50:30} ms`}}
+async function pfNative(word){
+  if(pfNat[word]!==undefined)return pfNat[word];
+  try{const ab=await decode(await (await fetch(await audioSrc(word))).arrayBuffer());pfNat[word]=votMeasure(ab.getChannelData(0),ab.sampleRate)}catch(e){pfNat[word]=null}
+  return pfNat[word];
+}
+function renderPuff(){
+  const list=PUFF[spLang]||PUFF.es;if(!pfWord||!list.includes(pfWord))pfWord=list[0];
+  const info=allWords().find(x=>x.l===spLang&&x.w===pfWord[0])||{w:pfWord[0],r:'',ipa:'',g:''},tg=pfTarget(pfWord);
+  $('#lab').innerHTML=`<div class="quiz-box">
+   <p class="lesson-text" style="margin-top:0">${spLang==='zh'?'Mandarin b/p, d/t and g/k differ only in the <b>puff of air</b>: b, d, g have none, while p, t, k have a strong one, longer than in English. This measures your puff: the gap between the pop of the consonant and the start of the vowel.':'English p, t and k come with a <b>puff of air</b>; Spanish ones have none, which is a big part of an English accent in Spanish. This measures your puff: the gap between the pop of the consonant and the start of the vowel.'}</p>
+   <div class="chips" id="pf-words">${list.map((w,i)=>`<button class="chip ${w===pfWord?'on':''}" data-pfw="${i}">${esc(w[0])}${spLang==='zh'?(w[1]?' · puff':' · no puff'):''}</button>`).join('')}</div>
+   <div class="row" style="margin-top:12px">${playBtn(pfWord[0],spLang)}<span><b style="font-size:24px">${esc(info.w)}</b> ${info.r?`<span style="color:var(--muted)">${esc(info.r)}</span>`:''} ${info.ipa?`<span class="ipa">[${esc(info.ipa)}]</span>`:''} ${info.g?`<span style="color:var(--muted)">“${esc(info.g)}”</span>`:''}</span></div>
+   <p style="margin:8px 0"><b>Target:</b> ${pfWord[1]?'a strong puff':'no puff'} (${tg.txt}).</p>
+   <div class="row"><button class="btn" id="pf-rec">🎙 Say it</button></div>
+   <div id="pf-note" style="font-size:13px;color:var(--muted);margin-top:6px">Start from silence and say just this word. ${pfWord[1]?'':'Trick: hold your palm in front of your lips. You should feel almost no air.'}</div>
+   <canvas id="pf-cv" class="lab-cv" style="height:200px"></canvas>
+   <div class="legend"><span><i style="background:var(--es);opacity:.45"></i>Your puff</span><span><i style="background:var(--accent);opacity:.45"></i>Native speaker's puff</span><span><i style="background:var(--good);opacity:.35"></i>Target zone</span></div>
+   <div id="pf-out" class="sp-notes"></div>
+   <p style="font-size:12px;color:var(--muted)">Measured from the sound wave, to within about 10 ms. Use the phone's or computer's own microphone in a quiet spot: Bluetooth headsets and background noise blur the pop. If the shaded area clearly isn't where your consonant is, record again.</p></div>`;
+  $('#pf-words').onclick=e=>{const b=e.target.closest('[data-pfw]');if(b){pfWord=list[+b.dataset.pfw];pfLast=null;renderPuff()}};
+  $('#pf-rec').onclick=pfRecord;
+  pfDraw();const w=pfWord[0];pfNative(w).then(()=>{if(pfWord&&pfWord[0]===w)pfDraw()});
+}
+function pfDraw(){
+  const c=labCanvas('#pf-cv',200);if(!c)return;const {g,W,H}=c,pad=14,x0=pad+56,T0=-40,T1=200;
+  const X=ms=>x0+(W-x0-pad)*(ms-T0)/(T1-T0),tg=pfTarget(pfWord),nat=pfNat[pfWord[0]];
+  const strip=(res,top,label,col)=>{
+    const h=62,base=top+h;g.fillStyle=cssv('--muted');g.fillText(label,pad,top+h/2+4);
+    g.fillStyle=cssv('--good')||'#3a7';g.globalAlpha=.16;g.fillRect(X(tg.lo),top,X(Math.min(T1,tg.hi))-X(tg.lo),h);g.globalAlpha=1;
+    g.strokeStyle=cssv('--line');g.lineWidth=1;g.beginPath();g.moveTo(X(T0),base);g.lineTo(X(T1),base);g.stroke();
+    if(!res){g.fillStyle=cssv('--muted');g.fillText(label==='You'?'Record to see yours':'…',X(60),top+h/2+4);return}
+    let pk=1e-9;for(let t=T0;t<T1;t++){const v=res.amp[res.burst+t]||0;if(v>pk)pk=v}
+    g.fillStyle=col;g.globalAlpha=.3;g.fillRect(X(0),top,Math.max(2,X(res.vot)-X(0)),h);g.globalAlpha=1;
+    g.strokeStyle=col;g.lineWidth=1.5;g.beginPath();for(let t=T0;t<T1;t++){const v=(res.amp[res.burst+t]||0)/pk,x=X(t);g.moveTo(x,base);g.lineTo(x,base-v*(h-6))}g.stroke();
+    g.fillStyle=cssv('--ink')||col;g.font='bold 13px Instrument Sans, sans-serif';g.fillText(Math.round(res.vot)+' ms',X(Math.max(res.vot,0))+6,top+14);g.font='12px Instrument Sans, sans-serif';
+  };
+  strip(nat,8,'Native',cssv('--accent'));strip(pfLast,84,'You',cssv('--es'));
+  g.fillStyle=cssv('--muted');g.textAlign='center';for(const ms of [0,50,100,150]){g.fillText(ms===0?'pop':ms+' ms',X(ms),H-12)}g.textAlign='left';
+}
+async function pfRecord(){
+  const btn=$('#pf-rec'),note=$('#pf-note');
+  if(labLive){labStop();return}
+  try{if(curAudio)curAudio.pause()}catch(e){}
+  let r;
+  try{r=await labRecord({raw:true,maxMs:3500,quietMs:700,onStart:()=>{btn.textContent='■ Stop';btn.classList.add('rec');note.textContent='Recording… say the word.'}})}
+  catch(e){note.innerHTML=micMsg(e,'yourself').replace(/ For now.*$/,'');return}
+  if(!document.body.contains(btn))return;
+  btn.textContent='🎙 Say it';btn.classList.remove('rec');note.textContent='';
+  pfLast=votMeasure(r.x,r.fs);pfDraw();$('#pf-out').innerHTML=pfVerdict(pfLast,pfWord,pfNat[pfWord[0]]);
+}
+function pfVerdict(res,w,nat){
+  if(!res)return '<p>I couldn\'t find the consonant and the vowel. Start from silence, say only the word, and speak close to the microphone.</p>';
+  const v=Math.round(res.vot),tg=pfTarget(w),natTxt=nat?` The native speaker's is ${Math.round(nat.vot)} ms.`:'';let msg;
+  if(w[1])msg=v>=tg.lo?`a clear, strong puff. 👍`:v>=35?`a puff, but a short one. Mandarin p, t, k are breathier than English: let more air out before the vowel starts.`:`almost no puff, so it sounds like ${spLang==='zh'?'the b/d/g of the pair':'b, d or g'}. Push out a burst of air, as if fogging a mirror, before the vowel.`;
+  else msg=v<=tg.hi?`no real puff. 👍 That's the clean ${spLang==='zh'?'Mandarin b/d/g':'Spanish'} sound.`:v<=tg.hi+25?`a small puff. Nearly there: start the vowel the instant your lips or tongue let go.`:`an English-style puff. Start the vowel the instant the consonant releases, the way p sounds in English “spin” rather than “pin”.`;
+  return `<p><b>Your puff: ${v} ms</b>, ${msg}${natTxt}</p>`;
+}
+
+// ---------- TRILL CHECK (Spanish r / rr) ----------
+// A trill is the tongue tip closing 2 or more times in a row, about 20-35 times a second; a tap is a single closure.
+const TRILLS=[['pero',1],['perro',2],['coro',1],['corro',2],['caro',1],['para',1],['hora',1],['tierra',2],['rojo',2],['rosa',2],['río',2],['rrrr',3]]; // 1 tap, 2 trill, 3 free trill
+let trWord=null,trLast=null;const trNat={};
+function trillMeasure(x0,fs0){
+  const {y,fs}=to16k(x0,fs0),hop=Math.round(fs*0.002),win=Math.round(fs*0.008),nf=Math.floor((y.length-win-1)/hop);if(nf<60)return null;
+  // loudness of the higher frequencies every 2 ms: each tongue closure cuts them off, leaving only a low hum
+  const raw=new Float32Array(nf);
+  for(let f=0;f<nf;f++){let e=0;const s=f*hop;for(let j=1;j<win;j++){const d=y[s+j]-0.97*y[s+j-1];e+=d*d}raw[f]=Math.sqrt(e/win)}
+  const env=new Float32Array(nf);let peak=0;for(let i=0;i<nf;i++){env[i]=(raw[Math.max(0,i-1)]+raw[i]+raw[Math.min(nf-1,i+1)])/3;if(env[i]>peak)peak=env[i]}
+  let dips=[];
+  for(let i=2;i<nf-2;i++){
+    if(!(env[i]<=env[i-1]&&env[i]<env[i+1]))continue;
+    let L=0,R=0;for(let j=1;j<=22&&i-j>=0;j++)L=Math.max(L,env[i-j]);for(let j=1;j<=22&&i+j<nf;j++)R=Math.max(R,env[i+j]);
+    const ref=Math.min(L,R);if(ref<0.12*peak||env[i]>0.6*ref)continue;
+    let a=i,b=i;while(a>0&&env[a-1]<0.8*ref&&i-a<40)a--;while(b<nf-1&&env[b+1]<0.8*ref&&b-i<40)b++;
+    if((b-a+1)*2>48)continue;                                   // longer than a tongue flick: some other consonant
+    dips.push({i,t:i*0.002,d:env[i]/ref});
+  }
+  dips=dips.filter((d,k)=>!dips.some((o,j)=>j!==k&&Math.abs(o.i-d.i)<8&&(o.d<d.d||(o.d===d.d&&j<k)))); // one mark per closure
+  // longest run of closures spaced like a trill (20-70 ms apart)
+  let best=[],cur=[];
+  for(const d of dips){if(cur.length&&d.t-cur[cur.length-1].t>=0.02&&d.t-cur[cur.length-1].t<=0.07)cur.push(d);else cur=[d];if(cur.length>best.length)best=cur.slice()}
+  const rate=best.length>1?(best.length-1)/(best[best.length-1].t-best[0].t):0;
+  return {count:best.length,rate,dips:best,env,peak};
+}
+async function trNative(word){
+  if(trNat[word]!==undefined)return trNat[word];
+  try{const ab=await decode(await (await fetch(await audioSrc(word))).arrayBuffer());trNat[word]=trillMeasure(ab.getChannelData(0),ab.sampleRate)}catch(e){trNat[word]=null}
+  return trNat[word];
+}
+function renderTrill(){
+  if(!trWord||!TRILLS.includes(trWord))trWord=TRILLS[1];
+  const free=trWord[1]===3,info=free?null:allWords().find(x=>x.l==='es'&&x.w===trWord[0]);
+  $('#lab').innerHTML=`<div class="quiz-box">
+   <p class="lesson-text" style="margin-top:0">Spanish has two r sounds. The <b>tap</b> <span class="ipa">[ɾ]</span> (pe<b>r</b>o) is one quick flick of the tongue tip. The <b>trill</b> <span class="ipa">[r]</span> (pe<b>rr</b>o) is the tip fluttering two or more times. This counts the flicks in your recording.</p>
+   <div class="chips" id="tr-words">${TRILLS.map((w,i)=>`<button class="chip ${w===trWord?'on':''}" data-trw="${i}">${w[1]===3?'Just trill: rrrr':esc(w[0])+(w[1]===2?' · trill':' · tap')}</button>`).join('')}</div>
+   <div class="row" style="margin-top:12px">${free?'<span>Hold a trill on its own for a second, like a purring cat or a toy motor.</span>':`${playBtn(trWord[0],'es')}<span><b style="font-size:24px">${esc(trWord[0])}</b> ${info&&info.ipa?`<span class="ipa">[${esc(info.ipa)}]</span>`:''} ${info&&info.g?`<span style="color:var(--muted)">“${esc(info.g)}”</span>`:''}</span>`}</div>
+   <p style="margin:8px 0"><b>Target:</b> ${trWord[1]===1?'exactly one flick':'two or more flicks in a row'}.</p>
+   <div class="row"><button class="btn" id="tr-rec">🎙 Say it</button></div>
+   <div id="tr-note" style="font-size:13px;color:var(--muted);margin-top:6px">Say just this word, at a normal pace.</div>
+   <canvas id="tr-cv" class="lab-cv" style="height:200px"></canvas>
+   <div id="tr-out" class="sp-notes"></div>
+   <p style="font-size:12px;color:var(--muted)">Each flick shows as a sharp notch in the loudness line, marked with a dot. This counts flicks; it can't tell whether you make them with the tongue tip (Spanish) or at the back of the throat (French-style), so check that it's the tip that's moving. A very light tap can be missed.</p></div>`;
+  $('#tr-words').onclick=e=>{const b=e.target.closest('[data-trw]');if(b){trWord=TRILLS[+b.dataset.trw];trLast=null;renderTrill()}};
+  $('#tr-rec').onclick=trRecord;
+  trDraw();if(!free){const w=trWord[0];trNative(w).then(()=>{if(trWord&&trWord[0]===w)trDraw()})}
+}
+function trDraw(){
+  const c=labCanvas('#tr-cv',200);if(!c)return;const {g,W,H}=c,pad=14,x0=pad+56;
+  const strip=(res,top,label,col)=>{
+    const h=72,base=top+h;g.fillStyle=cssv('--muted');g.fillText(label,pad,top+h/2+4);
+    g.strokeStyle=cssv('--line');g.lineWidth=1;g.beginPath();g.moveTo(x0,base);g.lineTo(W-pad,base);g.stroke();
+    if(!res){g.fillText(label==='You'?'Record to see yours':trWord[1]===3?'(no recording for a bare trill)':'…',x0+20,top+h/2+4);return}
+    // show the stretch that has sound in it
+    let a=0,b=res.env.length-1;while(a<b&&res.env[a]<res.peak*0.06)a++;while(b>a&&res.env[b]<res.peak*0.06)b--;a=Math.max(0,a-15);b=Math.min(res.env.length-1,b+15);
+    const X=i=>x0+(W-x0-pad)*(i-a)/Math.max(1,b-a),Y=v=>base-(v/res.peak)*(h-10);
+    g.strokeStyle=col;g.lineWidth=2;g.lineJoin='round';g.beginPath();for(let i=a;i<=b;i++){i===a?g.moveTo(X(i),Y(res.env[i])):g.lineTo(X(i),Y(res.env[i]))}g.stroke();
+    g.fillStyle=cssv('--bad');for(const d of res.dips){g.beginPath();g.arc(X(d.i),Y(res.env[d.i])+7,4,0,2*Math.PI);g.fill()}
+    g.fillStyle=cssv('--ink')||col;g.font='bold 13px Instrument Sans, sans-serif';g.textAlign='right';g.fillText(res.count+(res.count===1?' flick':' flicks'),W-pad,top+12);g.textAlign='left';g.font='12px Instrument Sans, sans-serif';
+  };
+  strip(trNat[trWord[0]],6,'Native',cssv('--accent'));strip(trLast,100,'You',cssv('--es'));
+}
+async function trRecord(){
+  const btn=$('#tr-rec'),note=$('#tr-note');
+  if(labLive){labStop();return}
+  try{if(curAudio)curAudio.pause()}catch(e){}
+  let r;
+  try{r=await labRecord({raw:true,maxMs:4000,quietMs:700,onStart:()=>{btn.textContent='■ Stop';btn.classList.add('rec');note.textContent='Recording…'}})}
+  catch(e){note.innerHTML=micMsg(e,'yourself').replace(/ For now.*$/,'');return}
+  if(!document.body.contains(btn))return;
+  btn.textContent='🎙 Say it';btn.classList.remove('rec');note.textContent='';
+  trLast=r.heard?trillMeasure(r.x,r.fs):null;trDraw();$('#tr-out').innerHTML=trVerdict(trLast,trWord);
+}
+function trVerdict(res,w){
+  if(!res)return '<p>I didn\'t hear anything clear. Try again, closer to the microphone.</p>';
+  const n=res.count,rate=n>1?` at about ${Math.round(res.rate)} a second`:'';let msg;
+  if(w[1]===1)msg=n===1?'<b>One flick.</b> 👍 That\'s the tap.':n>=2?`<b>${n} flicks${rate}.</b> That's a trill, which turns “${esc(w[0])}” into a different word. Let the tongue touch just once.`
+    :'<b>No flick found.</b> Either your tap was very light (fine in fast speech) or the tongue never touched, as in an English r. Flick the tongue tip once against the ridge behind your top teeth, like the middle of English “butter” said quickly.';
+  else msg=n>=2?`<b>${n} flicks${rate}.</b> 👍 That's a real trill.${n===2?' Two is the minimum; three or four sounds more relaxed.':''}`:n===1?'<b>One flick only.</b> That\'s the tap [ɾ], not the trill. Relax the tongue tip and push more air over it so it flutters by itself.'
+    :'<b>No flutter found.</b> Rest the tongue tip loosely on the ridge behind your top teeth and blow air over it until it vibrates. Practise with “Just trill: rrrr”, then put it back in the word.';
+  return `<p>${msg}</p>`;
+}
+const LAB_MODES={tones:renderToneCoach,puff:renderPuff,trill:renderTrill};
 
 // ---------- INIT ----------
 document.querySelectorAll('#coursebar button').forEach(b=>b.onclick=()=>setCourse(b.dataset.course));

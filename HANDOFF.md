@@ -36,8 +36,8 @@ personal-scale: no accounts beyond optional Google sign-in, and no analytics.
 | `#today` | Today | Daily spaced-repetition review. New items per day (default 4) plus items that are due. |
 | `#lessons` | Lessons | 74 guided lessons, one course at a time. A lesson is made of steps (types listed below). |
 | `#learn` | Sounds | A card for each of 40 sounds. Each card has a mouth diagram, how-to steps, examples with audio, and **Diagram / Animation / MRI** tabs (Seeing Speech videos). |
-| `#pairs` | Pairs | Minimal-pair listening drills (20 sets). |
-| `#speak` | Speak | Record yourself and compare with a native speaker: word pitch compare, phrase shadowing, and a **vowel coach** that does live formant analysis on the mic. |
+| `#pairs` | Pairs | Minimal-pair listening drills (20 sets), plus an **adaptive drill** that leans toward the contrasts and words you miss most. |
+| `#speak` | Speak | Record yourself and compare with a native speaker: word pitch compare, phrase shadowing, and a **vowel coach** that does live formant analysis on the mic. Added 2026-11-09: **Tone coach** (Mandarin, live pitch line over the target tone), **Puff meter** (Mandarin and Spanish, measures the puff of air after p/t/k) and **Trill check** (Spanish, counts tongue flicks in r/rr). Recordings of each word are kept on the device so earlier tries can be replayed. |
 | `#vowels` | Vowels | Interactive vowel chart with side panel and MRI video. |
 | `#tones` | Tones | Mandarin only. Tone contours and tone drills. |
 | `#read` | Read Arabic | Arabic only. Letter forms, letter groups, reading practice. |
@@ -132,7 +132,24 @@ Cross-cutting features:
 - **SRS:** Leitner-style boxes with intervals `[0,1,2,4,8,16,32,64]` days and 4 new items a
   day by default. Only items that have been introduced in a lesson enter review. Review
   keys: `s:<sound>[@lang]`, `p:<pair>`, `r:<lesson>` (rules), `b:<lesson>` (build),
-  `t:tones|tpairs`, `a:<letter>|a:words`.
+  `t:tones|tpairs`, `a:<letter>|a:words`, and `k:<sound>[@lang]` (speaking cards, below).
+- **Speaking cards in review (2026-11-09).** Every sound in review (`s:`) gets a partner
+  `k:` card: hear a word, record it, hear native then yourself, and self-rate Off / Close /
+  Matched. Off sends it back to tomorrow, Close repeats the same gap, Matched moves it up.
+  Existing progress gets its `k:` cards three a day (`ensureSayItems`). A checkbox on Today
+  turns them off (`srs.settings.say`), and "Can't speak right now" drops them from one session.
+- **Adaptive listening (2026-11-09).** `stats['pw:<lang>:<word>']` counts hits and misses for
+  each word when it was the one played. `pairQ` plays the weaker pair and word more often
+  (capped at 65/35 so guessing doesn't pay), and speakers never repeat twice in a row.
+- **Speaking tools are guides, not grades (2026-11-09).** The tone coach, puff meter and
+  trill check were tuned against the app's own native clips: puff 4–49 ms for no-puff words
+  vs 105–160 ms for Mandarin p/t/k; trills found in perro, corro, tierra, rojo, rosa, río.
+  The native `carro` and `guerra` clips showed only one flick, so they were left out of the
+  trill list (they may be worth re-recording). Tone 3 is the loosest check because creaky
+  voice breaks pitch tracking. None of these has been tested with a real microphone yet.
+  A sibilant (s / ʂ / ɕ) comparison was considered and not built: too unreliable.
+- **Own recordings stay on the device** in IndexedDB (`sa-rec`): the first take of each word
+  plus the latest from each month. They are not synced (too big for the Firestore document).
 
 **Architecture**
 - **Single self-contained HTML file.** It started as a claude.ai artifact, where one page is
