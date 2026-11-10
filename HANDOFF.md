@@ -148,6 +148,13 @@ Cross-cutting features:
   trill list (they may be worth re-recording). Tone 3 is the loosest check because creaky
   voice breaks pitch tracking. None of these has been tested with a real microphone yet.
   A sibilant (s / ʂ / ɕ) comparison was considered and not built: too unreliable.
+- **Speaking cards show a measurement where one fits (2026-11-10, `sayMeasure`).** Puff length
+  for `pu`/`ph` words that start with p/t/k, flick count for the Spanish trill `r`, and for
+  single Mandarin syllables the same pitch-match percentage the Speak tab uses. The tone
+  coach's own verdict is not used on cards: it faulted native clips of ordinary words.
+- **Today's focus (2026-11-10, `focusHTML`).** Today shows the single weakest score in the
+  course (hear, say or know, under 85%) with a button for the matching tool: a pair drill,
+  the puff meter or trill check, the Speak tab, or the lesson that teaches the sound.
 - **Own recordings stay on the device** in IndexedDB (`sa-rec`): the first take of each word
   plus the latest from each month. They are not synced (too big for the Firestore document).
 

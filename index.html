@@ -980,6 +980,31 @@ function soundScores(s,l){
   for(const c of PAIRS)if(c.l===l&&c.ids.includes(s.id)){const t=stat('p:'+c.id);hear.c+=t.c;hear.w+=t.w}
   return {know:pct(stat(s.id)),hear:pct(hear),say:pct(stat('k:'+courseKey('s:'+s.id,l).slice(2)))};
 }
+// Today's focus: the single weakest score in this course, with a button for the tool that trains it
+function focusHTML(){
+  const l=COURSE;let best=null;
+  for(const s of S){if(!s.langs.includes(l)||s.st==='familiar')continue;const sc=soundScores(s,l);
+    for(const k of ['hear','say','know']){const v=sc[k];if(v!==null&&v<85&&(!best||v<best.v))best={s,k,v}}}
+  if(!best)return '';
+  const s=best.s;let why,btn='';
+  if(best.k==='hear'){
+    const c=PAIRS.filter(c=>c.l===l&&c.ids.includes(s.id)).sort((a,b)=>(pairAcc(a.id)??101)-(pairAcc(b.id)??101))[0];
+    why=`in listening drills you pick the right word ${best.v}% of the time`;btn=`<button class="btn" data-focusdrill="${c.id}">Drill ${esc(c.label)}</button>`;
+  } else if(best.k==='say'){
+    const lab=(s.id==='pu'||s.id==='ph')&&l!=='ar'?['puff','Open the puff meter']:(s.id==='r'||s.id==='tap')&&l==='es'?['trill','Open the trill check']:null;
+    const w=sayWords('k:'+courseKey('s:'+s.id,l).slice(2))[0];
+    why=`you rated ${best.v}% of your spoken attempts as close or better`;
+    btn=lab?`<button class="btn" data-focuslab="${lab[0]}">${lab[1]}</button>`:w?`<button class="btn" data-speak="${l}|${esc(w.w)}">🎙 Practise saying it</button>`:'';
+  } else {why=`you get its symbol right ${best.v}% of the time`;btn=refHTML(courseKey('s:'+s.id,l))}
+  return `<div class="quiz-box" style="margin-top:12px"><div class="tag t-${l}">Today's focus</div>
+   <h2 style="font-size:22px;margin:6px 0"><span class="ipa">[${esc(s.sym)}]</span> ${esc(s.name)}</h2>
+   <p style="color:var(--muted);margin:0 0 12px">Your weakest spot right now: ${why}.</p>
+   <div class="row">${btn}<button class="btn ghost" data-sound="${s.id}">Open card</button></div></div>`;
+}
+document.addEventListener('click',e=>{
+  const d=e.target.closest('[data-focusdrill]');if(d){pLang=COURSE;startDrill(d.dataset.focusdrill);location.hash='pairs';return}
+  const b=e.target.closest('[data-focuslab]');if(b){spLang=COURSE;spMode=b.dataset.focuslab;store.set('spMode',spMode);location.hash='speak'}
+});
 function renderWeak(){
   const el=$('#weak');if(!el)return;const l=COURSE;
   const rows=S.filter(s=>s.langs.includes(l)&&s.st!=='familiar').map(s=>({s,...soundScores(s,l)})).filter(r=>r.know!==null||r.hear!==null||r.say!==null);
@@ -2616,6 +2641,7 @@ function renderToday(){
    <div class="quiz-box">${due.length?`<h2 style="font-size:22px">${due.length} review${due.length===1?'':'s'} due · about ${Math.max(1,Math.round(due.length*0.25))} min</h2><p style="color:var(--muted)">Do these first: reviewing just before you'd forget is what makes things stick.</p><button class="btn" id="t-start">Start review</button>`
      :`<h2 style="font-size:22px">${doneToday?'Reviews done for today ✓':'No reviews due'}</h2><p style="color:var(--muted)">${nItems?'Items come back on a schedule: tomorrow, then 2, 4, 8, 16 days… Anything you miss starts over.':'Finish a lesson and its sounds, contrasts and rules will start appearing here.'}</p>${nItems?'<button class="btn ghost" id="t-extra">Practise a few anyway</button>':''}`}</div>
    ${nx?`<div class="quiz-box nextbox" style="margin-top:12px"><div class="tag t-${nx.unit.l}">Next lesson · ${esc(nx.unit.title)} ${nx.n}/${nx.unit.lessons.length}</div><h2 style="font-size:22px;margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">Start lesson →</button> <a href="#lessons" style="margin-left:10px;color:var(--muted)">See the whole path</a></div>`:''}
+   ${focusHTML()}
    <label class="saytog"><input type="checkbox" id="t-say" ${srs.settings.say===false?'':'checked'}> Include speaking cards (say a word, compare with the native speaker, rate yourself)</label>
    <p class="syncnote" id="syncnote">${syncMsg}</p>`;
   $('#t-say').onchange=e=>{srs.settings.say=e.target.checked;persist();renderToday()};
@@ -2689,6 +2715,7 @@ function sayCard(el,k,hooks){
    <p style="margin:8px 0 12px">The sound to get right: <button class="slink ipa" data-sound="${s.id}">${esc(s.sym)}</button> <span style="color:var(--muted)">${esc(s.name)}. ${esc(s.how[0])}</span></p>
    <div class="row"><button class="btn" id="say-rec">🎙 Record</button><button class="btn ghost" id="say-both" style="display:none">▶ Native, then you</button><button class="btn ghost" id="say-first" style="display:none"></button></div>
    <div id="say-note" style="font-size:13px;color:var(--muted);margin-top:6px">Listen, then record yourself. Recording stops by itself when you go quiet, and stays on this device.</div>
+   <div id="say-meas" class="sp-notes"></div>
    <div class="say-rate"><div style="font-weight:600;margin-bottom:6px">How close were you?</div>
     <div class="row"><button class="btn ghost" data-rate="0">Off</button><button class="btn ghost" data-rate="1">Close</button><button class="btn ghost" data-rate="2">Matched</button></div>
     <div style="font-size:13px;color:var(--muted);margin-top:6px">Be strict: “Matched” means you couldn't tell your key sound from the native one. “Off” brings the card back tomorrow, “Close” repeats it at the same gap. No microphone? Say it aloud and rate what you heard.</div></div>
@@ -2710,6 +2737,7 @@ function sayCard(el,k,hooks){
     const blob=wavBlob(x,r.fs);if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(blob);
     el.querySelector('#say-both').style.display='';note.textContent='Listen to the two back to back, then rate yourself.';
     both();
+    sayMeasure(s,w,x,r.fs).then(h=>{const m=el.querySelector('#say-meas');if(m&&h)m.innerHTML=h}).catch(()=>{});
     try{
       const old=(await recList(l,w.w))[0];
       if(old&&dayStr(new Date(old.t))!==dayStr()&&document.body.contains(rec)){
@@ -3991,15 +4019,19 @@ async function tcRecord(){
   btn.textContent='🎙 Say it';btn.classList.remove('rec');note.textContent='';
   tcAnalyse(r.x,r.fs);
 }
-function tcAnalyse(x,fs){
-  const fr=pitchFrames(x,fs),f0s=fr.filter(f=>f.f0&&f.per>0.6).map(f=>f.f0),out=$('#tc-out');
+function tcJudge(x,fs,tone){ // pitch line and verdict for one recorded syllable (tone 1-4); null if no clear pitch
+  const fr=pitchFrames(x,fs),f0s=fr.filter(f=>f.f0&&f.per>0.6).map(f=>f.f0);
   const con=f0s.length>=10?tcContour(cleanPitch(fr,tcMid||median(f0s))):null;
-  if(!con){tcLast=null;tcDraw();if(out)out.innerHTML='<p>I couldn\'t find a clear pitch there. Say the syllable a little louder and longer, close to the microphone, in a quiet spot.</p>';return null}
-  const cal=!!tcMid,tp=TC_TPL[tcTone+1];
+  if(!con)return null;
+  const cal=!!tcMid,tp=TC_TPL[tone];
   // without a voice level, slide the line onto the target's height so only the shape is compared
   if(!cal){const m=avg(con.pts),tm=avg(con.pts.map((_,i)=>lvl(tplAt(tp,i/23))));con.pts=con.pts.map(v=>v-m+tm)}
-  tcLast=con;tcDraw();
-  const res=tcVerdict(con,tcTone+1,cal);if(out)out.innerHTML=res.html;return res;
+  return {con,res:tcVerdict(con,tone,cal)};
+}
+function tcAnalyse(x,fs){
+  const j=tcJudge(x,fs,tcTone+1),out=$('#tc-out');
+  if(!j){tcLast=null;tcDraw();if(out)out.innerHTML='<p>I couldn\'t find a clear pitch there. Say the syllable a little louder and longer, close to the microphone, in a quiet spot.</p>';return null}
+  tcLast=j.con;tcDraw();if(out)out.innerHTML=j.res.html;return j.res;
 }
 function tcVerdict(con,tone,cal){
   // the first and last few points are left out: pitch jumps around as the consonant lets go and as the voice dies away
@@ -4026,8 +4058,8 @@ function tcVerdict(con,tone,cal){
       :'I couldn\'t see a clear low dip. Start low, sink to the bottom of your voice, then let it lift a little.';
   } else {
     // the drop from the highest point to the lowest point after it (the very end often breaks up)
-    const after=body.slice(body.indexOf(mx)),fall=mx-Math.min(...after);ok=fall>=5;
-    msg=ok?`It fell about ${f(fall)} semitones. 👍`:fall>=3?`It fell only about ${f(fall)} semitones. Native speakers drop further: start higher and fall hard, like a firm “No!”`:'It barely fell. Start at the top of your voice and drop sharply to the bottom.';
+    const after=body.slice(body.indexOf(mx)),fall=mx-Math.min(...after);ok=fall>=4;
+    msg=ok?`It fell about ${f(fall)} semitones. 👍`:fall>=2.5?`It fell only about ${f(fall)} semitones. Native speakers drop further: start higher and fall hard, like a firm “No!”`:'It barely fell. Start at the top of your voice and drop sharply to the bottom.';
     if(cal&&mx<1.5){ok=false;msg+=' Start higher: tone 4 begins at the top of your voice (level 5).'}
   }
   if(tone!==3&&con.gap>0.4)msg+=' The line is patchy here (a quiet or creaky voice), so take this reading with a pinch of salt.';
@@ -4123,11 +4155,25 @@ async function pfRecord(){
   btn.textContent='🎙 Say it';btn.classList.remove('rec');note.textContent='';
   pfLast=votMeasure(r.x,r.fs);pfDraw();$('#pf-out').innerHTML=pfVerdict(pfLast,pfWord,pfNat[pfWord[0]]);
 }
-function pfVerdict(res,w,nat){
+// Speaking cards: where one of the tools fits the word, add its reading under the recording.
+// Tone for single Mandarin syllables, puff for words starting with p/t/k, flick count for the Spanish trill.
+async function sayMeasure(s,w,x,fs){
+  const l=w.l,out=[];
+  if(l==='zh'&&toneOf(w)){ // same pitch comparison as the Speak tab: your line against the native speaker's for this word
+    const nat=analyse(await decode(await (await fetch(await audioSrc(w.w))).arrayBuffer())),mine=analyse({getChannelData:()=>x,sampleRate:fs}),pm=pitchMatch(nat.frames,mine.frames);
+    if(pm!==null)out.push(`<p><b>Tone shape:</b> ${pm}% match with the native speaker ${pm>=80?'(the shape matches well). 👍':pm>=65?'(roughly right).':'(the shape differs: listen again for where the pitch rises or falls).'}</p>`);
+  }
+  const m=(s.id==='pu'||s.id==='ph')&&l!=='ar'?norm(w.ipa).match(/^(p|t̪|t(?![sɕʃ])|k)(ʰ?)/):null;
+  if(m){const res=votMeasure(x,fs);if(res)out.push(pfVerdict(res,[w.w,m[2]?1:0,m[1]==='k'?1:0],await pfNative(w.w),l))}
+  if(s.id==='r'&&l==='es'){const res=trillMeasure(x,fs);if(res)out.push(`<p><b>Trill:</b> ${res.count>=2?`${res.count} tongue flicks in a row. 👍`:res.count===1?'only one tongue flick found, which is a tap rather than a trill.':'no tongue flutter found.'}</p>`)}
+  return out.length?'<p style="font-size:13px;color:var(--muted);margin-bottom:2px">Measured from your recording (a rough guide; your ear has the final say):</p>'+out.join(''):'';
+}
+function pfVerdict(res,w,nat,lang){
+  lang=lang||spLang;
   if(!res)return '<p>I couldn\'t find the consonant and the vowel. Start from silence, say only the word, and speak close to the microphone.</p>';
   const v=Math.round(res.vot),tg=pfTarget(w),natTxt=nat?` The native speaker's is ${Math.round(nat.vot)} ms.`:'';let msg;
-  if(w[1])msg=v>=tg.lo?`a clear, strong puff. 👍`:v>=35?`a puff, but a short one. Mandarin p, t, k are breathier than English: let more air out before the vowel starts.`:`almost no puff, so it sounds like ${spLang==='zh'?'the b/d/g of the pair':'b, d or g'}. Push out a burst of air, as if fogging a mirror, before the vowel.`;
-  else msg=v<=tg.hi?`no real puff. 👍 That's the clean ${spLang==='zh'?'Mandarin b/d/g':'Spanish'} sound.`:v<=tg.hi+25?`a small puff. Nearly there: start the vowel the instant your lips or tongue let go.`:`an English-style puff. Start the vowel the instant the consonant releases, the way p sounds in English “spin” rather than “pin”.`;
+  if(w[1])msg=v>=tg.lo?`a clear, strong puff. 👍`:v>=35?`a puff, but a short one. Mandarin p, t, k are breathier than English: let more air out before the vowel starts.`:`almost no puff, so it sounds like ${lang==='zh'?'the b/d/g of the pair':'b, d or g'}. Push out a burst of air, as if fogging a mirror, before the vowel.`;
+  else msg=v<=tg.hi?`no real puff. 👍 That's the clean ${lang==='zh'?'Mandarin b/d/g':'Spanish'} sound.`:v<=tg.hi+25?`a small puff. Nearly there: start the vowel the instant your lips or tongue let go.`:`an English-style puff. Start the vowel the instant the consonant releases, the way p sounds in English “spin” rather than “pin”.`;
   return `<p><b>Your puff: ${v} ms</b>, ${msg}${natTxt}</p>`;
 }
 
