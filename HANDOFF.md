@@ -140,9 +140,15 @@ and 74 lessons, using the app's native clips in place of a microphone):
 | 14 | `carro` and `guerra` re-recorded with a real trill | Trill check, Pairs | `c9fd5b6` |
 | 15 | Tone pairs: say a two-syllable word, melody match against four native speakers | Speak → Tone pairs (also a button on Tones) | `032155f` |
 | 16 | 15 more phrases tied to the rule lessons, with recordings | Rule lessons' shadowing step, Speak → Phrases | `032155f` |
+| 17 | Mix-up drill: hear a hidden word from any course, say which look-alike sound it has (r, t, p/b, h, sh) | Across languages | not committed yet |
 
 Items 15 and 16 were built on 2026-11-10 and passed the local regression (12 views, every
 Speak mode, 74 lessons / 582 steps, no errors). They were pushed the same day.
+
+Item 17 was built later on 2026-11-10 and is **in the working tree, not committed**. It uses
+only existing recordings. Checked locally: every round type runs to the end, all 12 views
+open without errors (lessons were not re-run; nothing they use changed). Details in
+Decisions.
 
 **➡ YOU ARE HERE: waiting on the owner's testing.** None of items 1–16 has been tried with
 a real microphone or listened to by a person. The owner said they would test later, then
@@ -154,6 +160,9 @@ adjusting:
   no reading (two short syllables, one creaky).
 - **The 15 newest phrases (item 16).** Same caveat as the 24 before them: nobody has
   listened yet, and the IPA is Claude's.
+- **Mix-up drill (item 17).** Ask whether the choices' wording is clear and whether any
+  group is too easy. Known weakness: where a choice belongs to one language only (Mandarin
+  r, Arabic ش), hearing which language it is gives the answer away.
 
 - **Thresholds in the measuring tools** (tone coach, puff meter, trill check). They were
   tuned on ElevenLabs clips, not on a learner's voice through a phone microphone. If a
@@ -178,8 +187,8 @@ adjusting:
    owner once wanted SRS cards for terms, then scrapped that deck, so **ask before adding
    terms to the review queue**. About 60 term pronunciations already exist in ElevenLabs
    flow `DWqVXa8cXc7J53NQcjau` and can be reused at no cost.
-6. **Cross-language mix-up drills** for sounds that interfere across the three courses
-   (the r sounds, the kinds of t). Needs content design first.
+6. ~~Cross-language mix-up drills~~ **Built 2026-11-10** (item 17), listening only. A
+   speaking version (say the word, get measured) could reuse the puff meter and trill check.
 7. **Real human recordings** for the sounds where generated voices slip (for example from
    Wikimedia's Lingua Libre, with credit). Not started; check licences first.
 
@@ -294,6 +303,22 @@ signal to measure).
   Spanish take was chosen because the trill check finds three flicks in both `carro rojo`
   and `Enrique`; the Mandarin take shows the expected rises and falls on 你, 很, 不 and 一.
   Arabic could not be measured. IPA unreviewed, audio not yet heard by a person.
+- **Mix-up drill (2026-11-10, item 17).** Sits at the top of Across languages (`MIXUPS`,
+  `renderMix`, `mixQ`, `nextMix`, in `#mixup`). Five groups of three choices: r (ɾ / r / ɻ),
+  t (t / tʰ / tˤ), p and b (p / pʰ / b), h (h / x / ħ), sh (ʃ / ʂ / ɕ). A question plays a
+  hidden word and asks which sound it has; choices stay in a fixed order. It reuses
+  `customQ` / `mountQ` and existing clips only, so it cost no credits. Answers are saved in
+  progress as `x:<group>:<choice>` and steer the next round toward the choices missed most.
+  They are **not** in the daily review. The clips were measured before being listed: the r
+  words give 1 flick for ɾ, 2–4 for r, 0 for ɻ; the puffed words 105–160 ms of breath
+  against 4–30 ms for the unpuffed. Left out on that evidence: `热` (the trill check counts
+  two flicks in it), and `توب` and `تين` from the no-puff choice (the Arabic voice puffs
+  them, about 70 ms). Arabic ر is not in the r group because nothing shows whether a given
+  clip is a tap or a trill.
+- **The player bar hides the word during a listening question** (2026-11-10). Before, the
+  bar at the bottom showed the word that was playing, which gave away the answer in Pairs,
+  tone questions and the mix-up drill. `showBar` now writes "Word hidden until you answer"
+  when the clip belongs to an unanswered question that doesn't already show the word.
 - **Own recordings stay on the device** in IndexedDB (`sa-rec`): the first take of each word
   plus the latest from each month. They are not synced (too big for the Firestore document).
 

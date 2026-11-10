@@ -471,6 +471,7 @@ table.marks td.arabic{font-size:30px}
 <section class="view" id="v-across">
   <h2>Across your languages</h2>
   <p class="lead">The same IPA symbol means the same sound in every language. These sounds appear in more than one of your courses, so once you can make one, you can make it everywhere. Below them: letters that look the same but are pronounced differently.</p>
+  <div id="mixup"></div>
   <div id="across"></div>
 </section>
 
@@ -3155,7 +3156,7 @@ function route(){
   if(v==='learn')renderLearn();
   if(v==='today')renderToday();
   if(v==='lessons')renderLessons();
-  if(v==='across')renderAcross();
+  if(v==='across'){renderAcross();if(!mxSess)renderMix()}
   if(v==='read'&&typeof renderRead==='function')renderRead();
   if(v==='pairs'&&!pSess)renderPairs();
   if(v==='speak')renderSpeak();else{try{stopLive();if(vcLive)vcLive.stop()}catch(e){}}
@@ -3227,6 +3228,63 @@ const ACROSS_NOTES={
   vi:'A steady "ee" in all three languages, with no English glide.',
   vu:'A real "oo" with rounded lips in all three.',ve:'Spanish e and Levantine ē (as in بيت bēt) are close; neither glides like English "ay".',
   vo:'Spanish o and Levantine ō (as in يوم yōm) are close; neither glides like English "oh".'};
+
+// ---------- Mix-up drill: similar sounds that belong to different courses ----------
+// You hear a word (hidden) and say which of the look-alike sounds it has. The choices stay in the
+// same order every time. o = choices, n = a note per choice, w = words per choice (existing clips only).
+const MIXUPS=[
+ {id:'r',t:'The r sounds',ask:'Which r is this?',
+  o:['One quick flick [ɾ] · Spanish r','Rolled [r] · Spanish rr','Curled back, no flick [ɻ] · Mandarin r'],
+  n:['The tongue tip hits the ridge once and is gone.','The tongue tip flutters against the ridge several times. It is longer and buzzier than the flick.','The tongue never touches. It curls back and hums, a little like the s in "measure".'],
+  w:[['pero','caro','coro','para','hora'],['perro','carro','corro','rosa','río','guerra'],['让','肉','人','日']]},
+ {id:'t',t:'The t sounds',ask:'Which t is this?',
+  o:['No puff [t] · Spanish t, Mandarin d, Arabic ت','Puff of air [tʰ] · Mandarin t','Dark and heavy [tˤ] · Arabic ط'],
+  n:['A clean t with no breath after it. English ears often take it for a d.','A burst of breath follows the t, stronger than in English.','Listen to the vowel after it: it sounds darker and deeper, closer to "aw".'],
+  // توب and تين are left out of the first choice: the Arabic voice says them with a clear puff (about 70 ms)
+  w:[['tos','tía','taco','tú','大','对','تاب'],['他','踏','汤','糖'],['طاب','طوب','طين','طاولة']]},
+ {id:'p',t:'p and b',ask:'Which sound starts this word?',
+  o:['No puff, no buzz [p] · Spanish p, Mandarin b','Puff of air [pʰ] · Mandarin p','Buzzing [b] · Spanish b and v, Arabic ب'],
+  n:['The lips open with no breath and no voice. English ears often take it for a b.','A burst of breath follows the lips opening.','The voice is already buzzing before the lips open.'],
+  w:[['peso','pala','pan','poco','爸'],['怕','盘','旁'],['beso','bala','vino','باب','بيت','بدي']]},
+ {id:'h',t:'The h sounds',ask:'Which h is this?',
+  o:['Light breath [h] · Arabic ه, English h','Scrape at the back of the mouth [x] · Spanish j, Mandarin h, Arabic خ','Squeeze in the throat [ħ] · Arabic ح'],
+  n:['Plain breath with nothing in its way.','The back of the tongue rises to the soft palate and the air scrapes past, as in German "Bach". It is lightest in Mandarin and strongest in Arabic.','No scrape. The throat itself narrows, so it sounds like a strong, hoarse whisper.'],
+  w:[['هرم','هال','هيك','هون'],['jamón','gente','jugo','红','好','喝','خال','خيمة','خبز'],['حرم','حال','حمل','حلو','حمام']]},
+ {id:'sh',t:'The sh sounds',ask:'Which sh is this?',
+  o:['Plain sh [ʃ] · Arabic ش, English sh','Tongue curled back [ʂ] · Mandarin sh','Tongue flat, lips spread [ɕ] · Mandarin x'],
+  n:['The sh you already know from English.','The tongue tip curls back, which makes the sound darker and hollower.','The tongue tip stays down behind the lower teeth and the lips spread as in a smile. It sounds brighter and thinner.'],
+  w:[['شو','شغل','شجرة'],['是','诗','书','十'],['西','谢','学','熊']]}];
+const MXBY=Object.fromEntries(MIXUPS.map(g=>[g.id,g]));
+let mxSess=null;
+const mxKey=(g,i)=>'x:'+g.id+':'+i;
+function mxAcc(g){let c=0,w=0;g.o.forEach((_,i)=>{const s=stat(mxKey(g,i));c+=s.c;w+=s.w});return c+w>=4?Math.round(100*c/(c+w)):null}
+function renderMix(){
+  const el=$('#mixup');if(!el)return;mxSess=null;
+  el.innerHTML=`<div class="quiz-box weakbox" style="margin-bottom:18px"><h3 style="margin:0 0 6px">Mix-up drill</h3>
+    <p style="color:var(--muted);margin:0 0 10px">Some sounds in your three courses are close enough to blur into one another: the kinds of r, the kinds of t. Here you hear a word from any course, with the word hidden, and say which sound it has. Ten questions a round.</p>
+    <div class="row" style="flex-wrap:wrap;gap:8px">${MIXUPS.map(g=>{const a=mxAcc(g);return `<button class="btn ghost" data-mix="${g.id}">${esc(g.t)}${a===null?'':` <span class="acc ${a>=85?'good':''}">${a}%</span>`}</button>`}).join('')}<button class="btn" data-mix="all">All mixed</button></div></div>`;
+}
+function mixQ(g){
+  // lean toward the choices missed most, and never play the same word twice in a row
+  const ci=wPick(g.o.map((_,i)=>i),i=>{const s=stat(mxKey(g,i)),m=(s.w+1)/(s.c+s.w+3);return 0.15+m*m});
+  const pool=g.w[ci].filter(k=>wd(k)&&AUDIO[k]);
+  const k=pick(pool.filter(x=>x!==mxSess.last).length?pool.filter(x=>x!==mxSess.last):pool),w=wd(k);mxSess.last=k;
+  const q=customQ({p:`Listen. ${esc(g.ask)}`,q:'<span style="font-size:15px;color:var(--muted);font-weight:400">The word is hidden. Tap to replay as often as you like.</span>',
+    o:g.o,a:ci,w:k,why:`${LANGS[w.l]}. ${g.n[ci]}`},w.l);
+  q.g=g;q.ci=ci;return q;
+}
+function startMix(id){mxSess={id,set:id==='all'?MIXUPS:[MXBY[id]],n:0,c:0,total:10,last:null};nextMix()}
+function nextMix(){
+  const el=$('#mixup');if(!el||!mxSess)return;
+  if(mxSess.n>=mxSess.total){
+    el.innerHTML=`<div class="quiz-box" style="margin-bottom:18px"><h2 style="font-size:22px">Done: ${mxSess.c}/${mxSess.total}</h2><p style="color:var(--muted)">${mxSess.c>=9?'Your ear keeps these apart. Come back in a few days to check that it has stuck.':mxSess.c>=6?'Getting there. The sounds you missed will come up more often next round.':'These are close sounds, so mixing them up at first is normal. The ones you missed will come up more often next round.'}</p><div class="row"><button class="btn" data-mix="${mxSess.id}">Again</button><button class="btn ghost" id="mxback">Back</button></div></div>`;
+    $('#mxback').onclick=renderMix;return;
+  }
+  el.innerHTML=`<div class="row" style="margin-bottom:10px"><button class="btn ghost" id="mxback">← Back</button><span style="color:var(--muted)">${mxSess.n+1} / ${mxSess.total} · ${mxSess.c} correct</span></div><div class="quiz-box qbox" id="mxq" style="margin-bottom:18px"></div>`;
+  $('#mxback').onclick=renderMix;
+  mountQ($('#mxq'),mixQ(pick(mxSess.set)),{onAnswer:(ok,q)=>{mxSess.n++;if(ok)mxSess.c++;record(mxKey(q.g,q.ci),ok)},onNext:nextMix,nextLabel:mxSess.n+1>=mxSess.total?'See result →':'Next →'});
+}
+document.addEventListener('click',e=>{const d=e.target.closest('[data-mix]');if(d)startMix(d.dataset.mix)});
 
 // =====================================================================
 // Read Arabic: the script, letter by letter, with practice and review
@@ -3524,7 +3582,9 @@ function showBar(text,lang,v,url){
   if(!b){b=document.createElement('div');b.id='pbar';b.setAttribute('role','region');b.setAttribute('aria-label','Audio controls');document.body.appendChild(b);
     b.addEventListener('pointerenter',()=>clearTimeout(barTimer));b.addEventListener('click',barClick)}
   const pureId=text.startsWith('pure:')?text.slice(5):null;
-  const w=pureId?`<span class="ipa">[${esc(BYID[pureId].sym)}]</span>`:lang==='ar'?`<span class="arabic">${esc(text)}</span>`:esc(text);
+  // in a listening question the word is the answer, so keep it out of the bar until an answer is given
+  const hid=!pureId&&[...document.querySelectorAll('.qmain .play')].some(p=>{const m=p.closest('.qmain');return p.dataset.say===text&&p.offsetParent&&!m.textContent.includes(text)&&m.parentElement.querySelector('.opt:not(:disabled)')});
+  const w=hid?'<span style="color:var(--muted);font-weight:400">Word hidden until you answer</span>':pureId?`<span class="ipa">[${esc(BYID[pureId].sym)}]</span>`:lang==='ar'?`<span class="arabic">${esc(text)}</span>`:esc(text);
   b.innerHTML=`<div class="pb-main"><span class="pb-w">${w}</span><span class="pb-v">${pureId?'IPA reference · Denelson83':esc(voiceLabel(v,lang))}</span></div>
    <div class="pb-btns"><button class="pb-b" data-pb="replay" aria-label="Replay">↻</button><button class="pb-b ${slowOn?'on':''}" data-pb="slow" aria-pressed="${slowOn}" aria-label="Slow playback">🐢 0.7×</button><button class="pb-b" data-pb="flag" aria-label="Flag this recording">⚑</button><button class="pb-b pb-x" data-pb="close" aria-label="Close">×</button></div>
    <div class="pb-flag" hidden></div>`;
