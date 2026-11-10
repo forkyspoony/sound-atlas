@@ -479,7 +479,7 @@ table.marks td.arabic{font-size:30px}
     <div><span class="ipa">˥ ˧˥ ˨˩˦ ˥˩</span><b>tone letters</b><br>Pitch contours, see the Mandarin tones tab.</div>
   </div>
   <h3 id="move">Move your progress</h3>
-  <p style="color:var(--muted);font-size:14px">Copy a code here and paste it into another copy of Sound Atlas (for example the GitHub version) to bring your lessons, reviews and flags across.</p>
+  <p style="color:var(--muted);font-size:14px">Copy a code here and paste it into another copy of Sound Atlas (for example the GitHub version) to bring your lessons, reviews and flags across. Pasting a code adds to the progress already there; it never wipes it.</p>
   <div class="row"><button class="btn ghost" id="mv-copy">Copy progress code</button><button class="btn ghost" id="mv-paste">Paste a code</button></div>
   <textarea id="mv-box" rows="3" style="width:100%;margin-top:8px;display:none;font-size:12px" aria-label="Progress code"></textarea>
   <div id="mv-msg" style="font-size:14px;margin-top:6px"></div>
@@ -2467,7 +2467,7 @@ let srs=store.get('srs',null)||freshSrs();
 function srsTouch(key,ok){ // only adjusts items already introduced
   const it=srs.items[key];if(!it)return;
   if(ok){it.box=Math.min(it.box+1,BOX_DAYS.length-1)}else{it.box=1}
-  it.due=addDays(ok?BOX_DAYS[it.box]:1);persist();
+  it.due=addDays(ok?BOX_DAYS[it.box]:1);it.u=Date.now();persist(); // u = when it was last reviewed (used to merge devices)
 }
 // The order new items are introduced in, per language, interleaved across languages
 function newQueue(){
@@ -2595,6 +2595,45 @@ async function pushRemote(){
   syncBusy=false;
 }
 function setSync(m){syncMsg=m;const n=$('#syncnote');if(n)n.textContent=m}
+// Combine two copies of progress so neither one's work is lost. a = this device, b = the other copy
+// (account or pasted code). aNewer says which copy was saved last; it only settles ties.
+function mergeProgress(a,b,aNewer){
+  const A=a.srs||freshSrs(),B=b.srs||freshSrs(),as=a.stats||{},bs=b.stats||{};
+  const keys=(x,y)=>new Set([...Object.keys(x||{}),...Object.keys(y||{})]);
+  const stats={};
+  for(const id of keys(as,bs)){const x=as[id]||{},y=bs[id]||{};stats[id]={c:Math.max(x.c||0,y.c||0),w:Math.max(x.w||0,y.w||0)}}
+  const items={};
+  for(const k of keys(A.items,B.items)){
+    const x=(A.items||{})[k],y=(B.items||{})[k];
+    if(!x||!y){items[k]=x||y;continue}
+    const xu=x.u||0,yu=y.u||0,xa=x.added||'',ya=y.added||'';
+    items[k]=(xu!==yu?xu>yu       // the copy reviewed most recently wins
+      :xa!==ya?xa<ya              // neither reviewed since: keep the older item, it carries the history
+      :aNewer)?x:y;
+  }
+  const lessons={};
+  for(const id of keys(A.lessons,B.lessons)){const x=(A.lessons||{})[id],y=(B.lessons||{})[id];lessons[id]=x&&y?(x<y?x:y):(x||y)}
+  const days={};
+  for(const d of keys(A.days,B.days)){const x=(A.days||{})[d]||{},y=(B.days||{})[d]||{};days[d]={done:Math.max(x.done||0,y.done||0),new:Math.max(x.new||0,y.new||0)}}
+  const sx=A.streak||{count:0,last:''},sy=B.streak||{count:0,last:''};
+  let streak=sx.last!==sy.last?(sx.last>sy.last?sx:sy):((sx.count||0)>=(sy.count||0)?sx:sy);
+  // one copy practised yesterday and the other today: that's one unbroken streak, not a new one
+  const lo=streak===sx?sy:sx;
+  if(lo.last&&streak.last&&lo.last<streak.last){const d=new Date(lo.last+'T12:00');d.setDate(d.getDate()+1);if(dayStr(d)===streak.last)streak={count:Math.max(streak.count||0,(lo.count||0)+1),last:streak.last}}
+  const older=aNewer?B:A,newer=aNewer?A:B;
+  return JSON.parse(JSON.stringify({stats,srs:{...older,...newer,items,lessons,days,streak,settings:newer.settings||older.settings||freshSrs().settings}}));
+}
+const canon=o=>JSON.stringify(o,(k,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.keys(v).sort().reduce((r,x)=>(r[x]=v[x],r),{}):v);
+const sameProgress=(x,y)=>canon({stats:x.stats,srs:x.srs})===canon({stats:y.stats,srs:y.srs});
+// One safety copy per reason ('sync' or 'import'), kept on this device under ipa:backup:<reason>.
+function backupProgress(why){
+  if(!Object.keys(stats).length&&!Object.keys(srs.items||{}).length&&!Object.keys(srs.lessons||{}).length)return;
+  store.set('backup:'+why,{at:Date.now(),stats,srs});
+}
+function restoreBackup(why){
+  const b=store.get('backup:'+why,null);if(!b||!b.srs||!b.stats)return false;
+  stats=b.stats;srs=b.srs;persist();return true;
+}
 async function initSync(){
   try{
     if(!window.claude||!claude.use)return;
@@ -2607,11 +2646,19 @@ async function initSync(){
     if(snap.exists){
       const r=snap.data();
       if(r&&Array.isArray(r.flags)){const have=new Set(flags.map(f=>f.k+'|'+f.v));for(const f of r.flags)if(!have.has(f.k+'|'+f.v))flags.push(f);store.set('flags',flags);renderFlags()}
-      if(r&&r.updated>localUpdated&&r.srs&&r.stats){
-        stats=JSON.parse(JSON.stringify(r.stats));srs=JSON.parse(JSON.stringify(r.srs));
-        store.set('stats',stats);store.set('srs',srs);store.set('updated',r.updated);
-        syncRef=ref;setSync('Progress syncs to your Google account, so it\'s the same on your phone and computer.');
-        if(!tSess)route();return;
+      if(r&&r.srs&&r.stats){
+        // Combine this device's progress with the account's, rather than letting one replace the other.
+        const mine={stats,srs},m=mergeProgress(mine,r,localUpdated>=(r.updated||0));
+        const changedHere=!sameProgress(m,mine),changedThere=!sameProgress(m,r);
+        if(changedHere){
+          backupProgress('sync');stats=m.stats;srs=m.srs;
+          store.set('stats',stats);store.set('srs',srs);store.set('updated',changedThere?Date.now():r.updated);
+        }
+        syncRef=ref;
+        if(changedThere)await pushRemote();
+        else setSync('Progress syncs to your Google account, so it\'s the same on your phone and computer.');
+        if(changedHere&&!tSess&&!lp)route();
+        return;
       }
     }
     syncRef=ref;
@@ -2775,7 +2822,7 @@ function renderTonePairs(){
   const el=$('#tpairs');if(!el)return;
   let grid='<table class="tpgrid"><tr><th></th>'+[1,2,3,4].map(b=>`<th>+ tone ${b}</th>`).join('')+'</tr>';
   for(let a=1;a<=4;a++){grid+=`<tr><th>tone ${a}</th>`;for(let b=1;b<=4;b++){const it=TPAIRS.find(x=>x.t[0]===a&&x.t[1]===b),w=wd(it.w);grid+=`<td>${playBtn(w.w,'zh')}<div class="tpw">${esc(w.w)}</div><div class="tpr">${esc(w.r)}</div></td>`}grid+='</tr>'}
-  el.innerHTML=grid+'</table><div class="row" style="margin-top:12px"><button class="btn" id="tp-go">Drill tone pairs</button></div>${voiceToggleHTML()}<div class="quiz-box qbox" id="tp-q" style="display:none;margin-top:12px"></div>';
+  el.innerHTML=grid+'</table><div class="row" style="margin-top:12px"><button class="btn" id="tp-go">Drill tone pairs</button></div>'+voiceToggleHTML()+'<div class="quiz-box qbox" id="tp-q" style="display:none;margin-top:12px"></div>';
   const go=()=>{$('#tp-q').style.display='block';mountQ($('#tp-q'),tpairQ(),{onAnswer:(ok)=>{},onNext:go})};
   $('#tp-go').onclick=go;
 }
@@ -3349,7 +3396,7 @@ function micMsg(e,what){
   const pol=document.permissionsPolicy||document.featurePolicy;
   const blocked=pol&&pol.allowsFeature&&!pol.allowsFeature('microphone');
   const alt=` For now, record ${what} with your phone's voice recorder (or any recording app) and pick the file with <b>📁 Use a recording</b>.`;
-  if(blocked||!navigator.mediaDevices)return 'The page that hosts this app (claude.ai) doesn\'t give it microphone access, so live recording can\'t start here.'+alt;
+  if(blocked||!navigator.mediaDevices)return 'This app or browser doesn\'t give the page microphone access, so live recording can\'t start here. Opening Sound Atlas in Chrome or Safari usually fixes it.'+alt;
   if(e&&e.name==='NotFoundError')return 'No microphone was found on this device.'+alt;
   if(e&&e.name==='NotAllowedError')return 'Microphone permission was blocked. Allow the microphone for this site in your browser settings (tap the icon left of the address bar) and try again.'+alt;
   return 'The microphone couldn\'t be started ('+esc(e&&e.name||'unknown error')+').'+alt;
@@ -3547,12 +3594,15 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-vmix]');if
 
 
 // ---------- move progress between copies ----------
-function progressCode(){const s=JSON.stringify({stats,srs,flags});return 'SA1:'+btoa(unescape(encodeURIComponent(s)))}
+function progressCode(){const s=JSON.stringify({stats,srs,flags,updated:store.get('updated',0)});return 'SA1:'+btoa(unescape(encodeURIComponent(s)))}
 function applyCode(c){
   c=c.trim();if(!c.startsWith('SA1:'))throw new Error('That doesn\'t look like a Sound Atlas code.');
   const d=JSON.parse(decodeURIComponent(escape(atob(c.slice(4)))));
   if(!d.stats||!d.srs)throw new Error('The code is incomplete.');
-  stats=d.stats;srs=d.srs;
+  // Combine with what's already here (never replace it), and keep a copy so the import can be undone.
+  backupProgress('import');
+  const m=mergeProgress({stats,srs},d,d.updated?store.get('updated',0)>=d.updated:false);
+  stats=m.stats;srs=m.srs;
   const have=new Set(flags.map(f=>f.k+'|'+f.v));for(const f of d.flags||[])if(!have.has(f.k+'|'+f.v))flags.push(f);
   store.set('flags',flags);
   persist();renderFlags();
@@ -3563,7 +3613,11 @@ document.addEventListener('click',async e=>{
     try{await navigator.clipboard.writeText(c);msg.textContent='Copied. Paste it into the other copy (Basics → Move your progress → Paste a code).'}catch(_){msg.textContent='Select the code above and copy it.'}}
   if(e.target.id==='mv-paste'){
     if(box.style.display!=='block'||!box.value.trim()||box.value.startsWith('SA1:')&&box.value===progressCode()){box.style.display='block';box.value='';box.placeholder='Paste the code here, then tap Paste a code again';box.focus();msg.textContent='';return}
-    try{applyCode(box.value);msg.textContent='Progress imported. ✓';box.value='';box.style.display='none'}catch(err){msg.textContent=err.message}}
+    try{const had=!!store.get('stats',null)&&(Object.keys(stats).length||Object.keys(srs.items||{}).length||Object.keys(srs.lessons||{}).length);
+      applyCode(box.value);box.value='';box.style.display='none';
+      msg.innerHTML=had?'Progress imported and combined with what was already here. ✓ <button class="btn ghost" id="mv-undo" style="margin-left:8px">Undo</button>':'Progress imported. ✓';
+      if(!tSess&&!lp)route()}catch(err){msg.textContent=err.message}}
+  if(e.target.id==='mv-undo'){msg.textContent=restoreBackup('import')?'Import undone. Your progress is back to how it was.':'Nothing to undo.';if(!tSess&&!lp)route()}
 });
 
 // ---------- INIT ----------
