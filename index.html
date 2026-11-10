@@ -271,6 +271,25 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 .saytog{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);margin-top:12px;cursor:pointer}
 .lab-cv{width:100%;display:block;margin-top:10px;border-radius:12px;background:var(--bg)}
 .weakbox{margin-bottom:14px}
+.weak{margin:14px 0 0;background:var(--soft);border-radius:14px;padding:10px 14px}
+.weak summary{cursor:pointer;font-weight:600}
+.weak summary span{font-weight:400;color:var(--muted);font-size:13px;margin-left:6px}
+.wktab{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.wktab th{font-size:12px;color:var(--muted);font-weight:500;text-align:center;padding:2px 4px}
+.wktab td{padding:4px;text-align:center}
+.wktab td.wn{text-align:left;color:var(--muted)}
+.wk{display:inline-block;min-width:46px;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--bg)}
+.wk.good{background:var(--good);color:#fff}
+.wk.bad{background:var(--bad);color:#fff}
+.wk.none{color:var(--muted);font-weight:400}
+.wknote{font-size:12px;color:var(--muted);margin:8px 0 2px}
+.mm-wrap{max-width:340px;margin:10px auto}
+.mm-wrap .mouth{max-width:340px}
+.mm-spot{fill:var(--accent);fill-opacity:.25;stroke:var(--accent);stroke-width:1.5;cursor:pointer}
+.mm-spot.on{fill-opacity:.95}
+.mm-spot.right{fill:var(--good);stroke:var(--good);fill-opacity:.95}
+.mm-spot.wrong{fill:var(--bad);stroke:var(--bad);fill-opacity:.95}
+.mm-wrap.one .mm-spot:not(.on):not(.right):not(.wrong){display:none}
 .pure{display:flex;gap:12px;align-items:center;background:var(--soft);border-radius:14px;padding:12px 14px;margin:12px 0}
 .pure-t{font-weight:700}.pure-c{font-size:12px;color:var(--muted);margin-top:2px}.pure-c a{color:inherit}
 
@@ -395,6 +414,7 @@ table.marks td.arabic{font-size:30px}
   <p class="lead">Every card is a sound that English doesn't have, or that these languages use differently. Tap one to see where it's made, how to make it, and hear real words. Coloured dots show which languages use it.</p>
   <div class="chips" id="learn-filter"></div>
   <div class="progress-row" id="progress"></div>
+  <div id="weak"></div>
   <div id="learn-groups"></div>
 </section>
 
@@ -473,6 +493,9 @@ table.marks td.arabic{font-size:30px}
     <li><b>Place:</b> where the blockage is, from the lips (bilabial) to the voice box (glottal). The coloured strip on each card shows the place.</li>
     <li><b>Manner:</b> how the air gets through. A <i>stop</i> fully blocks it, a <i>fricative</i> squeezes it into a hiss, a <i>trill</i> vibrates, a <i>tap</i> touches once, and an <i>approximant</i> barely narrows the passage.</li>
   </ul>
+  <h3 id="jargon-h">Practise the jargon</h3>
+  <p style="color:var(--muted);font-size:14px">Words like <i>velar</i> and <i>fricative</i> stick faster when you use them. Tap the right spot in the mouth, or match a term to its meaning. The terms you miss come back more often.</p>
+  <div class="quiz-box qbox" id="jargon"></div>
   <h3>Marks you'll see</h3>
   <div class="diac">
     <div><span class="ipa">pʰ</span><b>ʰ aspiration</b><br>A puff of air after the sound. English "pin" has it, "spin" doesn't. Mandarin p/t/k/c/ch/q have it.</div>
@@ -949,6 +972,27 @@ function renderProgress(){
     const list=S.filter(s=>s.langs.includes(k)&&s.st!=='familiar');
     const m=list.filter(s=>level(s.id)===3).length;
     return `<div class="prog"><div class="lbl"><span>${v}</span><span>${m}/${list.length} mastered</span></div><div class="bar"><i style="width:${list.length?m/list.length*100:0}%;background:var(--${k})"></i></div></div>`}).join('');
+  renderWeak();
+}
+// Weak spots: for each sound in this course, how well you know its symbol, hear it and say it
+function soundScores(s,l){
+  const pct=t=>t.c+t.w>=3?Math.round(100*t.c/(t.c+t.w)):null,hear={c:0,w:0};
+  for(const c of PAIRS)if(c.l===l&&c.ids.includes(s.id)){const t=stat('p:'+c.id);hear.c+=t.c;hear.w+=t.w}
+  return {know:pct(stat(s.id)),hear:pct(hear),say:pct(stat('k:'+courseKey('s:'+s.id,l).slice(2)))};
+}
+function renderWeak(){
+  const el=$('#weak');if(!el)return;const l=COURSE;
+  const rows=S.filter(s=>s.langs.includes(l)&&s.st!=='familiar').map(s=>({s,...soundScores(s,l)})).filter(r=>r.know!==null||r.hear!==null||r.say!==null);
+  if(!rows.length){el.innerHTML='';return}
+  const low=r=>Math.min(...[r.know,r.hear,r.say].filter(v=>v!==null));
+  rows.sort((a,b)=>low(a)-low(b));
+  const cell=v=>v===null?'<span class="wk none">–</span>':`<span class="wk ${v>=85?'good':v<60?'bad':''}">${v}%</span>`;
+  const row=r=>`<tr><td><button class="slink ipa" data-sound="${r.s.id}">${esc(r.s.sym)}</button></td><td class="wn">${esc(r.s.name)}</td><td>${cell(r.know)}</td><td>${cell(r.hear)}</td><td>${cell(r.say)}</td></tr>`;
+  const head='<tr><th></th><th></th><th>Know the symbol</th><th>Hear it</th><th>Say it</th></tr>';
+  el.innerHTML=`<details class="weak" open><summary>Your weak spots <span>weakest first · ${rows.length} sound${rows.length===1?'':'s'} with results so far</span></summary>
+   <table class="wktab">${head}${rows.slice(0,8).map(row).join('')}</table>
+   ${rows.length>8?`<details><summary style="font-weight:400;font-size:14px;margin-top:6px">Show the other ${rows.length-8}</summary><table class="wktab">${head}${rows.slice(8).map(row).join('')}</table></details>`:''}
+   <p class="wknote">“Know the symbol” comes from quizzes and reviews, “Hear it” from minimal-pair drills that include the sound, and “Say it” from your own ratings on speaking cards. A dash means fewer than three answers so far. Tap a symbol to open its card.</p></details>`;
 }
 function card(s){
   const lv=level(s.id);const lt=['','seen','learning','mastered'][lv];
@@ -1046,8 +1090,14 @@ function visualHTML(s,diagram){
 function vPane(s,k,diagram){
   if(k==='d')return diagram!==undefined?diagram:mouthSVG(s);
   const v=SS_VID[s.id];const ref=v[k];
-  return `<video src="${SS_BASE}${ref}.mp4" poster="${SS_BASE}${ref}.png" controls loop playsinline preload="metadata"></video>
+  return `<video src="${SS_BASE}${ref}.mp4" poster="${SS_BASE}${ref}.png" controls loop playsinline preload="metadata" onerror="vidFail(this)"></video>
    <div class="vcred">${k==='a'?'Animation':'Real-time MRI'} from <a href="https://www.seeingspeech.ac.uk/ipa-charts/" target="_blank" rel="noopener">Seeing Speech</a> (Glasgow, Strathclyde &amp; partners)${k==='m'?', speaker Janet Beck':''}.${k==='m'?' Face is to the right; watch the tongue and soft palate.':''}${v.n?`<br><b>Note:</b> ${esc(v.n)}`:''}</div>`;
+}
+// The videos stream from Seeing Speech. If one can't load (offline, or their site has moved it), show the diagram instead of an empty box.
+function vidFail(v){
+  const box=v.closest('.vbox');if(!box)return;const s=BYID[box.dataset.vs];
+  box.querySelector('.vpane').innerHTML=(s&&!box.dataset.nodiag?mouthSVG(s):'')+'<div class="vcred">This video couldn\'t be loaded. It streams from the Seeing Speech website, so it needs an internet connection'+(s&&!box.dataset.nodiag?'; here is the diagram instead.':'.')+'</div>';
+  syncVRow(box);
 }
 function syncVRow(box){const row=box.closest('.mouthrow');if(row)row.classList.toggle('vid',vTab!=='d'&&!!box.querySelector('video'))}
 document.addEventListener('click',e=>{
@@ -1288,11 +1338,22 @@ function tokenize(ipa,lang){
   while(i<s.length){const m=segs.find(g=>s.startsWith(g,i));if(m){out.push(m);i+=m.length}else{out.push(s[i]);i++}}
   return out;
 }
-function newTr(){trCur=pick(EXTRA_WORDS[trLang]);trInput=[];renderTr()}
+// Words to transcribe: the starter list plus every recorded single word whose sounds are all on the keyboard
+let trDict=store.get('trDict',false);const trPools={};
+function trPool(l){
+  if(trPools[l])return trPools[l];
+  const m=new Map();for(const e of EXTRA_WORDS[l])m.set(e.w,e);
+  for(const k in LW){const w=LW[k];if(w.l!==l||m.has(k)||!AUDIO[k]||/[\s(]/.test(k)||w.ph||/MSA/.test(w.g))continue;
+    if(tokenize(w.ipa,l).every(t=>SEGS[l].includes(t)))m.set(k,w)}
+  return trPools[l]=[...m.values()];
+}
+function newTr(){const pool=trPool(trLang);let e=pick(pool);if(pool.length>1)while(e===trCur)e=pick(pool);trCur=e;trInput=[];renderTr()}
 function renderTr(){
   const e=trCur;
-  $('#tr').innerHTML=`<div class="qprompt">Transcribe this ${LANGS[trLang]} word</div>
-  <div class="qmain">${playBtn(e.w,trLang)}<span class="w" style="font-size:28px">${trLang==='ar'?`<span class="arabic">${esc(e.w)}</span>`:esc(e.w)}</span>${e.r?`<span style="color:var(--muted)">${esc(e.r)}</span>`:''}<span style="color:var(--muted);font-weight:400">“${esc(e.g)}”</span></div>
+  $('#tr').innerHTML=`<div class="chips" id="tr-mode" style="margin-bottom:12px"><button class="chip ${trDict?'':'on'}" data-trd="0">See the word</button><button class="chip ${trDict?'on':''}" data-trd="1">Dictation: audio only</button></div>
+  <div class="qprompt">${trDict?`Listen, then write what you hear in IPA (${LANGS[trLang]})`:`Transcribe this ${LANGS[trLang]} word`}</div>
+  <div class="qmain">${playBtn(e.w,trLang)}${trDict?`<button class="slowbtn" data-slow="${esc(e.w)}" data-lang="${trLang}" aria-label="Play slowly">🐢 slow</button><span style="color:var(--muted);font-weight:400;font-size:15px">The word is hidden until you check. Replay as often as you like.</span>`
+    :`<span class="w" style="font-size:28px">${trLang==='ar'?`<span class="arabic">${esc(e.w)}</span>`:esc(e.w)}</span>${e.r?`<span style="color:var(--muted)">${esc(e.r)}</span>`:''}<span style="color:var(--muted);font-weight:400">“${esc(e.g)}”</span>`}</div>
   <div class="answer-line ipa" id="ansline">${trInput.length?esc(trInput.join('')):'<span style="color:var(--muted);font-size:16px;font-family:Instrument Sans">tap symbols below…</span>'}</div>
   <div class="palette">${SEGS[trLang].map(g=>`<button class="key ipa" data-k="${esc(g)}">${esc(g)}</button>`).join('')}
   <button class="key ctrl" data-k="__bs">⌫ Undo</button><button class="key ctrl" data-k="__clr">Clear</button></div>
@@ -1304,6 +1365,8 @@ function renderTr(){
     const al=$('#ansline');al.className='answer-line ipa';al.innerHTML=trInput.length?esc(trInput.join('')):'<span style="color:var(--muted);font-size:16px;font-family:Instrument Sans">tap symbols below…</span>'};
   $('#trskip').onclick=newTr;
   $('#trcheck').onclick=checkTr;
+  $('#tr-mode').onclick=ev=>{const b=ev.target.closest('[data-trd]');if(!b)return;trDict=b.dataset.trd==='1';store.set('trDict',trDict);trInput=[];renderTr()};
+  if(trDict)setTimeout(()=>{const b=$('#tr .qmain .play');if(b&&b.offsetParent)b.click()},250);
 }
 function checkTr(){
   const target=tokenize(trCur.ipa,trLang);
@@ -1315,7 +1378,7 @@ function checkTr(){
   const links=[...new Set(target)].map(t=>S.find(s=>s.sym===t||(t==='d̪'&&s.id==='td')||(t==='t'&&trLang==='zh'&&s.id==='pu'))).filter(Boolean);
   const fb=$('#trfb');
   fb.innerHTML=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Perfect!':'Not quite.'}</div>
-  <p>Answer: <span class="ipa" style="font-size:28px">[${diff}]</span></p>
+  <p>Answer: <span class="ipa" style="font-size:28px">[${diff}]</span>${trDict?` &nbsp;${playBtn(trCur.w,trLang)} <b>${trLang==='ar'?`<span class="arabic">${esc(trCur.w)}</span>`:esc(trCur.w)}</b> ${trCur.r?`<span style="color:var(--muted)">${esc(trCur.r)}</span>`:''} <span style="color:var(--muted)">“${esc(trCur.g)}”</span>`:''}</p>
   ${links.length?`<div class="related">Review: ${links.map(s=>`<button class="slink ipa" data-sound="${s.id}">${esc(s.sym)}</button>`).join('')}</div>`:''}
   <div class="row" style="margin-top:12px"><button class="btn" id="trnext">Next word →</button></div>`;
   fb.classList.add('on');$('#trnext').onclick=newTr;
@@ -3068,6 +3131,7 @@ function route(){
   if(v==='pairs'&&!pSess)renderPairs();
   if(v==='speak')renderSpeak();else{try{stopLive();if(vcLive)vcLive.stop()}catch(e){}}
   if(v!=='speak'&&v!=='today'){try{labStop()}catch(e){}}
+  if(v==='basics'&&!jq)newJargon();
   try{speechSynthesis.cancel()}catch(e){}
   if(route.last&&route.last!==v)window.scrollTo(0,0);route.last=v;
 }
@@ -4151,6 +4215,48 @@ function trVerdict(res,w){
   return `<p>${msg}</p>`;
 }
 const LAB_MODES={tones:renderToneCoach,puff:renderPuff,trill:renderTrill};
+
+// ---------- JARGON PRACTICE (Basics): tap the place on a mouth map, or match a term to its meaning ----------
+const MM_SPOTS={bilabial:[34,114],labiodental:[44,117],dental:[55,106],alveolar:[64,93],postalveolar:[82,81],palatal:[112,73],velar:[152,76],uvular:[183,93],pharyngeal:[191,140],glottal:[187,205]};
+const TERM_GROUPS=[['voiced','voiceless','aspirated','unaspirated'],[...Object.keys(MM_SPOTS),'retroflex','alveolo-palatal'],
+  ['stop','fricative','affricate','approximant','trill','tap','nasal','sibilant'],['close','close-mid','mid','open','front','central','back','rounded','unrounded']];
+let jq=null;
+function jargonMap(mark){ // a neutral mouth with a dot at each place a consonant can be made
+  const base=mouthSVG({id:'_',sym:'the places where consonants are made',desc:'',cat:'v',vx:[0.45,0.55]}).replace(/<text[^>]*>[^<]*<\/text>/g,'').replace(/<path class="m-vf[^>]*>/,'');
+  return base.replace('</svg>',Object.entries(MM_SPOTS).map(([p,[x,y]])=>`<circle class="mm-spot${mark&&mark[p]?' '+mark[p]:''}" data-pl="${p}" cx="${x}" cy="${y}" r="6.5"/>`).join('')+'</svg>');
+}
+const maskTerm=(d,t)=>d.replace(new RegExp('\\b'+t+'s?\\b','gi'),'…');
+function newJargon(){
+  // terms you miss come up more often
+  let t;do{t=wPick(TERM_GROUPS.flat(),x=>{const s=stat('tm:'+x);return 0.4+2*(s.w+1)/(s.c+s.w+3)})}while(jq&&t===jq.t);
+  const g=TERM_GROUPS.find(g=>g.includes(t)),type=MM_SPOTS[t]?pick(['tap','tap','name','def']):'def';
+  const opts=type==='tap'?null:shuffle([t,...shuffle(g.filter(x=>x!==t&&(type!=='name'||MM_SPOTS[x]))).slice(0,3)]);
+  jq={t,type,opts,done:false};renderJargon();
+}
+function renderJargon(){
+  const el=$('#jargon');if(!el||!jq)return;const {t,type,opts}=jq;
+  el.innerHTML=`<div class="qprompt">${type==='tap'?`Tap the spot where a <b>${esc(t)}</b> sound is made.`:type==='name'?'What do you call a sound made at the highlighted spot?':'Which term means this?'}</div>
+   ${type==='def'?`<div class="qmain" style="font-weight:400;font-size:17px">“${esc(maskTerm(TERMS[t],t))}”</div>`:`<div class="mm-wrap${type==='name'?' one':''}">${jargonMap(type==='name'?{[t]:'on'}:null)}</div>`}
+   ${opts?`<div class="opts">${opts.map((o,i)=>`<button class="opt" data-i="${i}"><b>${esc(o)}</b></button>`).join('')}</div>`:'<p style="font-size:13px;color:var(--muted);text-align:center;margin:0">The face looks left: lips on the left, throat on the right.</p>'}
+   <div class="feedback"></div>`;
+  if(opts)el.querySelector('.opts').onclick=e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)answerJargon(opts[+b.dataset.i])};
+  else{const svg=el.querySelector('svg');svg.onclick=e=>{ // the nearest dot to the tap counts, so small screens work too
+    const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+    let best=null,bd=1e9;for(const k in MM_SPOTS){const d=Math.hypot(p.x-MM_SPOTS[k][0],p.y-MM_SPOTS[k][1]);if(d<bd){bd=d;best=k}}
+    if(bd<26)answerJargon(best)}}
+}
+function answerJargon(ans){
+  if(!jq||jq.done)return;jq.done=true;const el=$('#jargon'),{t,type,opts}=jq,ok=ans===t;record('tm:'+t,ok);
+  if(type==='tap'){const w=el.querySelector('.mm-wrap');w.innerHTML=jargonMap(ok?{[t]:'right'}:{[t]:'right',[ans]:'wrong'});w.classList.add('one')}
+  else el.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(opts[i]===t)b.classList.add('right');else if(opts[i]===ans)b.classList.add('wrong')});
+  const ex=S.filter(s=>{const sp=mouthSpec(s);return !sp.vowel&&(sp.place===t||sp.manner===t)}).slice(0,8);
+  const f=el.querySelector('.feedback');
+  f.innerHTML=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
+   <p><b>${esc(t)}</b>: ${esc(TERMS[t])}</p>${!ok&&TERMS[ans]?`<p style="color:var(--muted)">You picked <b>${esc(ans)}</b>: ${esc(TERMS[ans])}</p>`:''}
+   ${ex.length?`<div class="related">Sounds like this: ${ex.map(s=>`<button class="slink ipa" data-sound="${s.id}">${esc(s.sym)}</button>`).join('')}</div>`:''}
+   <div class="row" style="margin-top:12px"><button class="btn next">Next →</button><span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
+  f.classList.add('on');const n=f.querySelector('.next');n.onclick=newJargon;n.focus({preventScroll:true});
+}
 
 // ---------- INIT ----------
 document.querySelectorAll('#coursebar button').forEach(b=>b.onclick=()=>setCourse(b.dataset.course));

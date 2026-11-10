@@ -35,15 +35,15 @@ personal-scale: no accounts beyond optional Google sign-in, and no analytics.
 |---|---|---|
 | `#today` | Today | Daily spaced-repetition review. New items per day (default 4) plus items that are due. |
 | `#lessons` | Lessons | 74 guided lessons, one course at a time. A lesson is made of steps (types listed below). |
-| `#learn` | Sounds | A card for each of 40 sounds. Each card has a mouth diagram, how-to steps, examples with audio, and **Diagram / Animation / MRI** tabs (Seeing Speech videos). |
+| `#learn` | Sounds | A card for each of 40 sounds. Each card has a mouth diagram, how-to steps, examples with audio, and **Diagram / Animation / MRI** tabs (Seeing Speech videos; if a video fails to load the diagram is shown instead). A **weak spots** table at the top lists, per sound, how well you know the symbol, hear it and say it. |
 | `#pairs` | Pairs | Minimal-pair listening drills (20 sets), plus an **adaptive drill** that leans toward the contrasts and words you miss most. |
 | `#speak` | Speak | Record yourself and compare with a native speaker: word pitch compare, phrase shadowing, and a **vowel coach** that does live formant analysis on the mic. Added 2026-11-09: **Tone coach** (Mandarin, live pitch line over the target tone), **Puff meter** (Mandarin and Spanish, measures the puff of air after p/t/k) and **Trill check** (Spanish, counts tongue flicks in r/rr). Recordings of each word are kept on the device so earlier tries can be replayed. |
 | `#vowels` | Vowels | Interactive vowel chart with side panel and MRI video. |
 | `#tones` | Tones | Mandarin only. Tone contours and tone drills. |
 | `#read` | Read Arabic | Arabic only. Letter forms, letter groups, reading practice. |
 | `#quiz` | Quiz | Free-play quiz across sounds, tones and pairs. |
-| `#transcribe` | Transcribe | Build the IPA transcription of a word from symbol buttons. |
-| `#basics` | IPA basics | Terminology primer, plus **Move your progress** (copy or paste a progress code). |
+| `#transcribe` | Transcribe | Build the IPA transcription of a word from symbol buttons. A **dictation** mode hides the word so you write from sound alone. Words come from `trPool` (the starter list plus every recorded single word whose sounds are all on the keyboard: 101 es, 60 zh, 79 ar). |
+| `#basics` | IPA basics | Terminology primer, **Practise the jargon** (tap a place on a mouth map, or match a term to its meaning; misses are counted in `stats['tm:<term>']` and come back more often), plus **Move your progress** (copy or paste a progress code). |
 | `#across` | Across languages | Compares the same sounds across the three languages. |
 
 Lesson step types (`t` field): `text`, `sound`, `feel`, `cmp` (compare with English),
