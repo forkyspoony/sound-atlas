@@ -10,7 +10,9 @@ Read `HANDOFF.md` first. It covers the brief, status, decisions and a line map o
   `python3 tools/extract_content.py . content` after content edits. Don't edit the JSON and
   expect the app to change.
 - Deploy = push to `main`. GitHub Pages serves the repo root, usually about a minute after
-  the push. The service worker caches nothing.
+  the push. The service worker (`sw.js`) loads the app network-first, so
+  pushes still show up right away; it keeps a saved copy for offline use. When testing locally
+  with the server stopped you are seeing that saved copy.
 - The Android app was retired on 2026-11-09 (see HANDOFF.md, Decisions). Don't rebuild it;
   the installable site (PWA) is the only app. Never commit `*.jks` or key passwords.
 - The owner is a language learner, not a developer. Explain changes in plain words.

@@ -57,7 +57,7 @@ Cross-cutting features:
   audio** button with reasons.
 - Optional Google sign-in syncs progress through Firebase. Without sign-in, progress
   lives in `localStorage` under keys prefixed `ipa:`.
-- Installable as a PWA (manifest plus a no-op service worker). This is the only
+- Installable as a PWA (manifest plus a service worker that also makes it work offline). This is the only
   install route; the separate Android app was retired.
 - Light and dark themes through `prefers-color-scheme`.
 
@@ -165,8 +165,14 @@ Cross-cutting features:
   }
   ```
   `forkyspoony.github.io` must stay in Firebase Auth → Authorized domains.
-- **The service worker caches nothing.** It exists only so the site can be installed.
-  Every push shows up right away.
+- **Offline support (added 2026-11-09).** `sw.js` loads the app network-first, so every push
+  still shows up right away; the saved copy is only used when offline or when the network
+  takes over 4 seconds. Recordings, fonts and the Firebase library are served from the saved
+  copy and re-checked in the background, so a re-recorded clip (same file name) replaces the
+  old one by the next play. **IPA basics → Use offline** saves all recordings into the
+  `sa-audio-v1` cache (the name is shared by `sw.js` and `index.html`). Seeing Speech videos
+  and Wikimedia reference clips are not saved. Progress made offline merges on the next
+  online load.
 - **Audio file naming:** the main clips are `audio/a` + the first 10 hex characters of
   `sha1(text)` + `.mp3` (for example, 妈 → `ae3918a99aa.mp3`). Extra voices and some English
   examples are **sprites**. In `AUDIO` and `AUDIO_V`, a value of `["audio/s_liza.mp3", 0.35,
@@ -201,7 +207,7 @@ Cross-cutting features:
 sound-atlas/
 ├── index.html               # The whole app: markup, CSS, JS and all content tables
 ├── firebase_shim.js         # Google sign-in + Firestore sync (ES module, Firebase v11 CDN)
-├── sw.js                    # No-op service worker (installability only)
+├── sw.js                    # Service worker: installability + offline (see Decisions)
 ├── manifest.webmanifest     # PWA manifest
 ├── .nojekyll                # Tells GitHub Pages to serve files as-is
 ├── .gitignore               # *.jks, *.idsig

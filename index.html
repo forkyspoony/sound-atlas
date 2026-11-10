@@ -6,7 +6,7 @@
 <title>Sound Atlas — IPA for Spanish, Mandarin & Arabic</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet" crossorigin>
 <style>
 :root{
   --bg:#f6f1e7; --panel:#fffdf8; --ink:#1f1b16; --muted:#6b6257; --line:#e3dacb; --soft:#efe7d8;
@@ -483,6 +483,10 @@ table.marks td.arabic{font-size:30px}
   <div class="row"><button class="btn ghost" id="mv-copy">Copy progress code</button><button class="btn ghost" id="mv-paste">Paste a code</button></div>
   <textarea id="mv-box" rows="3" style="width:100%;margin-top:8px;display:none;font-size:12px" aria-label="Progress code"></textarea>
   <div id="mv-msg" style="font-size:14px;margin-top:6px"></div>
+  <h3 id="offline">Use offline</h3>
+  <p style="color:var(--muted);font-size:14px">Save every recording on this device (about 8 MB) so lessons, reviews and drills work with no connection. The mouth videos still need the internet, and progress made offline syncs the next time you open the app online.</p>
+  <div class="row"><button class="btn ghost" id="off-go">Save for offline use</button></div>
+  <div id="off-msg" style="font-size:14px;margin-top:6px"></div>
   <h3 id="flagged">Flagged audio</h3>
   <p style="color:var(--muted);font-size:14px">Recordings you've marked as wrong. They sync with your progress so they can be re-recorded.</p>
   <div id="flags"></div>
@@ -3619,6 +3623,41 @@ document.addEventListener('click',async e=>{
       if(!tSess&&!lp)route()}catch(err){msg.textContent=err.message}}
   if(e.target.id==='mv-undo'){msg.textContent=restoreBackup('import')?'Import undone. Your progress is back to how it was.':'Nothing to undo.';if(!tSess&&!lp)route()}
 });
+
+// ---------- use offline: save every recording on this device ----------
+// sw.js serves recordings from this cache (same name there), so anything saved here plays with no connection.
+const OFF_CACHE='sa-audio-v1';
+function allAudioFiles(){
+  const out=new Set();
+  const add=v=>{if(!v)return;if(typeof v==='string')out.add(v);else if(Array.isArray(v)&&typeof v[0]==='string')out.add(v[0]);else if(typeof v==='object')for(const k in v)add(v[k])};
+  add(AUDIO);add(AUDIO_V);return [...out];
+}
+let offBusy=false;
+async function saveOffline(quiet){
+  const msg=$('#off-msg'),say=t=>{if(msg&&!quiet)msg.textContent=t};
+  if(!('caches' in window)||!('serviceWorker' in navigator)){say('This browser can\'t save the app for offline use.');return}
+  if(offBusy)return;offBusy=true;
+  try{
+    const cache=await caches.open(OFF_CACHE);
+    const have=new Set((await cache.keys()).map(r=>new URL(r.url).pathname));
+    const files=allAudioFiles(),todo=files.filter(f=>!have.has(new URL(f,location.href).pathname));
+    let done=files.length-todo.length,failed=0;
+    say(`Saving recordings… ${done} of ${files.length}`);
+    const work=async()=>{for(let f;(f=todo.pop());){
+      try{const u=new URL(f,location.href).href;const r=await fetch(u);if(r.status!==200)throw 0;await cache.put(u,r);done++}catch(e){failed++}
+      say(`Saving recordings… ${done} of ${files.length}`)}};
+    await Promise.all([work(),work(),work(),work(),work(),work()]);
+    if(failed){say(`Saved ${done} of ${files.length} recordings. ${failed} couldn't be downloaded; check your connection and tap the button again.`)}
+    else{store.set('offline',true);try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
+      say(`All ${files.length} recordings are saved on this device. Sound Atlas now works offline. ✓`)}
+  }catch(e){say('Couldn\'t save the recordings on this device (storage may be full or blocked).')}
+  offBusy=false;
+}
+document.addEventListener('click',e=>{if(e.target.id==='off-go')saveOffline(false)});
+// once offline use is on, quietly pick up any recordings added since
+if(store.get('offline',false)){const m=$('#off-msg');if(m)m.textContent='Offline use is on for this device. ✓';if(navigator.onLine!==false)setTimeout(()=>saveOffline(true),3000)}
+// back online after working offline: sync what was done
+window.addEventListener('online',()=>{if(!syncRef)initSync()});
 
 // ---------- INIT ----------
 document.querySelectorAll('#coursebar button').forEach(b=>b.onclick=()=>setCourse(b.dataset.course));
