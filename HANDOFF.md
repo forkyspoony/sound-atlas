@@ -155,6 +155,18 @@ Cross-cutting features:
 - **Today's focus (2026-11-10, `focusHTML`).** Today shows the single weakest score in the
   course (hear, say or know, under 85%) with a button for the matching tool: a pair drill,
   the puff meter or trill check, the Speak tab, or the lesson that teaches the sound.
+- **24 extra shadowing phrases (2026-11-10).** Eight per language (`esx1`–`8`, `zhx1`–`8`,
+  `arx1`–`8`), added with `PHRASES.push` just above `PHBY`. They have no `lesson`, so they
+  appear only in Speak → Phrases. Each language is one recording (`audio/p_c5_<lang>.mp3`,
+  model `eleven_v4`, voices Mateo / Alina / Zohir) cut into sprites by hand-checked times.
+  The IPA was written by Claude and has not been reviewed by a native speaker; the audio
+  was checked for clean cuts and word timing, but nobody has listened to it yet.
+- **`carro` and `guerra` re-recorded (2026-11-10)** as sprites in `audio/p_c5_rr.mp3`; the
+  trill check now finds 3 and 2 flicks. `carro` is back in the trill list. The old
+  whole-file clips are still in `audio/` but unused. ElevenLabs flow for this batch:
+  `vjc9fvq5PAfWGifkmj6k` (about 780 credits).
+- **`content/` is stale for `PHRASES` and `AUDIO`** since this batch: the export tool needs
+  Playwright, which isn't installed on this machine.
 - **Own recordings stay on the device** in IndexedDB (`sa-rec`): the first take of each word
   plus the latest from each month. They are not synced (too big for the Firestore document).
 
