@@ -140,12 +140,12 @@ and 74 lessons, using the app's native clips in place of a microphone):
 | 14 | `carro` and `guerra` re-recorded with a real trill | Trill check, Pairs | `c9fd5b6` |
 | 15 | Tone pairs: say a two-syllable word, melody match against four native speakers | Speak → Tone pairs (also a button on Tones) | `032155f` |
 | 16 | 15 more phrases tied to the rule lessons, with recordings | Rule lessons' shadowing step, Speak → Phrases | `032155f` |
-| 17 | Mix-up drill: hear a hidden word from any course, say which look-alike sound it has (r, t, p/b, h, sh) | Across languages | not committed yet |
+| 17 | Mix-up drill: hear a hidden word from any course, say which look-alike sound it has (r, t, p/b, h, sh) | Across languages | `744db94` |
 
 Items 15 and 16 were built on 2026-11-10 and passed the local regression (12 views, every
 Speak mode, 74 lessons / 582 steps, no errors). They were pushed the same day.
 
-Item 17 was built later on 2026-11-10 and is **in the working tree, not committed**. It uses
+Item 17 was built later on 2026-11-10 and pushed the same day. It uses
 only existing recordings. Checked locally: every round type runs to the end, all 12 views
 open without errors (lessons were not re-run; nothing they use changed). Details in
 Decisions.
