@@ -8,6 +8,10 @@ version of every file. Nothing newer exists anywhere else.
 (see Decisions), and the **Android app was retired** (see Decisions). Where this document
 still mentions the APK elsewhere, treat it as history.
 
+**Picking this up in a new chat? Start at "Roadmap: where we are" in section 2.** It lists
+what is built, what is waiting on the owner's testing, and what comes next. As of
+2026-11-10 the latest commit on `main` is `c9fd5b6`, and everything built so far is pushed.
+
 - **Live site:** https://forkyspoony.github.io/sound-atlas
 - **Old claude.ai copy:** https://claude.ai/artifact/1VwidV6YpmPm8GtADRXQU3 (stale, see Decisions)
 
@@ -108,9 +112,91 @@ Cross-cutting features:
    the flag-audio feature exists. Flags are saved in progress (`flags`), and nobody has
    reviewed them yet.
 
-### Planned next (what the owner was heading toward)
-- Revisit the IPA terminology and jargon section (velar, alveolar and so on) when ready. The
-  owner found the terms hard to learn and wanted SRS cards and pronunciations for them.
+### Roadmap: where we are (updated 2026-11-10)
+
+The goal behind all of this: get the owner to **say** each language's sounds correctly, not
+only recognise them. The roadmap came from a brainstorm on 2026-11-09. Details of each
+built item are in section 3 (Decisions).
+
+**Done and live** (pushed to `main`; each ran clean in a local regression of all 12 views
+and 74 lessons, using the app's native clips in place of a microphone):
+
+| # | Feature | Where | Commit |
+|---|---|---|---|
+| 1 | Speaking cards in the daily review (record, compare, self-rate) | Today | `f968c6a` |
+| 2 | Adaptive listening drill, per-word miss tracking | Pairs | `f968c6a` |
+| 3 | Tone coach (Mandarin) | Speak | `f968c6a` |
+| 4 | Puff meter (Mandarin, Spanish) | Speak | `f968c6a` |
+| 5 | Trill check (Spanish) | Speak | `f968c6a` |
+| 6 | Own recordings kept over time | Speak, speaking cards | `f968c6a` |
+| 7 | Weak-spots table (know / hear / say per sound) | Sounds | `d96f677` |
+| 8 | Dictation mode and larger word pool | Transcribe | `d96f677` |
+| 9 | Jargon practice (mouth map, term matching) | IPA basics | `d96f677` |
+| 10 | Diagram fallback when a video fails | Sound cards | `d96f677` |
+| 11 | Measurements on speaking cards (puff, flicks, tone match) | Today | `0e7c7a9` |
+| 12 | Today's focus box | Today | `0e7c7a9` |
+| 13 | 24 extra shadowing phrases with recordings | Speak → Phrases | `c9fd5b6` |
+| 14 | `carro` and `guerra` re-recorded with a real trill | Trill check, Pairs | `c9fd5b6` |
+
+**➡ YOU ARE HERE: waiting on the owner's testing.** None of items 1–14 has been tried with
+a real microphone or listened to by a person. The owner said they would test later. Before
+building more, ask what they found. The things most likely to need adjusting:
+
+- **Thresholds in the measuring tools** (tone coach, puff meter, trill check). They were
+  tuned on ElevenLabs clips, not on a learner's voice through a phone microphone. If a
+  reading looks wrong, ask which word and what it showed, then adjust in `tcVerdict`,
+  `pfTarget` / `votMeasure` or `trillMeasure`.
+- **The 24 new phrases.** Check by ear that each says the right words, and that the IPA
+  (written by Claude, unreviewed) matches what the speaker says. Arabic is the least certain.
+- **The mouth map on a phone.** The dots at the front of the mouth are close together.
+- **Speaking cards in practice.** Three a day are added for sounds already in review; check
+  the pace feels right and that recording works inside a review session.
+- **Google sign-in inside the iPhone home-screen app** is still untested (older item).
+
+**Next, in suggested order** (not started):
+
+1. **Fix whatever the owner's testing turns up** (see above).
+2. **Review flagged audio.** Nobody has gone through the flags yet. Re-record flagged clips
+   the way `carro` was done: generate several takes, measure or check them, keep the best.
+3. **More connected-speech practice.** The rule lessons already cover Spanish soft b/d/g,
+   Mandarin tone changes and Arabic doubling, so this means more example phrases per rule,
+   not new lessons. Needs recordings.
+4. **Two-syllable tone practice with feedback.** Listening drills for tone pairs exist
+   (`TPAIRS`); saying them only has the general pitch compare in Speak → Words.
+5. **Terminology in the daily review.** Jargon practice (item 9) is free practice only. The
+   owner once wanted SRS cards for terms, then scrapped that deck, so **ask before adding
+   terms to the review queue**. About 60 term pronunciations already exist in ElevenLabs
+   flow `DWqVXa8cXc7J53NQcjau` and can be reused at no cost.
+6. **Cross-language mix-up drills** for sounds that interfere across the three courses
+   (the r sounds, the kinds of t). Needs content design first.
+7. **Real human recordings** for the sounds where generated voices slip (for example from
+   Wikimedia's Lingua Libre, with credit). Not started; check licences first.
+
+**Considered and dropped:** a sibilant comparison for s / ʂ / ɕ (too unreliable across
+voices and microphones), and feedback on the Arabic throat sounds and emphatics (no simple
+signal to measure).
+
+**How to work on this (things a new chat would otherwise have to rediscover):**
+
+- **ElevenLabs.** The owner has approved using credits as needed (said 2026-11-10). There is
+  no API key on this machine; recordings are made through the ElevenLabs connector:
+  `creative_generate_speech` with model `eleven_v4`, several items in one prompt separated
+  by ` …… `, then `creative_get_flow_run_status` to get each take's download link. Voice
+  ids: Mateo `WMpAKHr8NOKA29XOHZkk`, Alina `WfA47nTEqsxcbtplkPLI`, Zohir
+  `ir4AMoF6bJOiiv5tgHOC`. Save the take into `audio/`, find each item's start and end by
+  splitting on silence, and register it as a sprite: `AUDIO[text]=[file,start,end]`.
+  There is no `ffmpeg` here, so files can't be cut or re-encoded; sprites avoid the need.
+  The connector's transcription lines the script up against the audio, so it confirms
+  timing but is not an independent check of pronunciation.
+- **Testing without Node or Playwright.** Neither is installed. Start the preview server
+  (`sound-atlas` in `.claude/launch.json`, port 8765) and drive the page with JavaScript in
+  the browser pane: loop over `VIEWS`, `openLesson(id)` and `renderStep()`, and feed native
+  clips to the measuring functions. Clear the test progress from `localStorage` afterwards.
+- **`content/` can't be regenerated here** (the export tool needs Playwright). It is stale
+  for `PHRASES` and `AUDIO` since `c9fd5b6`.
+- **Commits.** Git has no name or email set on this machine. Commits so far were made as
+  `Claude <noreply@anthropic.com>` with `git -c user.name=… -c user.email=…`, matching the
+  earlier history. Commit and push only when the owner asks; a push to `main` is the deploy.
 - Keep sharing the site with the friend. Updates reach them automatically.
 
 ---
