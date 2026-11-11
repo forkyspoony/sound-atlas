@@ -160,10 +160,11 @@ just above `mountBuild`):
   mark that is missing, extra or misplaced. `slipsHTML()` shows one short explanation per
   slip, the lesson that covers the symbol, and a button to its sound card. Used by lesson and
   review build questions (`mountBuild`) and by Transcribe (`checkTr`).
-- **Notes.** `SYM_NOTES.es` has a hand-written line for every Spanish symbol and every wrong
-  tile used in the Spanish build questions. **Mandarin and Arabic are not written yet**: they
-  fall back to the sound card's name and first how-to line, and plain symbols such as [k] or
-  [aː] get no note. The owner is to check the Spanish wording before the other two are done.
+- **Notes.** `SYM_NOTES` has a hand-written line for every symbol and every wrong tile used
+  in the build questions and on the Transcribe keyboard, for all three courses (`es`, `zh`,
+  `ar`; `all` holds the stress mark). Mandarin and Arabic were added later on 2026-11-10 and
+  pushed the same day. A symbol with no entry falls back to its sound card's
+  name and first how-to line. When adding a build question with a new tile, add its note too.
 - **Tally.** `stats['y:<lang>:<symbol>']` counts hits and misses per symbol (`tallySyms`).
   `weakSyms(lang)` = missed at least twice and right under about 70% of the time.
 - **Using the tally.** Transcribe and the `b:` review cards pick words with weak symbols more
@@ -175,7 +176,9 @@ just above `mountBuild`):
 
 Checked locally: 74 lessons / 582 steps opened and all 131 build questions answered (half
 right, half wrong) with no errors; Transcribe, the Today box and the slip messages were
-looked at in the browser. Not checked: sync of the new tallies on the live site.
+looked at in the browser. Re-run after the Mandarin and Arabic notes went in: same result,
+every wrong answer showed an explanation, and no symbol in any course is missing a note.
+Not checked: sync of the new tallies on the live site.
 
 **➡ YOU ARE HERE: waiting on the owner's testing.** None of items 1–16 has been tried with
 a real microphone or listened to by a person. The owner said they would test later, then
