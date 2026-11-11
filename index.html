@@ -320,6 +320,12 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 .tile.stress{font-weight:700;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}.tile.stress::after{content:'stress';font-family:var(--sans,system-ui);font-size:10px;font-weight:400;color:var(--muted);margin-top:2px}
 @media(max-width:520px){.cmprow{grid-template-columns:1fr 1fr;column-gap:12px}.cmpvs{display:none}.cmpcell+.cmpvs+.cmpcell{border-left:1px solid var(--line);padding-left:12px}.cmpw{font-size:16px;gap:6px}.cmpi{font-size:16px}}
 .bhint{font-size:14px;color:var(--muted)}
+.slips{list-style:none;padding:0;margin:12px 0;display:grid;gap:10px}
+.slips li{border-left:3px solid var(--bad);padding:2px 0 2px 12px;font-size:15px}
+.slipn{color:var(--muted);font-size:14px;margin-top:3px}
+.slipn .slink,.gaprow .slink{font-size:13px;padding:2px 8px;cursor:pointer;color:inherit}
+.gaprow{display:flex;gap:12px;align-items:flex-start;margin:10px 0}
+.gapsym{font-size:24px;min-width:56px}
 .opt.ipaopt{font-size:22px}
 .lk.k-intro{background:var(--soft);color:var(--ink)}
 
@@ -1373,15 +1379,39 @@ function trPool(l){
     if(tokenize(w.ipa,l).every(t=>SEGS[l].includes(t)))m.set(k,w)}
   return trPools[l]=[...m.values()];
 }
-function newTr(){const pool=trPool(trLang);let e=pick(pool);if(pool.length>1)while(e===trCur)e=pick(pool);trCur=e;trInput=[];renderTr()}
+// By default only words whose every symbol comes from a finished lesson; trAll switches that off
+let trAll=store.get('trAll',false);
+function trWords(){
+  const pool=trPool(trLang);if(trAll)return pool;
+  const cov=coveredSyms(trLang);return pool.filter(w=>tokenize(w.ipa,trLang).every(t=>cov.has(t)));
+}
+function trKeys(){if(trAll)return SEGS[trLang];const cov=coveredSyms(trLang);return SEGS[trLang].filter(g=>cov.has(g))}
+function trScopeHTML(n){
+  return `<div class="chips" id="tr-scope" style="margin-bottom:8px"><button class="chip ${trAll?'':'on'}" data-tra="0">Symbols I've covered</button><button class="chip ${trAll?'on':''}" data-tra="1">All symbols</button></div>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 12px">${trAll?`All ${n} words, including symbols from lessons you haven't done yet.`:`${n} of ${trPool(trLang).length} words: the ones made only of symbols from lessons you've finished. Each lesson you finish adds more.`}</p>`;
+}
+function bindTrScope(){$('#tr-scope').onclick=ev=>{const b=ev.target.closest('[data-tra]');if(!b)return;trAll=b.dataset.tra==='1';store.set('trAll',trAll);newTr()}}
+function newTr(){
+  const pool=trWords();trInput=[];
+  if(!pool.length){
+    trCur=null;const nx=nextLesson();
+    $('#tr').innerHTML=trScopeHTML(0)+`<p><b>No words to transcribe yet.</b> This page only uses symbols from lessons you've finished in this course, and no recorded word fits yet.</p>
+     <div class="row">${nx?`<button class="btn" data-lesson="${nx.id}">Start lesson: ${esc(nx.title)} →</button>`:''}</div>`;
+    bindTrScope();return;
+  }
+  // words containing symbols you keep missing come up more often
+  const weak=weakSyms(trLang);
+  trCur=wpick(pool,w=>{if(w===trCur&&pool.length>1)return 0;const tk=tokenize(w.ipa,trLang);return 1+Math.min(4,2*weak.filter(t=>tk.includes(t)).length)});
+  renderTr();
+}
 function renderTr(){
   const e=trCur;
-  $('#tr').innerHTML=`<div class="chips" id="tr-mode" style="margin-bottom:12px"><button class="chip ${trDict?'':'on'}" data-trd="0">See the word</button><button class="chip ${trDict?'on':''}" data-trd="1">Dictation: audio only</button></div>
+  $('#tr').innerHTML=trScopeHTML(trWords().length)+`<div class="chips" id="tr-mode" style="margin-bottom:12px"><button class="chip ${trDict?'':'on'}" data-trd="0">See the word</button><button class="chip ${trDict?'on':''}" data-trd="1">Dictation: audio only</button></div>
   <div class="qprompt">${trDict?`Listen, then write what you hear in IPA (${LANGS[trLang]})`:`Transcribe this ${LANGS[trLang]} word`}</div>
   <div class="qmain">${playBtn(e.w,trLang)}${trDict?`<button class="slowbtn" data-slow="${esc(e.w)}" data-lang="${trLang}" aria-label="Play slowly">🐢 slow</button><span style="color:var(--muted);font-weight:400;font-size:15px">The word is hidden until you check. Replay as often as you like.</span>`
     :`<span class="w" style="font-size:28px">${trLang==='ar'?`<span class="arabic">${esc(e.w)}</span>`:esc(e.w)}</span>${e.r?`<span style="color:var(--muted)">${esc(e.r)}</span>`:''}<span style="color:var(--muted);font-weight:400">“${esc(e.g)}”</span>`}</div>
   <div class="answer-line ipa" id="ansline">${trInput.length?esc(trInput.join('')):'<span style="color:var(--muted);font-size:16px;font-family:Instrument Sans">tap symbols below…</span>'}</div>
-  <div class="palette">${SEGS[trLang].map(g=>`<button class="key ipa" data-k="${esc(g)}">${esc(g)}</button>`).join('')}
+  <div class="palette">${trKeys().map(g=>`<button class="key ipa" data-k="${esc(g)}">${esc(g)}</button>`).join('')}
   <button class="key ctrl" data-k="__bs">⌫ Undo</button><button class="key ctrl" data-k="__clr">Clear</button></div>
   <div class="voice-warn"></div>
   <div class="row" style="margin-top:14px"><button class="btn" id="trcheck">Check</button><button class="btn ghost" id="trskip">Skip</button></div>
@@ -1391,6 +1421,7 @@ function renderTr(){
     const al=$('#ansline');al.className='answer-line ipa';al.innerHTML=trInput.length?esc(trInput.join('')):'<span style="color:var(--muted);font-size:16px;font-family:Instrument Sans">tap symbols below…</span>'};
   $('#trskip').onclick=newTr;
   $('#trcheck').onclick=checkTr;
+  bindTrScope();
   $('#tr-mode').onclick=ev=>{const b=ev.target.closest('[data-trd]');if(!b)return;trDict=b.dataset.trd==='1';store.set('trDict',trDict);trInput=[];renderTr()};
   if(trDict)setTimeout(()=>{const b=$('#tr .qmain .play');if(b&&b.offsetParent)b.click()},250);
 }
@@ -1399,12 +1430,17 @@ function checkTr(){
   const got=tokenize(trInput.join(''),trLang);
   const ok=target.join('|')===got.join('|');
   $('#ansline').classList.add(ok?'right':'wrong');
-  // per-segment diff
-  const diff=target.map((t,i)=>`<span style="color:var(--${got[i]===t?'good':'bad'})">${esc(t)}</span>`).join('');
+  if($('#trcheck').disabled)return;$('#trcheck').disabled=true;
+  // which symbols were right, and what went wrong with the rest
+  const dg=ok?{slips:[],hits:target,misses:[],mark:target.map(()=>true)}
+    :got.length?symSlips(got,target):{slips:[],hits:[],misses:[],mark:target.map(()=>false)}; // checking with nothing typed just shows the answer
+  tallySyms(trLang,dg);
+  const diff=target.map((t,i)=>`<span style="color:var(--${dg.mark[i]?'good':'bad'})">${esc(t)}</span>`).join('');
   const links=[...new Set(target)].map(t=>S.find(s=>s.sym===t||(t==='d̪'&&s.id==='td')||(t==='t'&&trLang==='zh'&&s.id==='pu'))).filter(Boolean);
   const fb=$('#trfb');
   fb.innerHTML=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Perfect!':'Not quite.'}</div>
   <p>Answer: <span class="ipa" style="font-size:28px">[${diff}]</span>${trDict?` &nbsp;${playBtn(trCur.w,trLang)} <b>${trLang==='ar'?`<span class="arabic">${esc(trCur.w)}</span>`:esc(trCur.w)}</b> ${trCur.r?`<span style="color:var(--muted)">${esc(trCur.r)}</span>`:''} <span style="color:var(--muted)">“${esc(trCur.g)}”</span>`:''}</p>
+  ${slipsHTML(dg,trLang)}
   ${links.length?`<div class="related">Review: ${links.map(s=>`<button class="slink ipa" data-sound="${s.id}">${esc(s.sym)}</button>`).join('')}</div>`:''}
   <div class="row" style="margin-top:12px"><button class="btn" id="trnext">Next word →</button></div>`;
   fb.classList.add('on');$('#trnext').onclick=newTr;
@@ -1585,6 +1621,150 @@ function bindFeel(st){
     const f=document.querySelector('.feelfb');f.innerHTML=b.dataset.feel==='1'?st.yes:st.no;f.classList.add('on');
   });
 }
+// ---------- SYMBOL GAPS ----------
+// When a built transcription is wrong, work out which symbols were the problem, explain each one,
+// and keep a tally per symbol in stats['y:<lang>:<symbol>'] so weak symbols can be practised more.
+// One-line notes per symbol. Spanish is hand-written and includes the usual wrong tiles;
+// other courses fall back to the sound card's name and first how-to line.
+const SYM_NOTES={
+ all:{'ˈ':'The stress mark. It goes right before the first sound of the louder syllable.'},
+ es:{
+  'a':'Open "ah", held steady.',
+  'e':'"eh" that holds still, with no slide towards "ee".',
+  'i':'"ee" as in "see", short and steady.',
+  'o':'A pure "o" that holds still, with no glide.',
+  'u':'"oo" as in "food", with rounded lips.',
+  'j':'The y of "yes". Spanish spells it i before another vowel, as in gracias.',
+  'w':'The w of "we". Spanish spells it u before another vowel, as in bueno.',
+  'p':'p with no puff of air after it.',
+  'b':'Full b with the lips closed. Spanish uses it after a pause or after m and n.',
+  't̪':'t with the tongue on the back of the teeth, and no puff. The bridge underneath means "on the teeth".',
+  'd̪':'d with the tongue on the back of the teeth. Spanish uses it after a pause or after n and l.',
+  'k':'k with no puff. Spanish spells it c, qu or k.',
+  'ɡ':'Full g as in "go". Spanish uses it after a pause or after n.',
+  'β':'Soft b: the lips come close but never close. Spanish uses it everywhere full [b] isn\'t, most often between vowels.',
+  'ð':'Soft d, like the th of "this". Spanish uses it everywhere full [d̪] isn\'t, most often between vowels.',
+  'ɣ':'Soft g: the back of the tongue comes close but doesn\'t touch. Spanish uses it everywhere full [ɡ] isn\'t.',
+  'f':'Same as English f.','s':'Same as English s. It never turns into a buzzing z.',
+  'm':'Same as English m.','n':'Same as English n.',
+  'l':'A clear l with the tongue tip up, even at the end of a word.',
+  'ɾ':'The tap: one quick flick of the tongue, like the tt in American "butter". Spelled with a single r.',
+  'r':'The trill: several flicks in a row. Spelled rr, or r at the start of a word.',
+  'ɲ':'ñ: the "ny" of "canyon" made as one sound.',
+  'ʝ':'The sound of y and ll: like English y with more friction.',
+  'x':'The jota: a scrape at the back of the mouth. Spelled j, or g before e and i.',
+  'tʃ':'The "ch" of "church".',
+  'eɪ':'The gliding English vowel of "say". Spanish e doesn\'t glide.',
+  'oʊ':'The gliding English vowel of "go". Spanish o doesn\'t glide.',
+  'ə':'Schwa, the English "uh". Spanish has no such vowel: every vowel keeps its full sound.',
+  'ɪ':'The short vowel of English "sit". Spanish doesn\'t have it.',
+  'æ':'The vowel of English "cat". Spanish doesn\'t have it.',
+  'c':'In IPA this is a different, rare sound. The c of casa is a k sound, so it is written [k].',
+  'pʰ':'English p with a puff of air (the raised h). Spanish never has the puff.',
+  'tʰ':'English t with a puff of air (the raised h). Spanish never has the puff.',
+  'kʰ':'English k with a puff of air (the raised h). Spanish never has the puff.',
+  't':'Plain t is made on the gum ridge, as in English. Spanish t is on the teeth.',
+  'd':'Plain d is made on the gum ridge, as in English. Spanish d is on the teeth.',
+  'z':'The buzzing z of "zoo". Latin American Spanish doesn\'t have it: the letter z is said [s].',
+  'v':'English v, with the teeth on the lip. Spanish doesn\'t have it: the letter v is said [b] or [β].',
+  'ɹ':'The English r. Spanish r is a tap or a trill.',
+  'ŋ':'The "ng" of "sing".',
+  'h':'English h, a light breath. The Spanish letter h is silent, and j is the scrapier [x].',
+  'ɫ':'The "dark" l at the end of English "full". Spanish l stays clear.',
+  'θ':'The th of "think". Spain uses it for z and c; Latin America uses [s].'
+ }};
+function symSound(t,l){return S.find(s=>s.langs.includes(l)&&(s.sym===t||(t==='d̪'&&s.id==='td')))||null}
+function symNote(t,l){
+  const n=(SYM_NOTES[l]||{})[t]||SYM_NOTES.all[t];if(n)return n;
+  const s=symSound(t,l);return s?`${s.name}. ${s.how[0]}`:'';
+}
+// Symbols each lesson covers: what you build in it, its sound cards and its symbol tables
+const _lsyms={};
+function lessonSyms(L){
+  if(_lsyms[L.id])return _lsyms[L.id];
+  const l=L.unit.l,out=new Set();
+  const add=str=>{for(const t of String(str).split(/\s+/)){if(!t)continue;out.add(t);for(const g of tokenize(t,l))out.add(g)}};
+  for(const st of L.steps){
+    if(st.t==='build')st.items.forEach(it=>add(it.a));
+    else if(st.t==='sym')st.items.forEach(it=>add(it.s.replace('ʧ','tʃ')));
+    else if(st.t==='sound'){const s=BYID[st.id];if(s)add(s.sym)}
+  }
+  return _lsyms[L.id]=out;
+}
+function coveredSyms(l){const out=new Set();for(const u of UNITS)if(u.l===l)for(const L of u.lessons)if(lessonDone(L.id))for(const t of lessonSyms(L))out.add(t);return out}
+function symLesson(t,l){
+  const s=symSound(t,l);  // the lesson built around this sound's card wins over a passing mention
+  if(s)for(const u of UNITS)if(u.l===l)for(const L of u.lessons)if(L.steps.some(st=>st.t==='sound'&&st.id===s.id))return L;
+  for(const u of UNITS)if(u.l===l)for(const L of u.lessons)if(lessonSyms(L).has(t))return L;return null}
+// Compare what was built with the answer (both are lists of tiles)
+function symSlips(got,want){
+  const ST='ˈ',slips=[],hits=[],misses=[];
+  const gs=got.filter(t=>t!==ST),ws=want.filter(t=>t!==ST),mark=ws.map(()=>true);
+  const gn=got.length-gs.length,wi=want.indexOf(ST),gi=got.indexOf(ST);
+  let how=null;
+  if(wi>=0&&!gn)how='miss';else if(wi<0&&gn)how='extra';else if(wi>=0&&gn>1)how='many';
+  else if(wi>=0&&gs.length===ws.length&&gi!==wi)how='place';
+  if(how){slips.push({k:'stress',how});misses.push(ST)}else if(wi>=0)hits.push(ST);
+  if(gs.join('|')!==ws.join('|')){
+    if(gs.slice().sort().join('|')===ws.slice().sort().join('|')){slips.push({k:'order'});ws.forEach((t,i)=>mark[i]=gs[i]===t)}
+    else{
+      const n=gs.length,m=ws.length,d=[];
+      for(let i=0;i<=n;i++){d[i]=[i];for(let j=1;j<=m;j++)d[i][j]=i?Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(gs[i-1]===ws[j-1]?0:1)):j}
+      let i=n,j=m;const ops=[];
+      while(i>0||j>0){
+        if(i>0&&j>0&&gs[i-1]===ws[j-1]&&d[i][j]===d[i-1][j-1]){hits.push(ws[j-1]);i--;j--}
+        else if(i>0&&j>0&&d[i][j]===d[i-1][j-1]+1){ops.push({k:'sub',g:gs[i-1],w:ws[j-1]});misses.push(ws[j-1]);mark[j-1]=false;i--;j--}
+        else if(j>0&&d[i][j]===d[i][j-1]+1){ops.push({k:'miss',w:ws[j-1]});misses.push(ws[j-1]);mark[j-1]=false;j--}
+        else{ops.push({k:'extra',g:gs[i-1]});i--}
+      }
+      const seen=new Set();
+      for(const o of ops.reverse()){const id=o.k+'|'+(o.g||'')+'|'+(o.w||'');if(!seen.has(id)){seen.add(id);slips.push(o)}}
+    }
+  }else hits.push(...ws);
+  return {slips,hits,misses,mark};
+}
+function tallySyms(l,r){
+  const miss=new Set(r.misses),bump=(t,ok)=>{const k='y:'+l+':'+t,s=stat(k);ok?s.c++:s.w++;stats[k]=s};
+  for(const t of miss)bump(t,false);
+  for(const t of new Set(r.hits))if(!miss.has(t))bump(t,true);
+  persist();
+}
+// Symbols missed at least twice and still right less than about 70% of the time, worst first
+function weakSyms(l){
+  const p='y:'+l+':';
+  return Object.keys(stats).filter(k=>k.startsWith(p)&&stats[k].w>=2&&stats[k].c<stats[k].w*2.5)
+    .sort((a,b)=>(stats[b].w-stats[b].c)-(stats[a].w-stats[a].c)).map(k=>k.slice(p.length));
+}
+function wpick(arr,wf){const ws=arr.map(wf);let r=Math.random()*ws.reduce((a,b)=>a+b,0);for(let i=0;i<arr.length;i++){r-=ws[i];if(r<=0)return arr[i]}return arr[arr.length-1]}
+function slipsHTML(r,l){
+  if(!r.slips.length)return '';
+  const sym=t=>`<span class="ipa">[${esc(t)}]</span>`;
+  const note=t=>{const n=symNote(t,l);return n?`<div class="slipn">${sym(t)} ${esc(n)}</div>`:''};
+  const more=t=>{const s=symSound(t,l),L=symLesson(t,l);
+    return (L||s)?`<div class="slipn">${L?`Covered in “${esc(L.title)}”. `:''}${s?`<button class="slink" data-sound="${s.id}">See how to make it</button>`:''}</div>`:''};
+  const tip=SYM_NOTES.all['ˈ'].replace('The stress mark. ','');
+  const STRESS={miss:['The stress mark is missing.',tip],
+    extra:['This word has no stress mark.','A word of one syllable doesn\'t get one.'],
+    many:['Only one stress mark goes in this word.',tip],
+    place:['The stress mark is in the wrong place.',tip]};
+  return `<ul class="slips">${r.slips.map(o=>{
+    if(o.k==='stress')return `<li><b>${STRESS[o.how][0]}</b><div class="slipn">${esc(STRESS[o.how][1])}</div></li>`;
+    if(o.k==='order')return `<li><b>Right symbols, wrong order.</b><div class="slipn">Go one sound at a time, in the order you hear them.</div></li>`;
+    if(o.k==='sub')return `<li><b>You used ${sym(o.g)} where ${sym(o.w)} belongs.</b>${note(o.g)}${note(o.w)}${more(o.w)}</li>`;
+    if(o.k==='miss')return `<li><b>You left out ${sym(o.w)}.</b>${note(o.w)}${more(o.w)}</li>`;
+    return `<li><b>${sym(o.g)} doesn't belong in this word.</b>${note(o.g)}</li>`;
+  }).join('')}</ul>`;
+}
+// Today: the symbols you slip on most
+function gapsHTML(){
+  const l=COURSE,weak=weakSyms(l).slice(0,4);if(!weak.length)return '';
+  return `<div class="quiz-box" style="margin-top:12px"><div class="tag t-${l}">Symbols to shore up</div>
+   <p style="color:var(--muted);margin:8px 0 4px">From your Write-it-in-IPA answers, these are the symbols you slip on most. Review and Transcribe will bring them up more often.</p>
+   ${weak.map(t=>{const s=stat('y:'+l+':'+t),L=symLesson(t,l),sd=symSound(t,l);
+     return `<div class="gaprow"><span class="ipa gapsym">${t==='ˈ'?'[ˈ]':'['+esc(t)+']'}</span><div><div>${esc(symNote(t,l))}</div>
+      <div class="slipn">Right ${s.c} of ${s.c+s.w} times.${L?` <button class="slink" data-ref="${L.id}">Revisit: ${esc(L.title)}</button>`:''}${sd?` <button class="slink" data-sound="${sd.id}">Open card</button>`:''}</div></div></div>`}).join('')}
+   <div class="row" style="margin-top:10px"><a class="btn" href="#transcribe" style="text-decoration:none">Practise in Transcribe</a></div></div>`;
+}
 function mountBuild(el,q,hooks){
   const it=q.item,w=wd(it.w),ans=it.a.split(' '),tiles=shuffle([...new Set([...ans,...(it.x?it.x.split(' '):[])])]);
   const cur=[];
@@ -1601,11 +1781,13 @@ function mountBuild(el,q,hooks){
     else if(b.dataset.b==='clr'){cur.length=0;upd()}
     else{
       const ok=cur.join('')===ans.join('');
+      const dg=ok?{slips:[],hits:ans,misses:[]}:symSlips(cur,ans);tallySyms(w.l,dg);
       el.querySelectorAll('.tile,.bctl .btn').forEach(x=>x.disabled=true);
       el.querySelector('.bslot').classList.add(ok?'right':'wrong');
       const f=el.querySelector('.feedback');
       f.innerHTML=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
        <p>${playBtn(w.w,w.l)} <b>${dispW(w)}</b> is <span class="ipa" style="font-size:22px">[${esc(w.ipa)}]</span>${ok?'':`. You built <span class="ipa">[${esc(cur.join(''))}]</span>`}.</p>
+       ${slipsHTML(dg,w.l)}
        ${it.why?`<p style="color:var(--muted);font-size:14px">${it.why}</p>`:''}
        <div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button>${hooks.extra?hooks.extra():''}<span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
       f.classList.add('on');
@@ -2643,6 +2825,7 @@ function renderToday(){
      :`<h2 style="font-size:22px">${doneToday?'Reviews done for today ✓':'No reviews due'}</h2><p style="color:var(--muted)">${nItems?'Items come back on a schedule: tomorrow, then 2, 4, 8, 16 days… Anything you miss starts over.':'Finish a lesson and its sounds, contrasts and rules will start appearing here.'}</p>${nItems?'<button class="btn ghost" id="t-extra">Practise a few anyway</button>':''}`}</div>
    ${nx?`<div class="quiz-box nextbox" style="margin-top:12px"><div class="tag t-${nx.unit.l}">Next lesson · ${esc(nx.unit.title)} ${nx.n}/${nx.unit.lessons.length}</div><h2 style="font-size:22px;margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">Start lesson →</button> <a href="#lessons" style="margin-left:10px;color:var(--muted)">See the whole path</a></div>`:''}
    ${focusHTML()}
+   ${gapsHTML()}
    <label class="saytog"><input type="checkbox" id="t-say" ${srs.settings.say===false?'':'checked'}> Include speaking cards (say a word, compare with the native speaker, rate yourself)</label>
    <p class="syncnote" id="syncnote">${syncMsg}</p>`;
   $('#t-say').onchange=e=>{srs.settings.say=e.target.checked;persist();renderToday()};
@@ -2661,7 +2844,8 @@ function itemQ(k){
   if(k==='t:tones')return toneQ();
   if(k==='t:tpairs')return tpairQ();
   if(k.startsWith('a:'))return readItemQ(k);
-  if(k.startsWith('b:')){const L=LBYID[k.slice(2)];return {type:'build',item:pick(L.steps.filter(s=>s.t==='build').flatMap(s=>s.items))}}
+  if(k.startsWith('b:')){const L=LBYID[k.slice(2)];const weak=weakSyms(L.unit.l); // lean towards words with symbols you keep missing
+    return {type:'build',item:wpick(L.steps.filter(s=>s.t==='build').flatMap(s=>s.items),it=>{const tk=it.a.split(' ');return 1+Math.min(4,2*weak.filter(t=>tk.includes(t)).length)})}}
   if(k.startsWith('r:')){const L=LBYID[k.slice(2)];const qs=L.steps.filter(s=>s.t==='ruleq').flatMap(s=>s.qs);return customQ(pick(qs),L.unit.l)}
   if(k.startsWith('p:'))return pairQ(PBYID[k.slice(2)]);
   const s=BYID[sid(k)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
@@ -4306,23 +4490,31 @@ const TRILLS=[['pero',1],['perro',2],['coro',1],['corro',2],['caro',1],['carro',
 let trWord=null,trLast=null;const trNat={};
 function trillMeasure(x0,fs0){
   const {y,fs}=to16k(x0,fs0),hop=Math.round(fs*0.002),win=Math.round(fs*0.008),nf=Math.floor((y.length-win-1)/hop);if(nf<60)return null;
-  // loudness of the higher frequencies every 2 ms: each tongue closure cuts them off, leaving only a low hum
-  const raw=new Float32Array(nf);
-  for(let f=0;f<nf;f++){let e=0;const s=f*hop;for(let j=1;j<win;j++){const d=y[s+j]-0.97*y[s+j-1];e+=d*d}raw[f]=Math.sqrt(e/win)}
-  const env=new Float32Array(nf);let peak=0;for(let i=0;i<nf;i++){env[i]=(raw[Math.max(0,i-1)]+raw[i]+raw[Math.min(nf-1,i+1)])/3;if(env[i]>peak)peak=env[i]}
+  // loudness of the body of the voice (about 250-1800 Hz) every 2 ms: each tongue closure cuts it off, leaving only a low hum.
+  // (The first version listened to the high frequencies instead; microphone hiss fills those in, so the count wobbled.)
+  const n=y.length,cs=new Float64Array(n+1);for(let i=0;i<n;i++)cs[i+1]=cs[i]+y[i];
+  const ka=Math.round(fs/4000),kb=Math.round(fs/250),avg=(i,k)=>{const a=Math.max(0,i-k),b=Math.min(n,i+k);return (cs[b]-cs[a])/(b-a)};
+  const pw=new Float32Array(nf);
+  for(let f=0;f<nf;f++){let e=0;const s=f*hop;for(let j=0;j<win;j++){const d=avg(s+j,ka)-avg(s+j,kb);e+=d*d}pw[f]=e/win}
+  const floor=Array.from(pw).sort((p,q)=>p-q)[Math.floor(nf*0.05)];   // steady background noise, taken off below
+  const env=new Float32Array(nf);let peak=0;for(let i=0;i<nf;i++){env[i]=Math.sqrt(Math.max(0,(pw[Math.max(0,i-1)]+pw[i]+pw[Math.min(nf-1,i+1)])/3-floor));if(env[i]>peak)peak=env[i]}
+  let on=0;while(on<nf&&env[on]<0.1*peak)on++;
   let dips=[];
-  for(let i=2;i<nf-2;i++){
+  for(let i=Math.max(2,on+20);i<nf-2;i++){                        // the first 40 ms is the opening consonant (the k of "coro"), not a flick
     if(!(env[i]<=env[i-1]&&env[i]<env[i+1]))continue;
     let L=0,R=0;for(let j=1;j<=22&&i-j>=0;j++)L=Math.max(L,env[i-j]);for(let j=1;j<=22&&i+j<nf;j++)R=Math.max(R,env[i+j]);
-    const ref=Math.min(L,R);if(ref<0.12*peak||env[i]>0.6*ref)continue;
+    const ref=Math.min(L,R);if(ref<0.12*peak||env[i]>0.72*ref)continue;
     let a=i,b=i;while(a>0&&env[a-1]<0.8*ref&&i-a<40)a--;while(b<nf-1&&env[b+1]<0.8*ref&&b-i<40)b++;
     if((b-a+1)*2>48)continue;                                   // longer than a tongue flick: some other consonant
     dips.push({i,t:i*0.002,d:env[i]/ref});
   }
-  dips=dips.filter((d,k)=>!dips.some((o,j)=>j!==k&&Math.abs(o.i-d.i)<8&&(o.d<d.d||(o.d===d.d&&j<k)))); // one mark per closure
-  // longest run of closures spaced like a trill (20-70 ms apart)
-  let best=[],cur=[];
-  for(const d of dips){if(cur.length&&d.t-cur[cur.length-1].t>=0.02&&d.t-cur[cur.length-1].t<=0.07)cur.push(d);else cur=[d];if(cur.length>best.length)best=cur.slice()}
+  dips=dips.filter((d,k)=>!dips.some((o,j)=>j!==k&&Math.abs(o.i-d.i)<13&&(o.d<d.d||(o.d===d.d&&j<k)))); // one mark per closure
+  // longest run of closures spaced like a trill (26-70 ms apart). A clear closure cuts the sound to under 60%; shallower
+  // ones (up to 72%) count only as part of a run that already has two clear ones.
+  let best=[],cur=[];const clear=r=>r.filter(d=>d.d<0.6),score=r=>{const c=clear(r).length;return c>=2?r.length:Math.min(c,1)};
+  const take=()=>{if(score(cur)>score(best))best=cur.slice()};
+  for(const d of dips){if(cur.length&&d.t-cur[cur.length-1].t>=0.0255&&d.t-cur[cur.length-1].t<=0.07)cur.push(d);else{take();cur=[d]}}take();
+  if(score(best)<2)best=clear(best).sort((p,q)=>p.d-q.d).slice(0,1);
   const rate=best.length>1?(best.length-1)/(best[best.length-1].t-best[0].t):0;
   return {count:best.length,rate,dips:best,env,peak};
 }

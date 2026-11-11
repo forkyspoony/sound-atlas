@@ -150,6 +150,33 @@ only existing recordings. Checked locally: every round type runs to the end, all
 open without errors (lessons were not re-run; nothing they use changed). Details in
 Decisions.
 
+**Built, not yet committed or pushed (2026-11-10): item 18, symbol gaps.** The owner said
+the Write-it-in-IPA questions felt like being tested on things not yet taught, and asked for
+them to find and fill gaps instead. What was built (all in `index.html`, "SYMBOL GAPS" block
+just above `mountBuild`):
+
+- **Slip pinpointing.** `symSlips(got,want)` lines up the tiles you tapped with the answer
+  and names each slip: wrong symbol, missing symbol, extra symbol, wrong order, or a stress
+  mark that is missing, extra or misplaced. `slipsHTML()` shows one short explanation per
+  slip, the lesson that covers the symbol, and a button to its sound card. Used by lesson and
+  review build questions (`mountBuild`) and by Transcribe (`checkTr`).
+- **Notes.** `SYM_NOTES.es` has a hand-written line for every Spanish symbol and every wrong
+  tile used in the Spanish build questions. **Mandarin and Arabic are not written yet**: they
+  fall back to the sound card's name and first how-to line, and plain symbols such as [k] or
+  [aː] get no note. The owner is to check the Spanish wording before the other two are done.
+- **Tally.** `stats['y:<lang>:<symbol>']` counts hits and misses per symbol (`tallySyms`).
+  `weakSyms(lang)` = missed at least twice and right under about 70% of the time.
+- **Using the tally.** Transcribe and the `b:` review cards pick words with weak symbols more
+  often (`wpick`), and Today shows a "Symbols to shore up" box (`gapsHTML`).
+- **Transcribe only uses covered symbols.** `coveredSyms(lang)` = symbols from finished
+  lessons (what each lesson builds, its sound cards and its symbol tables, `lessonSyms`).
+  Words and keyboard keys are limited to those; an "All symbols" chip (`trAll`) turns the
+  limit off. With no lessons done the page says so and offers the next lesson.
+
+Checked locally: 74 lessons / 582 steps opened and all 131 build questions answered (half
+right, half wrong) with no errors; Transcribe, the Today box and the slip messages were
+looked at in the browser. Not checked: sync of the new tallies on the live site.
+
 **➡ YOU ARE HERE: waiting on the owner's testing.** None of items 1–16 has been tried with
 a real microphone or listened to by a person. The owner said they would test later, then
 asked (2026-11-10) to keep building from the roadmap anyway. The things most likely to need
@@ -254,6 +281,16 @@ signal to measure).
   trill list (they may be worth re-recording). Tone 3 is the loosest check because creaky
   voice breaks pitch tracking. None of these has been tested with a real microphone yet.
   A sibilant (s / ʂ / ɕ) comparison was considered and not built: too unreliable.
+- **Trill check made steadier (2026-11-10).** The owner reported that the count changed from
+  try to try on a headset microphone. Cause: `trillMeasure` followed the loudness of the high
+  frequencies, which microphone hiss fills in, so closures hovered around the cut-off. It now
+  follows the 250–1800 Hz band with the steady background noise taken off, skips the first
+  40 ms (the k of `coro` used to count as a flick), needs closures 26–70 ms apart, and lets
+  shallow closures (60–72%) count only inside a run with two clear ones. Tested on the 12
+  native clips under 23 conditions (added hiss down to 6 dB, narrow headset band, mains hum,
+  time shifts): taps always 1, trills always 2 or more. Native counts are now perro 3,
+  corro 4, carro 3, tierra 4, rojo 3, rosa 3, río 3. Still not confirmed on the owner's own
+  voice; if it is still off, ask which word and what it showed.
 - **Speaking cards show a measurement where one fits (2026-11-10, `sayMeasure`).** Puff length
   for `pu`/`ph` words that start with p/t/k, flick count for the Spanish trill `r`, and for
   single Mandarin syllables the same pitch-match percentage the Speak tab uses. The tone
