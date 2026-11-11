@@ -150,7 +150,7 @@ only existing recordings. Checked locally: every round type runs to the end, all
 open without errors (lessons were not re-run; nothing they use changed). Details in
 Decisions.
 
-**Built, not yet committed or pushed (2026-11-10): item 18, symbol gaps.** The owner said
+**Built and pushed on 2026-11-10 (`159e3c3`): item 18, symbol gaps.** The owner said
 the Write-it-in-IPA questions felt like being tested on things not yet taught, and asked for
 them to find and fill gaps instead. What was built (all in `index.html`, "SYMBOL GAPS" block
 just above `mountBuild`):
