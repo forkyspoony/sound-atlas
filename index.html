@@ -3444,7 +3444,10 @@ function renderMaps(){
 // ---------- ROUTER ----------
 const VIEWS=['today','lessons','learn','pairs','speak','vowels','tones','quiz','transcribe','basics','across','read'];
 function route(){
-  const h=(location.hash||'#today').slice(1);const v=VIEWS.includes(h)?h:'today';
+  const h=(location.hash||'#today').slice(1);
+  // Deep link: #sound/<id> opens that sound's card on the Sounds tab (used by the Migaku userscript in tools/)
+  if(h.indexOf('sound/')===0){let id=h.slice(6);try{id=decodeURIComponent(id)}catch(e){}history.replaceState(null,'','#learn');route();if(BYID[id])openSound(id);return}
+  const v=VIEWS.includes(h)?h:'today';
   VIEWS.forEach(x=>document.getElementById('v-'+x).classList.toggle('on',x===v));
   document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
   if(v==='quiz'&&!curQ)newQ();
