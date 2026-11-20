@@ -327,6 +327,10 @@ kbd{font-family:inherit;background:var(--soft);border-radius:4px;padding:0 5px}
 .gaprow{display:flex;gap:12px;align-items:flex-start;margin:10px 0}
 .gapsym{font-size:24px;min-width:56px}
 .opt.ipaopt{font-size:22px}
+.optw{position:relative;display:flex}.optw .opt{flex:1;padding-right:60px}
+.optw>.play{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:36px;height:36px}
+.optw-ex{position:absolute;right:8px;bottom:4px;font-size:11px;color:var(--muted);pointer-events:none;max-width:56px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.optw:has(.optw-ex)>.play{top:calc(50% - 7px)}
 .lk.k-intro{background:var(--soft);color:var(--ink)}
 
 #coursebar{display:flex;gap:6px;margin:14px 0 2px;flex-wrap:wrap}
@@ -1301,6 +1305,19 @@ function mountQ(el,q,hooks){
   el.querySelector('.opts').onclick=e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)answerQ(el,q,+b.dataset.i,hooks)};
   if(['tone','word2sym','pair','tpair'].includes(q.type)||(q.type==='custom'&&q.item.w)){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
 }
+// After answering a symbol question, give every option its own play button: the vowel on its
+// own when there is a reference clip, otherwise the first example word. The answered options are
+// disabled (which swallows clicks), so the button sits beside the option in a wrapper.
+function optPlay(b,s){
+  if(!s||!s.id)return;
+  const k='pure:'+s.id,e=(s.ex||[])[0];
+  const pb=AUDIO[k]?playBtn(k,s.langs[0],'the sound '+s.sym,'main'):e?playBtn(e.w,e.l,`${s.sym} in ${e.w}`,'main'):'';
+  if(!pb)return;
+  const w=document.createElement('div');w.className='optw';
+  b.replaceWith(w);w.appendChild(b);
+  w.insertAdjacentHTML('beforeend',pb);
+  if(!AUDIO[k])w.insertAdjacentHTML('beforeend',`<span class="optw-ex">${e.l==='ar'?`<span class="arabic">${esc(e.w)}</span>`:esc(e.w)}</span>`);
+}
 function answerQ(el,q,i,hooks){
   const btns=[...el.querySelectorAll('.opt')];btns.forEach(b=>b.disabled=true);
   let ok,correctIdx,fb='';PB_V=q.vn||null;
@@ -1327,6 +1344,7 @@ function answerQ(el,q,i,hooks){
   PB_V=null;
   if(q.vn&&q.vn!=='main'&&qAudioKeys(q).length){const l=q.type==='pair'?q.c.l:'zh';fb+=`<p class="spk-note">Speaker: ${esc(voiceLabel(q.vn,l))}</p>`}
   btns[correctIdx].classList.add('right');if(!ok)btns[i].classList.add('wrong');
+  if(q.s&&q.opts)btns.forEach((b,j)=>optPlay(b,q.opts[j]));
   if(q.type==='pair')record(pwKey(q.p[q.ans]),ok);
   if(hooks.onAnswer)hooks.onAnswer(ok,q,i);
   fb+=`<div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button>${q.s?`<button class="btn ghost" data-sound="${q.s.id}">Open card</button>`:''}${hooks.extra?hooks.extra():''}<span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
