@@ -201,8 +201,6 @@ adjusting:
 - **The 24 new phrases.** Check by ear that each says the right words, and that the IPA
   (written by Claude, unreviewed) matches what the speaker says. Arabic is the least certain.
 - **The mouth map on a phone.** The dots at the front of the mouth are close together.
-- **Speaking cards in practice.** Three a day are added for sounds already in review; check
-  the pace feels right and that recording works inside a review session.
 - **Google sign-in inside the iPhone home-screen app** is still untested (older item).
 
 **Next, in suggested order** (not started):
@@ -274,6 +272,10 @@ signal to measure).
   Matched. Off sends it back to tomorrow, Close repeats the same gap, Matched moves it up.
   Existing progress gets its `k:` cards three a day (`ensureSayItems`). A checkbox on Today
   turns them off (`srs.settings.say`), and "Can't speak right now" drops them from one session.
+  **Retired 2026-11-20:** the owner never did them. `itemLangOK` now rejects every `k:` key,
+  no new ones are created (`ensureSayItems` is no longer called, `finishLesson` doesn't add
+  them), the Today checkbox is gone, and Today's focus ignores the "say" score. Old `k:` items
+  stay in storage untouched, so this can be undone. Speaking practice lives only in Speak.
 - **Adaptive listening (2026-11-09).** `stats['pw:<lang>:<word>']` counts hits and misses for
   each word when it was the one played. `pairQ` plays the weaker pair and word more often
   (capped at 65/35 so guessing doesn't pay), and speakers never repeat twice in a row.

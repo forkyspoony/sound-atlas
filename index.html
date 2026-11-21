@@ -995,7 +995,7 @@ function soundScores(s,l){
 function focusHTML(){
   const l=COURSE;let best=null;
   for(const s of S){if(!s.langs.includes(l)||s.st==='familiar')continue;const sc=soundScores(s,l);
-    for(const k of ['hear','say','know']){const v=sc[k];if(v!==null&&v<85&&(!best||v<best.v))best={s,k,v}}}
+    for(const k of ['hear','know']){const v=sc[k];if(v!==null&&v<85&&(!best||v<best.v))best={s,k,v}}}
   if(!best)return '';
   const s=best.s;let why,btn='';
   if(best.k==='hear'){
@@ -2925,7 +2925,7 @@ function ensureSayItems(){
 function srsHold(key){const it=srs.items[key];if(!it)return;it.due=addDays(Math.max(1,BOX_DAYS[it.box]));it.u=Date.now();persist()} // "close": same interval again
 function itemLangOK(k){
   let ok;
-  if(k.startsWith('k:')&&srs.settings.say===false)return false;
+  if(k.startsWith('k:'))return false;   // speaking cards retired from review 2026-11-20 (owner didn't do them); old k: items stay stored but never come up
   if(k==='t:tones'||k==='t:tpairs')ok=true;
   else if(k.startsWith('p:'))ok=!!PBYID[k.slice(2)];
   else if(k.startsWith('r:')||k.startsWith('b:'))ok=!!LBYID[k.slice(2)];
@@ -2938,7 +2938,6 @@ let tSess=null;
 function renderToday(){
   if(tSess)return;
   if(!srs.lessons)srs.lessons={};
-  ensureSayItems();
   const due=dueKeys(),nx=nextLesson();
   const st=srs.streak,today=dayStr();
   const alive=st.last===today||st.last===addDays(-1);
@@ -2956,9 +2955,7 @@ function renderToday(){
    ${nx?`<div class="quiz-box nextbox" style="margin-top:12px"><div class="tag t-${nx.unit.l}">Next lesson · ${esc(nx.unit.title)} ${nx.n}/${nx.unit.lessons.length}</div><h2 style="font-size:22px;margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">Start lesson →</button> <a href="#lessons" style="margin-left:10px;color:var(--muted)">See the whole path</a></div>`:''}
    ${focusHTML()}
    ${gapsHTML()}
-   <label class="saytog"><input type="checkbox" id="t-say" ${srs.settings.say===false?'':'checked'}> Include speaking cards (say a word, compare with the native speaker, rate yourself)</label>
    <p class="syncnote" id="syncnote">${syncMsg}</p>`;
-  $('#t-say').onchange=e=>{srs.settings.say=e.target.checked;persist();renderToday()};
   const s=$('#t-start');if(s)s.onclick=()=>startSession(due,[]);
   const x=$('#t-extra');if(x)x.onclick=()=>{const ks=Object.keys(srs.items).filter(itemLangOK);startSession(shuffle(ks).slice(0,8),[],true)};
 }
@@ -3303,15 +3300,13 @@ function finishLesson(){
   const L=lp.L,res=lp.results;
   const added=[];
   const addKeys=L.adds.slice();if(L.steps.some(s=>s.t==='build'))addKeys.push('b:'+L.id);
-  for(const k0 of addKeys){const k=courseKey(k0,L.unit.l);if(srs.items[k])continue;srs.items[k]={box:1,due:addDays(1),added:dayStr()};added.push(k);
-    const sk='k:'+k.slice(2);if(k.startsWith('s:')&&!srs.items[sk]&&sayWords(sk).length)srs.items[sk]={box:1,due:addDays(1),added:dayStr()}}
-  const nSay=added.filter(k=>srs.items['k:'+k.slice(2)]&&k.startsWith('s:')).length;
+  for(const k0 of addKeys){const k=courseKey(k0,L.unit.l);if(srs.items[k])continue;srs.items[k]={box:1,due:addDays(1),added:dayStr()};added.push(k)}
   srs.lessons[L.id]=dayStr();markActivity(Math.max(1,res.n));persist();
   const nx=nextLesson();lp=null;
   const label=k=>k.startsWith('s:')?`<span class="ipa">[${esc(BYID[sid(k)].sym)}]</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?'rule: '+esc(LBYID[k.slice(2)].title.replace(/^Rule: /,'')):k.startsWith('b:')?'writing in IPA':k==='t:tones'?'tones':'tone pairs';
   $('#lessons').innerHTML=`<div class="quiz-box"><div class="tag t-${L.unit.l}">${esc(L.unit.title)} · lesson ${L.n} complete</div><h2 style="margin-top:8px">${esc(L.title)} ✓</h2>
    ${res.n?`<p>${res.c} of ${res.n} questions right.</p>`:''}
-   ${added.length?`<p>Added to your daily review: ${added.map(label).join(', ')}. They'll come back tomorrow, then at growing intervals.${nSay?' Each new sound also gets a speaking card, where you say a word and compare yourself with the native speaker.':''}</p>`:'<p style="color:var(--muted)">Nothing new to add to your review from this lesson.</p>'}
+   ${added.length?`<p>Added to your daily review: ${added.map(label).join(', ')}. They'll come back tomorrow, then at growing intervals.</p>`:'<p style="color:var(--muted)">Nothing new to add to your review from this lesson.</p>'}
    <div class="row">${nx?`<button class="btn" data-lesson="${nx.id}">Next: ${esc(nx.title)} →</button>`:''}<button class="btn ghost" id="lp-path">All lessons</button></div></div>`;
   $('#lp-path').onclick=renderLessons;window.scrollTo(0,0);
 }
