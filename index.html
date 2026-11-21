@@ -1277,13 +1277,16 @@ function shuruNote(){
   if(COURSE==='ar')return '';
   const d=store.get('shuruWords',null),b=store.get('shuruBridge',null);  // b: what Shuru's script last reported
   if(!d)return `<p class="syncnote" id="shuru-note">Your words from Shuru: none on this device yet. ${b?`Shuru is connected but sent no words (${esc(b.error||'no reason given')}).`:'Shuru isn\'t talking to this page yet: reload Shuru at chrome://extensions, then reload this page.'}</p>`;
-  const ws=shuruWords(COURSE),ids=new Set(ws.flatMap(w=>w.ids||[]));
-  const inRev=Object.keys(srs.items).filter(k=>itemLangOK(k)&&k.startsWith('s:'));
-  const cov=inRev.filter(k=>ids.has(sid(k))).length;
+  const ws=shuruWords(COURSE),inRev=Object.keys(srs.items).filter(k=>itemLangOK(k)&&k.startsWith('s:'));
+  const cov=shuruCovered().length;
   const mins=Math.max(0,Math.round((Date.now()-(d.at||0))/60000));
   const when=mins<1?'just now':mins<60?mins+' min ago':mins<1440?Math.round(mins/60)+' h ago':Math.round(mins/1440)+' days ago';
-  return `<p class="syncnote" id="shuru-note">Your words from Shuru: ${ws.length} ${LANGS[COURSE]} word${ws.length===1?'':'s'}, covering ${cov} of the ${inRev.length} sounds in your review · updated ${when}.</p>`;
+  return `<p class="syncnote" id="shuru-note">Your words from Shuru: ${ws.length} ${LANGS[COURSE]} word${ws.length===1?'':'s'}, covering ${cov} of the ${inRev.length} sounds in your review · updated ${when}.${cov?' <button class="chip" id="t-mine" style="font-size:12px">Practise with your words</button>':''}</p>`;
 }
+// Review sounds (this course) that at least one of your Shuru words contains
+function shuruCovered(){const ids=new Set(shuruWords(COURSE).flatMap(w=>w.ids||[]));return Object.keys(srs.items).filter(k=>itemLangOK(k)&&k.startsWith('s:')&&ids.has(sid(k)))}
+// A short practice made only of your-word questions (doesn't move the schedule, like Practise a few anyway)
+document.addEventListener('click',e=>{if(!e.target.closest('#t-mine'))return;const ks=shuffle(shuruCovered()).slice(0,8);if(ks.length)startSession(ks,[],true,true)});
 // Shuru's script fires this when it has written words or a status: redraw the line in place
 document.addEventListener('shuru-words',()=>{const el=document.getElementById('shuru-note');if(el)el.outerHTML=shuruNote()});
 function mineIpa(ipa,sym){return esc(ipa).split(esc(sym)).join(`<b style="color:var(--accent)">${esc(sym)}</b>`)}
@@ -3004,14 +3007,14 @@ function renderToday(){
   const s=$('#t-start');if(s)s.onclick=()=>startSession(due,[]);
   const x=$('#t-extra');if(x)x.onclick=()=>{const ks=Object.keys(srs.items).filter(itemLangOK);startSession(shuffle(ks).slice(0,8),[],true)};
 }
-function startSession(due,news,extra){
+function startSession(due,news,extra,mine){
   // new items: intro then question; due items: question. Mix new items in after a couple of reviews.
   const q=due.map(k=>({k,isNew:false}));
   news.forEach((k,i)=>q.splice(Math.min(q.length,2+i*3),0,{k,isNew:true}));
-  tSess={q,i:0,c:0,n:0,missed:new Set(),extra};
+  tSess={q,i:0,c:0,n:0,missed:new Set(),extra,mine};
   stepSession();
 }
-function itemQ(k){
+function itemQ(k,mine){
   const langs=[klang(k)];
   if(k==='t:tones')return toneQ();
   if(k==='t:tpairs')return tpairQ();
@@ -3022,7 +3025,7 @@ function itemQ(k){
   if(k.startsWith('p:'))return pairQ(PBYID[k.slice(2)]);
   const s=BYID[sid(k)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
   const it=srs.items[k];const box=it?it.box:0;
-  if(it&&Math.random()<0.5){const mq=mineQ(s,klang(k),pool);if(mq)return mq}  // half the time, one of your own Shuru words
+  if(mine||(it&&Math.random()<0.5)){const mq=mineQ(s,klang(k),pool);if(mq)return mq}  // half the time, one of your own Shuru words
   return soundQ(s,pool,langs,box<=1?['word2sym','sym2name']:null);
 }
 function introHTML(k){
@@ -3064,7 +3067,7 @@ function stepSession(){
       onSkip:()=>{S_.q=S_.q.filter((x,j)=>j<S_.i||!x.k.startsWith('k:'));stepSession()}});
     return;
   }
-  const tq=itemQ(item.k);(tq.type==='build'?mountBuild:mountQ)($('#tq'),tq,{onAnswer:onAns,onNext:()=>{S_.i++;stepSession()},extra:()=>refHTML(item.k)});
+  const tq=itemQ(item.k,S_.mine);(tq.type==='build'?mountBuild:mountQ)($('#tq'),tq,{onAnswer:onAns,onNext:()=>{S_.i++;stepSession()},extra:()=>refHTML(item.k)});
 }
 function sayCard(el,k,hooks){
   const s=BYID[sid(k)],w=pick(sayWords(k)),l=w.l;let url=null,firstUrl=null;
