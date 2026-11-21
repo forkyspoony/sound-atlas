@@ -1274,16 +1274,18 @@ function mineQ(s,l,pool){
 }
 // Today: whether Shuru has sent your words to this device, and how many of this course's review sounds they cover
 function shuruNote(){
-  const d=store.get('shuruWords',null);
-  if(!d)return COURSE==='ar'?'':`<p class="syncnote">Your words from Shuru: none on this device yet. Open this page in Chrome with Shuru installed.</p>`;
   if(COURSE==='ar')return '';
+  const d=store.get('shuruWords',null),b=store.get('shuruBridge',null);  // b: what Shuru's script last reported
+  if(!d)return `<p class="syncnote" id="shuru-note">Your words from Shuru: none on this device yet. ${b?`Shuru is connected but sent no words (${esc(b.error||'no reason given')}).`:'Shuru isn\'t talking to this page yet: reload Shuru at chrome://extensions, then reload this page.'}</p>`;
   const ws=shuruWords(COURSE),ids=new Set(ws.flatMap(w=>w.ids||[]));
   const inRev=Object.keys(srs.items).filter(k=>itemLangOK(k)&&k.startsWith('s:'));
   const cov=inRev.filter(k=>ids.has(sid(k))).length;
   const mins=Math.max(0,Math.round((Date.now()-(d.at||0))/60000));
   const when=mins<1?'just now':mins<60?mins+' min ago':mins<1440?Math.round(mins/60)+' h ago':Math.round(mins/1440)+' days ago';
-  return `<p class="syncnote">Your words from Shuru: ${ws.length} ${LANGS[COURSE]} word${ws.length===1?'':'s'}, covering ${cov} of the ${inRev.length} sounds in your review · updated ${when}.</p>`;
+  return `<p class="syncnote" id="shuru-note">Your words from Shuru: ${ws.length} ${LANGS[COURSE]} word${ws.length===1?'':'s'}, covering ${cov} of the ${inRev.length} sounds in your review · updated ${when}.</p>`;
 }
+// Shuru's script fires this when it has written words or a status: redraw the line in place
+document.addEventListener('shuru-words',()=>{const el=document.getElementById('shuru-note');if(el)el.outerHTML=shuruNote()});
 function mineIpa(ipa,sym){return esc(ipa).split(esc(sym)).join(`<b style="color:var(--accent)">${esc(sym)}</b>`)}
 function toneQ(){const set=pick(TONESETS),n=Math.floor(Math.random()*4);return {type:'tone',char:set[n],syl:set[4],ans:n,opts:[0,1,2,3]}}
 // Adaptive listening: remember, word by word, how often you miss it when it's the one played,
