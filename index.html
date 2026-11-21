@@ -1266,7 +1266,10 @@ function soundQ(s,pool,langs,types){
 // 'ipa:shuruWords' = {at, es:[{w,r?,ipa,g,ids}], zh:[...]} while this site is open; ids are the sounds in the word.
 function shuruWords(l){const d=store.get('shuruWords',null);return d&&Array.isArray(d[l])?d[l]:[]}
 function mineQ(s,l,pool){
-  const ws=shuruWords(l).filter(w=>w&&w.w&&Array.isArray(w.ids)&&w.ids.includes(s.id));if(!ws.length)return null;
+  // Shuru files p, t and k all under 'pu' (no puff), but the card shows [p]: for it, only words with a real p.
+  // (Other Shuru symbols differ from ours on purpose, e.g. ʐ→ɻ, ʎ→ʝ, b→β, so no general symbol check.)
+  const need={pu:'p'}[s.id];
+  const ws=shuruWords(l).filter(w=>w&&w.w&&Array.isArray(w.ids)&&w.ids.includes(s.id)&&(!need||String(w.ipa||'').includes(need)));if(!ws.length)return null;
   const w=pick(ws),has=new Set(w.ids);
   const others=distractors(s,pool.filter(x=>!has.has(x.id)),8).filter(x=>!has.has(x.id)).slice(0,3);  // no option that is also in the word
   if(others.length<2)return null;
