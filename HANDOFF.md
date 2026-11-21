@@ -135,10 +135,11 @@ numbering below keeps the owner's. Build these next, roughly in this order:
 7. ~~"Why was I wrong?" on listening misses.~~ **Built 2026-11-21**: a wrong pair or look-alike
    answer plays what you heard, then what you picked, marks the difference in the IPA and gives a
    "Listen for" line. See Decisions.
-8. **Weekly progress check.** Every 7 days a fixed 20-item listening test, shown as a graph.
+8. ~~Weekly progress check.~~ **Skipped** at the owner's request (2026-11-21).
 
 **Lower effort**
-9. **Listen-only review for commutes.** Plays a word, pauses, says the answer. No tapping.
+9. ~~Listen-only review for commutes.~~ **Built 2026-11-21**: "🎧 Listen-only review" on Today.
+   See Decisions.
 10. **Quieter app.** Hide tabs you never open, so the next useful thing is obvious.
 
 **Shuru / Migaku track (side work, done and live):**
@@ -352,6 +353,19 @@ signal to measure).
   sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
   played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
   fake account store; real sign-in sync not yet checked on the live site.
+- **Listen-only review (2026-11-21, roadmap item 9).** Button on Today when there are review items.
+  Takes up to 25 items: the 5-minute pick of due cards, then other review items, only sound cards,
+  pair drills and `t:tones` (rules, writing and reading cards need a screen), grouped by
+  `groupLookAlikes`. Each card (`listenCard`): plays the word twice, waits 3.5 s, then the device's
+  English voice gives the answer (`enSay`), and the words play again. A sound card is a
+  look-alike contrast when `contrastQ` works ("That was Rolled R, as in the word for dog. Compare
+  Tapped R…"), else an example word; pair drills say both meanings and play both words; tones say
+  "Tone 3, …". The answer also appears on screen. Pause / Skip / Stop buttons, headphone controls
+  through Media Session, and a screen wake lock (phones stop web audio when locked or in the
+  background, so the screen has to stay on). Leaving the Today tab stops it. Nothing is graded and
+  the schedule is untouched. Tested 2026-11-21 with mocked audio: steps play in order, Skip,
+  Pause, Stop and leaving the tab work, every sound/pair/tone item in the three courses builds a
+  card. Not tried on a phone with headphones or a locked screen.
 - **"Why was I wrong?" on listening misses (2026-11-21, roadmap item 7).** In `answerQ`, a wrong
   `pair` answer now says "You heard X [ipa], and picked Y [ipa]" with the differing part of the
   IPA underlined (`ipaDiff`: common start and end stay plain; keeps ʰ ː ˤ ̪ with their letter and

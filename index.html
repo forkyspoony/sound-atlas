@@ -3141,8 +3141,109 @@ function pickReview(due){
 }
 function newToday(){const d=srs.days[dayStr()];return d?d.new||0:0}
 let tSess=null;
+// ---- Listen-only review (roadmap item 9) ----
+// Hands-free, for commutes: plays a word twice, pauses so you can think, then says the answer in English
+// and plays the comparison. No tapping and no grading, so the schedule isn't touched.
+let lSess=null;
+const sleepL=ms=>new Promise(r=>setTimeout(r,ms));
+// Play a word (native clip in voice v, else the device voice) and wait until it ends
+function sayWait(text,lang,v){
+  return new Promise(async res=>{
+    const done=()=>res();let u=audioUrl(text,v);
+    if(u){try{if(Array.isArray(u))u=await spriteClip(u);if(curAudio)curAudio.pause();curAudio=new Audio(u);curAudio.playbackRate=slowOn?0.7:1;curAudio.onended=done;curAudio.onerror=done;await curAudio.play();return}catch(e){}}
+    enSay(text.replace(/ \(.*\)/,''),lang).then(done);
+  });
+}
+// The device voice, waiting for it to finish. lang 'en' for the spoken answers.
+function enSay(text,lang){
+  return new Promise(res=>{
+    if(!('speechSynthesis' in window))return res();
+    try{
+      speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);
+      const code=lang||'en';const v=voices.find(x=>x.lang&&x.lang.toLowerCase().startsWith(code));
+      if(v)u.voice=v;u.lang=v?v.lang:({en:'en-US',es:'es-ES',zh:'zh-CN',ar:'ar-SA'}[code]);u.rate=code==='en'?1:0.8;
+      const t=setTimeout(res,Math.max(2500,text.length*120));u.onend=u.onerror=()=>{clearTimeout(t);res()};speechSynthesis.speak(u);
+    }catch(e){res()}
+  });
+}
+const spokenName=s=>s.name.replace(/\s*\(.*?\)/g,'');
+// One hands-free card for a review item: what to show and the steps to play
+function listenCard(k){
+  const l=klang(k);
+  if(k==='t:tones'){const q=toneQ(),t=TONES[q.ans];
+    return {show:`<span class="hz" style="font-size:40px">${q.char}</span> tone ${t.n} <span class="ipa">${t.let}</span>`,ask:'Which tone?',
+      steps:[['w',q.char,'zh'],['gap',900],['w',q.char,'zh'],['think'],['en',`Tone ${t.n}, ${t.name}.`],['w',q.char,'zh']]}}
+  if(k.startsWith('p:')){const q=pairQ(PBYID[k.slice(2)]),w=q.p[q.ans],o=q.p[1-q.ans],v=pickVoice(qAudioKeys(q));
+    return {show:`<b>${wordHTML(w)}</b> <span class="ipa">[${esc(w.ipa)}]</span> “${esc(w.g)}”, not ${wordHTML(o)} “${esc(o.g)}”`,ask:'Which word: '+esc(q.c.label)+'?',
+      steps:[['w',w.w,w.l,v],['gap',900],['w',w.w,w.l,v],['think'],['en',`That was the word for ${w.g}. The other one means ${o.g}.`],['w',w.w,w.l,v],['gap',500],['w',o.w,o.l,v]]}}
+  if(!k.startsWith('s:'))return null;
+  const s=BYID[sid(k)];if(!s)return null;
+  const cq=contrastQ(s,l);
+  if(cq){const e=cq.e,v=pickVoice([e.w]),others=cq.opts.filter(o=>o!==cq.s);
+    const st=[['w',e.w,l,v],['gap',900],['w',e.w,l,v],['think'],['en',`That was ${spokenName(cq.s)}, as in the word for ${e.g}.`]];
+    for(const o of others){const ow=cq.cmp[o.id];st.push(['en',`Compare ${spokenName(o)}, as in the word for ${ow.g}.`],['w',ow.w,l,v],['gap',500],['w',e.w,l,v])}
+    return {show:`<b>${wordHTML(e)}</b> <span class="ipa">[${esc(e.ipa)}]</span> has <span class="ipa">[${esc(cq.s.sym)}]</span>, not ${others.map(o=>`<span class="ipa">[${esc(o.sym)}]</span>`).join(' or ')}`,
+      ask:'Which sound: '+cq.opts.map(o=>`<span class="ipa">${esc(o.sym)}</span>`).join(' / ')+'?',steps:st}}
+  const exs=s.ex.filter(e=>e.l===l&&AUDIO[e.w]&&!/\(Spain\)/.test(e.w));if(!exs.length)return null;
+  const e=pick(exs),v=pickVoice([e.w]);
+  return {show:`<b>${wordHTML(e)}</b> <span class="ipa">[${esc(e.ipa)}]</span>: <span class="ipa">[${esc(s.sym)}]</span> is spelled ${esc(e.f)}`,ask:`Which sound is spelled ${esc(e.f)}?`,
+    steps:[['w',e.w,l,v],['gap',900],['w',e.w,l,v],['think'],['en',`${spokenName(s)}, as in the word for ${e.g}.`],['w',e.w,l,v]]};
+}
+function startListen(){
+  const due=dueKeys(),all=Object.keys(srs.items).filter(itemLangOK);
+  const keys=groupLookAlikes([...pickReview(due),...shuffle(all.filter(k=>!due.includes(k)))].filter(k=>/^(s:|p:|t:tones)/.test(k)).slice(0,25));
+  if(!keys.length)return;
+  lSess={keys,i:0,paused:false,run:0};
+  try{navigator.wakeLock&&navigator.wakeLock.request('screen').then(w=>lSess&&(lSess.lock=w)).catch(()=>{})}catch(e){}
+  try{const ms=navigator.mediaSession;if(ms){ms.metadata=new MediaMetadata({title:'Sound Atlas',artist:'Listen-only review'});
+    ms.setActionHandler('pause',()=>listenPause(true));ms.setActionHandler('play',()=>listenPause(false));ms.setActionHandler('nexttrack',()=>listenNext());ms.setActionHandler('stop',()=>stopListen())}}catch(e){}
+  listenPlay();
+}
+function listenDraw(c,revealed){
+  const L=lSess;
+  $('#today').innerHTML=`<div class="row" style="margin-bottom:10px;justify-content:space-between"><button class="btn ghost" id="l-stop">Stop</button><span style="color:var(--muted)">🎧 ${L.i+1} / ${L.keys.length}</span></div>
+   <div class="bar" style="margin-bottom:14px"><i style="width:${100*L.i/L.keys.length}%;background:var(--accent)"></i></div>
+   <div class="quiz-box" style="text-align:center"><div class="qprompt">${c?c.ask:''}</div>
+   <div style="font-size:22px;min-height:70px;margin:14px 0">${revealed&&c?c.show:'<span style="color:var(--muted)">Listen…</span>'}</div>
+   <div class="row" style="justify-content:center"><button class="btn" id="l-pause">${L.paused?'▶ Resume':'⏸ Pause'}</button><button class="btn ghost" id="l-next">Skip ⏭</button></div>
+   <p style="color:var(--muted);font-size:13px;margin-top:12px">Plays each word twice, pauses so you can answer in your head, then tells you. Headphone buttons work too. Keep the screen on: phones stop web audio when locked. Nothing here changes your review schedule.</p></div>`;
+  $('#l-stop').onclick=()=>stopListen();$('#l-pause').onclick=()=>listenPause(!lSess.paused);$('#l-next').onclick=listenNext;
+}
+async function listenPlay(){
+  const L=lSess;if(!L)return;const run=++L.run;
+  while(L.i<L.keys.length){
+    const c=listenCard(L.keys[L.i]);
+    if(c){listenDraw(c,false);
+      for(const [t,a,b,v] of c.steps){
+        while(L.paused&&L.run===run)await sleepL(300);
+        if(lSess!==L||L.run!==run)return;
+        if(t==='w')await sayWait(a,b,v);
+        else if(t==='gap')await sleepL(a);
+        else if(t==='think')await sleepL(3500);
+        else if(t==='en'){listenDraw(c,true);await enSay(a,'en')}
+      }
+      await sleepL(1500);
+    }
+    if(lSess!==L||L.run!==run)return;
+    L.i++;
+  }
+  stopListen(true);
+}
+function listenPause(p){if(!lSess)return;lSess.paused=p;try{if(p){if(curAudio)curAudio.pause();speechSynthesis.pause()}else speechSynthesis.resume()}catch(e){}
+  const b=$('#l-pause');if(b)b.textContent=p?'▶ Resume':'⏸ Pause';if(!p&&curAudio&&curAudio.paused&&curAudio.currentTime>0)curAudio.play().catch(()=>{})}
+function listenNext(){if(!lSess)return;try{if(curAudio)curAudio.pause();speechSynthesis.cancel()}catch(e){}lSess.paused=false;lSess.i++;listenPlay()}
+function stopListen(finished){
+  const L=lSess;if(!L)return;lSess=null;
+  try{if(curAudio)curAudio.pause();speechSynthesis.cancel()}catch(e){}
+  try{L.lock&&L.lock.release()}catch(e){}
+  try{const ms=navigator.mediaSession;if(ms)for(const a of ['pause','play','nexttrack','stop'])ms.setActionHandler(a,null)}catch(e){}
+  const onToday=!location.hash||location.hash.replace('#','')==='today';
+  if(finished===true&&onToday){$('#today').innerHTML=`<div class="quiz-box"><h2 style="font-size:22px">Listen-only review done: ${L.keys.length} items</h2><p style="color:var(--muted)">Nothing was graded, so your schedule is unchanged. Tap-through reviews still count for that.</p><button class="btn" id="l-home">Back to Today</button></div>`;$('#l-home').onclick=renderToday}
+  else if(onToday)renderToday();
+}
+window.addEventListener('hashchange',()=>{if(lSess&&location.hash.replace('#','')!=='today')stopListen()});
 function renderToday(){
-  if(tSess)return;
+  if(tSess||lSess)return;
   if(!srs.lessons)srs.lessons={};
   const due=dueKeys(),nx=nextLesson();
   const st=srs.streak,today=dayStr();
@@ -3160,12 +3261,14 @@ function renderToday(){
      return `<h2 style="font-size:22px">${cut?`5-minute review · ${pk} of ${due.length} due`:`${due.length} review${due.length===1?'':'s'} due · about ${Math.max(1,Math.round(due.length*cardSecs()/60))} min`}</h2><p style="color:var(--muted)">${cut?'Picks the cards that help most right now: the shakiest ones, the ones you keep missing and the longest overdue. The rest wait for next time.':'Do these first: reviewing just before you\'d forget is what makes things stick.'}</p><button class="btn" id="t-start">Start review</button>${cut?` <button class="btn ghost" id="t-all">Review all ${due.length}</button>`:''}${!shortOn()?' <button class="btn ghost" id="t-short">Back to 5-minute reviews</button>':''}`})()
      :`<h2 style="font-size:22px">${doneToday?'Reviews done for today ✓':'No reviews due'}</h2><p style="color:var(--muted)">${nItems?'Items come back on a schedule: tomorrow, then 2, 4, 8, 16 days… Anything you miss starts over.':'Finish a lesson and its sounds, contrasts and rules will start appearing here.'}</p>${nItems?'<button class="btn ghost" id="t-extra">Practise a few anyway</button>':''}`}</div>
    ${nx?`<div class="quiz-box nextbox" style="margin-top:12px"><div class="tag t-${nx.unit.l}">Next lesson · ${esc(nx.unit.title)} ${nx.n}/${nx.unit.lessons.length}</div><h2 style="font-size:22px;margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">Start lesson →</button> <a href="#lessons" style="margin-left:10px;color:var(--muted)">See the whole path</a></div>`:''}
+   ${nItems?`<div class="row" style="margin-top:10px;align-items:center"><button class="btn ghost" id="t-listen">🎧 Listen-only review</button><span style="color:var(--muted);font-size:13px">Hands-free for a commute: it plays a word, pauses, then tells you.</span></div>`:''}
    ${focusHTML()}
    ${gapsHTML()}
    <p class="syncnote" id="syncnote">${syncMsg}</p>${shuruNote()}`;
   const s=$('#t-start');if(s)s.onclick=()=>startSession(pickReview(due),[]);
   const al=$('#t-all');if(al)al.onclick=()=>{srs.settings.short=false;persist();startSession(due,[])};   // remembered: a long review today means you want them
   const sh=$('#t-short');if(sh)sh.onclick=()=>{srs.settings.short=true;persist();renderToday()};
+  const ln=$('#t-listen');if(ln)ln.onclick=startListen;
   const x=$('#t-extra');if(x)x.onclick=()=>{const ks=Object.keys(srs.items).filter(itemLangOK);startSession(shuffle(ks).slice(0,8),[],true)};
 }
 // Look-alike sounds: the sounds an item is about (a sound card, or the two sides of a pair drill)
