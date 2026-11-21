@@ -1172,6 +1172,7 @@ function openSound(id){
   <h3 style="margin-top:16px">How to make it</h3><ol class="how">${s.how.map(h=>`<li>${esc(h)}</li>`).join('')}</ol>
   <h3>Hear it in words</h3>
   ${s.ex.map(e=>`<div class="ex">${playBtn(e.w,e.l)}<div><div class="w">${wordHTML(e)} ${e.r?`<span class="meta">${esc(e.r)}</span>`:''}</div><div class="meta"><span class="tag t-${e.l}">${LANGS[e.l]}</span> “${esc(e.g)}” · sound spelled <b>${esc(e.f)}</b></div></div><div class="tr ipa">[${esc(e.ipa)}]${AUDIO[e.w]&&!/\(Spain\)/.test(e.w)?`<button class="slink sp-btn" data-speak="${e.l}|${esc(e.w)}" title="Record yourself saying this">🎙</button>`:''}</div></div>`).join('')}
+  ${mineCardHTML(s)}
   <div class="voice-warn"></div>
   ${s.note?`<div class="note">${esc(s.note)}</div>`:''}
   ${s.rel&&s.rel.length?`<div class="related">Compare with ${s.rel.filter(r=>BYID[r]).map(r=>`<button class="slink ipa" data-sound="${r}" title="${esc(BYID[r].name)}">${esc(BYID[r].sym)}</button>`).join('')}</div>`:''}`;
@@ -1265,11 +1266,20 @@ function soundQ(s,pool,langs,types){
 // "Your words": your saved review words from Shuru, the owner's Chrome extension. Its content script writes
 // 'ipa:shuruWords' = {at, es:[{w,r?,ipa,g,ids}], zh:[...]} while this site is open; ids are the sounds in the word.
 function shuruWords(l){const d=store.get('shuruWords',null);return d&&Array.isArray(d[l])?d[l]:[]}
+// Your Shuru words in language l that contain sound s.
+// Shuru files p, t and k all under 'pu' (no puff), but the card shows [p]: for it, only words with a real p.
+// (Other Shuru symbols differ from ours on purpose, e.g. ʐ→ɻ, ʎ→ʝ, b→β, so no general symbol check.)
+function shuruFor(s,l){const need={pu:'p'}[s.id];return shuruWords(l).filter(w=>w&&w.w&&Array.isArray(w.ids)&&w.ids.includes(s.id)&&(!need||String(w.ipa||'').includes(need)))}
+// Sound card: "From your reading", your Shuru words with this sound (newest first), tap to hear
+function mineCardHTML(s){
+  const rows=s.langs.filter(l=>l!=='ar').flatMap(l=>shuruFor(s,l).map(w=>({...w,l})));if(!rows.length)return '';
+  const show=rows.slice(0,6);
+  return `<h3>From your reading</h3><p style="font-size:13px;color:var(--muted);margin:-4px 0 6px">Words you saved in Shuru that have this sound. Played by your device's voice, so listen to the words above for the real thing.</p>
+  ${show.map(w=>`<div class="ex">${playBtn(w.w,w.l)}<div><div class="w">${esc(w.w)} ${w.r?`<span class="meta">${esc(w.r)}</span>`:''}</div><div class="meta"><span class="tag t-${w.l}">${LANGS[w.l]}</span>${w.g?` “${esc(w.g)}”`:''}</div></div><div class="tr ipa">${w.ipa?`/${mineIpa(w.ipa,s.sym)}/`:''}</div></div>`).join('')}
+  ${rows.length>show.length?`<p style="font-size:13px;color:var(--muted)">and ${rows.length-show.length} more in your Shuru words.</p>`:''}`;
+}
 function mineQ(s,l,pool){
-  // Shuru files p, t and k all under 'pu' (no puff), but the card shows [p]: for it, only words with a real p.
-  // (Other Shuru symbols differ from ours on purpose, e.g. ʐ→ɻ, ʎ→ʝ, b→β, so no general symbol check.)
-  const need={pu:'p'}[s.id];
-  const ws=shuruWords(l).filter(w=>w&&w.w&&Array.isArray(w.ids)&&w.ids.includes(s.id)&&(!need||String(w.ipa||'').includes(need)));if(!ws.length)return null;
+  const ws=shuruFor(s,l);if(!ws.length)return null;
   const w=pick(ws),has=new Set(w.ids);
   const others=distractors(s,pool.filter(x=>!has.has(x.id)),8).filter(x=>!has.has(x.id)).slice(0,3);  // no option that is also in the word
   if(others.length<2)return null;
@@ -1279,19 +1289,21 @@ function mineQ(s,l,pool){
 function shuruNote(){
   if(COURSE==='ar')return '';
   const d=store.get('shuruWords',null),b=store.get('shuruBridge',null);  // b: what Shuru's script last reported
-  if(!d)return `<p class="syncnote" id="shuru-note">Your words from Shuru: none on this device yet. ${b?`Shuru is connected but sent no words (${esc(b.error||'no reason given')}).`:'Shuru isn\'t talking to this page yet: reload Shuru at chrome://extensions, then reload this page.'}</p>`;
+  if(!d)return `<p class="syncnote" id="shuru-note">Your words from Shuru: none on this device yet. ${b?`Shuru is connected but sent no words (${esc(b.error||'no reason given')}).`:'Shuru isn\'t talking to this page yet: reload Shuru at chrome://extensions, then reload this page. On a phone, sign in with Google here and on the computer that has Shuru, and your words come over with your progress.'}</p>`;
   const ws=shuruWords(COURSE),inRev=Object.keys(srs.items).filter(k=>itemLangOK(k)&&k.startsWith('s:'));
   const cov=shuruCovered().length;
   const mins=Math.max(0,Math.round((Date.now()-(d.at||0))/60000));
   const when=mins<1?'just now':mins<60?mins+' min ago':mins<1440?Math.round(mins/60)+' h ago':Math.round(mins/1440)+' days ago';
-  return `<p class="syncnote" id="shuru-note">Your words from Shuru: ${ws.length} ${LANGS[COURSE]} word${ws.length===1?'':'s'}, covering ${cov} of the ${inRev.length} sounds in your review · updated ${when}.${cov?' <button class="chip" id="t-mine" style="font-size:12px">Practise with your words</button>':''}</p>`;
+  return `<p class="syncnote" id="shuru-note">Your words from Shuru: ${ws.length} ${LANGS[COURSE]} word${ws.length===1?'':'s'}, covering ${cov} of the ${inRev.length} sounds in your review · updated ${when}${d.via==='sync'?' on your other device':''}.${cov?' <button class="chip" id="t-mine" style="font-size:12px">Practise with your words</button>':''}</p>`;
 }
 // Review sounds (this course) that at least one of your Shuru words contains
 function shuruCovered(){const ids=new Set(shuruWords(COURSE).flatMap(w=>w.ids||[]));return Object.keys(srs.items).filter(k=>itemLangOK(k)&&k.startsWith('s:')&&ids.has(sid(k)))}
 // A short practice made only of your-word questions (doesn't move the schedule, like Practise a few anyway)
 document.addEventListener('click',e=>{if(!e.target.closest('#t-mine'))return;const ks=shuffle(shuruCovered()).slice(0,8);if(ks.length)startSession(ks,[],true,true)});
 // Shuru's script fires this when it has written words or a status: redraw the line in place
-document.addEventListener('shuru-words',()=>{const el=document.getElementById('shuru-note');if(el)el.outerHTML=shuruNote()});
+let lastShuruPush=0;
+document.addEventListener('shuru-words',()=>{const el=document.getElementById('shuru-note');if(el)el.outerHTML=shuruNote();
+  const d=store.get('shuruWords',null);if(syncRef&&d&&d.via!=='sync'&&d.at!==lastShuruPush){lastShuruPush=d.at;clearTimeout(syncTimer);syncTimer=setTimeout(pushRemote,1500)}});
 function mineIpa(ipa,sym){return esc(ipa).split(esc(sym)).join(`<b style="color:var(--accent)">${esc(sym)}</b>`)}
 function toneQ(){const set=pick(TONESETS),n=Math.floor(Math.random()*4);return {type:'tone',char:set[n],syl:set[4],ans:n,opts:[0,1,2,3]}}
 // Adaptive listening: remember, word by word, how often you miss it when it's the one played,
@@ -3127,7 +3139,14 @@ function finishSession(){
 
 // ---------- SYNC (account storage, with on-device fallback) ----------
 let syncMsg='Progress is saved on this device.';let syncRef=null,syncTimer=null,lastSaved=0,syncBusy=false;
-function snapshotState(){return {v:1,updated:Date.now(),stats,srs,flags}}
+// shuru = your Shuru words, so a phone (no Shuru there) gets them too. ipa:weak isn't sent: each device works it out from stats.
+function snapshotState(){const sh=store.get('shuruWords',null);return {v:1,updated:Date.now(),stats,srs,flags,...(sh?{shuru:sh}:{})}}
+// Keep whichever copy of your Shuru words is newer. Returns true if this device's copy changed.
+function takeShuru(r){
+  const mine=store.get('shuruWords',null),th=r&&r.shuru;
+  if(!th||!th.at||(mine&&(mine.at||0)>=th.at))return false;
+  store.set('shuruWords',{...th,via:'sync'});document.dispatchEvent(new Event('shuru-words'));return true;
+}
 function persist(){
   store.set('stats',stats);store.set('srs',srs);store.set('updated',Date.now());exportWeak();
   if(syncRef){clearTimeout(syncTimer);syncTimer=setTimeout(pushRemote,1500)}
@@ -3190,6 +3209,7 @@ async function initSync(){
     const localUpdated=store.get('updated',0);
     if(snap.exists){
       const r=snap.data();
+      takeShuru(r);
       if(r&&Array.isArray(r.flags)){const have=new Set(flags.map(f=>f.k+'|'+f.v));for(const f of r.flags)if(!have.has(f.k+'|'+f.v))flags.push(f);store.set('flags',flags);renderFlags()}
       if(r&&r.srs&&r.stats){
         // Combine this device's progress with the account's, rather than letting one replace the other.
@@ -3200,7 +3220,8 @@ async function initSync(){
           store.set('stats',stats);store.set('srs',srs);store.set('updated',changedThere?Date.now():r.updated);
         }
         syncRef=ref;
-        if(changedThere)await pushRemote();
+        const sh=store.get('shuruWords',null);
+        if(changedThere||(sh&&(sh.at||0)>((r.shuru||{}).at||0)))await pushRemote();
         else setSync('Progress syncs to your Google account, so it\'s the same on your phone and computer.');
         if(changedHere&&!tSess&&!lp)route();
         return;

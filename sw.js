@@ -38,7 +38,9 @@ async function shell(req, url) {
   const cache = await caches.open(SHELL);
   const key = req.mode === 'navigate' ? './' : url.pathname;
   const saved = await cache.match(key);
-  const fresh = fetch(req).then(r => { if (r.ok) cache.put(key, r.clone()); return r; });
+  // 'no-cache' makes the browser check with the server instead of trusting its own copy
+  // (GitHub Pages lets browsers reuse a page for 10 minutes), so a push really shows right away.
+  const fresh = fetch(req, { cache: 'no-cache' }).then(r => { if (r.ok) cache.put(key, r.clone()); return r; });
   if (!saved) return fresh;
   fresh.catch(() => {});
   const slow = new Promise(res => setTimeout(() => res(saved), SLOW_MS));

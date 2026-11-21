@@ -9,9 +9,10 @@ version of every file. Nothing newer exists anywhere else.
 still mentions the APK elsewhere, treat it as history.
 
 **Picking this up in a new chat? Start at "Roadmap: where we are" in section 2.** It lists
-what is built, what is waiting on the owner's testing, and what comes next. As of
-2026-11-10 the latest feature commit on `main` is `032155f` (roadmap items 15 and 16: Tone
-pairs and 15 more phrases), and everything built so far is pushed.
+what is built and what comes next. The current roadmap is the owner's **learning upgrades**
+list (smarter review, feedback, low-effort modes); the Shuru work and the older
+speaking-tools roadmap are kept below it. As of
+2026-11-21 the latest feature commit on `main` is `51121e5`, and everything built is pushed.
 
 - **Live site:** https://forkyspoony.github.io/sound-atlas
 - **Old claude.ai copy:** https://claude.ai/artifact/1VwidV6YpmPm8GtADRXQU3 (stale, see Decisions)
@@ -113,7 +114,51 @@ Cross-cutting features:
    the flag-audio feature exists. Flags are saved in progress (`flags`), and nobody has
    reviewed them yet.
 
-### Roadmap: where we are (updated 2026-11-10)
+### Roadmap: where we are (updated 2026-11-21)
+
+**Current roadmap: learning upgrades.** The owner's own list (pasted 2026-11-21), aimed at
+making review and listening teach more per minute. Its items 1 and 2 were not in the paste;
+numbering below keeps the owner's. Build these next, roughly in this order:
+
+**Make review smarter**
+3. **Interleave confusable sounds within one session.** Put r / ɾ, x / h, ħ / h / ʕ back to
+   back so the ear compares them directly, instead of each card being its own drill.
+4. **Repeat a missed card in the same session**, 3–5 cards later, not only tomorrow.
+5. **Mix speakers on purpose.** Make "a voice you haven't heard for this sound" a deliberate
+   review step (the 13-voice mix already exists), so you learn the sound, not one speaker.
+6. **Shorter, adaptive sessions.** Cap a review at about 5 minutes and pick the cards that help
+   most rather than everything due.
+
+**Understanding**
+7. **"Why was I wrong?" on listening misses.** After a wrong pair answer, replay both words side
+   by side with a one-line tip ("listen for the puff after the t"). Write-it-in-IPA already
+   has this (`symSlips`); listening doesn't.
+8. **Weekly progress check.** Every 7 days a fixed 20-item listening test, shown as a graph.
+
+**Lower effort**
+9. **Listen-only review for commutes.** Plays a word, pauses, says the answer. No tapping.
+10. **Quieter app.** Hide tabs you never open, so the next useful thing is obvious.
+
+**Shuru / Migaku track (side work, done and live):**
+
+| # | Upgrade | Where | Commit |
+|---|---|---|---|
+| L1 | `#sound/<id>` links open a sound card; Migaku userscript offers a button per IPA sound on a card (`tools/migaku-sound-atlas.user.js`) | Router, Sounds | `316cec9` |
+| L2 | Quiz options play their sound after you answer | Quiz, review | `67b4bf9` |
+| L3 | Speaking cards removed from the daily review (owner never did them; old items kept) | Today | `6298a5f` |
+| L4 | Weak sounds shared with Shuru (`exportWeak` → `ipa:weak`), Shuru marks those symbols | Shuru bridge | `2bfe96f` |
+| L5 | "Your words": review sounds using words saved in Shuru (`mineQ`), also for missed sounds | Today | `0640c3b`, `9efee8b` |
+| L6 | Today's Shuru line: word count, sounds covered, or why no words came | Today | `9efee8b`, `1ae5510` |
+| L7 | "Practise with your words": short session of only your-word questions, schedule untouched | Today | `5cb6a7c` |
+| L8 | No-puff p question only uses words with a real p (Shuru files p/t/k together) | Your words | `51121e5` |
+| L9 | Your words reach the phone through Google sign-in sync (`takeShuru`) | Sync, Today | 2026-11-21 |
+| L10 | "From your reading" on sound cards: your Shuru words with that sound (`mineCardHTML`) | Sounds | 2026-11-21 |
+
+The owner said (2026-11-21) not to pursue other Shuru ideas (Shuru words in Transcribe or
+lessons, Migaku two-way, Arabic in the bridge). **Still to check with the owner:** whether
+Your words questions feel useful, and whether device TTS for those words is good enough.
+
+### Earlier roadmap: speaking tools (2026-11-09 to 2026-11-10)
 
 The goal behind all of this: get the owner to **say** each language's sounds correctly, not
 only recognise them. The roadmap came from a brainstorm on 2026-11-09. Details of each
@@ -297,6 +342,14 @@ signal to measure).
   they cover (`shuruCovered`), or why none came (`ipa:shuruBridge`, written by Shuru's script,
   which fires a `shuru-words` event to redraw it), plus a "Practise with your words" button: up
   to 8 covered sounds, every question from your words, schedule untouched. Tested 2026-11-21.
+- **Your words synced and on sound cards (2026-11-21).** `snapshotState` now sends
+  `ipa:shuruWords` to the account as `shuru`; `takeShuru` keeps whichever copy has the newer
+  `at` and marks a synced copy `via:'sync'` (Today then says "on your other device"). A new
+  batch from Shuru triggers a push. `ipa:weak` is not synced: each device works it out from
+  stats, and only the computer runs Shuru. Sound cards show up to 6 of your words with that
+  sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
+  played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
+  fake account store; real sign-in sync not yet checked on the live site.
 - **Adaptive listening (2026-11-09).** `stats['pw:<lang>:<word>']` counts hits and misses for
   each word when it was the one played. `pairQ` plays the weaker pair and word more often
   (capped at 65/35 so guessing doesn't pay), and speakers never repeat twice in a row.
