@@ -132,9 +132,9 @@ numbering below keeps the owner's. Build these next, roughly in this order:
    most for about 5 minutes and stops adding cards when time is up. See Decisions.
 
 **Understanding**
-7. **"Why was I wrong?" on listening misses.** After a wrong pair answer, replay both words side
-   by side with a one-line tip ("listen for the puff after the t"). Write-it-in-IPA already
-   has this (`symSlips`); listening doesn't.
+7. ~~"Why was I wrong?" on listening misses.~~ **Built 2026-11-21**: a wrong pair or look-alike
+   answer plays what you heard, then what you picked, marks the difference in the IPA and gives a
+   "Listen for" line. See Decisions.
 8. **Weekly progress check.** Every 7 days a fixed 20-item listening test, shown as a graph.
 
 **Lower effort**
@@ -352,6 +352,17 @@ signal to measure).
   sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
   played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
   fake account store; real sign-in sync not yet checked on the live site.
+- **"Why was I wrong?" on listening misses (2026-11-21, roadmap item 7).** In `answerQ`, a wrong
+  `pair` answer now says "You heard X [ipa], and picked Y [ipa]" with the differing part of the
+  IPA underlined (`ipaDiff`: common start and end stay plain; keeps ʰ ː ˤ ̪ with their letter and
+  ts/ʈʂ/tɕ together; for marra/mara marks rr vs r). Then **Listen for:** one ear cue per contrast
+  from `EAR` (keyed by pair id; written by Claude, about what to hear rather than how to make the
+  sound, which the pairs' own `tip` covers). Both words then play back to back, heard first,
+  in the same voice (`playSeq`, 450 ms gap; any other playback cancels it), with a "▶ Heard,
+  then picked" button to repeat. A wrong look-alike (`cmp`) answer gets the same replay and the
+  cue of the pair drill that contrasts the two sounds (`earTip`), when there is one. Correct
+  answers look as before. Tested 2026-11-21: all 54 pair words missed once, every one marked
+  and replayed, no errors.
 - **5-minute reviews (2026-11-21, roadmap item 6).** `pickReview` takes the top `shortN()` due
   cards by `reviewValue`: +3 for box ≤1, +1.5 for box 2–3, + 5 × smoothed miss rate of the item's
   sounds (pair drills use their sounds; rule/build/tone cards count as average), + 0.5 per day
