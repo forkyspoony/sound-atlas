@@ -290,6 +290,9 @@ signal to measure).
   In review, a sound item (box 1 or more) is asked half the time as "Which of these sounds is in
   your word?" with one of those words, played by TTS, distractors chosen from confusable sounds
   that are not in the word. Graded like any sound question. Local only, not synced.
+  Shuru files p, t and k all under `pu`, so `mineQ` uses a word for `pu` only if its IPA has a real p
+  (2026-11-21). No general symbol check: Shuru's IPA writes ʐ, ʎ, b, d, g where our cards show
+  ɻ, ʝ, β, ð, ɣ, and those words are meant to count.
   Today shows a "Your words from Shuru" line (`shuruNote`): word count, how many review sounds
   they cover (`shuruCovered`), or why none came (`ipa:shuruBridge`, written by Shuru's script,
   which fires a `shuru-words` event to redraw it), plus a "Practise with your words" button: up
