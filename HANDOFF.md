@@ -126,8 +126,8 @@ numbering below keeps the owner's. Build these next, roughly in this order:
    hear?" with the answers played side by side. See Decisions.
 4. ~~Repeat a missed card in the same session.~~ **Built 2026-11-21**: it comes back 3–5 cards
    later, after every miss, until passed. See Decisions.
-5. **Mix speakers on purpose.** Make "a voice you haven't heard for this sound" a deliberate
-   review step (the 13-voice mix already exists), so you learn the sound, not one speaker.
+5. ~~Mix speakers on purpose.~~ **Built 2026-11-21**: review plays a voice you haven't heard say
+   a sound yet, tagged "New voice", until you've heard them all. See Decisions.
 6. **Shorter, adaptive sessions.** Cap a review at about 5 minutes and pick the cards that help
    most rather than everything due.
 
@@ -352,6 +352,20 @@ signal to measure).
   sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
   played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
   fake account store; real sign-in sync not yet checked on the live site.
+- **New voices on purpose (2026-11-21, roadmap item 5).** `stats['vh:<lang>:<sound>:<voice>']`
+  counts answers to listening questions where that voice said a word with that sound (recorded
+  in `answerQ` via `qHeard`, so Quiz and Pairs count too; main voice is stored by name, e.g.
+  `mateo`). In review: a sound card in box 1+ is asked half the time by `newVoiceQ` when an
+  unheard voice exists, as a minimal pair from the pair drills ("which look-alike?", both words
+  and the side-by-side replay in that voice) or else an example word. Pair cards and contrast
+  questions switch to an unheard voice when the word has one (`forceNewVoice`). The prompt shows
+  "New voice: Liza · Mexico". Off when "One voice" is chosen. `pairSound` works out which of a
+  pair drill's sounds each word has from the IPA, since `ids` isn't always one per side.
+  `word2sym` questions now go through the voice mix too. Limited by recordings: extra voices
+  exist only for the pair-drill words and a few examples, so in Spanish only r, ɾ and some vowels
+  get new voices; Arabic x ɣ ʔ ħ ʕ h; Mandarin most sounds. More sounds would need more voices
+  recorded. Tested 2026-11-21: six review rounds per course, new-voice questions drop to zero as
+  every voice gets heard, no errors.
 - **Missed cards come back until passed (2026-11-21, roadmap item 4).** In `stepSession`'s
   `onAns`, every wrong answer (first try or retry) splices a retry copy 3–5 cards ahead. Near the
   end that means the very next card, so a session only finishes once every missed card has been

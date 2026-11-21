@@ -1316,6 +1316,45 @@ function contrastQ(s,l){
   const heard=Math.random()<0.5?s:pick(set.slice(1)),cmp={};for(const o of set)cmp[o.id]=pick(cmpWords(o,set,l));  // one word per sound
   return {type:'cmp',s:heard,l,e:cmp[heard.id],cmp,opts:shuffle(set)};
 }
+// ---- New voices (roadmap item 5): learn the sound, not one speaker ----
+// stats['vh:<lang>:<sound>:<voice>'] counts how often you've answered a listening question where that voice
+// said a word with that sound. In review, a voice you haven't heard for a sound gets played on purpose.
+const voiceName=(v,l)=>!v||v==='main'?MAIN_VOICE[l]:v;
+const vhKey=(l,id,v)=>'vh:'+l+':'+id+':'+voiceName(v,l);
+const vhHeard=(l,id,v)=>{const t=stat(vhKey(l,id,v));return t.c+t.w>0};
+function voicesFor(...words){let set=null;for(const w of words){const vs=Object.keys(AUDIO_V[w]||{});set=set?set.filter(x=>vs.includes(x)):vs}return ['main',...(set||[])]}
+// Which of a pair drill's sounds word w has and its partner o lacks (pair ids aren't always one per side)
+function pairSound(c,w,o){return c.ids.find(id=>BYID[id]&&hasSym(w.ipa,BYID[id].sym)&&!hasSym(o.ipa,BYID[id].sym))}
+// the sound actually heard in a listening question and its language
+function qHeard(q){
+  if(q.type==='pair'){const id=pairSound(q.c,q.p[q.ans],q.p[1-q.ans]);return id?{l:q.c.l,id}:null}
+  if(q.type==='cmp')return {l:q.l,id:q.s.id};
+  if(q.type==='word2sym'&&q.ex)return {l:q.ex.l,id:q.s.id};
+  return null;
+}
+// Play a voice not yet heard for the sound in q, if the word(s) have one. Marks q.newVoice for the prompt tag.
+function forceNewVoice(q){
+  const h=voiceMix&&qHeard(q);if(!h)return q;
+  const fresh=voicesFor(...qAudioKeys(q)).filter(v=>!vhHeard(h.l,h.id,v));
+  if(fresh.length){q.vn=pick(fresh);q.newVoice=true}
+  return q;
+}
+// For a sound card: a question built around a voice you haven't heard say this sound. Prefers a minimal pair
+// from the pair drills (asked as "which look-alike?", both words in that voice), else an example word.
+function newVoiceQ(s,l){
+  if(!voiceMix)return null;
+  const opts=[];
+  for(const c of PAIRS)if(c.l===l&&c.ids.includes(s.id))for(const p of c.pairs){
+    const a=pairSound(c,p[0],p[1]),b=pairSound(c,p[1],p[0]);if(!a||!b||a===b||(a!==s.id&&b!==s.id))continue;
+    for(const v of voicesFor(p[0].w,p[1].w).filter(v=>v!=='main'&&!vhHeard(l,s.id,v)))opts.push({p,a:BYID[a],b:BYID[b],v});
+  }
+  if(opts.length){const o=pick(opts),heard=Math.random()<0.5?o.a:o.b;
+    return {type:'cmp',s:heard,l,e:heard===o.a?o.p[0]:o.p[1],cmp:{[o.a.id]:o.p[0],[o.b.id]:o.p[1]},opts:shuffle([o.a,o.b]),vn:o.v,newVoice:true}}
+  const exs=s.ex.filter(e=>e.l===l&&AUDIO_V[e.w]).flatMap(e=>voicesFor(e.w).filter(v=>v!=='main'&&!vhHeard(l,s.id,v)).map(v=>({e,v})));
+  if(!exs.length)return null;
+  const o=pick(exs),pool=S.filter(x=>x.langs.includes(l)&&x.st!=='familiar');
+  return {type:'word2sym',s,ex:o.e,opts:shuffle([s,...distractors(s,pool)]),vn:o.v,newVoice:true};
+}
 function toneQ(){const set=pick(TONESETS),n=Math.floor(Math.random()*4);return {type:'tone',char:set[n],syl:set[4],ans:n,opts:[0,1,2,3]}}
 // Adaptive listening: remember, word by word, how often you miss it when it's the one played,
 // and bring the pairs and words you miss back more often.
@@ -1378,6 +1417,7 @@ function mountQ(el,q,hooks){
     opts=q.opts.map((o,i)=>`<button class="opt sym" data-i="${i}">${esc(o.sym)}</button>`).join('');
   }
   PB_V=null;
+  if(q.newVoice){const h=qHeard(q);if(h)prompt+=` <span class="tag t-new">New voice: ${esc(voiceLabel(q.vn,h.l))}</span>`}
   el.innerHTML=`<div class="qprompt">${prompt}</div><div class="qmain">${main}</div><div class="opts${q.type==='pair'?' two':''}">${opts}</div><div class="voice-warn"></div><div class="feedback"></div>`;
   el.querySelector('.opts').onclick=e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)answerQ(el,q,+b.dataset.i,hooks)};
   if(['tone','word2sym','pair','tpair','mine','cmp'].includes(q.type)||(q.type==='custom'&&q.item.w)){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
@@ -1427,7 +1467,8 @@ function answerQ(el,q,i,hooks){
       ${!ok?`<p style="color:var(--muted)">You picked <span class="ipa">[${esc(q.opts[i].sym)}]</span>, the ${esc(q.opts[i].name.toLowerCase())}.</p>`:''}`;
   }
   PB_V=null;
-  if(q.vn&&q.vn!=='main'&&qAudioKeys(q).length){const l=q.type==='pair'?q.c.l:'zh';fb+=`<p class="spk-note">Speaker: ${esc(voiceLabel(q.vn,l))}</p>`}
+  const hq=qHeard(q);if(hq)record(vhKey(hq.l,hq.id,q.vn),ok);   // this voice has now said this sound to you
+  if(q.vn&&q.vn!=='main'&&qAudioKeys(q).length){const l=hq?hq.l:'zh';fb+=`<p class="spk-note">Speaker: ${esc(voiceLabel(q.vn,l))}${q.newVoice?' · new to you for this sound':''}</p>`}
   btns[correctIdx].classList.add('right');if(!ok)btns[i].classList.add('wrong');
   if(q.s&&q.opts&&q.type!=='cmp')btns.forEach((b,j)=>optPlay(b,q.opts[j]));
   if(q.type==='pair')record(pwKey(q.p[q.ans]),ok);
@@ -3070,11 +3111,12 @@ function itemQ(k,mine){
   if(k.startsWith('b:')){const L=LBYID[k.slice(2)];const weak=weakSyms(L.unit.l); // lean towards words with symbols you keep missing
     return {type:'build',item:wpick(L.steps.filter(s=>s.t==='build').flatMap(s=>s.items),it=>{const tk=it.a.split(' ');return 1+Math.min(4,2*weak.filter(t=>tk.includes(t)).length)})}}
   if(k.startsWith('r:')){const L=LBYID[k.slice(2)];const qs=L.steps.filter(s=>s.t==='ruleq').flatMap(s=>s.qs);return customQ(pick(qs),L.unit.l)}
-  if(k.startsWith('p:'))return pairQ(PBYID[k.slice(2)]);
+  if(k.startsWith('p:'))return forceNewVoice(pairQ(PBYID[k.slice(2)]));
   const s=BYID[sid(k)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
   const it=srs.items[k];const box=it?it.box:0;
   if(mine||(it&&Math.random()<0.5)){const mq=mineQ(s,klang(k),pool);if(mq)return mq}  // half the time, one of your own Shuru words
-  if(box>=1&&Math.random()<0.4){const cq=contrastQ(s,klang(k));if(cq)return cq}  // otherwise often: which of the look-alikes did you hear?
+  if(box>=1&&Math.random()<0.5){const nq=newVoiceQ(s,klang(k));if(nq)return nq}  // a speaker you haven't heard say this sound
+  if(box>=1&&Math.random()<0.4){const cq=contrastQ(s,klang(k));if(cq)return forceNewVoice(cq)}  // otherwise often: which of the look-alikes did you hear?
   return soundQ(s,pool,langs,box<=1?['word2sym','sym2name']:null);
 }
 function introHTML(k){
@@ -3987,6 +4029,7 @@ function qAudioKeys(q){
   if(q.type==='tpair')return [q.it.w];
   if(q.type==='pair')return [q.p[0].w,q.p[1].w];
   if(q.type==='cmp')return [q.e.w];
+  if(q.type==='word2sym'&&q.ex)return [q.ex.w];
   return [];
 }
 function pickVoice(keys){
