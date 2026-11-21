@@ -140,7 +140,11 @@ numbering below keeps the owner's. Build these next, roughly in this order:
 **Lower effort**
 9. ~~Listen-only review for commutes.~~ **Built 2026-11-21**: "🎧 Listen-only review" on Today.
    See Decisions.
-10. **Quieter app.** Hide tabs you never open, so the next useful thing is obvious.
+10. ~~Quieter app.~~ **Built 2026-11-21**: tabs not opened in 14 days wait behind "More". See
+   Decisions.
+
+**The owner's learning-upgrades list is finished** (items 3–7, 9, 10 built; 8 skipped). Ask the
+owner what comes next.
 
 **Shuru / Migaku track (side work, done and live):**
 
@@ -353,6 +357,13 @@ signal to measure).
   sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
   played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
   fake account store; real sign-in sync not yet checked on the live site.
+- **Quieter tabs (2026-11-21, roadmap item 10).** Today, Lessons, Sounds and Pairs always show, plus
+  Tones (Mandarin) or Read Arabic (Arabic). Any other tab shows only if it was opened in the last
+  14 days (`ipa:tabUse`, set in `route`, this device only, not synced); the rest sit behind a
+  "More (n) ▾" link at the end of the tab bar that reveals them faded, and "Less ▴" folds them
+  again. The tab you are on always shows, so links from Today into Speak etc. still work and then
+  keep that tab visible. On a fresh device only the main tabs show at first. `navQuiet`, called
+  from `route` and `setCourse`. Tested 2026-11-21 at desktop and phone width.
 - **Listen-only review (2026-11-21, roadmap item 9).** Button on Today when there are review items.
   Takes up to 25 items: the 5-minute pick of due cards, then other review items, only sound cards,
   pair drills and `t:tones` (rules, writing and reading cards need a screen), grouped by

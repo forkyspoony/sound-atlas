@@ -37,6 +37,8 @@ h1 .slash{color:var(--accent)}
 nav{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
 nav a{padding:10px 14px;text-decoration:none;color:var(--muted);font-weight:600;border-bottom:3px solid transparent;margin-bottom:-1px}
 nav a.on{color:var(--ink);border-color:var(--accent)}
+nav a.quiet{display:none}nav.all a.quiet{display:inline-block;opacity:.7}
+nav .nav-more{color:var(--muted);font-weight:500}
 main{max-width:1100px;margin:0 auto;padding:22px 20px 80px}
 section.view{display:none}
 section.view.on{display:block}
@@ -384,6 +386,7 @@ table.marks td.arabic{font-size:30px}
     <a href="#transcribe" data-v="transcribe">Transcribe</a>
     <a href="#basics" data-v="basics">IPA basics</a>
     <a href="#across" data-v="across">Across languages</a>
+    <a href="#" class="nav-more" id="nav-more">More ▾</a>
   </nav>
 </header>
 
@@ -3796,6 +3799,28 @@ function renderMaps(){
     return `<tr><td>${k==='ar'?`<span class="arabic" style="font-size:20px">${esc(sp)}</span>`:`<b>${esc(sp)}</b>`}</td><td>${sym} ${btns}</td></tr>`}).join('')}</table></div>`).join('');
 }
 
+// ---------- QUIETER TABS (roadmap item 10) ----------
+// The main tabs always show (plus Tones or Read Arabic in their course). Any other tab shows only if you opened it in the last 14 days; the rest wait
+// behind "More". ipa:tabUse = {<view>: last opened (ms)}, this device only.
+const CORE_TABS=['today','lessons','learn','pairs','tones','read'],TAB_DAYS=14;   // tones and read only show in their own course
+let navOpen=false;
+function navQuiet(cur){
+  const use=store.get('tabUse',{}),now=Date.now();
+  let hidden=0;
+  document.querySelectorAll('#nav a[data-v]').forEach(a=>{
+    const v=a.dataset.v,q=!CORE_TABS.includes(v)&&v!==cur&&!(use[v]&&now-use[v]<TAB_DAYS*864e5);
+    a.classList.toggle('quiet',q);if(q&&a.style.display!=='none')hidden++;
+  });
+  const nav=$('#nav'),m=$('#nav-more');nav.classList.toggle('all',navOpen);
+  m.style.display=hidden?'':'none';
+  m.textContent=navOpen?'Less ▴':`More (${hidden}) ▾`;
+  m.title='Tabs you haven\'t opened in two weeks';
+}
+document.addEventListener('click',e=>{
+  const m=e.target.closest('#nav-more');if(m){e.preventDefault();navOpen=!navOpen;navQuiet(route.last);return}
+  if(navOpen&&e.target.closest('#nav a[data-v]'))navOpen=false;
+});
+
 // ---------- ROUTER ----------
 const VIEWS=['today','lessons','learn','pairs','speak','vowels','tones','quiz','transcribe','basics','across','read'];
 function route(){
@@ -3806,6 +3831,7 @@ function route(){
   const v=VIEWS.includes(h)?h:'today';
   VIEWS.forEach(x=>document.getElementById('v-'+x).classList.toggle('on',x===v));
   document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  {const use=store.get('tabUse',{});use[v]=Date.now();store.set('tabUse',use);navQuiet(v)}
   if(v==='quiz'&&!curQ)newQ();
   if(v==='transcribe'&&!trCur)newTr();
   if(v==='learn')renderLearn();
@@ -3860,6 +3886,7 @@ function applyCourseChrome(){
   document.querySelectorAll('#coursebar button').forEach(b=>b.classList.toggle('on',b.dataset.course===COURSE));
   const sub=$('#course-sub');if(sub)sub.textContent=COURSE_INFO[COURSE].sub;
   document.querySelectorAll('[data-only]').forEach(e=>e.style.display=e.dataset.only===COURSE?'':'none');
+  if(typeof navQuiet==='function'&&document.getElementById('nav-more'))navQuiet(route.last);
   const n=courseLessons().length;
   const lead=$('#lessons-lead');if(lead)lead.innerHTML=`${n} lessons that take you through every sound of ${COURSE_INFO[COURSE].sub}, from reading the IPA symbols to saying whole phrases. Each lesson teaches a symbol, lets you feel the sound in your own mouth, compares it with English, then has you hear it, read it, write it and say it. Everything you learn goes into your daily review.`;
   const qt=$('#q-tones');if(qt){qt.closest('label').style.display=COURSE==='zh'?'':'none'}
