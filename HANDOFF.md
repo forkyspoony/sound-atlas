@@ -128,8 +128,8 @@ numbering below keeps the owner's. Build these next, roughly in this order:
    later, after every miss, until passed. See Decisions.
 5. ~~Mix speakers on purpose.~~ **Built 2026-11-21**: review plays a voice you haven't heard say
    a sound yet, tagged "New voice", until you've heard them all. See Decisions.
-6. **Shorter, adaptive sessions.** Cap a review at about 5 minutes and pick the cards that help
-   most rather than everything due.
+6. ~~Shorter, adaptive sessions.~~ **Built 2026-11-21**: a review takes the due cards that help
+   most for about 5 minutes and stops adding cards when time is up. See Decisions.
 
 **Understanding**
 7. **"Why was I wrong?" on listening misses.** After a wrong pair answer, replay both words side
@@ -352,6 +352,17 @@ signal to measure).
   sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
   played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
   fake account store; real sign-in sync not yet checked on the live site.
+- **5-minute reviews (2026-11-21, roadmap item 6).** `pickReview` takes the top `shortN()` due
+  cards by `reviewValue`: +3 for box ≤1, +1.5 for box 2–3, + 5 × smoothed miss rate of the item's
+  sounds (pair drills use their sounds; rule/build/tone cards count as average), + 0.5 per day
+  overdue (max 10 days). `shortN` = 5 minutes ÷ your pace (`ipa:secPerCard`, local, starts at 15 s,
+  learned from answers between 2 and 90 s), kept between 8 and 30. Picked cards keep their due
+  order, then `groupLookAlikes`. The rest stay due and compete again next review. Time guard:
+  after 5 minutes, cards not reached yet are dropped from the session (missed-card retries and
+  new items stay, so item 4 still holds). Today says "5-minute review · 20 of 24 due" with a
+  "Review all 24" button; choosing it sets `srs.settings.short=false` (synced), and Today then
+  offers "Back to 5-minute reviews". The end screen says how many are still due. "Practise a
+  few" and Your-words sessions are untouched. Tested 2026-11-21 with 24 due Mandarin cards.
 - **New voices on purpose (2026-11-21, roadmap item 5).** `stats['vh:<lang>:<sound>:<voice>']`
   counts answers to listening questions where that voice said a word with that sound (recorded
   in `answerQ` via `qHeard`, so Quiz and Pairs count too; main voice is stored by name, e.g.

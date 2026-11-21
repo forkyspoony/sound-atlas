@@ -3059,6 +3059,25 @@ function itemLangOK(k){
   else ok=!!BYID[sid(k)];
   return ok&&klang(k)===COURSE;
 }
+// ---- Short reviews (roadmap item 6) ----
+// A review is about 5 minutes: it takes the due cards that help most, not the whole backlog. The rest stay
+// due and compete again next time. srs.settings.short === false turns this off ("Review all").
+const SHORT_MS=5*60*1000;
+const shortOn=()=>srs.settings.short!==false;
+const cardSecs=()=>store.get('secPerCard',15);                 // your pace, learned as you answer
+const shortN=()=>Math.max(8,Math.min(30,Math.round(SHORT_MS/1000/cardSecs())));
+// Most useful first: cards nearest to being forgotten (low box), ones you keep missing, and long-overdue ones.
+function reviewValue(k){
+  const it=srs.items[k],over=Math.max(0,Math.round((new Date(dayStr())-new Date(it.due))/864e5));
+  const ids=itemSounds(k),st=ids.length?ids.map(stat):[stat(k.startsWith('p:')?k:'')];
+  const miss=st.reduce((a,t)=>a+(t.w+1)/(t.c+t.w+3),0)/st.length;   // smoothed share of misses
+  return (it.box<=1?3:it.box<=3?1.5:0)+miss*5+Math.min(10,over)*0.5;
+}
+function pickReview(due){
+  if(!shortOn()||due.length<=shortN())return due;
+  const top=new Set([...due].sort((a,b)=>reviewValue(b)-reviewValue(a)).slice(0,shortN()));
+  return due.filter(k=>top.has(k));
+}
 function newToday(){const d=srs.days[dayStr()];return d?d.new||0:0}
 let tSess=null;
 function renderToday(){
@@ -3076,13 +3095,16 @@ function renderToday(){
      <div class="tstat"><b>${nDone}/${CLs.length}</b><span>lessons done</span></div>
      <div class="tstat"><b>${nItems}</b><span>items in review</span></div>
    </div>
-   <div class="quiz-box">${due.length?`<h2 style="font-size:22px">${due.length} review${due.length===1?'':'s'} due · about ${Math.max(1,Math.round(due.length*0.25))} min</h2><p style="color:var(--muted)">Do these first: reviewing just before you'd forget is what makes things stick.</p><button class="btn" id="t-start">Start review</button>`
+   <div class="quiz-box">${due.length?(()=>{const pk=pickReview(due).length,cut=pk<due.length;
+     return `<h2 style="font-size:22px">${cut?`5-minute review · ${pk} of ${due.length} due`:`${due.length} review${due.length===1?'':'s'} due · about ${Math.max(1,Math.round(due.length*cardSecs()/60))} min`}</h2><p style="color:var(--muted)">${cut?'Picks the cards that help most right now: the shakiest ones, the ones you keep missing and the longest overdue. The rest wait for next time.':'Do these first: reviewing just before you\'d forget is what makes things stick.'}</p><button class="btn" id="t-start">Start review</button>${cut?` <button class="btn ghost" id="t-all">Review all ${due.length}</button>`:''}${!shortOn()?' <button class="btn ghost" id="t-short">Back to 5-minute reviews</button>':''}`})()
      :`<h2 style="font-size:22px">${doneToday?'Reviews done for today ✓':'No reviews due'}</h2><p style="color:var(--muted)">${nItems?'Items come back on a schedule: tomorrow, then 2, 4, 8, 16 days… Anything you miss starts over.':'Finish a lesson and its sounds, contrasts and rules will start appearing here.'}</p>${nItems?'<button class="btn ghost" id="t-extra">Practise a few anyway</button>':''}`}</div>
    ${nx?`<div class="quiz-box nextbox" style="margin-top:12px"><div class="tag t-${nx.unit.l}">Next lesson · ${esc(nx.unit.title)} ${nx.n}/${nx.unit.lessons.length}</div><h2 style="font-size:22px;margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">Start lesson →</button> <a href="#lessons" style="margin-left:10px;color:var(--muted)">See the whole path</a></div>`:''}
    ${focusHTML()}
    ${gapsHTML()}
    <p class="syncnote" id="syncnote">${syncMsg}</p>${shuruNote()}`;
-  const s=$('#t-start');if(s)s.onclick=()=>startSession(due,[]);
+  const s=$('#t-start');if(s)s.onclick=()=>startSession(pickReview(due),[]);
+  const al=$('#t-all');if(al)al.onclick=()=>{srs.settings.short=false;persist();startSession(due,[])};   // remembered: a long review today means you want them
+  const sh=$('#t-short');if(sh)sh.onclick=()=>{srs.settings.short=true;persist();renderToday()};
   const x=$('#t-extra');if(x)x.onclick=()=>{const ks=Object.keys(srs.items).filter(itemLangOK);startSession(shuffle(ks).slice(0,8),[],true)};
 }
 // Look-alike sounds: the sounds an item is about (a sound card, or the two sides of a pair drill)
@@ -3100,7 +3122,7 @@ function startSession(due,news,extra,mine){
   // new items: intro then question; due items: question. Mix new items in after a couple of reviews.
   const q=(mine?due:groupLookAlikes(due)).map(k=>({k,isNew:false}));
   news.forEach((k,i)=>q.splice(Math.min(q.length,2+i*3),0,{k,isNew:true}));
-  tSess={q,i:0,c:0,n:0,missed:new Set(),extra,mine};
+  tSess={q,i:0,c:0,n:0,missed:new Set(),extra,mine,t0:Date.now(),cut:0};
   stepSession();
 }
 function itemQ(k,mine){
@@ -3141,8 +3163,12 @@ function stepSession(){
   }
   $('#today').innerHTML=head+`<div class="quiz-box qbox" id="tq"></div>`;
   $('#t-quit').onclick=finishSession;
+  const shownAt=Date.now();
   const onAns=(ok,q,i,hold)=>{
     S_.n++;if(ok)S_.c++;
+    const dt=(Date.now()-shownAt)/1000;if(dt>=2&&dt<=90)store.set('secPerCard',Math.round((cardSecs()*0.85+dt*0.15)*10)/10);   // learn your pace
+    // 5 minutes up: drop the cards not reached yet (they stay due). Missed cards still come back until passed.
+    if(!S_.extra&&!S_.mine&&shortOn()&&Date.now()-S_.t0>SHORT_MS){const before=S_.q.length;S_.q=S_.q.filter((x,j)=>j<=S_.i||x.retry||x.isNew);S_.cut+=before-S_.q.length}
     if(q.s){record(q.s.id,ok);if(!ok)record(q.opts[i].id,false)}
     if(q.type==='pair')record('p:'+q.c.id,ok);
     const k=item.k;
@@ -3211,6 +3237,7 @@ function finishSession(){
   persist();
   $('#today').innerHTML=`<div class="quiz-box"><h2 style="font-size:22px">Session done: ${S_.c}/${S_.n} right</h2>
    <p style="color:var(--muted)">${S_.missed.size?`Missed today: ${[...S_.missed].map(k=>k.startsWith('s:')?`<span class="ipa">${esc(BYID[sid(k)].sym)}</span>`:k.startsWith('k:')?`saying <span class="ipa">${esc(BYID[sid(k)].sym)}</span>`:k.startsWith('p:')?esc(PBYID[k.slice(2)].label):k.startsWith('r:')?esc(LBYID[k.slice(2)].title):k.startsWith('b:')?'writing: '+esc(LBYID[k.slice(2)].title):k==='a:words'?'reading words':k.startsWith('a:')?`<span class="arabic">${esc(k.slice(2))}</span>`:'tones').join(', ')}. They'll come back tomorrow.`:'Clean run. Those items will come back later.'}</p>
+   ${(()=>{const left=S_.extra||S_.mine?0:dueKeys().length;return left?`<p style="color:var(--muted)">${left} more card${left===1?' is':'s are'} still due. ${S_.cut?'Time was up, so they':'They'} wait for your next review, where the most useful ones go first.</p>`:''})()}
    <div class="row"><button class="btn" id="t-home">Back to Today</button><a class="btn ghost" href="#pairs" style="text-decoration:none">Drill pairs</a></div></div>`;
   $('#t-home').onclick=renderToday;
 }
