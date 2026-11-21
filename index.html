@@ -3091,7 +3091,7 @@ function stepSession(){
   const S_=tSess;
   if(S_.i>=S_.q.length){finishSession();return}
   const item=S_.q[S_.i];
-  const head=`<div class="row" style="margin-bottom:10px;justify-content:space-between"><button class="btn ghost" id="t-quit">End session</button><span style="color:var(--muted)">${S_.i+1} / ${S_.q.length}</span></div><div class="bar" style="margin-bottom:14px"><i style="width:${100*S_.i/S_.q.length}%;background:var(--accent)"></i></div>`;
+  const head=`<div class="row" style="margin-bottom:10px;justify-content:space-between"><button class="btn ghost" id="t-quit">End session</button><span style="color:var(--muted)">${item.retry?'<span class="tag t-tricky" style="margin-right:8px">Missed earlier · try again</span>':''}${S_.i+1} / ${S_.q.length}</span></div><div class="bar" style="margin-bottom:14px"><i style="width:${100*S_.i/S_.q.length}%;background:var(--accent)"></i></div>`;
   if(item.isNew&&!item.introduced){
     $('#today').innerHTML=head+`<div class="quiz-box">${introHTML(item.k)}<div class="row" style="margin-top:14px"><button class="btn next" id="t-got">Got it, test me →</button></div></div>`;
     $('#t-got').onclick=()=>{item.introduced=true;stepSession()};
@@ -3106,7 +3106,9 @@ function stepSession(){
     const k=item.k;
     if(item.isNew&&!srs.items[k]){srs.items[k]={box:ok?1:0,due:addDays(ok?1:0),added:dayStr()};const d=srs.days[dayStr()]||(srs.days[dayStr()]={done:0,new:0});d.new++;}
     else if(!S_.extra&&!S_.missed.has(k)){hold?srsHold(k):srsTouch(k,ok)}
-    if(!ok&&!S_.missed.has(k)){S_.missed.add(k);S_.q.push({k,isNew:false,retry:true})} // see it again before the session ends
+    // Missed: it comes back 3-5 cards later, and again after every miss, until you get it right.
+    // Near the end of the queue that means straight away: the session doesn't end on an unpassed card.
+    if(!ok){S_.missed.add(k);S_.q.splice(Math.min(S_.q.length,S_.i+3+Math.floor(Math.random()*3)),0,{k,isNew:false,retry:true})}
     persist();
   };
   if(item.k.startsWith('k:')){

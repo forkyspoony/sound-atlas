@@ -124,7 +124,8 @@ numbering below keeps the owner's. Build these next, roughly in this order:
 3. ~~Interleave confusable sounds within one session.~~ **Built 2026-11-21**: look-alike items
    sit back to back in a session, and sound cards are often asked as "which look-alike did you
    hear?" with the answers played side by side. See Decisions.
-4. **Repeat a missed card in the same session**, 3–5 cards later, not only tomorrow.
+4. ~~Repeat a missed card in the same session.~~ **Built 2026-11-21**: it comes back 3–5 cards
+   later, after every miss, until passed. See Decisions.
 5. **Mix speakers on purpose.** Make "a voice you haven't heard for this sound" a deliberate
    review step (the 13-voice mix already exists), so you learn the sound, not one speaker.
 6. **Shorter, adaptive sessions.** Cap a review at about 5 minutes and pick the cards that help
@@ -351,6 +352,13 @@ signal to measure).
   sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
   played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
   fake account store; real sign-in sync not yet checked on the live site.
+- **Missed cards come back until passed (2026-11-21, roadmap item 4).** In `stepSession`'s
+  `onAns`, every wrong answer (first try or retry) splices a retry copy 3–5 cards ahead. Near the
+  end that means the very next card, so a session only finishes once every missed card has been
+  answered right; the owner asked for this because they won't start a second session minutes
+  later. Retry cards show a "Missed earlier · try again" tag. Only the first answer moves the
+  schedule (a miss sends the card to box 1, due tomorrow); retries only count in stats. "End
+  session" still stops at any time.
 - **Look-alike sounds back to back (2026-11-21, roadmap item 3).** Two parts, both in review only.
   (1) `groupLookAlikes` reorders a session's due items: each item pulls its direct look-alikes up
   right behind it (`lookAlike`: same sound or listed in each other's `rel`; pair drills count by
