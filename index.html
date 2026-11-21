@@ -1272,6 +1272,18 @@ function mineQ(s,l,pool){
   if(others.length<2)return null;
   return {type:'mine',s,w,l,opts:shuffle([s,...others])};
 }
+// Today: whether Shuru has sent your words to this device, and how many of this course's review sounds they cover
+function shuruNote(){
+  const d=store.get('shuruWords',null);
+  if(!d)return COURSE==='ar'?'':`<p class="syncnote">Your words from Shuru: none on this device yet. Open this page in Chrome with Shuru installed.</p>`;
+  if(COURSE==='ar')return '';
+  const ws=shuruWords(COURSE),ids=new Set(ws.flatMap(w=>w.ids||[]));
+  const inRev=Object.keys(srs.items).filter(k=>itemLangOK(k)&&k.startsWith('s:'));
+  const cov=inRev.filter(k=>ids.has(sid(k))).length;
+  const mins=Math.max(0,Math.round((Date.now()-(d.at||0))/60000));
+  const when=mins<1?'just now':mins<60?mins+' min ago':mins<1440?Math.round(mins/60)+' h ago':Math.round(mins/1440)+' days ago';
+  return `<p class="syncnote">Your words from Shuru: ${ws.length} ${LANGS[COURSE]} word${ws.length===1?'':'s'}, covering ${cov} of the ${inRev.length} sounds in your review · updated ${when}.</p>`;
+}
 function mineIpa(ipa,sym){return esc(ipa).split(esc(sym)).join(`<b style="color:var(--accent)">${esc(sym)}</b>`)}
 function toneQ(){const set=pick(TONESETS),n=Math.floor(Math.random()*4);return {type:'tone',char:set[n],syl:set[4],ans:n,opts:[0,1,2,3]}}
 // Adaptive listening: remember, word by word, how often you miss it when it's the one played,
@@ -2986,7 +2998,7 @@ function renderToday(){
    ${nx?`<div class="quiz-box nextbox" style="margin-top:12px"><div class="tag t-${nx.unit.l}">Next lesson · ${esc(nx.unit.title)} ${nx.n}/${nx.unit.lessons.length}</div><h2 style="font-size:22px;margin:6px 0">${esc(nx.title)}</h2><p style="color:var(--muted);margin:0 0 12px">${KIND[nx.kind]} · about ${nx.min} min</p><button class="btn" data-lesson="${nx.id}">Start lesson →</button> <a href="#lessons" style="margin-left:10px;color:var(--muted)">See the whole path</a></div>`:''}
    ${focusHTML()}
    ${gapsHTML()}
-   <p class="syncnote" id="syncnote">${syncMsg}</p>`;
+   <p class="syncnote" id="syncnote">${syncMsg}</p>${shuruNote()}`;
   const s=$('#t-start');if(s)s.onclick=()=>startSession(due,[]);
   const x=$('#t-extra');if(x)x.onclick=()=>{const ks=Object.keys(srs.items).filter(itemLangOK);startSession(shuffle(ks).slice(0,8),[],true)};
 }
@@ -3008,7 +3020,7 @@ function itemQ(k){
   if(k.startsWith('p:'))return pairQ(PBYID[k.slice(2)]);
   const s=BYID[sid(k)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
   const it=srs.items[k];const box=it?it.box:0;
-  if(box>=1&&Math.random()<0.5){const mq=mineQ(s,klang(k),pool);if(mq)return mq}  // half the time, one of your own Shuru words
+  if(it&&Math.random()<0.5){const mq=mineQ(s,klang(k),pool);if(mq)return mq}  // half the time, one of your own Shuru words
   return soundQ(s,pool,langs,box<=1?['word2sym','sym2name']:null);
 }
 function introHTML(k){
