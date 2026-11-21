@@ -121,8 +121,9 @@ making review and listening teach more per minute. Its items 1 and 2 were not in
 numbering below keeps the owner's. Build these next, roughly in this order:
 
 **Make review smarter**
-3. **Interleave confusable sounds within one session.** Put r / ɾ, x / h, ħ / h / ʕ back to
-   back so the ear compares them directly, instead of each card being its own drill.
+3. ~~Interleave confusable sounds within one session.~~ **Built 2026-11-21**: look-alike items
+   sit back to back in a session, and sound cards are often asked as "which look-alike did you
+   hear?" with the answers played side by side. See Decisions.
 4. **Repeat a missed card in the same session**, 3–5 cards later, not only tomorrow.
 5. **Mix speakers on purpose.** Make "a voice you haven't heard for this sound" a deliberate
    review step (the 13-voice mix already exists), so you learn the sound, not one speaker.
@@ -350,6 +351,19 @@ signal to measure).
   sound under "From your reading" (`mineCardHTML`, same filter as `mineQ` via `shuruFor`),
   played by device TTS. Arabic cards show none (Shuru has no Arabic). Tested locally with a
   fake account store; real sign-in sync not yet checked on the live site.
+- **Look-alike sounds back to back (2026-11-21, roadmap item 3).** Two parts, both in review only.
+  (1) `groupLookAlikes` reorders a session's due items: each item pulls its direct look-alikes up
+  right behind it (`lookAlike`: same sound or listed in each other's `rel`; pair drills count by
+  their two sounds). "Practise with your words" sessions are left alone. (2) `contrastQ`: a sound
+  card already in box 1 or higher is asked 40% of the time (after the Your words chance) as
+  "Which of these look-alike sounds is in the word?". Options are the sound plus up to two `rel`
+  sounds in the course that list it back (mutual only, so ʒ/h and ħ/x don't pair up). The word is
+  hidden, picked from native clips that contain only one of the options (`hasSym` ignores a
+  match followed by ʰ, ˤ or ̪). Half the time it is the target's word, half a look-alike's. After
+  answering, one word per option is shown with a play button ("Hear them side by side"). Stats
+  credit the sound actually played; the schedule moves the card being reviewed. Sounds with no
+  usable word pair (ʈʂ, tɕ, q, Arabic r) just keep the old questions. Tested 2026-11-21: 600
+  questions across the three courses answered half wrong, no errors.
 - **Adaptive listening (2026-11-09).** `stats['pw:<lang>:<word>']` counts hits and misses for
   each word when it was the one played. `pairQ` plays the weaker pair and word more often
   (capped at 65/35 so guessing doesn't pay), and speakers never repeat twice in a row.

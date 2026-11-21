@@ -1305,6 +1305,17 @@ let lastShuruPush=0;
 document.addEventListener('shuru-words',()=>{const el=document.getElementById('shuru-note');if(el)el.outerHTML=shuruNote();
   const d=store.get('shuruWords',null);if(syncRef&&d&&d.via!=='sync'&&d.at!==lastShuruPush){lastShuruPush=d.at;clearTimeout(syncTimer);syncTimer=setTimeout(pushRemote,1500)}});
 function mineIpa(ipa,sym){return esc(ipa).split(esc(sym)).join(`<b style="color:var(--accent)">${esc(sym)}</b>`)}
+// "Which look-alike did you hear?": a hidden word with this sound or one it is easily confused with
+// (rel sounds in this language that also list it back), then each one played side by side.
+function hasSym(ipa,sym){ipa=String(ipa||'');let i=-1;while((i=ipa.indexOf(sym,i+1))>=0){const nx=ipa[i+sym.length];if(!nx||!'ʰˤ̪'.includes(nx))return true}return false}
+function cmpWords(x,set,l){return x.ex.filter(e=>e.l===l&&AUDIO[e.w]&&!/\(Spain\)/.test(e.w)&&hasSym(e.ipa,x.sym)&&set.every(o=>o===x||!hasSym(e.ipa,o.sym)))}
+function contrastQ(s,l){
+  const rel=(s.rel||[]).map(id=>BYID[id]).filter(x=>x&&x.langs.includes(l)&&x.cat===s.cat&&(x.rel||[]).includes(s.id));  // both list each other
+  let set=[s,...rel].slice(0,3);set=set.filter(x=>cmpWords(x,set,l).length);
+  if(set.length<2||set[0]!==s)return null;
+  const heard=Math.random()<0.5?s:pick(set.slice(1)),cmp={};for(const o of set)cmp[o.id]=pick(cmpWords(o,set,l));  // one word per sound
+  return {type:'cmp',s:heard,l,e:cmp[heard.id],cmp,opts:shuffle(set)};
+}
 function toneQ(){const set=pick(TONESETS),n=Math.floor(Math.random()*4);return {type:'tone',char:set[n],syl:set[4],ans:n,opts:[0,1,2,3]}}
 // Adaptive listening: remember, word by word, how often you miss it when it's the one played,
 // and bring the pairs and words you miss back more often.
@@ -1348,6 +1359,10 @@ function mountQ(el,q,hooks){
     prompt=`Listen. Which of these sounds is in your word? <span class="tag t-${q.l}">From Shuru</span>`;
     main=`${playBtn(w.w,q.l,'the word')}<span class="w">${esc(w.w)}</span>${w.g?`<span style="font-size:15px;color:var(--muted);font-weight:400">“${esc(w.g)}”</span>`:''}`;
     opts=q.opts.map((o,i)=>`<button class="opt sym" data-i="${i}">${esc(o.sym)}</button>`).join('');
+  } else if(q.type==='cmp'){
+    prompt=`Listen. Which of these look-alike sounds is in the word? <span class="tag t-${q.l}">Compare</span>`;
+    main=`${playBtn(q.e.w,q.l,'the word')}<span style="font-size:15px;color:var(--muted);font-weight:400">Word hidden · tap to replay as often as you like</span>`;
+    opts=q.opts.map((o,i)=>`<button class="opt" data-i="${i}"><span class="ipa" style="font-size:26px">${esc(o.sym)}</span> <span style="color:var(--muted);font-size:14px">${esc(o.name)}</span></button>`).join('');
   } else if(q.type==='sym2name'){
     prompt='What sound does this symbol stand for?';
     main=`<span class="ipa huge">${esc(q.s.sym)}</span>`;
@@ -1365,7 +1380,7 @@ function mountQ(el,q,hooks){
   PB_V=null;
   el.innerHTML=`<div class="qprompt">${prompt}</div><div class="qmain">${main}</div><div class="opts${q.type==='pair'?' two':''}">${opts}</div><div class="voice-warn"></div><div class="feedback"></div>`;
   el.querySelector('.opts').onclick=e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)answerQ(el,q,+b.dataset.i,hooks)};
-  if(['tone','word2sym','pair','tpair','mine'].includes(q.type)||(q.type==='custom'&&q.item.w)){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
+  if(['tone','word2sym','pair','tpair','mine','cmp'].includes(q.type)||(q.type==='custom'&&q.item.w)){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
 }
 // After answering a symbol question, give every option its own play button: the vowel on its
 // own when there is a reference clip, otherwise the first example word. The answered options are
@@ -1397,6 +1412,13 @@ function answerQ(el,q,i,hooks){
     fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
       <p>It was <b>${w.l==='ar'?`<span class="arabic">${esc(w.w)}</span>`:esc(w.w)}</b> <span class="ipa">[${esc(w.ipa)}]</span>. Compare them back to back: ${playBtn(w.w,w.l)} ${playBtn(o.w,o.l)}</p>
       <p style="color:var(--muted);font-size:14px">${esc(q.c.tip)}</p>`;
+  } else if(q.type==='cmp'){
+    correctIdx=q.opts.indexOf(q.s);ok=i===correctIdx;const e=q.e;
+    fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
+      <p>${playBtn(e.w,q.l)} <b>${wordHTML(e)}</b> ${e.r?esc(e.r)+' ':''}<span class="ipa">[${esc(e.ipa)}]</span> “${esc(e.g)}” has <span class="ipa">[${esc(q.s.sym)}]</span>, the ${esc(q.s.name.toLowerCase())}.</p>
+      ${!ok?`<p style="color:var(--muted)">You picked <span class="ipa">[${esc(q.opts[i].sym)}]</span>. ${esc(q.s.how[0])}</p>`:''}
+      <p style="margin-bottom:4px"><b>Hear them side by side:</b></p>
+      ${q.opts.map(o=>{const w=q.cmp[o.id];return w?`<div class="ex">${playBtn(w.w,q.l)}<div><div class="w"><span class="ipa">[${esc(o.sym)}]</span> ${wordHTML(w)} ${w.r?`<span class="meta">${esc(w.r)}</span>`:''}</div><div class="meta">“${esc(w.g)}”</div></div><div class="tr ipa">[${esc(w.ipa)}]</div></div>`:''}).join('')}`;
   } else {
     correctIdx=q.opts.indexOf(q.s);ok=i===correctIdx;
     fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
@@ -1407,7 +1429,7 @@ function answerQ(el,q,i,hooks){
   PB_V=null;
   if(q.vn&&q.vn!=='main'&&qAudioKeys(q).length){const l=q.type==='pair'?q.c.l:'zh';fb+=`<p class="spk-note">Speaker: ${esc(voiceLabel(q.vn,l))}</p>`}
   btns[correctIdx].classList.add('right');if(!ok)btns[i].classList.add('wrong');
-  if(q.s&&q.opts)btns.forEach((b,j)=>optPlay(b,q.opts[j]));
+  if(q.s&&q.opts&&q.type!=='cmp')btns.forEach((b,j)=>optPlay(b,q.opts[j]));
   if(q.type==='pair')record(pwKey(q.p[q.ans]),ok);
   if(hooks.onAnswer)hooks.onAnswer(ok,q,i);
   fb+=`<div class="row"><button class="btn next">${hooks.nextLabel||'Next →'}</button>${q.s?`<button class="btn ghost" data-sound="${q.s.id}">Open card</button>`:''}${hooks.extra?hooks.extra():''}<span class="kbd-hint">or press <kbd>Enter</kbd></span></div>`;
@@ -3022,9 +3044,20 @@ function renderToday(){
   const s=$('#t-start');if(s)s.onclick=()=>startSession(due,[]);
   const x=$('#t-extra');if(x)x.onclick=()=>{const ks=Object.keys(srs.items).filter(itemLangOK);startSession(shuffle(ks).slice(0,8),[],true)};
 }
+// Look-alike sounds: the sounds an item is about (a sound card, or the two sides of a pair drill)
+function itemSounds(k){if(k.startsWith('s:'))return [sid(k)];if(k.startsWith('p:')){const c=PBYID[k.slice(2)];return c?c.ids:[]}return []}
+function lookAlike(a,b){const A=itemSounds(a),B=itemSounds(b);
+  return A.some(x=>B.some(y=>x===y||((BYID[x]||{}).rel||[]).includes(y)||((BYID[y]||{}).rel||[]).includes(x)))}
+// Put items about look-alike sounds back to back (r next to ɾ, ħ next to ʕ and h), so your ear compares them
+// directly. Keeps the original order otherwise; only pulls each item's direct look-alikes up behind it.
+function groupLookAlikes(keys){
+  const rest=[...keys],out=[];
+  while(rest.length){const a=rest.shift();out.push(a);for(let i=0;i<rest.length;)if(lookAlike(a,rest[i]))out.push(rest.splice(i,1)[0]);else i++}
+  return out;
+}
 function startSession(due,news,extra,mine){
   // new items: intro then question; due items: question. Mix new items in after a couple of reviews.
-  const q=due.map(k=>({k,isNew:false}));
+  const q=(mine?due:groupLookAlikes(due)).map(k=>({k,isNew:false}));
   news.forEach((k,i)=>q.splice(Math.min(q.length,2+i*3),0,{k,isNew:true}));
   tSess={q,i:0,c:0,n:0,missed:new Set(),extra,mine};
   stepSession();
@@ -3041,6 +3074,7 @@ function itemQ(k,mine){
   const s=BYID[sid(k)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
   const it=srs.items[k];const box=it?it.box:0;
   if(mine||(it&&Math.random()<0.5)){const mq=mineQ(s,klang(k),pool);if(mq)return mq}  // half the time, one of your own Shuru words
+  if(box>=1&&Math.random()<0.4){const cq=contrastQ(s,klang(k));if(cq)return cq}  // otherwise often: which of the look-alikes did you hear?
   return soundQ(s,pool,langs,box<=1?['word2sym','sym2name']:null);
 }
 function introHTML(k){
@@ -3950,6 +3984,7 @@ function qAudioKeys(q){
   if(q.type==='tone')return [q.char];
   if(q.type==='tpair')return [q.it.w];
   if(q.type==='pair')return [q.p[0].w,q.p[1].w];
+  if(q.type==='cmp')return [q.e.w];
   return [];
 }
 function pickVoice(keys){
