@@ -1262,6 +1262,17 @@ function soundQ(s,pool,langs,types){
   t=t.filter(x=>x!=='word2sym'||exs.length);if(!t.length)t=['sym2name'];
   return {type:pick(t),s,opts:shuffle([s,...distractors(s,pool)]),ex:exs.length?pick(exs):null};
 }
+// "Your words": your saved review words from Shuru, the owner's Chrome extension. Its content script writes
+// 'ipa:shuruWords' = {at, es:[{w,r?,ipa,g,ids}], zh:[...]} while this site is open; ids are the sounds in the word.
+function shuruWords(l){const d=store.get('shuruWords',null);return d&&Array.isArray(d[l])?d[l]:[]}
+function mineQ(s,l,pool){
+  const ws=shuruWords(l).filter(w=>w&&w.w&&Array.isArray(w.ids)&&w.ids.includes(s.id));if(!ws.length)return null;
+  const w=pick(ws),has=new Set(w.ids);
+  const others=distractors(s,pool.filter(x=>!has.has(x.id)),8).filter(x=>!has.has(x.id)).slice(0,3);  // no option that is also in the word
+  if(others.length<2)return null;
+  return {type:'mine',s,w,l,opts:shuffle([s,...others])};
+}
+function mineIpa(ipa,sym){return esc(ipa).split(esc(sym)).join(`<b style="color:var(--accent)">${esc(sym)}</b>`)}
 function toneQ(){const set=pick(TONESETS),n=Math.floor(Math.random()*4);return {type:'tone',char:set[n],syl:set[4],ans:n,opts:[0,1,2,3]}}
 // Adaptive listening: remember, word by word, how often you miss it when it's the one played,
 // and bring the pairs and words you miss back more often.
@@ -1300,6 +1311,11 @@ function mountQ(el,q,hooks){
     prompt=`Listen. Which word did you hear? <span class="tag t-${q.c.l}">${esc(q.c.label)}</span>`;
     main=`${playBtn(w.w,w.l,'the word')}<span style="font-size:15px;color:var(--muted);font-weight:400">Tap to replay as often as you like</span>`;
     opts=q.p.map((x,i)=>pairBtnHTML(x,i)).join('');
+  } else if(q.type==='mine'){
+    const w=q.w;
+    prompt=`Listen. Which of these sounds is in your word? <span class="tag t-${q.l}">From Shuru</span>`;
+    main=`${playBtn(w.w,q.l,'the word')}<span class="w">${esc(w.w)}</span>${w.g?`<span style="font-size:15px;color:var(--muted);font-weight:400">“${esc(w.g)}”</span>`:''}`;
+    opts=q.opts.map((o,i)=>`<button class="opt sym" data-i="${i}">${esc(o.sym)}</button>`).join('');
   } else if(q.type==='sym2name'){
     prompt='What sound does this symbol stand for?';
     main=`<span class="ipa huge">${esc(q.s.sym)}</span>`;
@@ -1317,7 +1333,7 @@ function mountQ(el,q,hooks){
   PB_V=null;
   el.innerHTML=`<div class="qprompt">${prompt}</div><div class="qmain">${main}</div><div class="opts${q.type==='pair'?' two':''}">${opts}</div><div class="voice-warn"></div><div class="feedback"></div>`;
   el.querySelector('.opts').onclick=e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)answerQ(el,q,+b.dataset.i,hooks)};
-  if(['tone','word2sym','pair','tpair'].includes(q.type)||(q.type==='custom'&&q.item.w)){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
+  if(['tone','word2sym','pair','tpair','mine'].includes(q.type)||(q.type==='custom'&&q.item.w)){setTimeout(()=>{const b=el.querySelector('.qmain .play');if(b&&el.offsetParent)b.click()},250)}
 }
 // After answering a symbol question, give every option its own play button: the vowel on its
 // own when there is a reference clip, otherwise the first example word. The answered options are
@@ -1352,6 +1368,7 @@ function answerQ(el,q,i,hooks){
   } else {
     correctIdx=q.opts.indexOf(q.s);ok=i===correctIdx;
     fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div>
+      ${q.type==='mine'?`<p>${playBtn(q.w.w,q.l)} <b>${esc(q.w.w)}</b> ${q.w.r?esc(q.w.r)+' ':''}<span class="ipa">/${mineIpa(q.w.ipa,q.s.sym)}/</span>${q.w.g?` “${esc(q.w.g)}”`:''}</p>`:''}
       <p><span class="ipa" style="font-size:26px">[${esc(q.s.sym)}]</span> <b>${esc(q.s.name)}</b>, ${esc(q.s.desc)}. ${esc(q.s.how[0])}</p>
       ${!ok?`<p style="color:var(--muted)">You picked <span class="ipa">[${esc(q.opts[i].sym)}]</span>, the ${esc(q.opts[i].name.toLowerCase())}.</p>`:''}`;
   }
@@ -2991,6 +3008,7 @@ function itemQ(k){
   if(k.startsWith('p:'))return pairQ(PBYID[k.slice(2)]);
   const s=BYID[sid(k)];const pool=S.filter(x=>x.langs.some(l=>langs.includes(l))&&x.st!=='familiar');
   const it=srs.items[k];const box=it?it.box:0;
+  if(box>=1&&Math.random()<0.5){const mq=mineQ(s,klang(k),pool);if(mq)return mq}  // half the time, one of your own Shuru words
   return soundQ(s,pool,langs,box<=1?['word2sym','sym2name']:null);
 }
 function introHTML(k){

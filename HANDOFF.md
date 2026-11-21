@@ -284,6 +284,12 @@ signal to measure).
   `weakSyms`. Local only (not in the Firebase sync). Shuru's content script reads it while
   this site is open and marks those symbols. Its symbol table (`lib/sound-atlas.js` there)
   mirrors `S`: if a Mandarin or Spanish sound id changes here, change it there too.
+- **"Your words" from Shuru (2026-11-21, `mineQ`).** The other direction: Shuru's content script
+  asks its background for your saved review words and writes `ipa:shuruWords` =
+  `{at, es:[{w,r?,ipa,g,ids}], zh:[...]}` (newest 300 per language; `ids` = sounds in the word).
+  In review, a sound item (box 1 or more) is asked half the time as "Which of these sounds is in
+  your word?" with one of those words, played by TTS, distractors chosen from confusable sounds
+  that are not in the word. Graded like any sound question. Local only, not synced.
 - **Adaptive listening (2026-11-09).** `stats['pw:<lang>:<word>']` counts hits and misses for
   each word when it was the one played. `pairQ` plays the weaker pair and word more often
   (capped at 65/35 so guessing doesn't pay), and speakers never repeat twice in a row.
