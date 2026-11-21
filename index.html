@@ -991,6 +991,20 @@ function soundScores(s,l){
   for(const c of PAIRS)if(c.l===l&&c.ids.includes(s.id)){const t=stat('p:'+c.id);hear.c+=t.c;hear.w+=t.w}
   return {know:pct(stat(s.id)),hear:pct(hear),say:pct(stat('k:'+courseKey('s:'+s.id,l).slice(2)))};
 }
+// Weak sounds for Shuru (the owner's Chrome extension): its word panel marks these symbols in a word's IPA.
+// Shuru's content script reads 'ipa:weak' while this site is open. Local only, not synced.
+function exportWeak(){
+  try{
+    const out={at:Date.now()};
+    for(const l of ['es','zh','ar']){
+      const ids=new Set(),slip=new Set(weakSyms(l));
+      for(const s of S){if(!s.langs.includes(l)||s.st==='familiar')continue;const sc=soundScores(s,l);
+        if((sc.hear!==null&&sc.hear<85)||(sc.know!==null&&sc.know<85)||slip.has(s.sym))ids.add(s.id)}
+      out[l]={ids:[...ids]};
+    }
+    store.set('weak',out);
+  }catch(e){}
+}
 // Today's focus: the single weakest score in this course, with a button for the tool that trains it
 function focusHTML(){
   const l=COURSE;let best=null;
@@ -3077,7 +3091,7 @@ function finishSession(){
 let syncMsg='Progress is saved on this device.';let syncRef=null,syncTimer=null,lastSaved=0,syncBusy=false;
 function snapshotState(){return {v:1,updated:Date.now(),stats,srs,flags}}
 function persist(){
-  store.set('stats',stats);store.set('srs',srs);store.set('updated',Date.now());
+  store.set('stats',stats);store.set('srs',srs);store.set('updated',Date.now());exportWeak();
   if(syncRef){clearTimeout(syncTimer);syncTimer=setTimeout(pushRemote,1500)}
 }
 async function pushRemote(){
@@ -3457,6 +3471,7 @@ function renderMaps(){
 // ---------- ROUTER ----------
 const VIEWS=['today','lessons','learn','pairs','speak','vowels','tones','quiz','transcribe','basics','across','read'];
 function route(){
+  exportWeak();
   const h=(location.hash||'#today').slice(1);
   // Deep link: #sound/<id> opens that sound's card on the Sounds tab (used by the Migaku userscript in tools/)
   if(h.indexOf('sound/')===0){let id=h.slice(6);try{id=decodeURIComponent(id)}catch(e){}history.replaceState(null,'','#learn');route();if(BYID[id])openSound(id);return}

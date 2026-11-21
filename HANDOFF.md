@@ -276,6 +276,14 @@ signal to measure).
   no new ones are created (`ensureSayItems` is no longer called, `finishLesson` doesn't add
   them), the Today checkbox is gone, and Today's focus ignores the "say" score. Old `k:` items
   stay in storage untouched, so this can be undone. Speaking practice lives only in Speak.
+- **Weak sounds shared with Shuru (2026-11-20, `exportWeak`).** Shuru is the owner's own
+  Chrome extension for reading and watching (folder `C:\Users\khali\Downloads\sluka-fork-0.7.1-whisper`).
+  Its word panel and review cards turn Mandarin and Spanish IPA symbols into `#sound/<id>` links here. On every route
+  change and `persist()`, `exportWeak` writes `ipa:weak` = `{at, es:{ids}, zh:{ids}, ar:{ids}}`:
+  non-familiar sounds whose hearing or symbol score is under 85%, or whose symbol is in
+  `weakSyms`. Local only (not in the Firebase sync). Shuru's content script reads it while
+  this site is open and marks those symbols. Its symbol table (`lib/sound-atlas.js` there)
+  mirrors `S`: if a Mandarin or Spanish sound id changes here, change it there too.
 - **Adaptive listening (2026-11-09).** `stats['pw:<lang>:<word>']` counts hits and misses for
   each word when it was the one played. `pairQ` plays the weaker pair and word more often
   (capped at 65/35 so guessing doesn't pay), and speakers never repeat twice in a row.
