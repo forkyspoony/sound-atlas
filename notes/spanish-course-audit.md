@@ -13,7 +13,11 @@ now explains the difference. B1 done: sound cards can tag a how step or note wit
 (`howL`, `noteL` in `S`), and lessons show only untagged lines plus their own language (and only
 their own language's examples). The Sounds tab still shows everything. C5 and C6 done: diphthongs (e18) now come before stress
 (e17), and spelling to sound (e20) closes the Consonants unit. Progress is saved by lesson id, so
-finished lessons stay finished. Everything else below is still open.
+finished lessons stay finished. Step 4 done (text and quizzes only, no new audio): D1/F5 light l
+feel step, D2 soft g route via soft d plus an [x]/[ɣ] question in e15, D3 tap fallback, D6, E1
+strong vowels, E2 final y (with E5 Uruguay), E3 accent pairs, E4 syllable splitting. The new example
+words (leo, poeta, hoy, tu, si…) have no recordings yet; add them in step 5. Still open: C1, C2,
+D7, E6–E8, F1–F4, F6.
 
 ## Verdict
 

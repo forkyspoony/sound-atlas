@@ -1369,7 +1369,7 @@
        "agua"
       ],
       "yes": "That's <span class=\"ipa\">[ɣ]</span>. Notice how much smoother <i>lago</i> sounds than \"lah-go\".",
-      "no": "Try saying \"aga\" while yawning slightly: the looser tongue tends to produce [ɣ] on its own. Or start from a gentle \"a-ha\" and add voice.",
+      "no": "Start from the soft d you just learned: \"a-ða\", tongue near the teeth but not touching. Now do the same thing at the back: the back of the tongue rises toward the soft palate and stops just short. Say \"aga\" slowly and lazily, never letting it seal.",
       "q": "Could you make a g that doesn't fully close?"
      },
      {
@@ -1710,7 +1710,7 @@
      {
       "t": "text",
       "h": "The r you already know how to make",
-      "html": "A single Spanish r between vowels is a <b>tap</b>: one very quick flick of the tongue tip against the gum ridge. IPA writes it <span class=\"ipa\">[ɾ]</span>, which looks like an r with its top cut off.<br><br>Good news: Americans already make this sound every day. The tt in \"butter\", the dd in \"ladder\" and the t in \"water\" are all taps: \"butter\" is <span class=\"ipa\">[ˈbʌɾɚ]</span>.<br><br>It has nothing to do with the English r of \"red\", which IPA writes <span class=\"ipa\">[ɹ]</span>: there the tongue bunches or curls back and never touches anything."
+      "html": "A single Spanish r between vowels is a <b>tap</b>: one very quick flick of the tongue tip against the gum ridge. IPA writes it <span class=\"ipa\">[ɾ]</span>, which looks like an r with its top cut off.<br><br>Good news: Americans already make this sound every day. The tt in \"butter\", the dd in \"ladder\" and the t in \"water\" are all taps: \"butter\" is <span class=\"ipa\">[ˈbʌɾɚ]</span>.<br><br>It has nothing to do with the English r of \"red\", which IPA writes <span class=\"ipa\">[ɹ]</span>: there the tongue bunches or curls back and never touches anything.<br><br>If your English doesn't tap its t's (many British, Irish and Indian accents don't), think of it as a very quick, light d: just the tongue tip, one touch, no push."
      },
      {
       "t": "cmp",
@@ -1747,7 +1747,7 @@
        "pero"
       ],
       "yes": "That flick is <span class=\"ipa\">[ɾ]</span>. It's the most common r in Spanish.",
-      "no": "Say \"a lot of\" fast: \"a-lo-ɾa\". Or \"got a\": \"go-ɾa\". The middle is a tap. Then replace the first vowel: \"pa-ɾa\".",
+      "no": "Say \"a lot of\" fast: \"a-lo-ɾa\". Or \"got a\": \"go-ɾa\". The middle is a tap. Then replace the first vowel: \"pa-ɾa\". If none of that has a tap in your accent, say a very fast, light d instead: <i>para</i> as \"pada\", <i>caro</i> as \"cado\", as quick as you can. Speed turns the d into a tap.",
       "q": "Could you feel the single tongue flick?"
      },
      {
@@ -2385,6 +2385,17 @@
         "why": "English h is [h]."
        },
        {
+        "w": null,
+        "q": "What separates the jota [x] in <i>jamón</i> from soft g [ɣ] in <i>lago</i>?",
+        "o": [
+         "[x] is a voiceless hiss; [ɣ] has the voice on",
+         "[x] is made with the lips",
+         "Nothing, they are the same sound"
+        ],
+        "a": 0,
+        "why": "Same place, the back of the tongue. Put a hand on your throat: it buzzes for [ɣ], not for [x]."
+       },
+       {
         "p": "Read the transcription. Which word is it?",
         "q": "<span class=\"ipa\" style=\"font-size:30px\">[ˈxent̪e]</span>",
         "o": [
@@ -2549,6 +2560,18 @@
         ""
        ]
       ]
+     },
+     {
+      "t": "feel",
+      "h": "Keep the l light",
+      "html": "Put your tongue tip on the ridge just behind your top teeth, as for the l in \"leaf\", and keep the <b>back of your tongue low and flat</b>. Lips relaxed, not rounded. Say \"lee\" and hold the l: that's the shape.<br><br>Now say <i>sol</i> and keep exactly that shape at the end. Don't let the back of your tongue rise or your lips round, which is what makes English \"sole\" sound hollow.",
+      "keys": [
+       "sol",
+       "mil"
+      ],
+      "yes": "That bright, clear l is Spanish <span class=\"ipa\">[l]</span>. Use it everywhere, including at the end of a word.",
+      "no": "Say the l with a slight smile, which keeps the tongue forward. Or say <i>sol</i> as \"so-lee\" and cut off the \"ee\", leaving your tongue where it was.",
+      "q": "Did the final l stay bright?"
      },
      {
       "t": "text",
@@ -2831,7 +2854,7 @@
      {
       "t": "text",
       "h": "When i and u become glides",
-      "html": "Spanish vowels don't glide on their own, but two vowels can share a syllable. When <b>i</b> or <b>u</b> sits next to another vowel, it shrinks into a quick glide, <span class=\"ipa\">[j]</span> or <span class=\"ipa\">[w]</span>:<ul><li><i>bueno</i> [ˈbweno], <i>tierra</i> [ˈt̪jera], <i>ciudad</i> [sjuˈðað]</li><li><i>baile</i> [ˈbajle], <i>aire</i> [ˈajɾe], <i>auto</i> [ˈawt̪o]</li></ul>That's the only place Spanish has glides, and spelling always shows it."
+      "html": "Spanish vowels don't glide on their own, but two vowels can share a syllable. When <b>i</b> or <b>u</b> sits next to another vowel, it shrinks into a quick glide, <span class=\"ipa\">[j]</span> or <span class=\"ipa\">[w]</span>:<ul><li><i>bueno</i> [ˈbweno], <i>tierra</i> [ˈt̪jera], <i>ciudad</i> [sjuˈðað]</li><li><i>baile</i> [ˈbajle], <i>aire</i> [ˈajɾe], <i>auto</i> [ˈawt̪o]</li></ul>Glides come from i and u next to another vowel (and from a final y, below), and spelling always shows them."
      },
      {
       "t": "sym",
@@ -2886,6 +2909,16 @@
       ]
      },
      {
+      "t": "text",
+      "h": "Strong vowels stay apart",
+      "html": "<b>a, e, o</b> are called <b>strong</b> vowels; <b>i</b> and <b>u</b> without an accent are <b>weak</b>. Only a weak vowel turns into a glide. Two strong vowels side by side <b>never merge</b>: each keeps its own syllable.<ul><li><i>leo</i> is le-o <span class=\"ipa\">[ˈleo]</span></li><li><i>poeta</i> is po-e-ta <span class=\"ipa\">[poˈet̪a]</span></li><li><i>teatro</i> is te-a-tro <span class=\"ipa\">[t̪eˈat̪ɾo]</span></li><li><i>idea</i> is i-de-a <span class=\"ipa\">[iˈðea]</span></li></ul>English speakers tend to glide these, saying <i>teatro</i> like \"tya-tro\". Keep both vowels full and clear, just quick."
+     },
+     {
+      "t": "text",
+      "h": "y at the end of a word",
+      "html": "At the end of a word, <b>y</b> is the vowel i, not the consonant <span class=\"ipa\">[ʝ]</span> of <i>yo</i>. It glides off the vowel before it, like the \"oy\" in \"boy\":<ul><li><i>hoy</i> <span class=\"ipa\">[oj]</span>, <i>soy</i> <span class=\"ipa\">[soj]</span>, <i>rey</i> <span class=\"ipa\">[rej]</span>, <i>muy</i> <span class=\"ipa\">[muj]</span></li><li>On its own, <i>y</i> (\"and\") is just <span class=\"ipa\">[i]</span>.</li></ul>Three vowels can even share one syllable this way: <i>Uruguay</i> <span class=\"ipa\">[uɾuˈɣwaj]</span>."
+     },
+     {
       "t": "ruleq",
       "qs": [
        {
@@ -2930,6 +2963,36 @@
         ],
         "a": 1,
         "why": "u before a vowel becomes [w]."
+       },
+       {
+        "w": null,
+        "q": "How many syllables does <i>poeta</i> have?",
+        "o": [
+         "2",
+         "3"
+        ],
+        "a": 1,
+        "why": "o and e are both strong vowels, so they stay apart: po-e-ta."
+       },
+       {
+        "w": null,
+        "q": "How many syllables does <i>teatro</i> have?",
+        "o": [
+         "2: tea-tro",
+         "3: te-a-tro"
+        ],
+        "a": 1,
+        "why": "e and a are both strong: te-a-tro, never \"tya-tro\"."
+       },
+       {
+        "w": null,
+        "q": "The y in <i>hoy</i> sounds like…",
+        "o": [
+         "the \"oy\" of \"boy\": a vowel glide [j]",
+         "the y of <i>yo</i> [ʝ]"
+        ],
+        "a": 0,
+        "why": "At the end of a word, y is a vowel: [oj]."
        }
       ]
      },
@@ -2971,6 +3034,11 @@
     "kind": "rule",
     "min": 8,
     "steps": [
+     {
+      "t": "text",
+      "h": "Counting syllables",
+      "html": "The stress rules count syllables, so first: each syllable has <b>one vowel</b> (or one diphthong from the last lesson). Consonants split like this:<ul><li><b>One consonant</b> between vowels starts the next syllable: <i>ca-sa</i>, <i>to-ma-te</i>, <i>pe-rro</i>. (rr, ll and ch count as one.)</li><li><b>Two consonants</b> split down the middle: <i>al-go</i>, <i>ár-bol</i>, <i>gran-de</i>.</li><li>Except <b>p, b, t, d, c, g, f + r or l</b>: those pairs stay together and start the syllable (<i>o-tro</i>, <i>li-bro</i>, <i>pa-dre</i>, <i>ha-blan</i>).</li><li><b>Three consonants</b>: one goes back, a pair goes forward (<i>hom-bre</i>).</li></ul>"
+     },
      {
       "t": "text",
       "h": "Where the stress goes",
@@ -3027,6 +3095,11 @@
        "termino",
        "terminó"
       ]
+     },
+     {
+      "t": "text",
+      "h": "Accents that tell words apart",
+      "html": "Some short words carry an accent only to tell them apart from a twin. The vowels are the same; the accent changes the meaning (in a sentence, the accented one usually gets more weight):<ul><li><i>tú</i> you, <i>tu</i> your</li><li><i>sí</i> yes, <i>si</i> if</li><li><i>él</i> he, <i>el</i> the</li><li><i>mí</i> me, <i>mi</i> my</li><li><i>sé</i> I know, <i>se</i> oneself</li><li><i>más</i> more, <i>mas</i> but (rare)</li></ul>Question words always carry one: <i>qué</i> what, <i>cómo</i> how, <i>dónde</i> where, <i>cuándo</i> when, <i>quién</i> who. Without it, <i>que</i> means \"that\" and <i>como</i> means \"like\" or \"I eat\"."
      },
      {
       "t": "shadow",
@@ -3121,6 +3194,46 @@
         "a": 0,
         "fw": "examen",
         "why": "Ends in n, so second-to-last: e-XA-men."
+       },
+       {
+        "w": null,
+        "q": "How is <i>libro</i> split into syllables?",
+        "o": [
+         "lib-ro",
+         "li-bro"
+        ],
+        "a": 1,
+        "why": "b + r is a pair that stays together, so it starts the second syllable."
+       },
+       {
+        "w": null,
+        "q": "How is <i>algo</i> split into syllables?",
+        "o": [
+         "al-go",
+         "a-lgo"
+        ],
+        "a": 0,
+        "why": "l + g is not one of the pairs, so they split."
+       },
+       {
+        "w": null,
+        "q": "Which one means \"yes\"?",
+        "o": [
+         "si",
+         "sí"
+        ],
+        "a": 1,
+        "why": "sí = yes, si = if."
+       },
+       {
+        "w": null,
+        "q": "In <i>¿Dónde está tu casa?</i>, why does <i>tu</i> have no accent?",
+        "o": [
+         "It means \"your\", not \"you\"",
+         "Words in questions never have accents"
+        ],
+        "a": 0,
+        "why": "tú = you, tu = your. (And dónde, a question word, does have one.)"
        }
       ]
      },
