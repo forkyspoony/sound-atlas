@@ -11,8 +11,9 @@ card now says "approximant" and the β and ɣ lesson text no longer says "buzz/f
 card keeps "fricative" because it is shared with Arabic غ, which really is one; the e09 text
 now explains the difference. B1 done: sound cards can tag a how step or note with a language
 (`howL`, `noteL` in `S`), and lessons show only untagged lines plus their own language (and only
-their own language's examples). The Sounds tab still shows everything. Everything else below is
-still open.
+their own language's examples). The Sounds tab still shows everything. C5 and C6 done: diphthongs (e18) now come before stress
+(e17), and spelling to sound (e20) closes the Consonants unit. Progress is saved by lesson id, so
+finished lessons stay finished. Everything else below is still open.
 
 ## Verdict
 

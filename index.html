@@ -2184,7 +2184,7 @@ const UNITS=[
    spk(['no','tú','chocolate'])],adds:['s:vo','s:vu','r:e03']},
 
  ]},
-{id:'es-c',l:'es',title:'Consonants',sub:'Every Spanish consonant, one at a time: the ones without a puff, the soft ones, the r\'s, and the ones you already have.',lessons:[
+{id:'es-c',l:'es',title:'Consonants',sub:'Every Spanish consonant, one at a time: the ones without a puff, the soft ones, the r\'s, the ones you already have, and how spelling maps to all of them.',lessons:[
  {id:'e04',title:'The puff: p',kind:'sounds',min:9,steps:[
    txt('A sound English hides from you',`At the start of a stressed syllable, English p, t and k come with a little burst of breath. Phoneticians call it <b>aspiration</b> and write it with a raised h: "pin" is <span class="ipa">[pʰɪn]</span>.<br><br>After s, the puff disappears: "spin" is <span class="ipa">[spɪn]</span>. English speakers never notice, because the difference never changes a word's meaning.<br><br>Spanish p, t and k <b>never</b> have the puff, anywhere in a word. The p of English "spin" is exactly the Spanish p.`),
    fl('The tissue test',`Hold a tissue, or the back of your hand, a few centimetres from your lips. Say "pin", then "spin". Play the recordings and copy them.`,['pin (EN)','spin (EN)'],`That puff on "pin" is the <span class="ipa">[ʰ]</span>. Now say "spin" and drop the s, keeping the p exactly as it was: that's Spanish <span class="ipa">[p]</span>.`,`Try a little louder, with the tissue closer. Most people feel a clear puff on "pin" and almost nothing on "spin". You can also try "pot" vs "spot".`,'Did the tissue move for "pin" but not for "spin"?'),
@@ -2376,9 +2376,36 @@ const UNITS=[
        Q(null,'The symbol [ʧ] stands for…',['English "ch"','English "sh"','English "j"'],0,'"ch" in "church".')]),
    bd([{w:'sol',a:'s o l',x:'ɫ oʊ z',why:'Light l, no glide on the o.'},{w:'zapato',a:'s a ˈ p a t̪ o',x:'z θ',why:'z = [s] in Latin America.'}]),
    spk(['sol','mil','animal'])],adds:['r:e16']},
+ {id:'e20',title:'Rule: spelling to sound',kind:'rule',min:7,steps:[
+   txt('The whole system on one page','Spanish spelling is very regular once you know these:<ul><li><b>c</b> before e/i, <b>z</b> and <b>s</b> are all <span class="ipa">[s]</span> in Latin America (<i>cielo, zapato, cine</i>).</li><li><b>c</b> before a/o/u, <b>qu</b> before e/i and <b>k</b> are <span class="ipa">[k]</span>. In qu and gu before e/i, the u is silent (<i>queso, guitarra, guerra</i>). Write <b>ü</b> to pronounce it (<i>pingüino</i>).</li><li><b>g</b> before a/o/u is <span class="ipa">[ɡ]</span>/<span class="ipa">[ɣ]</span>; before e/i it\'s <span class="ipa">[x]</span> (<i>gato</i> vs <i>gente</i>).</li><li><b>h</b> is always silent (<i>hola, hielo</i>).</li><li><b>x</b> is usually <span class="ipa">[ks]</span> (<i>taxi</i>), but <span class="ipa">[x]</span> in <i>México</i> and some other names.</li><li><b>ll</b> and <b>y</b> sound the same.</li></ul>'),
+   lst('Listen',['cielo','zapato','cine','queso','guitarra','guerra','pingüino','gato','gente','hielo','taxi','México']),
+   txt('Dialect note','In the Caribbean, coastal areas and much of South America, an s before a consonant or at the end of a word often weakens to a breathy <span class="ipa">[h]</span> or disappears: <i>los amigos</i> → "loh amigoh". Recognise it, but you don\'t need to copy it.'),
+   rq([Q('zapato','In Latin America, the z in <i>zapato</i> is…',['[s]','[θ], like "think"','[z], like "zoo"'],0,'Latin America uses [s] for z and soft c.'),
+       Q('hielo','The h in <i>hielo</i> is…',['Silent','Like English h','Like the jota'],0,'Spanish h is always silent.'),
+       Q('queso','The u in <i>queso</i> is…',['Silent','Said, like a quick "w"'],0,'In qu and gu before e/i, the u is silent.'),
+       Q('pingüino','The ü in <i>pingüino</i> is…',['Silent','Said, like a quick "w"'],1,'The two dots mean "say this u".'),
+       Q('México','The x in <i>México</i> is…',['[ks]','[x], the jota'],1,'An old spelling kept for the country\'s name.'),
+       Q('taxi','The x in <i>taxi</i> is…',['[ks]','[x], the jota'],0,'Elsewhere x is usually [ks].'),
+       RD('ˈɡera',['guerra','jarra'],0,'guerra','gu before e = [ɡ]; rr = trill.')]),
+   bd([{w:'guitarra',a:'ɡ i ˈ t̪ a r a',x:'w ɾ x',why:'gu before i = [ɡ] (silent u); rr = trill.'},{w:'cine',a:'ˈ s i n e',x:'k θ',why:'c before i = [s] in Latin America.'}]),
+   spk(['guitarra','gente','queso'])],adds:['r:es11']},
 
  ]},
-{id:'es-w',l:'es',title:'Words and sentences',sub:'Stress, glides, linking, clusters, intonation and spelling: putting sounds together into real speech.',lessons:[
+{id:'es-w',l:'es',title:'Words and sentences',sub:'Glides, stress, linking, clusters and intonation: putting sounds together into real speech.',lessons:[
+ {id:'e18',title:'Diphthongs: vowels that glide',kind:'sounds',min:7,steps:[
+   txt('When i and u become glides',`Spanish vowels don't glide on their own, but two vowels can share a syllable. When <b>i</b> or <b>u</b> sits next to another vowel, it shrinks into a quick glide, <span class="ipa">[j]</span> or <span class="ipa">[w]</span>:<ul><li><i>bueno</i> [ˈbweno], <i>tierra</i> [ˈt̪jera], <i>ciudad</i> [sjuˈðað]</li><li><i>baile</i> [ˈbajle], <i>aire</i> [ˈajɾe], <i>auto</i> [ˈawt̪o]</li></ul>That's the only place Spanish has glides, and spelling always shows it.`),
+   sy('The glide symbols','',[
+     {s:'j',n:'i as a glide',t:'English "y" in "yes".',k:['tierra','baile']},{s:'w',n:'u as a glide',t:'English "w".',k:['bueno','auto']}]),
+   lst('Glides',['bueno','tierra','baile','aire','auto','ciudad']),
+   txt('An accent mark breaks them up','A written accent on the i or u keeps it a full vowel, in its own syllable: <i>país</i> [paˈis] is pa-ÍS, <i>día</i> [ˈd̪ia] is DÍ-a, <i>río</i> is RÍ-o. (The next lesson covers what accent marks do to stress.)'),
+   lst('Two syllables',['país','día','río','tía']),
+   rq([Q('país','How many syllables does <i>país</i> have?',['1','2'],1,'The accent on í breaks the diphthong: pa-ís.'),
+       Q('bueno','How many syllables does <i>bueno</i> have?',['2','3'],0,'u before a vowel becomes [w]: bue-no.'),
+       HR('baile',['[ˈbajle]','[baˈile]'],0,'ai is one syllable: BAI-le.'),
+       Q(null,'In [ˈbweno], the [w] comes from the letter…',['b','u','o'],1,'u before a vowel becomes [w].')]),
+   bd([{w:'bueno',a:'ˈ b w e n o',x:'u β',why:'b at the start is hard; u becomes [w].'},{w:'auto',a:'ˈ a w t̪ o',x:'u oʊ',why:'au is one syllable: [aw].'}]),
+   spk(['bueno','baile','país'])],adds:['r:e18']},
+
  {id:'e17',title:'Rule: stress and accent marks',kind:'rule',min:8,steps:[
    txt('Where the stress goes','Spanish spelling tells you the stress every time:<ol><li>Word ends in a <b>vowel, n or s</b>: stress the <b>second-to-last</b> syllable (<i>CA-sa, HA-blan</i>).</li><li>Word ends in <b>any other consonant</b>: stress the <b>last</b> syllable (<i>ciu-DAD, a-ni-MAL</i>).</li><li>A <b>written accent</b> overrides both rules (<i>ÁR-bol, ca-FÉ, can-CIÓN, te-LÉ-fo-no</i>).</li></ol>In IPA, look for the <span class="ipa">ˈ</span> before the stressed syllable.'),
    lst('Rules 1 and 2',['casa','hablan','examen','ciudad','animal','papel']),
@@ -2395,20 +2422,6 @@ const UNITS=[
        RD('ekˈsamen',['examen','exámenes'],0,'examen','Ends in n, so second-to-last: e-XA-men.')]),
    bd([{w:'café',a:'k a ˈ f e',x:'eɪ ə',why:'The accent puts the stress on fe.'},{w:'árbol',a:'ˈ a ɾ β o l',x:'b r ɫ',why:'Stress on ár; single r after a vowel is a tap; b after r is soft.'}]),
    spk(['teléfono','canción','árbol'])],adds:['r:es9']},
-
- {id:'e18',title:'Diphthongs: vowels that glide',kind:'sounds',min:7,steps:[
-   txt('When i and u become glides',`Spanish vowels don't glide on their own, but two vowels can share a syllable. When <b>i</b> or <b>u</b> sits next to another vowel, it shrinks into a quick glide, <span class="ipa">[j]</span> or <span class="ipa">[w]</span>:<ul><li><i>bueno</i> [ˈbweno], <i>tierra</i> [ˈt̪jera], <i>ciudad</i> [sjuˈðað]</li><li><i>baile</i> [ˈbajle], <i>aire</i> [ˈajɾe], <i>auto</i> [ˈawt̪o]</li></ul>That's the only place Spanish has glides, and spelling always shows it.`),
-   sy('The glide symbols','',[
-     {s:'j',n:'i as a glide',t:'English "y" in "yes".',k:['tierra','baile']},{s:'w',n:'u as a glide',t:'English "w".',k:['bueno','auto']}]),
-   lst('Glides',['bueno','tierra','baile','aire','auto','ciudad']),
-   txt('An accent mark breaks them up','A written accent on the i or u keeps it a full vowel, in its own syllable: <i>país</i> [paˈis] is pa-ÍS, <i>día</i> [ˈd̪ia] is DÍ-a, <i>río</i> is RÍ-o.'),
-   lst('Two syllables',['país','día','río','tía']),
-   rq([Q('país','How many syllables does <i>país</i> have?',['1','2'],1,'The accent on í breaks the diphthong: pa-ís.'),
-       Q('bueno','How many syllables does <i>bueno</i> have?',['2','3'],0,'u before a vowel becomes [w]: bue-no.'),
-       HR('baile',['[ˈbajle]','[baˈile]'],0,'ai is one syllable: BAI-le.'),
-       Q(null,'In [ˈbweno], the [w] comes from the letter…',['b','u','o'],1,'u before a vowel becomes [w].')]),
-   bd([{w:'bueno',a:'ˈ b w e n o',x:'u β',why:'b at the start is hard; u becomes [w].'},{w:'auto',a:'ˈ a w t̪ o',x:'u oʊ',why:'au is one syllable: [aw].'}]),
-   spk(['bueno','baile','país'])],adds:['r:e18']},
 
  {id:'e19',title:'Rule: linking and rhythm',kind:'rule',min:7,steps:[
    txt('Linking','Spanish speakers don\'t pause between words. A final consonant joins the next word\'s vowel (<i>los otros</i> is said lo-so-tros), and vowels at a word boundary blend (<i>una amiga</i> is u-na-mi-ga). IPA can mark this with a tie, <span class="ipa">‿</span>. This is why fast Spanish sounds like one long word.'),
@@ -2443,19 +2456,6 @@ const UNITS=[
        Q('¿Dónde vives?','How does this question end?',['Rising','Falling'],1,'Question-word questions usually fall.'),
        Q(null,'What does ¿ at the start of a sentence tell you?',['It\'s a question','It\'s an exclamation','It\'s a quotation'],0,'')]),
    spk(['¿Hablas español?','Es tu casa.','¿Dónde vives?'])],adds:['r:e23']},
- {id:'e20',title:'Rule: spelling to sound',kind:'rule',min:7,steps:[
-   txt('The whole system on one page','Spanish spelling is very regular once you know these:<ul><li><b>c</b> before e/i, <b>z</b> and <b>s</b> are all <span class="ipa">[s]</span> in Latin America (<i>cielo, zapato, cine</i>).</li><li><b>c</b> before a/o/u, <b>qu</b> before e/i and <b>k</b> are <span class="ipa">[k]</span>. In qu and gu before e/i, the u is silent (<i>queso, guitarra, guerra</i>). Write <b>ü</b> to pronounce it (<i>pingüino</i>).</li><li><b>g</b> before a/o/u is <span class="ipa">[ɡ]</span>/<span class="ipa">[ɣ]</span>; before e/i it\'s <span class="ipa">[x]</span> (<i>gato</i> vs <i>gente</i>).</li><li><b>h</b> is always silent (<i>hola, hielo</i>).</li><li><b>x</b> is usually <span class="ipa">[ks]</span> (<i>taxi</i>), but <span class="ipa">[x]</span> in <i>México</i> and some other names.</li><li><b>ll</b> and <b>y</b> sound the same.</li></ul>'),
-   lst('Listen',['cielo','zapato','cine','queso','guitarra','guerra','pingüino','gato','gente','hielo','taxi','México']),
-   txt('Dialect note','In the Caribbean, coastal areas and much of South America, an s before a consonant or at the end of a word often weakens to a breathy <span class="ipa">[h]</span> or disappears: <i>los amigos</i> → "loh amigoh". Recognise it, but you don\'t need to copy it.'),
-   rq([Q('zapato','In Latin America, the z in <i>zapato</i> is…',['[s]','[θ], like "think"','[z], like "zoo"'],0,'Latin America uses [s] for z and soft c.'),
-       Q('hielo','The h in <i>hielo</i> is…',['Silent','Like English h','Like the jota'],0,'Spanish h is always silent.'),
-       Q('queso','The u in <i>queso</i> is…',['Silent','Pronounced [w]'],0,'In qu and gu before e/i, the u is silent.'),
-       Q('pingüino','The ü in <i>pingüino</i> is…',['Silent','Pronounced [w]'],1,'The two dots mean "say this u".'),
-       Q('México','The x in <i>México</i> is…',['[ks]','[x], the jota'],1,'An old spelling kept for the country\'s name.'),
-       Q('taxi','The x in <i>taxi</i> is…',['[ks]','[x], the jota'],0,'Elsewhere x is usually [ks].'),
-       RD('ˈɡera',['guerra','jarra'],0,'guerra','gu before e = [ɡ]; rr = trill.')]),
-   bd([{w:'guitarra',a:'ɡ i ˈ t̪ a r a',x:'w ɾ x',why:'gu before i = [ɡ] (silent u); rr = trill.'},{w:'cine',a:'ˈ s i n e',x:'k θ',why:'c before i = [s] in Latin America.'}]),
-   spk(['guitarra','gente','queso'])],adds:['r:es11']},
 
  {id:'e21',title:'Spanish checkpoint',kind:'review',min:10,steps:[
    txt('Putting it together','A mixed review of every Spanish sound, contrast and symbol. Anything you miss goes into your daily review.'),

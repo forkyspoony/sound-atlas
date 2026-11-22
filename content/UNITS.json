@@ -608,7 +608,7 @@
   "id": "es-c",
   "l": "es",
   "title": "Consonants",
-  "sub": "Every Spanish consonant, one at a time: the ones without a puff, the soft ones, the r's, and the ones you already have.",
+  "sub": "Every Spanish consonant, one at a time: the ones without a puff, the soft ones, the r's, the ones you already have, and how spelling maps to all of them.",
   "lessons": [
    {
     "id": "e04",
@@ -2662,6 +2662,157 @@
     ],
     "unit": "es-c",
     "n": 13
+   },
+   {
+    "id": "e20",
+    "title": "Rule: spelling to sound",
+    "kind": "rule",
+    "min": 7,
+    "steps": [
+     {
+      "t": "text",
+      "h": "The whole system on one page",
+      "html": "Spanish spelling is very regular once you know these:<ul><li><b>c</b> before e/i, <b>z</b> and <b>s</b> are all <span class=\"ipa\">[s]</span> in Latin America (<i>cielo, zapato, cine</i>).</li><li><b>c</b> before a/o/u, <b>qu</b> before e/i and <b>k</b> are <span class=\"ipa\">[k]</span>. In qu and gu before e/i, the u is silent (<i>queso, guitarra, guerra</i>). Write <b>ü</b> to pronounce it (<i>pingüino</i>).</li><li><b>g</b> before a/o/u is <span class=\"ipa\">[ɡ]</span>/<span class=\"ipa\">[ɣ]</span>; before e/i it's <span class=\"ipa\">[x]</span> (<i>gato</i> vs <i>gente</i>).</li><li><b>h</b> is always silent (<i>hola, hielo</i>).</li><li><b>x</b> is usually <span class=\"ipa\">[ks]</span> (<i>taxi</i>), but <span class=\"ipa\">[x]</span> in <i>México</i> and some other names.</li><li><b>ll</b> and <b>y</b> sound the same.</li></ul>"
+     },
+     {
+      "t": "listen",
+      "h": "Listen",
+      "keys": [
+       "cielo",
+       "zapato",
+       "cine",
+       "queso",
+       "guitarra",
+       "guerra",
+       "pingüino",
+       "gato",
+       "gente",
+       "hielo",
+       "taxi",
+       "México"
+      ]
+     },
+     {
+      "t": "text",
+      "h": "Dialect note",
+      "html": "In the Caribbean, coastal areas and much of South America, an s before a consonant or at the end of a word often weakens to a breathy <span class=\"ipa\">[h]</span> or disappears: <i>los amigos</i> → \"loh amigoh\". Recognise it, but you don't need to copy it."
+     },
+     {
+      "t": "shadow",
+      "ids": [
+       "es11a",
+       "es11b"
+      ]
+     },
+     {
+      "t": "ruleq",
+      "qs": [
+       {
+        "w": "zapato",
+        "q": "In Latin America, the z in <i>zapato</i> is…",
+        "o": [
+         "[s]",
+         "[θ], like \"think\"",
+         "[z], like \"zoo\""
+        ],
+        "a": 0,
+        "why": "Latin America uses [s] for z and soft c."
+       },
+       {
+        "w": "hielo",
+        "q": "The h in <i>hielo</i> is…",
+        "o": [
+         "Silent",
+         "Like English h",
+         "Like the jota"
+        ],
+        "a": 0,
+        "why": "Spanish h is always silent."
+       },
+       {
+        "w": "queso",
+        "q": "The u in <i>queso</i> is…",
+        "o": [
+         "Silent",
+         "Said, like a quick \"w\""
+        ],
+        "a": 0,
+        "why": "In qu and gu before e/i, the u is silent."
+       },
+       {
+        "w": "pingüino",
+        "q": "The ü in <i>pingüino</i> is…",
+        "o": [
+         "Silent",
+         "Said, like a quick \"w\""
+        ],
+        "a": 1,
+        "why": "The two dots mean \"say this u\"."
+       },
+       {
+        "w": "México",
+        "q": "The x in <i>México</i> is…",
+        "o": [
+         "[ks]",
+         "[x], the jota"
+        ],
+        "a": 1,
+        "why": "An old spelling kept for the country's name."
+       },
+       {
+        "w": "taxi",
+        "q": "The x in <i>taxi</i> is…",
+        "o": [
+         "[ks]",
+         "[x], the jota"
+        ],
+        "a": 0,
+        "why": "Elsewhere x is usually [ks]."
+       },
+       {
+        "p": "Read the transcription. Which word is it?",
+        "q": "<span class=\"ipa\" style=\"font-size:30px\">[ˈɡera]</span>",
+        "o": [
+         "guerra",
+         "jarra"
+        ],
+        "a": 0,
+        "fw": "guerra",
+        "why": "gu before e = [ɡ]; rr = trill."
+       }
+      ]
+     },
+     {
+      "t": "build",
+      "items": [
+       {
+        "w": "guitarra",
+        "a": "ɡ i ˈ t̪ a r a",
+        "x": "w ɾ x",
+        "why": "gu before i = [ɡ] (silent u); rr = trill."
+       },
+       {
+        "w": "cine",
+        "a": "ˈ s i n e",
+        "x": "k θ",
+        "why": "c before i = [s] in Latin America."
+       }
+      ]
+     },
+     {
+      "t": "speak",
+      "keys": [
+       "guitarra",
+       "gente",
+       "queso"
+      ]
+     }
+    ],
+    "adds": [
+     "r:es11"
+    ],
+    "unit": "es-c",
+    "n": 14
    }
   ]
  },
@@ -2669,8 +2820,151 @@
   "id": "es-w",
   "l": "es",
   "title": "Words and sentences",
-  "sub": "Stress, glides, linking, clusters, intonation and spelling: putting sounds together into real speech.",
+  "sub": "Glides, stress, linking, clusters and intonation: putting sounds together into real speech.",
   "lessons": [
+   {
+    "id": "e18",
+    "title": "Diphthongs: vowels that glide",
+    "kind": "sounds",
+    "min": 7,
+    "steps": [
+     {
+      "t": "text",
+      "h": "When i and u become glides",
+      "html": "Spanish vowels don't glide on their own, but two vowels can share a syllable. When <b>i</b> or <b>u</b> sits next to another vowel, it shrinks into a quick glide, <span class=\"ipa\">[j]</span> or <span class=\"ipa\">[w]</span>:<ul><li><i>bueno</i> [ˈbweno], <i>tierra</i> [ˈt̪jera], <i>ciudad</i> [sjuˈðað]</li><li><i>baile</i> [ˈbajle], <i>aire</i> [ˈajɾe], <i>auto</i> [ˈawt̪o]</li></ul>That's the only place Spanish has glides, and spelling always shows it."
+     },
+     {
+      "t": "sym",
+      "h": "The glide symbols",
+      "intro": "",
+      "items": [
+       {
+        "s": "j",
+        "n": "i as a glide",
+        "t": "English \"y\" in \"yes\".",
+        "k": [
+         "tierra",
+         "baile"
+        ]
+       },
+       {
+        "s": "w",
+        "n": "u as a glide",
+        "t": "English \"w\".",
+        "k": [
+         "bueno",
+         "auto"
+        ]
+       }
+      ]
+     },
+     {
+      "t": "listen",
+      "h": "Glides",
+      "keys": [
+       "bueno",
+       "tierra",
+       "baile",
+       "aire",
+       "auto",
+       "ciudad"
+      ]
+     },
+     {
+      "t": "text",
+      "h": "An accent mark breaks them up",
+      "html": "A written accent on the i or u keeps it a full vowel, in its own syllable: <i>país</i> [paˈis] is pa-ÍS, <i>día</i> [ˈd̪ia] is DÍ-a, <i>río</i> is RÍ-o. (The next lesson covers what accent marks do to stress.)"
+     },
+     {
+      "t": "listen",
+      "h": "Two syllables",
+      "keys": [
+       "país",
+       "día",
+       "río",
+       "tía"
+      ]
+     },
+     {
+      "t": "ruleq",
+      "qs": [
+       {
+        "w": "país",
+        "q": "How many syllables does <i>país</i> have?",
+        "o": [
+         "1",
+         "2"
+        ],
+        "a": 1,
+        "why": "The accent on í breaks the diphthong: pa-ís."
+       },
+       {
+        "w": "bueno",
+        "q": "How many syllables does <i>bueno</i> have?",
+        "o": [
+         "2",
+         "3"
+        ],
+        "a": 0,
+        "why": "u before a vowel becomes [w]: bue-no."
+       },
+       {
+        "w": "baile",
+        "p": "Listen. Which transcription matches?",
+        "q": "Which transcription matches what you hear?",
+        "o": [
+         "[ˈbajle]",
+         "[baˈile]"
+        ],
+        "a": 0,
+        "oi": true,
+        "why": "ai is one syllable: BAI-le."
+       },
+       {
+        "w": null,
+        "q": "In [ˈbweno], the [w] comes from the letter…",
+        "o": [
+         "b",
+         "u",
+         "o"
+        ],
+        "a": 1,
+        "why": "u before a vowel becomes [w]."
+       }
+      ]
+     },
+     {
+      "t": "build",
+      "items": [
+       {
+        "w": "bueno",
+        "a": "ˈ b w e n o",
+        "x": "u β",
+        "why": "b at the start is hard; u becomes [w]."
+       },
+       {
+        "w": "auto",
+        "a": "ˈ a w t̪ o",
+        "x": "u oʊ",
+        "why": "au is one syllable: [aw]."
+       }
+      ]
+     },
+     {
+      "t": "speak",
+      "keys": [
+       "bueno",
+       "baile",
+       "país"
+      ]
+     }
+    ],
+    "adds": [
+     "r:e18"
+    ],
+    "unit": "es-w",
+    "n": 1
+   },
    {
     "id": "e17",
     "title": "Rule: stress and accent marks",
@@ -2858,149 +3152,6 @@
     ],
     "adds": [
      "r:es9"
-    ],
-    "unit": "es-w",
-    "n": 1
-   },
-   {
-    "id": "e18",
-    "title": "Diphthongs: vowels that glide",
-    "kind": "sounds",
-    "min": 7,
-    "steps": [
-     {
-      "t": "text",
-      "h": "When i and u become glides",
-      "html": "Spanish vowels don't glide on their own, but two vowels can share a syllable. When <b>i</b> or <b>u</b> sits next to another vowel, it shrinks into a quick glide, <span class=\"ipa\">[j]</span> or <span class=\"ipa\">[w]</span>:<ul><li><i>bueno</i> [ˈbweno], <i>tierra</i> [ˈt̪jera], <i>ciudad</i> [sjuˈðað]</li><li><i>baile</i> [ˈbajle], <i>aire</i> [ˈajɾe], <i>auto</i> [ˈawt̪o]</li></ul>That's the only place Spanish has glides, and spelling always shows it."
-     },
-     {
-      "t": "sym",
-      "h": "The glide symbols",
-      "intro": "",
-      "items": [
-       {
-        "s": "j",
-        "n": "i as a glide",
-        "t": "English \"y\" in \"yes\".",
-        "k": [
-         "tierra",
-         "baile"
-        ]
-       },
-       {
-        "s": "w",
-        "n": "u as a glide",
-        "t": "English \"w\".",
-        "k": [
-         "bueno",
-         "auto"
-        ]
-       }
-      ]
-     },
-     {
-      "t": "listen",
-      "h": "Glides",
-      "keys": [
-       "bueno",
-       "tierra",
-       "baile",
-       "aire",
-       "auto",
-       "ciudad"
-      ]
-     },
-     {
-      "t": "text",
-      "h": "An accent mark breaks them up",
-      "html": "A written accent on the i or u keeps it a full vowel, in its own syllable: <i>país</i> [paˈis] is pa-ÍS, <i>día</i> [ˈd̪ia] is DÍ-a, <i>río</i> is RÍ-o."
-     },
-     {
-      "t": "listen",
-      "h": "Two syllables",
-      "keys": [
-       "país",
-       "día",
-       "río",
-       "tía"
-      ]
-     },
-     {
-      "t": "ruleq",
-      "qs": [
-       {
-        "w": "país",
-        "q": "How many syllables does <i>país</i> have?",
-        "o": [
-         "1",
-         "2"
-        ],
-        "a": 1,
-        "why": "The accent on í breaks the diphthong: pa-ís."
-       },
-       {
-        "w": "bueno",
-        "q": "How many syllables does <i>bueno</i> have?",
-        "o": [
-         "2",
-         "3"
-        ],
-        "a": 0,
-        "why": "u before a vowel becomes [w]: bue-no."
-       },
-       {
-        "w": "baile",
-        "p": "Listen. Which transcription matches?",
-        "q": "Which transcription matches what you hear?",
-        "o": [
-         "[ˈbajle]",
-         "[baˈile]"
-        ],
-        "a": 0,
-        "oi": true,
-        "why": "ai is one syllable: BAI-le."
-       },
-       {
-        "w": null,
-        "q": "In [ˈbweno], the [w] comes from the letter…",
-        "o": [
-         "b",
-         "u",
-         "o"
-        ],
-        "a": 1,
-        "why": "u before a vowel becomes [w]."
-       }
-      ]
-     },
-     {
-      "t": "build",
-      "items": [
-       {
-        "w": "bueno",
-        "a": "ˈ b w e n o",
-        "x": "u β",
-        "why": "b at the start is hard; u becomes [w]."
-       },
-       {
-        "w": "auto",
-        "a": "ˈ a w t̪ o",
-        "x": "u oʊ",
-        "why": "au is one syllable: [aw]."
-       }
-      ]
-     },
-     {
-      "t": "speak",
-      "keys": [
-       "bueno",
-       "baile",
-       "país"
-      ]
-     }
-    ],
-    "adds": [
-     "r:e18"
     ],
     "unit": "es-w",
     "n": 2
@@ -3355,157 +3506,6 @@
     "n": 5
    },
    {
-    "id": "e20",
-    "title": "Rule: spelling to sound",
-    "kind": "rule",
-    "min": 7,
-    "steps": [
-     {
-      "t": "text",
-      "h": "The whole system on one page",
-      "html": "Spanish spelling is very regular once you know these:<ul><li><b>c</b> before e/i, <b>z</b> and <b>s</b> are all <span class=\"ipa\">[s]</span> in Latin America (<i>cielo, zapato, cine</i>).</li><li><b>c</b> before a/o/u, <b>qu</b> before e/i and <b>k</b> are <span class=\"ipa\">[k]</span>. In qu and gu before e/i, the u is silent (<i>queso, guitarra, guerra</i>). Write <b>ü</b> to pronounce it (<i>pingüino</i>).</li><li><b>g</b> before a/o/u is <span class=\"ipa\">[ɡ]</span>/<span class=\"ipa\">[ɣ]</span>; before e/i it's <span class=\"ipa\">[x]</span> (<i>gato</i> vs <i>gente</i>).</li><li><b>h</b> is always silent (<i>hola, hielo</i>).</li><li><b>x</b> is usually <span class=\"ipa\">[ks]</span> (<i>taxi</i>), but <span class=\"ipa\">[x]</span> in <i>México</i> and some other names.</li><li><b>ll</b> and <b>y</b> sound the same.</li></ul>"
-     },
-     {
-      "t": "listen",
-      "h": "Listen",
-      "keys": [
-       "cielo",
-       "zapato",
-       "cine",
-       "queso",
-       "guitarra",
-       "guerra",
-       "pingüino",
-       "gato",
-       "gente",
-       "hielo",
-       "taxi",
-       "México"
-      ]
-     },
-     {
-      "t": "text",
-      "h": "Dialect note",
-      "html": "In the Caribbean, coastal areas and much of South America, an s before a consonant or at the end of a word often weakens to a breathy <span class=\"ipa\">[h]</span> or disappears: <i>los amigos</i> → \"loh amigoh\". Recognise it, but you don't need to copy it."
-     },
-     {
-      "t": "shadow",
-      "ids": [
-       "es11a",
-       "es11b"
-      ]
-     },
-     {
-      "t": "ruleq",
-      "qs": [
-       {
-        "w": "zapato",
-        "q": "In Latin America, the z in <i>zapato</i> is…",
-        "o": [
-         "[s]",
-         "[θ], like \"think\"",
-         "[z], like \"zoo\""
-        ],
-        "a": 0,
-        "why": "Latin America uses [s] for z and soft c."
-       },
-       {
-        "w": "hielo",
-        "q": "The h in <i>hielo</i> is…",
-        "o": [
-         "Silent",
-         "Like English h",
-         "Like the jota"
-        ],
-        "a": 0,
-        "why": "Spanish h is always silent."
-       },
-       {
-        "w": "queso",
-        "q": "The u in <i>queso</i> is…",
-        "o": [
-         "Silent",
-         "Pronounced [w]"
-        ],
-        "a": 0,
-        "why": "In qu and gu before e/i, the u is silent."
-       },
-       {
-        "w": "pingüino",
-        "q": "The ü in <i>pingüino</i> is…",
-        "o": [
-         "Silent",
-         "Pronounced [w]"
-        ],
-        "a": 1,
-        "why": "The two dots mean \"say this u\"."
-       },
-       {
-        "w": "México",
-        "q": "The x in <i>México</i> is…",
-        "o": [
-         "[ks]",
-         "[x], the jota"
-        ],
-        "a": 1,
-        "why": "An old spelling kept for the country's name."
-       },
-       {
-        "w": "taxi",
-        "q": "The x in <i>taxi</i> is…",
-        "o": [
-         "[ks]",
-         "[x], the jota"
-        ],
-        "a": 0,
-        "why": "Elsewhere x is usually [ks]."
-       },
-       {
-        "p": "Read the transcription. Which word is it?",
-        "q": "<span class=\"ipa\" style=\"font-size:30px\">[ˈɡera]</span>",
-        "o": [
-         "guerra",
-         "jarra"
-        ],
-        "a": 0,
-        "fw": "guerra",
-        "why": "gu before e = [ɡ]; rr = trill."
-       }
-      ]
-     },
-     {
-      "t": "build",
-      "items": [
-       {
-        "w": "guitarra",
-        "a": "ɡ i ˈ t̪ a r a",
-        "x": "w ɾ x",
-        "why": "gu before i = [ɡ] (silent u); rr = trill."
-       },
-       {
-        "w": "cine",
-        "a": "ˈ s i n e",
-        "x": "k θ",
-        "why": "c before i = [s] in Latin America."
-       }
-      ]
-     },
-     {
-      "t": "speak",
-      "keys": [
-       "guitarra",
-       "gente",
-       "queso"
-      ]
-     }
-    ],
-    "adds": [
-     "r:es11"
-    ],
-    "unit": "es-w",
-    "n": 6
-   },
-   {
     "id": "e21",
     "title": "Spanish checkpoint",
     "kind": "review",
@@ -3680,7 +3680,7 @@
     ],
     "adds": [],
     "unit": "es-w",
-    "n": 7
+    "n": 6
    }
   ]
  },
