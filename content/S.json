@@ -17,7 +17,7 @@
   "how": [
    "Rest your tongue tip loosely on the gum ridge just behind your top teeth.",
    "Keep the tip relaxed, not pressed, and push a steady stream of air over it so it flaps several times.",
-   "To warm up, say \"butter-butter-butter\" quickly, or start with \"tr\" as in Spanish tres and try to keep the flutter going."
+   "To warm up, say \"butter-butter-butter\" quickly, or start with a quick \"tr\" or \"dr\" and try to keep the flutter going."
   ],
   "ex": [
    {
@@ -43,7 +43,14 @@
     "f": "ر"
    }
   ],
-  "note": "Spanish uses the trill for \"rr\" and for \"r\" at the start of a word. Levantine ر is a trill or a tap.",
+  "note": [
+   "Spanish uses the trill for \"rr\" and for \"r\" at the start of a word.",
+   "Levantine ر is a trill or a tap."
+  ],
+  "noteL": [
+   "es",
+   "ar"
+  ],
   "rel": [
    "tap"
   ]
@@ -110,11 +117,20 @@
    "ar"
   ],
   "st": "new",
-  "anchor": "The \"ch\" in Scottish \"loch\" or German \"Bach\". All three of your languages use it.",
+  "anchor": "The \"ch\" in Scottish \"loch\" or German \"Bach\".",
   "how": [
    "Get into position for \"k\": the back of your tongue rises to the soft palate.",
    "Don't let it touch. Leave a small gap and push air through so it hisses.",
-   "Mandarin h is gentle, Spanish j is stronger, and Arabic خ is the scrapiest of the three."
+   "Spanish j is a firm hiss, much stronger than English h.",
+   "Mandarin h is gentler, closer to a breathy h.",
+   "Arabic خ is the scrapiest, often made further back."
+  ],
+  "howL": [
+   null,
+   null,
+   "es",
+   "zh",
+   "ar"
   ],
   "ex": [
    {
@@ -141,7 +157,14 @@
     "f": "خ"
    }
   ],
-  "note": "Arabic خ is often made even further back, at the uvula [χ], which gives it a rougher scrape. Many Latin American Spanish speakers soften j toward [h].",
+  "note": [
+   "Arabic خ is often made even further back, at the uvula [χ], which gives it a rougher scrape.",
+   "Many Latin American Spanish speakers soften j toward [h]."
+  ],
+  "noteL": [
+   "ar",
+   "es"
+  ],
   "rel": [
    "gh",
    "h"
@@ -165,7 +188,14 @@
   "how": [
    "Start saying \"g\" but don't let the back of your tongue touch the roof of your mouth.",
    "Keep your voice buzzing while air passes through the gap.",
-   "In Spanish it's soft, almost a glide. Arabic غ is stronger and is often made at the uvula, like a French r."
+   "In Spanish it's soft, almost a glide, with little or no friction.",
+   "Arabic غ is stronger and is often made at the uvula, like a French r."
+  ],
+  "howL": [
+   null,
+   null,
+   "es",
+   "ar"
   ],
   "ex": [
    {
@@ -192,6 +222,7 @@
    }
   ],
   "note": "Spanish g becomes [ɣ] between vowels and after most consonants. It stays a hard [ɡ] at the start of a phrase and after n.",
+  "noteL": "es",
   "rel": [
    "x",
    "beta",
@@ -356,7 +387,14 @@
   "how": [
    "Say \"spin\", then remove the s and keep the p exactly the same.",
    "The tissue shouldn't move.",
-   "The same goes for t and k: Spanish tomate and casa, and Mandarin d and g (大 dà, 哥 gē)."
+   "Spanish t and k work the same way: tomate, casa.",
+   "Mandarin d and g work the same way: 大 dà, 哥 gē."
+  ],
+  "howL": [
+   null,
+   null,
+   "es",
+   "zh"
   ],
   "ex": [
    {
@@ -384,6 +422,7 @@
    }
   ],
   "note": "Pinyin b, d, g are unaspirated [p t k]. They're voiceless, not voiced like English b, d, g. Pinyin p, t, k are the aspirated ones.",
+  "noteL": "zh",
   "rel": [
    "ph",
    "td"
@@ -456,7 +495,7 @@
   "how": [
    "Touch your tongue tip to the back of your top front teeth, not to the gum ridge.",
    "Release it without a puff, as in \"stop\".",
-   "Spanish and Arabic d [d̪] uses the same tongue position."
+   "d [d̪] uses the same tongue position, with your voice on."
   ],
   "ex": [
    {
@@ -530,6 +569,7 @@
    }
   ],
   "note": "Levantine Arabic usually says ذ as [d] or [z]: ذهب dahab \"gold\", so this sound is mostly Spanish for you.",
+  "noteL": "ar",
   "rel": [
    "th",
    "beta"
@@ -1746,6 +1786,7 @@
    }
   ],
   "note": "Levantine Arabic has long [eː] and [oː] where MSA has \"ay\" and \"aw\": بيت bēt (MSA bayt), يوم yōm (MSA yawm). Word-final ة is often [e] too: طاولة ṭāwle.",
+  "noteL": "ar",
   "rel": [
    "vi",
    "vo"
@@ -1913,6 +1954,10 @@
   "how": [
    "Open your jaw and keep your tongue low and central.",
    "In Arabic it gets brighter (near \"cat\") next to plain consonants and darker (near \"father\" or \"aw\") next to emphatics. Arabic also has a long [aː]."
+  ],
+  "howL": [
+   null,
+   "ar"
   ],
   "ex": [
    {

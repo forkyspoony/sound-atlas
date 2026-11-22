@@ -9,7 +9,10 @@ Each finding has an id (A1, B2 …) so we can fix them one by one.
 **Status (2026-11-21):** quick text fixes done: A1–A6, C3, C4, D4, D5, D8. For A5, the soft d
 card now says "approximant" and the β and ɣ lesson text no longer says "buzz/friction". The ɣ
 card keeps "fricative" because it is shared with Arabic غ, which really is one; the e09 text
-now explains the difference. Everything else below is still open.
+now explains the difference. B1 done: sound cards can tag a how step or note with a language
+(`howL`, `noteL` in `S`), and lessons show only untagged lines plus their own language (and only
+their own language's examples). The Sounds tab still shows everything. Everything else below is
+still open.
 
 ## Verdict
 

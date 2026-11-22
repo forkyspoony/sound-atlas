@@ -552,24 +552,24 @@ const S=[
 // ----- consonants: brand new -----
 {id:'r',sym:'r',name:'Rolled R',desc:'voiced alveolar trill',cat:'c',place:[3],langs:['es','ar'],st:'new',
  anchor:'Most English has no equivalent. It\'s like a cat purring with the tip of your tongue, or a Scottish rolled r.',
- how:['Rest your tongue tip loosely on the gum ridge just behind your top teeth.','Keep the tip relaxed, not pressed, and push a steady stream of air over it so it flaps several times.','To warm up, say "butter-butter-butter" quickly, or start with "tr" as in Spanish tres and try to keep the flutter going.'],
+ how:['Rest your tongue tip loosely on the gum ridge just behind your top teeth.','Keep the tip relaxed, not pressed, and push a steady stream of air over it so it flaps several times.','To warm up, say "butter-butter-butter" quickly, or start with a quick "tr" or "dr" and try to keep the flutter going.'],
  ex:[{l:'es',w:'perro',ipa:'ˈpero',g:'dog',f:'rr'},{l:'es',w:'rojo',ipa:'ˈroxo',g:'red',f:'r'},{l:'ar',w:'راس',r:'rās',ipa:'raːs',g:'head',f:'ر'}],
- note:'Spanish uses the trill for "rr" and for "r" at the start of a word. Levantine ر is a trill or a tap.',rel:['tap']},
+ note:['Spanish uses the trill for "rr" and for "r" at the start of a word.','Levantine ر is a trill or a tap.'],noteL:['es','ar'],rel:['tap']},
 {id:'tap',sym:'ɾ',name:'Tapped R',desc:'voiced alveolar tap',cat:'c',place:[3],langs:['es'],st:'tricky',
  anchor:'American English already has this sound: the "tt" in "butter" and the "d" in "ladder" said quickly.',
  how:['Flick your tongue tip once against the gum ridge, very quickly.','Don\'t round your lips or bunch your tongue the way you would for an English r.','Practice by saying "pot-o" quickly ("potto") to get Spanish pero.'],
  ex:[{l:'es',w:'pero',ipa:'ˈpeɾo',g:'but',f:'r'},{l:'es',w:'caro',ipa:'ˈkaɾo',g:'expensive',f:'r'},{l:'es',w:'gracias',ipa:'ˈɡɾasjas',g:'thank you',f:'r'}],
  note:'pero (but) and perro (dog) differ only in tap vs trill.',rel:['r']},
 {id:'x',sym:'x',name:'Back-of-throat H',desc:'voiceless velar fricative',cat:'c',place:[7],langs:['es','zh','ar'],st:'new',
- anchor:'The "ch" in Scottish "loch" or German "Bach". All three of your languages use it.',
- how:['Get into position for "k": the back of your tongue rises to the soft palate.','Don\'t let it touch. Leave a small gap and push air through so it hisses.','Mandarin h is gentle, Spanish j is stronger, and Arabic خ is the scrapiest of the three.'],
+ anchor:'The "ch" in Scottish "loch" or German "Bach".',
+ how:['Get into position for "k": the back of your tongue rises to the soft palate.','Don\'t let it touch. Leave a small gap and push air through so it hisses.','Spanish j is a firm hiss, much stronger than English h.','Mandarin h is gentler, closer to a breathy h.','Arabic خ is the scrapiest, often made further back.'],howL:[null,null,'es','zh','ar'],
  ex:[{l:'es',w:'jamón',ipa:'xaˈmon',g:'ham',f:'j'},{l:'zh',w:'好',r:'hǎo',ipa:'xaʊ˨˩˦',g:'good',f:'h'},{l:'ar',w:'خلص',r:'xalaṣ',ipa:'xalasˤ',g:'enough; done',f:'خ'}],
- note:'Arabic خ is often made even further back, at the uvula [χ], which gives it a rougher scrape. Many Latin American Spanish speakers soften j toward [h].',rel:['gh','h']},
+ note:['Arabic خ is often made even further back, at the uvula [χ], which gives it a rougher scrape.','Many Latin American Spanish speakers soften j toward [h].'],noteL:['ar','es'],rel:['gh','h']},
 {id:'gh',sym:'ɣ',name:'Soft gargle G',desc:'voiced velar fricative',cat:'c',place:[7],langs:['es','ar'],st:'new',
  anchor:'English has no equivalent. It\'s the voiced version of [x], like a very light gargle.',
- how:['Start saying "g" but don\'t let the back of your tongue touch the roof of your mouth.','Keep your voice buzzing while air passes through the gap.','In Spanish it\'s soft, almost a glide. Arabic غ is stronger and is often made at the uvula, like a French r.'],
+ how:['Start saying "g" but don\'t let the back of your tongue touch the roof of your mouth.','Keep your voice buzzing while air passes through the gap.','In Spanish it\'s soft, almost a glide, with little or no friction.','Arabic غ is stronger and is often made at the uvula, like a French r.'],howL:[null,null,'es','ar'],
  ex:[{l:'es',w:'lago',ipa:'ˈlaɣo',g:'lake',f:'g'},{l:'es',w:'agua',ipa:'ˈaɣwa',g:'water',f:'g'},{l:'ar',w:'غالي',r:'ghāli',ipa:'ɣaːli',g:'expensive',f:'غ'}],
- note:'Spanish g becomes [ɣ] between vowels and after most consonants. It stays a hard [ɡ] at the start of a phrase and after n.',rel:['x','beta','eth']},
+ note:'Spanish g becomes [ɣ] between vowels and after most consonants. It stays a hard [ɡ] at the start of a phrase and after n.',noteL:'es',rel:['x','beta','eth']},
 {id:'beta',sym:'β',name:'Soft B',desc:'voiced bilabial approximant',cat:'c',place:[0],langs:['es'],st:'new',
  anchor:'English has no equivalent. It\'s a "b" where the lips almost touch but don\'t close.',
  how:['Get ready to say "b".','Bring your lips close, leaving a thin slit, and let the air pass through softly while your voice buzzes.','Don\'t press your bottom lip to your teeth. That would be English "v", which Spanish doesn\'t use.'],
@@ -586,9 +586,9 @@ const S=[
  note:'In Argentina and Uruguay this is pronounced like English "sh" or "zh" [ʃ ʒ]: "sho" for yo.',rel:['ny']},
 {id:'pu',sym:'p',name:'Unaspirated P (no puff)',desc:'voiceless bilabial stop, no aspiration',cat:'c',place:[0],langs:['es','zh'],st:'tricky',
  anchor:'English has it, but only after s: the "p" in "spin" has no puff, while "pin" does. Hold a tissue in front of your mouth to check.',
- how:['Say "spin", then remove the s and keep the p exactly the same.','The tissue shouldn\'t move.','The same goes for t and k: Spanish tomate and casa, and Mandarin d and g (大 dà, 哥 gē).'],
+ how:['Say "spin", then remove the s and keep the p exactly the same.','The tissue shouldn\'t move.','Spanish t and k work the same way: tomate, casa.','Mandarin d and g work the same way: 大 dà, 哥 gē.'],howL:[null,null,'es','zh'],
  ex:[{l:'es',w:'papá',ipa:'paˈpa',g:'dad',f:'p'},{l:'zh',w:'爸',r:'bà',ipa:'pa˥˩',g:'dad',f:'b'},{l:'zh',w:'大',r:'dà',ipa:'ta˥˩',g:'big',f:'d'}],
- note:'Pinyin b, d, g are unaspirated [p t k]. They\'re voiceless, not voiced like English b, d, g. Pinyin p, t, k are the aspirated ones.',rel:['ph','td']},
+ note:'Pinyin b, d, g are unaspirated [p t k]. They\'re voiceless, not voiced like English b, d, g. Pinyin p, t, k are the aspirated ones.',noteL:'zh',rel:['ph','td']},
 {id:'ph',sym:'pʰ',name:'Aspirated P (puff)',desc:'voiceless bilabial stop, aspirated',cat:'c',place:[0],langs:['zh'],st:'familiar',
  anchor:'The English "p" in "pin". Mandarin uses a strong puff, even stronger than English.',
  how:['Say "pin" with an extra-strong burst of air.','In Mandarin this puff is what separates pinyin p from b, t from d, and k from g.'],
@@ -596,13 +596,13 @@ const S=[
  note:'爸 bà [pa] "dad" vs 怕 pà [pʰa] "fear": the only difference is the puff of air.',rel:['pu']},
 {id:'td',sym:'t̪',name:'Dental T',desc:'voiceless dental stop, unaspirated',cat:'c',place:[2],langs:['es','ar'],st:'tricky',
  anchor:'Like English t, but with the tongue touching the back of the top teeth and no puff of air.',
- how:['Touch your tongue tip to the back of your top front teeth, not to the gum ridge.','Release it without a puff, as in "stop".','Spanish and Arabic d [d̪] uses the same tongue position.'],
+ how:['Touch your tongue tip to the back of your top front teeth, not to the gum ridge.','Release it without a puff, as in "stop".','d [d̪] uses the same tongue position, with your voice on.'],
  ex:[{l:'es',w:'tomate',ipa:'t̪oˈmat̪e',g:'tomato',f:'t'},{l:'es',w:'todo',ipa:'ˈt̪oðo',g:'all',f:'t'},{l:'ar',w:'كتير',r:'ktīr',ipa:'kt̪iːr',g:'a lot; very',f:'ت'}],rel:['pu','emt']},
 {id:'eth',sym:'ð',name:'Soft D',desc:'voiced dental approximant',cat:'c',place:[2],langs:['es'],st:'tricky',
  anchor:'English has this sound: the "th" in "this". In Spanish, though, it\'s spelled d.',
  how:['Say "this" and hold the "th".','In Spanish, make it softer: the tongue barely touches the teeth.','Use it for any d between vowels: dedo is [ˈd̪eðo], not "deh-doh".'],
  ex:[{l:'es',w:'dedo',ipa:'ˈd̪eðo',g:'finger',f:'d (2nd)'},{l:'es',w:'nada',ipa:'ˈnaða',g:'nothing',f:'d'},{l:'es',w:'cada',ipa:'ˈkaða',g:'each',f:'d'}],
- note:'Levantine Arabic usually says ذ as [d] or [z]: ذهب dahab "gold", so this sound is mostly Spanish for you.',rel:['th','beta']},
+ note:'Levantine Arabic usually says ذ as [d] or [z]: ذهب dahab "gold", so this sound is mostly Spanish for you.',noteL:'ar',rel:['th','beta']},
 {id:'th',sym:'θ',name:'TH (as in think)',desc:'voiceless dental fricative',cat:'c',place:[2],langs:['es'],st:'familiar',
  anchor:'The English "th" in "think".',
  how:['Put your tongue lightly between or behind your teeth and blow.','In Spain, z and c (before e or i) are pronounced this way. Latin America uses [s].'],
@@ -712,7 +712,7 @@ const S=[
  anchor:'English "ay" in "say" without the y glide at the end. Stop halfway.',
  how:['Start to say "say", then freeze your tongue before it rises into the y.','Keep it short and still. Spanish has no "eɪ" glide.'],
  ex:[{l:'es',w:'mesa',ipa:'ˈmesa',g:'table',f:'e'},{l:'es',w:'leche',ipa:'ˈletʃe',g:'milk',f:'e'},{l:'ar',w:'بيت',r:'bēt',ipa:'beːt',g:'house',f:'ي'}],
- note:'Levantine Arabic has long [eː] and [oː] where MSA has "ay" and "aw": بيت bēt (MSA bayt), يوم yōm (MSA yawm). Word-final ة is often [e] too: طاولة ṭāwle.',rel:['vi','vo']},
+ note:'Levantine Arabic has long [eː] and [oː] where MSA has "ay" and "aw": بيت bēt (MSA bayt), يوم yōm (MSA yawm). Word-final ة is often [e] too: طاولة ṭāwle.',noteL:'ar',rel:['vi','vo']},
 {id:'vgam',sym:'ɤ',name:'Pinyin e',desc:'close-mid back unrounded vowel',cat:'v',vx:[1,0.33],unr:true,langs:['zh'],st:'new',
  anchor:'English has no equivalent. It\'s like "uh" with the tongue pulled back and the lips spread.',
  how:['Say "oh" and hold your tongue there.','Now unround your lips, spreading them slightly as if smiling.','You can also start from "uh" and slide your tongue backward. Many speakers add a slight glide: [ɯɤ].'],
@@ -727,7 +727,7 @@ const S=[
  ex:[{l:'zh',w:'人',r:'rén',ipa:'ɻən˧˥',g:'person',f:'e'},{l:'zh',w:'冷',r:'lěng',ipa:'ləŋ˨˩˦',g:'cold',f:'e'}],rel:['vgam']},
 {id:'va',sym:'a',name:'Open "ah"',desc:'open central unrounded vowel',cat:'v',vx:[0.5,1],langs:['es','zh','ar'],st:'familiar',
  anchor:'The "a" in "father", kept short and bright.',
- how:['Open your jaw and keep your tongue low and central.','In Arabic it gets brighter (near "cat") next to plain consonants and darker (near "father" or "aw") next to emphatics. Arabic also has a long [aː].'],
+ how:['Open your jaw and keep your tongue low and central.','In Arabic it gets brighter (near "cat") next to plain consonants and darker (near "father" or "aw") next to emphatics. Arabic also has a long [aː].'],howL:[null,'ar'],
  ex:[{l:'es',w:'casa',ipa:'ˈkasa',g:'house',f:'a'},{l:'zh',w:'妈',r:'mā',ipa:'ma˥',g:'mom',f:'a'},{l:'ar',w:'باب',r:'bāb',ipa:'baːb',g:'door',f:'ا'}],rel:['vschwa']},
 ];
 const BYID=Object.fromEntries(S.map(s=>[s.id,s]));
@@ -1178,7 +1178,7 @@ function openSound(id){
   ${s.ex.map(e=>`<div class="ex">${playBtn(e.w,e.l)}<div><div class="w">${wordHTML(e)} ${e.r?`<span class="meta">${esc(e.r)}</span>`:''}</div><div class="meta"><span class="tag t-${e.l}">${LANGS[e.l]}</span> “${esc(e.g)}” · sound spelled <b>${esc(e.f)}</b></div></div><div class="tr ipa">[${esc(e.ipa)}]${AUDIO[e.w]&&!/\(Spain\)/.test(e.w)?`<button class="slink sp-btn" data-speak="${e.l}|${esc(e.w)}" title="Record yourself saying this">🎙</button>`:''}</div></div>`).join('')}
   ${mineCardHTML(s)}
   <div class="voice-warn"></div>
-  ${s.note?`<div class="note">${esc(s.note)}</div>`:''}
+  ${s.note?`<div class="note">${esc([].concat(s.note).join(' '))}</div>`:''}
   ${s.rel&&s.rel.length?`<div class="related">Compare with ${s.rel.filter(r=>BYID[r]).map(r=>`<button class="slink ipa" data-sound="${r}" title="${esc(BYID[r].name)}">${esc(BYID[r].sym)}</button>`).join('')}</div>`:''}`;
   $('#scrim').classList.add('on');
   $('#modal .close').onclick=closeModal;
@@ -3562,16 +3562,22 @@ let readRef=false;
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lesson]');if(b){e.preventDefault();openLesson(b.dataset.lesson)}});
 
 // ---------- LESSONS: step player ----------
+// Lines on a sound card can be tagged with a language (howL / noteL). Inside a lesson only
+// untagged lines and the lesson's own language show; the Sounds tab shows everything.
+function forLang(arr,tags,l){arr=[].concat(arr||[]);tags=[].concat(tags||[]);return arr.filter((_,i)=>!l||!tags[i]||tags[i]===l)}
 function stepHTMLSound(s){
   const ul=lp?lp.L.unit.l:null;
-  const ex=s.ex.filter(e=>!/\(Spain\)/.test(e.w)).sort((a,b)=>(b.l===ul)-(a.l===ul)).slice(0,3);
+  let ex=s.ex.filter(e=>!/\(Spain\)/.test(e.w));
+  if(ex.some(e=>e.l===ul))ex=ex.filter(e=>e.l===ul);
+  ex=ex.slice(0,3);
+  const how=forLang(s.how,s.howL,ul),note=forLang(s.note,s.noteL,ul).join(' ');
   return `<div class="dhead"><div class="bigsym ipa" style="font-size:66px;min-width:96px">${esc(s.sym)}</div><div><h2>${esc(s.name)}</h2><div class="desc">${termify(s.desc)}</div></div></div>
    <div class="mouthrow${vTab!=='d'&&(SS_VID[s.id]||{})[vTab]?' vid':''}">${visualHTML(s)}<div>${s.cat==='c'?trackHTML(s):''}<div style="font-size:13px;color:var(--muted)">${mouthCaption(s)}</div></div></div>
    ${pureHTML(s)}
    <div class="anchor"><b>Closest thing in English</b>${esc(s.anchor)}</div>
-   <h3 style="margin-top:14px">How to make it</h3><ol class="how">${s.how.map(h=>`<li>${esc(h)}</li>`).join('')}</ol>
+   <h3 style="margin-top:14px">How to make it</h3><ol class="how">${how.map(h=>`<li>${esc(h)}</li>`).join('')}</ol>
    <h3>Listen</h3>${ex.map(e=>`<div class="ex">${playBtn(e.w,e.l)}<div><div class="w">${wordHTML(e)} ${e.r?`<span class="meta">${esc(e.r)}</span>`:''}</div><div class="meta">“${esc(e.g)}”</div></div><div class="tr ipa">[${esc(e.ipa)}]</div></div>`).join('')}
-   ${s.note?`<div class="note">${esc(s.note)}</div>`:''}<div class="voice-warn"></div>`;
+   ${note?`<div class="note">${esc(note)}</div>`:''}<div class="voice-warn"></div>`;
 }
 function listenRows(keys){
   return keys.map(k=>{const w=wd(k);if(!w)return '';return `<div class="ex">${playBtn(w.w,w.l)}<div><div class="w">${lessonWordHTML(w)} ${w.r?`<span class="meta">${esc(w.r)}</span>`:''}</div><div class="meta">“${esc(w.g)}”</div></div><div class="tr ipa">[${esc(w.ipa)}]</div></div>`}).join('');
