@@ -138,7 +138,11 @@
  "تلاتة": "audio/a2d1560d33c.mp3",
  "بدي": "audio/a4de55dd4e3.mp3",
  "منيح": "audio/aac2127cce2.mp3",
- "carro": "audio/a3959fc6166.mp3",
+ "carro": [
+  "audio/p_c5_rr.mp3",
+  0.04,
+  0.47
+ ],
  "coro": "audio/a720a9c0557.mp3",
  "corro": "audio/af73de0af41.mp3",
  "peso": "audio/ab0c7efa6f3.mp3",
@@ -186,7 +190,11 @@
  "一点儿": "audio/ab34e4ca734.mp3",
  "玩儿": "audio/ad5307a7967.mp3",
  "飞机": "audio/a0cb0206b42.mp3",
- "中国": "audio/a101806f57c.mp3",
+ "中国": [
+  "audio/p_c7_zg.mp3",
+  0.04,
+  0.67
+ ],
  "铅笔": "audio/acd52d6c26e.mp3",
  "商店": "audio/a83eff41a2e.mp3",
  "明天": "audio/ab76ce230d3.mp3",
@@ -423,7 +431,11 @@
  "río": "audio/a348f83686b.mp3",
  "gato": "audio/a8f39c63d50.mp3",
  "cine": "audio/a2ffb113581.mp3",
- "guerra": "audio/a5128e013dd.mp3",
+ "guerra": [
+  "audio/p_c5_rr.mp3",
+  1,
+  1.53
+ ],
  "mundo": "audio/a5956a2b28d.mp3",
  "hat (EN)": "audio/a0b3897090e.mp3",
  "how (EN)": [
@@ -542,9 +554,9 @@
   24.153
  ],
  "你好吗？": [
-  "audio/p_c3_0_25a9478b.mp3",
-  24.503,
-  25.294
+  "audio/p_c6_zh.mp3",
+  0.04,
+  0.59
  ],
  "حرف ا": [
   "audio/p_c3_0_25a9478b.mp3",
@@ -1035,5 +1047,195 @@
   "audio/p_c4_1_83396975.mp3",
   14.342,
   15.106
+ ],
+ "Buenos días.": [
+  "audio/p_c5_es.mp3",
+  0.05,
+  0.82
+ ],
+ "No entiendo.": [
+  "audio/p_c5_es.mp3",
+  1.29,
+  2.13
+ ],
+ "¿Puedes repetir, por favor?": [
+  "audio/p_c5_es.mp3",
+  2.68,
+  3.91
+ ],
+ "Tengo hambre.": [
+  "audio/p_c5_es.mp3",
+  4.55,
+  5.35
+ ],
+ "¿Cuánto cuesta?": [
+  "audio/p_c5_es.mp3",
+  5.9,
+  6.62
+ ],
+ "Me llamo Jorge.": [
+  "audio/p_c5_es.mp3",
+  7.16,
+  7.99
+ ],
+ "Hasta mañana.": [
+  "audio/p_c5_es.mp3",
+  8.54,
+  9.14
+ ],
+ "Trabajo en la ciudad.": [
+  "audio/p_c5_es.mp3",
+  9.63,
+  10.59
+ ],
+ "谢谢你。": [
+  "audio/p_c5_zh.mp3",
+  0.04,
+  0.72
+ ],
+ "对不起。": [
+  "audio/p_c5_zh.mp3",
+  1.6,
+  2.19
+ ],
+ "没关系。": [
+  "audio/p_c5_zh.mp3",
+  2.88,
+  3.45
+ ],
+ "请再说一遍。": [
+  "audio/p_c5_zh.mp3",
+  4.07,
+  5.02
+ ],
+ "我听不懂。": [
+  "audio/p_c5_zh.mp3",
+  5.61,
+  6.44
+ ],
+ "你吃饭了吗？": [
+  "audio/p_c5_zh.mp3",
+  7.04,
+  7.87
+ ],
+ "我想喝水。": [
+  "audio/p_c5_zh.mp3",
+  8.47,
+  9.34
+ ],
+ "今天很热。": [
+  "audio/p_c5_zh.mp3",
+  9.92,
+  11.04
+ ],
+ "كيفك اليوم؟": [
+  "audio/p_c5_ar.mp3",
+  0.03,
+  0.78
+ ],
+ "من وين إنت؟": [
+  "audio/p_c5_ar.mp3",
+  1.21,
+  1.99
+ ],
+ "ما بحكي عربي منيح.": [
+  "audio/p_c5_ar.mp3",
+  2.5,
+  3.89
+ ],
+ "شكراً كتير.": [
+  "audio/p_c5_ar.mp3",
+  4.37,
+  5.17
+ ],
+ "تفضّل.": [
+  "audio/p_c5_ar.mp3",
+  5.66,
+  6.02
+ ],
+ "وين الحمّام؟": [
+  "audio/p_c5_ar.mp3",
+  6.66,
+  7.48
+ ],
+ "عن إذنك.": [
+  "audio/p_c5_ar.mp3",
+  7.95,
+  8.45
+ ],
+ "خلّيني شوف.": [
+  "audio/p_c5_ar.mp3",
+  9.04,
+  9.72
+ ],
+ "Nada de nada.": [
+  "audio/p_c6_es.mp3",
+  0.03,
+  1.01
+ ],
+ "Sábado y domingo.": [
+  "audio/p_c6_es.mp3",
+  1.46,
+  2.4
+ ],
+ "Roberto compra un carro rojo.": [
+  "audio/p_c6_es.mp3",
+  2.93,
+  4.59
+ ],
+ "Enrique sonríe.": [
+  "audio/p_c6_es.mp3",
+  5.13,
+  6.04
+ ],
+ "¿Qué vas a hacer hoy?": [
+  "audio/p_c6_es.mp3",
+  6.61,
+  7.6
+ ],
+ "很好吃。": [
+  "audio/p_c6_zh.mp3",
+  1.25,
+  1.96
+ ],
+ "我不是老师。": [
+  "audio/p_c6_zh.mp3",
+  2.58,
+  3.62
+ ],
+ "一起去吧。": [
+  "audio/p_c6_zh.mp3",
+  4.15,
+  4.81
+ ],
+ "他们是我的学生。": [
+  "audio/p_c6_zh.mp3",
+  5.4,
+  6.72
+ ],
+ "بحبّك كتير.": [
+  "audio/p_c6_ar.mp3",
+  0.03,
+  1.05
+ ],
+ "كلّ شي تمام.": [
+  "audio/p_c6_ar.mp3",
+  1.6,
+  2.28
+ ],
+ "وين الشنطة؟": [
+  "audio/p_c6_ar.mp3",
+  2.77,
+  3.49
+ ],
+ "السلام عليكم.": [
+  "audio/p_c6_ar.mp3",
+  3.97,
+  4.82
+ ],
+ "بتحكي إنكليزي؟": [
+  "audio/p_c6_ar.mp3",
+  5.37,
+  6.21
  ]
 }

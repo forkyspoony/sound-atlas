@@ -1733,7 +1733,17 @@
   "w": "你好吗？",
   "ipa": "ni˧˥ xaʊ˨˩ ma",
   "g": "How are you?",
-  "r": "nǐ hǎo ma"
+  "r": "nǐ hǎo ma",
+  "ph": {
+   "id": "zh9c",
+   "l": "zh",
+   "lesson": "zh9",
+   "w": "你好吗？",
+   "ipa": "ni˧˥ xaʊ˨˩ ma",
+   "g": "How are you?",
+   "r": "nǐ hǎo ma",
+   "note": "nǐ rises before hǎo. hǎo then stays low before the neutral 吗."
+  }
  },
  "إنت تعبان.": {
   "l": "ar",
@@ -2893,6 +2903,615 @@
    "ipa": "ˈbiddi ˈkaːset majj",
    "g": "I want a glass of water",
    "note": "Stress falls on the long vowel in kāset."
+  }
+ },
+ "Buenos días.": {
+  "l": "es",
+  "w": "Buenos días.",
+  "ipa": "ˈbwenoz ˈðias",
+  "g": "Good morning.",
+  "r": "",
+  "ph": {
+   "id": "esx1",
+   "l": "es",
+   "w": "Buenos días.",
+   "ipa": "ˈbwenoz ˈðias",
+   "g": "Good morning.",
+   "note": "d goes soft after s, and the s buzzes a little before it."
+  }
+ },
+ "No entiendo.": {
+  "l": "es",
+  "w": "No entiendo.",
+  "ipa": "no enˈt̪jend̪o",
+  "g": "I don't understand.",
+  "r": "",
+  "ph": {
+   "id": "esx2",
+   "l": "es",
+   "w": "No entiendo.",
+   "ipa": "no enˈt̪jend̪o",
+   "g": "I don't understand.",
+   "note": "t and d are dental: tongue on the teeth. d stays hard after n."
+  }
+ },
+ "¿Puedes repetir, por favor?": {
+  "l": "es",
+  "w": "¿Puedes repetir, por favor?",
+  "ipa": "ˈpweðes repeˈt̪iɾ poɾ faˈβoɾ",
+  "g": "Can you repeat that, please?",
+  "r": "",
+  "ph": {
+   "id": "esx3",
+   "l": "es",
+   "w": "¿Puedes repetir, por favor?",
+   "ipa": "ˈpweðes repeˈt̪iɾ poɾ faˈβoɾ",
+   "g": "Can you repeat that, please?",
+   "note": "r at the start of repetir is trilled; the r at the end of each word is a single tap."
+  }
+ },
+ "Tengo hambre.": {
+  "l": "es",
+  "w": "Tengo hambre.",
+  "ipa": "ˈt̪eŋɡo ˈambɾe",
+  "g": "I'm hungry.",
+  "r": "",
+  "ph": {
+   "id": "esx4",
+   "l": "es",
+   "w": "Tengo hambre.",
+   "ipa": "ˈt̪eŋɡo ˈambɾe",
+   "g": "I'm hungry.",
+   "note": "n becomes [ŋ] before g; h is silent; b stays hard after m."
+  }
+ },
+ "¿Cuánto cuesta?": {
+  "l": "es",
+  "w": "¿Cuánto cuesta?",
+  "ipa": "ˈkwant̪o ˈkwest̪a",
+  "g": "How much does it cost?",
+  "r": "",
+  "ph": {
+   "id": "esx5",
+   "l": "es",
+   "w": "¿Cuánto cuesta?",
+   "ipa": "ˈkwant̪o ˈkwest̪a",
+   "g": "How much does it cost?",
+   "note": "Four stops (k, t, k, t) and none has a puff of air."
+  }
+ },
+ "Me llamo Jorge.": {
+  "l": "es",
+  "w": "Me llamo Jorge.",
+  "ipa": "me ˈʝamo ˈxoɾxe",
+  "g": "My name is Jorge.",
+  "r": "",
+  "ph": {
+   "id": "esx6",
+   "l": "es",
+   "w": "Me llamo Jorge.",
+   "ipa": "me ˈʝamo ˈxoɾxe",
+   "g": "My name is Jorge.",
+   "note": "ll is [ʝ]; j and g (before e) are both [x]."
+  }
+ },
+ "Hasta mañana.": {
+  "l": "es",
+  "w": "Hasta mañana.",
+  "ipa": "ˈast̪a maˈɲana",
+  "g": "See you tomorrow.",
+  "r": "",
+  "ph": {
+   "id": "esx7",
+   "l": "es",
+   "w": "Hasta mañana.",
+   "ipa": "ˈast̪a maˈɲana",
+   "g": "See you tomorrow.",
+   "note": "h is silent; ñ is [ɲ], one sound, not n + y."
+  }
+ },
+ "Trabajo en la ciudad.": {
+  "l": "es",
+  "w": "Trabajo en la ciudad.",
+  "ipa": "t̪ɾaˈβaxo en la sjuˈðað",
+  "g": "I work in the city.",
+  "r": "",
+  "ph": {
+   "id": "esx8",
+   "l": "es",
+   "w": "Trabajo en la ciudad.",
+   "ipa": "t̪ɾaˈβaxo en la sjuˈðað",
+   "g": "I work in the city.",
+   "note": "b goes soft between vowels, j is [x], and both d's in ciudad are soft."
+  }
+ },
+ "谢谢你。": {
+  "l": "zh",
+  "w": "谢谢你。",
+  "ipa": "ɕjɛ˥˩ ɕjɛ ni˨˩˦",
+  "g": "Thank you.",
+  "r": "xièxie nǐ",
+  "ph": {
+   "id": "zhx1",
+   "l": "zh",
+   "w": "谢谢你。",
+   "ipa": "ɕjɛ˥˩ ɕjɛ ni˨˩˦",
+   "g": "Thank you.",
+   "r": "xièxie nǐ",
+   "note": "The second 谢 is neutral: short and light."
+  }
+ },
+ "对不起。": {
+  "l": "zh",
+  "w": "对不起。",
+  "ipa": "tweɪ˥˩ pu tɕʰi˨˩˦",
+  "g": "I'm sorry.",
+  "r": "duìbuqǐ",
+  "ph": {
+   "id": "zhx2",
+   "l": "zh",
+   "w": "对不起。",
+   "ipa": "tweɪ˥˩ pu tɕʰi˨˩˦",
+   "g": "I'm sorry.",
+   "r": "duìbuqǐ",
+   "note": "不 is neutral inside this word; q is [tɕʰ], with a strong puff."
+  }
+ },
+ "没关系。": {
+  "l": "zh",
+  "w": "没关系。",
+  "ipa": "meɪ˧˥ kwan˥ ɕi",
+  "g": "It's all right.",
+  "r": "méi guānxi",
+  "ph": {
+   "id": "zhx3",
+   "l": "zh",
+   "w": "没关系。",
+   "ipa": "meɪ˧˥ kwan˥ ɕi",
+   "g": "It's all right.",
+   "r": "méi guānxi",
+   "note": "系 is neutral here. g is [k] with no puff."
+  }
+ },
+ "请再说一遍。": {
+  "l": "zh",
+  "w": "请再说一遍。",
+  "ipa": "tɕʰiŋ˨˩ tsaɪ˥˩ ʂwo˥ i˧˥ pjɛn˥˩",
+  "g": "Please say it again.",
+  "r": "qǐng zài shuō yí biàn",
+  "ph": {
+   "id": "zhx4",
+   "l": "zh",
+   "w": "请再说一遍。",
+   "ipa": "tɕʰiŋ˨˩ tsaɪ˥˩ ʂwo˥ i˧˥ pjɛn˥˩",
+   "g": "Please say it again.",
+   "r": "qǐng zài shuō yí biàn",
+   "note": "一 rises before the fourth tone biàn; qǐng stays low before zài."
+  }
+ },
+ "我听不懂。": {
+  "l": "zh",
+  "w": "我听不懂。",
+  "ipa": "wo˨˩ tʰiŋ˥ pu tʊŋ˨˩˦",
+  "g": "I don't understand (what I hear).",
+  "r": "wǒ tīng bu dǒng",
+  "ph": {
+   "id": "zhx5",
+   "l": "zh",
+   "w": "我听不懂。",
+   "ipa": "wo˨˩ tʰiŋ˥ pu tʊŋ˨˩˦",
+   "g": "I don't understand (what I hear).",
+   "r": "wǒ tīng bu dǒng",
+   "note": "不 is neutral between the verb and its result. t has a puff; d has none."
+  }
+ },
+ "你吃饭了吗？": {
+  "l": "zh",
+  "w": "你吃饭了吗？",
+  "ipa": "ni˨˩ ʈʂʰɨ˥ fan˥˩ lə ma",
+  "g": "Have you eaten?",
+  "r": "nǐ chī fàn le ma",
+  "ph": {
+   "id": "zhx6",
+   "l": "zh",
+   "w": "你吃饭了吗？",
+   "ipa": "ni˨˩ ʈʂʰɨ˥ fan˥˩ lə ma",
+   "g": "Have you eaten?",
+   "r": "nǐ chī fàn le ma",
+   "note": "了 and 吗 are neutral. ch is the curled-back [ʈʂʰ]."
+  }
+ },
+ "我想喝水。": {
+  "l": "zh",
+  "w": "我想喝水。",
+  "ipa": "wo˧˥ ɕjɑŋ˨˩ xɤ˥ ʂweɪ˨˩˦",
+  "g": "I'd like some water.",
+  "r": "wǒ xiǎng hē shuǐ",
+  "ph": {
+   "id": "zhx7",
+   "l": "zh",
+   "w": "我想喝水。",
+   "ipa": "wo˧˥ ɕjɑŋ˨˩ xɤ˥ ʂweɪ˨˩˦",
+   "g": "I'd like some water.",
+   "r": "wǒ xiǎng hē shuǐ",
+   "note": "wǒ rises before the third tone xiǎng, and xiǎng stays low before hē."
+  }
+ },
+ "今天很热。": {
+  "l": "zh",
+  "w": "今天很热。",
+  "ipa": "tɕin˥ tʰjɛn˥ xən˨˩ ɻɤ˥˩",
+  "g": "It's hot today.",
+  "r": "jīntiān hěn rè",
+  "ph": {
+   "id": "zhx8",
+   "l": "zh",
+   "w": "今天很热。",
+   "ipa": "tɕin˥ tʰjɛn˥ xən˨˩ ɻɤ˥˩",
+   "g": "It's hot today.",
+   "r": "jīntiān hěn rè",
+   "note": "hěn stays low before the fourth tone; r is [ɻ]."
+  }
+ },
+ "كيفك اليوم؟": {
+  "l": "ar",
+  "w": "كيفك اليوم؟",
+  "ipa": "ˈkiːfak ilˈjoːm",
+  "g": "How are you today? (to a man)",
+  "r": "kīfak il-yōm",
+  "ph": {
+   "id": "arx1",
+   "l": "ar",
+   "w": "كيفك اليوم؟",
+   "ipa": "ˈkiːfak ilˈjoːm",
+   "g": "How are you today? (to a man)",
+   "r": "kīfak il-yōm",
+   "note": "Two long vowels: ī in kīfak and ō in yōm."
+  }
+ },
+ "من وين إنت؟": {
+  "l": "ar",
+  "w": "من وين إنت؟",
+  "ipa": "min weːn ˈʔinta",
+  "g": "Where are you from? (to a man)",
+  "r": "min wēn inta",
+  "ph": {
+   "id": "arx2",
+   "l": "ar",
+   "w": "من وين إنت؟",
+   "ipa": "min weːn ˈʔinta",
+   "g": "Where are you from? (to a man)",
+   "r": "min wēn inta",
+   "note": "wēn has a pure long [eː], not the glide of English \"wane\"."
+  }
+ },
+ "ما بحكي عربي منيح.": {
+  "l": "ar",
+  "w": "ما بحكي عربي منيح.",
+  "ipa": "ma ˈbaħki ˈʕarabi mniːħ",
+  "g": "I don't speak Arabic well.",
+  "r": "ma baḥki ʿarabi mnīḥ",
+  "ph": {
+   "id": "arx3",
+   "l": "ar",
+   "w": "ما بحكي عربي منيح.",
+   "ipa": "ma ˈbaħki ˈʕarabi mniːħ",
+   "g": "I don't speak Arabic well.",
+   "r": "ma baḥki ʿarabi mnīḥ",
+   "note": "Three throat sounds: ḥ in baḥki and mnīḥ, and ʿ at the start of ʿarabi."
+  }
+ },
+ "شكراً كتير.": {
+  "l": "ar",
+  "w": "شكراً كتير.",
+  "ipa": "ˈʃukran ktiːr",
+  "g": "Thanks a lot.",
+  "r": "šukran ktīr",
+  "ph": {
+   "id": "arx4",
+   "l": "ar",
+   "w": "شكراً كتير.",
+   "ipa": "ˈʃukran ktiːr",
+   "g": "Thanks a lot.",
+   "r": "šukran ktīr",
+   "note": "ktīr starts with two consonants and no vowel between them."
+  }
+ },
+ "تفضّل.": {
+  "l": "ar",
+  "w": "تفضّل.",
+  "ipa": "ˈtfɑdˤdˤɑl",
+  "g": "Go ahead / here you are (to a man).",
+  "r": "tfaḍḍal",
+  "ph": {
+   "id": "arx5",
+   "l": "ar",
+   "w": "تفضّل.",
+   "ipa": "ˈtfɑdˤdˤɑl",
+   "g": "Go ahead / here you are (to a man).",
+   "r": "tfaḍḍal",
+   "note": "The doubled emphatic ḍ is held, and it darkens both a's."
+  }
+ },
+ "وين الحمّام؟": {
+  "l": "ar",
+  "w": "وين الحمّام؟",
+  "ipa": "weːn ilħamˈmaːm",
+  "g": "Where is the bathroom?",
+  "r": "wēn il-ḥammām",
+  "ph": {
+   "id": "arx6",
+   "l": "ar",
+   "w": "وين الحمّام؟",
+   "ipa": "weːn ilħamˈmaːm",
+   "g": "Where is the bathroom?",
+   "r": "wēn il-ḥammām",
+   "note": "Doubled mm, then a long ā that takes the stress."
+  }
+ },
+ "عن إذنك.": {
+  "l": "ar",
+  "w": "عن إذنك.",
+  "ipa": "ʕan ˈʔiznak",
+  "g": "Excuse me (to a man).",
+  "r": "ʿan iznak",
+  "ph": {
+   "id": "arx7",
+   "l": "ar",
+   "w": "عن إذنك.",
+   "ipa": "ʕan ˈʔiznak",
+   "g": "Excuse me (to a man).",
+   "r": "ʿan iznak",
+   "note": "ذ is said as [z] here; the phrase opens with ʿ."
+  }
+ },
+ "خلّيني شوف.": {
+  "l": "ar",
+  "w": "خلّيني شوف.",
+  "ipa": "xalˈliːni ʃuːf",
+  "g": "Let me see.",
+  "r": "xallīni šūf",
+  "ph": {
+   "id": "arx8",
+   "l": "ar",
+   "w": "خلّيني شوف.",
+   "ipa": "xalˈliːni ʃuːf",
+   "g": "Let me see.",
+   "r": "xallīni šūf",
+   "note": "x is the back-of-throat [x]; hold the doubled ll."
+  }
+ },
+ "Nada de nada.": {
+  "l": "es",
+  "w": "Nada de nada.",
+  "ipa": "ˈnaða ðe ˈnaða",
+  "g": "Nothing at all.",
+  "r": "",
+  "ph": {
+   "id": "es4d",
+   "l": "es",
+   "lesson": "es4",
+   "w": "Nada de nada.",
+   "ipa": "ˈnaða ðe ˈnaða",
+   "g": "Nothing at all.",
+   "note": "Three d's between vowels, so all three are soft [ð]. Only the n's touch firmly."
+  }
+ },
+ "Sábado y domingo.": {
+  "l": "es",
+  "w": "Sábado y domingo.",
+  "ipa": "ˈsaβaðo i ðoˈmiŋɡo",
+  "g": "Saturday and Sunday.",
+  "r": "",
+  "ph": {
+   "id": "es4e",
+   "l": "es",
+   "lesson": "es4",
+   "w": "Sábado y domingo.",
+   "ipa": "ˈsaβaðo i ðoˈmiŋɡo",
+   "g": "Saturday and Sunday.",
+   "note": "b and both d's are soft between vowels, but g stays hard after n (and that n becomes [ŋ])."
+  }
+ },
+ "Roberto compra un carro rojo.": {
+  "l": "es",
+  "w": "Roberto compra un carro rojo.",
+  "ipa": "roˈβeɾt̪o ˈkompɾa uŋ ˈkaro ˈroxo",
+  "g": "Roberto buys a red car.",
+  "r": "",
+  "ph": {
+   "id": "es5b",
+   "l": "es",
+   "lesson": "es5",
+   "w": "Roberto compra un carro rojo.",
+   "ipa": "roˈβeɾt̪o ˈkompɾa uŋ ˈkaro ˈroxo",
+   "g": "Roberto buys a red car.",
+   "note": "Trills at the start of Roberto and rojo and in carro; single taps in Robe-r-to and comp-r-a."
+  }
+ },
+ "Enrique sonríe.": {
+  "l": "es",
+  "w": "Enrique sonríe.",
+  "ipa": "enˈrike sonˈri.e",
+  "g": "Enrique smiles.",
+  "r": "",
+  "ph": {
+   "id": "es5c",
+   "l": "es",
+   "lesson": "es5",
+   "w": "Enrique sonríe.",
+   "ipa": "enˈrike sonˈri.e",
+   "g": "Enrique smiles.",
+   "note": "After n, a single written r is trilled, just like rr."
+  }
+ },
+ "¿Qué vas a hacer hoy?": {
+  "l": "es",
+  "w": "¿Qué vas a hacer hoy?",
+  "ipa": "ke ˈβa.sa.ˈse.ɾoj",
+  "g": "What are you going to do today?",
+  "r": "",
+  "ph": {
+   "id": "es10d",
+   "l": "es",
+   "lesson": "es10",
+   "w": "¿Qué vas a hacer hoy?",
+   "ipa": "ke ˈβa.sa.ˈse.ɾoj",
+   "g": "What are you going to do today?",
+   "note": "h is silent, so a and the a of hacer merge into one vowel, and the r of hacer jumps onto hoy: va-sa-ce-roy."
+  }
+ },
+ "很好吃。": {
+  "l": "zh",
+  "w": "很好吃。",
+  "ipa": "xən˧˥ xaʊ˨˩ ʈʂʰɨ˥",
+  "g": "It's delicious.",
+  "r": "hěn hǎochī",
+  "ph": {
+   "id": "zh9d",
+   "l": "zh",
+   "lesson": "zh9",
+   "w": "很好吃。",
+   "ipa": "xən˧˥ xaʊ˨˩ ʈʂʰɨ˥",
+   "g": "It's delicious.",
+   "r": "hěn hǎochī",
+   "note": "Both third-tone changes in one phrase: hěn rises before hǎo, and hǎo stays low before the first tone chī."
+  }
+ },
+ "我不是老师。": {
+  "l": "zh",
+  "w": "我不是老师。",
+  "ipa": "wo˨˩ pu˧˥ ʂɨ˥˩ laʊ˨˩ ʂɨ˥",
+  "g": "I'm not a teacher.",
+  "r": "wǒ bú shì lǎoshī",
+  "ph": {
+   "id": "zh10d",
+   "l": "zh",
+   "lesson": "zh10",
+   "w": "我不是老师。",
+   "ipa": "wo˨˩ pu˧˥ ʂɨ˥˩ laʊ˨˩ ʂɨ˥",
+   "g": "I'm not a teacher.",
+   "r": "wǒ bú shì lǎoshī",
+   "note": "不 rises before the fourth tone shì. wǒ and lǎo stay low."
+  }
+ },
+ "一起去吧。": {
+  "l": "zh",
+  "w": "一起去吧。",
+  "ipa": "i˥˩ tɕʰi˨˩ tɕʰy˥˩ pa",
+  "g": "Let's go together.",
+  "r": "yìqǐ qù ba",
+  "ph": {
+   "id": "zh10e",
+   "l": "zh",
+   "lesson": "zh10",
+   "w": "一起去吧。",
+   "ipa": "i˥˩ tɕʰi˨˩ tɕʰy˥˩ pa",
+   "g": "Let's go together.",
+   "r": "yìqǐ qù ba",
+   "note": "一 falls (fourth tone) before the third tone qǐ. It only rises before a fourth tone."
+  }
+ },
+ "他们是我的学生。": {
+  "l": "zh",
+  "w": "他们是我的学生。",
+  "ipa": "tʰa˥ mən ʂɨ˥˩ wo˨˩ tə ɕɥɛ˧˥ ʂəŋ",
+  "g": "They are my students.",
+  "r": "tāmen shì wǒ de xuésheng",
+  "ph": {
+   "id": "zh11c",
+   "l": "zh",
+   "lesson": "zh11",
+   "w": "他们是我的学生。",
+   "ipa": "tʰa˥ mən ʂɨ˥˩ wo˨˩ tə ɕɥɛ˧˥ ʂəŋ",
+   "g": "They are my students.",
+   "r": "tāmen shì wǒ de xuésheng",
+   "note": "Three neutral syllables: 们, 的 and 生 are short, light and toneless."
+  }
+ },
+ "بحبّك كتير.": {
+  "l": "ar",
+  "w": "بحبّك كتير.",
+  "ipa": "baˈħibbak ktiːr",
+  "g": "I love you very much (to a man).",
+  "r": "baḥibbak ktīr",
+  "ph": {
+   "id": "ar8c",
+   "l": "ar",
+   "lesson": "ar8",
+   "w": "بحبّك كتير.",
+   "ipa": "baˈħibbak ktiːr",
+   "g": "I love you very much (to a man).",
+   "r": "baḥibbak ktīr",
+   "note": "Hold the bb a beat longer; ktīr starts with two consonants."
+  }
+ },
+ "كلّ شي تمام.": {
+  "l": "ar",
+  "w": "كلّ شي تمام.",
+  "ipa": "kill ʃi taˈmaːm",
+  "g": "Everything is fine.",
+  "r": "kill ši tamām",
+  "ph": {
+   "id": "ar8d",
+   "l": "ar",
+   "lesson": "ar8",
+   "w": "كلّ شي تمام.",
+   "ipa": "kill ʃi taˈmaːm",
+   "g": "Everything is fine.",
+   "r": "kill ši tamām",
+   "note": "Hold the ll of kill before moving on to š."
+  }
+ },
+ "وين الشنطة؟": {
+  "l": "ar",
+  "w": "وين الشنطة؟",
+  "ipa": "weːn iʃˈʃantˤɑ",
+  "g": "Where is the bag?",
+  "r": "wēn iš-šanṭa",
+  "ph": {
+   "id": "ar9c",
+   "l": "ar",
+   "lesson": "ar9",
+   "w": "وين الشنطة؟",
+   "ipa": "weːn iʃˈʃantˤɑ",
+   "g": "Where is the bag?",
+   "r": "wēn iš-šanṭa",
+   "note": "ش is a sun letter: iš-šanṭa, not il-šanṭa. ṭ darkens the last a."
+  }
+ },
+ "السلام عليكم.": {
+  "l": "ar",
+  "w": "السلام عليكم.",
+  "ipa": "issaˈlaːmu ʕaˈlajkum",
+  "g": "Peace be upon you (a greeting).",
+  "r": "is-salāmu ʿalaykum",
+  "ph": {
+   "id": "ar9d",
+   "l": "ar",
+   "lesson": "ar9",
+   "w": "السلام عليكم.",
+   "ipa": "issaˈlaːmu ʕaˈlajkum",
+   "g": "Peace be upon you (a greeting).",
+   "r": "is-salāmu ʿalaykum",
+   "note": "س is a sun letter: is-salām, not il-salām. In relaxed speech ʿalaykum often becomes ʿalēkum."
+  }
+ },
+ "بتحكي إنكليزي؟": {
+  "l": "ar",
+  "w": "بتحكي إنكليزي؟",
+  "ipa": "ˈbtiħki ʔinɡˈliːzi",
+  "g": "Do you speak English?",
+  "r": "btiḥki inglīzi",
+  "ph": {
+   "id": "ar11c",
+   "l": "ar",
+   "lesson": "ar11",
+   "w": "بتحكي إنكليزي؟",
+   "ipa": "ˈbtiħki ʔinɡˈliːzi",
+   "g": "Do you speak English?",
+   "r": "btiḥki inglīzi",
+   "note": "btiḥki starts with two consonants, bt, with no vowel between them."
   }
  }
 }

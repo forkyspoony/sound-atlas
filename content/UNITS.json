@@ -14,7 +14,7 @@
      {
       "t": "text",
       "h": "One symbol, one sound",
-      "html": "English spelling is unreliable: the letter <b>c</b> is different in \"<u>c</u>at\" and \"<u>c</u>ity\", and <b>ough</b> is different in \"th<u>ough</u>\", \"thr<u>ough</u>\" and \"t<u>ough</u>\".<br><br>The <b>International Phonetic Alphabet</b> (IPA) fixes this. Every symbol stands for exactly one sound, always, in every language. Square brackets mean \"this is how it's actually said\":<ul><li>\"cat\" is <span class=\"ipa\">[kæt]</span> and \"city\" is <span class=\"ipa\">[ˈsɪɾi]</span>: two different symbols for the two c's.</li><li>Spanish <i>casa</i> is <span class=\"ipa\">[ˈkasa]</span>.</li></ul>Learning IPA alongside Spanish gives you two things: you can read the pronunciation of any word in a dictionary, and you'll notice sounds your ear currently skips over."
+      "html": "English spelling is unreliable: the letter <b>c</b> is different in \"<u>c</u>at\" and \"<u>c</u>ity\", and <b>ough</b> is different in \"th<u>ough</u>\", \"thr<u>ough</u>\" and \"t<u>ough</u>\".<br><br>The <b>International Phonetic Alphabet</b> (IPA) fixes this. Every symbol stands for one sound, and means roughly the same sound in every language. Square brackets mean \"this is how it's actually said\":<ul><li>\"cat\" is <span class=\"ipa\">[kæt]</span> and \"city\" is <span class=\"ipa\">[ˈsɪɾi]</span>: two different symbols for the two c's.</li><li>Spanish <i>casa</i> is <span class=\"ipa\">[ˈkasa]</span>.</li></ul>Learning IPA alongside Spanish gives you two things: you can read the pronunciation of any word in a dictionary, and you'll notice sounds your ear currently skips over."
      },
      {
       "t": "text",
@@ -74,7 +74,7 @@
        [
         "chocolate (EN)",
         "chocolate",
-        "English squeezes it into 2 or 3 syllables with an \"uh\" <span class=\"ipa\">[ə]</span>. Spanish says all four syllables in full."
+        "English squeezes it into 2 or 3 syllables with an \"uh\" <span class=\"ipa\">[ə]</span>. Spanish says all four syllables in full. (<span class=\"ipa\">[ʧ]</span> is the \"ch\" of \"church\".)"
        ]
       ]
      },
@@ -947,7 +947,7 @@
        "queso",
        "kilo",
        "taco",
-       "cinco"
+       "Cuba"
       ]
      },
      {
@@ -1079,7 +1079,7 @@
      {
       "t": "text",
       "h": "Spanish has two b's, and no v",
-      "html": "First, a surprise: Spanish <b>b and v are the same sound</b>. <i>vaso</i> and <i>baso</i> would sound identical. There's no English-style v (teeth on lip) in Spanish at all.<br><br>That one sound comes in two versions:<ul><li><b>Hard</b> <span class=\"ipa\">[b]</span>: the lips close completely, like English b.</li><li><b>Soft</b> <span class=\"ipa\">[β]</span>: the lips come close but <b>never touch</b>, and air keeps flowing between them with a light buzz.</li></ul>The symbol β is the Greek letter beta. Spanish speakers don't think of these as two sounds, so they never mention it, but using a hard [b] between vowels makes your Spanish sound choppy."
+      "html": "First, a surprise: Spanish <b>b and v are the same sound</b>. <i>vaso</i> and <i>baso</i> would sound identical. There's no English-style v (teeth on lip) in Spanish at all.<br><br>That one sound comes in two versions:<ul><li><b>Hard</b> <span class=\"ipa\">[b]</span>: the lips close completely, like English b.</li><li><b>Soft</b> <span class=\"ipa\">[β]</span>: the lips come close but <b>never touch</b>, and air keeps flowing between them, with your voice on but almost no hiss.</li></ul>The symbol β is the Greek letter beta. Spanish speakers don't think of these as two sounds, so they never mention it, but using a hard [b] between vowels makes your Spanish sound choppy."
      },
      {
       "t": "feel",
@@ -1112,7 +1112,7 @@
      {
       "t": "text",
       "h": "When is it hard?",
-      "html": "A preview of the full rule in lesson 10: hard <span class=\"ipa\">[b]</span> after a pause and after m or n; soft <span class=\"ipa\">[β]</span> everywhere else. So a word on its own like <i>vino</i> starts with a hard [b], with no v sound."
+      "html": "A preview of the full rule in the lesson <i>Rule: hard or soft?</i>: hard <span class=\"ipa\">[b]</span> after a pause and after m or n; soft <span class=\"ipa\">[β]</span> everywhere else. So a word on its own like <i>vino</i> starts with a hard [b], with no v sound."
      },
      {
       "t": "listen",
@@ -1358,7 +1358,7 @@
      {
       "t": "text",
       "h": "A sound English doesn't have",
-      "html": "Soft g, <span class=\"ipa\">[ɣ]</span> (the Greek letter gamma), follows the same pattern as <span class=\"ipa\">[β]</span> and <span class=\"ipa\">[ð]</span>. The back of the tongue rises toward the soft palate as if for g, but <b>doesn't close</b>. Air flows through with a soft, voiced friction.<br><br>English has nothing like it, so it takes practice. It's the voiced partner of the jota (lesson 15), and much gentler: almost a gargle with no effort behind it."
+      "html": "Soft g, <span class=\"ipa\">[ɣ]</span> (the Greek letter gamma), follows the same pattern as <span class=\"ipa\">[β]</span> and <span class=\"ipa\">[ð]</span>. The back of the tongue rises toward the soft palate as if for g, but <b>doesn't close</b>. Air flows through with your voice on and little or no hiss. (Arabic غ is the same symbol made with real friction; the Spanish one is softer.)<br><br>English has nothing like it, so it takes practice. It's the same move as soft b and soft d, made with the back of the tongue: start from a g and just don't let it seal."
      },
      {
       "t": "feel",
@@ -1386,7 +1386,7 @@
        "algo",
        "el gato"
       ],
-      "note": "In <i>el gato</i> the g is soft even though it starts a word, because of the l in the word before. Lesson 10 explains."
+      "note": "In <i>el gato</i> the g is soft even though it starts a word, because of the l in the word before. The lesson <i>Rule: hard or soft?</i> explains."
      },
      {
       "t": "sym",
@@ -1544,7 +1544,7 @@
      {
       "t": "text",
       "h": "Bonus: n copies the next sound",
-      "html": "Before p, b, v or m, n becomes <span class=\"ipa\">[m]</span> (<i>un poco</i> [um ˈpoko]). Before k, g or j it becomes <span class=\"ipa\">[ŋ]</span>, as in English \"sing\" (<i>tengo</i>, <i>cinco</i>). English does this too, so it comes naturally once you allow it."
+      "html": "Before p, b, v or m, n becomes <span class=\"ipa\">[m]</span> (<i>un poco</i> [um ˈpoko]). Before k, g or j it becomes <span class=\"ipa\">[ŋ]</span>, as in English \"sing\" (<i>tengo</i>, <i>cinco</i>). It also shifts before f, toward the lip-and-teeth <span class=\"ipa\">[ɱ]</span> (<i>enfermo</i>), and before ch, y or ll, toward <span class=\"ipa\">[ɲ]</span> (<i>ancho</i>, <i>cónyuge</i>). English does this too, so it comes naturally once you allow it."
      },
      {
       "t": "listen",
@@ -1561,7 +1561,9 @@
       "ids": [
        "es4a",
        "es4b",
-       "es4c"
+       "es4c",
+       "es4d",
+       "es4e"
       ]
      },
      {
@@ -1760,7 +1762,7 @@
        "tres",
        "comer"
       ],
-      "note": "After a consonant (<i>gracias, tres</i>) and at the end of a word (<i>comer</i>) the r is also a tap. Don't let <i>comer</i> end with an English r."
+      "note": "After most consonants (b, d, f, g, k, p, t: <i>gracias, tres</i>) and at the end of a word (<i>comer</i>) the r is also a tap. After n, l or s it is trilled instead (next lesson). Don't let <i>comer</i> end with an English r."
      },
      {
       "t": "ruleq",
@@ -1912,7 +1914,9 @@
      {
       "t": "shadow",
       "ids": [
-       "es5a"
+       "es5a",
+       "es5b",
+       "es5c"
       ]
      },
      {
@@ -2182,7 +2186,7 @@
      {
       "t": "text",
       "h": "A stronger y",
-      "html": "In most of Latin America, <b>y</b> and <b>ll</b> are the same sound: <span class=\"ipa\">[ʝ]</span>, a j with a curly tail. It's like English y in \"yes\" but with the tongue pressed a little closer to the palate, so there's a light buzz of friction.<br><br>Keep the two symbols apart: <span class=\"ipa\">[j]</span> is the plain English y glide (it appears in Spanish too, as in <i>tierra</i> [ˈt̪jera]). <span class=\"ipa\">[ʝ]</span> is the stronger consonant at the start of <i>yo</i> or in <i>calle</i>. After n or l, or when stressed, it can go further, toward the j of \"jam\"."
+      "html": "In most of Latin America, <b>y</b> and <b>ll</b> are the same sound: <span class=\"ipa\">[ʝ]</span>, a j with a curly tail. It's like English y in \"yes\" but with the tongue pressed a little closer to the palate, so there's a light buzz of friction.<br><br>Keep the two symbols apart: <span class=\"ipa\">[j]</span> is the plain English y glide (it appears in Spanish too, as in <i>tierra</i> [ˈt̪jera]). <span class=\"ipa\">[ʝ]</span> is the stronger consonant at the start of <i>yo</i> or in <i>calle</i>. At the start of a phrase or after n or l (<i>yo</i>, <i>el yate</i>, <i>cónyuge</i>), it can go further, toward the j of \"jam\".<br><br><b>Which one does the spelling give?</b> An <b>i before a vowel</b> is the glide <span class=\"ipa\">[j]</span> (<i>tierra</i>, <i>bien</i>). A <b>y</b>, <b>ll</b> or <b>hi-</b> plus a vowel at the start of a syllable is <span class=\"ipa\">[ʝ]</span> (<i>yo</i>, <i>calle</i>, <i>hielo</i>)."
      },
      {
       "t": "cmp",
@@ -3060,7 +3064,8 @@
       "ids": [
        "es10a",
        "es10b",
-       "es10c"
+       "es10c",
+       "es10d"
       ]
      },
      {
@@ -3269,7 +3274,7 @@
      {
       "t": "text",
       "h": "The melody of a sentence",
-      "html": "Spanish sentence melody is close to English:<ul><li><b>Statements</b> fall at the end: <i>Es tu casa.</i> \"It's your house.\"</li><li><b>Yes/no questions</b> rise at the end, and that rise is often the only thing that makes them questions: <i>¿Hablas español?</i></li><li><b>Question-word questions</b> (¿Dónde…? ¿Qué…? ¿Cómo…?) usually fall: <i>¿Dónde vives?</i></li></ul>Written Spanish warns you a question is coming with an upside-down <b>¿</b> at the start.<br><br>One difference from English: Spanish doesn't stretch stressed syllables much and keeps the even rhythm from lesson 19, so the melody is smoother and less bouncy."
+      "html": "Spanish sentence melody is close to English:<ul><li><b>Statements</b> fall at the end: <i>Es tu casa.</i> \"It's your house.\"</li><li><b>Yes/no questions</b> rise at the end, and that rise is often the only thing that makes them questions: <i>¿Hablas español?</i></li><li><b>Question-word questions</b> (¿Dónde…? ¿Qué…? ¿Cómo…?) usually fall: <i>¿Dónde vives?</i></li></ul>Written Spanish warns you a question is coming with an upside-down <b>¿</b> at the start.<br><br>One difference from English: Spanish doesn't stretch stressed syllables much and keeps the even rhythm from <i>Rule: linking and rhythm</i>, so the melody is smoother and less bouncy."
      },
      {
       "t": "listen",
@@ -6502,7 +6507,9 @@
       "t": "shadow",
       "ids": [
        "zh9a",
-       "zh9b"
+       "zh9b",
+       "zh9c",
+       "zh9d"
       ]
      },
      {
@@ -6638,7 +6645,9 @@
       "ids": [
        "zh10a",
        "zh10b",
-       "zh10c"
+       "zh10c",
+       "zh10d",
+       "zh10e"
       ]
      },
      {
@@ -6773,7 +6782,8 @@
       "t": "shadow",
       "ids": [
        "zh11a",
-       "zh11b"
+       "zh11b",
+       "zh11c"
       ]
      },
      {
@@ -9588,7 +9598,9 @@
       "t": "shadow",
       "ids": [
        "ar8a",
-       "ar8b"
+       "ar8b",
+       "ar8c",
+       "ar8d"
       ]
      },
      {
@@ -9684,7 +9696,9 @@
       "t": "shadow",
       "ids": [
        "ar9a",
-       "ar9b"
+       "ar9b",
+       "ar9c",
+       "ar9d"
       ]
      },
      {
@@ -9800,7 +9814,8 @@
       "t": "shadow",
       "ids": [
        "ar11a",
-       "ar11b"
+       "ar11b",
+       "ar11c"
       ]
      },
      {

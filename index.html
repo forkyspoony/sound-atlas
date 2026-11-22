@@ -598,7 +598,7 @@ const S=[
  anchor:'Like English t, but with the tongue touching the back of the top teeth and no puff of air.',
  how:['Touch your tongue tip to the back of your top front teeth, not to the gum ridge.','Release it without a puff, as in "stop".','Spanish and Arabic d [d̪] uses the same tongue position.'],
  ex:[{l:'es',w:'tomate',ipa:'t̪oˈmat̪e',g:'tomato',f:'t'},{l:'es',w:'todo',ipa:'ˈt̪oðo',g:'all',f:'t'},{l:'ar',w:'كتير',r:'ktīr',ipa:'kt̪iːr',g:'a lot; very',f:'ت'}],rel:['pu','emt']},
-{id:'eth',sym:'ð',name:'Soft D',desc:'voiced dental approximant/fricative',cat:'c',place:[2],langs:['es'],st:'tricky',
+{id:'eth',sym:'ð',name:'Soft D',desc:'voiced dental approximant',cat:'c',place:[2],langs:['es'],st:'tricky',
  anchor:'English has this sound: the "th" in "this". In Spanish, though, it\'s spelled d.',
  how:['Say "this" and hold the "th".','In Spanish, make it softer: the tongue barely touches the teeth.','Use it for any d between vowels: dedo is [ˈd̪eðo], not "deh-doh".'],
  ex:[{l:'es',w:'dedo',ipa:'ˈd̪eðo',g:'finger',f:'d (2nd)'},{l:'es',w:'nada',ipa:'ˈnaða',g:'nothing',f:'d'},{l:'es',w:'cada',ipa:'ˈkaða',g:'each',f:'d'}],
@@ -1665,9 +1665,9 @@ const PAIRS=[
   pairs:[[W('es','tos','t̪os','cough'),W('es','dos','d̪os','two')],[W('es','tía','ˈt̪ia','aunt'),W('es','día','ˈd̪ia','day')]]},
  {id:'es-kg',l:'es',label:'k vs g',ids:['pu','gh'],tip:'Spanish k has no puff of air. g buzzes from the start.',
   pairs:[[W('es','casa','ˈkasa','house'),W('es','gasa','ˈɡasa','gauze')],[W('es','coma','ˈkoma','comma'),W('es','goma','ˈɡoma','rubber')]]},
- {id:'es-n',l:'es',label:'n vs ɲ',ids:['ny'],tip:'ɲ is made with the middle of the tongue on the palate. It sounds like n with a y glued to it.',
+ {id:'es-n',l:'es',label:'n vs ɲ',ids:['ny'],tip:'ɲ is made with the middle of the tongue on the palate. It is one contact, not n followed by y.',
   pairs:[[W('es','una','ˈuna','one'),W('es','uña','ˈuɲa','fingernail')],[W('es','cana','ˈkana','grey hair'),W('es','caña','ˈkaɲa','cane')]]},
- {id:'es-ei',l:'es',label:'e vs i',ids:['ve','vi'],tip:'Spanish vowels never glide or relax. e is halfway between English "eh" and "ay"; i is a tight "ee".',
+ {id:'es-ei',l:'es',label:'e vs i',ids:['ve','vi'],tip:'Spanish vowels never glide or relax. e is the start of "say", frozen before the glide; i is a tight "ee".',
   pairs:[[W('es','peso','ˈpeso','weight'),W('es','piso','ˈpiso','floor')],[W('es','mesa','ˈmesa','table'),W('es','misa','ˈmisa','mass')]]},
  {id:'zh-asp',l:'zh',label:'no puff vs puff',ids:['pu','ph'],tip:'Pinyin b d g z zh j have no puff of air; p t k c ch q have a strong one. Neither set buzzes like English b or d.',
   pairs:[[W('zh','爸','pa˥˩','dad','bà'),W('zh','怕','pʰa˥˩','to fear','pà')],[W('zh','大','ta˥˩','big','dà'),W('zh','踏','tʰa˥˩','to step on','tà')],[W('zh','哥','kɤ˥','older brother','gē'),W('zh','科','kʰɤ˥','subject','kē')],[W('zh','在','tsaɪ˥˩','at','zài'),W('zh','菜','tsʰaɪ˥˩','dish','cài')],[W('zh','知','ʈʂɨ˥','to know','zhī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','七','tɕʰi˥','seven','qī')]]},
@@ -2122,7 +2122,7 @@ const AR_ALL=['jzh','h','gs','q','hh','ain','ems','emt','emd','emz'];
 const UNITS=[
 {id:'es',l:'es',title:'Reading IPA and the five vowels',sub:'How IPA works, and the five pure vowels that are the foundation of a good Spanish accent.',lessons:[
  {id:'e01',title:'How IPA works',kind:'intro',min:8,steps:[
-   txt('One symbol, one sound',`English spelling is unreliable: the letter <b>c</b> is different in "<u>c</u>at" and "<u>c</u>ity", and <b>ough</b> is different in "th<u>ough</u>", "thr<u>ough</u>" and "t<u>ough</u>".<br><br>The <b>International Phonetic Alphabet</b> (IPA) fixes this. Every symbol stands for exactly one sound, always, in every language. Square brackets mean "this is how it's actually said":<ul><li>"cat" is <span class="ipa">[kæt]</span> and "city" is <span class="ipa">[ˈsɪɾi]</span>: two different symbols for the two c's.</li><li>Spanish <i>casa</i> is <span class="ipa">[ˈkasa]</span>.</li></ul>Learning IPA alongside Spanish gives you two things: you can read the pronunciation of any word in a dictionary, and you'll notice sounds your ear currently skips over.`),
+   txt('One symbol, one sound',`English spelling is unreliable: the letter <b>c</b> is different in "<u>c</u>at" and "<u>c</u>ity", and <b>ough</b> is different in "th<u>ough</u>", "thr<u>ough</u>" and "t<u>ough</u>".<br><br>The <b>International Phonetic Alphabet</b> (IPA) fixes this. Every symbol stands for one sound, and means roughly the same sound in every language. Square brackets mean "this is how it's actually said":<ul><li>"cat" is <span class="ipa">[kæt]</span> and "city" is <span class="ipa">[ˈsɪɾi]</span>: two different symbols for the two c's.</li><li>Spanish <i>casa</i> is <span class="ipa">[ˈkasa]</span>.</li></ul>Learning IPA alongside Spanish gives you two things: you can read the pronunciation of any word in a dictionary, and you'll notice sounds your ear currently skips over.`),
    txt('Most symbols look like letters',`Many IPA symbols are ordinary letters and mean roughly what an English speaker expects: <span class="ipa">[p b t d k m n f s l]</span>.<br><br>The traps are the symbols that look familiar but mean something else. The most important ones for Spanish:<ul><li><span class="ipa">[i]</span> is the "ee" of "see", never the "i" of "sit". So <span class="ipa">[si]</span> is "see", not "sigh".</li><li><span class="ipa">[e]</span> is "eh", like the start of "say".</li><li><span class="ipa">[a]</span> is "ah"; <span class="ipa">[u]</span> is "oo".</li><li><span class="ipa">[j]</span> is the <b>y</b> of "yes", never the j of "jam".</li><li><span class="ipa">[x]</span> is a scrapy sound at the back of the mouth (the Spanish jota), never "ks".</li></ul>Each of these gets its own lesson. For now, just remember: <b>read IPA symbol by symbol, not like English spelling.</b>`),
    sy('Marks you\'ll see in transcriptions','These small marks change how you read a transcription. Tap the words to hear them.',[
      {s:'ˈ',n:'Stress mark',t:'Goes <b>before</b> the syllable that is stressed. <span class="ipa">[ˈpapa]</span> is PA-pa ("potato"); <span class="ipa">[paˈpa]</span> is pa-PÁ ("dad").',k:['papa','papá']},
@@ -2131,7 +2131,7 @@ const UNITS=[
      {s:'‿',n:'Tie below',t:'"No break here": the words run together.',k:['¿Cómo estás?']}]),
    cm('Same word, different sounds','Each word below is spelled almost the same in both languages. Play them in pairs and compare the transcriptions symbol by symbol.',[
      ['taco (EN)','taco','English has a puff after t <span class="ipa">[tʰ]</span>, a different a <span class="ipa">[ɑ]</span>, and a gliding o <span class="ipa">[oʊ]</span>.'],
-     ['chocolate (EN)','chocolate','English squeezes it into 2 or 3 syllables with an "uh" <span class="ipa">[ə]</span>. Spanish says all four syllables in full.']]),
+     ['chocolate (EN)','chocolate','English squeezes it into 2 or 3 syllables with an "uh" <span class="ipa">[ə]</span>. Spanish says all four syllables in full. (<span class="ipa">[ʧ]</span> is the "ch" of "church".)']]),
    rq([RD('ˈkasa',['casa','gasa'],0,'casa','[k] is always the k sound, whatever letter spells it.'),
        RD('paˈpa',['papa (potato)','papá (dad)'],1,'papá','The ˈ comes before the second syllable, so pa-PÁ.'),
        RD('si',['sí','sé'],0,'sí','IPA [i] is the "ee" of "see".'),
@@ -2217,7 +2217,7 @@ const UNITS=[
  {id:'e06',title:'k and g, and voicing',kind:'sounds',min:7,steps:[
    txt('One sound, three spellings',`Spanish <span class="ipa">[k]</span> is written:<ul><li><b>c</b> before a, o, u: <i>casa, coma, Cuba</i></li><li><b>qu</b> before e, i: <i>queso, quince</i>. The u is silent: it's only there to keep the c hard.</li><li><b>k</b> in a few borrowed words: <i>kilo</i></li></ul>Like p and t, Spanish k has <b>no puff</b>: think of the k in "skin", not "kin".<br><br>Its voiced partner <span class="ipa">[ɡ]</span> is written g before a, o, u (<i>goma, gato</i>) and gu before e, i (<i>guitarra</i>). IPA uses the round, single-loop ɡ.`),
    cm('No puff on k either','',[['kin (EN)','skin (EN)','<span class="ipa">[kʰ]</span> vs <span class="ipa">[k]</span>, inside English'],['coma (EN)','coma','']]),
-   lst('[k] spelled three ways',['casa','queso','kilo','taco','cinco']),
+   lst('[k] spelled three ways',['casa','queso','kilo','taco','Cuba']),
    sy('The voicing pairs','Spanish uses the same trick three times: same mouth position, with or without the buzz.',[
      {s:'p b',t:'lips',k:['peso','beso']},{s:'t̪ d̪',t:'tongue on the teeth',k:['tos','dos']},{s:'k ɡ',t:'back of the tongue on the soft palate',k:['casa','gasa']}]),
    prs(['es-kg'],6),
@@ -2229,11 +2229,11 @@ const UNITS=[
    spk(['queso','casa','goma'])],adds:['p:es-kg','r:e06']},
 
  {id:'e07',title:'Soft b [β]',kind:'sounds',min:8,steps:[
-   txt('Spanish has two b\'s, and no v',`First, a surprise: Spanish <b>b and v are the same sound</b>. <i>vaso</i> and <i>baso</i> would sound identical. There's no English-style v (teeth on lip) in Spanish at all.<br><br>That one sound comes in two versions:<ul><li><b>Hard</b> <span class="ipa">[b]</span>: the lips close completely, like English b.</li><li><b>Soft</b> <span class="ipa">[β]</span>: the lips come close but <b>never touch</b>, and air keeps flowing between them with a light buzz.</li></ul>The symbol β is the Greek letter beta. Spanish speakers don't think of these as two sounds, so they never mention it, but using a hard [b] between vowels makes your Spanish sound choppy.`),
+   txt('Spanish has two b\'s, and no v',`First, a surprise: Spanish <b>b and v are the same sound</b>. <i>vaso</i> and <i>baso</i> would sound identical. There's no English-style v (teeth on lip) in Spanish at all.<br><br>That one sound comes in two versions:<ul><li><b>Hard</b> <span class="ipa">[b]</span>: the lips close completely, like English b.</li><li><b>Soft</b> <span class="ipa">[β]</span>: the lips come close but <b>never touch</b>, and air keeps flowing between them, with your voice on but almost no hiss.</li></ul>The symbol β is the Greek letter beta. Spanish speakers don't think of these as two sounds, so they never mention it, but using a hard [b] between vowels makes your Spanish sound choppy.`),
    fl('Make a β',`Say "aba" with an English b. Now say it again, but <b>don't let your lips touch</b>: leave a tiny gap and keep your voice on, so the air buzzes softly through. It's a bit like blowing gently on hot soup while humming.`,['lobo','uva'],`That fuzzy, gentle b is <span class="ipa">[β]</span>. It's what you hear in the middle of <i>lobo</i> and <i>uva</i>.`,`Try looking in a mirror: say "aba" and watch your lips meet. Then repeat while keeping a sliver of light between them. It will feel lazy; that's right.`,'Could you make a b where the lips don\'t quite meet?'),
    snd('beta'),
    lst('Soft [β] between vowels',['lobo','uva','Cuba','abogado','bebé'],'In <i>bebé</i> [beˈβe] you hear both: hard at the start of the word, soft in the middle.'),
-   txt('When is it hard?','A preview of the full rule in lesson 10: hard <span class="ipa">[b]</span> after a pause and after m or n; soft <span class="ipa">[β]</span> everywhere else. So a word on its own like <i>vino</i> starts with a hard [b], with no v sound.'),
+   txt('When is it hard?','A preview of the full rule in the lesson <i>Rule: hard or soft?</i>: hard <span class="ipa">[b]</span> after a pause and after m or n; soft <span class="ipa">[β]</span> everywhere else. So a word on its own like <i>vino</i> starts with a hard [b], with no v sound.'),
    lst('b and v: one sound',['beso','vino','un vaso','mi vaso']),
    rq([HR('lobo',['[ˈloβo]','[ˈlobo]','[ˈlovo]'],0,'Between vowels: soft [β].'),
        HR('vino',['[ˈbino]','[ˈvino]'],0,'Spanish has no [v]. After a pause, v is a hard [b].'),
@@ -2256,10 +2256,10 @@ const UNITS=[
    spk(['nada','todo','dedo'])],adds:['s:eth','r:e08']},
 
  {id:'e09',title:'Soft g [ɣ]',kind:'sounds',min:8,steps:[
-   txt('A sound English doesn\'t have',`Soft g, <span class="ipa">[ɣ]</span> (the Greek letter gamma), follows the same pattern as <span class="ipa">[β]</span> and <span class="ipa">[ð]</span>. The back of the tongue rises toward the soft palate as if for g, but <b>doesn't close</b>. Air flows through with a soft, voiced friction.<br><br>English has nothing like it, so it takes practice. It's the voiced partner of the jota (lesson 15), and much gentler: almost a gargle with no effort behind it.`),
+   txt('A sound English doesn\'t have',`Soft g, <span class="ipa">[ɣ]</span> (the Greek letter gamma), follows the same pattern as <span class="ipa">[β]</span> and <span class="ipa">[ð]</span>. The back of the tongue rises toward the soft palate as if for g, but <b>doesn't close</b>. Air flows through with your voice on and little or no hiss. (Arabic غ is the same symbol made with real friction; the Spanish one is softer.)<br><br>English has nothing like it, so it takes practice. It's the same move as soft b and soft d, made with the back of the tongue: start from a g and just don't let it seal.`),
    fl('From g to ɣ',`Say "aga" with a normal English g, and notice the back of your tongue sealing against the roof of your mouth. Now do it again but <b>don't let it seal</b>. Keep the voice on and let air slide through: "a-ɣa".`,['lago','agua'],`That's <span class="ipa">[ɣ]</span>. Notice how much smoother <i>lago</i> sounds than "lah-go".`,`Try saying "aga" while yawning slightly: the looser tongue tends to produce [ɣ] on its own. Or start from a gentle "a-ha" and add voice.`,'Could you make a g that doesn\'t fully close?'),
    snd('gh'),
-   lst('Soft [ɣ]',['lago','agua','amigo','algo','el gato'],'In <i>el gato</i> the g is soft even though it starts a word, because of the l in the word before. Lesson 10 explains.'),
+   lst('Soft [ɣ]',['lago','agua','amigo','algo','el gato'],'In <i>el gato</i> the g is soft even though it starts a word, because of the l in the word before. The lesson <i>Rule: hard or soft?</i> explains.'),
    sy('The soft trio','Three sounds, one idea: the mouth comes close but doesn\'t close.',[
      {s:'β',t:'soft b: lips nearly touch',k:['lobo']},{s:'ð',t:'soft d: tongue tip at the teeth, barely touching',k:['nada']},{s:'ɣ',t:'soft g: back of the tongue near the soft palate',k:['lago']}]),
    rq([HR('lago',['[ˈlaɣo]','[ˈlaɡo]'],0,'Between vowels: [ɣ].'),
@@ -2274,7 +2274,7 @@ const UNITS=[
    lst('Same word, different neighbours',['un vaso','mi vaso','un gato','el gato','un dedo','mi dedo','el dedo']),
    txt('Why m, n and l?',`After m or n, your mouth is already closed (m) or the tongue is already sealed (n), so the next b, d or g comes out as a full stop: <i>un dedo</i> [un ˈd̪eðo]. After l, the tongue tip is already touching behind the teeth, which keeps d hard (<i>caldo</i>), but the lips and the back of the tongue are free, so b and g go soft (<i>algo</i>). After r, all three are soft (<i>gordo</i>, <i>verdad</i>).`),
    lst('After l, r and n',['caldo','algo','gordo','grande','mundo']),
-   txt('Bonus: n copies the next sound','Before p, b, v or m, n becomes <span class="ipa">[m]</span> (<i>un poco</i> [um ˈpoko]). Before k, g or j it becomes <span class="ipa">[ŋ]</span>, as in English "sing" (<i>tengo</i>, <i>cinco</i>). English does this too, so it comes naturally once you allow it.'),
+   txt('Bonus: n copies the next sound','Before p, b, v or m, n becomes <span class="ipa">[m]</span> (<i>un poco</i> [um ˈpoko]). Before k, g or j it becomes <span class="ipa">[ŋ]</span>, as in English "sing" (<i>tengo</i>, <i>cinco</i>). It also shifts before f, toward the lip-and-teeth <span class="ipa">[ɱ]</span> (<i>enfermo</i>), and before ch, y or ll, toward <span class="ipa">[ɲ]</span> (<i>ancho</i>, <i>cónyuge</i>). English does this too, so it comes naturally once you allow it.'),
    lst('n changing shape',['un poco','un vaso','tengo','cinco']),
    rq([Q('nada','In <i>nada</i>, is the d hard or soft?',['Hard [d̪]','Soft [ð]'],1,'Between vowels, d is always soft.'),
        Q('un dedo','In <i>un dedo</i>, how is the first d?',['Hard [d̪]','Soft [ð]'],0,'After n, d stays hard.'),
@@ -2293,7 +2293,7 @@ const UNITS=[
    cm('You already have it','Listen to the middle consonant in each English word. That quick flick is the same as Spanish r.',[['butter (EN)','pero',''],['water (EN)','para',''],['ladder (EN)','caro','']]),
    snd('tap'),
    fl('Find the tap',`Say "butter" fast, American-style, and notice the tongue flick in the middle. Now say "bu-ɾa", then swap in Spanish words: <i>pe-ɾo</i>, <i>pa-ɾa</i>, <i>ca-ɾo</i>. Keep it light: a single touch, no English r colour.`,['butter (EN)','pero'],`That flick is <span class="ipa">[ɾ]</span>. It's the most common r in Spanish.`,`Say "a lot of" fast: "a-lo-ɾa". Or "got a": "go-ɾa". The middle is a tap. Then replace the first vowel: "pa-ɾa".`,'Could you feel the single tongue flick?'),
-   lst('The tap',['para','pero','caro','hora','gracias','tres','comer'],'After a consonant (<i>gracias, tres</i>) and at the end of a word (<i>comer</i>) the r is also a tap. Don\'t let <i>comer</i> end with an English r.'),
+   lst('The tap',['para','pero','caro','hora','gracias','tres','comer'],'After most consonants (b, d, f, g, k, p, t: <i>gracias, tres</i>) and at the end of a word (<i>comer</i>) the r is also a tap. After n, l or s it is trilled instead (next lesson). Don\'t let <i>comer</i> end with an English r.'),
    rq([HR('pero',['[ˈpeɾo]','[ˈpeɹo]'],0,'[ɹ] is English r: the tongue never touches.'),
        RD('ˈoɾa',['hora','hola'],0,'hora','[ɾ] is the tap. And the h is silent.'),
        Q(null,'Which English word has a tap [ɾ] in the middle (American accent)?',['"butter"','"bun"','"burn"'],0,'American tt and dd between vowels are taps.'),
@@ -2334,7 +2334,7 @@ const UNITS=[
    spk(['año','niño','mañana'])],adds:['s:ny','p:es-n','r:e13']},
 
  {id:'e14',title:'y and ll [ʝ]',kind:'sounds',min:7,steps:[
-   txt('A stronger y',`In most of Latin America, <b>y</b> and <b>ll</b> are the same sound: <span class="ipa">[ʝ]</span>, a j with a curly tail. It's like English y in "yes" but with the tongue pressed a little closer to the palate, so there's a light buzz of friction.<br><br>Keep the two symbols apart: <span class="ipa">[j]</span> is the plain English y glide (it appears in Spanish too, as in <i>tierra</i> [ˈt̪jera]). <span class="ipa">[ʝ]</span> is the stronger consonant at the start of <i>yo</i> or in <i>calle</i>. After n or l, or when stressed, it can go further, toward the j of "jam".`),
+   txt('A stronger y',`In most of Latin America, <b>y</b> and <b>ll</b> are the same sound: <span class="ipa">[ʝ]</span>, a j with a curly tail. It's like English y in "yes" but with the tongue pressed a little closer to the palate, so there's a light buzz of friction.<br><br>Keep the two symbols apart: <span class="ipa">[j]</span> is the plain English y glide (it appears in Spanish too, as in <i>tierra</i> [ˈt̪jera]). <span class="ipa">[ʝ]</span> is the stronger consonant at the start of <i>yo</i> or in <i>calle</i>. At the start of a phrase or after n or l (<i>yo</i>, <i>el yate</i>, <i>cónyuge</i>), it can go further, toward the j of "jam".<br><br><b>Which one does the spelling give?</b> An <b>i before a vowel</b> is the glide <span class="ipa">[j]</span> (<i>tierra</i>, <i>bien</i>). A <b>y</b>, <b>ll</b> or <b>hi-</b> plus a vowel at the start of a syllable is <span class="ipa">[ʝ]</span> (<i>yo</i>, <i>calle</i>, <i>hielo</i>).`),
    cm('English y vs Spanish y','The Spanish one has more contact and a slight buzz.',[['yes (EN)','yo','']]),
    snd('yy'),
    lst('y and ll',['yo','playa','calle','llave','hielo','mayo','pollo','me llamo','lluvia'],'<i>hielo</i>: hie- at the start of a word also gives [ʝ].'),
@@ -2435,7 +2435,7 @@ const UNITS=[
    spk(['tres','plato','problema'])],adds:['r:e22']},
 
  {id:'e23',title:'Intonation: statements and questions',kind:'rule',min:7,steps:[
-   txt('The melody of a sentence',`Spanish sentence melody is close to English:<ul><li><b>Statements</b> fall at the end: <i>Es tu casa.</i> "It's your house."</li><li><b>Yes/no questions</b> rise at the end, and that rise is often the only thing that makes them questions: <i>¿Hablas español?</i></li><li><b>Question-word questions</b> (¿Dónde…? ¿Qué…? ¿Cómo…?) usually fall: <i>¿Dónde vives?</i></li></ul>Written Spanish warns you a question is coming with an upside-down <b>¿</b> at the start.<br><br>One difference from English: Spanish doesn't stretch stressed syllables much and keeps the even rhythm from lesson 19, so the melody is smoother and less bouncy.`),
+   txt('The melody of a sentence',`Spanish sentence melody is close to English:<ul><li><b>Statements</b> fall at the end: <i>Es tu casa.</i> "It's your house."</li><li><b>Yes/no questions</b> rise at the end, and that rise is often the only thing that makes them questions: <i>¿Hablas español?</i></li><li><b>Question-word questions</b> (¿Dónde…? ¿Qué…? ¿Cómo…?) usually fall: <i>¿Dónde vives?</i></li></ul>Written Spanish warns you a question is coming with an upside-down <b>¿</b> at the start.<br><br>One difference from English: Spanish doesn't stretch stressed syllables much and keeps the even rhythm from <i>Rule: linking and rhythm</i>, so the melody is smoother and less bouncy.`),
    lst('Statement vs question',['Es tu casa.','¿Es tu casa?','¿Hablas español?']),
    lst('Question words: falling',['¿Dónde vives?','¿Cómo estás?']),
    rq([Q('¿Hablas español?','Statement or question?',['Statement','Question'],1,'The rise at the end makes it a question.'),
