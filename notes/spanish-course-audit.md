@@ -24,8 +24,11 @@ explained). Every word in the Spanish lessons now has audio. D7 done (2026-11-21
 `into` step (sentence melody practice): pick a sentence, record it, and the pitch line is drawn over
 the native one with a verdict on the ending (`intoLine`, next to the tone coach). Nine new sentence
 clips (`audio/p_c9_es_into.mp3`, same flow) were picked because the check reads every one of them
-correctly; the old e23 clips didn't show a clear rise. Still open: E6–E8 and the two English
-comparison rows in F4.
+correctly; the old e23 clips didn't show a clear rise. E6–E8 and the rest of F4 done
+(2026-11-21): borrowed words in e20, light syllable-final consonants in e22, more linking in e19,
+Sue/su (e03) and yeah/ya (e14) rows. 12 more clips (`audio/p_c10_es.mp3`, `p_c10_en.mp3`); the
+English voice is "David - Clear, Friendly Explainer" (`x8EpqJ1pKzP4vo35tTCm`), the most likely match
+for the earlier English clips but not confirmed. **Every finding in this audit is now addressed.**
 
 ## Verdict
 

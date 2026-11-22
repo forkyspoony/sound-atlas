@@ -1630,6 +1630,20 @@
   "g": "hello",
   "r": ""
  },
+ "Sue (EN)": {
+  "l": "en",
+  "w": "Sue (EN)",
+  "ipa": "sʉ",
+  "g": "Sue",
+  "r": ""
+ },
+ "yeah (EN)": {
+  "l": "en",
+  "w": "yeah (EN)",
+  "ipa": "jɛə",
+  "g": "yeah",
+  "r": ""
+ },
  "how (EN)": {
   "l": "en",
   "w": "how (EN)",
@@ -1866,6 +1880,69 @@
   "w": "¿Cómo te llamas?",
   "ipa": "ˈkomo t̪e ˈʝamas",
   "g": "What's your name?",
+  "r": ""
+ },
+ "su": {
+  "l": "es",
+  "w": "su",
+  "ipa": "su",
+  "g": "his, her, your",
+  "r": ""
+ },
+ "wifi": {
+  "l": "es",
+  "w": "wifi",
+  "ipa": "ˈwifi",
+  "g": "wi-fi",
+  "r": ""
+ },
+ "hámster": {
+  "l": "es",
+  "w": "hámster",
+  "ipa": "ˈxamsteɾ",
+  "g": "hamster",
+  "r": ""
+ },
+ "Xochimilco": {
+  "l": "es",
+  "w": "Xochimilco",
+  "ipa": "soʧiˈmilko",
+  "g": "Xochimilco (Mexico City)",
+  "r": ""
+ },
+ "acción": {
+  "l": "es",
+  "w": "acción",
+  "ipa": "akˈsjon",
+  "g": "action",
+  "r": ""
+ },
+ "ritmo": {
+  "l": "es",
+  "w": "ritmo",
+  "ipa": "ˈrit̪mo",
+  "g": "rhythm",
+  "r": ""
+ },
+ "con nosotros": {
+  "l": "es",
+  "w": "con nosotros",
+  "ipa": "konoˈsot̪ɾos",
+  "g": "with us",
+  "r": ""
+ },
+ "los sábados": {
+  "l": "es",
+  "w": "los sábados",
+  "ipa": "loˈsaβaðos",
+  "g": "on Saturdays",
+  "r": ""
+ },
+ "la vaca": {
+  "l": "es",
+  "w": "la vaca",
+  "ipa": "laˈβaka",
+  "g": "the cow",
   "r": ""
  },
  "你是老师。": {

@@ -1168,6 +1168,66 @@
   9.04,
   9.72
  ],
+ "su": [
+  "audio/p_c10_es.mp3",
+  0.02,
+  0.75
+ ],
+ "ya": [
+  "audio/p_c10_es.mp3",
+  0.92,
+  1.47
+ ],
+ "wifi": [
+  "audio/p_c10_es.mp3",
+  1.86,
+  2.5
+ ],
+ "hámster": [
+  "audio/p_c10_es.mp3",
+  2.81,
+  3.47
+ ],
+ "Xochimilco": [
+  "audio/p_c10_es.mp3",
+  3.79,
+  4.66
+ ],
+ "acción": [
+  "audio/p_c10_es.mp3",
+  4.89,
+  5.58
+ ],
+ "ritmo": [
+  "audio/p_c10_es.mp3",
+  5.84,
+  6.48
+ ],
+ "con nosotros": [
+  "audio/p_c10_es.mp3",
+  6.74,
+  7.6
+ ],
+ "los sábados": [
+  "audio/p_c10_es.mp3",
+  7.76,
+  8.63
+ ],
+ "la vaca": [
+  "audio/p_c10_es.mp3",
+  8.82,
+  9.61
+ ],
+ "Sue (EN)": [
+  "audio/p_c10_en.mp3",
+  0.02,
+  0.67
+ ],
+ "yeah (EN)": [
+  "audio/p_c10_en.mp3",
+  1.12,
+  1.67
+ ],
  "Vienes mañana.": [
   "audio/p_c9_es_into.mp3",
   0.02,

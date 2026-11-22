@@ -415,6 +415,11 @@
         "two (EN)",
         "tú",
         ""
+       ],
+       [
+        "Sue (EN)",
+        "su",
+        ""
        ]
       ]
      },
@@ -2223,6 +2228,11 @@
         "yes (EN)",
         "yo",
         ""
+       ],
+       [
+        "yeah (EN)",
+        "ya",
+        ""
        ]
       ]
      },
@@ -2745,6 +2755,20 @@
       "t": "text",
       "h": "Dialect note",
       "html": "In the Caribbean, coastal areas and much of South America, an s before a consonant or at the end of a word often weakens to a breathy <span class=\"ipa\">[h]</span> or disappears: <i>los amigos</i> → \"loh amigoh\". Recognise it, but you don't need to copy it."
+     },
+     {
+      "t": "text",
+      "h": "Borrowed words",
+      "html": "A few words borrowed from other languages keep part of their own spelling, so the rules above bend:<ul><li><b>w</b> is <span class=\"ipa\">[w]</span>: <i>wifi</i> <span class=\"ipa\">[ˈwifi]</span>.</li><li>An <b>h</b> in a word from English can be said as the jota: <i>hámster</i> <span class=\"ipa\">[ˈxamsteɾ]</span>.</li><li>In Mexico, <b>x</b> in place names from Nahuatl is often <span class=\"ipa\">[s]</span>: <i>Xochimilco</i> <span class=\"ipa\">[soʧiˈmilko]</span>.</li></ul>They're rare. The rules on this page cover almost everything else."
+     },
+     {
+      "t": "listen",
+      "h": "Borrowed words",
+      "keys": [
+       "wifi",
+       "hámster",
+       "Xochimilco"
+      ]
      },
      {
       "t": "shadow",
@@ -3361,6 +3385,16 @@
       ]
      },
      {
+      "t": "listen",
+      "h": "More linking",
+      "keys": [
+       "con nosotros",
+       "los sábados",
+       "la vaca"
+      ],
+      "note": "Two of the same consonant merge into one, slightly longer (<i>con nosotros</i>, <i>los sábados</i>). And the soft-consonant rule works across words: in <i>la vaca</i> the v follows a vowel, so it's a soft <span class=\"ipa\">[β]</span>."
+     },
+     {
       "t": "text",
       "h": "Rhythm",
       "html": "English stretches stressed syllables and squashes the rest (remember the schwa). Spanish gives every syllable roughly the same time, so it sounds even, almost like a machine gun to English ears. Say <i>chocolate</i> as four even beats: cho-co-la-te."
@@ -3506,6 +3540,20 @@
        "plato",
        "blanco",
        "problema"
+      ]
+     },
+     {
+      "t": "text",
+      "h": "Consonants that close a syllable",
+      "html": "A consonant at the end of a syllable, right before another consonant, is said lightly, and in relaxed speech it often softens: <i>acción</i> <span class=\"ipa\">[akˈsjon]</span> can sound like <span class=\"ipa\">[aɣˈsjon]</span>, <i>examen</i> <span class=\"ipa\">[ekˈsamen]</span> like <span class=\"ipa\">[eɣˈsamen]</span>, and the t of <i>ritmo</i> <span class=\"ipa\">[ˈrit̪mo]</span> can soften toward <span class=\"ipa\">[ð]</span>. You don't need to copy this; just don't be thrown when you hear it."
+     },
+     {
+      "t": "listen",
+      "h": "Light syllable-final consonants",
+      "keys": [
+       "acción",
+       "examen",
+       "ritmo"
       ]
      },
      {
