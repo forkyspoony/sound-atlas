@@ -3613,9 +3613,12 @@
       "t": "listen",
       "h": "Statement vs question",
       "keys": [
-       "Es tu casa.",
-       "¿Es tu casa?",
-       "¿Hablas español?"
+       "Vienes mañana.",
+       "¿Vienes mañana?",
+       "Es mi amigo.",
+       "¿Es mi amigo?",
+       "Está bien.",
+       "¿Está bien?"
       ]
      },
      {
@@ -3623,7 +3626,7 @@
       "h": "Question words: falling",
       "keys": [
        "¿Dónde vives?",
-       "¿Cómo estás?"
+       "¿Cómo te llamas?"
       ]
      },
      {
@@ -3640,7 +3643,7 @@
         "why": "The rise at the end makes it a question."
        },
        {
-        "w": "Es tu casa.",
+        "w": "Es mi amigo.",
         "q": "Statement or question?",
         "o": [
          "Statement",
@@ -3648,6 +3651,16 @@
         ],
         "a": 0,
         "why": "It falls at the end."
+       },
+       {
+        "w": "¿Está bien?",
+        "q": "Statement or question?",
+        "o": [
+         "Statement",
+         "Question"
+        ],
+        "a": 1,
+        "why": "It lifts on the last syllable."
        },
        {
         "w": "¿Dónde vives?",
@@ -3673,11 +3686,46 @@
       ]
      },
      {
-      "t": "speak",
-      "keys": [
-       "¿Hablas español?",
-       "Es tu casa.",
-       "¿Dónde vives?"
+      "t": "into",
+      "h": "Say it with the right melody",
+      "html": "Pick a sentence, listen, then say it. Your pitch line is drawn over the native speaker's. Watch the shaded end: a yes/no question lifts on the last syllable; a statement or a question-word question settles low.",
+      "items": [
+       {
+        "w": "¿Vienes mañana?",
+        "dir": "rise"
+       },
+       {
+        "w": "Vienes mañana.",
+        "dir": "fall"
+       },
+       {
+        "w": "¿Es mi amigo?",
+        "dir": "rise"
+       },
+       {
+        "w": "Es mi amigo.",
+        "dir": "fall"
+       },
+       {
+        "w": "¿Está bien?",
+        "dir": "rise"
+       },
+       {
+        "w": "Está bien.",
+        "dir": "fall"
+       },
+       {
+        "w": "¿Hablas español?",
+        "dir": "rise"
+       },
+       {
+        "w": "¿Dónde vives?",
+        "dir": "fall"
+       },
+       {
+        "w": "¿Cómo te llamas?",
+        "dir": "fall"
+       }
       ]
      }
     ],

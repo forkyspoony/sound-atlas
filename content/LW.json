@@ -1815,8 +1815,57 @@
  "¿Dónde vives?": {
   "l": "es",
   "w": "¿Dónde vives?",
-  "ipa": "ˈd̪onde ˈβiβes",
+  "ipa": "ˈd̪ond̪e ˈβiβes",
   "g": "Where do you live?",
+  "r": ""
+ },
+ "Vienes mañana.": {
+  "l": "es",
+  "w": "Vienes mañana.",
+  "ipa": "ˈbjenes maˈɲana",
+  "g": "You're coming tomorrow.",
+  "r": ""
+ },
+ "¿Vienes mañana?": {
+  "l": "es",
+  "w": "¿Vienes mañana?",
+  "ipa": "ˈbjenes maˈɲana",
+  "g": "Are you coming tomorrow?",
+  "r": ""
+ },
+ "Es mi amigo.": {
+  "l": "es",
+  "w": "Es mi amigo.",
+  "ipa": "es mjaˈmiɣo",
+  "g": "He's my friend.",
+  "r": ""
+ },
+ "¿Es mi amigo?": {
+  "l": "es",
+  "w": "¿Es mi amigo?",
+  "ipa": "es mjaˈmiɣo",
+  "g": "Is he my friend?",
+  "r": ""
+ },
+ "Está bien.": {
+  "l": "es",
+  "w": "Está bien.",
+  "ipa": "esˈt̪a ˈβjen",
+  "g": "It's fine.",
+  "r": ""
+ },
+ "¿Está bien?": {
+  "l": "es",
+  "w": "¿Está bien?",
+  "ipa": "esˈt̪a ˈβjen",
+  "g": "Is it OK?",
+  "r": ""
+ },
+ "¿Cómo te llamas?": {
+  "l": "es",
+  "w": "¿Cómo te llamas?",
+  "ipa": "ˈkomo t̪e ˈʝamas",
+  "g": "What's your name?",
   "r": ""
  },
  "你是老师。": {

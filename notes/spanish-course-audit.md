@@ -20,8 +20,12 @@ ElevenLabs flow `yCC76LAPhDa32pYjiN3I`). F1 new ð/ɾ pair set `es-dr` (e08, e11
 more pairs in es-td, es-kg, es-n, es-ei, F3 new o/u set `es-ou` (e03), F4 tea/ti row in e02 (the
 e03 and e14 rows need new English audio, skipped), listen steps for the step-4 words, F6 seven
 rule questions in the checkpoint, C1 (luna replaces Cuba in e03 and coma in e06), C2 ([w] in agua
-explained). Every word in the Spanish lessons now has audio. Still open: D7 (intonation practice),
-E6–E8, and the two English comparison rows in F4.
+explained). Every word in the Spanish lessons now has audio. D7 done (2026-11-21): e23 ends with a new
+`into` step (sentence melody practice): pick a sentence, record it, and the pitch line is drawn over
+the native one with a verdict on the ending (`intoLine`, next to the tone coach). Nine new sentence
+clips (`audio/p_c9_es_into.mp3`, same flow) were picked because the check reads every one of them
+correctly; the old e23 clips didn't show a clear rise. Still open: E6–E8 and the two English
+comparison rows in F4.
 
 ## Verdict
 

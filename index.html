@@ -1764,7 +1764,9 @@ lw('es',[['sé','se','I know'],['me','me','me'],['de','d̪e','of, from'],['lo','
  ['papel','paˈpel','paper'],['mismo','ˈmizmo','same'],['hablan','ˈaβlan','they speak'],['lápiz','ˈlapis','pencil'],['examen','ekˈsamen','exam'],['sábado','ˈsaβaðo','Saturday'],['aire','ˈajɾe','air'],['auto','ˈawt̪o','car'],
  ['río','ˈrio','river'],['gato','ˈɡat̪o','cat'],['cine','ˈsine','cinema'],['guerra','ˈɡera','war'],['mundo','ˈmund̪o','world'],['ojo','ˈoxo','eye'],['hola','ˈola','hello']]);
 lw('en',[['how (EN)','haʊ','how'],['she (EN)','ʃi','she'],['no! (EN)','noʊ','No!'],['huh? (EN)','hʌ','Huh?'],['cats (EN)','kʰæts','cats'],['sure (EN)','ʃʊɹ','sure'],['shirt (EN)','ʃɝt','shirt'],['run (EN)','ɹʌn','run'],['cheap (EN)','tʃʰip','cheap'],['jeep (EN)','dʒip','jeep'],['sin (EN)','sɪn','sin'],['sing (EN)','sɪŋ','sing'],['measure (EN)','ˈmɛʒɚ','measure'],['uh-oh (EN)','ˈʌʔoʊ','uh-oh'],['think (EN)','θɪŋk','think'],['this (EN)','ðɪs','this']]);
-lw('es',[['problema','pɾoˈβlema','problem'],['tren','t̪ɾen','train'],['otro','ˈot̪ɾo','other'],['cuatro','ˈkwat̪ɾo','four'],['libro','ˈliβɾo','book'],['plato','ˈplat̪o','plate'],['blanco','ˈblaŋko','white'],['¿Hablas español?','ˈaβlas espaˈɲol','Do you speak Spanish?'],['Es tu casa.','es t̪u ˈkasa','It\'s your house.'],['¿Es tu casa?','es t̪u ˈkasa','Is it your house?'],['¿Dónde vives?','ˈd̪onde ˈβiβes','Where do you live?']]);
+lw('es',[['problema','pɾoˈβlema','problem'],['tren','t̪ɾen','train'],['otro','ˈot̪ɾo','other'],['cuatro','ˈkwat̪ɾo','four'],['libro','ˈliβɾo','book'],['plato','ˈplat̪o','plate'],['blanco','ˈblaŋko','white'],['¿Hablas español?','ˈaβlas espaˈɲol','Do you speak Spanish?'],['Es tu casa.','es t̪u ˈkasa','It\'s your house.'],['¿Es tu casa?','es t̪u ˈkasa','Is it your house?'],['¿Dónde vives?','ˈd̪ond̪e ˈβiβes','Where do you live?'],
+ ['Vienes mañana.','ˈbjenes maˈɲana','You\'re coming tomorrow.'],['¿Vienes mañana?','ˈbjenes maˈɲana','Are you coming tomorrow?'],['Es mi amigo.','es mjaˈmiɣo','He\'s my friend.'],['¿Es mi amigo?','es mjaˈmiɣo','Is he my friend?'],
+ ['Está bien.','esˈt̪a ˈβjen','It\'s fine.'],['¿Está bien?','esˈt̪a ˈβjen','Is it OK?'],['¿Cómo te llamas?','ˈkomo t̪e ˈʝamas','What\'s your name?']]);
 lw('zh',[['你是老师。','ni˨˩ ʂɨ˥˩ laʊ˨˩ ʂɨ˥','You\'re a teacher.','nǐ shì lǎoshī'],['你是老师吗？','ni˨˩ ʂɨ˥˩ laʊ˨˩ ʂɨ˥ ma','Are you a teacher?','nǐ shì lǎoshī ma'],['你好吗？','ni˧˥ xaʊ˨˩ ma','How are you?','nǐ hǎo ma']]);
 lw('ar',[['إنت تعبان.','ˈʔinta taʕˈbaːn','You\'re tired.','inta taʿbān'],['إنت تعبان؟','ˈʔinta taʕˈbaːn','Are you tired?','inta taʿbān?'],['زيت','zeːt','oil','zēt'],['لا','laː','no','lā']]);
 lw('ar',[['هرم','haram','pyramid','haram'],['حرم','ħaram','sanctuary','ḥaram'],['ألم','ʔalam','pain','ʾalam'],['حمل','ħamal','lamb','ḥamal'],['خيمة','xeːme','tent','khēme'],['غيمة','ɣeːme','cloud','ghēme'],
@@ -1813,6 +1815,7 @@ const Q=(w,q,o,a,why)=>({w,q,o,a,why});
 const sy=(h,intro,items)=>({t:'sym',h,intro,items});
 const fl=(h,html,keys,yes,no,q)=>({t:'feel',h,html,keys,yes,no,q});
 const cm=(h,html,rows,note)=>({t:'cmp',h,html,rows,note});
+const into=(h,html,items)=>({t:'into',h,html,items}); // sentence melody practice: items [{w, dir:'rise'|'fall'}]
 const bd=items=>({t:'build',items});
 const RD=(ipa,o,a,fw,why)=>({p:'Read the transcription. Which word is it?',q:`<span class="ipa" style="font-size:30px">[${ipa}]</span>`,o,a,fw,why});
 const HR=(w,o,a,why)=>({w,p:'Listen. Which transcription matches?',q:'Which transcription matches what you hear?',o,a,oi:true,why});
@@ -2475,13 +2478,15 @@ const UNITS=[
 
  {id:'e23',title:'Intonation: statements and questions',kind:'rule',min:7,steps:[
    txt('The melody of a sentence',`Spanish sentence melody is close to English:<ul><li><b>Statements</b> fall at the end: <i>Es tu casa.</i> "It's your house."</li><li><b>Yes/no questions</b> rise at the end, and that rise is often the only thing that makes them questions: <i>¿Hablas español?</i></li><li><b>Question-word questions</b> (¿Dónde…? ¿Qué…? ¿Cómo…?) usually fall: <i>¿Dónde vives?</i></li></ul>Written Spanish warns you a question is coming with an upside-down <b>¿</b> at the start.<br><br>One difference from English: Spanish doesn't stretch stressed syllables much and keeps the even rhythm from <i>Rule: linking and rhythm</i>, so the melody is smoother and less bouncy.`),
-   lst('Statement vs question',['Es tu casa.','¿Es tu casa?','¿Hablas español?']),
-   lst('Question words: falling',['¿Dónde vives?','¿Cómo estás?']),
+   lst('Statement vs question',['Vienes mañana.','¿Vienes mañana?','Es mi amigo.','¿Es mi amigo?','Está bien.','¿Está bien?']),
+   lst('Question words: falling',['¿Dónde vives?','¿Cómo te llamas?']),
    rq([Q('¿Hablas español?','Statement or question?',['Statement','Question'],1,'The rise at the end makes it a question.'),
-       Q('Es tu casa.','Statement or question?',['Statement','Question'],0,'It falls at the end.'),
+       Q('Es mi amigo.','Statement or question?',['Statement','Question'],0,'It falls at the end.'),
+       Q('¿Está bien?','Statement or question?',['Statement','Question'],1,'It lifts on the last syllable.'),
        Q('¿Dónde vives?','How does this question end?',['Rising','Falling'],1,'Question-word questions usually fall.'),
        Q(null,'What does ¿ at the start of a sentence tell you?',['It\'s a question','It\'s an exclamation','It\'s a quotation'],0,'')]),
-   spk(['¿Hablas español?','Es tu casa.','¿Dónde vives?'])],adds:['r:e23']},
+   into('Say it with the right melody','Pick a sentence, listen, then say it. Your pitch line is drawn over the native speaker\'s. Watch the shaded end: a yes/no question lifts on the last syllable; a statement or a question-word question settles low.',
+     [{w:'¿Vienes mañana?',dir:'rise'},{w:'Vienes mañana.',dir:'fall'},{w:'¿Es mi amigo?',dir:'rise'},{w:'Es mi amigo.',dir:'fall'},{w:'¿Está bien?',dir:'rise'},{w:'Está bien.',dir:'fall'},{w:'¿Hablas español?',dir:'rise'},{w:'¿Dónde vives?',dir:'fall'},{w:'¿Cómo te llamas?',dir:'fall'}])],adds:['r:e23']},
 
  {id:'e21',title:'Spanish checkpoint',kind:'review',min:10,steps:[
    txt('Putting it together','A mixed review of every Spanish sound, contrast and symbol. Anything you miss goes into your daily review.'),
@@ -3642,6 +3647,7 @@ function renderStep(){
   else if(st.t==='sym')body=symStepHTML(st);
   else if(st.t==='cmp')body=cmpStepHTML(st);
   else if(st.t==='feel')body=feelStepHTML(st);
+  else if(st.t==='into')body=intoStepHTML(st);
   else if(st.t==='speak')body=`<h2>Say it yourself</h2><p class="lesson-text">Record yourself on any of these and compare with the native recording. This is optional, but it's the best way to catch habits you can't hear while you're speaking.</p>${st.keys.map(k=>{const w=wd(k);return w?`<div class="ex">${playBtn(w.w,w.l)}<div><div class="w">${lessonWordHTML(w)} ${w.r?`<span class="meta">${esc(w.r)}</span>`:''}</div><div class="meta">[${esc(w.ipa)}] “${esc(w.g)}”</div></div><button class="btn ghost" data-speak="${w.l}|${esc(w.w)}">🎙 Record</button></div>`:''}).join('')}<p style="font-size:13px;color:var(--muted)">Recording opens the Speak tab. Come back to Lessons to pick up where you left off.</p>`;
   else if(isQ){
     const head=st.h||{pairs:'Ear training: which word?',quiz:'Check: sounds and symbols',ruleq:L.kind==='rule'?'Check the rule':'Check: hear it, read it',tones:'Ear training: which tone?',tpairs:'Ear training: which tones?',build:'Write it in IPA'}[st.t];
@@ -3657,6 +3663,7 @@ function renderStep(){
   $('#lp-back').onclick=()=>{lp.i--;lp.q=null;renderStep();window.scrollTo(0,0)};
   $('#lp-next').onclick=()=>{if(i===total-1)finishLesson();else{lp.i++;lp.q=null;renderStep();window.scrollTo(0,0)}};
   if(st.t==='feel')bindFeel(st);
+  if(st.t==='into')bindInto(st);
   if(isQ){$('#lp-skip').onclick=()=>$('#lp-next').click();if(!lp.q)lp.q={k:0,c:0};nextStepQ()}
 }
 function nextStepQ(){
@@ -4374,6 +4381,17 @@ PHRASES.push(
   cut('audio/p_c5_ar.mp3',['arx1','arx2','arx3','arx4','arx5','arx6','arx7','arx8'],[[0.03,0.78],[1.21,1.99],[2.50,3.89],[4.37,5.17],[5.66,6.02],[6.66,7.48],[7.95,8.45],[9.04,9.72]]);
   // carro and guerra re-recorded 2026-11-10: the earlier clips had only a single tongue flick, these have a clear trill
   AUDIO['carro']=['audio/p_c5_rr.mp3',0.04,0.47];AUDIO['guerra']=['audio/p_c5_rr.mp3',1.00,1.53];
+  // Intonation sentences (2026-11-21, same flow): chosen because their pitch line shows the rise or fall clearly.
+  // ¿Hablas español? replaces an older clip whose ending didn't rise.
+  AUDIO["Vienes mañana."]=['audio/p_c9_es_into.mp3',0.02,0.99];
+  AUDIO["¿Vienes mañana?"]=['audio/p_c9_es_into.mp3',1.34,2.36];
+  AUDIO["Es mi amigo."]=['audio/p_c9_es_into.mp3',2.73,3.61];
+  AUDIO["¿Es mi amigo?"]=['audio/p_c9_es_into.mp3',3.93,4.81];
+  AUDIO["¿Hablas español?"]=['audio/p_c9_es_into.mp3',6.56,7.69];
+  AUDIO["Está bien."]=['audio/p_c9_es_into.mp3',8.0,8.75];
+  AUDIO["¿Está bien?"]=['audio/p_c9_es_into.mp3',9.03,9.83];
+  AUDIO["¿Dónde vives?"]=['audio/p_c9_es_into.mp3',10.2,11.17];
+  AUDIO["¿Cómo te llamas?"]=['audio/p_c9_es_into.mp3',11.46,12.43];
   // Spanish audit words (2026-11-21, Mateo, eleven_v4; ElevenLabs flow yCC76LAPhDa32pYjiN3I)
   AUDIO["cara"]=['audio/p_c8_es_a.mp3',0.02,0.46];
   AUDIO["toro"]=['audio/p_c8_es_a.mp3',0.93,1.41];
@@ -4816,6 +4834,99 @@ async function recHistory(l,w,blob){ // Speak tab: save this take, then list the
     el.innerHTML=`<p><b>Hear your progress:</b> ${list.map(r=>`<button class="btn ghost" data-recid="${r.id}">▶ ${new Date(r.t).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'2-digit'})}</button>`).join(' ')} <span style="font-size:13px;color:var(--muted)">Earlier recordings of this word, kept on this device: your first try and the latest from each month.</span></p>`;
     el.onclick=e=>{const b=e.target.closest('[data-recid]');const r=b&&list.find(x=>x.id===+b.dataset.recid);if(!r)return;try{if(curAudio)curAudio.pause();curAudio=new Audio(URL.createObjectURL(r.blob));curAudio.play().catch(()=>{})}catch(_){}};
   }catch(e){}
+}
+
+// ---------- SENTENCE MELODY (Spanish intonation practice) ----------
+// A pitch line across a whole sentence, in semitones around the speaker's own middle pitch, with
+// consonant gaps left open. The ending decides the verdict: a yes/no question dips and then lifts on
+// the last syllable, so it ends high and well above its last low point; a statement settles low.
+// score = (end height above the sentence middle) + (climb from the last low point to the end).
+function intoLine(x,fs){
+  const fr=pitchFrames(x,fs);if(!fr.length)return null;
+  const th=Math.max(...fr.map(f=>f.rms))*0.05,ok=f=>f.f0&&f.per>0.55&&f.rms>th;
+  const f0s=fr.filter(ok).map(f=>f.f0);if(f0s.length<15)return null;
+  const ref=median(f0s);
+  let st=fr.map(f=>ok(f)?12*Math.log2(f.f0/ref):null);
+  // octave slips: a frame an octave away from the frames just before it is moved back (compared locally,
+  // so a statement that really falls a long way isn't pulled up)
+  {const seen=[];st=st.map(v=>{if(v===null)return null;if(seen.length>=3){const m=median(seen.slice(-5));if(v-m>8)v-=12;else if(m-v>8)v+=12}seen.push(v);return Math.abs(v)>15?null:v})}
+  st=st.map((v,i)=>{if(v===null)return null;const w=st.slice(Math.max(0,i-2),i+3).filter(q=>q!==null);return w.length<3?null:median(w)});
+  // runs of frames that join up (no gap, no leap a voice can't make); short stray runs are dropped,
+  // and so is a short run at either edge that leaps away from its neighbour with no gap between (creak as the voice stops)
+  const runs=[];let cur=null;
+  st.forEach((v,i)=>{if(v===null){cur=null;return}if(cur&&i===cur.b+1&&Math.abs(v-st[cur.b])<=3.5)cur.b=i;else runs.push(cur={a:i,b:i})});
+  let keep=runs.filter(r=>r.b-r.a>=2);
+  const glitch=(r,s,endSide)=>r.b-r.a<9&&(endSide?r.a===s.b+1:r.b+1===s.a)&&Math.abs(endSide?st[r.a]-st[s.b]:st[r.b]-st[s.a])>4.5; // a leap with no gap between
+  while(keep.length>1&&glitch(keep[keep.length-1],keep[keep.length-2],true))keep.pop();
+  while(keep.length>1&&glitch(keep[0],keep[1],false))keep.shift();
+  const out=st.map(()=>null);keep.forEach(r=>{for(let j=r.a;j<=r.b;j++)out[j]=st[j]});
+  const idx=[];out.forEach((v,i)=>{if(v!==null)idx.push(i)});if(idx.length<15)return null;
+  const a=idx[0],b=idx[idx.length-1],mid=median(idx.map(i=>out[i]));
+  const last=idx.slice(-8),E=median(last.map(i=>out[i]))-mid;
+  const win=idx.filter(i=>i<last[0]&&i>=last[0]-40),sm=win.map(i=>median(win.filter(j=>Math.abs(j-i)<=2).map(j=>out[j])));
+  const low=sm.length?Math.min(...sm)-mid:E,score=E+(E-low);
+  const N=60,pts=[];for(let k=0;k<N;k++){const i=Math.round(a+(b-a)*k/(N-1));pts.push(out[i]===null?null:out[i]-mid)}
+  return {pts,score:+score.toFixed(1),dir:score>=4.5?'rise':score<=1.5?'fall':'flat',end:+E.toFixed(1),dur:+((b-a)/100).toFixed(2)};
+}
+
+let inStep=null,inK=0,inMine=null;const inNat={};
+function intoStepHTML(st){
+  if(inStep!==st){inStep=st;inK=0;inMine=null}
+  const it=st.items[inK],kind=it.dir==='rise'?'Yes/no question: lift the last syllable.':it.w.startsWith('¿')?'Question word: settle low at the end.':'Statement: settle low at the end.';
+  return `<h2>${esc(st.h)}</h2>${st.html?`<div class="lesson-text">${st.html}</div>`:''}
+   <div class="chips" id="in-items">${st.items.map((x,i)=>`<button class="chip ${i===inK?'on':''}" data-in="${i}">${esc(x.w)}</button>`).join('')}</div>
+   <div class="row" style="margin-top:12px">${playBtn(it.w,'es')}<span><b style="font-size:22px">${esc(it.w)}</b><br><span style="color:var(--muted);font-size:14px">${kind}</span></span></div>
+   <div class="row" style="margin-top:10px"><button class="btn" id="in-rec">🎙 Say it</button></div>
+   <div id="in-note" style="font-size:13px;color:var(--muted);margin-top:6px"></div>
+   <canvas id="in-cv" class="lab-cv" style="height:200px"></canvas>
+   <div class="legend"><span><i style="background:var(--accent)"></i>Native speaker</span><span><i style="background:var(--es)"></i>You</span><span><i style="background:var(--line)"></i>The end, where it's judged</span></div>
+   <div id="in-out" class="sp-notes"></div>
+   <p style="font-size:12px;color:var(--muted)">This reads pitch from the sound wave. It's a guide, not a grade: noise, a very quiet voice or a creaky voice can break the line. Both lines are drawn around each speaker's own middle pitch, so a higher or lower voice doesn't matter.</p><div class="voice-warn"></div>`;
+}
+async function intoNative(w){
+  if(w in inNat)return inNat[w];
+  const ab=await decode(await (await fetch(await audioSrc(w))).arrayBuffer());
+  return inNat[w]=intoLine(ab.getChannelData(0),ab.sampleRate);
+}
+function intoDraw(st){
+  const c=labCanvas('#in-cv',200);if(!c)return;const {g,W,H}=c,pad=14;
+  const Y=v=>H/2-Math.max(-10,Math.min(10,v))*(H/2-12)/10,X=u=>pad+(W-2*pad)*u;
+  g.fillStyle=cssv('--line');g.globalAlpha=.35;g.fillRect(X(0.8),6,X(1)-X(0.8),H-12);g.globalAlpha=1;
+  g.strokeStyle=cssv('--line');g.lineWidth=1;g.beginPath();g.moveTo(pad,H/2);g.lineTo(W-pad,H/2);g.stroke();
+  g.fillStyle=cssv('--muted');g.fillText('higher',pad+2,16);g.fillText('lower',pad+2,H-8);
+  const line=(pts,col,w)=>{g.strokeStyle=col;g.lineWidth=w;g.lineCap=g.lineJoin='round';g.beginPath();let on=false;
+    pts.forEach((v,i)=>{if(v===null){on=false;return}const x=X(i/(pts.length-1)),y=Y(v);on?g.lineTo(x,y):g.moveTo(x,y);on=true});g.stroke()};
+  const nat=inNat[st.items[inK].w];if(nat)line(nat.pts,cssv('--accent'),2.5);
+  if(inMine)line(inMine.pts,cssv('--es'),4);
+}
+function intoVerdict(j,it){
+  if(!j)return '<p>I couldn\'t find a clear pitch there. Say the whole sentence a little louder, close to the microphone, in a quiet spot.</p>';
+  const want=it.dir;
+  if(want==='rise'){
+    if(j.dir==='rise')return '<p><b>Rising at the end 👍</b> That sounds like a yes/no question.</p>';
+    if(j.dir==='fall')return '<p><b>Your voice fell at the end</b>, so it sounds like a statement. Keep the start the same and lift only the last syllable, the way English "Really?" goes up.</p>';
+    return '<p><b>The end stayed fairly level.</b> Make the lift on the last syllable bigger: it\'s often the only thing that turns a statement into a question.</p>';
+  }
+  if(j.dir==='fall')return `<p><b>Settling low at the end 👍</b> ${it.w.startsWith('¿')?'Question-word questions end like statements.':'That sounds finished, like a statement.'}</p>`;
+  if(j.dir==='rise')return `<p><b>Your voice rose at the end</b>, so it sounds like a yes/no question. ${it.w.startsWith('¿')?'With a question word (dónde, cómo…) the word already asks, so let the end come down.':'Let the last syllable settle down instead.'}</p>`;
+  return '<p><b>The end stayed fairly level.</b> Let your voice settle lower on the last syllable so it sounds finished.</p>';
+}
+async function intoRecord(st){
+  const btn=$('#in-rec'),note=$('#in-note'),it=st.items[inK];
+  if(labLive){labStop();return}
+  try{if(curAudio)curAudio.pause()}catch(e){}
+  let r;
+  try{r=await labRecord({maxMs:5000,quietMs:900,onStart:()=>{btn.textContent='■ Stop';btn.classList.add('rec');note.textContent='Recording… say the sentence now.'}})}
+  catch(e){note.innerHTML=micMsg(e,'yourself').replace(/ For now.*$/,'');return}
+  if(!document.body.contains(btn))return;
+  btn.textContent='🎙 Say it again';btn.classList.remove('rec');note.textContent='';
+  const x=trimQuiet(r.x,r.fs);inMine=x.length?intoLine(x,r.fs):null;
+  intoDraw(st);$('#in-out').innerHTML=intoVerdict(inMine,it);
+}
+function bindInto(st){
+  $('#in-items').onclick=e=>{const b=e.target.closest('[data-in]');if(!b)return;labStop();inK=+b.dataset.in;inMine=null;renderStep()};
+  $('#in-rec').onclick=()=>intoRecord(st);
+  intoDraw(st);const w=st.items[inK].w;intoNative(w).then(()=>{if(inStep===st&&st.items[inK].w===w)intoDraw(st)}).catch(()=>{});
 }
 
 // ---------- TONE COACH (Mandarin) ----------
