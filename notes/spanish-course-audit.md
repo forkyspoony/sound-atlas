@@ -15,9 +15,13 @@ their own language's examples). The Sounds tab still shows everything. C5 and C6
 (e17), and spelling to sound (e20) closes the Consonants unit. Progress is saved by lesson id, so
 finished lessons stay finished. Step 4 done (text and quizzes only, no new audio): D1/F5 light l
 feel step, D2 soft g route via soft d plus an [x]/[ɣ] question in e15, D3 tap fallback, D6, E1
-strong vowels, E2 final y (with E5 Uruguay), E3 accent pairs, E4 syllable splitting. The new example
-words (leo, poeta, hoy, tu, si…) have no recordings yet; add them in step 5. Still open: C1, C2,
-D7, E6–E8, F1–F4, F6.
+strong vowels, E2 final y (with E5 Uruguay), E3 accent pairs, E4 syllable splitting. Step 5 done (2026-11-21): 40 new Mateo clips (sprites `audio/p_c8_es_{a,b,c}.mp3`,
+ElevenLabs flow `yCC76LAPhDa32pYjiN3I`). F1 new ð/ɾ pair set `es-dr` (e08, e11), F2 one or two
+more pairs in es-td, es-kg, es-n, es-ei, F3 new o/u set `es-ou` (e03), F4 tea/ti row in e02 (the
+e03 and e14 rows need new English audio, skipped), listen steps for the step-4 words, F6 seven
+rule questions in the checkpoint, C1 (luna replaces Cuba in e03 and coma in e06), C2 ([w] in agua
+explained). Every word in the Spanish lessons now has audio. Still open: D7 (intonation practice),
+E6–E8, and the two English comparison rows in F4.
 
 ## Verdict
 

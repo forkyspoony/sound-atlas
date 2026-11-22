@@ -160,6 +160,22 @@
      "g": "day",
      "r": ""
     }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "tomar",
+     "ipa": "t̪oˈmaɾ",
+     "g": "to take",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "domar",
+     "ipa": "d̪oˈmaɾ",
+     "g": "to tame",
+     "r": ""
+    }
    ]
   ]
  },
@@ -202,6 +218,38 @@
      "w": "goma",
      "ipa": "ˈɡoma",
      "g": "rubber",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "callo",
+     "ipa": "ˈkaʝo",
+     "g": "callus",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "gallo",
+     "ipa": "ˈɡaʝo",
+     "g": "rooster",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "casto",
+     "ipa": "ˈkast̪o",
+     "g": "chaste",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "gasto",
+     "ipa": "ˈɡast̪o",
+     "g": "expense",
      "r": ""
     }
    ]
@@ -247,6 +295,38 @@
      "g": "cane",
      "r": ""
     }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "mono",
+     "ipa": "ˈmono",
+     "g": "monkey",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "moño",
+     "ipa": "ˈmoɲo",
+     "g": "hair bun",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "pena",
+     "ipa": "ˈpena",
+     "g": "sorrow",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "peña",
+     "ipa": "ˈpeɲa",
+     "g": "rock",
+     "r": ""
+    }
    ]
   ]
  },
@@ -289,6 +369,190 @@
      "w": "misa",
      "ipa": "ˈmisa",
      "g": "mass",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "queso",
+     "ipa": "ˈkeso",
+     "g": "cheese",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "quiso",
+     "ipa": "ˈkiso",
+     "g": "he wanted",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "dejo",
+     "ipa": "ˈd̪exo",
+     "g": "I leave",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "dijo",
+     "ipa": "ˈd̪ixo",
+     "g": "he said",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "es-dr",
+  "l": "es",
+  "label": "ð vs ɾ",
+  "ids": [
+   "eth",
+   "tap"
+  ],
+  "tip": "Both are quick and voiced, but soft d keeps the tongue at the teeth without really touching; the tap is one flick on the gum ridge. An American \"dd\" in a Spanish word sounds like the tap, so lado turns into laro.",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "cada",
+     "ipa": "ˈkaða",
+     "g": "each",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "cara",
+     "ipa": "ˈkaɾa",
+     "g": "face",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "todo",
+     "ipa": "ˈt̪oðo",
+     "g": "all",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "toro",
+     "ipa": "ˈt̪oɾo",
+     "g": "bull",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "codo",
+     "ipa": "ˈkoðo",
+     "g": "elbow",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "coro",
+     "ipa": "ˈkoɾo",
+     "g": "choir",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "lodo",
+     "ipa": "ˈloðo",
+     "g": "mud",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "loro",
+     "ipa": "ˈloɾo",
+     "g": "parrot",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "mida",
+     "ipa": "ˈmiða",
+     "g": "(that) he measure",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "mira",
+     "ipa": "ˈmiɾa",
+     "g": "look",
+     "r": ""
+    }
+   ]
+  ]
+ },
+ {
+  "id": "es-ou",
+  "l": "es",
+  "label": "o vs u",
+  "ids": [
+   "vo",
+   "vu"
+  ],
+  "tip": "English blurs unstressed o and u. In Spanish they stay apart: o is \"oh\" with no w at the end, u is a tight, fully rounded \"oo\".",
+  "pairs": [
+   [
+    {
+     "l": "es",
+     "w": "modo",
+     "ipa": "ˈmoðo",
+     "g": "way",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "mudo",
+     "ipa": "ˈmuðo",
+     "g": "mute",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "loto",
+     "ipa": "ˈlot̪o",
+     "g": "lotus",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "luto",
+     "ipa": "ˈlut̪o",
+     "g": "mourning",
+     "r": ""
+    }
+   ],
+   [
+    {
+     "l": "es",
+     "w": "coro",
+     "ipa": "ˈkoɾo",
+     "g": "choir",
+     "r": ""
+    },
+    {
+     "l": "es",
+     "w": "curo",
+     "ipa": "ˈkuɾo",
+     "g": "I cure",
      "r": ""
     }
    ]

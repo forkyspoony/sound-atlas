@@ -349,6 +349,111 @@
   "g": "egg",
   "r": ""
  },
+ "leo": {
+  "l": "es",
+  "w": "leo",
+  "ipa": "ˈleo",
+  "g": "I read",
+  "r": ""
+ },
+ "poeta": {
+  "l": "es",
+  "w": "poeta",
+  "ipa": "poˈet̪a",
+  "g": "poet",
+  "r": ""
+ },
+ "teatro": {
+  "l": "es",
+  "w": "teatro",
+  "ipa": "t̪eˈat̪ɾo",
+  "g": "theatre",
+  "r": ""
+ },
+ "idea": {
+  "l": "es",
+  "w": "idea",
+  "ipa": "iˈðea",
+  "g": "idea",
+  "r": ""
+ },
+ "hoy": {
+  "l": "es",
+  "w": "hoy",
+  "ipa": "oj",
+  "g": "today",
+  "r": ""
+ },
+ "soy": {
+  "l": "es",
+  "w": "soy",
+  "ipa": "soj",
+  "g": "I am",
+  "r": ""
+ },
+ "rey": {
+  "l": "es",
+  "w": "rey",
+  "ipa": "rej",
+  "g": "king",
+  "r": ""
+ },
+ "muy": {
+  "l": "es",
+  "w": "muy",
+  "ipa": "muj",
+  "g": "very",
+  "r": ""
+ },
+ "Uruguay": {
+  "l": "es",
+  "w": "Uruguay",
+  "ipa": "uɾuˈɣwaj",
+  "g": "Uruguay",
+  "r": ""
+ },
+ "qué": {
+  "l": "es",
+  "w": "qué",
+  "ipa": "ke",
+  "g": "what?",
+  "r": ""
+ },
+ "cómo": {
+  "l": "es",
+  "w": "cómo",
+  "ipa": "ˈkomo",
+  "g": "how?",
+  "r": ""
+ },
+ "dónde": {
+  "l": "es",
+  "w": "dónde",
+  "ipa": "ˈd̪ond̪e",
+  "g": "where?",
+  "r": ""
+ },
+ "padre": {
+  "l": "es",
+  "w": "padre",
+  "ipa": "ˈpaðɾe",
+  "g": "father",
+  "r": ""
+ },
+ "hombre": {
+  "l": "es",
+  "w": "hombre",
+  "ipa": "ˈombɾe",
+  "g": "man",
+  "r": ""
+ },
+ "ti": {
+  "l": "es",
+  "w": "ti",
+  "ipa": "t̪i",
+  "g": "you (after a preposition)",
+  "r": ""
+ },
  "妈": {
   "l": "zh",
   "w": "妈",
