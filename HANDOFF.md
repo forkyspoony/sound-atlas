@@ -487,6 +487,11 @@ signal to measure).
   `cleanPitch` was written for single syllables and throws away the second syllable when the
   pitch leaps between them; two-syllable work must use `tpClean`. Pitch still jumps an
   octave on some creaky third tones, which is why no per-syllable verdict is given.
+- **In-lesson tone coach (2026-11-22):** audit step D4. Lesson steps `tcs(h,html,sets,tones)` → `{t:'tcoach'}`
+  and `tps(h,html,words)` → `{t:'tpcoach'}` show the Speak tab's tone coach / tone-pair coach inside the
+  lesson, limited by `tcOnly`/`tcTonesOnly`/`tpOnly` (reset to null by the Speak tab). Only one `#lab` may
+  exist: the lesson step empties `#speak`, and the Speak tab removes `#lessons #lab` (both re-render when
+  shown). Used in m02, m03, m04 and m19, before the existing `spk` steps.
 - **Mandarin new content (2026-11-22):** audit step 4 (E1–E5, D1, D2, F1–F5): new steps in m12, m15, m16,
   m18, m19, m22, new pair set `zh-iy`, more pairs in `zh-uy`, `zh-ssh`, `zh-jzh`, `zh-nng`, and 50 new
   words in a fourth `lw('zh',…)` block. Clips are sprites in `audio/p_g3<batch><take>_zh.mp3`, picked by

@@ -1827,6 +1827,8 @@ const Q=(w,q,o,a,why)=>({w,q,o,a,why});
 const sy=(h,intro,items)=>({t:'sym',h,intro,items});
 const fl=(h,html,keys,yes,no,q)=>({t:'feel',h,html,keys,yes,no,q});
 const cm=(h,html,rows,note)=>({t:'cmp',h,html,rows,note});
+const tcs=(h,html,sets,tones)=>({t:'tcoach',h,html,sets,tones}); // in-lesson tone coach: sets = TONESETS indices, tones = 0-3 indices
+const tps=(h,html,words)=>({t:'tpcoach',h,html,words});          // in-lesson tone-pair coach: words from TPAIRS
 const into=(h,html,items)=>({t:'into',h,html,items}); // sentence melody practice: items [{w, dir:'rise'|'fall'}]
 const bd=items=>({t:'build',items});
 const RD=(ipa,o,a,fw,why)=>({p:'Read the transcription. Which word is it?',q:`<span class="ipa" style="font-size:30px">[${ipa}]</span>`,o,a,fw,why});
@@ -2555,6 +2557,7 @@ const UNITS=[
        RD('ʂu˥',['书 shū (book)','树 shù (tree)'],0,'书','˥ is level: tone 1.'),
        Q(null,'Tone 1 is…',['high and flat','rising','low'],0,'Hold it like a sung note.')]),
    bd([{w:'妈',a:'m a ˥',x:'˥˩ ˧˥',why:'Consonant, vowel, then the tone letter.'},{w:'大',a:'t a ˥˩',x:'tʰ d ˥',why:'Pinyin d is an unaspirated [t]. The tone falls: ˥˩.'}]),
+   tcs('Try it: tones 1 and 4',`Pick a syllable and a tone, listen, then press <b>Say it</b>. Your pitch draws itself over the shaded target shape. Tone 1 should be a flat line near the top. Tone 4 should start at the top and drop hard. For a fairer check of height, press <b>Set my voice level</b> once.`,[0,1,3],[0,3]),
    spk(['妈','骂','书'])],adds:['r:m02']},
 
  {id:'m03',title:'Tones 2 and 3: rising and low',kind:'sounds',min:9,steps:[
@@ -2573,6 +2576,7 @@ const UNITS=[
        Q('老师','In 老师 lǎoshī, the first syllable is…',['the full dip ˨˩˦','just low ˨˩'],1,'Before another syllable, tone 3 stays low.'),
        Q(null,'The most important part of tone 3 is…',['the rise at the end','reaching low pitch'],1,'The rise often disappears.')]),
    bd([{w:'麻',a:'m a ˧˥',x:'˨˩˦ ˥',why:'Rising tone.'},{w:'马',a:'m a ˨˩˦',x:'˧˥ ˥˩',why:'Low dipping tone.'}]),
+   tcs('Try it: tones 2 and 3',`Pick a syllable and a tone, listen, then press <b>Say it</b>. Your pitch draws itself over the shaded target shape. Tone 2 climbs from the middle right away. Tone 3 sinks to the bottom first; the coach is happy if you stay low, even with no rise, and a creaky voice at the bottom is normal.`,[0,3,4],[1,2]),
    spk(['麻','马','老师'])],adds:['p:zh-t23','r:m03']},
 
  {id:'m04',title:'Telling the four tones apart',kind:'sounds',min:8,steps:[
@@ -2588,6 +2592,7 @@ const UNITS=[
        RD('ma˥˩',['妈','麻','马','骂'],3,'骂','˥˩ is tone 4.'),
        RD('ma˧˥',['妈','麻','马','骂'],1,'麻','˧˥ is tone 2.')]),
    bd([{w:'汤',a:'tʰ ɑŋ ˥',x:'t ˥˩ an',why:'Pinyin t has a puff. ang is [ɑŋ].'},{w:'糖',a:'tʰ ɑŋ ˧˥',x:'t ˨˩˦ an',why:'Rising tone.'}]),
+   tcs('Try it: all four tones',`Pick a syllable and a tone, listen, then press <b>Say it</b>. Your pitch draws itself over the shaded target shape. Say all four tones of one syllable, then switch syllables. If two of your tones look alike, that's the pair to practise.`,[0,1,2,3,4,5,6]),
    spk(['汤','糖','躺','烫'])],adds:['t:tones','r:m04']},
 ]},
 {id:'zh-c',l:'zh',title:'Consonants',sub:'The puff that replaces voicing, and three families of hissing sounds that English lumps together.',lessons:[
@@ -2782,7 +2787,9 @@ const UNITS=[
 {id:'zh-s',l:'zh',title:'Tones in real speech',sub:'Tone pairs, the tone-change rules, and whole phrases.',lessons:[
  {id:'m19',title:'Tone pairs',kind:'sounds',min:9,steps:[txt('Tones in real words','Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don\'t let it sag before the next syllable.<br><br>Two pairs sound different from how they\'re written. 你好 is written 3 + 3 but said <b>2 + 3</b> (ní hǎo); the next lesson explains why. And when two tone 4s meet, as in 再见, the first one only falls <b>halfway</b> (53), then the second falls all the way.'),
    lst('Tone 1 first',['飞机','中国','铅笔','商店']),lst('Tone 2 first',['明天','学习','苹果','同事']),lst('Tone 3 first',['老师','美国','你好','考试']),lst('Tone 4 first',['汽车','大学','下雨','再见']),lst('Then a neutral tone',['他们','朋友','你们','谢谢']),lst('Two falling tones: the first falls halfway',['再见','再次','大概']),
-   tp(10),spk(['中国','老师','再见']),
+   tp(10),
+   tps('Try it: say a tone pair','Pick a word, listen, then say the whole word at a normal pace. Your melody is compared with every native speaker of that word, and the closest one is shown in bold. Aim for 85%. If it says the gap is in one syllable, play the word again and copy just that part.',['飞机','中国','明天','学习','老师','你好','考试','汽车','大学','再见']),
+   spk(['中国','老师','再见']),
    bd([{w:'中国',a:'ʈʂ ʊŋ ˥ k w o ˧˥',x:'˥˩ ɡ',why:'Tone 1 + tone 2.'},{w:'再见',a:'ts aɪ ˥˩ tɕ j ɛ n ˥˩',x:'˥ a',why:'Two falling tones. The first falls only halfway; the second falls all the way.'}])],adds:['t:tpairs','b:m19']},
  {id:'m20',title:'Rule: third-tone changes',kind:'rule',min:7,steps:[txt('Two third tones in a row','When two third tones meet, the <b>first becomes a second tone</b>: 你好 is written <i>nǐ hǎo</i> but said <i>ní hǎo</i>. Pinyin keeps writing the original tone, so you have to apply this yourself.'),
    lst('3 + 3 → 2 + 3',['你好','很好','可以','水果']),
@@ -3673,6 +3680,7 @@ function makeStepQ(st){
   return soundQ(target,pool.length>=4?pool:S.filter(x=>x.langs.includes(lang)),[lang]);
 }
 function renderStep(){
+  try{if(labLive)labStop()}catch(e){}
   $('#v-lessons').classList.add('playing');
   const {L,i}=lp,st=L.steps[i],total=L.steps.length;
   const isQ=['pairs','quiz','ruleq','tones','tpairs','build'].includes(st.t);
@@ -3685,6 +3693,7 @@ function renderStep(){
   else if(st.t==='cmp')body=cmpStepHTML(st);
   else if(st.t==='feel')body=feelStepHTML(st);
   else if(st.t==='into')body=intoStepHTML(st);
+  else if(st.t==='tcoach'||st.t==='tpcoach')body=`<h2>${esc(st.h)}</h2>${st.html?`<div class="lesson-text">${st.html}</div>`:''}<div id="lab"></div><div class="voice-warn"></div>`;
   else if(st.t==='speak')body=`<h2>Say it yourself</h2><p class="lesson-text">Record yourself on any of these and compare with the native recording. This is optional, but it's the best way to catch habits you can't hear while you're speaking.</p>${st.keys.map(k=>{const w=wd(k);return w?`<div class="ex">${playBtn(w.w,w.l)}<div><div class="w">${lessonWordHTML(w)} ${w.r?`<span class="meta">${esc(w.r)}</span>`:''}</div><div class="meta">[${esc(w.ipa)}] “${esc(w.g)}”</div></div><button class="btn ghost" data-speak="${w.l}|${esc(w.w)}">🎙 Record</button></div>`:''}).join('')}<p style="font-size:13px;color:var(--muted)">Recording opens the Speak tab. Come back to Lessons to pick up where you left off.</p>`;
   else if(isQ){
     const head=st.h||{pairs:'Ear training: which word?',quiz:'Check: sounds and symbols',ruleq:L.kind==='rule'?'Check the rule':'Check: hear it, read it',tones:'Ear training: which tone?',tpairs:'Ear training: which tones?',build:'Write it in IPA'}[st.t];
@@ -3701,6 +3710,9 @@ function renderStep(){
   $('#lp-next').onclick=()=>{if(i===total-1)finishLesson();else{lp.i++;lp.q=null;renderStep();window.scrollTo(0,0)}};
   if(st.t==='feel')bindFeel(st);
   if(st.t==='into')bindInto(st);
+  if(st.t==='tcoach'||st.t==='tpcoach'){ // the Speak tab rebuilds itself when opened, so its copy can go (two #lab boxes would clash)
+    const sp=$('#speak');if(sp)sp.innerHTML='';
+    if(st.t==='tcoach'){tcOnly=st.sets;tcTonesOnly=st.tones||null;tcLast=null;renderToneCoach()}else{tpOnly=st.words;tpLast=null;renderTonePairSay()}}
   if(isQ){$('#lp-skip').onclick=()=>$('#lp-next').click();if(!lp.q)lp.q={k:0,c:0};nextStepQ()}
 }
 function nextStepQ(){
@@ -4632,7 +4644,8 @@ renderSpeak=function(){
   labStop();
   const head=`<div class="chips sp-modes" role="tablist">${modes.map(([k,v])=>`<button class="chip ${spMode===k?'on':''}" data-spmode="${k}" role="tab" aria-selected="${spMode===k}">${v}</button>`).join('')}</div>`;
   if(spMode==='vowels'){$('#speak').innerHTML=head+'<div id="vc"></div>';renderVowelCoach();return}
-  if(LAB_MODES[spMode]){$('#speak').innerHTML=head+'<div id="lab"></div>';LAB_MODES[spMode]();return}
+  if(LAB_MODES[spMode]){tcOnly=tcTonesOnly=tpOnly=null;{const l=document.querySelector('#lessons #lab');if(l)l.remove()} // a lesson's coach comes back when the lesson re-renders
+   $('#speak').innerHTML=head+'<div id="lab"></div>';LAB_MODES[spMode]();return}
   if(spMode==='phrases'){
     const list=PHRASES.filter(p=>p.l===spLang);
     if(!spWord||!LW[spWord.w]||!LW[spWord.w].ph||spWord.l!==spLang){const p=list[0];spWord=p?{l:p.l,w:p.w,r:p.r||'',ipa:p.ipa,g:p.g}:null;spMine=null}
@@ -5053,6 +5066,7 @@ const TC_TPL={1:[5,5,5],2:[3,3.4,5],3:[2.2,1,1,3.4],4:[5,3.4,1]};          // sh
 const tplAt=(tp,u)=>{const p=Math.max(0,Math.min(1,u))*(tp.length-1),i=Math.min(tp.length-2,Math.floor(p));return tp[i]+(tp[i+1]-tp[i])*(p-i)};
 const lvl=L=>(L-3)*TC_SPAN;
 let tcSet=0,tcTone=0,tcMid=store.get('f0mid',null),tcLast=null;const tcNatCache={};
+let tcOnly=null,tcTonesOnly=null; // set by a lesson step to show only some syllables / tones; null in the Speak tab
 function cleanPitch(fr,ref){ // semitones above/below ref, with quiet frames, blips and octave jumps removed
   const th=Math.max(...fr.map(f=>f.rms),1e-9)*0.08;
   let st=fr.map(f=>f.f0&&f.rms>th?12*Math.log2(f.f0/ref):null);
@@ -5089,11 +5103,13 @@ async function tcNative(i){ // the native speaker's four tones for this syllable
   return tcNatCache[i]={ref,con:frs.map(fr=>tcContour(cleanPitch(fr,ref)))};
 }
 function renderToneCoach(){
+  const sets=tcOnly||TONESETS.map((_,i)=>i),tones=tcTonesOnly||[0,1,2,3];
+  if(!sets.includes(tcSet))tcSet=sets[0];if(!tones.includes(tcTone))tcTone=tones[0];
   const set=TONESETS[tcSet],ch=set[tcTone],T=TONES[tcTone];
-  $('#lab').innerHTML=`<div class="quiz-box">
-   <p class="lesson-text" style="margin-top:0">Say a syllable and watch your pitch draw itself against the target tone. The numbers 1 to 5 are the usual tone scale: 1 is the bottom of your speaking voice and 5 is the top.</p>
-   <div class="chips" id="tc-sets">${TONESETS.map((s,i)=>`<button class="chip ${i===tcSet?'on':''}" data-tcs="${i}">${esc(s[4])}</button>`).join('')}</div>
-   <div class="chips" id="tc-tones" style="margin-top:8px">${[0,1,2,3].map(i=>`<button class="chip ${i===tcTone?'on':''}" data-tct="${i}">${esc(set[i])} · tone ${i+1} <span class="ipa">${TONES[i].let}</span></button>`).join('')}</div>
+  $('#lab').innerHTML=`<div class="${tcOnly?'':'quiz-box'}">
+   ${tcOnly?'':'<p class="lesson-text" style="margin-top:0">Say a syllable and watch your pitch draw itself against the target tone. The numbers 1 to 5 are the usual tone scale: 1 is the bottom of your speaking voice and 5 is the top.</p>'}
+   <div class="chips" id="tc-sets">${sets.map(i=>`<button class="chip ${i===tcSet?'on':''}" data-tcs="${i}">${esc(TONESETS[i][4])}</button>`).join('')}</div>
+   <div class="chips" id="tc-tones" style="margin-top:8px">${tones.map(i=>`<button class="chip ${i===tcTone?'on':''}" data-tct="${i}">${esc(set[i])} · tone ${i+1} <span class="ipa">${TONES[i].let}</span></button>`).join('')}</div>
    <div class="row" style="margin-top:12px">${playBtn(ch,'zh')}<span><b style="font-size:24px">${esc(ch)}</b> <span style="color:var(--muted)">tone ${T.n}: ${T.name.toLowerCase()}</span></span></div>
    <div class="row" style="margin-top:10px"><button class="btn" id="tc-rec">🎙 Say it</button><button class="btn ghost" id="tc-cal">${tcMid?'Reset my voice level':'Set my voice level'}</button></div>
    <div id="tc-note" style="font-size:13px;color:var(--muted);margin-top:6px">${tcMid?'Your voice level is set, so the coach checks both the shape and the height of each tone.':'Until you set your voice level, the coach can only judge the shape of a tone, not whether it is high or low enough. It takes five seconds.'}</div>
@@ -5399,6 +5415,7 @@ function tpClean(fr,ref){ // like cleanPitch, but keeps both syllables: the pitc
   return st;
 }
 let tpWord=null,tpLast=null,tpUrl=null;const tpNat={},tpBest=store.get('tpBest',{});
+let tpOnly=null; // set by a lesson step to show only some words; null in the Speak tab
 const TP_FIRST=(a,b)=>a===1?[5,5]:a===2?[3,5]:a===3?(b===3?[3,5]:[2,1,1]):(b===4?[5,2.6]:[5,1]);   // tones change shape before another tone
 const TP_SECOND={1:[5,5],2:[3,5],3:[2,1,1,2.6],4:[5,1]};
 function tpTip(a,b){
@@ -5449,11 +5466,12 @@ function tpVerdict(me,nats,it){
   return {s,n:best.n,html:`<p><b>Melody match: ${s}%.</b> ${msg}${hint}</p>`};
 }
 function renderTonePairSay(){
-  if(!tpWord||!TPAIRS.includes(tpWord))tpWord=TPAIRS[0];
+  const list=tpOnly?TPAIRS.filter(x=>tpOnly.includes(x.w)):TPAIRS;
+  if(!tpWord||!list.includes(tpWord))tpWord=list[0];
   const it=tpWord,w=wd(it.w),[a,b]=it.t;
-  $('#lab').innerHTML=`<div class="quiz-box">
-   <p class="lesson-text" style="margin-top:0">Tones change when they sit next to each other. Pick a two-syllable word, say it, and compare the melody of your voice with native speakers saying the same word.</p>
-   <div class="chips" id="t2-words">${TPAIRS.map((x,i)=>`<button class="chip ${x===it?'on':''}" data-t2w="${i}">${esc(x.w)} · ${(x.wr||x.t)[0]}+${(x.wr||x.t)[1]}${tpBest[x.w]>=85?' ✓':''}</button>`).join('')}</div>
+  $('#lab').innerHTML=`<div class="${tpOnly?'':'quiz-box'}">
+   ${tpOnly?'':'<p class="lesson-text" style="margin-top:0">Tones change when they sit next to each other. Pick a two-syllable word, say it, and compare the melody of your voice with native speakers saying the same word.</p>'}
+   <div class="chips" id="t2-words">${list.map(x=>`<button class="chip ${x===it?'on':''}" data-t2w="${TPAIRS.indexOf(x)}">${esc(x.w)} · ${(x.wr||x.t)[0]}+${(x.wr||x.t)[1]}${tpBest[x.w]>=85?' ✓':''}</button>`).join('')}</div>
    <div class="row" style="margin-top:12px">${playBtn(it.w,'zh')}<span><b style="font-size:24px">${esc(it.w)}</b> <span style="color:var(--muted)">${esc(w.r||'')}</span> ${w.ipa?`<span class="ipa">[${esc(w.ipa)}]</span>`:''} ${w.g?`<span style="color:var(--muted)">“${esc(w.g)}”</span>`:''}</span></div>
    <p style="margin:8px 0"><b>Tone ${a} + tone ${b}:</b> ${tpTip(a,b)}</p>
    <div class="row"><button class="btn" id="t2-rec">🎙 Say it</button><span id="t2-play"></span></div>
