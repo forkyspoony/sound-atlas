@@ -6,16 +6,28 @@
  "好": "audio/a27e4fe4c3f.mp3",
  "爸": "audio/aa732e56e22.mp3",
  "大": "audio/a0889c34972.mp3",
- "怕": "audio/abc1c58b84b.mp3",
+ "怕": [
+  "audio/p_g1c_zh.mp3",
+  0,
+  0.42
+ ],
  "他": "audio/ae31b569a0f.mp3",
  "开": "audio/ab4217093bc.mp3",
  "在": "audio/a686b703f41.mp3",
  "早": "audio/a13a8589339.mp3",
  "字": "audio/a582c50066c.mp3",
- "菜": "audio/a7b4bb888fb.mp3",
+ "菜": [
+  "audio/p_g1_zh.mp3",
+  4.86,
+  5.16
+ ],
  "草": "audio/a6744771609.mp3",
  "次": "audio/a5e5b8169ee.mp3",
- "中": "audio/a0869071c92.mp3",
+ "中": [
+  "audio/p_g1b_zh.mp3",
+  3.07,
+  3.48
+ ],
  "这": "audio/a542523173c.mp3",
  "知": "audio/ac524682048.mp3",
  "茶": "audio/a97a08c17dc.mp3",
@@ -34,7 +46,11 @@
  "去": "audio/a033fd274f0.mp3",
  "钱": "audio/adb4be61875.mp3",
  "西": "audio/a2f64b5a67e.mp3",
- "谢": "audio/ab27c6fd4c5.mp3",
+ "谢": [
+  "audio/p_g1_zh.mp3",
+  3.99,
+  4.33
+ ],
  "学": "audio/a7c7a06f0ea.mp3",
  "一": "audio/ad274eee8a1.mp3",
  "鱼": "audio/a92468fdf7c.mp3",
@@ -54,7 +70,11 @@
  "汤": "audio/afc4ef67147.mp3",
  "糖": "audio/a3d8cd510d0.mp3",
  "躺": "audio/aa85402d565.mp3",
- "烫": "audio/a700ef0f34f.mp3",
+ "烫": [
+  "audio/p_g1_zh.mp3",
+  0,
+  0.43
+ ],
  "飞": "audio/a322b8afdf9.mp3",
  "肥": "audio/ae650f32008.mp3",
  "匪": "audio/a78c1a1967a.mp3",
@@ -167,7 +187,11 @@
  "踏": "audio/a08ce1ddc2e.mp3",
  "科": "audio/adcedab2c4f.mp3",
  "找": "audio/a76aac2ff5f.mp3",
- "志": "audio/a471d1e0ba6.mp3",
+ "志": [
+  "audio/p_g1_zh.mp3",
+  1.1,
+  1.33
+ ],
  "路": "audio/ade80bdbd70.mp3",
  "绿": "audio/a579625d5ac.mp3",
  "努": "audio/ac530eb5824.mp3",

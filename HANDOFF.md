@@ -487,6 +487,11 @@ signal to measure).
   `cleanPitch` was written for single syllables and throws away the second syllable when the
   pitch leaps between them; two-syllable work must use `tpClean`. Pitch still jumps an
   octave on some creaky third tones, which is why no per-syllable verdict is given.
+- **Six Mandarin syllables re-recorded (2026-11-22):** 烫 志 怕 中 谢 菜, as sprites in
+  `audio/p_g1_zh.mp3`, `p_g1b_zh.mp3` and `p_g1c_zh.mp3` (Alina, `eleven_v4`, flow
+  `NBZF0TUItoZeA88zBAWm`). The old clips didn't hold their tone (audit G in
+  `notes/mandarin-course-audit.md`). `spriteClip` plays 0.04 s before the start and 0.08 s past the end,
+  so set sprite ends with that in mind. Not yet heard by a person.
 - **`中国` re-recorded (2026-11-10)** as a sprite in `audio/p_c7_zg.mp3` (Alina, `eleven_v4`,
   ElevenLabs flow `wnI3VLzaXS38Blj9WZeC`, 48 credits, eight takes). The old main clip scored
   1% against the other three speakers in Tone pairs and its 国 did not rise; all eight new

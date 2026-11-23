@@ -9,7 +9,8 @@ course in the backup, so the benchmark is the standard descriptions of Beijing M
 
 Each finding has an id (A1, B2 …) so we can fix them one by one, as with the Spanish audit.
 
-**Status (2026-11-22):** quick fixes done: A1–A7, C2, D1 (text only; the listen step needs new
+**Status (2026-11-22):** G done: all six clips re-recorded (see the note under the G table).
+Quick fixes done: A1–A7, C2, D1 (text only; the listen step needs new
 clips, see E5), D2 (text only), D5, D6, D8. For A1, `TPAIRS` entries can now carry the written
 tones as well as the said ones (`wr`); the quiz grades what is heard and the feedback names both,
 and the Tones tab grid and the Speak chips still sort by the written tones. A3 also updated the
@@ -126,6 +127,14 @@ and need a human ear:
 
 草 cǎo and 把 bǎ are too creaky to track. That's normal for tone 3 and probably fine.
 Two-syllable words and phrases weren't pitch-checked.
+
+**Done (2026-11-22):** all six re-recorded in Alina's voice (`eleven_v4`, flow
+`NBZF0TUItoZeA88zBAWm`, 4 takes of the six words plus 3 takes of 怕 alone, 188 credits). Measured
+the same way, the old 烫 read as tone 2 and the old 中 as a fall; the old 志, 谢 and 菜 passed tone 4 but
+ended in a small rebound. Every new clip passes its own tone in the app's checker. 怕 failed in
+all four takes of the word list (the long puff left little voiced sound), so it comes from a
+separate take said as 怕！, which falls cleanly from 299 to 192 Hz. The ends of 志, 谢 and 菜 are cut where
+the fall ends, before the rebound. Not yet heard by a person.
 
 ---
 
