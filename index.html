@@ -562,7 +562,7 @@ const S=[
  note:'pero (but) and perro (dog) differ only in tap vs trill.',rel:['r']},
 {id:'x',sym:'x',name:'Back-of-throat H',desc:'voiceless velar fricative',cat:'c',place:[7],langs:['es','zh','ar'],st:'new',
  anchor:'The "ch" in Scottish "loch" or German "Bach".',
- how:['Get into position for "k": the back of your tongue rises to the soft palate.','Don\'t let it touch. Leave a small gap and push air through so it hisses.','Spanish j is a firm hiss, much stronger than English h.','Mandarin h is gentler, closer to a breathy h.','Arabic خ is the scrapiest, often made further back.'],howL:[null,null,'es','zh','ar'],
+ how:['Get into position for "k": the back of your tongue rises to the soft palate.','Don\'t let it touch. Leave a small gap and push air through so it hisses.','Spanish j is a firm hiss, much stronger than English h.','Mandarin h is a light scrape, softer than in "loch", but never plain breath like English h.','Arabic خ is the scrapiest, often made further back.'],howL:[null,null,'es','zh','ar'],
  ex:[{l:'es',w:'jamón',ipa:'xaˈmon',g:'ham',f:'j'},{l:'zh',w:'好',r:'hǎo',ipa:'xaʊ˨˩˦',g:'good',f:'h'},{l:'ar',w:'خلص',r:'xalaṣ',ipa:'xalasˤ',g:'enough; done',f:'خ'}],
  note:['Arabic خ is often made even further back, at the uvula [χ], which gives it a rougher scrape.','Many Latin American Spanish speakers soften j toward [h].'],noteL:['ar','es'],rel:['gh','h']},
 {id:'gh',sym:'ɣ',name:'Soft gargle G',desc:'voiced velar fricative',cat:'c',place:[7],langs:['es','ar'],st:'new',
@@ -618,16 +618,16 @@ const S=[
  how:['Make the "ts" sound, then let a burst of air follow before the vowel.','Pinyin c is never "k" or "s".'],
  ex:[{l:'zh',w:'菜',r:'cài',ipa:'tsʰaɪ˥˩',g:'dish; vegetable',f:'c'},{l:'zh',w:'草',r:'cǎo',ipa:'tsʰaʊ˨˩˦',g:'grass',f:'c'},{l:'zh',w:'次',r:'cì',ipa:'tsʰɨ˥˩',g:'time (occurrence)',f:'c'}],rel:['ts']},
 {id:'tsr',sym:'ʈʂ',name:'Pinyin zh',desc:'voiceless retroflex affricate, unaspirated',cat:'c',place:[5],langs:['zh'],st:'new',
- anchor:'Like the "j" in "jar", but voiceless, with no puff, and with the tongue tip curled back.',
- how:['Curl your tongue tip up and back so it touches just behind the gum ridge.','From there, say a crisp "j" or "ch" with no puff of air.','Your lips aren\'t rounded the way they are for English "j".'],
+ anchor:'Like the "j" in "jar", but voiceless, with no puff, and with the tongue tip raised just behind the gum ridge.',
+ how:['Raise your tongue tip so it touches just behind the gum ridge. Don\'t curl it further back.','From there, say a crisp "j" or "ch" with no puff of air.','Your lips aren\'t rounded the way they are for English "j".'],
  ex:[{l:'zh',w:'中',r:'zhōng',ipa:'ʈʂʊŋ˥',g:'middle',f:'zh'},{l:'zh',w:'这',r:'zhè',ipa:'ʈʂɤ˥˩',g:'this',f:'zh'},{l:'zh',w:'知',r:'zhī',ipa:'ʈʂɨ˥',g:'to know',f:'zh'}],rel:['tsrh','sr','ts','tc']},
 {id:'tsrh',sym:'ʈʂʰ',name:'Pinyin ch',desc:'voiceless retroflex affricate, aspirated',cat:'c',place:[5],langs:['zh'],st:'new',
- anchor:'English "ch" with the tongue curled back and a stronger puff.',
- how:['Use the same curled-back tongue as zh.','Release it with a strong burst of air.'],
+ anchor:'English "ch" with the tongue tip raised just behind the gum ridge and a stronger puff.',
+ how:['Use the same raised tongue tip as zh.','Release it with a strong burst of air.'],
  ex:[{l:'zh',w:'茶',r:'chá',ipa:'ʈʂʰa˧˥',g:'tea',f:'ch'},{l:'zh',w:'吃',r:'chī',ipa:'ʈʂʰɨ˥',g:'to eat',f:'ch'},{l:'zh',w:'车',r:'chē',ipa:'ʈʂʰɤ˥',g:'vehicle',f:'ch'}],rel:['tsr','tch']},
 {id:'sr',sym:'ʂ',name:'Pinyin sh',desc:'voiceless retroflex fricative',cat:'c',place:[5],langs:['zh'],st:'new',
- anchor:'English "sh" with the tongue tip curled up and back, and lips not rounded. It sounds darker and hollower.',
- how:['Say "sh", then curl your tongue tip up toward the roof of your mouth.','Keep your lips relaxed and flat, not rounded.'],
+ anchor:'English "sh" with the tongue tip raised a little further back, and lips not rounded. It sounds darker and hollower.',
+ how:['Say "sh", then lift your tongue tip and move it just behind the gum ridge.','Keep your lips relaxed and flat, not rounded.'],
  ex:[{l:'zh',w:'是',r:'shì',ipa:'ʂɨ˥˩',g:'to be',f:'sh'},{l:'zh',w:'书',r:'shū',ipa:'ʂu˥',g:'book',f:'sh'},{l:'zh',w:'十',r:'shí',ipa:'ʂɨ˧˥',g:'ten',f:'sh'}],rel:['xx','tsr','rr']},
 {id:'rr',sym:'ɻ',name:'Pinyin r',desc:'voiced retroflex approximant',cat:'c',place:[5],langs:['zh'],st:'new',
  anchor:'Somewhere between English "r" and the "s" in "measure" [ʒ], with the tongue curled back.',
@@ -715,7 +715,7 @@ const S=[
  note:'Levantine Arabic has long [eː] and [oː] where MSA has "ay" and "aw": بيت bēt (MSA bayt), يوم yōm (MSA yawm). Word-final ة is often [e] too: طاولة ṭāwle.',noteL:'ar',rel:['vi','vo']},
 {id:'vgam',sym:'ɤ',name:'Pinyin e',desc:'close-mid back unrounded vowel',cat:'v',vx:[1,0.33],unr:true,langs:['zh'],st:'new',
  anchor:'English has no equivalent. It\'s like "uh" with the tongue pulled back and the lips spread.',
- how:['Say "oh" and hold your tongue there.','Now unround your lips, spreading them slightly as if smiling.','You can also start from "uh" and slide your tongue backward. Many speakers add a slight glide: [ɯɤ].'],
+ how:['Say a pure "oh" (no glide toward "oo") and hold your tongue there.','Now unround your lips, spreading them slightly as if smiling.','You can also start from "uh" and slide your tongue backward. Many speakers add a slight glide: [ɯɤ].'],
  ex:[{l:'zh',w:'饿',r:'è',ipa:'ɤ˥˩',g:'hungry',f:'e'},{l:'zh',w:'喝',r:'hē',ipa:'xɤ˥',g:'to drink',f:'e'},{l:'zh',w:'哥',r:'gē',ipa:'kɤ˥',g:'older brother',f:'e'}],rel:['vo','vschwa']},
 {id:'vo',sym:'o',name:'Pure "o"',desc:'close-mid back rounded vowel',cat:'v',vx:[1,0.33],round:true,langs:['es','ar'],st:'tricky',
  anchor:'English "oh" without the w glide at the end. Don\'t let your lips close in.',
@@ -834,7 +834,7 @@ const TERMS={
  'alveolar':'Tongue tip on the gum ridge just behind the top teeth, where English t, d, s and n are made.',
  'postalveolar':'Just behind the gum ridge, where English "sh" and the s in "measure" are made.',
  'alveolo-palatal':'Tongue tip down behind the lower teeth while the middle of the tongue rises toward the hard palate. Like "sh" said with a smile.',
- 'retroflex':'Tongue tip curled up and back toward the roof of the mouth.',
+ 'retroflex':'Tongue tip raised and pointed at the area just behind the gum ridge ("bent back"). In Mandarin it stays close to the ridge.',
  'palatal':'Middle of the tongue against the hard palate, the bony roof of your mouth. English y in "yes" is made here.',
  'velar':'Back of the tongue against the soft palate, where English k and g are made.',
  'uvular':'Back of the tongue against the uvula, the little flap hanging at the very back of your mouth.',
@@ -1501,7 +1501,7 @@ function answerQ(el,q,i,hooks){
     fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div><p>${w?`${playBtn(w.w,w.l)} <b>${lessonWordHTML(w)}</b> <span class="ipa">[${esc(w.ipa)}]</span> “${esc(w.g)}”. `:''}${esc(q.item.why)}</p>`;
   } else if(q.type==='tpair'){
     correctIdx=q.ans;ok=i===q.ans;const w=wd(q.it.w);
-    fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div><p>${playBtn(w.w,'zh')} <b>${esc(w.w)}</b> ${esc(w.r)} <span class="ipa">[${esc(w.ipa)}]</span> “${esc(w.g)}”: tone ${q.it.t[0]} + tone ${q.it.t[1]}.</p>`;
+    fb=`<div class="verdict" style="color:var(--${ok?'good':'bad'})">${ok?'Correct!':'Not quite.'}</div><p>${playBtn(w.w,'zh')} <b>${esc(w.w)}</b> ${esc(w.r)} <span class="ipa">[${esc(w.ipa)}]</span> “${esc(w.g)}”: said tone ${q.it.t[0]} + tone ${q.it.t[1]}${q.it.wr?` (written ${q.it.wr[0]} + ${q.it.wr[1]}: two third tones in a row, so the first one rises)`:''}.</p>`;
   } else if(q.type==='pair'){
     correctIdx=q.ans;ok=i===q.ans;const w=q.p[q.ans],o=q.p[1-q.ans];
     if(!ok){const [hw,ho]=ipaDiff(w.ipa,o.ipa);seq={words:[w.w,o.w],l:w.l};
@@ -1675,9 +1675,9 @@ const PAIRS=[
   pairs:[[W('es','modo','ˈmoðo','way'),W('es','mudo','ˈmuðo','mute')],[W('es','loto','ˈlot̪o','lotus'),W('es','luto','ˈlut̪o','mourning')],[W('es','coro','ˈkoɾo','choir'),W('es','curo','ˈkuɾo','I cure')]]},
  {id:'zh-asp',l:'zh',label:'no puff vs puff',ids:['pu','ph'],tip:'Pinyin b d g z zh j have no puff of air; p t k c ch q have a strong one. Neither set buzzes like English b or d.',
   pairs:[[W('zh','爸','pa˥˩','dad','bà'),W('zh','怕','pʰa˥˩','to fear','pà')],[W('zh','大','ta˥˩','big','dà'),W('zh','踏','tʰa˥˩','to step on','tà')],[W('zh','哥','kɤ˥','older brother','gē'),W('zh','科','kʰɤ˥','subject','kē')],[W('zh','在','tsaɪ˥˩','at','zài'),W('zh','菜','tsʰaɪ˥˩','dish','cài')],[W('zh','知','ʈʂɨ˥','to know','zhī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','七','tɕʰi˥','seven','qī')]]},
- {id:'zh-ssh',l:'zh',label:'z c s vs zh ch sh',ids:['ts','tsr','sr'],tip:'z c s are made with the tongue tip forward behind the teeth. zh ch sh curl the tongue back and sound hollower.',
+ {id:'zh-ssh',l:'zh',label:'z c s vs zh ch sh',ids:['ts','tsr','sr'],tip:'z c s are made with the tongue tip forward behind the teeth. zh ch sh raise the tongue tip just behind the gum ridge and sound hollower.',
   pairs:[[W('zh','四','sɨ˥˩','four','sì'),W('zh','是','ʂɨ˥˩','to be','shì')],[W('zh','早','tsaʊ˨˩˦','early','zǎo'),W('zh','找','ʈʂaʊ˨˩˦','to look for','zhǎo')],[W('zh','字','tsɨ˥˩','character','zì'),W('zh','志','ʈʂɨ˥˩','will','zhì')]]},
- {id:'zh-jzh',l:'zh',label:'j q x vs zh ch sh',ids:['tc','xx','tsr','sr'],tip:'j q x are made with the tongue tip down and sound bright, like a smile. zh ch sh curl the tongue back and sound dark.',
+ {id:'zh-jzh',l:'zh',label:'j q x vs zh ch sh',ids:['tc','xx','tsr','sr'],tip:'j q x are made with the tongue tip down and sound bright, like a smile. zh ch sh raise the tongue tip and sound dark.',
   pairs:[[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','知','ʈʂɨ˥','to know','zhī')],[W('zh','七','tɕʰi˥','seven','qī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','西','ɕi˥','west','xī'),W('zh','诗','ʂɨ˥','poem','shī')]]},
  {id:'zh-uy',l:'zh',label:'u vs ü',ids:['vu','vy'],tip:'u has the tongue back; ü keeps the tongue forward like "ee" with rounded lips. ü sounds brighter.',
   pairs:[[W('zh','路','lu˥˩','road','lù'),W('zh','绿','ly˥˩','green','lǜ')],[W('zh','努','nu˨˩˦','to strive','nǔ'),W('zh','女','ny˨˩˦','woman','nǚ')]]},
@@ -1745,7 +1745,7 @@ lw('zh',[['妈','ma˥','mom','mā'],['麻','ma˧˥','hemp','má'],['马','ma˨˩
  ['飞机','feɪ˥ tɕi˥','plane','fēijī'],['中国','ʈʂʊŋ˥ kwo˧˥','China','Zhōngguó'],['铅笔','tɕʰjɛn˥ pi˨˩˦','pencil','qiānbǐ'],['商店','ʂɑŋ˥ tjɛn˥˩','shop','shāngdiàn'],['明天','miŋ˧˥ tʰjɛn˥','tomorrow','míngtiān'],['学习','ɕɥɛ˧˥ ɕi˧˥','to study','xuéxí'],['苹果','pʰiŋ˧˥ kwo˨˩˦','apple','píngguǒ'],['同事','tʰʊŋ˧˥ ʂɨ˥˩','colleague','tóngshì'],
  ['老师','laʊ˨˩ ʂɨ˥','teacher','lǎoshī'],['美国','meɪ˨˩ kwo˧˥','USA','Měiguó'],['你好','ni˧˥ xaʊ˨˩˦','hello','nǐhǎo'],['考试','kʰaʊ˨˩ ʂɨ˥˩','exam','kǎoshì'],['汽车','tɕʰi˥˩ ʈʂʰɤ˥','car','qìchē'],['大学','ta˥˩ ɕɥɛ˧˥','university','dàxué'],['下雨','ɕja˥˩ y˨˩˦','to rain','xiàyǔ'],['再见','tsaɪ˥˩ tɕjɛn˥˩','goodbye','zàijiàn'],
  ['妈妈','ma˥ ma','mom','māma'],['谢谢','ɕjɛ˥˩ ɕjɛ','thank you','xièxie'],['朋友','pʰəŋ˧˥ joʊ','friend','péngyou'],['东西','tʊŋ˥ ɕi','thing, stuff','dōngxi'],['很好','xən˧˥ xaʊ˨˩˦','very good','hěn hǎo'],['可以','kʰɤ˧˥ i˨˩˦','can, may','kěyǐ'],['水果','ʂweɪ˧˥ kwo˨˩˦','fruit','shuǐguǒ'],['我很好','wo˨˩ xən˧˥ xaʊ˨˩˦','I\'m fine','wǒ hěn hǎo'],
- ['不是','pu˧˥ ʂɨ˥˩','is not','bú shì'],['不对','pu˧˥ tweɪ˥˩','not right','bú duì'],['不好','pu˥˩ xaʊ˨˩˦','not good','bù hǎo'],['不来','pu˥˩ laɪ˧˥','not coming','bù lái'],['一个','i˧˥ kɤ','one (of something)','yí ge'],['一天','i˥˩ tʰjɛn˥','one day','yì tiān'],['一年','i˥˩ njɛn˧˥','one year','yì nián'],['一起','i˥˩ tɕʰi˨˩˦','together','yìqǐ'],['第一','ti˥˩ i˥','first','dì yī'],
+ ['不是','pu˧˥ ʂɨ˥˩','is not','bú shì'],['不对','pu˧˥ tweɪ˥˩','not right','bú duì'],['不好','pu˥˩ xaʊ˨˩˦','not good','bù hǎo'],['不来','pu˥˩ laɪ˧˥','not coming','bù lái'],['一个','i˧˥ kə','one (of something)','yí ge'],['一天','i˥˩ tʰjɛn˥','one day','yì tiān'],['一年','i˥˩ njɛn˧˥','one year','yì nián'],['一起','i˥˩ tɕʰi˨˩˦','together','yìqǐ'],['第一','ti˥˩ i˥','first','dì yī'],
  ['盘','pʰan˧˥','plate','pán'],['旁','pʰɑŋ˧˥','side','páng'],['陈','ʈʂʰən˧˥','Chen (surname)','chén'],['成','ʈʂʰəŋ˧˥','to become','chéng'],['金','tɕin˥','gold','jīn'],['京','tɕiŋ˥','capital','jīng'],['对','tweɪ˥˩','correct','duì'],['春','ʈʂʰwən˥','spring','chūn'],['六','ljoʊ˥˩','six','liù'],['月','ɥɛ˥˩','moon; month','yuè'],['风','fəŋ˥','wind','fēng'],
  ['哪儿','nɑɻ˨˩˦','where','nǎr'],['一点儿','i˥˩ tjɑɻ˨˩˦','a little','yìdiǎnr'],['玩儿','wɑɻ˧˥','to play','wánr']]);
 lw('ar',[['مرة','mara','woman','mara'],['مرّة','marra','once; a time','marra'],['علم','ʕalam','flag','ʿalam'],['علّم','ʕallam','he taught','ʿallam'],['حمام','ħamaːm','pigeons','ḥamām'],['حمّام','ħammaːm','bathroom','ḥammām'],['جمل','ʒamal','camel','jamal'],['جمال','ʒamaːl','beauty','jamāl'],['كتب','katab','he wrote','katab'],['كاتب','kaːteb','writer','kāteb'],
@@ -1799,7 +1799,7 @@ PAIRS.push(
 PBYID['zh-nng']=PAIRS[PAIRS.length-3];PBYID['ar-len']=PAIRS[PAIRS.length-2];PBYID['ar-gem']=PAIRS[PAIRS.length-1];
 
 // two-syllable tone combinations
-const TPAIRS=[['飞机',1,1],['中国',1,2],['铅笔',1,3],['商店',1,4],['明天',2,1],['学习',2,2],['苹果',2,3],['同事',2,4],['老师',3,1],['美国',3,2],['你好',3,3],['考试',3,4],['汽车',4,1],['大学',4,2],['下雨',4,3],['再见',4,4]].map(([w,a,b])=>({w,t:[a,b]}));
+const TPAIRS=[['飞机',1,1],['中国',1,2],['铅笔',1,3],['商店',1,4],['明天',2,1],['学习',2,2],['苹果',2,3],['同事',2,4],['老师',3,1],['美国',3,2],['你好',2,3,3,3],['考试',3,4],['汽车',4,1],['大学',4,2],['下雨',4,3],['再见',4,4]].map(([w,a,b,wa,wb])=>wa?{w,t:[a,b],wr:[wa,wb]}:{w,t:[a,b]}); // t = tones as said; wr = as written, when a tone rule changes them
 
 // ---------- LESSON PLAN ----------
 // step builders
@@ -1906,9 +1906,9 @@ const SYM_NOTES={
   'kʰ':'Pinyin k: k with a strong puff of air (the raised h).',
   'ts':'Pinyin z: the "ts" of "cats", with no puff.',
   'tsʰ':'Pinyin c: the "ts" of "cats" with a strong puff.',
-  'ʈʂ':'Pinyin zh: a "ch"-like sound with the tongue tip curled back, and no puff.',
-  'ʈʂʰ':'Pinyin ch: the curled-back sound of zh with a strong puff.',
-  'ʂ':'Pinyin sh: "sh" with the tongue tip curled back.',
+  'ʈʂ':'Pinyin zh: a "ch"-like sound with the tongue tip raised just behind the gum ridge, and no puff.',
+  'ʈʂʰ':'Pinyin ch: the raised-tip sound of zh with a strong puff.',
+  'ʂ':'Pinyin sh: "sh" with the tongue tip raised just behind the gum ridge.',
   'ɻ':'Pinyin r: the tongue is curled back as for sh, but the sound is voiced and smooth.',
   'tɕ':'Pinyin j: tongue tip down behind the lower teeth, middle of the tongue up, no puff.',
   'tɕʰ':'Pinyin q: the same tongue position as j, with a strong puff.',
@@ -2518,7 +2518,7 @@ const UNITS=[
 {id:'zh',l:'zh',title:'Tones and the IPA',sub:'How IPA writes Mandarin, and the four tones: the one thing every Mandarin word has that English words don\'t.',lessons:[
  {id:'m01',title:'How IPA works for Mandarin',kind:'intro',min:8,steps:[
    txt('Pinyin is not English',`Pinyin is the official way to write Mandarin in Latin letters. It's consistent, but it was designed for Chinese readers, so many letters don't mean what an English speaker expects: <b>q</b> in <i>qī</i> (seven) is nothing like English q, <b>x</b> in <i>xī</i> (west) isn't "ks", and <b>c</b> in <i>cài</i> (dish) is "ts" with a puff.<br><br>IPA shows what is actually said. Square brackets mean "pronounced like this": 七 <i>qī</i> is <span class="ipa">[tɕʰi˥]</span>. Throughout this course you'll see pinyin and IPA side by side, so you learn to read both.`),
-   txt('A Mandarin syllable',`Every Mandarin syllable has three parts:<ol><li>an <b>initial</b> consonant (optional): the <i>m</i> of <i>mā</i></li><li>a <b>final</b>: a vowel, possibly with a glide before it or -n / -ng after it: the <i>a</i> of <i>mā</i>, the <i>iang</i> of <i>jiāng</i></li><li>a <b>tone</b>: the pitch shape over the whole syllable.</li></ol>There are only about 400 initial + final combinations. Tones multiply them, and they're as much part of the word as the consonants: <i>mā</i> "mom" and <i>mà</i> "scold" are as different as "cat" and "bat".`),
+   txt('A Mandarin syllable',`Every Mandarin syllable has three parts:<ol><li>an <b>initial</b> consonant (optional): the <i>m</i> of <i>mā</i></li><li>a <b>final</b>: a vowel, possibly with a glide before it and -i, -o/-u, -n or -ng after it: the <i>a</i> of <i>mā</i>, the <i>ao</i> of <i>hǎo</i>, the <i>iang</i> of <i>jiāng</i></li><li>a <b>tone</b>: the pitch shape over the whole syllable.</li></ol>There are only about 400 initial + final combinations. Tones multiply them, and they're as much part of the word as the consonants: <i>mā</i> "mom" and <i>mà</i> "scold" are as different as "cat" and "bat".`),
    sy('Marks you\'ll see in Mandarin IPA','Tap the words to hear each one.',[
      {s:'pʰ',n:'Raised h',t:'A strong puff of air. In Mandarin the puff is what separates pinyin <b>p</b> from <b>b</b>.',k:['怕','爸']},
      {s:'˥ ˧˥ ˨˩˦ ˥˩',n:'Tone letters',t:'A tiny graph of pitch, drawn after the syllable. The vertical line is your voice range; the stroke shows where the pitch goes.',k:['妈','麻','马','骂']},
@@ -2568,7 +2568,7 @@ const UNITS=[
      {s:'˥',n:'Tone 1 · 55 · ā',t:'high, level',k:['妈','汤']},{s:'˧˥',n:'Tone 2 · 35 · á',t:'rising',k:['麻','糖']},
      {s:'˨˩˦',n:'Tone 3 · 214 · ǎ',t:'low, dipping',k:['马','躺']},{s:'˥˩',n:'Tone 4 · 51 · à',t:'falling',k:['骂','烫']}]),
    fl('Use your hand',`Move your hand while you speak: flat and high for tone 1, up for tone 2, down low and back up for tone 3, a chop down for tone 4. It feels silly, but linking tones to movement is one of the fastest ways to learn them. Try it with <b>tāng, táng, tǎng, tàng</b>.`,['汤','糖','躺','烫'],`Keep using your hand until the tones feel automatic.`,`Play each recording and move your hand along with the pitch first, before you speak.`,'Did your voice follow your hand?'),
-   txt('The neutral tone',`Some syllables have no tone of their own. They're short and light, and their pitch depends on the syllable before. IPA simply leaves off the tone letter: 妈妈 <i>māma</i> is <span class="ipa">[ma˥ ma]</span>. You'll practise this in part 4.`),
+   txt('The neutral tone',`Some syllables have no tone of their own. They're short and light, and their pitch depends on the syllable before (lower after tones 1, 2 and 4, higher after tone 3). IPA simply leaves off the tone letter: 妈妈 <i>māma</i> is <span class="ipa">[ma˥ ma]</span>. You'll practise this in part 4.`),
    lst('Neutral tone',['妈妈','谢谢','朋友']),
    tn(12),
    rq([HR('躺',['[tʰɑŋ˥]','[tʰɑŋ˧˥]','[tʰɑŋ˨˩˦]','[tʰɑŋ˥˩]'],2,'Low and dipping.'),
@@ -2580,7 +2580,7 @@ const UNITS=[
 ]},
 {id:'zh-c',l:'zh',title:'Consonants',sub:'The puff that replaces voicing, and three families of hissing sounds that English lumps together.',lessons:[
  {id:'m05',title:'b, d, g vs p, t, k: the puff',kind:'sounds',min:9,steps:[
-   txt('Mandarin uses breath, not voice',`In English, b/p, d/t and g/k differ mainly in <b>voicing</b> (buzz). Mandarin doesn't use voicing at all. Instead, the pairs differ in <b>aspiration</b>, the puff of air:<ul><li>pinyin <b>b d g</b> = <span class="ipa">[p t k]</span>: no voice and no puff. Exactly the p of "spin", the t of "stop", the k of "skin".</li><li>pinyin <b>p t k</b> = <span class="ipa">[pʰ tʰ kʰ]</span>: a strong puff, stronger than in English.</li></ul>So 爸 <i>bà</i> is <span class="ipa">[pa˥˩]</span>, not an English b. If you voice it, people will still understand; if you skip the puff on p, t, k, they may hear the wrong word.`),
+   txt('Mandarin uses breath, not voice',`In English, b/p, d/t and g/k differ mainly in <b>voicing</b> (buzz). Mandarin doesn't use voicing at all. Instead, the pairs differ in <b>aspiration</b>, the puff of air:<ul><li>pinyin <b>b d g</b> = <span class="ipa">[p t k]</span>: no voice and no puff. Exactly the p of "spin", the t of "stop", the k of "skin".</li><li>pinyin <b>p t k</b> = <span class="ipa">[pʰ tʰ kʰ]</span>: a strong puff, stronger than in English.</li></ul>So 爸 <i>bà</i> is <span class="ipa">[pa˥˩]</span>, not an English b. If you voice it, people will still understand; if you skip the puff on p, t, k, they may hear the wrong word.<br><br>In short, light (neutral-tone) syllables, b, d and g often do get a little voice: the second syllable of 哥哥 <i>gēge</i>, or 的 <i>de</i>. That's normal, so don't think you misheard.`),
    fl('The tissue test',`Hold a tissue in front of your lips. Say "pin" (it should move) and "spin" (it shouldn't). The p in "spin" is pinyin <b>b</b>. Now say 怕 <i>pà</i> with an even bigger puff than "pin".`,['spin (EN)','爸','pin (EN)','怕'],`That's the whole contrast. The puff carries the meaning.`,`Try louder and closer. If "pin" doesn't move the tissue, put your palm right in front of your mouth instead and feel the air.`,'Did the tissue move for 怕 but not for 爸?'),
    cm('Find them in English','English has both versions; it just doesn\'t use the difference to tell words apart.',[['spin (EN)','爸','<span class="ipa">[p]</span> = pinyin b'],['pin (EN)','怕','<span class="ipa">[pʰ]</span> = pinyin p'],['skin (EN)','哥','<span class="ipa">[k]</span> = pinyin g'],['kin (EN)','科','<span class="ipa">[kʰ]</span> = pinyin k']]),
    snd('pu'),snd('ph'),
@@ -2595,7 +2595,7 @@ const UNITS=[
    spk(['爸','怕','他'])],adds:['s:pu','s:ph','p:zh-asp','r:m05']},
 
  {id:'m06',title:'f, m, n, l, and h',kind:'sounds',min:6,steps:[
-   txt('Mostly familiar',`<b>f m n l</b> are as in English, with one difference: Mandarin l is always light, never the dark l of "full".<br><br><b>h</b> is the one to watch. It's <span class="ipa">[x]</span>: the back of the tongue comes close to the soft palate and the air scrapes through, like Spanish <i>j</i> or Scottish "loch". It's usually a bit softer than the Spanish jota, but it's never just breath like English h.`),
+   txt('Mostly familiar',`<b>f m n l</b> are as in English, with one difference: Mandarin l is always light, never the dark l of "full".<br><br><b>h</b> is the one to watch. It's <span class="ipa">[x]</span>: the back of the tongue comes close to the soft palate and the air scrapes through, like Spanish <i>j</i> or Scottish "loch". It's a light scrape, softer than the Spanish jota, but never just breath like English h.`),
    cm('English h vs Mandarin h','',[['how (EN)','好','English <span class="ipa">[h]</span> vs Mandarin <span class="ipa">[x]</span>']]),
    snd('x'),
    fl('From k to h',`Say "k" and hold the tongue where it touches the roof of your mouth. Lower it slightly and blow: you get a gentle scrape. Put it in front of "ao": <b>hǎo</b>.`,['好','喝'],`That light scrape is Mandarin h.`,`Start from an English h and slowly raise the back of your tongue until you hear friction.`,'Could you add a light scrape to h?'),
@@ -2620,15 +2620,15 @@ const UNITS=[
    spk(['在','菜','四'])],adds:['s:ts','s:tsh','r:m07']},
 
  {id:'m08',title:'zh, ch, sh: the curled tongue',kind:'sounds',min:9,steps:[
-   txt('Retroflex',`For zh, ch and sh, the tongue tip <b>curls up and back</b> toward the roof of the mouth, behind the gum ridge. Sounds made this way are called <b>retroflex</b>, and IPA marks them with a hook to the right: <span class="ipa">[ʈʂ ʈʂʰ ʂ]</span>.<ul><li><b>zh</b> = <span class="ipa">[ʈʂ]</span>, no puff: 中 <i>zhōng</i></li><li><b>ch</b> = <span class="ipa">[ʈʂʰ]</span>, with a puff: 茶 <i>chá</i></li><li><b>sh</b> = <span class="ipa">[ʂ]</span>: 是 <i>shì</i></li></ul>English "j, ch, sh" (<span class="ipa">[dʒ tʃ ʃ]</span>) are close, but made with a flatter tongue and rounded lips. Mandarin's are deeper and hollower.`),
-   fl('Curl the tip',`Say a long English "shhh". Now slowly slide your tongue tip backward along the roof of your mouth, past the gum ridge, until it points up at the hard palate. The sound gets deeper and hollower: that's <span class="ipa">[ʂ]</span>. Keep your lips relaxed, not rounded.`,['是','书'],`That hollow sh is Mandarin sh. zh and ch use the same tongue position.`,`Use a mirror: if your lips push forward, relax them. Try saying "shr" quickly, as in "shrub"; the tongue position is close.`,'Did the sound get deeper as your tongue moved back?'),
+   txt('Retroflex',`For zh, ch and sh, the tongue tip is <b>raised</b> and pointed at the area just behind the gum ridge, a little further back than for English "sh". Sounds made this way are called <b>retroflex</b> ("bent back"), and IPA marks them with a hook to the right: <span class="ipa">[ʈʂ ʈʂʰ ʂ]</span>.<ul><li><b>zh</b> = <span class="ipa">[ʈʂ]</span>, no puff: 中 <i>zhōng</i></li><li><b>ch</b> = <span class="ipa">[ʈʂʰ]</span>, with a puff: 茶 <i>chá</i></li><li><b>sh</b> = <span class="ipa">[ʂ]</span>: 是 <i>shì</i></li></ul>English "j, ch, sh" (<span class="ipa">[dʒ tʃ ʃ]</span>) are close, but made with a flatter tongue and rounded lips. Mandarin's are deeper and hollower.<br><br>Don't overdo it: the tip goes up, but it doesn't curl far back toward the middle of the roof of the mouth. Curling too far is the most common learner mistake, and it makes these sounds dark and heavy.`),
+   fl('Raise the tip',`Say a long English "shhh". Now lift your tongue tip and slide it slowly backward along the roof of your mouth, just past the gum ridge (the bump behind your upper teeth), and stop there. The sound gets deeper and hollower: that's <span class="ipa">[ʂ]</span>. Keep your lips relaxed, not rounded.`,['是','书'],`That hollow sh is Mandarin sh. zh and ch use the same tongue position.`,`Use a mirror: if your lips push forward, relax them. Try saying "shr" quickly, as in "shrub"; the tongue position is close.`,'Did the sound get deeper as your tongue tip moved just past the ridge?'),
    cm('English sh vs Mandarin sh','',[['sure (EN)','书','English <span class="ipa">[ʃ]</span> vs Mandarin <span class="ipa">[ʂ]</span>'],['shirt (EN)','是','The vowel in "shirt" is close to the buzzing vowel of 是 shì.']]),
    snd('tsr'),snd('tsrh'),snd('sr'),
    lst('zh, ch, sh',['中','这','知','茶','吃','车','是','书','十']),
    rq([HR('是',['[ʂɨ˥˩]','[sɨ˥˩]'],0,'sh is retroflex [ʂ].'),
        HR('知',['[ʈʂɨ˥]','[tsɨ˥]'],0,'zh is [ʈʂ].'),
        RD('ʈʂʰa˧˥',['茶 chá (tea)','擦 cā (wipe)'],0,'茶','ʈʂʰ = ch.'),
-       Q(null,'The hook on [ʂ] means…',['the tongue tip curls back','the lips round','the sound is voiced'],0,'Retroflex.')]),
+       Q(null,'The hook on [ʂ] means…',['the tongue tip is raised and bent back','the lips round','the sound is voiced'],0,'Retroflex: tip up, just behind the gum ridge.')]),
    bd([{w:'书',a:'ʂ u ˥',x:'ʃ s ˥˩',why:'sh = [ʂ].'},{w:'茶',a:'ʈʂʰ a ˧˥',x:'tʃ ʈʂ ˥',why:'ch = [ʈʂʰ], rising tone.'}]),
    spk(['是','书','茶'])],adds:['s:tsr','s:tsrh','s:sr','r:m08']},
 
@@ -2660,7 +2660,7 @@ const UNITS=[
  {id:'m11',title:'Sorting the hissing sounds',kind:'rule',min:8,steps:[
    sy('Three families','Each row has the same tongue position; each column has the same manner.',[
      {s:'ts tsʰ s',n:'z c s',t:'tongue tip behind the upper teeth',k:['在','菜','四']},
-     {s:'ʈʂ ʈʂʰ ʂ',n:'zh ch sh',t:'tongue tip curled back',k:['中','茶','是']},
+     {s:'ʈʂ ʈʂʰ ʂ',n:'zh ch sh',t:'tongue tip raised, just behind the gum ridge',k:['中','茶','是']},
      {s:'tɕ tɕʰ ɕ',n:'j q x',t:'tongue tip down, front of the tongue up, smile',k:['鸡','七','西']}]),
    txt('Spelling clues',`<ul><li><b>j q x</b> only appear before <b>i</b> or <b>ü</b>.</li><li><b>z c s</b> and <b>zh ch sh r</b> never appear before a real <span class="ipa">[i]</span>: when pinyin writes zi, ci, si, zhi, chi, shi, ri, the i is the buzzing vowel you'll meet in part 3.</li></ul>So 西 <i>xī</i> <span class="ipa">[ɕi]</span> and 四 <i>sì</i> <span class="ipa">[sɨ]</span> differ in both consonant and vowel.`),
    prs(['zh-ssh','zh-jzh'],10),
@@ -2677,12 +2677,12 @@ const UNITS=[
  {id:'m12',title:'The simple vowels',kind:'sounds',min:8,steps:[
    txt('a, o, e, i, u',`<ul><li><b>a</b> <span class="ipa">[a]</span>: "ah". Before -ng it's further back, <span class="ipa">[ɑ]</span>.</li><li><b>o</b>: after b, p, m, f it's really <span class="ipa">[wo]</span>: 波 <i>bō</i> is <span class="ipa">[pwo]</span>.</li><li><b>e</b> on its own is <span class="ipa">[ɤ]</span>, a vowel English doesn't have (below).</li><li><b>i</b> <span class="ipa">[i]</span>: "ee", no glide.</li><li><b>u</b> <span class="ipa">[u]</span>: "oo", lips well rounded.</li></ul>`),
    snd('vgam'),
-   fl('Make [ɤ]',`Say "oo" and hold it. Now keep your tongue exactly where it is and <b>unround your lips</b> into a relaxed smile. The sound that comes out is <span class="ipa">[ɤ]</span>: a bit like the "uh" in "duh", but further back. That's 饿 <b>è</b>, "hungry".`,['饿','喝','哥'],`That's the Mandarin e. It has nothing to do with English "e".`,`Use a mirror. Say "oo", then pull your lips sideways without moving anything else.`,'Could you make "oo" with spread lips?'),
+   fl('Make [ɤ]',`Say a pure "oh", with no glide toward "oo" at the end, and hold it. Now keep your tongue exactly where it is and <b>unround your lips</b> into a relaxed smile. The sound that comes out is <span class="ipa">[ɤ]</span>: a bit like the "uh" in "duh", but further back. That's 饿 <b>è</b>, "hungry".`,['饿','喝','哥'],`That's the Mandarin e. It has nothing to do with English "e".`,`Use a mirror. Say "oh", then pull your lips sideways without moving anything else. If it sounds like "oo" with a smile, open your mouth a little more.`,'Could you make "oh" with spread lips?'),
    lst('a',['马','大','茶']),lst('e = [ɤ]',['饿','喝','车','热']),lst('i and u',['七','西','书','路','努']),
    rq([HR('饿',['[ɤ˥˩]','[ə˥˩]','[e˥˩]'],0,'e alone is [ɤ].'),
        HR('路',['[lu˥˩]','[ly˥˩]'],0,'u = [u].'),
        Q(null,'Pinyin e in 喝 hē is…',['like the e in "bed"','[ɤ]: an "uh" made far back, with spread lips'],1,''),
-       Q(null,'How do you make [ɤ]?',['Say "ee" and round your lips','Say "oo" and unround your lips'],1,'')]),
+       Q(null,'How do you make [ɤ]?',['Say "ee" and round your lips','Say "oh" and unround your lips'],1,'Keep the tongue where it is for "oh" and spread the lips. Unrounding "oo" comes out too high.')]),
    bd([{w:'车',a:'ʈʂʰ ɤ ˥',x:'ə e tʃ',why:'ch = [ʈʂʰ]; e = [ɤ].'},{w:'路',a:'l u ˥˩',x:'y ʊ ˥',why:'u = [u].'}]),
    spk(['饿','车','路'])],adds:['s:vgam','r:m12']},
 
@@ -2762,10 +2762,10 @@ const UNITS=[
    spk(['六','对','春'])],adds:['r:zh7']},
 ]},
 {id:'zh-s',l:'zh',title:'Tones in real speech',sub:'Tone pairs, the tone-change rules, and whole phrases.',lessons:[
- {id:'m19',title:'Tone pairs',kind:'sounds',min:9,steps:[txt('Tones in real words','Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don\'t let it sag before the next syllable.'),
+ {id:'m19',title:'Tone pairs',kind:'sounds',min:9,steps:[txt('Tones in real words','Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don\'t let it sag before the next syllable.<br><br>Two pairs sound different from how they\'re written. 你好 is written 3 + 3 but said <b>2 + 3</b> (ní hǎo); the next lesson explains why. And when two tone 4s meet, as in 再见, the first one only falls <b>halfway</b> (53), then the second falls all the way.'),
    lst('Tone 1 first',['飞机','中国','铅笔','商店']),lst('Tone 2 first',['明天','学习','苹果','同事']),lst('Tone 3 first',['老师','美国','你好','考试']),lst('Tone 4 first',['汽车','大学','下雨','再见']),
    tp(10),spk(['中国','老师','再见']),
-   bd([{w:'中国',a:'ʈʂ ʊŋ ˥ k w o ˧˥',x:'˥˩ ɡ',why:'Tone 1 + tone 2.'},{w:'再见',a:'ts aɪ ˥˩ tɕ j ɛ n ˥˩',x:'˥ a',why:'Two falling tones.'}])],adds:['t:tpairs','b:m19']},
+   bd([{w:'中国',a:'ʈʂ ʊŋ ˥ k w o ˧˥',x:'˥˩ ɡ',why:'Tone 1 + tone 2.'},{w:'再见',a:'ts aɪ ˥˩ tɕ j ɛ n ˥˩',x:'˥ a',why:'Two falling tones. The first falls only halfway; the second falls all the way.'}])],adds:['t:tpairs','b:m19']},
  {id:'m20',title:'Rule: third-tone changes',kind:'rule',min:7,steps:[txt('Two third tones in a row','When two third tones meet, the <b>first becomes a second tone</b>: 你好 is written <i>nǐ hǎo</i> but said <i>ní hǎo</i>. Pinyin keeps writing the original tone, so you have to apply this yourself.'),
    lst('3 + 3 → 2 + 3',['你好','很好','可以','水果']),
    txt('The half third tone','Before tones 1, 2 or 4 (or a neutral tone), a third tone only <b>dips low and stays low</b> (21). It doesn\'t rise. This low version is actually the most common form of tone 3.'),
@@ -2779,9 +2779,9 @@ const UNITS=[
        Q('我很好','我很好 is most commonly said…',['wǒ hén hǎo','wó hěn hǎo','wǒ hěn hǎo'],0,'Group as 我 + 很好. 很 becomes tone 2, and 我 stays low.')]),
    spk(['你好','老师','水果']),
    bd([{w:'你好',a:'n i ˧˥ x aʊ ˨˩˦',x:'˨˩˦ h',why:'Written nǐ hǎo, said ní hǎo: the IPA shows what you say.'},{w:'老师',a:'l aʊ ˨˩ ʂ ɨ ˥',x:'˨˩˦ i',why:'Half third tone: low, no rise.'}])],adds:['r:zh9']},
- {id:'m21',title:'Rule: 一 and 不',kind:'rule',min:7,steps:[txt('不 bù','不 is tone 4, except <b>before another tone 4</b>, where it becomes tone 2: 不是 <i>bú shì</i>, 不对 <i>bú duì</i>. Before tones 1, 2 and 3 it stays <i>bù</i>.'),
+ {id:'m21',title:'Rule: 一 and 不',kind:'rule',min:7,steps:[txt('不 bù','不 is tone 4, except <b>before another tone 4</b>, where it becomes tone 2: 不是 <i>bú shì</i>, 不对 <i>bú duì</i>. Before tones 1, 2 and 3 it stays <i>bù</i>.<br><br>In the middle of a set phrase, 不 is often neutral, short and light: 对不起 <i>duìbuqǐ</i> (sorry), 听不懂 <i>tīng bu dǒng</i> (can\'t understand), 是不是 <i>shì bu shì</i> (is it or not).'),
    lst('不',['不是','不对','不好','不来']),
-   txt('一 yī','一 is tone 1 when counting, at the end of a word, or in ordinals (第一 <i>dì yī</i>). Before another syllable it changes: <b>before tone 4 it becomes yí</b> (一个 <i>yí ge</i>, since 个 is originally tone 4), and <b>before tones 1, 2 and 3 it becomes yì</b> (一天, 一年, 一起).'),
+   txt('一 yī','一 is tone 1 when counting, at the end of a word, or in ordinals (第一 <i>dì yī</i>). Before another syllable it changes: <b>before tone 4 it becomes yí</b> (一个 <i>yí ge</i>, since 个 is originally tone 4), and <b>before tones 1, 2 and 3 it becomes yì</b> (一天, 一年, 一起). Between a repeated verb it is neutral: 看一看 <i>kàn yi kàn</i> (take a look).'),
    lst('一',['一个','一天','一年','一起','第一']),
    rq([Q('不是','In 不是, 不 is said…',['bù','bú'],1,'Before tone 4, 不 becomes bú.'),
        Q('不好','In 不好, 不 is said…',['bù','bú'],0,'Before tone 3, 不 stays bù.'),
@@ -2790,22 +2790,22 @@ const UNITS=[
        Q('第一','In 第一, 一 is said…',['yī','yí','yì'],0,'As an ordinal, at the end, 一 keeps tone 1.'),
        Q('一起','In 一起, 一 is said…',['yī','yí','yì'],2,'Before tone 3, 一 becomes yì.')]),
    bd([{w:'不是',a:'p u ˧˥ ʂ ɨ ˥˩',x:'˥˩ b',why:'不 before tone 4 becomes tone 2.'},{w:'一天',a:'i ˥˩ tʰ j ɛ n ˥',x:'˥ t',why:'一 before tone 1 becomes tone 4.'}])],adds:['r:zh10']},
- {id:'m22',title:'Rule: neutral tone and erhua',kind:'rule',min:7,steps:[txt('The neutral tone','Many second syllables lose their tone: they\'re <b>short and light</b>, and their pitch simply follows the syllable before. Pinyin writes them with no tone mark: <i>māma, xièxie, péngyou</i>. Grammar particles like 吗, 了 and 的 are always neutral.<br><br>It can change meaning: <i>dōngxi</i> means "thing", while <i>dōngxī</i> means "east and west".'),
+ {id:'m22',title:'Rule: neutral tone and erhua',kind:'rule',min:7,steps:[txt('The neutral tone','Many second syllables lose their tone: they\'re <b>short and light</b>, and their pitch follows the syllable before. After tones 1, 2 and 4 the neutral syllable is <b>lower</b> (妈妈, 朋友, 谢谢). After tone 3 it is <b>higher</b>: tone 3 stays low, and the light syllable bounces up from it (你们, 我的, 姐姐). Pinyin writes them with no tone mark: <i>māma, xièxie, péngyou</i>. Grammar particles like 吗, 了 and 的 are always neutral.<br><br>It can change meaning: <i>dōngxi</i> means "thing", while <i>dōngxī</i> means "east and west".'),
    lst('Short and light second syllables',['妈妈','谢谢','朋友','东西']),
    txt('Erhua (儿化)','In Beijing and much of the north, 儿 merges into the previous syllable as an r-colouring: 哪儿 <i>nǎr</i>, 一点儿 <i>yìdiǎnr</i>. A final -n or -i usually drops when it does. Southern and Taiwanese speakers use it much less, so learn to recognise it before deciding whether to use it.'),
    lst('Erhua',['哪儿','一点儿','玩儿']),
    rq([Q('谢谢','In 谢谢, the second 谢…',['keeps tone 4','is neutral: short and light'],1,'Pinyin writes xièxie, with no mark on the second syllable.'),
        Q('东西','东西 dōngxi, with a neutral second syllable, means…',['east and west','thing, stuff'],1,'With a full tone 1, dōngxī means east and west.'),
-       Q('妈妈','In 妈妈, the second syllable is…',['high and level like the first','short, light and a little lower'],1,'Neutral tones are short and follow the pitch of the syllable before.'),
+       Q('妈妈','In 妈妈, the second syllable is…',['high and level like the first','short, light and a little lower'],1,'After tone 1 (and 2 and 4) a neutral syllable is short and lower. After tone 3 it would be higher.'),
        Q('哪儿','In 哪儿 nǎr, the 儿…',['is a separate syllable, ér','merges in as r-colouring on the vowel'],1,'That\'s erhua.')]),
    spk(['谢谢','朋友','哪儿']),
    bd([{w:'谢谢',a:'ɕ j ɛ ˥˩ ɕ j ɛ',x:'˥˩ ˥',why:'The second 谢 is neutral: no tone letter.'}])],adds:['r:zh11']},
  {id:'m23',title:'Phrases: tones in a sentence',kind:'rule',min:8,steps:[
-   txt('Tones don\'t go away in sentences',`In English, pitch carries emotion and questions. In Mandarin, pitch is mostly busy carrying tones, so:<ul><li><b>Questions</b> are made with words, not pitch. 吗 <i>ma</i> at the end turns a statement into a yes/no question, and it's said in a light neutral tone. Don't let your voice swoop up on it like English.</li><li><b>Emotion</b> changes the overall range (higher, wider, faster), but the tone shapes stay.</li><li>In a sentence, tones are smaller and quicker than in single words. Keep tone 1 high, and keep tone 3 low.</li></ul>`),
+   txt('Tones don\'t go away in sentences',`In English, pitch carries emotion and questions. In Mandarin, pitch is mostly busy carrying tones, so:<ul><li><b>Questions</b> are mostly made with words: 吗 <i>ma</i> at the end (said in a light neutral tone), a question word like 什么 or 哪儿, or "A-not-A" like 是不是 ("is or isn't"). Don't let your voice swoop up at the end like English. You can also ask by saying a statement on a higher pitch overall, but each syllable keeps its own tone shape.</li><li><b>Emotion</b> changes the overall range (higher, wider, faster), but the tone shapes stay.</li><li>In a sentence, tones are smaller and quicker than in single words. Keep tone 1 high, and keep tone 3 low.</li></ul>`),
    lst('Statement and question',['你是老师。','你是老师吗？']),
    txt('Rhythm','Every syllable gets its own beat, except neutral-tone syllables, which are short and light. Listen to the phrases below, then shadow them: play, and speak along with the recording at the same time.'),
    lst('Everyday phrases',['你好吗？','我很好','你叫什么名字？','我是美国人。','一共多少钱？','我不知道。']),
-   rq([Q('你是老师吗？','How does 吗 sound at the end of a question?',['A big English-style rise','Light and short, a neutral tone'],1,'The question is in the word, not the pitch.'),
+   rq([Q('你是老师吗？','How does 吗 sound at the end of a question?',['A big English-style rise','Light and short, a neutral tone'],1,'The question is carried by the word 吗, so the pitch doesn\'t need to swoop.'),
        Q(null,'What makes 你是老师吗？ a question?',['Rising intonation','The particle 吗'],1,''),
        Q('我很好','我很好 wǒ hěn hǎo is usually said…',['wǒ hěn hǎo','wó hén hǎo or wǒ hén hǎo'],1,'Third-tone changes apply inside the phrase.')]),
    spk(['你好吗？','我很好','你是老师吗？'])],adds:['r:m23']},
@@ -3713,7 +3713,7 @@ function finishLesson(){
 function renderTonePairs(){
   const el=$('#tpairs');if(!el)return;
   let grid='<table class="tpgrid"><tr><th></th>'+[1,2,3,4].map(b=>`<th>+ tone ${b}</th>`).join('')+'</tr>';
-  for(let a=1;a<=4;a++){grid+=`<tr><th>tone ${a}</th>`;for(let b=1;b<=4;b++){const it=TPAIRS.find(x=>x.t[0]===a&&x.t[1]===b),w=wd(it.w);grid+=`<td>${playBtn(w.w,'zh')}<div class="tpw">${esc(w.w)}</div><div class="tpr">${esc(w.r)}</div></td>`}grid+='</tr>'}
+  for(let a=1;a<=4;a++){grid+=`<tr><th>tone ${a}</th>`;for(let b=1;b<=4;b++){const it=TPAIRS.find(x=>{const t=x.wr||x.t;return t[0]===a&&t[1]===b}),w=wd(it.w);/* the grid is by written tones */grid+=`<td>${playBtn(w.w,'zh')}<div class="tpw">${esc(w.w)}</div><div class="tpr">${esc(w.r)}</div></td>`}grid+='</tr>'}
   el.innerHTML=grid+'</table><div class="row" style="margin-top:12px"><button class="btn" id="tp-go">Drill tone pairs</button><button class="btn ghost" id="tp-say">🎙 Say them, with feedback</button></div>'+voiceToggleHTML()+'<div class="quiz-box qbox" id="tp-q" style="display:none;margin-top:12px"></div>';
   $('#tp-say').onclick=()=>{spLang='zh';spMode='tpairs';store.set('spMode',spMode);location.hash='speak'};
   const go=()=>{$('#tp-q').style.display='block';mountQ($('#tp-q'),tpairQ(),{onAnswer:(ok)=>{},onNext:go})};
@@ -5356,7 +5356,7 @@ function renderTonePairSay(){
   const it=tpWord,w=wd(it.w),[a,b]=it.t;
   $('#lab').innerHTML=`<div class="quiz-box">
    <p class="lesson-text" style="margin-top:0">Tones change when they sit next to each other. Pick a two-syllable word, say it, and compare the melody of your voice with native speakers saying the same word.</p>
-   <div class="chips" id="t2-words">${TPAIRS.map((x,i)=>`<button class="chip ${x===it?'on':''}" data-t2w="${i}">${esc(x.w)} · ${x.t[0]}+${x.t[1]}${tpBest[x.w]>=85?' ✓':''}</button>`).join('')}</div>
+   <div class="chips" id="t2-words">${TPAIRS.map((x,i)=>`<button class="chip ${x===it?'on':''}" data-t2w="${i}">${esc(x.w)} · ${(x.wr||x.t)[0]}+${(x.wr||x.t)[1]}${tpBest[x.w]>=85?' ✓':''}</button>`).join('')}</div>
    <div class="row" style="margin-top:12px">${playBtn(it.w,'zh')}<span><b style="font-size:24px">${esc(it.w)}</b> <span style="color:var(--muted)">${esc(w.r||'')}</span> ${w.ipa?`<span class="ipa">[${esc(w.ipa)}]</span>`:''} ${w.g?`<span style="color:var(--muted)">“${esc(w.g)}”</span>`:''}</span></div>
    <p style="margin:8px 0"><b>Tone ${a} + tone ${b}:</b> ${tpTip(a,b)}</p>
    <div class="row"><button class="btn" id="t2-rec">🎙 Say it</button><span id="t2-play"></span></div>

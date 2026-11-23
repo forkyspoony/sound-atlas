@@ -4056,7 +4056,7 @@
      {
       "t": "text",
       "h": "A Mandarin syllable",
-      "html": "Every Mandarin syllable has three parts:<ol><li>an <b>initial</b> consonant (optional): the <i>m</i> of <i>mā</i></li><li>a <b>final</b>: a vowel, possibly with a glide before it or -n / -ng after it: the <i>a</i> of <i>mā</i>, the <i>iang</i> of <i>jiāng</i></li><li>a <b>tone</b>: the pitch shape over the whole syllable.</li></ol>There are only about 400 initial + final combinations. Tones multiply them, and they're as much part of the word as the consonants: <i>mā</i> \"mom\" and <i>mà</i> \"scold\" are as different as \"cat\" and \"bat\"."
+      "html": "Every Mandarin syllable has three parts:<ol><li>an <b>initial</b> consonant (optional): the <i>m</i> of <i>mā</i></li><li>a <b>final</b>: a vowel, possibly with a glide before it and -i, -o/-u, -n or -ng after it: the <i>a</i> of <i>mā</i>, the <i>ao</i> of <i>hǎo</i>, the <i>iang</i> of <i>jiāng</i></li><li>a <b>tone</b>: the pitch shape over the whole syllable.</li></ol>There are only about 400 initial + final combinations. Tones multiply them, and they're as much part of the word as the consonants: <i>mā</i> \"mom\" and <i>mà</i> \"scold\" are as different as \"cat\" and \"bat\"."
      },
      {
       "t": "sym",
@@ -4579,7 +4579,7 @@
      {
       "t": "text",
       "h": "The neutral tone",
-      "html": "Some syllables have no tone of their own. They're short and light, and their pitch depends on the syllable before. IPA simply leaves off the tone letter: 妈妈 <i>māma</i> is <span class=\"ipa\">[ma˥ ma]</span>. You'll practise this in part 4."
+      "html": "Some syllables have no tone of their own. They're short and light, and their pitch depends on the syllable before (lower after tones 1, 2 and 4, higher after tone 3). IPA simply leaves off the tone letter: 妈妈 <i>māma</i> is <span class=\"ipa\">[ma˥ ma]</span>. You'll practise this in part 4."
      },
      {
       "t": "listen",
@@ -4704,7 +4704,7 @@
      {
       "t": "text",
       "h": "Mandarin uses breath, not voice",
-      "html": "In English, b/p, d/t and g/k differ mainly in <b>voicing</b> (buzz). Mandarin doesn't use voicing at all. Instead, the pairs differ in <b>aspiration</b>, the puff of air:<ul><li>pinyin <b>b d g</b> = <span class=\"ipa\">[p t k]</span>: no voice and no puff. Exactly the p of \"spin\", the t of \"stop\", the k of \"skin\".</li><li>pinyin <b>p t k</b> = <span class=\"ipa\">[pʰ tʰ kʰ]</span>: a strong puff, stronger than in English.</li></ul>So 爸 <i>bà</i> is <span class=\"ipa\">[pa˥˩]</span>, not an English b. If you voice it, people will still understand; if you skip the puff on p, t, k, they may hear the wrong word."
+      "html": "In English, b/p, d/t and g/k differ mainly in <b>voicing</b> (buzz). Mandarin doesn't use voicing at all. Instead, the pairs differ in <b>aspiration</b>, the puff of air:<ul><li>pinyin <b>b d g</b> = <span class=\"ipa\">[p t k]</span>: no voice and no puff. Exactly the p of \"spin\", the t of \"stop\", the k of \"skin\".</li><li>pinyin <b>p t k</b> = <span class=\"ipa\">[pʰ tʰ kʰ]</span>: a strong puff, stronger than in English.</li></ul>So 爸 <i>bà</i> is <span class=\"ipa\">[pa˥˩]</span>, not an English b. If you voice it, people will still understand; if you skip the puff on p, t, k, they may hear the wrong word.<br><br>In short, light (neutral-tone) syllables, b, d and g often do get a little voice: the second syllable of 哥哥 <i>gēge</i>, or 的 <i>de</i>. That's normal, so don't think you misheard."
      },
      {
       "t": "feel",
@@ -4887,7 +4887,7 @@
      {
       "t": "text",
       "h": "Mostly familiar",
-      "html": "<b>f m n l</b> are as in English, with one difference: Mandarin l is always light, never the dark l of \"full\".<br><br><b>h</b> is the one to watch. It's <span class=\"ipa\">[x]</span>: the back of the tongue comes close to the soft palate and the air scrapes through, like Spanish <i>j</i> or Scottish \"loch\". It's usually a bit softer than the Spanish jota, but it's never just breath like English h."
+      "html": "<b>f m n l</b> are as in English, with one difference: Mandarin l is always light, never the dark l of \"full\".<br><br><b>h</b> is the one to watch. It's <span class=\"ipa\">[x]</span>: the back of the tongue comes close to the soft palate and the air scrapes through, like Spanish <i>j</i> or Scottish \"loch\". It's a light scrape, softer than the Spanish jota, but never just breath like English h."
      },
      {
       "t": "cmp",
@@ -5150,19 +5150,19 @@
      {
       "t": "text",
       "h": "Retroflex",
-      "html": "For zh, ch and sh, the tongue tip <b>curls up and back</b> toward the roof of the mouth, behind the gum ridge. Sounds made this way are called <b>retroflex</b>, and IPA marks them with a hook to the right: <span class=\"ipa\">[ʈʂ ʈʂʰ ʂ]</span>.<ul><li><b>zh</b> = <span class=\"ipa\">[ʈʂ]</span>, no puff: 中 <i>zhōng</i></li><li><b>ch</b> = <span class=\"ipa\">[ʈʂʰ]</span>, with a puff: 茶 <i>chá</i></li><li><b>sh</b> = <span class=\"ipa\">[ʂ]</span>: 是 <i>shì</i></li></ul>English \"j, ch, sh\" (<span class=\"ipa\">[dʒ tʃ ʃ]</span>) are close, but made with a flatter tongue and rounded lips. Mandarin's are deeper and hollower."
+      "html": "For zh, ch and sh, the tongue tip is <b>raised</b> and pointed at the area just behind the gum ridge, a little further back than for English \"sh\". Sounds made this way are called <b>retroflex</b> (\"bent back\"), and IPA marks them with a hook to the right: <span class=\"ipa\">[ʈʂ ʈʂʰ ʂ]</span>.<ul><li><b>zh</b> = <span class=\"ipa\">[ʈʂ]</span>, no puff: 中 <i>zhōng</i></li><li><b>ch</b> = <span class=\"ipa\">[ʈʂʰ]</span>, with a puff: 茶 <i>chá</i></li><li><b>sh</b> = <span class=\"ipa\">[ʂ]</span>: 是 <i>shì</i></li></ul>English \"j, ch, sh\" (<span class=\"ipa\">[dʒ tʃ ʃ]</span>) are close, but made with a flatter tongue and rounded lips. Mandarin's are deeper and hollower.<br><br>Don't overdo it: the tip goes up, but it doesn't curl far back toward the middle of the roof of the mouth. Curling too far is the most common learner mistake, and it makes these sounds dark and heavy."
      },
      {
       "t": "feel",
-      "h": "Curl the tip",
-      "html": "Say a long English \"shhh\". Now slowly slide your tongue tip backward along the roof of your mouth, past the gum ridge, until it points up at the hard palate. The sound gets deeper and hollower: that's <span class=\"ipa\">[ʂ]</span>. Keep your lips relaxed, not rounded.",
+      "h": "Raise the tip",
+      "html": "Say a long English \"shhh\". Now lift your tongue tip and slide it slowly backward along the roof of your mouth, just past the gum ridge (the bump behind your upper teeth), and stop there. The sound gets deeper and hollower: that's <span class=\"ipa\">[ʂ]</span>. Keep your lips relaxed, not rounded.",
       "keys": [
        "是",
        "书"
       ],
       "yes": "That hollow sh is Mandarin sh. zh and ch use the same tongue position.",
       "no": "Use a mirror: if your lips push forward, relax them. Try saying \"shr\" quickly, as in \"shrub\"; the tongue position is close.",
-      "q": "Did the sound get deeper as your tongue moved back?"
+      "q": "Did the sound get deeper as your tongue tip moved just past the ridge?"
      },
      {
       "t": "cmp",
@@ -5250,12 +5250,12 @@
         "w": null,
         "q": "The hook on [ʂ] means…",
         "o": [
-         "the tongue tip curls back",
+         "the tongue tip is raised and bent back",
          "the lips round",
          "the sound is voiced"
         ],
         "a": 0,
-        "why": "Retroflex."
+        "why": "Retroflex: tip up, just behind the gum ridge."
        }
       ]
      },
@@ -5598,7 +5598,7 @@
        {
         "s": "ʈʂ ʈʂʰ ʂ",
         "n": "zh ch sh",
-        "t": "tongue tip curled back",
+        "t": "tongue tip raised, just behind the gum ridge",
         "k": [
          "中",
          "茶",
@@ -5774,15 +5774,15 @@
      {
       "t": "feel",
       "h": "Make [ɤ]",
-      "html": "Say \"oo\" and hold it. Now keep your tongue exactly where it is and <b>unround your lips</b> into a relaxed smile. The sound that comes out is <span class=\"ipa\">[ɤ]</span>: a bit like the \"uh\" in \"duh\", but further back. That's 饿 <b>è</b>, \"hungry\".",
+      "html": "Say a pure \"oh\", with no glide toward \"oo\" at the end, and hold it. Now keep your tongue exactly where it is and <b>unround your lips</b> into a relaxed smile. The sound that comes out is <span class=\"ipa\">[ɤ]</span>: a bit like the \"uh\" in \"duh\", but further back. That's 饿 <b>è</b>, \"hungry\".",
       "keys": [
        "饿",
        "喝",
        "哥"
       ],
       "yes": "That's the Mandarin e. It has nothing to do with English \"e\".",
-      "no": "Use a mirror. Say \"oo\", then pull your lips sideways without moving anything else.",
-      "q": "Could you make \"oo\" with spread lips?"
+      "no": "Use a mirror. Say \"oh\", then pull your lips sideways without moving anything else. If it sounds like \"oo\" with a smile, open your mouth a little more.",
+      "q": "Could you make \"oh\" with spread lips?"
      },
      {
       "t": "listen",
@@ -5857,10 +5857,10 @@
         "q": "How do you make [ɤ]?",
         "o": [
          "Say \"ee\" and round your lips",
-         "Say \"oo\" and unround your lips"
+         "Say \"oh\" and unround your lips"
         ],
         "a": 1,
-        "why": ""
+        "why": "Keep the tongue where it is for \"oh\" and spread the lips. Unrounding \"oo\" comes out too high."
        }
       ]
      },
@@ -6729,7 +6729,7 @@
      {
       "t": "text",
       "h": "Tones in real words",
-      "html": "Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don't let it sag before the next syllable."
+      "html": "Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don't let it sag before the next syllable.<br><br>Two pairs sound different from how they're written. 你好 is written 3 + 3 but said <b>2 + 3</b> (ní hǎo); the next lesson explains why. And when two tone 4s meet, as in 再见, the first one only falls <b>halfway</b> (53), then the second falls all the way."
      },
      {
       "t": "listen",
@@ -6796,7 +6796,7 @@
         "w": "再见",
         "a": "ts aɪ ˥˩ tɕ j ɛ n ˥˩",
         "x": "˥ a",
-        "why": "Two falling tones."
+        "why": "Two falling tones. The first falls only halfway; the second falls all the way."
        }
       ]
      }
@@ -6964,7 +6964,7 @@
      {
       "t": "text",
       "h": "不 bù",
-      "html": "不 is tone 4, except <b>before another tone 4</b>, where it becomes tone 2: 不是 <i>bú shì</i>, 不对 <i>bú duì</i>. Before tones 1, 2 and 3 it stays <i>bù</i>."
+      "html": "不 is tone 4, except <b>before another tone 4</b>, where it becomes tone 2: 不是 <i>bú shì</i>, 不对 <i>bú duì</i>. Before tones 1, 2 and 3 it stays <i>bù</i>.<br><br>In the middle of a set phrase, 不 is often neutral, short and light: 对不起 <i>duìbuqǐ</i> (sorry), 听不懂 <i>tīng bu dǒng</i> (can't understand), 是不是 <i>shì bu shì</i> (is it or not)."
      },
      {
       "t": "listen",
@@ -6979,7 +6979,7 @@
      {
       "t": "text",
       "h": "一 yī",
-      "html": "一 is tone 1 when counting, at the end of a word, or in ordinals (第一 <i>dì yī</i>). Before another syllable it changes: <b>before tone 4 it becomes yí</b> (一个 <i>yí ge</i>, since 个 is originally tone 4), and <b>before tones 1, 2 and 3 it becomes yì</b> (一天, 一年, 一起)."
+      "html": "一 is tone 1 when counting, at the end of a word, or in ordinals (第一 <i>dì yī</i>). Before another syllable it changes: <b>before tone 4 it becomes yí</b> (一个 <i>yí ge</i>, since 个 is originally tone 4), and <b>before tones 1, 2 and 3 it becomes yì</b> (一天, 一年, 一起). Between a repeated verb it is neutral: 看一看 <i>kàn yi kàn</i> (take a look)."
      },
      {
       "t": "listen",
@@ -7104,7 +7104,7 @@
      {
       "t": "text",
       "h": "The neutral tone",
-      "html": "Many second syllables lose their tone: they're <b>short and light</b>, and their pitch simply follows the syllable before. Pinyin writes them with no tone mark: <i>māma, xièxie, péngyou</i>. Grammar particles like 吗, 了 and 的 are always neutral.<br><br>It can change meaning: <i>dōngxi</i> means \"thing\", while <i>dōngxī</i> means \"east and west\"."
+      "html": "Many second syllables lose their tone: they're <b>short and light</b>, and their pitch follows the syllable before. After tones 1, 2 and 4 the neutral syllable is <b>lower</b> (妈妈, 朋友, 谢谢). After tone 3 it is <b>higher</b>: tone 3 stays low, and the light syllable bounces up from it (你们, 我的, 姐姐). Pinyin writes them with no tone mark: <i>māma, xièxie, péngyou</i>. Grammar particles like 吗, 了 and 的 are always neutral.<br><br>It can change meaning: <i>dōngxi</i> means \"thing\", while <i>dōngxī</i> means \"east and west\"."
      },
      {
       "t": "listen",
@@ -7169,7 +7169,7 @@
          "short, light and a little lower"
         ],
         "a": 1,
-        "why": "Neutral tones are short and follow the pitch of the syllable before."
+        "why": "After tone 1 (and 2 and 4) a neutral syllable is short and lower. After tone 3 it would be higher."
        },
        {
         "w": "哪儿",
@@ -7218,7 +7218,7 @@
      {
       "t": "text",
       "h": "Tones don't go away in sentences",
-      "html": "In English, pitch carries emotion and questions. In Mandarin, pitch is mostly busy carrying tones, so:<ul><li><b>Questions</b> are made with words, not pitch. 吗 <i>ma</i> at the end turns a statement into a yes/no question, and it's said in a light neutral tone. Don't let your voice swoop up on it like English.</li><li><b>Emotion</b> changes the overall range (higher, wider, faster), but the tone shapes stay.</li><li>In a sentence, tones are smaller and quicker than in single words. Keep tone 1 high, and keep tone 3 low.</li></ul>"
+      "html": "In English, pitch carries emotion and questions. In Mandarin, pitch is mostly busy carrying tones, so:<ul><li><b>Questions</b> are mostly made with words: 吗 <i>ma</i> at the end (said in a light neutral tone), a question word like 什么 or 哪儿, or \"A-not-A\" like 是不是 (\"is or isn't\"). Don't let your voice swoop up at the end like English. You can also ask by saying a statement on a higher pitch overall, but each syllable keeps its own tone shape.</li><li><b>Emotion</b> changes the overall range (higher, wider, faster), but the tone shapes stay.</li><li>In a sentence, tones are smaller and quicker than in single words. Keep tone 1 high, and keep tone 3 low.</li></ul>"
      },
      {
       "t": "listen",
@@ -7256,7 +7256,7 @@
          "Light and short, a neutral tone"
         ],
         "a": 1,
-        "why": "The question is in the word, not the pitch."
+        "why": "The question is carried by the word 吗, so the pitch doesn't need to swoop."
        },
        {
         "w": null,

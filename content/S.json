@@ -122,7 +122,7 @@
    "Get into position for \"k\": the back of your tongue rises to the soft palate.",
    "Don't let it touch. Leave a small gap and push air through so it hisses.",
    "Spanish j is a firm hiss, much stronger than English h.",
-   "Mandarin h is gentler, closer to a breathy h.",
+   "Mandarin h is a light scrape, softer than in \"loch\", but never plain breath like English h.",
    "Arabic خ is the scrapiest, often made further back."
   ],
   "howL": [
@@ -732,9 +732,9 @@
    "zh"
   ],
   "st": "new",
-  "anchor": "Like the \"j\" in \"jar\", but voiceless, with no puff, and with the tongue tip curled back.",
+  "anchor": "Like the \"j\" in \"jar\", but voiceless, with no puff, and with the tongue tip raised just behind the gum ridge.",
   "how": [
-   "Curl your tongue tip up and back so it touches just behind the gum ridge.",
+   "Raise your tongue tip so it touches just behind the gum ridge. Don't curl it further back.",
    "From there, say a crisp \"j\" or \"ch\" with no puff of air.",
    "Your lips aren't rounded the way they are for English \"j\"."
   ],
@@ -784,9 +784,9 @@
    "zh"
   ],
   "st": "new",
-  "anchor": "English \"ch\" with the tongue curled back and a stronger puff.",
+  "anchor": "English \"ch\" with the tongue tip raised just behind the gum ridge and a stronger puff.",
   "how": [
-   "Use the same curled-back tongue as zh.",
+   "Use the same raised tongue tip as zh.",
    "Release it with a strong burst of air."
   ],
   "ex": [
@@ -833,9 +833,9 @@
    "zh"
   ],
   "st": "new",
-  "anchor": "English \"sh\" with the tongue tip curled up and back, and lips not rounded. It sounds darker and hollower.",
+  "anchor": "English \"sh\" with the tongue tip raised a little further back, and lips not rounded. It sounds darker and hollower.",
   "how": [
-   "Say \"sh\", then curl your tongue tip up toward the roof of your mouth.",
+   "Say \"sh\", then lift your tongue tip and move it just behind the gum ridge.",
    "Keep your lips relaxed and flat, not rounded."
   ],
   "ex": [
@@ -1809,7 +1809,7 @@
   "st": "new",
   "anchor": "English has no equivalent. It's like \"uh\" with the tongue pulled back and the lips spread.",
   "how": [
-   "Say \"oh\" and hold your tongue there.",
+   "Say a pure \"oh\" (no glide toward \"oo\") and hold your tongue there.",
    "Now unround your lips, spreading them slightly as if smiling.",
    "You can also start from \"uh\" and slide your tongue backward. Many speakers add a slight glide: [ɯɤ]."
   ],
