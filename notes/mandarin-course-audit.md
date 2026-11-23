@@ -18,7 +18,10 @@ m24). 50 new clips, best of three takes each, in `audio/p_g3*_zh.mp3`. 快 falls
 the checker loses the middle of the glide in every take (nine tried), so it is kept unverified. 空儿 came
 out level then falling (probably kōngr) and isn't used. Not yet heard by a person. Step 5 done
 (2026-11-22): D4, the tone coach now runs inside m02 (tones 1 and 4), m03 (tones 2 and 3), m04 (all
-four) and m19 (tone pairs, ten words), as step types `tcoach`/`tpcoach`. Left (all optional): D9, C3, F8.
+four) and m19 (tone pairs, ten words), as step types `tcoach`/`tpcoach`. Optional items done too (2026-11-22): D9 (one line in m16 on
+weak ui/iu), C3 (builds 哥→古 in m05, 喝/冷→好/来 in m06, 去→七 in m11; 热 in m09 kept), F8 (pizza/字
+in m07, rung/让 in m09, now/闹 in m15). New clips: 来 闹 (Alina) and pizza, rung, now (Bella,
+`hpp4J3VqNfWAUOO0d1Us`). **The audit is complete.**
  C1/F7 (new `zh-bdg` set for m05: 爸/怕, 大/踏, 哥/科, 白/牌, 读/图, 古/苦; 白/牌 replaces
 不/铺 because 铺 has two readings; `zh-asp` now has all eight pairs, is drilled in m11 and m24, and
 lists all six puff sounds as its ids, so review brings it in only after z/c, zh/ch and j/q), F6 + D3

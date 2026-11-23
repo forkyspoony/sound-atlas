@@ -487,6 +487,10 @@ signal to measure).
   `cleanPitch` was written for single syllables and throws away the second syllable when the
   pitch leaps between them; two-syllable work must use `tpClean`. Pitch still jumps an
   octave on some creaky third tones, which is why no per-syllable verdict is given.
+- **Mandarin audit finished (2026-11-22):** last optional items D9, C3, F8 (see
+  `notes/mandarin-course-audit.md`). Clips in `audio/p_g4_zh.mp3` (来 闹, Alina) and `audio/p_g4_en.mp3`
+  (pizza, rung, now: ElevenLabs Bella `hpp4J3VqNfWAUOO0d1Us`, an American voice; older English clips
+  may be in a different voice).
 - **In-lesson tone coach (2026-11-22):** audit step D4. Lesson steps `tcs(h,html,sets,tones)` → `{t:'tcoach'}`
   and `tps(h,html,words)` → `{t:'tpcoach'}` show the Speak tab's tone coach / tone-pair coach inside the
   lesson, limited by `tcOnly`/`tcTonesOnly`/`tpOnly` (reset to null by the Speak tab). Only one `#lab` may

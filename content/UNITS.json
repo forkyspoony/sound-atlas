@@ -4908,10 +4908,10 @@
         "why": "Pinyin t = [tʰ]."
        },
        {
-        "w": "哥",
-        "a": "k ɤ ˥",
-        "x": "kʰ ɡ ə",
-        "why": "Pinyin g = [k]; e alone = [ɤ]."
+        "w": "古",
+        "a": "k u ˨˩˦",
+        "x": "kʰ ɡ ˧˥",
+        "why": "Pinyin g = [k], with no puff."
        }
       ]
      },
@@ -5028,16 +5028,16 @@
       "t": "build",
       "items": [
        {
-        "w": "喝",
-        "a": "x ɤ ˥",
-        "x": "h ə ˥˩",
-        "why": "h = [x], e alone = [ɤ]."
+        "w": "好",
+        "a": "x aʊ ˨˩˦",
+        "x": "h ɑ ˥˩",
+        "why": "Pinyin h = [x], made further back than English h; ao = [aʊ]."
        },
        {
-        "w": "冷",
-        "a": "l əŋ ˨˩˦",
-        "x": "ɫ ən ˧˥",
-        "why": "Light l; eng = [əŋ]."
+        "w": "来",
+        "a": "l aɪ ˧˥",
+        "x": "ɫ eɪ ˨˩˦",
+        "why": "Light l, never the dark l of English \"full\"; ai = [aɪ]."
        }
       ]
      },
@@ -5077,6 +5077,11 @@
         "cats (EN)",
         "字",
         "The end of \"cats\" is the start of 字 zì."
+       ],
+       [
+        "pizza (EN)",
+        "字",
+        "The \"zz\" in pizza is the same [ts]. Mandarin puts it at the start of a word."
        ]
       ]
      },
@@ -5369,6 +5374,11 @@
         "run (EN)",
         "人",
         "English r rounds the lips; Mandarin r doesn't."
+       ],
+       [
+        "rung (EN)",
+        "让",
+        "Both end in [ŋ]. Start 让 ràng with the tongue tip curled back and the lips spread, not pushed forward."
        ]
       ]
      },
@@ -5780,10 +5790,10 @@
         "why": "ch + buzzing [ɨ]."
        },
        {
-        "w": "去",
-        "a": "tɕʰ y ˥˩",
-        "x": "ʈʂʰ u",
-        "why": "q + ü, written u."
+        "w": "七",
+        "a": "tɕʰ i ˥",
+        "x": "ʈʂʰ tsʰ ˥˩",
+        "why": "q = [tɕʰ]: tongue tip down, with a puff."
        }
       ]
      },
@@ -6256,6 +6266,11 @@
         "how (EN)",
         "好",
         "Same vowel glide, different h."
+       ],
+       [
+        "now (EN)",
+        "闹",
+        "闹 nào is very close to English \"now\", said with a falling tone."
        ]
       ]
      },
@@ -6366,7 +6381,7 @@
      {
       "t": "text",
       "h": "A glide before the vowel",
-      "html": "Many finals start with a short glide:<ul><li><b>i-</b> becomes <span class=\"ipa\">[j]</span>: <b>ia</b> <span class=\"ipa\">[ja]</span> 家 <i>jiā</i>, <b>ie</b> <span class=\"ipa\">[jɛ]</span> 谢 <i>xiè</i>, <b>iu</b> <span class=\"ipa\">[joʊ]</span> 六 <i>liù</i>, <b>ian</b> <span class=\"ipa\">[jɛn]</span> 钱 <i>qián</i></li><li><b>u-</b> becomes <span class=\"ipa\">[w]</span>: <b>uo</b> <span class=\"ipa\">[wo]</span> 国 <i>guó</i>, <b>ui</b> <span class=\"ipa\">[weɪ]</span> 对 <i>duì</i>, <b>un</b> <span class=\"ipa\">[wən]</span> 春 <i>chūn</i></li><li><b>ü-</b> becomes <span class=\"ipa\">[ɥ]</span>, a rounded y: <b>üe</b> <span class=\"ipa\">[ɥɛ]</span> 月 <i>yuè</i>, 学 <i>xué</i></li></ul>Watch <b>ian</b>: the a is raised to <span class=\"ipa\">[ɛ]</span>, so 钱 <i>qián</i> sounds like \"chyen\", not \"chyan\"."
+      "html": "Many finals start with a short glide:<ul><li><b>i-</b> becomes <span class=\"ipa\">[j]</span>: <b>ia</b> <span class=\"ipa\">[ja]</span> 家 <i>jiā</i>, <b>ie</b> <span class=\"ipa\">[jɛ]</span> 谢 <i>xiè</i>, <b>iu</b> <span class=\"ipa\">[joʊ]</span> 六 <i>liù</i>, <b>ian</b> <span class=\"ipa\">[jɛn]</span> 钱 <i>qián</i></li><li><b>u-</b> becomes <span class=\"ipa\">[w]</span>: <b>uo</b> <span class=\"ipa\">[wo]</span> 国 <i>guó</i>, <b>ui</b> <span class=\"ipa\">[weɪ]</span> 对 <i>duì</i>, <b>un</b> <span class=\"ipa\">[wən]</span> 春 <i>chūn</i></li><li><b>ü-</b> becomes <span class=\"ipa\">[ɥ]</span>, a rounded y: <b>üe</b> <span class=\"ipa\">[ɥɛ]</span> 月 <i>yuè</i>, 学 <i>xué</i></li></ul>Watch <b>ian</b>: the a is raised to <span class=\"ipa\">[ɛ]</span>, so 钱 <i>qián</i> sounds like \"chyen\", not \"chyan\".<br><br>In <b>ui</b> and <b>iu</b> the hidden middle vowel is weak in tones 1 and 2: 贵 <i>guì</i> keeps a clear <span class=\"ipa\">[weɪ]</span>, but 归 <i>guī</i> is closer to <span class=\"ipa\">[kwi]</span>. Don't over-pronounce it."
      },
      {
       "t": "text",

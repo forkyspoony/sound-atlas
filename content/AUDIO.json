@@ -1537,6 +1537,31 @@
   2.1,
   2.42
  ],
+ "来": [
+  "audio/p_g4_zh.mp3",
+  0.05,
+  0.46
+ ],
+ "闹": [
+  "audio/p_g4_zh.mp3",
+  0.98,
+  1.37
+ ],
+ "pizza (EN)": [
+  "audio/p_g4_en.mp3",
+  0.04,
+  0.48
+ ],
+ "rung (EN)": [
+  "audio/p_g4_en.mp3",
+  1.06,
+  1.48
+ ],
+ "now (EN)": [
+  "audio/p_g4_en.mp3",
+  2.11,
+  2.51
+ ],
  "Vienes mañana.": [
   "audio/p_c9_es_into.mp3",
   0.02,

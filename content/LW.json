@@ -1301,6 +1301,27 @@
   "g": "full",
   "r": ""
  },
+ "pizza (EN)": {
+  "l": "en",
+  "w": "pizza (EN)",
+  "ipa": "ˈpʰitsə",
+  "g": "pizza",
+  "r": ""
+ },
+ "rung (EN)": {
+  "l": "en",
+  "w": "rung (EN)",
+  "ipa": "ɹʌŋ",
+  "g": "rung",
+  "r": ""
+ },
+ "now (EN)": {
+  "l": "en",
+  "w": "now (EN)",
+  "ipa": "naʊ",
+  "g": "now",
+  "r": ""
+ },
  "sé": {
   "l": "es",
   "w": "sé",
@@ -2682,6 +2703,27 @@
   "ipa": "ta˥˧ kaɪ˥˩",
   "g": "probably",
   "r": "dàgài"
+ },
+ "来": {
+  "l": "zh",
+  "w": "来",
+  "ipa": "laɪ˧˥",
+  "g": "to come",
+  "r": "lái"
+ },
+ "闹": {
+  "l": "zh",
+  "w": "闹",
+  "ipa": "naʊ˥˩",
+  "g": "noisy",
+  "r": "nào"
+ },
+ "古": {
+  "l": "zh",
+  "w": "古",
+  "ipa": "ku˨˩˦",
+  "g": "ancient",
+  "r": "gǔ"
  },
  "让": {
   "l": "zh",
