@@ -10,7 +10,15 @@ course in the backup, so the benchmark is the standard descriptions of Beijing M
 Each finding has an id (A1, B2 …) so we can fix them one by one, as with the Spanish audit.
 
 **Status (2026-11-22):** G done: all six clips re-recorded (see the note under the G table).
-Step 3 done: C1/F7 (new `zh-bdg` set for m05: 爸/怕, 大/踏, 哥/科, 白/牌, 读/图, 古/苦; 白/牌 replaces
+Step 4 done: E1 (m16 "Longer glide finals" step; m18 "The uan and un trap" step and two questions),
+E2 (m22 "The er syllable" step), E3 (o list in m12), E4 (plain ou words in m15), E5 + D1 (m19 neutral
+list; m22 now splits "lower after 1, 2, 4" and "higher after 3"), D2 (m19 list 再见 再次 大概), D7 (one
+line on -ng erhua, text only), F1 + F3 + F4 + F5 (more pairs), F2 (new `zh-iy` set, drilled in m13 and
+m24). 50 new clips, best of three takes each, in `audio/p_g3*_zh.mp3`. 快 falls from 356 to 165 Hz but
+the checker loses the middle of the glide in every take (nine tried), so it is kept unverified. 空儿 came
+out level then falling (probably kōngr) and isn't used. Not yet heard by a person. Left: D4 (in-lesson
+tone coach), D9, C3, F8.
+ C1/F7 (new `zh-bdg` set for m05: 爸/怕, 大/踏, 哥/科, 白/牌, 读/图, 古/苦; 白/牌 replaces
 不/铺 because 铺 has two readings; `zh-asp` now has all eight pairs, is drilled in m11 and m24, and
 lists all six puff sounds as its ids, so review brings it in only after z/c, zh/ch and j/q), F6 + D3
 (new `zh-t23` set and a "Tone 2 or tone 3?" step in m03), E6 (seven rule questions in m24; `pu`

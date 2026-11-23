@@ -1451,6 +1451,7 @@ const EAR={
  'zh-bdg':'The puff. A burst of breath, like a little h, before the vowel means p t k; none means b d g.',
  'zh-t23':'The start. Tone 2 climbs right away from the middle; tone 3 sinks first and rises late, if at all.',
  'zh-asp':'The puff. A burst of breath, like a little h, before the vowel means p t k c ch q; none means b d g z zh j.',
+ 'zh-iy':'The lips. Both have the tongue forward like "ee"; ü adds tightly rounded lips and sounds darker and whistly.',
  'zh-ssh':'The hiss. z c s is thin and sharp; zh ch sh is lower and hollow.',
  'zh-jzh':'Bright or dark. j q x hiss high and lead into ee; zh ch sh hiss low and hollow.',
  'zh-uy':'Brightness. ü is thin and bright, like ee through rounded lips; u is deep and dark.',
@@ -1680,13 +1681,15 @@ const PAIRS=[
  {id:'zh-asp',l:'zh',label:'no puff vs puff: b d g z zh j vs p t k c ch q',ids:['pu','ph','ts','tsh','tsr','tsrh','tc','tch'],tip:'Pinyin b d g z zh j have no puff of air; p t k c ch q have a strong one. Neither set buzzes like English b or d.',
   pairs:[[W('zh','白','paɪ˧˥','white','bái'),W('zh','牌','pʰaɪ˧˥','card; sign','pái')],[W('zh','读','tu˧˥','to read','dú'),W('zh','图','tʰu˧˥','picture','tú')],[W('zh','爸','pa˥˩','dad','bà'),W('zh','怕','pʰa˥˩','to fear','pà')],[W('zh','大','ta˥˩','big','dà'),W('zh','踏','tʰa˥˩','to step on','tà')],[W('zh','哥','kɤ˥','older brother','gē'),W('zh','科','kʰɤ˥','subject','kē')],[W('zh','在','tsaɪ˥˩','at','zài'),W('zh','菜','tsʰaɪ˥˩','dish','cài')],[W('zh','知','ʈʂɨ˥','to know','zhī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','七','tɕʰi˥','seven','qī')]]},
  {id:'zh-ssh',l:'zh',label:'z c s vs zh ch sh',ids:['ts','tsr','sr'],tip:'z c s are made with the tongue tip forward behind the teeth. zh ch sh raise the tongue tip just behind the gum ridge and sound hollower.',
-  pairs:[[W('zh','四','sɨ˥˩','four','sì'),W('zh','是','ʂɨ˥˩','to be','shì')],[W('zh','早','tsaʊ˨˩˦','early','zǎo'),W('zh','找','ʈʂaʊ˨˩˦','to look for','zhǎo')],[W('zh','字','tsɨ˥˩','character','zì'),W('zh','志','ʈʂɨ˥˩','will','zhì')]]},
+  pairs:[[W('zh','四','sɨ˥˩','four','sì'),W('zh','是','ʂɨ˥˩','to be','shì')],[W('zh','早','tsaʊ˨˩˦','early','zǎo'),W('zh','找','ʈʂaʊ˨˩˦','to look for','zhǎo')],[W('zh','字','tsɨ˥˩','character','zì'),W('zh','志','ʈʂɨ˥˩','will','zhì')],[W('zh','擦','tsʰa˥','to wipe','cā'),W('zh','插','ʈʂʰa˥','to insert','chā')],[W('zh','三','san˥','three','sān'),W('zh','山','ʂan˥','mountain','shān')],[W('zh','色','sɤ˥˩','colour','sè'),W('zh','社','ʂɤ˥˩','society','shè')]]},
  {id:'zh-jzh',l:'zh',label:'j q x vs zh ch sh',ids:['tc','xx','tsr','sr'],tip:'j q x are made with the tongue tip down and sound bright, like a smile. zh ch sh raise the tongue tip and sound dark.',
-  pairs:[[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','知','ʈʂɨ˥','to know','zhī')],[W('zh','七','tɕʰi˥','seven','qī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','西','ɕi˥','west','xī'),W('zh','诗','ʂɨ˥','poem','shī')]]},
+  pairs:[[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','知','ʈʂɨ˥','to know','zhī')],[W('zh','七','tɕʰi˥','seven','qī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','西','ɕi˥','west','xī'),W('zh','诗','ʂɨ˥','poem','shī')],[W('zh','前','tɕʰjɛn˧˥','front; before','qián'),W('zh','缠','ʈʂʰan˧˥','to wrap','chán')],[W('zh','家','tɕja˥','home; family','jiā'),W('zh','渣','ʈʂa˥','dregs','zhā')]]},
  {id:'zh-t23',l:'zh',label:'tone 2 vs tone 3',ids:[],tip:'Tone 2 starts in the middle and climbs right away. Tone 3 sinks to the bottom first and only rises late, or not at all.',
   pairs:[[W('zh','麻','ma˧˥','hemp','má'),W('zh','马','ma˨˩˦','horse','mǎ')],[W('zh','糖','tʰɑŋ˧˥','sugar','táng'),W('zh','躺','tʰɑŋ˨˩˦','to lie down','tǎng')],[W('zh','十','ʂɨ˧˥','ten','shí'),W('zh','使','ʂɨ˨˩˦','to use','shǐ')],[W('zh','肥','feɪ˧˥','fat','féi'),W('zh','匪','feɪ˨˩˦','bandit','fěi')],[W('zh','同','tʰʊŋ˧˥','same','tóng'),W('zh','统','tʰʊŋ˨˩˦','to unite','tǒng')],[W('zh','鱼','y˧˥','fish','yú'),W('zh','雨','y˨˩˦','rain','yǔ')]]},
  {id:'zh-uy',l:'zh',label:'u vs ü',ids:['vu','vy'],tip:'u has the tongue back; ü keeps the tongue forward like "ee" with rounded lips. ü sounds brighter.',
-  pairs:[[W('zh','路','lu˥˩','road','lù'),W('zh','绿','ly˥˩','green','lǜ')],[W('zh','努','nu˨˩˦','to strive','nǔ'),W('zh','女','ny˨˩˦','woman','nǚ')]]},
+  pairs:[[W('zh','路','lu˥˩','road','lù'),W('zh','绿','ly˥˩','green','lǜ')],[W('zh','努','nu˨˩˦','to strive','nǔ'),W('zh','女','ny˨˩˦','woman','nǚ')],[W('zh','炉','lu˧˥','stove','lú'),W('zh','驴','ly˧˥','donkey','lǘ')],[W('zh','五','u˨˩˦','five','wǔ'),W('zh','雨','y˨˩˦','rain','yǔ')],[W('zh','无','u˧˥','without','wú'),W('zh','鱼','y˧˥','fish','yú')]]},
+ {id:'zh-iy',l:'zh',label:'i vs ü',ids:['vi','vy'],tip:'Same tongue, different lips. i is "ee" with spread lips; ü is "ee" with tightly rounded lips. If your ü sounds like "ee", round more and keep the tongue still.',
+  pairs:[[W('zh','你','ni˨˩˦','you','nǐ'),W('zh','女','ny˨˩˦','woman','nǚ')],[W('zh','气','tɕʰi˥˩','air','qì'),W('zh','去','tɕʰy˥˩','to go','qù')],[W('zh','姨','i˧˥','aunt','yí'),W('zh','鱼','y˧˥','fish','yú')],[W('zh','力','li˥˩','strength','lì'),W('zh','绿','ly˥˩','green','lǜ')]]},
  {id:'ar-h',l:'ar',label:'h vs ħ',ids:['h','hh'],tip:'ه is a plain English h. ح is squeezed from the throat and sounds raspier and stronger.',
   pairs:[[W('ar','هرم','haram','pyramid','haram'),W('ar','حرم','ħaram','sanctuary','ḥaram')],[W('ar','هال','haːl','cardamom','hāl'),W('ar','حال','ħaːl','state; condition','ḥāl')]]},
  {id:'ar-hain',l:'ar',label:'ħ vs ʕ',ids:['hh','ain'],tip:'Both are squeezed in the throat. ح is voiceless breath; ع has the voice on and sounds tight.',
@@ -1784,6 +1787,7 @@ lw('ar',[['هرم','haram','pyramid','haram'],['حرم','ħaram','sanctuary','�
  ['ساعة','saːʕa','hour; watch','sāʿa'],['شجرة','ʃaʒara','tree','shajara'],['ذكي','zaki','smart','zaki'],['ثقافة','saʔaːfe','culture','saʾāfe'],['كتاب','ktaːb','book','ktāb'],['مكتب','ˈmaktab','office','maktab'],
  ['بالبيت','bilbeːt','at home','bil-bēt'],['بنت كبيرة','bint ikbiːre','a big girl','bint ikbīre'],['من بيروت','mim beːruːt','from Beirut','mim bērūt'],['شو عم تعمل؟','ʃuː ʕam taʕmel','What are you doing?','shū ʿam taʿmel?'],['وين رايح؟','weːn raːjeħ','Where are you going?','wēn rāyeḥ?'],
  ['بدّي قهوة','biddi ʔahwe','I want coffee','biddi ʾahwe'],['ما بعرف','ma baʕref',"I don't know",'ma baʿref'],['الحمد لله','ilħamdilla','thank God','il-ḥamdilla'],['إن شاء الله','inʃaˈlla','God willing','inshalla'],['تشرّفنا','tʃarrafna','nice to meet you','tsharrafna'],['كيف حالك؟','keːf ħaːlak','How are you?','kēf ḥālak?']]);
+lw('zh',[['叫', 'tɕjaʊ˥˩', 'to call', 'jiào'], ['小', 'ɕjaʊ˨˩˦', 'small', 'xiǎo'], ['想', 'ɕjɑŋ˨˩˦', 'to want; to think', 'xiǎng'], ['两', 'ljɑŋ˨˩˦', 'two (of something)', 'liǎng'], ['快', 'kʰwaɪ˥˩', 'fast', 'kuài'], ['关', 'kwan˥', 'to close', 'guān'], ['晚', 'wan˨˩˦', 'late; evening', 'wǎn'], ['黄', 'xwɑŋ˧˥', 'yellow', 'huáng'], ['远', 'ɥɛn˨˩˦', 'far', 'yuǎn'], ['全', 'tɕʰɥɛn˧˥', 'whole', 'quán'], ['选', 'ɕɥɛn˨˩˦', 'to choose', 'xuǎn'], ['云', 'yn˧˥', 'cloud', 'yún'], ['军', 'tɕyn˥', 'army', 'jūn'], ['儿', 'ɚ˧˥', 'child; son', 'ér'], ['二', 'aɚ˥˩', 'two', 'èr'], ['耳', 'ɚ˨˩˦', 'ear', 'ěr'], ['波', 'pwo˥', 'wave', 'bō'], ['我', 'wo˨˩˦', 'I; me', 'wǒ'], ['多', 'two˥', 'many', 'duō'], ['国', 'kwo˧˥', 'country', 'guó'], ['狗', 'koʊ˨˩˦', 'dog', 'gǒu'], ['走', 'tsoʊ˨˩˦', 'to walk', 'zǒu'], ['手', 'ʂoʊ˨˩˦', 'hand', 'shǒu'], ['口', 'kʰoʊ˨˩˦', 'mouth', 'kǒu'], ['炉', 'lu˧˥', 'stove', 'lú'], ['驴', 'ly˧˥', 'donkey', 'lǘ'], ['五', 'u˨˩˦', 'five', 'wǔ'], ['无', 'u˧˥', 'without', 'wú'], ['你', 'ni˨˩˦', 'you', 'nǐ'], ['气', 'tɕʰi˥˩', 'air', 'qì'], ['力', 'li˥˩', 'strength', 'lì'], ['擦', 'tsʰa˥', 'to wipe', 'cā'], ['插', 'ʈʂʰa˥', 'to insert', 'chā'], ['三', 'san˥', 'three', 'sān'], ['山', 'ʂan˥', 'mountain', 'shān'], ['色', 'sɤ˥˩', 'colour', 'sè'], ['社', 'ʂɤ˥˩', 'society', 'shè'], ['前', 'tɕʰjɛn˧˥', 'front; before', 'qián'], ['缠', 'ʈʂʰan˧˥', 'to wrap', 'chán'], ['渣', 'ʈʂa˥', 'dregs', 'zhā'], ['心', 'ɕin˥', 'heart', 'xīn'], ['星', 'ɕiŋ˥', 'star', 'xīng'], ['分', 'fən˥', 'to divide; minute', 'fēn'], ['伤', 'ʂɑŋ˥', 'wound', 'shāng'], ['他们', 'tʰa˥ mən', 'they', 'tāmen'], ['你们', 'ni˨˩ mən', 'you (plural)', 'nǐmen'], ['我的', 'wo˨˩ tə', 'my, mine', 'wǒ de'], ['姐姐', 'tɕjɛ˨˩ tɕjɛ', 'older sister', 'jiějie'], ['再次', 'tsaɪ˥˧ tsʰɨ˥˩', 'once again', 'zàicì'], ['大概', 'ta˥˧ kaɪ˥˩', 'probably', 'dàgài']]);
 lw('zh',[['让','ɻɑŋ˥˩','let; allow','ràng'],['肉','ɻoʊ˥˩','meat','ròu'],['认识','ɻən˥˩ ʂɨ','to know (someone)','rènshi'],['容易','ɻʊŋ˧˥ i˥˩','easy','róngyì'],['词','tsʰɨ˧˥','word','cí'],['红','xʊŋ˧˥','red','hóng'],['熊','ɕjʊŋ˧˥','bear','xióng'],['用','jʊŋ˥˩','to use','yòng']]);
 lw('es',[['mayo','ˈmaʝo','May'],['pollo','ˈpoʝo','chicken'],['me llamo','me ˈʝamo','my name is'],['lluvia','ˈʝuβja','rain']]);
 function wd(key){
@@ -1796,7 +1800,7 @@ function wd(key){
 // new contrasts used by lessons
 PAIRS.push(
  {id:'zh-nng',l:'zh',label:'-n vs -ng',ids:[],tip:'-n ends with the tongue tip on the gum ridge; -ng ends with the back of the tongue up, like English "sing". The vowel before -ng also sounds further back.',
-  pairs:[[W('zh','盘','pʰan˧˥','plate','pán'),W('zh','旁','pʰɑŋ˧˥','side','páng')],[W('zh','陈','ʈʂʰən˧˥','Chen (surname)','chén'),W('zh','成','ʈʂʰəŋ˧˥','to become','chéng')],[W('zh','金','tɕin˥','gold','jīn'),W('zh','京','tɕiŋ˥','capital','jīng')]]},
+  pairs:[[W('zh','盘','pʰan˧˥','plate','pán'),W('zh','旁','pʰɑŋ˧˥','side','páng')],[W('zh','陈','ʈʂʰən˧˥','Chen (surname)','chén'),W('zh','成','ʈʂʰəŋ˧˥','to become','chéng')],[W('zh','金','tɕin˥','gold','jīn'),W('zh','京','tɕiŋ˥','capital','jīng')],[W('zh','心','ɕin˥','heart','xīn'),W('zh','星','ɕiŋ˥','star','xīng')],[W('zh','分','fən˥','to divide; minute','fēn'),W('zh','风','fəŋ˥','wind','fēng')],[W('zh','山','ʂan˥','mountain','shān'),W('zh','伤','ʂɑŋ˥','wound','shāng')]]},
  {id:'ar-len',l:'ar',label:'short vs long vowel',ids:['va'],tip:'A long vowel is held about twice as long. The length alone changes the word.',
   pairs:[[W('ar','عمل','ʕamal','work','ʿamal'),W('ar','عامل','ʕaːmel','worker','ʿāmel')],[W('ar','جمل','ʒamal','camel','jamal'),W('ar','جمال','ʒamaːl','beauty','jamāl')],[W('ar','كتب','katab','he wrote','katab'),W('ar','كاتب','kaːteb','writer','kāteb')]]},
  {id:'ar-gem',l:'ar',label:'single vs double consonant',ids:[],tip:'A doubled consonant (shadda) is held longer: you can hear a tiny hold before it releases.',
@@ -2683,10 +2687,10 @@ const UNITS=[
 ]},
 {id:'zh-v',l:'zh',title:'Vowels and finals',sub:'Five simple vowels, two that English doesn\'t have, and the finals built from them.',lessons:[
  {id:'m12',title:'The simple vowels',kind:'sounds',min:8,steps:[
-   txt('a, o, e, i, u',`<ul><li><b>a</b> <span class="ipa">[a]</span>: "ah". Before -ng it's further back, <span class="ipa">[ɑ]</span>.</li><li><b>o</b>: after b, p, m, f it's really <span class="ipa">[wo]</span>: 波 <i>bō</i> is <span class="ipa">[pwo]</span>.</li><li><b>e</b> on its own is <span class="ipa">[ɤ]</span>, a vowel English doesn't have (below).</li><li><b>i</b> <span class="ipa">[i]</span>: "ee", no glide.</li><li><b>u</b> <span class="ipa">[u]</span>: "oo", lips well rounded.</li></ul>`),
+   txt('a, o, e, i, u',`<ul><li><b>a</b> <span class="ipa">[a]</span>: "ah". Before -ng it's further back, <span class="ipa">[ɑ]</span>.</li><li><b>o</b>: after b, p, m, f it's really <span class="ipa">[wo]</span>: 波 <i>bō</i> is <span class="ipa">[pwo]</span>. The same sound is spelled <b>uo</b> after other consonants (多 <i>duō</i>, 国 <i>guó</i>) and <b>wo</b> on its own (我 <i>wǒ</i>). Keep the o pure, without the English glide toward "oo".</li><li><b>e</b> on its own is <span class="ipa">[ɤ]</span>, a vowel English doesn't have (below).</li><li><b>i</b> <span class="ipa">[i]</span>: "ee", no glide.</li><li><b>u</b> <span class="ipa">[u]</span>: "oo", lips well rounded.</li></ul>`),
    snd('vgam'),
    fl('Make [ɤ]',`Say a pure "oh", with no glide toward "oo" at the end, and hold it. Now keep your tongue exactly where it is and <b>unround your lips</b> into a relaxed smile. The sound that comes out is <span class="ipa">[ɤ]</span>: a bit like the "uh" in "duh", but further back. That's 饿 <b>è</b>, "hungry".`,['饿','喝','哥'],`That's the Mandarin e. It has nothing to do with English "e".`,`Use a mirror. Say "oh", then pull your lips sideways without moving anything else. If it sounds like "oo" with a smile, open your mouth a little more.`,'Could you make "oh" with spread lips?'),
-   lst('a',['马','大','茶']),lst('e = [ɤ]',['饿','喝','车','热']),lst('i and u',['七','西','书','路','努']),
+   lst('a',['马','大','茶']),lst('o = [wo]: after b p m f, and uo',['波','我','多','国']),lst('e = [ɤ]',['饿','喝','车','热']),lst('i and u',['七','西','书','路','努']),
    rq([HR('饿',['[ɤ˥˩]','[ə˥˩]','[e˥˩]'],0,'e alone is [ɤ].'),
        HR('路',['[lu˥˩]','[ly˥˩]'],0,'u = [u].'),
        Q(null,'Pinyin e in 喝 hē is…',['like the e in "bed"','[ɤ]: an "uh" made far back, with spread lips'],1,''),
@@ -2699,13 +2703,13 @@ const UNITS=[
    fl('Ee, then round',`Say a long "eeee". Without moving your tongue at all, slowly push your lips forward into a tight "oo" circle. The sound changes to <span class="ipa">[y]</span>. If it slides toward "oo", your tongue moved back: keep it forward.`,['鱼','女','绿'],`That's ü. It should feel like "ee" with your lips doing something different.`,`Hold your tongue tip against your lower teeth while rounding, so it can't pull back.`,'Did you get a rounded "ee"?'),
    snd('vy'),
    lst('ü',['鱼','女','绿','去','学','月']),
-   prs(['zh-uy'],8),
+   prs(['zh-uy','zh-iy'],8),
    rq([HR('绿',['[ly˥˩]','[lu˥˩]'],0,'lǜ has ü.'),
        RD('ny˨˩˦',['女 nǚ (woman)','努 nǔ (strive)'],0,'女','[y] = ü.'),
        Q('去','In 去 qù, the u is…',['[u]','[y]: ü written without dots'],1,'After j q x y, u is ü.'),
        Q(null,'IPA [y] stands for…',['the y in "yes"','ü, a rounded "ee"'],1,'The y of "yes" is [j].')]),
    bd([{w:'鱼',a:'y ˧˥',x:'u j',why:'Just the vowel [y], rising.'},{w:'女',a:'n y ˨˩˦',x:'u ˧˥',why:'nǚ: [y].'}]),
-   spk(['鱼','女','去'])],adds:['s:vy','p:zh-uy','r:m13']},
+   spk(['鱼','女','去'])],adds:['s:vy','p:zh-uy','p:zh-iy','r:m13']},
 
  {id:'m14',title:'The buzzing vowel of zi and shi',kind:'sounds',min:7,steps:[
    txt('Not "ee" at all',`After <b>z, c, s</b> and <b>zh, ch, sh, r</b>, pinyin <i>i</i> doesn't mean <span class="ipa">[i]</span>. The tongue stays almost where the consonant left it and the voice simply continues, giving a buzzing vowel.<ul><li>After z c s, it sounds like a voiced "zzz": 四 <i>sì</i></li><li>After zh ch sh r, it's r-coloured, like the "ir" of "shirt": 是 <i>shì</i></li></ul>This app writes both as <span class="ipa">[ɨ]</span>. Other books use <span class="ipa">[ɹ̩]</span> and <span class="ipa">[ɻ̩]</span>, or the Chinese-tradition symbols <span class="ipa">ɿ</span> and <span class="ipa">ʅ</span>.`),
@@ -2719,8 +2723,8 @@ const UNITS=[
    spk(['字','四','是'])],adds:['s:vbuzz','r:m14']},
 
  {id:'m15',title:'Diphthongs and the schwa',kind:'sounds',min:8,steps:[
-   txt('Gliding finals',`Mandarin has four finals that glide, much like English:<ul><li><b>ai</b> <span class="ipa">[aɪ]</span> like "eye": 开 <i>kāi</i></li><li><b>ei</b> <span class="ipa">[eɪ]</span> like "ay": 美 <i>měi</i></li><li><b>ao</b> <span class="ipa">[aʊ]</span> like "ow" (never "oh"!): 好 <i>hǎo</i></li><li><b>ou</b> <span class="ipa">[oʊ]</span> like "oh": 九 <i>jiǔ</i>, 朋友 <i>péngyou</i></li></ul>And <b>e</b> before -n and -ng becomes a schwa <span class="ipa">[ə]</span>: <b>en</b> <span class="ipa">[ən]</span>, <b>eng</b> <span class="ipa">[əŋ]</span>.`),
-   lst('ai, ei, ao, ou',['开','在','美国','好','早','九','朋友']),
+   txt('Gliding finals',`Mandarin has four finals that glide, much like English:<ul><li><b>ai</b> <span class="ipa">[aɪ]</span> like "eye": 开 <i>kāi</i></li><li><b>ei</b> <span class="ipa">[eɪ]</span> like "ay": 美 <i>měi</i></li><li><b>ao</b> <span class="ipa">[aʊ]</span> like "ow" (never "oh"!): 好 <i>hǎo</i></li><li><b>ou</b> <span class="ipa">[oʊ]</span> like "oh": 狗 <i>gǒu</i>, 手 <i>shǒu</i> (and inside iu: 九 <i>jiǔ</i> is j + iou)</li></ul>And <b>e</b> before -n and -ng becomes a schwa <span class="ipa">[ə]</span>: <b>en</b> <span class="ipa">[ən]</span>, <b>eng</b> <span class="ipa">[əŋ]</span>.`),
+   lst('ai, ei, ao',['开','在','美国','好','早']),lst('ou',['狗','走','手','口']),
    cm('ao is "ow"','A common mistake is reading ao as "oh".',[['how (EN)','好','Same vowel glide, different h.']]),
    snd('vschwa'),
    lst('en and eng',['人','陈','冷','风','成']),
@@ -2733,6 +2737,8 @@ const UNITS=[
 
  {id:'m16',title:'Glides: i-, u- and ü- finals',kind:'sounds',min:8,steps:[
    txt('A glide before the vowel',`Many finals start with a short glide:<ul><li><b>i-</b> becomes <span class="ipa">[j]</span>: <b>ia</b> <span class="ipa">[ja]</span> 家 <i>jiā</i>, <b>ie</b> <span class="ipa">[jɛ]</span> 谢 <i>xiè</i>, <b>iu</b> <span class="ipa">[joʊ]</span> 六 <i>liù</i>, <b>ian</b> <span class="ipa">[jɛn]</span> 钱 <i>qián</i></li><li><b>u-</b> becomes <span class="ipa">[w]</span>: <b>uo</b> <span class="ipa">[wo]</span> 国 <i>guó</i>, <b>ui</b> <span class="ipa">[weɪ]</span> 对 <i>duì</i>, <b>un</b> <span class="ipa">[wən]</span> 春 <i>chūn</i></li><li><b>ü-</b> becomes <span class="ipa">[ɥ]</span>, a rounded y: <b>üe</b> <span class="ipa">[ɥɛ]</span> 月 <i>yuè</i>, 学 <i>xué</i></li></ul>Watch <b>ian</b>: the a is raised to <span class="ipa">[ɛ]</span>, so 钱 <i>qián</i> sounds like "chyen", not "chyan".`),
+   txt('Longer glide finals',`The same glides go in front of the diphthongs and the -ng finals you already know:<ul><li><b>iao</b> <span class="ipa">[jaʊ]</span>: i + ao, like "yow": 叫 <i>jiào</i>, 小 <i>xiǎo</i></li><li><b>iang</b> <span class="ipa">[jɑŋ]</span>: i + ang: 想 <i>xiǎng</i>, 两 <i>liǎng</i></li><li><b>uai</b> <span class="ipa">[waɪ]</span>: u + ai, like "why": 快 <i>kuài</i></li><li><b>uan</b> <span class="ipa">[wan]</span>: u + an: 关 <i>guān</i>, 晚 <i>wǎn</i>. The a stays open here, unlike ian.</li><li><b>uang</b> <span class="ipa">[wɑŋ]</span>: u + ang: 黄 <i>huáng</i></li></ul>`),
+   lst('iao, iang, uai, uan, uang',['叫','小','想','两','快','关','晚','黄']),
    sy('The glide symbols','',[{s:'j',t:'i before a vowel, like "y" in "yes"',k:['家','谢']},{s:'w',t:'u before a vowel',k:['中国','对']},{s:'ɥ',t:'ü before a vowel: a "y" with rounded lips',k:['月','学']}]),
    lst('Glides',['家','谢','六','钱','中国','对','春','月','学']),
    rq([HR('钱',['[tɕʰjɛn˧˥]','[tɕʰjan˧˥]'],0,'ian = [jɛn].'),
@@ -2759,19 +2765,23 @@ const UNITS=[
    txt('Abbreviations to unpack',`Pinyin shortens some finals. Learn to "unpack" them:<ul><li><b>iu</b> = i + ou <span class="ipa">[joʊ]</span>: 六 <i>liù</i></li><li><b>ui</b> = u + ei <span class="ipa">[weɪ]</span>: 对 <i>duì</i></li><li><b>un</b> = u + en <span class="ipa">[wən]</span>: 春 <i>chūn</i> (but after j q x y, un is <span class="ipa">[yn]</span>)</li><li><b>u after j q x y</b> is ü: 去 <i>qù</i>, 鱼 <i>yú</i></li><li><b>y- and w-</b> just spell the glide or the vowel: <i>yī</i> <span class="ipa">[i]</span>, <i>wǔ</i> <span class="ipa">[u]</span>, <i>yuè</i> <span class="ipa">[ɥɛ]</span></li></ul>`),
    txt('One letter e, four sounds',`<ul><li>alone or after a consonant: <span class="ipa">[ɤ]</span> 饿 <i>è</i></li><li>after i or ü: <span class="ipa">[ɛ]</span> 谢 <i>xiè</i>, 月 <i>yuè</i></li><li>before n, ng: <span class="ipa">[ə]</span> 风 <i>fēng</i></li><li>in ei: <span class="ipa">[e]</span> 美 <i>měi</i></li></ul>`),
    lst('Hear the hidden sounds',['去','鱼','是','六','对','春','谢','月','风']),
+   txt('The uan and un trap',`After <b>j, q, x</b> and <b>y</b>, the u is ü, and that changes two finals completely:<ul><li>written <b>uan</b> is <b>üan</b> <span class="ipa">[ɥɛn]</span>, with the same raised a as ian: 远 <i>yuǎn</i>, 全 <i>quán</i>, 选 <i>xuǎn</i></li><li>written <b>un</b> is <b>ün</b> <span class="ipa">[yn]</span>: 云 <i>yún</i>, 军 <i>jūn</i></li></ul>Compare 关 <i>guān</i> <span class="ipa">[kwan]</span>, where the u really is u and the a stays open. 全 <i>quán</i> doesn't rhyme with 关 at all.`),
+   lst('üan and ün, written uan and un',['远','全','选','云','军']),
    rq([Q('去','In 去 qù, the vowel is…',['[u], as in "food"','[y], ü'],1,'After j, q, x and y, written u is ü.'),
        Q('是','In 是 shì, the vowel is…',['[i], "ee"','the buzzy [ɨ]'],1,'-i after sh is the buzzy vowel.'),
        Q('对','对 duì sounds like…',['[tuɪ]','[tweɪ], du-ei'],1,'ui is short for uei.'),
        Q('六','六 liù sounds like…',['[liu]','[ljoʊ], li-ou'],1,'iu is short for iou.'),
        Q('月','In 月 yuè, the e is…',['[ɤ], as in 饿','[ɛ], as in "bet"'],1,'e after i or ü is [ɛ].'),
        Q('风','In 风 fēng, the e is…',['[ə], schwa','[ɛ], as in "bet"'],0,'In -en and -eng, e is a schwa.'),
-       RD('ljoʊ˥˩',['六 liù','流 liú'],0,'六','iu = [joʊ]; ˥˩ = tone 4.')]),
+       RD('ljoʊ˥˩',['六 liù','流 liú'],0,'六','iu = [joʊ]; ˥˩ = tone 4.'),
+       Q('全','全 quán sounds like…',['[tɕʰwan], rhyming with 关 guān','[tɕʰɥɛn], ü with a raised a'],1,'After j q x y, uan is üan: [ɥɛn].'),
+       Q('云','云 yún is…',['[wən], like 春 chūn without the ch','[yn], ü + n'],1,'After j q x y, un is ün.')]),
    bd([{w:'六',a:'l j oʊ ˥˩',x:'i u',why:'iu = i + ou.'},{w:'对',a:'t w eɪ ˥˩',x:'u i d',why:'ui = u + ei.'},{w:'春',a:'ʈʂʰ w ə n ˥',x:'u tʃ',why:'un = u + en.'}]),
    spk(['六','对','春'])],adds:['r:zh7']},
 ]},
 {id:'zh-s',l:'zh',title:'Tones in real speech',sub:'Tone pairs, the tone-change rules, and whole phrases.',lessons:[
  {id:'m19',title:'Tone pairs',kind:'sounds',min:9,steps:[txt('Tones in real words','Most Mandarin words have two syllables, and tones sound different in combination than alone. Practising all 16 pairs is the fastest route to tones that sound natural.<br><br>Two tips: <b>tone 3 is mostly just low</b>, and it only rises at the end of a phrase. And <b>tone 1 stays high</b>, so don\'t let it sag before the next syllable.<br><br>Two pairs sound different from how they\'re written. 你好 is written 3 + 3 but said <b>2 + 3</b> (ní hǎo); the next lesson explains why. And when two tone 4s meet, as in 再见, the first one only falls <b>halfway</b> (53), then the second falls all the way.'),
-   lst('Tone 1 first',['飞机','中国','铅笔','商店']),lst('Tone 2 first',['明天','学习','苹果','同事']),lst('Tone 3 first',['老师','美国','你好','考试']),lst('Tone 4 first',['汽车','大学','下雨','再见']),
+   lst('Tone 1 first',['飞机','中国','铅笔','商店']),lst('Tone 2 first',['明天','学习','苹果','同事']),lst('Tone 3 first',['老师','美国','你好','考试']),lst('Tone 4 first',['汽车','大学','下雨','再见']),lst('Then a neutral tone',['他们','朋友','你们','谢谢']),lst('Two falling tones: the first falls halfway',['再见','再次','大概']),
    tp(10),spk(['中国','老师','再见']),
    bd([{w:'中国',a:'ʈʂ ʊŋ ˥ k w o ˧˥',x:'˥˩ ɡ',why:'Tone 1 + tone 2.'},{w:'再见',a:'ts aɪ ˥˩ tɕ j ɛ n ˥˩',x:'˥ a',why:'Two falling tones. The first falls only halfway; the second falls all the way.'}])],adds:['t:tpairs','b:m19']},
  {id:'m20',title:'Rule: third-tone changes',kind:'rule',min:7,steps:[txt('Two third tones in a row','When two third tones meet, the <b>first becomes a second tone</b>: 你好 is written <i>nǐ hǎo</i> but said <i>ní hǎo</i>. Pinyin keeps writing the original tone, so you have to apply this yourself.'),
@@ -2799,12 +2809,17 @@ const UNITS=[
        Q('一起','In 一起, 一 is said…',['yī','yí','yì'],2,'Before tone 3, 一 becomes yì.')]),
    bd([{w:'不是',a:'p u ˧˥ ʂ ɨ ˥˩',x:'˥˩ b',why:'不 before tone 4 becomes tone 2.'},{w:'一天',a:'i ˥˩ tʰ j ɛ n ˥',x:'˥ t',why:'一 before tone 1 becomes tone 4.'}])],adds:['r:zh10']},
  {id:'m22',title:'Rule: neutral tone and erhua',kind:'rule',min:7,steps:[txt('The neutral tone','Many second syllables lose their tone: they\'re <b>short and light</b>, and their pitch follows the syllable before. After tones 1, 2 and 4 the neutral syllable is <b>lower</b> (妈妈, 朋友, 谢谢). After tone 3 it is <b>higher</b>: tone 3 stays low, and the light syllable bounces up from it (你们, 我的, 姐姐). Pinyin writes them with no tone mark: <i>māma, xièxie, péngyou</i>. Grammar particles like 吗, 了 and 的 are always neutral.<br><br>It can change meaning: <i>dōngxi</i> means "thing", while <i>dōngxī</i> means "east and west".'),
-   lst('Short and light second syllables',['妈妈','谢谢','朋友','东西']),
-   txt('Erhua (儿化)','In Beijing and much of the north, 儿 merges into the previous syllable as an r-colouring: 哪儿 <i>nǎr</i>, 一点儿 <i>yìdiǎnr</i>. A final -n or -i usually drops when it does. Southern and Taiwanese speakers use it much less, so learn to recognise it before deciding whether to use it.'),
+   lst('Lower after tones 1, 2 and 4',['妈妈','他们','朋友','谢谢','东西']),
+   lst('Higher after tone 3',['你们','我的','姐姐']),
+   txt('The er syllable',`儿 <i>ér</i> (child), 二 <i>èr</i> (two) and 耳 <i>ěr</i> (ear) are a syllable on their own: <span class="ipa">[ɚ]</span>, an "er" with the tongue tip curled up, much like American English "her" without the h. In tone 4 the mouth opens first, so 二 is closer to <span class="ipa">[aɚ]</span>, "ahr". 二 is one of the commonest words in the language, so it's worth getting right.`),
+   lst('er',['儿','二','耳']),
+   txt('Erhua (儿化)','In Beijing and much of the north, 儿 merges into the previous syllable as an r-colouring: 哪儿 <i>nǎr</i>, 一点儿 <i>yìdiǎnr</i>. A final -n or -i usually drops when it does, and a final -ng leaves the vowel nasal instead (空儿 <i>kòngr</i>, free time). Southern and Taiwanese speakers use it much less, so learn to recognise it before deciding whether to use it.'),
    lst('Erhua',['哪儿','一点儿','玩儿']),
    rq([Q('谢谢','In 谢谢, the second 谢…',['keeps tone 4','is neutral: short and light'],1,'Pinyin writes xièxie, with no mark on the second syllable.'),
        Q('东西','东西 dōngxi, with a neutral second syllable, means…',['east and west','thing, stuff'],1,'With a full tone 1, dōngxī means east and west.'),
        Q('妈妈','In 妈妈, the second syllable is…',['high and level like the first','short, light and a little lower'],1,'After tone 1 (and 2 and 4) a neutral syllable is short and lower. After tone 3 it would be higher.'),
+       Q('你们','In 你们 nǐmen, the neutral 们 is…',['lower than 你','higher than 你'],1,'After tone 3 the neutral syllable bounces up.'),
+       Q('二','二 èr (two) is…',['[ɤ˥˩], like 饿','[aɚ˥˩], an r-coloured vowel'],1,'er is its own syllable: an "er" with the tongue tip curled up. In tone 4 it opens first.'),
        Q('哪儿','In 哪儿 nǎr, the 儿…',['is a separate syllable, ér','merges in as r-colouring on the vowel'],1,'That\'s erhua.')]),
    spk(['谢谢','朋友','哪儿']),
    bd([{w:'谢谢',a:'ɕ j ɛ ˥˩ ɕ j ɛ',x:'˥˩ ˥',why:'The second 谢 is neutral: no tone letter.'}])],adds:['r:zh11']},
@@ -2818,7 +2833,7 @@ const UNITS=[
        Q('我很好','我很好 wǒ hěn hǎo is usually said…',['wǒ hěn hǎo','wó hén hǎo or wǒ hén hǎo'],1,'Third-tone changes apply inside the phrase.')]),
    spk(['你好吗？','我很好','你是老师吗？'])],adds:['r:m23']},
  {id:'m24',title:'Mandarin checkpoint',kind:'review',min:10,steps:[txt('Putting it together','Mixed review: Mandarin sounds, contrasts, single tones and tone pairs, then the rules: tone changes, the neutral tone and spelling.'),
-   qz(ZH_ALL,8),prs(['zh-asp','zh-t23','zh-ssh','zh-jzh','zh-uy','zh-nng'],8),tn(5),tp(5),spk(['学习','汽车','一起','朋友']),
+   qz(ZH_ALL,8),prs(['zh-asp','zh-t23','zh-ssh','zh-jzh','zh-uy','zh-iy','zh-nng'],8),tn(5),tp(5),spk(['学习','汽车','一起','朋友']),
    rq([RD('ʈʂʰa˧˥',['茶','擦','查'],0,'茶','ch, rising.'),RD('ɕjɛ˥˩',['谢','写','鞋'],0,'谢','x + ie, falling.'),
        HR('学',['[ɕɥɛ˧˥]','[ʂwɛ˧˥]','[sjɛ˧˥]'],0,'x + üe.'),HR('是',['[ʂɨ˥˩]','[sɨ˥˩]','[ɕi˥˩]'],0,'sh + buzzing vowel.'),
        HR('去',['[tɕʰy˥˩]','[tɕʰu˥˩]','[ʈʂʰu˥˩]'],0,'q + ü.')]),
@@ -4432,6 +4447,57 @@ PHRASES.push(
   AUDIO["古"]=['audio/p_g2_zh.mp3',4.32,4.71];
   AUDIO["苦"]=['audio/p_g2_zh.mp3',5.24,5.74];
   AUDIO["雨"]=['audio/p_g2_zh.mp3',6.33,6.73];
+  // New-content words (2026-11-22, Alina, eleven_v4, same flow NBZF0TUItoZeA88zBAWm; best of three takes by the app's tone check)
+  AUDIO["叫"]=['audio/p_g3a2_zh.mp3',0.05,0.32];
+  AUDIO["小"]=['audio/p_g3a1_zh.mp3',0.88,1.36];
+  AUDIO["想"]=['audio/p_g3a1_zh.mp3',1.91,2.41];
+  AUDIO["两"]=['audio/p_g3a1_zh.mp3',3.01,3.41];
+  AUDIO["关"]=['audio/p_g3a1_zh.mp3',4.86,5.15];
+  AUDIO["晚"]=['audio/p_g3a3_zh.mp3',5.53,5.95];
+  AUDIO["黄"]=['audio/p_g3a1_zh.mp3',6.76,7.17];
+  AUDIO["远"]=['audio/p_g3a2_zh.mp3',7.92,8.35];
+  AUDIO["全"]=['audio/p_g3a1_zh.mp3',8.74,9.22];
+  AUDIO["选"]=['audio/p_g3a1_zh.mp3',9.77,10.3];
+  AUDIO["云"]=['audio/p_g3a1_zh.mp3',10.86,11.23];
+  AUDIO["军"]=['audio/p_g3a1_zh.mp3',11.8,12.16];
+  AUDIO["儿"]=['audio/p_g3a1_zh.mp3',12.75,13.07];
+  AUDIO["二"]=['audio/p_g3a3_zh.mp3',13.02,13.28];
+  AUDIO["耳"]=['audio/p_g3a1_zh.mp3',14.42,14.74];
+  AUDIO["波"]=['audio/p_g3b1_zh.mp3',0.04,0.49];
+  AUDIO["我"]=['audio/p_g3b1_zh.mp3',1.3,1.68];
+  AUDIO["多"]=['audio/p_g3b1_zh.mp3',2.42,2.71];
+  AUDIO["国"]=['audio/p_g3b1_zh.mp3',3.45,3.75];
+  AUDIO["狗"]=['audio/p_g3b1_zh.mp3',4.49,4.81];
+  AUDIO["走"]=['audio/p_g3b2_zh.mp3',5.37,5.76];
+  AUDIO["手"]=['audio/p_g3b1_zh.mp3',6.43,6.92];
+  AUDIO["口"]=['audio/p_g3b1_zh.mp3',7.46,7.92];
+  AUDIO["炉"]=['audio/p_g3b1_zh.mp3',8.52,8.89];
+  AUDIO["驴"]=['audio/p_g3b1_zh.mp3',9.49,9.86];
+  AUDIO["五"]=['audio/p_g3b1_zh.mp3',10.49,10.83];
+  AUDIO["无"]=['audio/p_g3b1_zh.mp3',11.42,11.7];
+  AUDIO["你"]=['audio/p_g3b3_zh.mp3',12.26,12.63];
+  AUDIO["气"]=['audio/p_g3b1_zh.mp3',13.23,13.6];
+  AUDIO["力"]=['audio/p_g3b1_zh.mp3',14.2,14.42];
+  AUDIO["擦"]=['audio/p_g3c1_zh.mp3',0,0.56];
+  AUDIO["插"]=['audio/p_g3c1_zh.mp3',1.26,1.62];
+  AUDIO["三"]=['audio/p_g3c1_zh.mp3',2.31,2.66];
+  AUDIO["山"]=['audio/p_g3c1_zh.mp3',3.2,3.62];
+  AUDIO["色"]=['audio/p_g3c1_zh.mp3',4.14,4.58];
+  AUDIO["社"]=['audio/p_g3c3_zh.mp3',5.11,5.51];
+  AUDIO["前"]=['audio/p_g3c1_zh.mp3',6.07,6.54];
+  AUDIO["缠"]=['audio/p_g3c1_zh.mp3',6.96,7.43];
+  AUDIO["渣"]=['audio/p_g3c1_zh.mp3',7.91,8.26];
+  AUDIO["心"]=['audio/p_g3c1_zh.mp3',8.8,9.23];
+  AUDIO["星"]=['audio/p_g3c1_zh.mp3',9.65,10.09];
+  AUDIO["分"]=['audio/p_g3c1_zh.mp3',10.56,10.9];
+  AUDIO["伤"]=['audio/p_g3c1_zh.mp3',11.29,11.73];
+  AUDIO["他们"]=['audio/p_g3d1_zh.mp3',0.02,0.56];
+  AUDIO["你们"]=['audio/p_g3d1_zh.mp3',1.07,1.46];
+  AUDIO["我的"]=['audio/p_g3d1_zh.mp3',2.07,2.48];
+  AUDIO["姐姐"]=['audio/p_g3d1_zh.mp3',3.09,3.51];
+  AUDIO["再次"]=['audio/p_g3d1_zh.mp3',4.04,4.55];
+  AUDIO["大概"]=['audio/p_g3d3_zh.mp3',5.1,5.54];
+  AUDIO["快"]=['audio/p_g3e3_zh.mp3',2.1,2.42];
   // Intonation sentences (2026-11-21, same flow): chosen because their pitch line shows the rise or fall clearly.
   // ¿Hablas español? replaces an older clip whose ending didn't rise.
   AUDIO["Vienes mañana."]=['audio/p_c9_es_into.mp3',0.02,0.99];

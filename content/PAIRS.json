@@ -870,6 +870,54 @@
      "g": "will",
      "r": "zhì"
     }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "擦",
+     "ipa": "tsʰa˥",
+     "g": "to wipe",
+     "r": "cā"
+    },
+    {
+     "l": "zh",
+     "w": "插",
+     "ipa": "ʈʂʰa˥",
+     "g": "to insert",
+     "r": "chā"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "三",
+     "ipa": "san˥",
+     "g": "three",
+     "r": "sān"
+    },
+    {
+     "l": "zh",
+     "w": "山",
+     "ipa": "ʂan˥",
+     "g": "mountain",
+     "r": "shān"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "色",
+     "ipa": "sɤ˥˩",
+     "g": "colour",
+     "r": "sè"
+    },
+    {
+     "l": "zh",
+     "w": "社",
+     "ipa": "ʂɤ˥˩",
+     "g": "society",
+     "r": "shè"
+    }
    ]
   ]
  },
@@ -931,6 +979,38 @@
      "ipa": "ʂɨ˥",
      "g": "poem",
      "r": "shī"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "前",
+     "ipa": "tɕʰjɛn˧˥",
+     "g": "front; before",
+     "r": "qián"
+    },
+    {
+     "l": "zh",
+     "w": "缠",
+     "ipa": "ʈʂʰan˧˥",
+     "g": "to wrap",
+     "r": "chán"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "家",
+     "ipa": "tɕja˥",
+     "g": "home; family",
+     "r": "jiā"
+    },
+    {
+     "l": "zh",
+     "w": "渣",
+     "ipa": "ʈʂa˥",
+     "g": "dregs",
+     "r": "zhā"
     }
    ]
   ]
@@ -1080,6 +1160,130 @@
      "ipa": "ny˨˩˦",
      "g": "woman",
      "r": "nǚ"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "炉",
+     "ipa": "lu˧˥",
+     "g": "stove",
+     "r": "lú"
+    },
+    {
+     "l": "zh",
+     "w": "驴",
+     "ipa": "ly˧˥",
+     "g": "donkey",
+     "r": "lǘ"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "五",
+     "ipa": "u˨˩˦",
+     "g": "five",
+     "r": "wǔ"
+    },
+    {
+     "l": "zh",
+     "w": "雨",
+     "ipa": "y˨˩˦",
+     "g": "rain",
+     "r": "yǔ"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "无",
+     "ipa": "u˧˥",
+     "g": "without",
+     "r": "wú"
+    },
+    {
+     "l": "zh",
+     "w": "鱼",
+     "ipa": "y˧˥",
+     "g": "fish",
+     "r": "yú"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-iy",
+  "l": "zh",
+  "label": "i vs ü",
+  "ids": [
+   "vi",
+   "vy"
+  ],
+  "tip": "Same tongue, different lips. i is \"ee\" with spread lips; ü is \"ee\" with tightly rounded lips. If your ü sounds like \"ee\", round more and keep the tongue still.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "你",
+     "ipa": "ni˨˩˦",
+     "g": "you",
+     "r": "nǐ"
+    },
+    {
+     "l": "zh",
+     "w": "女",
+     "ipa": "ny˨˩˦",
+     "g": "woman",
+     "r": "nǚ"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "气",
+     "ipa": "tɕʰi˥˩",
+     "g": "air",
+     "r": "qì"
+    },
+    {
+     "l": "zh",
+     "w": "去",
+     "ipa": "tɕʰy˥˩",
+     "g": "to go",
+     "r": "qù"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "姨",
+     "ipa": "i˧˥",
+     "g": "aunt",
+     "r": "yí"
+    },
+    {
+     "l": "zh",
+     "w": "鱼",
+     "ipa": "y˧˥",
+     "g": "fish",
+     "r": "yú"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "力",
+     "ipa": "li˥˩",
+     "g": "strength",
+     "r": "lì"
+    },
+    {
+     "l": "zh",
+     "w": "绿",
+     "ipa": "ly˥˩",
+     "g": "green",
+     "r": "lǜ"
     }
    ]
   ]
@@ -1494,6 +1698,54 @@
      "ipa": "tɕiŋ˥",
      "g": "capital",
      "r": "jīng"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "心",
+     "ipa": "ɕin˥",
+     "g": "heart",
+     "r": "xīn"
+    },
+    {
+     "l": "zh",
+     "w": "星",
+     "ipa": "ɕiŋ˥",
+     "g": "star",
+     "r": "xīng"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "分",
+     "ipa": "fən˥",
+     "g": "to divide; minute",
+     "r": "fēn"
+    },
+    {
+     "l": "zh",
+     "w": "风",
+     "ipa": "fəŋ˥",
+     "g": "wind",
+     "r": "fēng"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "山",
+     "ipa": "ʂan˥",
+     "g": "mountain",
+     "r": "shān"
+    },
+    {
+     "l": "zh",
+     "w": "伤",
+     "ipa": "ʂɑŋ˥",
+     "g": "wound",
+     "r": "shāng"
     }
    ]
   ]

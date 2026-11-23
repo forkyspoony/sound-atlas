@@ -5779,7 +5779,7 @@
      {
       "t": "text",
       "h": "a, o, e, i, u",
-      "html": "<ul><li><b>a</b> <span class=\"ipa\">[a]</span>: \"ah\". Before -ng it's further back, <span class=\"ipa\">[ɑ]</span>.</li><li><b>o</b>: after b, p, m, f it's really <span class=\"ipa\">[wo]</span>: 波 <i>bō</i> is <span class=\"ipa\">[pwo]</span>.</li><li><b>e</b> on its own is <span class=\"ipa\">[ɤ]</span>, a vowel English doesn't have (below).</li><li><b>i</b> <span class=\"ipa\">[i]</span>: \"ee\", no glide.</li><li><b>u</b> <span class=\"ipa\">[u]</span>: \"oo\", lips well rounded.</li></ul>"
+      "html": "<ul><li><b>a</b> <span class=\"ipa\">[a]</span>: \"ah\". Before -ng it's further back, <span class=\"ipa\">[ɑ]</span>.</li><li><b>o</b>: after b, p, m, f it's really <span class=\"ipa\">[wo]</span>: 波 <i>bō</i> is <span class=\"ipa\">[pwo]</span>. The same sound is spelled <b>uo</b> after other consonants (多 <i>duō</i>, 国 <i>guó</i>) and <b>wo</b> on its own (我 <i>wǒ</i>). Keep the o pure, without the English glide toward \"oo\".</li><li><b>e</b> on its own is <span class=\"ipa\">[ɤ]</span>, a vowel English doesn't have (below).</li><li><b>i</b> <span class=\"ipa\">[i]</span>: \"ee\", no glide.</li><li><b>u</b> <span class=\"ipa\">[u]</span>: \"oo\", lips well rounded.</li></ul>"
      },
      {
       "t": "sound",
@@ -5805,6 +5805,16 @@
        "马",
        "大",
        "茶"
+      ]
+     },
+     {
+      "t": "listen",
+      "h": "o = [wo]: after b p m f, and uo",
+      "keys": [
+       "波",
+       "我",
+       "多",
+       "国"
       ]
      },
      {
@@ -5954,7 +5964,8 @@
      {
       "t": "pairs",
       "ids": [
-       "zh-uy"
+       "zh-uy",
+       "zh-iy"
       ],
       "n": 8
      },
@@ -6035,6 +6046,7 @@
     "adds": [
      "s:vy",
      "p:zh-uy",
+     "p:zh-iy",
      "r:m13"
     ],
     "unit": "zh-v",
@@ -6170,19 +6182,27 @@
      {
       "t": "text",
       "h": "Gliding finals",
-      "html": "Mandarin has four finals that glide, much like English:<ul><li><b>ai</b> <span class=\"ipa\">[aɪ]</span> like \"eye\": 开 <i>kāi</i></li><li><b>ei</b> <span class=\"ipa\">[eɪ]</span> like \"ay\": 美 <i>měi</i></li><li><b>ao</b> <span class=\"ipa\">[aʊ]</span> like \"ow\" (never \"oh\"!): 好 <i>hǎo</i></li><li><b>ou</b> <span class=\"ipa\">[oʊ]</span> like \"oh\": 九 <i>jiǔ</i>, 朋友 <i>péngyou</i></li></ul>And <b>e</b> before -n and -ng becomes a schwa <span class=\"ipa\">[ə]</span>: <b>en</b> <span class=\"ipa\">[ən]</span>, <b>eng</b> <span class=\"ipa\">[əŋ]</span>."
+      "html": "Mandarin has four finals that glide, much like English:<ul><li><b>ai</b> <span class=\"ipa\">[aɪ]</span> like \"eye\": 开 <i>kāi</i></li><li><b>ei</b> <span class=\"ipa\">[eɪ]</span> like \"ay\": 美 <i>měi</i></li><li><b>ao</b> <span class=\"ipa\">[aʊ]</span> like \"ow\" (never \"oh\"!): 好 <i>hǎo</i></li><li><b>ou</b> <span class=\"ipa\">[oʊ]</span> like \"oh\": 狗 <i>gǒu</i>, 手 <i>shǒu</i> (and inside iu: 九 <i>jiǔ</i> is j + iou)</li></ul>And <b>e</b> before -n and -ng becomes a schwa <span class=\"ipa\">[ə]</span>: <b>en</b> <span class=\"ipa\">[ən]</span>, <b>eng</b> <span class=\"ipa\">[əŋ]</span>."
      },
      {
       "t": "listen",
-      "h": "ai, ei, ao, ou",
+      "h": "ai, ei, ao",
       "keys": [
        "开",
        "在",
        "美国",
        "好",
-       "早",
-       "九",
-       "朋友"
+       "早"
+      ]
+     },
+     {
+      "t": "listen",
+      "h": "ou",
+      "keys": [
+       "狗",
+       "走",
+       "手",
+       "口"
       ]
      },
      {
@@ -6305,6 +6325,25 @@
       "t": "text",
       "h": "A glide before the vowel",
       "html": "Many finals start with a short glide:<ul><li><b>i-</b> becomes <span class=\"ipa\">[j]</span>: <b>ia</b> <span class=\"ipa\">[ja]</span> 家 <i>jiā</i>, <b>ie</b> <span class=\"ipa\">[jɛ]</span> 谢 <i>xiè</i>, <b>iu</b> <span class=\"ipa\">[joʊ]</span> 六 <i>liù</i>, <b>ian</b> <span class=\"ipa\">[jɛn]</span> 钱 <i>qián</i></li><li><b>u-</b> becomes <span class=\"ipa\">[w]</span>: <b>uo</b> <span class=\"ipa\">[wo]</span> 国 <i>guó</i>, <b>ui</b> <span class=\"ipa\">[weɪ]</span> 对 <i>duì</i>, <b>un</b> <span class=\"ipa\">[wən]</span> 春 <i>chūn</i></li><li><b>ü-</b> becomes <span class=\"ipa\">[ɥ]</span>, a rounded y: <b>üe</b> <span class=\"ipa\">[ɥɛ]</span> 月 <i>yuè</i>, 学 <i>xué</i></li></ul>Watch <b>ian</b>: the a is raised to <span class=\"ipa\">[ɛ]</span>, so 钱 <i>qián</i> sounds like \"chyen\", not \"chyan\"."
+     },
+     {
+      "t": "text",
+      "h": "Longer glide finals",
+      "html": "The same glides go in front of the diphthongs and the -ng finals you already know:<ul><li><b>iao</b> <span class=\"ipa\">[jaʊ]</span>: i + ao, like \"yow\": 叫 <i>jiào</i>, 小 <i>xiǎo</i></li><li><b>iang</b> <span class=\"ipa\">[jɑŋ]</span>: i + ang: 想 <i>xiǎng</i>, 两 <i>liǎng</i></li><li><b>uai</b> <span class=\"ipa\">[waɪ]</span>: u + ai, like \"why\": 快 <i>kuài</i></li><li><b>uan</b> <span class=\"ipa\">[wan]</span>: u + an: 关 <i>guān</i>, 晚 <i>wǎn</i>. The a stays open here, unlike ian.</li><li><b>uang</b> <span class=\"ipa\">[wɑŋ]</span>: u + ang: 黄 <i>huáng</i></li></ul>"
+     },
+     {
+      "t": "listen",
+      "h": "iao, iang, uai, uan, uang",
+      "keys": [
+       "叫",
+       "小",
+       "想",
+       "两",
+       "快",
+       "关",
+       "晚",
+       "黄"
+      ]
      },
      {
       "t": "sym",
@@ -6606,6 +6645,22 @@
       ]
      },
      {
+      "t": "text",
+      "h": "The uan and un trap",
+      "html": "After <b>j, q, x</b> and <b>y</b>, the u is ü, and that changes two finals completely:<ul><li>written <b>uan</b> is <b>üan</b> <span class=\"ipa\">[ɥɛn]</span>, with the same raised a as ian: 远 <i>yuǎn</i>, 全 <i>quán</i>, 选 <i>xuǎn</i></li><li>written <b>un</b> is <b>ün</b> <span class=\"ipa\">[yn]</span>: 云 <i>yún</i>, 军 <i>jūn</i></li></ul>Compare 关 <i>guān</i> <span class=\"ipa\">[kwan]</span>, where the u really is u and the a stays open. 全 <i>quán</i> doesn't rhyme with 关 at all."
+     },
+     {
+      "t": "listen",
+      "h": "üan and ün, written uan and un",
+      "keys": [
+       "远",
+       "全",
+       "选",
+       "云",
+       "军"
+      ]
+     },
+     {
       "t": "shadow",
       "ids": [
        "zh7a",
@@ -6685,6 +6740,26 @@
         "a": 0,
         "fw": "六",
         "why": "iu = [joʊ]; ˥˩ = tone 4."
+       },
+       {
+        "w": "全",
+        "q": "全 quán sounds like…",
+        "o": [
+         "[tɕʰwan], rhyming with 关 guān",
+         "[tɕʰɥɛn], ü with a raised a"
+        ],
+        "a": 1,
+        "why": "After j q x y, uan is üan: [ɥɛn]."
+       },
+       {
+        "w": "云",
+        "q": "云 yún is…",
+        "o": [
+         "[wən], like 春 chūn without the ch",
+         "[yn], ü + n"
+        ],
+        "a": 1,
+        "why": "After j q x y, un is ün."
        }
       ]
      },
@@ -6783,6 +6858,25 @@
        "大学",
        "下雨",
        "再见"
+      ]
+     },
+     {
+      "t": "listen",
+      "h": "Then a neutral tone",
+      "keys": [
+       "他们",
+       "朋友",
+       "你们",
+       "谢谢"
+      ]
+     },
+     {
+      "t": "listen",
+      "h": "Two falling tones: the first falls halfway",
+      "keys": [
+       "再见",
+       "再次",
+       "大概"
       ]
      },
      {
@@ -7122,18 +7216,42 @@
      },
      {
       "t": "listen",
-      "h": "Short and light second syllables",
+      "h": "Lower after tones 1, 2 and 4",
       "keys": [
        "妈妈",
-       "谢谢",
+       "他们",
        "朋友",
+       "谢谢",
        "东西"
+      ]
+     },
+     {
+      "t": "listen",
+      "h": "Higher after tone 3",
+      "keys": [
+       "你们",
+       "我的",
+       "姐姐"
+      ]
+     },
+     {
+      "t": "text",
+      "h": "The er syllable",
+      "html": "儿 <i>ér</i> (child), 二 <i>èr</i> (two) and 耳 <i>ěr</i> (ear) are a syllable on their own: <span class=\"ipa\">[ɚ]</span>, an \"er\" with the tongue tip curled up, much like American English \"her\" without the h. In tone 4 the mouth opens first, so 二 is closer to <span class=\"ipa\">[aɚ]</span>, \"ahr\". 二 is one of the commonest words in the language, so it's worth getting right."
+     },
+     {
+      "t": "listen",
+      "h": "er",
+      "keys": [
+       "儿",
+       "二",
+       "耳"
       ]
      },
      {
       "t": "text",
       "h": "Erhua (儿化)",
-      "html": "In Beijing and much of the north, 儿 merges into the previous syllable as an r-colouring: 哪儿 <i>nǎr</i>, 一点儿 <i>yìdiǎnr</i>. A final -n or -i usually drops when it does. Southern and Taiwanese speakers use it much less, so learn to recognise it before deciding whether to use it."
+      "html": "In Beijing and much of the north, 儿 merges into the previous syllable as an r-colouring: 哪儿 <i>nǎr</i>, 一点儿 <i>yìdiǎnr</i>. A final -n or -i usually drops when it does, and a final -ng leaves the vowel nasal instead (空儿 <i>kòngr</i>, free time). Southern and Taiwanese speakers use it much less, so learn to recognise it before deciding whether to use it."
      },
      {
       "t": "listen",
@@ -7184,6 +7302,26 @@
         ],
         "a": 1,
         "why": "After tone 1 (and 2 and 4) a neutral syllable is short and lower. After tone 3 it would be higher."
+       },
+       {
+        "w": "你们",
+        "q": "In 你们 nǐmen, the neutral 们 is…",
+        "o": [
+         "lower than 你",
+         "higher than 你"
+        ],
+        "a": 1,
+        "why": "After tone 3 the neutral syllable bounces up."
+       },
+       {
+        "w": "二",
+        "q": "二 èr (two) is…",
+        "o": [
+         "[ɤ˥˩], like 饿",
+         "[aɚ˥˩], an r-coloured vowel"
+        ],
+        "a": 1,
+        "why": "er is its own syllable: an \"er\" with the tongue tip curled up. In tone 4 it opens first."
        },
        {
         "w": "哪儿",
@@ -7350,6 +7488,7 @@
        "zh-ssh",
        "zh-jzh",
        "zh-uy",
+       "zh-iy",
        "zh-nng"
       ],
       "n": 8

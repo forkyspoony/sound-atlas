@@ -487,6 +487,10 @@ signal to measure).
   `cleanPitch` was written for single syllables and throws away the second syllable when the
   pitch leaps between them; two-syllable work must use `tpClean`. Pitch still jumps an
   octave on some creaky third tones, which is why no per-syllable verdict is given.
+- **Mandarin new content (2026-11-22):** audit step 4 (E1–E5, D1, D2, F1–F5): new steps in m12, m15, m16,
+  m18, m19, m22, new pair set `zh-iy`, more pairs in `zh-uy`, `zh-ssh`, `zh-jzh`, `zh-nng`, and 50 new
+  words in a fourth `lw('zh',…)` block. Clips are sprites in `audio/p_g3<batch><take>_zh.mp3`, picked by
+  `tcJudge`. 快 can't be confirmed by the checker (see the audit note).
 - **Mandarin pair drills (2026-11-22):** new sets `zh-bdg` (m05) and `zh-t23` (m03, tone 2 vs 3);
   `zh-asp` now covers all six puff pairs and moved to m11/m24; m24 has seven rule questions. Words
   白 牌 读 图 古 苦 雨 are sprites in `audio/p_g2_zh.mp3` (same flow, take 4 of 4).
