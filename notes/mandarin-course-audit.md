@@ -10,6 +10,11 @@ course in the backup, so the benchmark is the standard descriptions of Beijing M
 Each finding has an id (A1, B2 …) so we can fix them one by one, as with the Spanish audit.
 
 **Status (2026-11-22):** G done: all six clips re-recorded (see the note under the G table).
+Step 3 done: C1/F7 (new `zh-bdg` set for m05: 爸/怕, 大/踏, 哥/科, 白/牌, 读/图, 古/苦; 白/牌 replaces
+不/铺 because 铺 has two readings; `zh-asp` now has all eight pairs, is drilled in m11 and m24, and
+lists all six puff sounds as its ids, so review brings it in only after z/c, zh/ch and j/q), F6 + D3
+(new `zh-t23` set and a "Tone 2 or tone 3?" step in m03), E6 (seven rule questions in m24; `pu`
+and `x` added to the m24 sound quiz). New clips: 白 牌 读 图 古 苦 雨 in `audio/p_g2_zh.mp3`.
 Quick fixes done: A1–A7, C2, D1 (text only; the listen step needs new
 clips, see E5), D2 (text only), D5, D6, D8. For A1, `TPAIRS` entries can now carry the written
 tones as well as the said ones (`wr`); the quiz grades what is heard and the feedback names both,

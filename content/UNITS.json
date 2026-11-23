@@ -4422,6 +4422,18 @@
       ]
      },
      {
+      "t": "text",
+      "h": "Tone 2 or tone 3?",
+      "html": "These two are the pair learners mix up most, because both can end higher than they start. Listen to the <b>start</b>:<ul><li><b>Tone 2</b> begins in the middle of your voice and climbs <b>right away</b>, all the way through the syllable.</li><li><b>Tone 3</b> begins lower and <b>sinks first</b>. Any rise comes late, at the very end, and often not at all.</li></ul>If you hear the pitch go down before it goes up, it's tone 3."
+     },
+     {
+      "t": "pairs",
+      "ids": [
+       "zh-t23"
+      ],
+      "n": 8
+     },
+     {
       "t": "ruleq",
       "qs": [
        {
@@ -4508,6 +4520,7 @@
      }
     ],
     "adds": [
+     "p:zh-t23",
      "r:m03"
     ],
     "unit": "zh",
@@ -4778,7 +4791,7 @@
      {
       "t": "pairs",
       "ids": [
-       "zh-asp"
+       "zh-bdg"
       ],
       "n": 8
      },
@@ -4872,7 +4885,7 @@
     "adds": [
      "s:pu",
      "s:ph",
-     "p:zh-asp",
+     "p:zh-bdg",
      "r:m05"
     ],
     "unit": "zh-c",
@@ -5626,7 +5639,8 @@
       "t": "pairs",
       "ids": [
        "zh-ssh",
-       "zh-jzh"
+       "zh-jzh",
+       "zh-asp"
       ],
       "n": 10
      },
@@ -7304,12 +7318,14 @@
      {
       "t": "text",
       "h": "Putting it together",
-      "html": "Mixed review: Mandarin sounds, contrasts, single tones and tone pairs."
+      "html": "Mixed review: Mandarin sounds, contrasts, single tones and tone pairs, then the rules: tone changes, the neutral tone and spelling."
      },
      {
       "t": "quiz",
       "ids": [
+       "pu",
        "ph",
+       "x",
        "ts",
        "tsh",
        "tsr",
@@ -7330,6 +7346,7 @@
       "t": "pairs",
       "ids": [
        "zh-asp",
+       "zh-t23",
        "zh-ssh",
        "zh-jzh",
        "zh-uy",
@@ -7429,6 +7446,82 @@
         "a": 0,
         "oi": true,
         "why": "q + ü."
+       }
+      ]
+     },
+     {
+      "t": "ruleq",
+      "qs": [
+       {
+        "w": "你好",
+        "q": "你好 is written nǐ hǎo. How is it said?",
+        "o": [
+         "nǐ hǎo, two low tones",
+         "ní hǎo, rising then low"
+        ],
+        "a": 1,
+        "why": "Two third tones in a row: the first one becomes a rising tone 2."
+       },
+       {
+        "w": "不是",
+        "q": "Why is 不 rising (bú) in 不是?",
+        "o": [
+         "不 is always rising",
+         "Before a tone 4, 不 changes to bú"
+        ],
+        "a": 1,
+        "why": "不 is bù, except before a tone 4."
+       },
+       {
+        "w": "一起",
+        "q": "In 一起 (起 is tone 3), 一 is said…",
+        "o": [
+         "yī, high and level",
+         "yí, rising",
+         "yì, falling"
+        ],
+        "a": 2,
+        "why": "Before tones 1, 2 and 3, 一 becomes yì. Before tone 4 it becomes yí."
+       },
+       {
+        "w": "谢谢",
+        "q": "The second 谢 in 谢谢 is…",
+        "o": [
+         "another full falling tone",
+         "short and light: a neutral tone"
+        ],
+        "a": 1,
+        "why": "Many second syllables lose their tone."
+       },
+       {
+        "w": null,
+        "q": "In 你们 nǐmen, the neutral syllable 们 is…",
+        "o": [
+         "lower than 你",
+         "higher than 你"
+        ],
+        "a": 1,
+        "why": "After tone 3 a neutral syllable bounces up. After tones 1, 2 and 4 it is lower."
+       },
+       {
+        "w": "九",
+        "q": "Pinyin jiu (九) is short for…",
+        "o": [
+         "jiou",
+         "jui"
+        ],
+        "a": 0,
+        "why": "iu stands for iou, ui for uei, and un for uen."
+       },
+       {
+        "w": "去",
+        "q": "去 is spelled qu. Its vowel is…",
+        "o": [
+         "[u], as in \"food\"",
+         "[y], ü with the dots left off"
+        ],
+        "a": 1,
+        "why": "After j, q and x, u is always ü."
        }
       ]
      },

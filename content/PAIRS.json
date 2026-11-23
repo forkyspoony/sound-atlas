@@ -559,15 +559,161 @@
   ]
  },
  {
-  "id": "zh-asp",
+  "id": "zh-bdg",
   "l": "zh",
-  "label": "no puff vs puff",
+  "label": "b d g vs p t k",
   "ids": [
    "pu",
    "ph"
   ],
+  "tip": "Pinyin b d g have no puff of air; p t k have a strong one. Neither set buzzes like English b, d, g.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "爸",
+     "ipa": "pa˥˩",
+     "g": "dad",
+     "r": "bà"
+    },
+    {
+     "l": "zh",
+     "w": "怕",
+     "ipa": "pʰa˥˩",
+     "g": "to fear",
+     "r": "pà"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "大",
+     "ipa": "ta˥˩",
+     "g": "big",
+     "r": "dà"
+    },
+    {
+     "l": "zh",
+     "w": "踏",
+     "ipa": "tʰa˥˩",
+     "g": "to step on",
+     "r": "tà"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "哥",
+     "ipa": "kɤ˥",
+     "g": "older brother",
+     "r": "gē"
+    },
+    {
+     "l": "zh",
+     "w": "科",
+     "ipa": "kʰɤ˥",
+     "g": "subject",
+     "r": "kē"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "白",
+     "ipa": "paɪ˧˥",
+     "g": "white",
+     "r": "bái"
+    },
+    {
+     "l": "zh",
+     "w": "牌",
+     "ipa": "pʰaɪ˧˥",
+     "g": "card; sign",
+     "r": "pái"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "读",
+     "ipa": "tu˧˥",
+     "g": "to read",
+     "r": "dú"
+    },
+    {
+     "l": "zh",
+     "w": "图",
+     "ipa": "tʰu˧˥",
+     "g": "picture",
+     "r": "tú"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "古",
+     "ipa": "ku˨˩˦",
+     "g": "ancient",
+     "r": "gǔ"
+    },
+    {
+     "l": "zh",
+     "w": "苦",
+     "ipa": "kʰu˨˩˦",
+     "g": "bitter",
+     "r": "kǔ"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-asp",
+  "l": "zh",
+  "label": "no puff vs puff: b d g z zh j vs p t k c ch q",
+  "ids": [
+   "pu",
+   "ph",
+   "ts",
+   "tsh",
+   "tsr",
+   "tsrh",
+   "tc",
+   "tch"
+  ],
   "tip": "Pinyin b d g z zh j have no puff of air; p t k c ch q have a strong one. Neither set buzzes like English b or d.",
   "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "白",
+     "ipa": "paɪ˧˥",
+     "g": "white",
+     "r": "bái"
+    },
+    {
+     "l": "zh",
+     "w": "牌",
+     "ipa": "pʰaɪ˧˥",
+     "g": "card; sign",
+     "r": "pái"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "读",
+     "ipa": "tu˧˥",
+     "g": "to read",
+     "r": "dú"
+    },
+    {
+     "l": "zh",
+     "w": "图",
+     "ipa": "tʰu˧˥",
+     "g": "picture",
+     "r": "tú"
+    }
+   ],
    [
     {
      "l": "zh",
@@ -785,6 +931,111 @@
      "ipa": "ʂɨ˥",
      "g": "poem",
      "r": "shī"
+    }
+   ]
+  ]
+ },
+ {
+  "id": "zh-t23",
+  "l": "zh",
+  "label": "tone 2 vs tone 3",
+  "ids": [],
+  "tip": "Tone 2 starts in the middle and climbs right away. Tone 3 sinks to the bottom first and only rises late, or not at all.",
+  "pairs": [
+   [
+    {
+     "l": "zh",
+     "w": "麻",
+     "ipa": "ma˧˥",
+     "g": "hemp",
+     "r": "má"
+    },
+    {
+     "l": "zh",
+     "w": "马",
+     "ipa": "ma˨˩˦",
+     "g": "horse",
+     "r": "mǎ"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "糖",
+     "ipa": "tʰɑŋ˧˥",
+     "g": "sugar",
+     "r": "táng"
+    },
+    {
+     "l": "zh",
+     "w": "躺",
+     "ipa": "tʰɑŋ˨˩˦",
+     "g": "to lie down",
+     "r": "tǎng"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "十",
+     "ipa": "ʂɨ˧˥",
+     "g": "ten",
+     "r": "shí"
+    },
+    {
+     "l": "zh",
+     "w": "使",
+     "ipa": "ʂɨ˨˩˦",
+     "g": "to use",
+     "r": "shǐ"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "肥",
+     "ipa": "feɪ˧˥",
+     "g": "fat",
+     "r": "féi"
+    },
+    {
+     "l": "zh",
+     "w": "匪",
+     "ipa": "feɪ˨˩˦",
+     "g": "bandit",
+     "r": "fěi"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "同",
+     "ipa": "tʰʊŋ˧˥",
+     "g": "same",
+     "r": "tóng"
+    },
+    {
+     "l": "zh",
+     "w": "统",
+     "ipa": "tʰʊŋ˨˩˦",
+     "g": "to unite",
+     "r": "tǒng"
+    }
+   ],
+   [
+    {
+     "l": "zh",
+     "w": "鱼",
+     "ipa": "y˧˥",
+     "g": "fish",
+     "r": "yú"
+    },
+    {
+     "l": "zh",
+     "w": "雨",
+     "ipa": "y˨˩˦",
+     "g": "rain",
+     "r": "yǔ"
     }
    ]
   ]

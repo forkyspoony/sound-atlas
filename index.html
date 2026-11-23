@@ -1448,6 +1448,8 @@ const EAR={
  'es-kg':'Buzz before the click. g hums from the start (between vowels it softens almost to a gargle); k is silent, then clicks.',
  'es-n':'The release. ɲ ends with a little y glide, like the ny in canyon; n has none.',
  'es-ei':'Height. i is tight and high like ee; e is more open, between eh and ay. Neither one glides.',
+ 'zh-bdg':'The puff. A burst of breath, like a little h, before the vowel means p t k; none means b d g.',
+ 'zh-t23':'The start. Tone 2 climbs right away from the middle; tone 3 sinks first and rises late, if at all.',
  'zh-asp':'The puff. A burst of breath, like a little h, before the vowel means p t k c ch q; none means b d g z zh j.',
  'zh-ssh':'The hiss. z c s is thin and sharp; zh ch sh is lower and hollow.',
  'zh-jzh':'Bright or dark. j q x hiss high and lead into ee; zh ch sh hiss low and hollow.',
@@ -1673,12 +1675,16 @@ const PAIRS=[
   pairs:[[W('es','cada','ˈkaða','each'),W('es','cara','ˈkaɾa','face')],[W('es','todo','ˈt̪oðo','all'),W('es','toro','ˈt̪oɾo','bull')],[W('es','codo','ˈkoðo','elbow'),W('es','coro','ˈkoɾo','choir')],[W('es','lodo','ˈloðo','mud'),W('es','loro','ˈloɾo','parrot')],[W('es','mida','ˈmiða','(that) he measure'),W('es','mira','ˈmiɾa','look')]]},
  {id:'es-ou',l:'es',label:'o vs u',ids:['vo','vu'],tip:'English blurs unstressed o and u. In Spanish they stay apart: o is "oh" with no w at the end, u is a tight, fully rounded "oo".',
   pairs:[[W('es','modo','ˈmoðo','way'),W('es','mudo','ˈmuðo','mute')],[W('es','loto','ˈlot̪o','lotus'),W('es','luto','ˈlut̪o','mourning')],[W('es','coro','ˈkoɾo','choir'),W('es','curo','ˈkuɾo','I cure')]]},
- {id:'zh-asp',l:'zh',label:'no puff vs puff',ids:['pu','ph'],tip:'Pinyin b d g z zh j have no puff of air; p t k c ch q have a strong one. Neither set buzzes like English b or d.',
-  pairs:[[W('zh','爸','pa˥˩','dad','bà'),W('zh','怕','pʰa˥˩','to fear','pà')],[W('zh','大','ta˥˩','big','dà'),W('zh','踏','tʰa˥˩','to step on','tà')],[W('zh','哥','kɤ˥','older brother','gē'),W('zh','科','kʰɤ˥','subject','kē')],[W('zh','在','tsaɪ˥˩','at','zài'),W('zh','菜','tsʰaɪ˥˩','dish','cài')],[W('zh','知','ʈʂɨ˥','to know','zhī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','七','tɕʰi˥','seven','qī')]]},
+ {id:'zh-bdg',l:'zh',label:'b d g vs p t k',ids:['pu','ph'],tip:'Pinyin b d g have no puff of air; p t k have a strong one. Neither set buzzes like English b, d, g.',
+  pairs:[[W('zh','爸','pa˥˩','dad','bà'),W('zh','怕','pʰa˥˩','to fear','pà')],[W('zh','大','ta˥˩','big','dà'),W('zh','踏','tʰa˥˩','to step on','tà')],[W('zh','哥','kɤ˥','older brother','gē'),W('zh','科','kʰɤ˥','subject','kē')],[W('zh','白','paɪ˧˥','white','bái'),W('zh','牌','pʰaɪ˧˥','card; sign','pái')],[W('zh','读','tu˧˥','to read','dú'),W('zh','图','tʰu˧˥','picture','tú')],[W('zh','古','ku˨˩˦','ancient','gǔ'),W('zh','苦','kʰu˨˩˦','bitter','kǔ')]]},
+ {id:'zh-asp',l:'zh',label:'no puff vs puff: b d g z zh j vs p t k c ch q',ids:['pu','ph','ts','tsh','tsr','tsrh','tc','tch'],tip:'Pinyin b d g z zh j have no puff of air; p t k c ch q have a strong one. Neither set buzzes like English b or d.',
+  pairs:[[W('zh','白','paɪ˧˥','white','bái'),W('zh','牌','pʰaɪ˧˥','card; sign','pái')],[W('zh','读','tu˧˥','to read','dú'),W('zh','图','tʰu˧˥','picture','tú')],[W('zh','爸','pa˥˩','dad','bà'),W('zh','怕','pʰa˥˩','to fear','pà')],[W('zh','大','ta˥˩','big','dà'),W('zh','踏','tʰa˥˩','to step on','tà')],[W('zh','哥','kɤ˥','older brother','gē'),W('zh','科','kʰɤ˥','subject','kē')],[W('zh','在','tsaɪ˥˩','at','zài'),W('zh','菜','tsʰaɪ˥˩','dish','cài')],[W('zh','知','ʈʂɨ˥','to know','zhī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','七','tɕʰi˥','seven','qī')]]},
  {id:'zh-ssh',l:'zh',label:'z c s vs zh ch sh',ids:['ts','tsr','sr'],tip:'z c s are made with the tongue tip forward behind the teeth. zh ch sh raise the tongue tip just behind the gum ridge and sound hollower.',
   pairs:[[W('zh','四','sɨ˥˩','four','sì'),W('zh','是','ʂɨ˥˩','to be','shì')],[W('zh','早','tsaʊ˨˩˦','early','zǎo'),W('zh','找','ʈʂaʊ˨˩˦','to look for','zhǎo')],[W('zh','字','tsɨ˥˩','character','zì'),W('zh','志','ʈʂɨ˥˩','will','zhì')]]},
  {id:'zh-jzh',l:'zh',label:'j q x vs zh ch sh',ids:['tc','xx','tsr','sr'],tip:'j q x are made with the tongue tip down and sound bright, like a smile. zh ch sh raise the tongue tip and sound dark.',
   pairs:[[W('zh','鸡','tɕi˥','chicken','jī'),W('zh','知','ʈʂɨ˥','to know','zhī')],[W('zh','七','tɕʰi˥','seven','qī'),W('zh','吃','ʈʂʰɨ˥','to eat','chī')],[W('zh','西','ɕi˥','west','xī'),W('zh','诗','ʂɨ˥','poem','shī')]]},
+ {id:'zh-t23',l:'zh',label:'tone 2 vs tone 3',ids:[],tip:'Tone 2 starts in the middle and climbs right away. Tone 3 sinks to the bottom first and only rises late, or not at all.',
+  pairs:[[W('zh','麻','ma˧˥','hemp','má'),W('zh','马','ma˨˩˦','horse','mǎ')],[W('zh','糖','tʰɑŋ˧˥','sugar','táng'),W('zh','躺','tʰɑŋ˨˩˦','to lie down','tǎng')],[W('zh','十','ʂɨ˧˥','ten','shí'),W('zh','使','ʂɨ˨˩˦','to use','shǐ')],[W('zh','肥','feɪ˧˥','fat','féi'),W('zh','匪','feɪ˨˩˦','bandit','fěi')],[W('zh','同','tʰʊŋ˧˥','same','tóng'),W('zh','统','tʰʊŋ˨˩˦','to unite','tǒng')],[W('zh','鱼','y˧˥','fish','yú'),W('zh','雨','y˨˩˦','rain','yǔ')]]},
  {id:'zh-uy',l:'zh',label:'u vs ü',ids:['vu','vy'],tip:'u has the tongue back; ü keeps the tongue forward like "ee" with rounded lips. ü sounds brighter.',
   pairs:[[W('zh','路','lu˥˩','road','lù'),W('zh','绿','ly˥˩','green','lǜ')],[W('zh','努','nu˨˩˦','to strive','nǔ'),W('zh','女','ny˨˩˦','woman','nǚ')]]},
  {id:'ar-h',l:'ar',label:'h vs ħ',ids:['h','hh'],tip:'ه is a plain English h. ح is squeezed from the throat and sounds raspier and stronger.',
@@ -2127,7 +2133,7 @@ function mountBuild(el,q,hooks){
     }};
 }
 const ES_ALL=['va','ve','vi','vo','vu','pu','td','beta','eth','gh','tap','r','ny','yy','x'];
-const ZH_ALL=['ph','ts','tsh','tsr','tsrh','sr','rr','tc','tch','xx','vy','vgam','vbuzz','vschwa'];
+const ZH_ALL=['pu','ph','x','ts','tsh','tsr','tsrh','sr','rr','tc','tch','xx','vy','vgam','vbuzz','vschwa'];
 const AR_ALL=['jzh','h','gs','q','hh','ain','ems','emt','emd','emz'];
 
 const UNITS=[
@@ -2555,13 +2561,15 @@ const UNITS=[
    lst('Tone 3: low dipping',['马','好','早','草','九','女','冷','躺']),
    txt('The half third tone',`In real speech, tone 3 only rises when it's at the end of a phrase or said alone. Before another syllable, it just goes <b>low and stays low</b>: <span class="ipa">˨˩</span> (21). This "half third tone" is the most common form of tone 3. In 老师 <i>lǎoshī</i> (teacher), <i>lǎo</i> is <span class="ipa">[laʊ˨˩]</span>.`),
    lst('Half third tone: low, no rise',['老师','美国','考试']),
+   txt('Tone 2 or tone 3?',`These two are the pair learners mix up most, because both can end higher than they start. Listen to the <b>start</b>:<ul><li><b>Tone 2</b> begins in the middle of your voice and climbs <b>right away</b>, all the way through the syllable.</li><li><b>Tone 3</b> begins lower and <b>sinks first</b>. Any rise comes late, at the very end, and often not at all.</li></ul>If you hear the pitch go down before it goes up, it's tone 3.`),
+   prs(['zh-t23'],8),
    rq([HR('麻',['[ma˧˥]','[ma˨˩˦]'],0,'Rising: ˧˥.'),
        HR('马',['[ma˧˥]','[ma˨˩˦]'],1,'Low and dipping: ˨˩˦.'),
        RD('tʰɑŋ˧˥',['糖 táng (sugar)','躺 tǎng (lie down)'],0,'糖','˧˥ rises.'),
        Q('老师','In 老师 lǎoshī, the first syllable is…',['the full dip ˨˩˦','just low ˨˩'],1,'Before another syllable, tone 3 stays low.'),
        Q(null,'The most important part of tone 3 is…',['the rise at the end','reaching low pitch'],1,'The rise often disappears.')]),
    bd([{w:'麻',a:'m a ˧˥',x:'˨˩˦ ˥',why:'Rising tone.'},{w:'马',a:'m a ˨˩˦',x:'˧˥ ˥˩',why:'Low dipping tone.'}]),
-   spk(['麻','马','老师'])],adds:['r:m03']},
+   spk(['麻','马','老师'])],adds:['p:zh-t23','r:m03']},
 
  {id:'m04',title:'Telling the four tones apart',kind:'sounds',min:8,steps:[
    sy('The four tones','Same syllable, four words. Play each and trace the shape in the air with your hand as you listen.',[
@@ -2585,14 +2593,14 @@ const UNITS=[
    cm('Find them in English','English has both versions; it just doesn\'t use the difference to tell words apart.',[['spin (EN)','爸','<span class="ipa">[p]</span> = pinyin b'],['pin (EN)','怕','<span class="ipa">[pʰ]</span> = pinyin p'],['skin (EN)','哥','<span class="ipa">[k]</span> = pinyin g'],['kin (EN)','科','<span class="ipa">[kʰ]</span> = pinyin k']]),
    snd('pu'),snd('ph'),
    lst('Unaspirated: b d g',['爸','大','哥','对']),lst('Aspirated: p t k',['怕','他','科','开']),
-   prs(['zh-asp'],8),
+   prs(['zh-bdg'],8),
    rq([HR('怕',['[pʰa˥˩]','[pa˥˩]'],0,'Pinyin p has a puff.'),
        RD('ta˥˩',['大 dà (big)','踏 tà (step on)'],0,'大','No ʰ means no puff: pinyin d.'),
        HR('他',['[tʰa˥]','[ta˥]'],0,'Pinyin t has the puff.'),
        Q(null,'Pinyin b, d, g are…',['voiced, like English b, d, g','voiceless with no puff, like the p in "spin"'],1,'Mandarin doesn\'t use voicing.'),
        Q(null,'Which pinyin letter is [kʰ]?',['g','k','h'],1,'k has the puff.')]),
    bd([{w:'他',a:'tʰ a ˥',x:'t d ˥˩',why:'Pinyin t = [tʰ].'},{w:'哥',a:'k ɤ ˥',x:'kʰ ɡ ə',why:'Pinyin g = [k]; e alone = [ɤ].'}]),
-   spk(['爸','怕','他'])],adds:['s:pu','s:ph','p:zh-asp','r:m05']},
+   spk(['爸','怕','他'])],adds:['s:pu','s:ph','p:zh-bdg','r:m05']},
 
  {id:'m06',title:'f, m, n, l, and h',kind:'sounds',min:6,steps:[
    txt('Mostly familiar',`<b>f m n l</b> are as in English, with one difference: Mandarin l is always light, never the dark l of "full".<br><br><b>h</b> is the one to watch. It's <span class="ipa">[x]</span>: the back of the tongue comes close to the soft palate and the air scrapes through, like Spanish <i>j</i> or Scottish "loch". It's a light scrape, softer than the Spanish jota, but never just breath like English h.`),
@@ -2663,7 +2671,7 @@ const UNITS=[
      {s:'ʈʂ ʈʂʰ ʂ',n:'zh ch sh',t:'tongue tip raised, just behind the gum ridge',k:['中','茶','是']},
      {s:'tɕ tɕʰ ɕ',n:'j q x',t:'tongue tip down, front of the tongue up, smile',k:['鸡','七','西']}]),
    txt('Spelling clues',`<ul><li><b>j q x</b> only appear before <b>i</b> or <b>ü</b>.</li><li><b>z c s</b> and <b>zh ch sh r</b> never appear before a real <span class="ipa">[i]</span>: when pinyin writes zi, ci, si, zhi, chi, shi, ri, the i is the buzzing vowel you'll meet in part 3.</li></ul>So 西 <i>xī</i> <span class="ipa">[ɕi]</span> and 四 <i>sì</i> <span class="ipa">[sɨ]</span> differ in both consonant and vowel.`),
-   prs(['zh-ssh','zh-jzh'],10),
+   prs(['zh-ssh','zh-jzh','zh-asp'],10),
    rq([HR('四',['[sɨ˥˩]','[ʂɨ˥˩]','[ɕi˥˩]'],0,'s + buzzing vowel.'),
        HR('十',['[sɨ˧˥]','[ʂɨ˧˥]','[ɕi˧˥]'],1,'sh + buzzing vowel.'),
        RD('ʈʂʰɨ˥',['吃 chī','七 qī','次 cì'],0,'吃','ʈʂʰ = ch.'),
@@ -2809,11 +2817,18 @@ const UNITS=[
        Q(null,'What makes 你是老师吗？ a question?',['Rising intonation','The particle 吗'],1,''),
        Q('我很好','我很好 wǒ hěn hǎo is usually said…',['wǒ hěn hǎo','wó hén hǎo or wǒ hén hǎo'],1,'Third-tone changes apply inside the phrase.')]),
    spk(['你好吗？','我很好','你是老师吗？'])],adds:['r:m23']},
- {id:'m24',title:'Mandarin checkpoint',kind:'review',min:10,steps:[txt('Putting it together','Mixed review: Mandarin sounds, contrasts, single tones and tone pairs.'),
-   qz(ZH_ALL,8),prs(['zh-asp','zh-ssh','zh-jzh','zh-uy','zh-nng'],8),tn(5),tp(5),spk(['学习','汽车','一起','朋友']),
+ {id:'m24',title:'Mandarin checkpoint',kind:'review',min:10,steps:[txt('Putting it together','Mixed review: Mandarin sounds, contrasts, single tones and tone pairs, then the rules: tone changes, the neutral tone and spelling.'),
+   qz(ZH_ALL,8),prs(['zh-asp','zh-t23','zh-ssh','zh-jzh','zh-uy','zh-nng'],8),tn(5),tp(5),spk(['学习','汽车','一起','朋友']),
    rq([RD('ʈʂʰa˧˥',['茶','擦','查'],0,'茶','ch, rising.'),RD('ɕjɛ˥˩',['谢','写','鞋'],0,'谢','x + ie, falling.'),
        HR('学',['[ɕɥɛ˧˥]','[ʂwɛ˧˥]','[sjɛ˧˥]'],0,'x + üe.'),HR('是',['[ʂɨ˥˩]','[sɨ˥˩]','[ɕi˥˩]'],0,'sh + buzzing vowel.'),
        HR('去',['[tɕʰy˥˩]','[tɕʰu˥˩]','[ʈʂʰu˥˩]'],0,'q + ü.')]),
+   rq([Q('你好','你好 is written nǐ hǎo. How is it said?',['nǐ hǎo, two low tones','ní hǎo, rising then low'],1,'Two third tones in a row: the first one becomes a rising tone 2.'),
+       Q('不是','Why is 不 rising (bú) in 不是?',['不 is always rising','Before a tone 4, 不 changes to bú'],1,'不 is bù, except before a tone 4.'),
+       Q('一起','In 一起 (起 is tone 3), 一 is said…',['yī, high and level','yí, rising','yì, falling'],2,'Before tones 1, 2 and 3, 一 becomes yì. Before tone 4 it becomes yí.'),
+       Q('谢谢','The second 谢 in 谢谢 is…',['another full falling tone','short and light: a neutral tone'],1,'Many second syllables lose their tone.'),
+       Q(null,'In 你们 nǐmen, the neutral syllable 们 is…',['lower than 你','higher than 你'],1,'After tone 3 a neutral syllable bounces up. After tones 1, 2 and 4 it is lower.'),
+       Q('九','Pinyin jiu (九) is short for…',['jiou','jui'],0,'iu stands for iou, ui for uei, and un for uen.'),
+       Q('去','去 is spelled qu. Its vowel is…',['[u], as in "food"','[y], ü with the dots left off'],1,'After j, q and x, u is always ü.')]),
    bd([{w:'学习',a:'ɕ ɥ ɛ ˧˥ ɕ i ˧˥',x:'ʃ s ˥',why:'x + üe, x + i, both rising.'},{w:'汽车',a:'tɕʰ i ˥˩ ʈʂʰ ɤ ˥',x:'tʃ ə',why:'q + i falling, ch + e high.'}])],adds:['b:m24']},
 ]},
 {id:'ar',l:'ar',title:'The IPA, vowels and familiar sounds',sub:'How IPA writes Levantine Arabic, the vowel system, and the consonants you can already make.',lessons:[
@@ -4409,6 +4424,14 @@ PHRASES.push(
   AUDIO["菜"]=['audio/p_g1_zh.mp3',4.86,5.16];
   AUDIO["中"]=['audio/p_g1b_zh.mp3',3.07,3.48];
   AUDIO["怕"]=['audio/p_g1c_zh.mp3',0,0.42];
+  // Pair-drill words (2026-11-22, Alina, eleven_v4, same flow NBZF0TUItoZeA88zBAWm, take 4 of 4; each passes its tone)
+  AUDIO["白"]=['audio/p_g2_zh.mp3',0.05,0.64];
+  AUDIO["牌"]=['audio/p_g2_zh.mp3',1.29,1.67];
+  AUDIO["读"]=['audio/p_g2_zh.mp3',2.37,2.67];
+  AUDIO["图"]=['audio/p_g2_zh.mp3',3.24,3.70];
+  AUDIO["古"]=['audio/p_g2_zh.mp3',4.32,4.71];
+  AUDIO["苦"]=['audio/p_g2_zh.mp3',5.24,5.74];
+  AUDIO["雨"]=['audio/p_g2_zh.mp3',6.33,6.73];
   // Intonation sentences (2026-11-21, same flow): chosen because their pitch line shows the rise or fall clearly.
   // ¿Hablas español? replaces an older clip whose ending didn't rise.
   AUDIO["Vienes mañana."]=['audio/p_c9_es_into.mp3',0.02,0.99];

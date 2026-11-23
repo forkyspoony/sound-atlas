@@ -487,6 +487,9 @@ signal to measure).
   `cleanPitch` was written for single syllables and throws away the second syllable when the
   pitch leaps between them; two-syllable work must use `tpClean`. Pitch still jumps an
   octave on some creaky third tones, which is why no per-syllable verdict is given.
+- **Mandarin pair drills (2026-11-22):** new sets `zh-bdg` (m05) and `zh-t23` (m03, tone 2 vs 3);
+  `zh-asp` now covers all six puff pairs and moved to m11/m24; m24 has seven rule questions. Words
+  白 牌 读 图 古 苦 雨 are sprites in `audio/p_g2_zh.mp3` (same flow, take 4 of 4).
 - **Six Mandarin syllables re-recorded (2026-11-22):** 烫 志 怕 中 谢 菜, as sprites in
   `audio/p_g1_zh.mp3`, `p_g1b_zh.mp3` and `p_g1c_zh.mp3` (Alina, `eleven_v4`, flow
   `NBZF0TUItoZeA88zBAWm`). The old clips didn't hold their tone (audit G in
